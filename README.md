@@ -11,3 +11,7 @@ Open `index.html` in a browser to run it locally.
 ## Demo Day
 
 See [`docs/demo-day-pitch.md`](docs/demo-day-pitch.md) for the original pitch line and context.
+
+## Public Writeups
+
+See [`docs/linkedin-copy.md`](docs/linkedin-copy.md) for the LinkedIn project copy and featured post text.
