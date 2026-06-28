@@ -17,3 +17,7 @@ See [`docs/demo-day-pitch.md`](docs/demo-day-pitch.md) for the original pitch li
 ## Public Writeups
 
 See [`docs/linkedin-copy.md`](docs/linkedin-copy.md) for the LinkedIn project copy and featured post text.
+
+## Archive
+
+See [`archive/original-react-mvp.jsx`](archive/original-react-mvp.jsx) for the original React MVP draft from the GPT / Canvas development process.
