@@ -12,6 +12,8 @@ A project exploring how AI and Taiwanese traditional rituals can help people nav
 - Developed by a lawyer and a lingerie founder using OpenAI Codex.
 - Won 1st Place among 32 teams.
 
+Creator profile: [Crystal Chang](https://www.linkedin.com/in/crystal-c-2b028410/)
+
 ## Featured Post / Thumbnail Copy
 
 🥇 Draw One — 1st Place Winner, ikigai vibe hack 1.0
