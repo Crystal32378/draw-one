@@ -1,0 +1,780 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>數位籤詩宇宙</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #12110f;
+        --panel: #1b1916;
+        --panel-soft: #24211d;
+        --line: #3d3831;
+        --line-strong: #756b5f;
+        --text: #f4efe7;
+        --muted: #aaa094;
+        --quiet: #746c63;
+        --accent: #f4efe7;
+        --accent-text: #12110f;
+        --focus: #cbbba7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at 18% 0%, rgba(200, 184, 151, 0.12), transparent 34rem),
+          radial-gradient(circle at 88% 20%, rgba(87, 137, 150, 0.12), transparent 30rem),
+          linear-gradient(180deg, #15130f 0%, var(--bg) 46%, #0d0c0a 100%);
+        color: var(--text);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 40px 0 56px;
+      }
+
+      .masthead {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      .eyebrow,
+      .section-label,
+      .card-label {
+        color: var(--quiet);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 14px;
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: clamp(44px, 8vw, 86px);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .intro {
+        max-width: 690px;
+        margin-top: 22px;
+        color: #d8d0c6;
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .stamp {
+        min-width: 148px;
+        border: 1px solid var(--line);
+        padding: 16px;
+        text-align: center;
+        color: #ded4c6;
+        background: rgba(27, 25, 22, 0.66);
+      }
+
+      .stamp-mark {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 28px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.28fr) minmax(300px, 0.72fr);
+        gap: 26px;
+        align-items: start;
+      }
+
+      .main-flow,
+      .side-flow {
+        display: grid;
+        gap: 24px;
+      }
+
+      .oracle-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .oracle-button {
+        min-height: 220px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 22px;
+        color: var(--text);
+        text-align: left;
+        background: rgba(27, 25, 22, 0.86);
+        transition:
+          transform 180ms ease,
+          border-color 180ms ease,
+          background 180ms ease;
+      }
+
+      .oracle-button:hover,
+      .oracle-button:focus-visible {
+        border-color: var(--line-strong);
+        transform: translateY(-2px);
+        outline: none;
+      }
+
+      .oracle-button.active {
+        border-color: #eee5d9;
+        background: rgba(244, 239, 231, 0.11);
+        box-shadow: inset 0 0 0 1px rgba(244, 239, 231, 0.14);
+      }
+
+      .oracle-emoji {
+        font-size: 42px;
+        line-height: 1;
+      }
+
+      .oracle-name {
+        margin-top: 18px;
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: 27px;
+      }
+
+      .oracle-vibe {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .oracle-description {
+        margin-top: 14px;
+        color: #d1c8bd;
+        font-size: 14px;
+        line-height: 1.68;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(27, 25, 22, 0.88);
+      }
+
+      .question-panel {
+        padding: 26px;
+      }
+
+      .question-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 18px;
+      }
+
+      h2 {
+        margin-top: 8px;
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: 29px;
+        font-weight: 500;
+      }
+
+      .selected-pill {
+        min-width: 98px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 9px 13px;
+        color: #d8d0c6;
+        text-align: center;
+        background: #14120f;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 158px;
+        resize: vertical;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px;
+        color: var(--text);
+        background: #100f0d;
+        line-height: 1.7;
+      }
+
+      textarea:focus {
+        border-color: var(--focus);
+        outline: 2px solid rgba(203, 187, 167, 0.22);
+      }
+
+      textarea::placeholder {
+        color: #746c63;
+      }
+
+      .question-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .note {
+        max-width: 480px;
+        color: var(--quiet);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .draw-button {
+        min-width: 154px;
+        border: 0;
+        border-radius: 999px;
+        padding: 15px 24px;
+        color: var(--accent-text);
+        font-weight: 800;
+        background: var(--accent);
+        transition:
+          transform 180ms ease,
+          opacity 180ms ease;
+      }
+
+      .draw-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .draw-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.35;
+        transform: none;
+      }
+
+      .result-panel {
+        position: relative;
+        overflow: hidden;
+        padding: 28px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(244, 239, 231, 0.13), transparent 18rem),
+          linear-gradient(180deg, rgba(36, 33, 29, 0.94), rgba(15, 14, 12, 0.96));
+      }
+
+      .result-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .result-emoji {
+        font-size: 42px;
+      }
+
+      .result-god {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .result-title {
+        margin-top: 3px;
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: 30px;
+      }
+
+      .poem {
+        margin-top: 26px;
+        border-left: 2px solid var(--line-strong);
+        padding-left: 20px;
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.9;
+      }
+
+      .reading-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 24px;
+      }
+
+      .mini-card,
+      .question-card,
+      .side-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(18, 17, 15, 0.7);
+      }
+
+      .mini-card {
+        padding: 20px;
+      }
+
+      .mini-card p,
+      .side-panel p,
+      .question-card {
+        color: #ddd5cc;
+        line-height: 1.76;
+      }
+
+      .question-card {
+        margin-top: 16px;
+        padding: 18px;
+      }
+
+      .side-panel {
+        padding: 22px;
+      }
+
+      .side-text {
+        display: grid;
+        gap: 14px;
+        margin-top: 15px;
+        color: #d3cabf;
+        font-size: 14px;
+        line-height: 1.72;
+      }
+
+      .feature-list,
+      .history-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .feature-item {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #d4cbc0;
+        font-size: 14px;
+      }
+
+      .feature-dot {
+        width: 5px;
+        height: 5px;
+        flex: 0 0 auto;
+        background: #b8aa99;
+      }
+
+      .history-list {
+        max-height: 400px;
+        overflow: auto;
+        padding-right: 4px;
+      }
+
+      .history-empty {
+        margin-top: 16px;
+        color: var(--quiet);
+        font-size: 14px;
+      }
+
+      .history-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: rgba(0, 0, 0, 0.18);
+      }
+
+      .history-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .history-title {
+        font-family: Georgia, "Times New Roman", "Noto Serif TC", serif;
+        font-size: 19px;
+      }
+
+      .history-god,
+      .history-question {
+        color: var(--quiet);
+        font-size: 13px;
+      }
+
+      .history-question {
+        display: -webkit-box;
+        margin-top: 8px;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .is-hidden {
+        display: none;
+      }
+
+      @media (max-width: 900px) {
+        .masthead,
+        .layout,
+        .reading-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stamp {
+          justify-self: start;
+        }
+
+        .oracle-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 24px, 1180px);
+          padding-top: 28px;
+        }
+
+        .question-head,
+        .question-actions,
+        .history-top {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .draw-button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="masthead">
+        <div>
+          <div class="eyebrow">Eastern Oracle System</div>
+          <h1>數位籤詩宇宙</h1>
+          <p class="intro">
+            不是算命網站，而是一個讓人在混亂時重新整理情緒、問題與人生方向的東方 ritual interface。
+          </p>
+        </div>
+        <div class="stamp" aria-label="Oracle seal">
+          <div class="stamp-mark">籤</div>
+          <div class="eyebrow">Ritual UI</div>
+        </div>
+      </header>
+
+      <section class="layout">
+        <div class="main-flow">
+          <section>
+            <div class="section-label">Select Your Oracle</div>
+            <div class="oracle-grid" id="oracleGrid"></div>
+          </section>
+
+          <section class="panel question-panel">
+            <div class="question-head">
+              <div>
+                <div class="section-label">Your Question</div>
+                <h2>今天想問什麼？</h2>
+              </div>
+              <div class="selected-pill" id="selectedPill">尚未選擇</div>
+            </div>
+
+            <textarea
+              id="questionInput"
+              placeholder="例如：這段合作是否值得繼續？我該不該放下這段關係？現在是不是適合創業？"
+            ></textarea>
+
+            <div class="question-actions">
+              <div class="note">
+                抽籤不是預言未來，而是幫你重新看見自己的內心與處境。
+              </div>
+              <button class="draw-button" id="drawButton" disabled>抽一支籤</button>
+            </div>
+          </section>
+
+          <section class="panel result-panel is-hidden" id="resultPanel" aria-live="polite"></section>
+        </div>
+
+        <aside class="side-flow">
+          <section class="side-panel">
+            <div class="card-label">Product Vision</div>
+            <div class="side-text">
+              <p>這不是傳統命理站，而是「東方情緒介面」。</p>
+              <p>
+                使用 ritual、神明 worldview 與高品質敘事，建立一種更有文化感與陪伴感的數位體驗。
+              </p>
+            </div>
+          </section>
+
+          <section class="side-panel">
+            <div class="card-label">Future Features</div>
+            <div class="feature-list" id="featureList"></div>
+          </section>
+
+          <section class="side-panel">
+            <div class="card-label">Recent Readings</div>
+            <div class="history-empty" id="historyEmpty">尚未抽籤。</div>
+            <div class="history-list" id="historyList"></div>
+          </section>
+        </aside>
+      </section>
+    </main>
+
+    <script>
+      const gods = [
+        {
+          id: "mazu",
+          name: "媽祖",
+          emoji: "🌊",
+          vibe: "安定與陪伴",
+          description: "適合在人生混亂、焦慮與不安時前來詢問。",
+          oracle: [
+            {
+              title: "第三十六籤",
+              poem: "雲開月出見青天，前路逢春萬事全。",
+              meaning:
+                "你現在卡住的，不一定是能力，而是時機。不要急著硬推，先整理秩序與情緒。真正的轉機，會在你停止內耗後開始浮現。",
+              advice:
+                "把注意力放回睡眠、飲食與生活節奏。穩定自己，比強迫突破更重要。",
+            },
+            {
+              title: "第八籤",
+              poem: "海潮雖大終須退，人事浮沉自有時。",
+              meaning:
+                "你害怕的事情正在放大，但未必真的會毀掉你。很多焦慮只是浪潮，不是命運。",
+              advice: "今天不要做情緒化決定。先觀察三天。",
+            },
+          ],
+        },
+        {
+          id: "yuelao",
+          name: "月老",
+          emoji: "❤️",
+          vibe: "感情與緣分",
+          description: "適合詢問關係、曖昧、 timing 與情感選擇。",
+          oracle: [
+            {
+              title: "第十二籤",
+              poem: "花開花謝皆有時，莫向東風怨別離。",
+              meaning:
+                "這段關係不是沒有感情，而是兩人的節奏不同。有人在靠近，有人在觀望。",
+              advice: "不要急著確認關係。先確認彼此是否真的理解對方。",
+            },
+            {
+              title: "第二十三籤",
+              poem: "有心栽柳柳難成，無意插花花自明。",
+              meaning:
+                "越用力抓住的人，越容易失去。真正適合的關係，通常是自然長出來的。",
+              advice:
+                "停止過度分析訊息與反應。去觀察對方是否願意穩定出現在你的生活裡。",
+            },
+          ],
+        },
+        {
+          id: "guangong",
+          name: "關聖帝君",
+          emoji: "⚔️",
+          vibe: "事業與決策",
+          description: "適合詢問合作、創業、判斷與信任。",
+          oracle: [
+            {
+              title: "第四十六籤",
+              poem: "寶劍光芒出匣時，群邪退散正當宜。",
+              meaning: "你其實已經知道問題在哪裡，只是一直不願意正面處理。",
+              advice: "不要再拖延。該切割的人脈、合作與結構，現在就處理。",
+            },
+            {
+              title: "第七籤",
+              poem: "行船莫怕風波急，掌穩舵盤自有成。",
+              meaning: "外部環境很亂，但真正決定結果的是你的節奏與判斷。",
+              advice: "先守現金流與核心資源，不要被短期聲量誘惑。",
+            },
+          ],
+        },
+      ];
+
+      const features = [
+        "AI 解籤人格系統",
+        "不同神明的語氣模型",
+        "夢境與流年記錄",
+        "收藏與分享卡片",
+        "宮廟文化地圖",
+        "東方 spiritual journal",
+        "多語言版本（日 / 韓 / 英）",
+      ];
+
+      let selectedGod = null;
+      let history = [];
+      let loading = false;
+
+      const oracleGrid = document.querySelector("#oracleGrid");
+      const selectedPill = document.querySelector("#selectedPill");
+      const questionInput = document.querySelector("#questionInput");
+      const drawButton = document.querySelector("#drawButton");
+      const resultPanel = document.querySelector("#resultPanel");
+      const historyEmpty = document.querySelector("#historyEmpty");
+      const historyList = document.querySelector("#historyList");
+      const featureList = document.querySelector("#featureList");
+
+      const escapeHtml = (value) =>
+        String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+
+      function renderGods() {
+        oracleGrid.innerHTML = gods
+          .map(
+            (god) => `
+              <button class="oracle-button ${selectedGod?.id === god.id ? "active" : ""}" data-god-id="${god.id}">
+                <div class="oracle-emoji">${god.emoji}</div>
+                <div class="oracle-name">${god.name}</div>
+                <div class="oracle-vibe">${god.vibe}</div>
+                <p class="oracle-description">${god.description}</p>
+              </button>
+            `
+          )
+          .join("");
+      }
+
+      function renderFeatures() {
+        featureList.innerHTML = features
+          .map(
+            (feature) => `
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>${feature}</span>
+              </div>
+            `
+          )
+          .join("");
+      }
+
+      function renderHistory() {
+        historyEmpty.classList.toggle("is-hidden", history.length > 0);
+        historyList.innerHTML = history
+          .map(
+            (item) => `
+              <article class="history-item">
+                <div class="history-top">
+                  <div class="history-title">${item.title}</div>
+                  <div class="history-god">${item.god}</div>
+                </div>
+                <div class="history-question">${item.question || "未輸入問題"}</div>
+              </article>
+            `
+          )
+          .join("");
+      }
+
+      function updateControls() {
+        selectedPill.textContent = selectedGod ? selectedGod.name : "尚未選擇";
+        drawButton.disabled = !selectedGod || loading;
+        drawButton.textContent = loading ? "神明正在回應中..." : "抽一支籤";
+      }
+
+      function renderResult(result) {
+        resultPanel.classList.remove("is-hidden");
+        resultPanel.innerHTML = `
+          <div class="result-header">
+            <div class="result-emoji">${result.emoji}</div>
+            <div>
+              <div class="result-god">${result.god}</div>
+              <div class="result-title">${result.title}</div>
+            </div>
+          </div>
+
+          <div class="poem">${result.poem}</div>
+
+          <div class="reading-grid">
+            <div class="mini-card">
+              <div class="card-label">Oracle Reading</div>
+              <p>${result.meaning}</p>
+            </div>
+            <div class="mini-card">
+              <div class="card-label">Guidance</div>
+              <p>${result.advice}</p>
+            </div>
+          </div>
+
+          ${
+            result.question
+              ? `<div class="question-card">
+                  <div class="card-label">Your Question</div>
+                  <div>${escapeHtml(result.question)}</div>
+                </div>`
+              : ""
+          }
+        `;
+      }
+
+      oracleGrid.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-god-id]");
+        if (!button) return;
+
+        selectedGod = gods.find((god) => god.id === button.dataset.godId);
+        resultPanel.classList.add("is-hidden");
+        renderGods();
+        updateControls();
+      });
+
+      drawButton.addEventListener("click", () => {
+        if (!selectedGod || loading) return;
+
+        loading = true;
+        updateControls();
+
+        window.setTimeout(() => {
+          const randomIndex = Math.floor(Math.random() * selectedGod.oracle.length);
+          const oracle = selectedGod.oracle[randomIndex];
+          const result = {
+            ...oracle,
+            god: selectedGod.name,
+            emoji: selectedGod.emoji,
+            question: questionInput.value.trim(),
+            time: new Date().toLocaleString(),
+          };
+
+          history = [
+            {
+              god: result.god,
+              title: result.title,
+              question: escapeHtml(result.question),
+            },
+            ...history,
+          ];
+
+          renderResult(result);
+          renderHistory();
+          loading = false;
+          updateControls();
+        }, 1200);
+      });
+
+      renderGods();
+      renderFeatures();
+      renderHistory();
+      updateControls();
+    </script>
+  </body>
+</html>
