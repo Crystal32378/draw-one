@@ -21,3 +21,34 @@ See [`docs/linkedin-copy.md`](docs/linkedin-copy.md) for the LinkedIn project co
 ## Archive
 
 See [`archive/original-react-mvp.jsx`](archive/original-react-mvp.jsx) for the original React MVP draft from the GPT / Canvas development process.
+
+
+## What It Does
+
+Draw One turns an oracle-style ritual into a lightweight web interaction:
+
+1. Choose a deity or symbolic guide.
+2. Enter a personal question.
+3. Draw one answer.
+4. Receive a short interpretive response through a ritual-inspired interface.
+
+The project explores how AI-native tools can feel less like command boxes and more like cultural, emotional, and symbolic experiences.
+
+## Why It Matters
+
+Most AI tools ask users to prompt, configure, and optimize. Draw One takes a different direction: it uses ritual, choice, ambiguity, and atmosphere to make AI interaction feel more human.
+
+The prototype is small, but the design question is larger:
+
+> What happens when an AI interface behaves less like a productivity tool and more like a symbolic companion?
+
+## Project Status
+
+This repository contains the archived single-page React / web MVP and related public-facing documentation.
+
+## Running Locally
+
+No backend is required.
+
+```bash
+open index.html
