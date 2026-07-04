@@ -52,7 +52,15 @@ The correct response is not shame; it is cleanup.
 - GPT-generated or aggregated content is labeled `ai_generated_or_summarized`.
 - Quarantine entries are marked `quarantine_do_not_import`.
 - Public GitHub data excludes raw unreviewed HTML/text content where appropriate.
-- Batch summaries support future 20-record import limits.
+- Batch summaries support review/import chunks, with 20 records as the current workflow default.
+
+## Note on the 20-Record Batch Size
+
+The number 20 was not a confirmed database constraint.
+
+It came from the earlier GPT-assisted manual workflow: each GPT conversation could only accept about 20 attachments at a time, so source review and content handoff naturally happened in 20-file batches.
+
+Going forward, 20 should be treated as a configurable review/import batch default, not a hard production limit.
 
 ## Policy Going Forward
 
@@ -90,7 +98,7 @@ Only entries with `license_status = ok` and `review_status = approved` may be im
 ## Remediation Plan
 
 1. Preserve all questionable data as evidence, not production content.
-2. Build an importer with dry run, resume, duplicate detection, and 20-record batching.
+2. Build an importer with dry run, resume, duplicate detection, and configurable batching, using 20 as the default manual-review chunk size.
 3. Add a hard gate blocking `unsure`, `no`, and quarantine entries from production import.
 4. Rebuild the real oracle pool from verified sources.
 5. Rewrite interpretations in Draw One's own voice after source review.
