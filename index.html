@@ -14,7 +14,7 @@
         --line-strong: #756b5f;
         --text: #f4efe7;
         --muted: #aaa094;
-        --quiet: #746c63;
+        --quiet: #9a9085;
         --accent: #f4efe7;
         --accent-text: #12110f;
         --focus: #cbbba7;
@@ -270,6 +270,11 @@
         transform: translateY(-1px);
       }
 
+      .draw-button:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+      }
+
       .draw-button:disabled {
         cursor: not-allowed;
         opacity: 0.35;
@@ -499,6 +504,7 @@
 
             <textarea
               id="questionInput"
+              aria-label="你想詢問的問題"
               placeholder="例如：這段合作是否值得繼續？我該不該放下這段關係？現在是不是適合創業？"
             ></textarea>
 
@@ -680,7 +686,7 @@
                   <div class="history-title">${item.title}</div>
                   <div class="history-god">${item.god}</div>
                 </div>
-                <div class="history-question">${item.question || "未輸入問題"}</div>
+                <div class="history-question">${escapeHtml(item.question || "未輸入問題")}</div>
               </article>
             `
           )
@@ -731,6 +737,7 @@
       oracleGrid.addEventListener("click", (event) => {
         const button = event.target.closest("[data-god-id]");
         if (!button) return;
+        if (loading) return;
 
         selectedGod = gods.find((god) => god.id === button.dataset.godId);
         resultPanel.classList.add("is-hidden");
@@ -741,10 +748,16 @@
       drawButton.addEventListener("click", () => {
         if (!selectedGod || loading) return;
 
+        const god = selectedGod;
         loading = true;
         updateControls();
 
         window.setTimeout(() => {
+          if (god !== selectedGod) {
+            loading = false;
+            updateControls();
+            return;
+          }
           const randomIndex = Math.floor(Math.random() * selectedGod.oracle.length);
           const oracle = selectedGod.oracle[randomIndex];
           const result = {
@@ -759,7 +772,7 @@
             {
               god: result.god,
               title: result.title,
-              question: escapeHtml(result.question),
+              question: result.question,
             },
             ...history,
           ];
