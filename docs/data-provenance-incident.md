@@ -52,7 +52,7 @@ The correct response is not shame; it is cleanup.
 - GPT-generated or aggregated content is labeled `ai_generated_or_summarized`.
 - Quarantine entries are marked `quarantine_do_not_import`.
 - Public GitHub data excludes raw unreviewed HTML/text content where appropriate.
-- Batch summaries support review/import chunks, with 20 records as the current workflow default.
+- Batch summaries support review chunks, with 20 records as the current manual workflow default.
 
 ## Note on the 20-Record Batch Size
 
@@ -60,7 +60,7 @@ The number 20 was not a confirmed database constraint.
 
 It came from the earlier GPT-assisted manual workflow: each GPT conversation could only accept about 20 attachments at a time, so source review and content handoff naturally happened in 20-file batches.
 
-Going forward, 20 should be treated as a configurable review/import batch default, not a hard production limit.
+Going forward, 20 should be treated as a manual review convenience, not a system constraint or production architecture unit.
 
 ## Policy Going Forward
 
@@ -95,14 +95,26 @@ Production import rule:
 
 Only entries with `license_status = ok` and `review_status = approved` may be imported into the production oracle pool.
 
+Frontend rule:
+
+The public interface should not display provenance, confidence, license status, review status, or internal governance fields. Registry data is an admin/trust layer. Users should only see the ritual experience.
+
 ## Remediation Plan
 
 1. Preserve all questionable data as evidence, not production content.
-2. Build an importer with dry run, resume, duplicate detection, and configurable batching, using 20 as the default manual-review chunk size.
-3. Add a hard gate blocking `unsure`, `no`, and quarantine entries from production import.
+2. Build a minimal audit/gate script that checks required fields, deduplicates entries, and outputs only approved content.
+3. Add a hard gate blocking `unsure`, `no`, and quarantine entries from production use.
 4. Rebuild the real oracle pool from verified sources.
 5. Rewrite interpretations in Draw One's own voice after source review.
 6. Keep generated interpretations clearly labeled as generated interpretation, not original oracle text.
+
+## Lessons / Agentic Audit
+
+This provenance issue was first detected by an automated audit agent during cleanup, not by ordinary human review.
+
+That matters. At small scale, humans can manually inspect content and feel confident. At larger scale, repeated files, generated filler, and source ambiguity can pass through normal review unnoticed. Draw One's cleanup showed that agentic audit is not just a coding convenience; it can become part of the trust chain.
+
+The lesson is not "trust agents blindly." The lesson is that human review and automated provenance checks need to work together. Human taste can judge whether the ritual feels right. Automated audit can catch duplication, missing fields, source ambiguity, and quarantine violations before they become product truth.
 
 ## Product Lesson
 
