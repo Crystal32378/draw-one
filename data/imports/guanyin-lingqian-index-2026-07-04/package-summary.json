@@ -1,0 +1,17 @@
+{
+  "package_name": "guanyin-lingqian-index-2026-07-04",
+  "created_at": "2026-07-04T07:08:02.376Z",
+  "matched_download_files": 408,
+  "selected_unique_entries": 99,
+  "missing_numbers": [
+    7
+  ],
+  "license_default": "unsure",
+  "notes": [
+    "Public index package only; raw HTML files are intentionally excluded.",
+    "Use this to design and test importer batching, provenance fields, and review gates.",
+    "All entries default to license_status=unsure and must not be production imported until reviewed."
+  ],
+  "public_package": true,
+  "includes_raw_html": false
+}
