@@ -1,0 +1,21 @@
+{
+  "package_name": "guandi-lingqian-gpt-raw-2026-07-04",
+  "created_at": "2026-07-04T07:28:11.741Z",
+  "source_file": "已貼上文字 (3).txt",
+  "duplicate_download_files_same_sha256_count": 8,
+  "sha256": "400ba01341b54ca27be4c6c3d3c835520b70f634535819c1910b03e9db0ac496",
+  "selected_entries": 100,
+  "missing_numbers": [],
+  "line_count": 4422,
+  "batch_size": 20,
+  "batch_count": 5,
+  "license_default": "unsure",
+  "source_type": "ai_generated_or_summarized",
+  "quarantine": true,
+  "notes": [
+    "Downloaded GPT-generated/aggregated text is preserved for provenance review.",
+    "Use as cleanup evidence, not as production oracle data.",
+    "Do not import license_status=unsure into production.",
+    "Independent source verification is required before marking any entry usable."
+  ]
+}
