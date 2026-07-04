@@ -1,0 +1,31 @@
+{
+  "batch_size": 20,
+  "batch_count": 5,
+  "batches": [
+    {
+      "batch": 1,
+      "file": "batches/batch_01.csv",
+      "count": 20
+    },
+    {
+      "batch": 2,
+      "file": "batches/batch_02.csv",
+      "count": 20
+    },
+    {
+      "batch": 3,
+      "file": "batches/batch_03.csv",
+      "count": 20
+    },
+    {
+      "batch": 4,
+      "file": "batches/batch_04.csv",
+      "count": 20
+    },
+    {
+      "batch": 5,
+      "file": "batches/batch_05.csv",
+      "count": 19
+    }
+  ]
+}
