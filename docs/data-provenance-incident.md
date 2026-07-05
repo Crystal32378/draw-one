@@ -98,7 +98,7 @@ Only entries with `license_status = ok` and `review_status = approved` may be im
 ## Remediation Plan
 
 1. Preserve all questionable data as evidence, not production content.
-2. Build an importer with dry run, resume, duplicate detection, and configurable batching, using 20 as the default manual-review chunk size.
+2. Build a single audit/gate script (`scripts/audit-oracles.mjs`) that validates the registry and emits the draw-pool data file. No batch pipeline, no dry-run flag, no resume state. Draw One is a static site with no database, so those would be infrastructure for a problem that does not exist. Duplicate detection runs as part of every audit.
 3. Add a hard gate blocking `unsure`, `no`, and quarantine entries from production import.
 4. Rebuild the real oracle pool from verified sources.
 5. Rewrite interpretations in Draw One's own voice after source review.
@@ -111,3 +111,23 @@ The embarrassing part also revealed the product truth:
 Draw One only works if the ritual object feels real, scarce, and trustworthy. Repetition exposed a real UX problem. GPT filler exposed a real provenance problem. Both are useful discoveries.
 
 The next version should be smaller, cleaner, and more honest.
+
+## 華語模型與文化語境審查
+
+Draw One 處理的是華語籤詩、宮廟文化與民俗儀式，所以華語模型在文化語境審查上有其價值。
+
+它們可能更容易辨識籤詩文體、神明脈絡、宮廟派系、籤號系統、吉凶語彙，以及華語資料中常見的轉錄、異文與來源混雜問題。
+
+但文化語感不等於來源可信。越熟悉語境的模型，也越可能生成更像真的幻覺內容。
+
+因此，在 Draw One 裡，華語模型只能作為文化與語言 review 的輔助，不能作為來源權威。
+
+正式資料標準不變：每一筆 oracle entry 都必須有 source、license status、review status，並經過人工或領域專家審查後，才可以進入 verified pool。
+
+## 中文摘要
+
+Draw One 不是要建立一個 AI 神諭權威，而是一個 AI 儀式介面 prototype，也是一個關於信任、來源與文化責任的開放實驗。
+
+這個專案先用 Codex 做出有感的 ritual experience，後來又在 cleanup 中透過 agentic audit 發現資料來源問題。這讓團隊看見：AI 在籤詩、宗教語言與古文風格上非常容易生成可信幻覺，尤其當使用者本來就在尋找安定感時，流暢文字很容易被誤認為指引。
+
+因此 Draw One 的下一步不是替自己鍍金身，也不是宣稱 AI 可以算命，而是把地基翻開：建立來源治理、審核流程、verified pool，並邀請宗教研究、民俗文化、文化人類學與相關實務工作者批判性地檢視這種 AI ritual interface 應該如何被設計。
