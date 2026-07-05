@@ -112,6 +112,18 @@ Draw One only works if the ritual object feels real, scarce, and trustworthy. Re
 
 The next version should be smaller, cleaner, and more honest.
 
+## Multi-Model Collaboration
+
+Draw One became a useful case study in multi-model agent collaboration.
+
+Codex supported implementation and information governance. It helped translate the founder's product direction into a working browser prototype, and helped organize documentation around source type, license status, review status, quarantine rules, and production gates.
+
+ZCode, using Z.ai GLM-5.2 in this workflow, acted more like a cultural-context review and scientific audit layer. It challenged assumptions, checked whether workflow limits were real system constraints, and helped separate useful governance from unnecessary architecture.
+
+The practical lesson:
+
+> Information governance decides what may enter the system. Audit checks whether the system is being built on true assumptions.
+
 ## 華語模型與文化語境審查
 
 Draw One 處理的是華語籤詩、宮廟文化與民俗儀式，所以華語模型在文化語境審查上有其價值。
