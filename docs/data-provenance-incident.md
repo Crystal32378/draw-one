@@ -52,7 +52,7 @@ The correct response is not shame; it is cleanup.
 - GPT-generated or aggregated content is labeled `ai_generated_or_summarized`.
 - Quarantine entries are marked `quarantine_do_not_import`.
 - Public GitHub data excludes raw unreviewed HTML/text content where appropriate.
-- Batch summaries support review/import chunks, with 20 records as the current workflow default.
+- The oracle registry / draw-pool spec now separates verified entries from explicitly pending seed entries.
 
 ## Note on the 20-Record Batch Size
 
@@ -60,7 +60,7 @@ The number 20 was not a confirmed database constraint.
 
 It came from the earlier GPT-assisted manual workflow: each GPT conversation could only accept about 20 attachments at a time, so source review and content handoff naturally happened in 20-file batches.
 
-Going forward, 20 should be treated as a configurable review/import batch default, not a hard production limit.
+Going forward, 20 should be treated as manual review context, not a hard production limit or architecture unit.
 
 ## Policy Going Forward
 
@@ -75,13 +75,14 @@ Every oracle entry must have:
 - `review_status`
 - `reviewer_notes`
 
-Allowed `source_type` values:
+Allowed `source_type` values include:
 
 - `verified_original`
 - `public_domain_source`
 - `modern_interpretation`
 - `translation`
 - `rewrite`
+- `traditional_unverified`
 - `ai_generated_or_summarized`
 - `unknown`
 
@@ -91,9 +92,28 @@ Allowed `license_status` values:
 - `unsure`
 - `no`
 
-Production import rule:
+Production verified-pool rule:
 
-Only entries with `license_status = ok` and `review_status = approved` may be imported into the production oracle pool.
+Only entries with `license_status = ok` and `review_status = approved` may be treated as verified production oracle entries.
+
+Frontend rule:
+
+The public interface should not display provenance, confidence, license status, review status, source type, or internal governance fields. Registry data is an admin/trust layer. Users should only see the ritual experience.
+
+## Registry Planning Direction
+
+The latest planned implementation is an oracle registry plus draw-pool gate:
+
+- `registry.csv` is the source of truth for provenance and review status.
+- `audit-oracles.mjs` validates the registry and emits a static `oracles.draw-pool.js` file.
+- The draw pool may include verified entries plus a small, closed `seed_traditional_pending` set for v0.1.
+- Seed entries are not verified. They are explicitly marked pending while source verification and expansion continue.
+- GPT-generated or summarized entries remain excluded.
+
+Planning artifacts:
+
+- [`docs/superpowers/specs/2026-07-04-oracle-registry-design.md`](superpowers/specs/2026-07-04-oracle-registry-design.md)
+- [`docs/superpowers/plans/2026-07-05-oracle-registry-implementation.md`](superpowers/plans/2026-07-05-oracle-registry-implementation.md)
 
 ## Remediation Plan
 
