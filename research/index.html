@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Draw One Research</title>
+  <style>
+    :root{--bg:#12110f;--panel:#1b1916;--line:#3d3831;--text:#f4efe7;--muted:#aaa094;--accent:#f4efe7;--accentText:#12110f}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(circle at 15% 0%,rgba(200,184,151,.12),transparent 34rem),linear-gradient(180deg,#15130f,var(--bg));color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
+    main{width:min(760px,calc(100% - 28px));margin:0 auto;padding:34px 0 64px} h1,h2,p{margin:0} h1,h2{font-family:Georgia,"Noto Serif TC",serif;font-weight:500} h1{font-size:clamp(42px,10vw,72px)} h2{font-size:28px;margin-top:8px}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}.intro{margin-top:18px;color:#d8d0c6;line-height:1.8}.panel{margin-top:22px;padding:22px;border:1px solid var(--line);border-radius:10px;background:rgba(27,25,22,.92)}.choices{display:grid;gap:10px;margin-top:16px}.choice{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:8px;background:#13110f}.choice input{margin-top:3px}label{line-height:1.55}textarea,input[type=text]{width:100%;border:1px solid var(--line);border-radius:8px;background:#100f0d;color:var(--text);padding:14px;font:inherit}textarea{min-height:112px;resize:vertical}.field{margin-top:16px}.help{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.6}.submit{width:100%;margin-top:22px;border:0;border-radius:999px;padding:16px 22px;background:var(--accent);color:var(--accentText);font-weight:800;font-size:16px}.submit:disabled{opacity:.45}.notice{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:8px;color:#ddd5cc;line-height:1.6}.hidden{display:none}.success{text-align:center;padding:40px 24px}.success p{margin-top:14px;color:#d8d0c6;line-height:1.8}.back{display:inline-block;margin-top:22px;color:var(--text)}
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Draw One / Research</div>
+  <h1>抽一支籤，告訴我們你的感受</h1>
+  <p class="intro">請先到 Draw One 完成一次體驗，再花約 1 分鐘回答 5 個問題。這份回饋會幫助我們理解：大家為什麼選某位神明，以及 Draw One 對你真正有沒有用。</p>
+  <p class="notice"><a href="../" target="_blank" rel="noopener" style="color:inherit">先前往 Draw One 體驗 →</a></p>
+
+  <form id="researchForm">
+    <section class="panel">
+      <div class="eyebrow">Question 1</div><h2>你最可能拿 Draw One 問什麼？</h2>
+      <div class="choices">
+        <label class="choice"><input type="checkbox" name="questionCategory" value="工作／轉職">工作／轉職</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="創業／投資">創業／投資</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="感情">感情</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="家庭">家庭</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="健康">健康</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="人生方向">人生方向</label>
+        <label class="choice"><input type="checkbox" name="questionCategory" value="只是想玩玩看">只是想玩玩看</label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Question 2</div><h2>你第一個選擇哪位神明？</h2>
+      <div class="choices">
+        <label class="choice"><input required type="radio" name="god" value="關聖帝君">關聖帝君</label>
+        <label class="choice"><input required type="radio" name="god" value="媽祖">媽祖</label>
+        <label class="choice"><input required type="radio" name="god" value="月老">月老</label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Question 3</div><h2>為什麼選這位神明？</h2>
+      <div class="field"><textarea required name="whyGod" placeholder="一句話即可，例如：想問工作、直覺最信任他、平常就會拜媽祖……"></textarea></div>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Question 4</div><h2>用完後，最接近你的感受是？</h2>
+      <div class="choices">
+        <label class="choice"><input required type="radio" name="feeling" value="很有趣">很有趣</label>
+        <label class="choice"><input required type="radio" name="feeling" value="很有共鳴">很有共鳴</label>
+        <label class="choice"><input required type="radio" name="feeling" value="幫助我整理思緒">幫助我整理思緒</label>
+        <label class="choice"><input required type="radio" name="feeling" value="很有儀式感">很有儀式感</label>
+        <label class="choice"><input required type="radio" name="feeling" value="還好">還好</label>
+        <label class="choice"><input required type="radio" name="feeling" value="看不太懂或不相信 AI 解籤">看不太懂／不相信 AI 解籤</label>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="eyebrow">Question 5</div><h2>未來遇到類似情境，你會再用嗎？</h2>
+      <div class="choices">
+        <label class="choice"><input required type="radio" name="useAgain" value="會">會</label>
+        <label class="choice"><input required type="radio" name="useAgain" value="可能會">可能會</label>
+        <label class="choice"><input required type="radio" name="useAgain" value="不會">不會</label>
+        <label class="choice"><input required type="radio" name="useAgain" value="要看之後增加哪些功能">要看之後增加哪些功能</label>
+      </div>
+      <div class="field"><label for="suggestion">補充建議（選填）</label><textarea id="suggestion" name="suggestion" placeholder="最希望我們改善什麼？"></textarea></div>
+    </section>
+
+    <button class="submit" id="submitButton" type="submit">送出回饋</button>
+    <p class="help">不收集姓名、Email 或 LINE 帳號。</p>
+  </form>
+
+  <section id="success" class="panel success hidden"><div class="eyebrow">Thank You</div><h2>謝謝你幫 Draw One 往前走一步。</h2><p>你的回饋已送出。</p><a class="back" href="../">回到 Draw One</a></section>
+</main>
+<script>
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzachBtANWBiBtrVxlCin_BWJwIiXveQlsJdkcRBTbGAzxDfOr3CXUi5N75uMeczJkdqQ/exec";
+  const form = document.querySelector('#researchForm');
+  const button = document.querySelector('#submitButton');
+  const success = document.querySelector('#success');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const categories = [...form.querySelectorAll('input[name="questionCategory"]:checked')].map(el => el.value);
+    if (!categories.length) { alert('請至少選一個問題類型。'); return; }
+
+    const data = new FormData(form);
+    const payload = {
+      timestamp: new Date().toISOString(),
+      god: data.get('god'),
+      questionCategory: categories.join('、'),
+      whyGod: data.get('whyGod'),
+      feeling: data.get('feeling'),
+      useAgain: data.get('useAgain'),
+      suggestion: data.get('suggestion') || '',
+      device: window.innerWidth < 768 ? 'Mobile' : 'Desktop',
+      source: new URLSearchParams(location.search).get('source') || 'direct'
+    };
+
+    button.disabled = true; button.textContent = '送出中…';
+    try {
+      await fetch(ENDPOINT, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, body:JSON.stringify(payload) });
+      form.classList.add('hidden'); success.classList.remove('hidden'); window.scrollTo({top:0,behavior:'smooth'});
+    } catch (error) {
+      alert('送出失敗，請稍後再試。'); button.disabled = false; button.textContent = '送出回饋';
+    }
+  });
+</script>
+</body>
+</html>
