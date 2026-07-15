@@ -75,7 +75,7 @@
   <section id="success" class="panel success hidden"><div class="eyebrow">Thank You</div><h2>謝謝你幫 Draw One 往前走一步。</h2><p>你的回饋已送出。</p><a class="back" href="../">回到 Draw One</a></section>
 </main>
 <script>
-  const ENDPOINT = "PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbzachBtANWBiBtrVxlCin_BWJwIiXveQlsJdkcRBTbGAzxDfOr3CXUi5N75uMeczJkdqQ/exec";
   const form = document.querySelector('#researchForm');
   const button = document.querySelector('#submitButton');
   const success = document.querySelector('#success');
@@ -84,7 +84,6 @@
     event.preventDefault();
     const categories = [...form.querySelectorAll('input[name="questionCategory"]:checked')].map(el => el.value);
     if (!categories.length) { alert('請至少選一個問題類型。'); return; }
-    if (ENDPOINT.includes('PASTE_')) { alert('回收端點尚未設定，請先完成 Google Apps Script 部署。'); return; }
 
     const data = new FormData(form);
     const payload = {
