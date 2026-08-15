@@ -1,0 +1,1161 @@
+{
+  "summary": {
+    "algorithm": "Framework v0.1 §6.2 / Schema §14 / Rules §4（canonical，逐字一致）",
+    "total_slips": 60,
+    "production_eligible": 0,
+    "blocked": 60,
+    "blocked_reason_counts": {
+      "verified": 58,
+      "item_license_ok": 60,
+      "no_open_substantive_divergence": 6
+    },
+    "research_db_records": 60,
+    "note": "所有籤皆 Research DB record；production eligibility 需：human approval 升 VERIFIED（含 OCR 人工複核）＋item_license 確認（北港/新港官方圖檔未見再製授權聲明）＋substantive divergence 處理"
+  },
+  "per_slip": [
+    {
+      "slip_number": 1,
+      "slip_id": "slip-lsjz-001",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-001 → att-bg-001 → item-bg-001 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 2,
+      "slip_id": "slip-lsjz-002",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-002 → att-bg-002 → item-bg-002 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 3,
+      "slip_id": "slip-lsjz-003",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-003 → att-bg-003 → item-bg-003 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 4,
+      "slip_id": "slip-lsjz-004",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-004 → att-bg-004 → item-bg-004 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 5,
+      "slip_id": "slip-lsjz-005",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-005 → att-bg-005 → item-bg-005 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 6,
+      "slip_id": "slip-lsjz-006",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-006 → att-bg-006 → item-bg-006 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 7,
+      "slip_id": "slip-lsjz-007",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-007 → att-bg-007 → item-bg-007 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 8,
+      "slip_id": "slip-lsjz-008",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-008 → att-bg-008 → item-bg-008 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 9,
+      "slip_id": "slip-lsjz-009",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-009 → att-bg-009 → item-bg-009 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 10,
+      "slip_id": "slip-lsjz-010",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-010 → att-bg-010 → item-bg-010 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 11,
+      "slip_id": "slip-lsjz-011",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-011 → att-bg-011 → item-bg-011 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 12,
+      "slip_id": "slip-lsjz-012",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-012 → att-bg-012 → item-bg-012 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 13,
+      "slip_id": "slip-lsjz-013",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-013 → att-bg-013 → item-bg-013 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 14,
+      "slip_id": "slip-lsjz-014",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-014 → att-bg-014 → item-bg-014 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 15,
+      "slip_id": "slip-lsjz-015",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-015 → att-bg-015 → item-bg-015 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 16,
+      "slip_id": "slip-lsjz-016",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-016 → att-bg-016 → item-bg-016 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 17,
+      "slip_id": "slip-lsjz-017",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-017 → att-bg-017 → item-bg-017 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 18,
+      "slip_id": "slip-lsjz-018",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-018 → att-bg-018 → item-bg-018 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 19,
+      "slip_id": "slip-lsjz-019",
+      "eligible": false,
+      "gates": {
+        "verified": true,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-019 → att-bg-019 → item-bg-019 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 20,
+      "slip_id": "slip-lsjz-020",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-020 → att-bg-020 → item-bg-020 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 21,
+      "slip_id": "slip-lsjz-021",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-021 → att-bg-021 → item-bg-021 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 22,
+      "slip_id": "slip-lsjz-022",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-022 → att-bg-022 → item-bg-022 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 23,
+      "slip_id": "slip-lsjz-023",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-023 → att-bg-023 → item-bg-023 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 24,
+      "slip_id": "slip-lsjz-024",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-024 → att-bg-024 → item-bg-024 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 25,
+      "slip_id": "slip-lsjz-025",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-025 → att-bg-025 → item-bg-025 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 26,
+      "slip_id": "slip-lsjz-026",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-026 → att-bg-026 → item-bg-026 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 27,
+      "slip_id": "slip-lsjz-027",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-027 → att-bg-027 → item-bg-027 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 28,
+      "slip_id": "slip-lsjz-028",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-028 → att-bg-028 → item-bg-028 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 29,
+      "slip_id": "slip-lsjz-029",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-029 → att-bg-029 → item-bg-029 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 30,
+      "slip_id": "slip-lsjz-030",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-030 → att-bg-030 → item-bg-030 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 31,
+      "slip_id": "slip-lsjz-031",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-031 → att-bg-031 → item-bg-031 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 32,
+      "slip_id": "slip-lsjz-032",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-032 → att-bg-032 → item-bg-032 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 33,
+      "slip_id": "slip-lsjz-033",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-033 → att-bg-033 → item-bg-033 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 34,
+      "slip_id": "slip-lsjz-034",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-034 → att-bg-034 → item-bg-034 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 35,
+      "slip_id": "slip-lsjz-035",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-035 → att-bg-035 → item-bg-035 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 36,
+      "slip_id": "slip-lsjz-036",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-036 → att-bg-036 → item-bg-036 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 37,
+      "slip_id": "slip-lsjz-037",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-037 → att-bg-037 → item-bg-037 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 38,
+      "slip_id": "slip-lsjz-038",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-038 → att-bg-038 → item-bg-038 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 39,
+      "slip_id": "slip-lsjz-039",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-039 → att-bg-039 → item-bg-039 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 40,
+      "slip_id": "slip-lsjz-040",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-040 → att-bg-040 → item-bg-040 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 41,
+      "slip_id": "slip-lsjz-041",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-041 → att-bg-041 → item-bg-041 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 42,
+      "slip_id": "slip-lsjz-042",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-042 → att-bg-042 → item-bg-042 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 43,
+      "slip_id": "slip-lsjz-043",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-043 → att-bg-043 → item-bg-043 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 44,
+      "slip_id": "slip-lsjz-044",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-044 → att-bg-044 → item-bg-044 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 45,
+      "slip_id": "slip-lsjz-045",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-045 → att-bg-045 → item-bg-045 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 46,
+      "slip_id": "slip-lsjz-046",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-046 → att-bg-046 → item-bg-046 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 47,
+      "slip_id": "slip-lsjz-047",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-047 → att-bg-047 → item-bg-047 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 48,
+      "slip_id": "slip-lsjz-048",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-048 → att-bg-048 → item-bg-048 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 49,
+      "slip_id": "slip-lsjz-049",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-049 → att-bg-049 → item-bg-049 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 50,
+      "slip_id": "slip-lsjz-050",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-050 → att-bg-050 → item-bg-050 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 51,
+      "slip_id": "slip-lsjz-051",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-051 → att-bg-051 → item-bg-051 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 52,
+      "slip_id": "slip-lsjz-052",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-052 → att-bg-052 → item-bg-052 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 53,
+      "slip_id": "slip-lsjz-053",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-053 → att-bg-053 → item-bg-053 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 54,
+      "slip_id": "slip-lsjz-054",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-054 → att-bg-054 → item-bg-054 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 55,
+      "slip_id": "slip-lsjz-055",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-055 → att-bg-055 → item-bg-055 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 56,
+      "slip_id": "slip-lsjz-056",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-056 → att-bg-056 → item-bg-056 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 57,
+      "slip_id": "slip-lsjz-057",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": false,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "no_open_substantive_divergence",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-057 → att-bg-057 → item-bg-057 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 58,
+      "slip_id": "slip-lsjz-058",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-058 → att-bg-058 → item-bg-058 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 59,
+      "slip_id": "slip-lsjz-059",
+      "eligible": false,
+      "gates": {
+        "verified": false,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "verified",
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-059 → att-bg-059 → item-bg-059 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    },
+    {
+      "slip_number": 60,
+      "slip_id": "slip-lsjz-060",
+      "eligible": false,
+      "gates": {
+        "verified": true,
+        "no_open_substantive_divergence": true,
+        "reference_resolved_to_item": true,
+        "item_license_ok": false,
+        "access_open": true,
+        "no_quarantine": true
+      },
+      "blocked_reasons": [
+        "item_license_ok"
+      ],
+      "reference_chain": "ref-lsjz-060 → att-bg-060 → item-bg-060 ✓",
+      "note": "production gate 全過才 eligible；reference gate 驗證 reference→attestation→item 全鏈；VERIFIED 需 human/domain_expert approval；divergence gate 只阻擋未 reference_designated 的 open substantive divergence"
+    }
+  ]
+}

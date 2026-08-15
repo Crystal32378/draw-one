@@ -1,0 +1,206 @@
+{
+  "generated_at": "2026-08-15",
+  "task": "Oracle Corpus Study 03（Phase A 補查＋Phase B 全量取得）— 六十甲子籤 source acquisition map v0.2",
+  "supersedes": "Oracle Corpus Study 03 v0.1（封版包未動）",
+  "access_license_note": "access ≠ license；platform rights ≠ item license；search failure ≠ non-existence；OCR ≠ manually verified transcription",
+  "count": 22,
+  "sources": [
+    {
+      "id": "SM-01", "name": "北港朝天宮官方線上求籤／靈籤解籤", "type": "official temple source",
+      "owner": "北港朝天宮", "url": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002",
+      "access": "open（網頁直接可讀）", "source_observation_status": "directly_observed",
+      "content_class": "籤詩圖檔（59 張 2024-08-05 批次＋第59籤 2025-06-21 批次）＋干支列表＋求籤流程",
+      "license_status": "官方網站公開內容；未見使用條款", "platform_rights": "官方自有", "item_license": "UNKNOWN（未見聲明）",
+      "independence_potential": "高（官方一手，籤詩為圖檔非轉錄）", "priority": "A",
+      "obtained": "60/60 圖檔全量下載＋OCR（text_status=uncertain；4 籤 v0.1、56 籤 v0.2）",
+      "notes": "列表頁含 60 籤 JS 陣列（text/image）；官網 list 干支用字漂移（戍/戌）；local copy sha256 記錄於 ingest package"
+    },
+    {
+      "id": "SM-02", "name": "台南大天后宮官方『天上聖母籤詩』", "type": "official temple source",
+      "owner": "祀典大天后宮", "url": "https://www.gtainanmazu.org.tw/?act=menuinfo&ml_id=20220121002",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "文字籤詩（澎湖一百籤系統）＋釋解", "license_status": "官方網站公開內容",
+      "platform_rights": "官方自有", "item_license": "UNKNOWN", "independence_potential": "高", "priority": "A",
+      "obtained": "第1首（v0.1）；其餘 99 首未抓", "notes": "澎湖一百籤系統的獨立一手載體；『第一首震』標記待確認"
+    },
+    {
+      "id": "SM-03", "name": "新港奉天宮官方線上求籤", "type": "official temple source",
+      "owner": "新港奉天宮", "url": "https://www.hsinkangmazu.org.tw/?act=menuinfo&ml_id=20231222005",
+      "access": "open（需 Referer 取圖）", "source_observation_status": "directly_observed",
+      "content_class": "60 首 JS 陣列（text:第N首籤詩 干支 / image:捐獻籤板照片 / content:解析全文）",
+      "license_status": "官方網站公開內容；未見使用條款", "platform_rights": "官方自有", "item_license": "UNKNOWN",
+      "independence_potential": "高（官方一手，另一廟）", "priority": "A",
+      "obtained": "60/60 籤板照片下載＋subset 12 OCR（text_status=uncertain）",
+      "notes": "新增 v0.2；籤板為信士邱福來 法號聖慧 捐獻（2023-12 批次）；圖面＝干支＋（首N）＋詩文＋署名；圖檔 hotlink protection（需 Referer）"
+    },
+    {
+      "id": "SM-04", "name": "松山慈祐宮官方『媽祖 六十甲子籤詩解』", "type": "official temple source",
+      "owner": "松山慈祐宮", "url": "https://www.ssjyg.org.tw/EBook.aspx",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "籤詩解頁面（標題已確認；內容 JS 載入）", "license_status": "官方網站公開內容",
+      "platform_rights": "官方自有", "item_license": "UNKNOWN", "independence_potential": "高", "priority": "A",
+      "obtained": "頁面標題（v0.1）；內容載體未取得（JS）", "notes": ""
+    },
+    {
+      "id": "SM-05", "name": "鎮海宮官方『六十甲子靈籤』", "type": "official temple source",
+      "owner": "東港鎮海宮", "url": "https://www.8327777.org.tw/?act=menuinfo&ml_id=20260202001",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "籤列表（『依循此古法設立六十甲子靈籤』）", "license_status": "官方網站公開內容",
+      "platform_rights": "官方自有", "item_license": "UNKNOWN", "independence_potential": "高", "priority": "A",
+      "obtained": "snippet（v0.1）", "notes": "非媽祖廟 adoption 案例"
+    },
+    {
+      "id": "SM-06", "name": "關渡宮官方『線上60甲子籤』", "type": "official temple source",
+      "owner": "關渡宮", "url": "https://net.civil.taipei/SignedPoetry（2026-08-15 DNS NXDOMAIN）",
+      "access": "UNREACHABLE（域名失效）", "source_observation_status": "directly_observed（僅首頁連結）",
+      "content_class": "60甲子籤（連結標籤存在，目標頁未取得）", "license_status": "—", "platform_rights": "—",
+      "item_license": "UNKNOWN", "independence_potential": "高（若可恢復）", "priority": "A",
+      "obtained": "首頁連結標籤『線上60甲子籤』（v0.2 直接觀察）；目標頁 0 位元組",
+      "notes": "net.civil.taipei DNS 不解析（2026-08-15）；籤詩網另稱關渡宮用澎湖一百籤——衝突待考"
+    },
+    {
+      "id": "SM-07", "name": "北港朝天宮保留之民國元年（1912）籤詩本", "type": "concrete historical item",
+      "owner": "北港朝天宮", "url": null, "access": "UNKNOWN（館藏；未確認公開）",
+      "source_observation_status": "indirectly_supported", "content_class": "籤詩本（早期印本）",
+      "license_status": "UNKNOWN", "platform_rights": "廟方", "item_license": "UNKNOWN",
+      "independence_potential": "極高（實體早期印本）", "priority": "A", "obtained": "未取得（僅施勝台顧問 YouTube 提及）",
+      "notes": "RQ4 關鍵 item；需廟方授權閱覽"
+    },
+    {
+      "id": "SM-08", "name": "育德媽祖同修會 2016『新．六十甲子媽祖靈籤解說』", "type": "concrete historical item（現代修訂事件）",
+      "owner": "育德媽祖同修會／施勝台", "url": "http://www.ydm.com.tw/lot.asp",
+      "access": "open（新版頁面內容 JS 載入）", "source_observation_status": "directly_observed",
+      "content_class": "全 60 籤解說（2016 北港媽祖指示逐字擲筊修訂；北港二媽轎班會前會長鄭勝文交付）",
+      "license_status": "站內聲明『版權所有．禁止任何未經允許的商業再製行為』", "platform_rights": "育德",
+      "item_license": "禁止商業再製", "independence_potential": "中", "priority": "A",
+      "obtained": "第1/60籤（v0.1）；新版頁面 60 籤導覽存在但內容 JS 載入（v0.2）",
+      "notes": "2016 修訂事件＝現代 lineage 事件；第60籤『戶內』＝網路系"
+    },
+    {
+      "id": "SM-09", "name": "國圖碩士論文《台灣六十甲子聖母詩籤研究—以桃竹苗地區為中心》", "type": "library/archive record",
+      "owner": "國立臺灣圖書館（ndltd）", "url": "https://ndltd.ncl.edu.tw/handle/68592987685891273646",
+      "access": "open（館藏＋部分全文）", "source_observation_status": "bibliographic_record_only",
+      "content_class": "碩論（桃竹苗 60 甲子籤田野研究）", "license_status": "論文公開", "platform_rights": "作者/學校",
+      "item_license": "依館方規定", "independence_potential": "中", "priority": "B", "obtained": "書目",
+      "notes": "名稱『六十甲子聖母詩籤』＝deity adoption name 證據"
+    },
+    {
+      "id": "SM-10", "name": "林國平博士籤詩研究（陳進國轉引）", "type": "academic literature",
+      "owner": "chinafolklore.org", "url": "https://www.chinafolklore.org/web/index.php?Page=3&NewsID=2931",
+      "access": "open", "source_observation_status": "indirectly_supported",
+      "content_class": "論述：該籤出現不早於南宋（林國平）", "license_status": "公開文章",
+      "platform_rights": "作者/網站", "item_license": "UNKNOWN", "independence_potential": "中", "priority": "B",
+      "obtained": "snippet（v0.1）", "notes": "林國平原著《中國靈籤研究》更高優先"
+    },
+    {
+      "id": "SM-11", "name": "UBM 論文《六十甲子签诗之差异分析——以印尼雅加达椰城凤山庙为例》", "type": "academic literature",
+      "owner": "Universitas Bunda Mulia", "url": "https://journal.ubm.ac.id/index.php/bahasa-budaya-china/article/viewFile/4283/2626",
+      "access": "open（PDF）", "source_observation_status": "bibliographic_record_only",
+      "content_class": "六十甲子籤跨國差異分析", "license_status": "開放期刊", "platform_rights": "作者/期刊",
+      "item_license": "開放", "independence_potential": "中", "priority": "B", "obtained": "書目＋snippet",
+      "notes": "印尼廟冠他神名使用"
+    },
+    {
+      "id": "SM-12", "name": "《六十甲子籤詩轉譯圖像設計案例探討》（airiti）", "type": "academic literature",
+      "owner": "airitilibrary", "url": "https://www.airitilibrary.com/Article/Detail/P20230425001-N202304250020-00011",
+      "access": "付費資料庫", "source_observation_status": "bibliographic_record_only",
+      "content_class": "60甲子籤圖像化設計研究", "license_status": "付費", "platform_rights": "airiti",
+      "item_license": "付費", "independence_potential": "低-中", "priority": "C", "obtained": "書目",
+      "notes": "付費→不進（boundary）"
+    },
+    {
+      "id": "SM-13", "name": "籤詩網．六十甲子籤詩和解籤資料", "type": "secondary database",
+      "owner": "籤詩網（chance.org.tw）", "url": "http://www.chance.org.tw/籤詩集/六十甲子籤/籤詩網‧六十甲子籤.htm",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "60 籤主頁＋子頁（Big5；子頁 URL 編碼 blocker 維持）",
+      "license_status": "公開網頁", "platform_rights": "籤詩網", "item_license": "UNKNOWN",
+      "independence_potential": "低（mirror 群）", "priority": "A", "obtained": "主頁全文（v0.1）",
+      "notes": "與好廟網 fs60 疑似同源（未機械判定）"
+    },
+    {
+      "id": "SM-14", "name": "籤詩網．澎湖天后宮一百籤", "type": "secondary database",
+      "owner": "籤詩網", "url": "http://www.chance.org.tw/籤詩集/澎湖天后宮一百籤/",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "100 籤全集＋導言（採用廟宇清單：講美龍德宮/台南大天后宮/鹿港天后宮/台北關渡宮）",
+      "license_status": "公開網頁", "platform_rights": "籤詩網", "item_license": "UNKNOWN",
+      "independence_potential": "低", "priority": "A",
+      "obtained": "第001籤（v0.1）＋導言全文（v0.2，含 normalize 政策自述）",
+      "notes": "導言自述：『籤詩當中有少量難解的古體字，我們也會在輸入時改採現今常用的同義字』——轉錄 normalize 證據"
+    },
+    {
+      "id": "SM-15", "name": "台灣好廟網．籤卦結緣讚（fs60）", "type": "secondary database",
+      "owner": "temple01.com", "url": "https://qiangua.temple01.com/qianshi.php?t=fs60",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "fs60：60 籤分頁全量（卦象記號/五行/方位/詩文/故事/籤解）",
+      "license_status": "公開網頁", "platform_rights": "好廟網", "item_license": "UNKNOWN",
+      "independence_potential": "低（mirror 群；與籤詩網疑似同源）", "priority": "A",
+      "obtained": "60/60 分頁全量（v0.2；v0.1 僅 4 籤）",
+      "notes": "作為全量比對 carrier；轉錄政策未聲明"
+    },
+    {
+      "id": "SM-16", "name": "temples.tw 六十甲子籤（fs60）／天后宮一百籤（fs_mz100）", "type": "secondary database",
+      "owner": "temples.tw", "url": "https://temples.tw/stick/fs60",
+      "access": "open", "source_observation_status": "indirectly_supported",
+      "content_class": "60甲子籤『共收錄 63 首』；fs_mz100 全 100 首列表",
+      "license_status": "公開網頁", "platform_rights": "temples.tw", "item_license": "UNKNOWN",
+      "independence_potential": "低", "priority": "B", "obtained": "snippet（63 首 claim）",
+      "notes": "63=60+籤王等附加；與好廟網/籤詩網 mirror 群關係待判定"
+    },
+    {
+      "id": "SM-17", "name": "育德媽祖同修會（ydm）靈籤解說站", "type": "secondary database（含一手修訂事件）",
+      "owner": "育德媽祖同修會", "url": "http://www.ydm.com.tw/lot.asp",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "60 籤解說（2016 修訂版）", "license_status": "禁止商業再製",
+      "platform_rights": "育德", "item_license": "禁止商業再製",
+      "independence_potential": "中", "priority": "A", "obtained": "第1/60籤（v0.1）",
+      "notes": ""
+    },
+    {
+      "id": "SM-18", "name": "vocus／matters／Yahoo 轉述群", "type": "mirror（轉錄/轉述）",
+      "owner": "vocus/matters/Yahoo", "url": null, "access": "open",
+      "source_observation_status": "indirectly_supported", "content_class": "轉述與解說",
+      "license_status": "公開", "platform_rights": "各站", "item_license": "UNKNOWN",
+      "independence_potential": "低", "priority": "C", "obtained": "snippet", "notes": ""
+    },
+    {
+      "id": "SM-19", "name": "白沙屯媽祖婆網站（mstn）『白沙屯媽祖百首聖籤』", "type": "community site",
+      "owner": "mstn.org（社群站，非拱天宮官方）", "url": "https://www.mstn.org/ma100.htm",
+      "access": "open", "source_observation_status": "indirectly_supported",
+      "content_class": "百首聖籤（澎湖一百籤系；頁面見『拱天宮101首』）",
+      "license_status": "公開網頁", "platform_rights": "mstn", "item_license": "UNKNOWN",
+      "independence_potential": "低", "priority": "B", "obtained": "snippet（v0.2）",
+      "notes": "新增 v0.2；『101首』結構（100+籤王？）待確認；非官方"
+    },
+    {
+      "id": "SM-20", "name": "關渡宮官方首頁（『線上60甲子籤』連結）", "type": "official temple source（連結層）",
+      "owner": "關渡宮", "url": "https://www.kuantu.org.tw/",
+      "access": "open（首頁）／目標 net.civil.taipei 失效", "source_observation_status": "directly_observed",
+      "content_class": "首頁含『線上60甲子籤』連結標籤", "license_status": "—", "platform_rights": "—",
+      "item_license": "UNKNOWN", "independence_potential": "—", "priority": "B",
+      "obtained": "連結標籤（v0.2）", "notes": "新增 v0.2；域名 NXDOMAIN"
+    },
+    {
+      "id": "SM-21", "name": "台中天后宮官方線上求籤", "type": "official temple source",
+      "owner": "台中天后宮", "url": "https://tcmazu.org/pray/",
+      "access": "open（內容 JS）", "source_observation_status": "directly_observed（頁面存在）",
+      "content_class": "線上求籤流程頁（籤文 JS 載入）", "license_status": "—", "platform_rights": "—",
+      "item_license": "UNKNOWN", "independence_potential": "—", "priority": "C",
+      "obtained": "頁面（v0.2）", "notes": "新增 v0.2；任務外 bonus；corpus 未定"
+    },
+    {
+      "id": "SM-22", "name": "北港朝天宮官方籤詩圖檔（60 張，獨立記錄）", "type": "concrete item 群",
+      "owner": "北港朝天宮", "url": "https://www.matsu.org.tw/upload_files/web/uploadfile/…（見 beigang_slip_urls.json）",
+      "access": "open", "source_observation_status": "directly_observed",
+      "content_class": "60 張單籤圖（778x1100 JPEG；2024-08-05 批次 59 張＋2025-06-21 批次 1 張）",
+      "license_status": "未見聲明", "platform_rights": "官方自有", "item_license": "UNKNOWN",
+      "independence_potential": "高", "priority": "A", "obtained": "60/60（sha256 於 ingest data）",
+      "notes": "新增 v0.2；item 層記錄（對應 data/concrete_item.jsonl item-bg-*）"
+    }
+  ],
+  "priority_summary": {
+    "A": ["SM-01 北港全量（完成）", "SM-02 台南其餘 99 首", "SM-03 新港（60/60 取得；48 籤 OCR 待補）", "SM-07 北港民國元年籤詩本（需授權）", "SM-08 2016 修訂事件一手", "SM-13/14/15/17 比對 carrier"],
+    "B": ["SM-06 關渡宮（域名恢復後重試）", "SM-09 桃竹苗碩論全文", "SM-10 林國平原著", "SM-11 印尼論文全文", "SM-19 mstn 百首聖籤全量"],
+    "C": ["SM-12 airiti（付費，不進）", "SM-18 轉述群", "SM-21 台中天后宮"]
+  },
+  "status": "v0.2（Phase A 補查＋Phase B 全量取得完成）"
+}
