@@ -51,6 +51,6 @@ node scripts/validate-kb.mjs --emit   # 另外輸出 draw-pool.preview.json
 | 農曆網·觀音靈簽（nongli.com） | 網站 | unsure | 二手；版本一/版本二 雙版本（第4籤頁抽取失敗待補） |
 | 周易網·觀音靈簽（m.zhouyi.cc） | 網站 | unsure | 二手；單版本（版本二家族）佐證 |
 | 高雄龍霄殿（東嶽廟）官網 | 廟方網站 | unsure | 二手；跨廟宇文本流傳（版本一家族內異文） |
-| 淺草觀音一百籤 PDF（2011 重譯） | PDF（local evidence only） | unsure | 一手候選；**不進 repo**，checksum c589742c… |
+| 淺草觀音一百籤 PDF（2011 重譯） | PDF（local evidence only） | unsure | 一手來源候選／跨國 evidence candidate（文字未抽取、文本關係未驗證）；**不進 repo**，checksum c589742c… |
 
-**下一步（MUST-TEST）**：龍山寺籤詩簿（實體）／觀音靈課古本掃描（一手）；華藏淨宗學會《觀世音菩薩感應靈課》線上書文字層抽取；淺草 PDF 文字抽取與 003–006 交叉比對；各來源 license 查證。
+**下一步（MUST-TEST）**：龍山寺籤詩簿（實體）／觀音靈課古本掃描（一手）；華藏淨宗學會《觀世音菩薩感應靈課》線上書文字層抽取；淺草 PDF 文字抽取與 003–006 交叉比對（抽取前不判定文本關係）；各來源 license 查證。

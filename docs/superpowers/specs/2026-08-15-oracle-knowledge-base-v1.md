@@ -1,6 +1,6 @@
 # Oracle Knowledge Base v1 — Spec（2026-08-15）
 
-**Status:** APPROVED (2026-08-15, Crystal) + Pilot in progress
+**Status:** APPROVED (2026-08-15, Crystal) · Pilot COMPLETED（收尾語義修正已套用）· Awaiting branch review
 **Supersedes:** `2026-07-04-oracle-registry-design.md`（舊 22 欄 registry spec 為治理層設計，未實作；本 spec 升級為證據優先模型，舊文件保留為歷史 artifact）
 **Scope:** 觀音靈籤（觀音一百籤）第一個 canonical corpus；KB 骨架 + validator + source strategy + guanyin-003..006 pilot
 **Out of scope（紅線）:** 不寫 100 籤、不大量蒐集、不改 frontend、不 merge、不動 `data/imports/`、不付費
@@ -58,14 +58,14 @@
 
 - 17 attestations、5 variant groups、20 claims、4 slips 全數 **probable**、**0 verified、0 draw pool**（誠實現狀）。
 - 每籤發現**兩個文本家族**（版本一/詩曰一 vs 版本二/詩曰二），各由 ≥2 個獨立網站一致證實；另 003 有東嶽廟家族內異文（成壘後/壘壞）與解曰差異。
-- legacy 9 seed 中 guanyin-003..006 文字全部與「版本一家族」正規化一致（version_identity claim）——確認非偽造，但 legacy 本身仍不是來源。
+- legacy 9 seed 中 guanyin-003..006 文字與現存二手來源（chance 詩曰一／nongli 版本一）中的版本一家族相符（version_identity claim）——獲 secondary-source corroboration，非 authenticity 確認；legacy 本身仍不是來源。
 - 無一手來源 → 依 v1 policy 停在 probable；升級 verified 需一手來源（龍山寺籤詩簿／觀音靈課古本掃描）＋ license 確認。
 
 ## 8. 下一步（MUST-TEST）
 
 1. 龍山寺籤詩簿（實體）取得與授權。
 2. 觀音靈課古本掃描（華藏淨宗學會線上書文字層／數位典藏）＋ license 查證。
-3. 淺草觀音一百籤 PDF（local evidence，checksum c589742c…）文字抽取與 003–006 交叉比對。
+3. 淺草觀音一百籤 PDF（local evidence，checksum c589742c…）文字抽取與 003–006 交叉比對（抽取前不視為已確認文本流傳證據）。
 4. nongli.com 第4籤頁面重試（本次抽取失敗 3 次）。
 5. 觀音百籤 #007 缺號現象對照實體籤詩簿。
 6. 各網站來源 license 查證（chance/nongli/zhouyi/longcheng 均 unsure）。
