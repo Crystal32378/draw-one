@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-08-15)** — 本 plan 對應的舊 registry 設計已被 [`../specs/2026-08-15-oracle-knowledge-base-v1.md`](../specs/2026-08-15-oracle-knowledge-base-v1.md) 取代（證據優先模型：8 JSONL entities、逐字 attestation、variant_groups、狀態由 validator 推導、reference_editions 以 source_id 主指定）。**本 plan 不執行**，保留為歷史 artifact。
+
 # Oracle Registry & Draw-Pool Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
