@@ -1,0 +1,2 @@
+{"group_id": "ig-beigang-official", "rationale": "北港朝天宮官方一手（廟方自有發布的籤詩圖檔）", "master_item_id": null, "member_item_ids": ["item-bg-001", "item-bg-030", "item-bg-060"], "group_claim_ids": ["cl-independence-beigang-01"]}
+{"group_id": "ig-haomiaowang-fs60", "rationale": "好廟網 fs60 網頁群（疑似與籤詩網同源，未機械判定；即使獨立也不影響——僅 comparison 用途）", "master_item_id": null, "member_item_ids": ["item-hm-001", "item-hm-030", "item-hm-060"], "group_claim_ids": ["cl-independence-haomiaowang-01"]}
