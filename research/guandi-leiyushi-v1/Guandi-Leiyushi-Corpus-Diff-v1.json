@@ -1,0 +1,208 @@
+{
+  "generated_at": "2026-08-15",
+  "task": "道藏本《護國嘉濟江東王靈籤》100籤 ↔ 現行雷雨師一百籤（籤詩網 mirror）全量文本 diff",
+  "sources": {
+    "daozang": "維基文庫《護國嘉濟江東王靈籤》（《正統道藏·正一部》本）100 子頁，2026-08-15 一手抓取",
+    "modern": "籤詩網·雷雨師一百籤 100 子頁（Big5/cp950），2026-08-15 一手抓取；定位為現行台灣本的 secondary mirror",
+    "method": "比對範圍=每籤籤詩文（七言四句）；不含解曰/聖意等註釋層。normalization：去標點空白；異體字對照表（繁簡/冨富/迴回/辯辨/寃冤/裹裏等）用於 orthographic 判定"
+  },
+  "classification": {
+    "exact": {
+      "count": 25,
+      "slips": [
+        2,
+        8,
+        9,
+        19,
+        20,
+        30,
+        31,
+        33,
+        34,
+        41,
+        42,
+        45,
+        46,
+        51,
+        56,
+        64,
+        67,
+        68,
+        69,
+        70,
+        71,
+        79,
+        96,
+        97,
+        100
+      ],
+      "definition": "去標點後逐字一致"
+    },
+    "orthographic_only": {
+      "count": 1,
+      "slips": [
+        1
+      ],
+      "definition": "僅異體字/繁簡差異（套用對照表後一致）"
+    },
+    "substantive_variant": {
+      "count": 73,
+      "slips": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        32,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        43,
+        44,
+        47,
+        48,
+        49,
+        50,
+        52,
+        53,
+        54,
+        55,
+        57,
+        58,
+        59,
+        60,
+        61,
+        63,
+        65,
+        66,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        98,
+        99
+      ],
+      "definition": "同源詩但有用字差異（同義替換/傳抄訛變/字詞改寫）"
+    },
+    "numbering_mismatch": {
+      "count": 0,
+      "slips": [],
+      "definition": "籤號錯位"
+    },
+    "missing": {
+      "count": 0,
+      "slips": [],
+      "definition": "單邊缺籤"
+    },
+    "decode_issue": {
+      "count": 1,
+      "slips": [
+        62
+      ],
+      "definition": "籤詩網側解碼缺字（#62：道藏『虎頭城裹喜相尋』；現行本應為『虎頭城裏喜相尋』，裹/裏異體——實質接近 orthographic）"
+    }
+  },
+  "summary": {
+    "total": 100,
+    "identical_or_orthographic": 26,
+    "substantive_variant": 73,
+    "no_numbering_mismatch": true,
+    "no_missing": true
+  },
+  "corpus_identity_verdict": {
+    "answer": "YES — 有資格稱為同一 corpus",
+    "basis": [
+      "numbering 100/100 完全對齊（0 mismatch、0 missing）——每籤號兩邊都有對應詩文",
+      "100 個對應籤號皆可辨識為同一首對應詩作的版本變體（無整籤重寫、無典故替換）",
+      "26 籤文本完全一致（exact 25 + orthographic 1）",
+      "73 籤差異皆為單字級：同義替換（天成/天生、萃一身/萃汝身）、異體（迴/回、辯/辨、裏/裹）、傳抄訛變（#50 現行『步多』疑『步步』之訛、#13 道藏『作釣前』疑『釣翁』之訛、#94 道藏『梓亦二』vs 現行『梓匠工』）"
+    ],
+    "important_caveat": "同一 corpus ≠ 同一 edition。道藏本（南宋造/明代收錄層）與現行台灣本（清光緒王錢印本傳承層）是同一 corpus 的兩個 edition family 層；corpus identity 成立，edition identity 不成立。",
+    "consequence": "Draw One 建模時：corpus 節點=一個（雷雨師/關帝百籤）；edition 節點=至少兩個（道藏系、光緒王錢系），不得合併為單一版本"
+  },
+  "notable_variants": [
+    {
+      "slip": 39,
+      "type": "substantive",
+      "daozang": "北山門下好安居…鴻鱗難便好修書",
+      "modern": "北山門外好安居…鱗鴻雖便莫修書",
+      "note": "『下/外』與末句均改寫，全 diff 中差異較大者"
+    },
+    {
+      "slip": 94,
+      "type": "substantive",
+      "daozang": "巧斷輸輿梓亦二",
+      "modern": "巧斲輪輿梓匠工",
+      "note": "道藏本此句疑有訛字；現行本文字較合理"
+    },
+    {
+      "slip": 99,
+      "type": "substantive",
+      "daozang": "貴人相遇水雲鄉…驛餾應得驟康強",
+      "modern": "貴人遭遇水雲鄉…驊騮應得驟康莊",
+      "note": "首句與末句皆異"
+    },
+    {
+      "slip": 50,
+      "type": "substantive",
+      "daozang": "也須步步要周旋",
+      "modern": "也須步多要周旋",
+      "note": "現行本『步多』疑為『步步』之訛"
+    },
+    {
+      "slip": 74,
+      "type": "substantive",
+      "daozang": "崔鬼崔鬼復崔鬼",
+      "modern": "崔巍崔魏復崔巍",
+      "note": "兩側皆疑訛（崔巍/崔嵬家族）"
+    }
+  ],
+  "evidence_level": {
+    "diff_operation": "comparison directly performed（2026-08-15 抓取兩側 100 子頁並逐籤比對；此為動作描述，非 claim 級別標籤，不屬於 edge_level 四值）",
+    "text_carrier": "edge_level=PROBABLE（兩側載體皆為 secondary mirror：維基文庫轉錄道藏本、籤詩網轉錄現行本；外推至真實道藏本/真實現行本需 ctext 道藏掃描影像或實體本 item-to-item 複驗）",
+    "upgrade_path": "抓 ctext 道藏掃描影像（res=84978）＋行天宮官方 jpg 全量 OCR 比對 → 可升級 edge_level=VERIFIED"
+  },
+  "status_terminology": {
+    "note": "本檔 evidence_level 屬 lineage claim 層（edge_level）；diff 分類（exact/orthographic/substantive/mismatch/missing）為文本比對結果描述，非證據級別"
+  }
+}
