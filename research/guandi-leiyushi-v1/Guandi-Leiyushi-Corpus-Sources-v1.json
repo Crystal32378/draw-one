@@ -3,7 +3,7 @@
   "task": "Oracle Corpus Study 02 — 關帝百籤／雷雨師百籤 Provenance & Lineage Dossier",
   "scope_note": "只做 research；不修改 repo；不聯絡外部單位；不購買；不登入付費資料庫；不收集個人聯絡資料",
   "corpus_identity_answer": {
-    "verdict": "『雷雨師一百籤』『關聖帝君一百籤』『關帝靈籤』『天仙雷雨師籤』『城隍籤』指向同一 corpus（100籤）——多源二手一致＋道藏本與現行本第1/100籤文本比對一致（VERIFIED）",
+    "verdict": "『雷雨師一百籤』『關聖帝君一百籤』『關帝靈籤』『天仙雷雨師籤』『城隍籤』指向同一 corpus（100籤）——多源二手一致＋道藏本與現行本第1/100籤文本比對一致（lineage edge_level=PROBABLE；兩側載體為 secondary mirror）",
     "caution": "名稱同一≠文本完全同一；各廟印本體例與文字可能因翻刻/改版有差異（如冨/富異體）；『關帝百首籤詩』為台灣常見書名",
     "different_corpus": [
       "觀音一百籤（龍山寺系）",
@@ -15,9 +15,9 @@
   "lineage": {
     "corpus_family": "雷雨師一百籤 / 關聖帝君一百籤 / 關帝靈籤 / 城隍籤（同 corpus 不同名稱）",
     "name_origin": {
-      "雷雨師": "第100籤自述『我本天仙雷雨師』（VERIFIED：道藏本與現行本同文）",
-      "關帝籤": "明清《明聖經》言關公『執掌雷部』→以關帝為雷雨仙；關帝廟多採用（PROBABLE）",
-      "城隍籤": "城隍廟多採用（VERIFIED 二手多源）",
+      "雷雨師": "第100籤自述『我本天仙雷雨師』（lineage edge_level=PROBABLE：道藏本與現行本同文，但兩側載體為 secondary mirror）",
+      "關帝籤": "明清《明聖經》言關公『執掌雷部』→以關帝為雷雨仙；關帝廟多採用（lineage edge_level=PROBABLE：二手多源）",
+      "城隍籤": "城隍廟多採用（lineage edge_level=PROBABLE：二手多源）",
       "關聖帝君一百籤": "台灣常見稱呼（行天宮下載區即此名）"
     },
     "edges": {
@@ -64,7 +64,7 @@
       "hypothesized_edges": [
         {
           "edge": "月老廟『月老百籤』可能借用雷雨師或獨立",
-          "evidence": "政大論文主題存在；內容未讀—HYPOTHESIS"
+          "evidence": "政大論文主題存在；內容未讀—HYPOTHESIZED"
         }
       ],
       "unresolved_edges": [
