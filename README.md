@@ -53,10 +53,13 @@ That incident is documented here:
 
 - [`docs/data-provenance-incident.md`](docs/data-provenance-incident.md)
 
-The latest implementation direction is documented here:
+The earlier `registry.csv` / seed-pool design is historical and superseded. The old specification and plan remain in the repository for incident history and provenance context; they are not current implementation instructions.
 
-- [`docs/superpowers/specs/2026-07-04-oracle-registry-design.md`](docs/superpowers/specs/2026-07-04-oracle-registry-design.md)
-- [`docs/superpowers/plans/2026-07-05-oracle-registry-implementation.md`](docs/superpowers/plans/2026-07-05-oracle-registry-implementation.md)
+The current Oracle KB v1 implementation and handoff are documented here:
+
+- [`docs/superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md`](docs/superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md)
+- [`data/oracle-knowledge-base/README.md`](data/oracle-knowledge-base/README.md)
+- [`docs/oracle-kb-v1-pilot-report.md`](docs/oracle-kb-v1-pilot-report.md)
 
 The current policy is simple: generated or uncertain material must remain quarantined or explicitly marked as pending. Only entries with approved source review and acceptable license status may enter a future verified production oracle pool.
 
@@ -86,11 +89,11 @@ The prototype is small, but the design question is larger:
 
 ## Project Status
 
-This repository contains the archived React MVP, the current static browser prototype, public-facing documentation, provenance cleanup notes, and oracle registry planning artifacts.
+This repository contains the archived React MVP, the current static browser prototype, public-facing documentation, provenance cleanup notes, Oracle KB v1 pilot assets, and historical registry planning artifacts.
 
 Draw One is still a prototype. The product direction has been validated at demo level; the production content system is still under review.
 
-No production registry implementation has been merged yet.
+The Oracle KB v1 pilot is implemented on the current branch, but no verified production oracle content has been merged into the live prototype.
 
 ## Running Locally
 

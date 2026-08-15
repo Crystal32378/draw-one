@@ -52,7 +52,7 @@ The correct response is not shame; it is cleanup.
 - GPT-generated or aggregated content is labeled `ai_generated_or_summarized`.
 - Quarantine entries are marked `quarantine_do_not_import`.
 - Public GitHub data excludes raw unreviewed HTML/text content where appropriate.
-- The oracle registry / draw-pool spec now separates verified entries from explicitly pending seed entries.
+- The earlier oracle registry / seed-pool proposal is retained as historical context and is superseded by the evidence-first Oracle KB v1 pilot. See [`docs/superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md`](superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md) and [`data/oracle-knowledge-base/README.md`](../data/oracle-knowledge-base/README.md) for the current implementation and handoff.
 
 ## Note on the 20-Record Batch Size
 
@@ -100,25 +100,31 @@ Frontend rule:
 
 The public interface should not display provenance, confidence, license status, review status, source type, or internal governance fields. Registry data is an admin/trust layer. Users should only see the ritual experience.
 
-## Registry Planning Direction
+## Historical Registry Planning Direction (Superseded)
 
-The latest planned implementation is an oracle registry plus draw-pool gate:
+The notes below record the pre-Oracle-KB v1 registry / seed-pool proposal. They are retained for incident history only and must not be used as current implementation instructions. Oracle KB v1 supersedes this design with evidence-first JSONL entities, derived status validation, and an explicit draw-pool gate.
 
-- `registry.csv` is the source of truth for provenance and review status.
-- `audit-oracles.mjs` validates the registry and emits a static `oracles.draw-pool.js` file.
-- The draw pool may include verified entries plus a small, closed `seed_traditional_pending` set for v0.1.
-- Seed entries are not verified. They are explicitly marked pending while source verification and expansion continue.
-- GPT-generated or summarized entries remain excluded.
+Historical proposal:
 
-Planning artifacts:
+- `registry.csv` would have been the source of truth for provenance and review status.
+- `audit-oracles.mjs` would have validated the registry and emitted a static `oracles.draw-pool.js` file.
+- The proposed draw pool could have included verified entries plus a small, closed `seed_traditional_pending` set for v0.1.
+- Seed entries were not verified and were intended to remain explicitly pending while source verification continued.
+- GPT-generated or summarized entries remained excluded.
 
-- [`docs/superpowers/specs/2026-07-04-oracle-registry-design.md`](superpowers/specs/2026-07-04-oracle-registry-design.md)
-- [`docs/superpowers/plans/2026-07-05-oracle-registry-implementation.md`](superpowers/plans/2026-07-05-oracle-registry-implementation.md)
+Current Oracle KB v1 implementation and handoff:
 
-## Remediation Plan
+- [`docs/superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md`](superpowers/specs/2026-08-15-oracle-knowledge-base-v1.md)
+- [`data/oracle-knowledge-base/README.md`](../data/oracle-knowledge-base/README.md)
+- [`scripts/validate-kb.mjs`](../scripts/validate-kb.mjs)
+- [`docs/oracle-kb-v1-pilot-report.md`](oracle-kb-v1-pilot-report.md)
+
+## Remediation Plan (Historical Context)
+
+The original remediation plan below is preserved as historical context. The implemented current gate is `scripts/validate-kb.mjs`; do not build a parallel `audit-oracles.mjs` / `registry.csv` path from these notes.
 
 1. Preserve all questionable data as evidence, not production content.
-2. Build a single audit/gate script (`scripts/audit-oracles.mjs`) that validates the registry and emits the draw-pool data file. No batch pipeline, no dry-run flag, no resume state. Draw One is a static site with no database, so those would be infrastructure for a problem that does not exist. Duplicate detection runs as part of every audit.
+2. Build a single audit/gate script that validates the registry and emits the draw-pool data file. No batch pipeline, no dry-run flag, no resume state. Draw One is a static site with no database, so those would be infrastructure for a problem that does not exist. Duplicate detection runs as part of every audit.
 3. Add a hard gate blocking `unsure`, `no`, and quarantine entries from production import.
 4. Rebuild the real oracle pool from verified sources.
 5. Rewrite interpretations in Draw One's own voice after source review.
