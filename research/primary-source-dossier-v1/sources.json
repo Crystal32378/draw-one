@@ -1,0 +1,527 @@
+{
+  "generated_at": "2026-08-15",
+  "task": "Primary Source Acquisition Dossier v1 — 觀音靈籤100／《觀音靈課》版本與文獻 lineage",
+  "scope_note": "僅公開文化文獻與典藏來源；不含個人聯絡資料；未聯絡任何個人或機構",
+  "status": "FINAL / RESEARCH COMPLETE",
+  "finalized_note": "v1.2 micro-patch（2026-08-15）：VERIFIED 語義收斂（僅 primary/official direct evidence）；龍山寺／淺草寺兩條降級為 literature-supported；NDL negative finding 措辭收斂。v1.2.1 terminology 對齊：System A 歷史節點（1592/1932/1946）無 direct item 降為 PROBABLE；文獻表改為『取得狀態』。本包封存，不再擴 research。核心結論保留：32 卦靈課與 100 首觀音籤目前必須分開建模；不知道的 lineage edge 維持不知道，不得黏起來。",
+  "edge_evidence_levels": {
+    "verified": "primary / official direct evidence：本輪直接抓取官方或一手頁面確認",
+    "probable": "literature-supported：可靠研究文獻／二手資料一致支持，但尚缺官方 concrete item 直接命中",
+    "hypothesized": "有動機但無直接證據的推測",
+    "unresolved": "未取得一手證據；已知存在但未確認"
+  },
+  "status_terminology": {
+    "edge_level": "lineage claim 的證據級別：VERIFIED 僅限 primary/official direct evidence；PROBABLE 含 literature-supported / secondary-source-supported",
+    "source_confidence": "來源記錄本身的可取得性（是否本輪實際抓取該頁面），與 edge_level 為不同層級",
+    "note": "文獻表之『取得狀態』標示文獻本身是否已取得（全文/書目），非 lineage claim 級別"
+  },
+  "two_systems": {
+    "system_a": {
+      "label": "《觀世音菩薩感應靈課》三十二卦",
+      "description": "以五枚卜錢占卜的卦書系統；現存最早刻本為明萬曆20年(1592)刻本。歷史節點（1592/1932/1946）均為 literature-supported（無 direct item）；現代流通節點為官方頁一手 VERIFIED",
+      "edges": {
+        "verified_edges": [
+          {
+            "edge": "現代流通現況：華藏淨宗法寶禮請 fabo.hwadzan.com/Fabo/1555 提供《觀音籤-觀世音菩薩感應靈課》",
+            "evidence": "官方頁面直接抓取（2026-08-15）：庫存38、需註冊帳號申請——primary direct evidence",
+            "level_note": "VERIFIED：官方流通頁即 item 本身"
+          }
+        ],
+        "probable_edges": [
+          {
+            "edge": "明萬曆20年(1592)刻本 → 民國21年(1932)徐長慶石印本（據萬曆本影印；徐乃昌藏本、印光法師流通序）",
+            "evidence": "literature-supported：辛德勇〈述石印明萬曆刻本《觀世音感應靈課》〉《中國典籍與文化》2004(3)、王濤〈長安殘書見精神〉《藏書家》第8輯、陳冠至博士論文、淨宗流通本序文——多源一致；但刻本與石印本均無 direct item／館藏確認",
+            "level_note": "v1.2.1 terminology 對齊：historical claim 無 direct item，降為 PROBABLE（原 VERIFIED·文獻記載）"
+          },
+          {
+            "edge": "民國21年(1932)石印本 → 民國35年(1946)蘇州靈巖山寺製版流通（比丘尼隆志手錄改良圖畫，兼作靈巖山觀音洞籤書）",
+            "evidence": "literature-supported：華藏 fabo.hwadzan.com/Fabo/1555 官方頁載流通序全文（一手頁面），但 1946 製版書本身無 direct item",
+            "level_note": "v1.2.1 terminology 對齊：官方頁載序文為可靠文獻，惟歷史 claim 無 item，降為 PROBABLE"
+          },
+          {
+            "edge": "唐代玄奘西行蒙觀世音菩薩傳授（傳說層）",
+            "evidence": "淨宗流通序採「相傳」說；無一手文獻可證——PROBABLE(legend)"
+          },
+          {
+            "edge": "1946 靈巖山寺製版 → 台南極樂寺線上書（第二流通管道）",
+            "evidence": "amtbtn.org 路徑 Cultural Network 已記錄；本輪未重抓——PROBABLE"
+          }
+        ],
+        "hypothesized_edges": [],
+        "unresolved_edges": [
+          {
+            "edge": "明萬曆20年(1592)刻本現存館藏地點（中國國圖？）",
+            "evidence": "多篇文獻描述該刻本存在，但館藏地點未一手確認——UNRESOLVED"
+          }
+        ]
+      }
+    },
+    "system_b": {
+      "label": "觀音一百籤（100首籤詩）",
+      "description": "以籤筒抽取的百首籤詩系統；台灣龍山寺等觀音廟使用。「無明確單一版本，各地內容頗有差異」為籤詩網（secondary）明文＋文獻一致支持 → PROBABLE / secondary-source-supported；兩條現況 edge（龍山寺、淺草寺）均為 literature-supported，無官方 concrete item",
+      "edges": {
+        "verified_edges": [],
+        "probable_edges": [
+          {
+            "edge": "台北龍山寺使用觀音一百籤（100首）",
+            "evidence": "literature-supported：薛皓文2007碩論《臺灣艋舺龍山寺籤詩及其文學性研究》以龍山寺單一版本為題＋籤詩網全集一致；MT-1 已證官網現行版無籤詩電子 item → 缺官方 concrete item 直接命中",
+            "level_note": "literature-supported（原 VERIFIED，v1.2 依語義收斂降級）"
+          },
+          {
+            "edge": "淺草寺現行使用觀音百籤（100首，日本佛籤）",
+            "evidence": "literature/secondary-supported：籤詩網、台灣好廟網全集一致＋local evidence（2011復刻PDF，未 commit）；官方 concrete item 未直接命中",
+            "level_note": "literature-supported（原 VERIFIED，v1.2 依語義收斂降級）"
+          },
+          {
+            "edge": "南宋「天竺靈籤」（觀音圖＋漢詩100枚） → 比叡山元三大師百御籤",
+            "evidence": "日本二手文獻一致：note.com〈元三大師から現代のデジタルおみくじまで〉、明治聖徳記念学会〈「おみくじ」の起源と諸相 追考〉（「天竺霊籤は一番を缺く」比較論）——PROBABLE（均為二手，未見一手宋版）"
+          },
+          {
+            "edge": "元三大師百御籤 → 淺草寺觀音百籤",
+            "evidence": "台灣好廟網 lineage 說明（「中國天竺靈籤傳至比叡山，通稱漢詩一百／元三大師百御籤」）；NDL 參考頁載《元三大師百籤》《観音百籤占決諺解》影印本存在——PROBABLE（需 NDL item 一手確認後升級）"
+          }
+        ],
+        "hypothesized_edges": [
+          {
+            "edge": "pilot 中 guanyin-003 的分歧可能與不同文本系統或 edition family 有關",
+            "evidence": "目前尚未建立直接對應證據——HYPOTHESIS，待 item-to-item 比對驗證"
+          }
+        ],
+        "unresolved_edges": [
+          {
+            "edge": "淺草寺觀音百籤 → 台灣觀音廟（含龍山寺）",
+            "evidence": "「台灣觀音籤來自淺草寺」僅見 threads 等二手轉述，未見一手證據——UNRESOLVED，不得以實線表達"
+          },
+          {
+            "edge": "龍山寺系與淺草寺系的 item-to-item 文本對應關係",
+            "evidence": "pilot 已發現同籤號文本分歧，但全量/抽樣比對未完成——UNRESOLVED"
+          },
+          {
+            "edge": "高雄龍霄殿（東嶽廟）觀音籤與龍山寺系文本關係",
+            "evidence": "龍霄殿第100籤與先前記錄的龍山寺相關文本存在差異；需直接 item-to-item 複驗後才能判定為跨廟版本分歧——UNRESOLVED"
+          }
+        ]
+      }
+    },
+    "conflation_warning": "現有證據強烈支持《觀世音菩薩感應靈課》三十二卦與觀音一百籤為兩套不同的操作／文本系統，因此目前不得合併；兩者是否存在更早的歷史關係，仍待進一步考證。",
+    "pilot_note": "pilot 中 guanyin-003 的分歧可能與不同文本系統或 edition family 有關，目前尚未建立直接對應證據。"
+  },
+  "sources_count": 22,
+  "sources": [
+    {
+      "id": "PSD-A01",
+      "name": "華藏淨宗學會法寶禮請《觀音籤-觀世音菩薩感應靈課》",
+      "type": "religious_publisher",
+      "holder": "華藏淨宗學會",
+      "url": "https://fabo.hwadzan.com/Fabo/1555",
+      "access_status": "open_register",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "實抓：庫存38、需註冊帳號申請；meta載明宮后付梓印施百卷；頁載靈巖山寺觀音洞籤書流通序全文"
+    },
+    {
+      "id": "PSD-A02",
+      "name": "台南極樂寺（淨宗學會）線上書《觀音靈課》",
+      "type": "religious_publisher",
+      "holder": "社團法人台南市淨宗學會",
+      "url": "https://www.amtbtn.org/media-ebook/page/171?menuid=2041",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "probable",
+      "verification_date": "2026-08-15",
+      "notes": "Cultural Network 已記錄路徑；本輪未重抓"
+    },
+    {
+      "id": "PSD-A03",
+      "name": "籤詩網·觀音一百籤（公版全集）",
+      "type": "website_secondary",
+      "holder": "籤詩研究室",
+      "url": "http://www.chance.org.tw/籤詩集/觀音一百籤/籤詩網‧觀音一百籤.htm",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "『並非所有觀音寺廟均用此版』；文本對照用，非授權來源"
+    },
+    {
+      "id": "PSD-A04",
+      "name": "籤詩網·淺草金龍山觀音寺一百籤",
+      "type": "website_secondary",
+      "holder": "籤詩研究室",
+      "url": "http://www.chance.org.tw/籤詩集/淺草金龍山觀音寺一百籤/籤詩網‧淺草金龍山觀音寺一百籤__第022籤.htm",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "pilot 跨國比對素材（第022籤示例）"
+    },
+    {
+      "id": "PSD-A05",
+      "name": "台灣好廟網·東京淺草觀音寺一百籤",
+      "type": "website_secondary",
+      "holder": "temple01.com",
+      "url": "https://qiangua.temple01.com/qianshi.php?t=fs_akt100",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "載lineage：中國天竺靈籤→比叡山（漢詩一百/元三大師百御籤）→淺草"
+    },
+    {
+      "id": "PSD-A06",
+      "name": "淺草寺百籤 2011 復刻 PDF",
+      "type": "local_document",
+      "holder": "本機（未 commit）",
+      "url": "local evidence available; not committed",
+      "access_status": "local_not_committed",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "淺草寺百籤 2011 復刻版 PDF；sha256 c589742c561c5eb7137b4685b4a162eb69a8e3caed0684bc8a1fa441fb5168fa；Oracle KB pilot 既有材料",
+      "checksum_sha256": "c589742c561c5eb7137b4685b4a162eb69a8e3caed0684bc8a1fa441fb5168fa"
+    },
+    {
+      "id": "PSD-A07",
+      "name": "高雄龍霄殿官網靈籤解籤",
+      "type": "temple_official",
+      "holder": "高雄龍霄殿",
+      "url": "https://www.longcheng.org.tw/?act=jieqianyuandi&cmd=detail&ad_id=202211240001882",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "龍霄殿第100籤（『欲就東兮欲就西…』）與先前記錄的龍山寺相關文本存在差異；需直接 item-to-item 複驗後才能判定為跨廟版本分歧"
+    },
+    {
+      "id": "PSD-A08",
+      "name": "國立故宮博物院·典藏資料檢索",
+      "type": "museum_digital_archive",
+      "holder": "國立故宮博物院",
+      "url": "https://digitalarchive.npm.gov.tw/",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "低階圖像約41萬幅CC0公眾領域貢獻宣告（不須註明出處）；僅涵蓋書畫/器物/織品，古籍未確認",
+      "platform_rights_status": "verified",
+      "platform_rights_scope": "故宮官方 CC0（公眾領域貢獻宣告）僅涵蓋書畫/器物/織品低階圖像約41萬幅；古籍善本 item 不在已確認範圍"
+    },
+    {
+      "id": "PSD-A09",
+      "name": "中研院傅斯年圖書館善本全文影像（新增開放452種）",
+      "type": "academic_digital_archive",
+      "holder": "中央研究院歷史語言研究所",
+      "url": "https://www.shuge.org/meet/topic/74561/",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "confidence": "probable",
+      "verification_date": "2026-08-15",
+      "notes": "452種善本全文影像開放（書格轉載）；是否含觀音靈課UNRESOLVED"
+    },
+    {
+      "id": "PSD-B01",
+      "name": "國圖·古籍與特藏文獻資源",
+      "type": "library_catalog",
+      "holder": "國家圖書館",
+      "url": "https://rbook.ncl.edu.tw/NCLSearch/home/info",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "善本古籍檢索入口；『觀音靈課』館藏查詢本輪URL 404，需手動檢索"
+    },
+    {
+      "id": "PSD-B02",
+      "name": "國圖·臺灣記憶",
+      "type": "library_digital_archive",
+      "holder": "國家圖書館",
+      "url": "https://tm.ncl.edu.tw/",
+      "access_status": "restricted",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "台灣史料庫；與朝天宮合作收籤詩文獻（Cultural Network 已記錄）"
+    },
+    {
+      "id": "PSD-B03",
+      "name": "中研院數位典藏 catalog",
+      "type": "academic_digital_archive",
+      "holder": "中央研究院數位文化中心",
+      "url": "https://catalog.digitalarchives.tw/Catalog/List.jsp",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "已見明萬曆庚戌(1610)刊本釋家類彙編（書號09033-0318）；與觀音靈課相關性UNRESOLVED"
+    },
+    {
+      "id": "PSD-B04",
+      "name": "中研院漢籍電子文獻（瀚典）",
+      "type": "fulltext_database",
+      "holder": "中央研究院歷史語言研究所",
+      "url": "https://hanji.sinica.edu.tw/",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "典故查證用；觀音靈課是否收錄UNRESOLVED"
+    },
+    {
+      "id": "PSD-B05",
+      "name": "中國哲學書電子化計劃 ctext",
+      "type": "fulltext_database",
+      "holder": "Donald Sturgeon",
+      "url": "https://ctext.org/zh",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "典故交叉查證；觀音靈課是否收錄UNRESOLVED"
+    },
+    {
+      "id": "PSD-B06",
+      "name": "日本國立国会図書館デジタルコレクション",
+      "type": "national_library_digital_archive",
+      "holder": "国立国会図書館",
+      "url": "https://crd.ndl.go.jp/reference/entry/index.php?id=1000082103",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "參考頁確認『元三大師百籤』『観音百籤占決諺解』影印本存在；實際item檢索JS渲染未抓到→UNRESOLVED"
+    },
+    {
+      "id": "PSD-B07",
+      "name": "日本 NDL Search",
+      "type": "library_catalog",
+      "holder": "国立国会図書館",
+      "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010080893",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "《元三大師御籤本の研究：おみくじを読み解く》書目已確認"
+    },
+    {
+      "id": "PSD-B08",
+      "name": "中國國家圖書館／中華再造善本資料庫",
+      "type": "national_library_catalog",
+      "holder": "中國國家圖書館",
+      "url": "https://www.nlcpress.com/DigitalPublishingView.aspx",
+      "access_status": "restricted",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "probable",
+      "verification_date": "2026-08-15",
+      "notes": "萬曆刻本館藏地點最可能所在；資料庫付費；UNRESOLVED"
+    },
+    {
+      "id": "PSD-B09",
+      "name": "Internet Archive",
+      "type": "international_digital_archive",
+      "holder": "Internet Archive",
+      "url": "https://archive.org/",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "中文古籍掃描存在（如02092860.cn）；觀音靈課直接掃描UNRESOLVED"
+    },
+    {
+      "id": "PSD-B10",
+      "name": "HathiTrust Digital Library",
+      "type": "international_digital_archive",
+      "holder": "HathiTrust",
+      "url": "https://www.hathitrust.org/",
+      "access_status": "restricted",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "觀音靈課掃描UNRESOLVED"
+    },
+    {
+      "id": "PSD-B11",
+      "name": "Google Books《中國歷代觀音文獻集成》卷6",
+      "type": "publisher_catalog",
+      "holder": "中華全國圖書館文獻縮微複製中心（濮文起編）",
+      "url": "https://books.google.com/books/about/中國歷代觀音文獻集成_觀音靈.html?id=tV6OzwEACAAJ",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "1998年彙編，卷6《觀音靈應圖經》；書目已確認，內容需館藏"
+    },
+    {
+      "id": "PSD-B12",
+      "name": "博揚文化（籤詩研究專書出版）",
+      "type": "publisher",
+      "holder": "博揚文化事業有限公司",
+      "url": "https://www.facebook.com/boyoung.culture/",
+      "access_status": "paid",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "《籤詩：臺灣民間信仰研究的新視野》等（Cultural Network 已記錄）"
+    },
+    {
+      "id": "PSD-B13",
+      "name": "國家文化記憶庫 opendata（民俗宗教 datasetId=753）",
+      "type": "open_data",
+      "holder": "文化部（委臺史博營運）",
+      "url": "https://opendata.culture.tw/",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "民俗宗教類18,583筆；籤詩文物檢索需進一步篩選"
+    }
+  ],
+  "literature_count": 9,
+  "literature": [
+    {
+      "id": "PSD-L01",
+      "title": "辛德勇〈述石印明萬曆刻本《觀世音感應靈課》〉",
+      "venue": "《中國典籍與文化》2004年第3期",
+      "type": "journal",
+      "url": "http://www.lsqn.cn/wenhua/yj/200908/142584.html",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "萬曆刻本→1932石印本考證；轉載全文已見"
+    },
+    {
+      "id": "PSD-L02",
+      "title": "王濤〈長安殘書見精神〉",
+      "venue": "《藏書家》第8輯",
+      "type": "journal",
+      "url": "http://www.lsqn.cn/wenhua/yj/200908/142584.html",
+      "confidence": "probable",
+      "verification_date": "2026-08-15",
+      "notes": "長安殘書（萬曆刻本）發現始末"
+    },
+    {
+      "id": "PSD-L03",
+      "title": "陳冠至《明代佛教典籍出版研究》",
+      "venue": "輔仁大學博士論文",
+      "type": "thesis",
+      "url": "https://web.lins.fju.edu.tw/upload/gra/thesis/10602244_40306601.pdf",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "記徐乃昌得明代孤本、印光法師撰流通序、石印出版"
+    },
+    {
+      "id": "PSD-L04",
+      "title": "薛皓文《臺灣艋舺龍山寺籤詩及其文學性研究》",
+      "venue": "2007碩論",
+      "type": "thesis",
+      "url": "https://ndltd.ncl.edu.tw/r/8z8esh",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "唯一以龍山寺百首觀音籤為專題之碩論"
+    },
+    {
+      "id": "PSD-L05",
+      "title": "陳進國〈寺廟靈籤的流傳與風水信仰的擴散〉",
+      "venue": "中國民俗學網",
+      "type": "journal",
+      "url": "https://www.chinafolklore.org/web/index.php?Page=3&NewsID=2931",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "閩台寺廟籤詩文本流傳研究"
+    },
+    {
+      "id": "PSD-L06",
+      "title": "濮文起編《中國歷代觀音文獻集成》卷6《觀音靈應圖經》",
+      "venue": "中華全國圖書館文獻縮微複製中心1998",
+      "type": "series",
+      "url": "https://books.google.com/books/about/中國歷代觀音文獻集成_觀音靈.html?id=tV6OzwEACAAJ",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "觀音文獻大型彙編"
+    },
+    {
+      "id": "PSD-L07",
+      "title": "《元三大師御籤本の研究：おみくじを読み解く》",
+      "venue": "專書",
+      "type": "book",
+      "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000010080893",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "日本御籤本系統研究"
+    },
+    {
+      "id": "PSD-L08",
+      "title": "明治聖徳記念学会〈「おみくじ」の起源と諸相 追考〉",
+      "venue": "明治聖徳記念学会紀要 pdf",
+      "type": "journal",
+      "url": "http://www.meijiseitoku.org/pdf/f58-3.pdf",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "天竺靈籤與元三大師籤比較；『天竺霊籤は一番を缺く』"
+    },
+    {
+      "id": "PSD-L09",
+      "title": "貞享元年刊《元三大師百籤》挿絵における古典図様の利用",
+      "venue": "日本デザイン学会 jstage",
+      "type": "journal",
+      "url": "https://www.jstage.jst.go.jp/article/jsartdesign/6/0/6_11/_pdf/-char/ja",
+      "confidence": "verified",
+      "verification_date": "2026-08-15",
+      "notes": "江戶御籤本版本學；貞享元年=1684"
+    }
+  ],
+  "must_test_results": {
+    "executed_at": "2026-08-15",
+    "items": [
+      {
+        "id": "MT-1",
+        "target": "龍山寺 concrete item／第100籤直接驗證",
+        "status": "unresolved_verified_absence",
+        "finding": "龍山寺官網現行版無公開籤詩電子 item：sitemap（2026-08-15 抓取，237 URLs）無籤詩頁；舊記錄路徑 https://www.lungshan.org.tw/eBooks/046.pdf 回 HTTP 404（已下架或不存在）。第100籤 concrete item 需現場籤詩簿翻拍或廟方授權取得。",
+        "verification": "VERIFIED（官網無籤詩 PDF 此一事實）"
+      },
+      {
+        "id": "MT-2",
+        "target": "國圖館藏（rbook.ncl.edu.tw 查觀音靈課）",
+        "status": "unresolved_needs_browser",
+        "finding": "rbook.ncl.edu.tw 為 session 型系統（POST /NCLSearch/Search/SearchResult/0 + __RequestVerificationToken + 302 redirect 鏈），curl 無法完成查詢（411/302 循環）；aleweb.ncl.edu.tw OPAC 連線失敗（HTTP 000）。需以瀏覽器手動檢索「觀音靈課／感應靈課」。",
+        "verification": "UNRESOLVED（技術嘗試已記錄失敗原因）"
+      },
+      {
+        "id": "MT-3",
+        "target": "日本 NDL item（元三大師百籤／観音百籤占決諺解）",
+        "status": "verified_absence_in_digital_collection",
+        "finding": "NDL Search OpenSearch API（2026-08-15）：查「観音百籤」得4筆書目（《観音百籤考》x2、《元三大師百籤 ; 観音百籤占決諺解》、《近世文学資料類従》）；以 dpid=dlndl 限定デジタルコレクション查詢為 0 筆。**本輪以指定 NDL Search / Digital Collection query 未檢出公開數位 item；0 result 不證明不存在公開數位版本（Search failure ≠ non-existence）。**",
+        "verification": "VERIFIED（API 一手查詢；negative finding 限定於本輪 query）"
+      },
+      {
+        "id": "MT-4",
+        "target": "中國國圖／萬曆刻本館藏",
+        "status": "hit_holding_record",
+        "finding": "中國國圖 OPAC（opac.nlc.cn，2026-08-15 檢索「观世音菩萨感应灵课」）唯一命中：《南无大慈悲灵感观世音菩萨三十二课》，DOC-NUMBER 004826983（NLC01），IMPRINT 全国图书馆文献缩微中心（縮微複製版，出版者與濮文起《中國歷代觀音文獻集成》同一機構脈絡）。注意：此為複製版館藏記錄，不等於明萬曆20年刻本原件在國圖；原件館藏仍 UNRESOLVED。",
+        "verification": "VERIFIED（OPAC 書目一手抓取）"
+      }
+    ]
+  }
+}
