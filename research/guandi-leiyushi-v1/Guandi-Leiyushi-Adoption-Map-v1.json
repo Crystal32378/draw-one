@@ -105,7 +105,7 @@
       "edge_level": "PROBABLE"
     }
   ],
-  "correction_note": "2026-08-15 v1 收斂：AD-02/AD-06/AD-07 由 verified 降為 probable——學術文獻／碑文為 literature-supported，非 primary official direct evidence；全表僅 AD-01 行天宮保留 verified（官方一手）。2026-08-15 v1.2.2 terminology sync（canonical schema）：欄位 confidence → edge_level（verified→VERIFIED、probable→PROBABLE，僅改欄位語義）；不新增 adoption、不變更 evidence text。",
+  "correction_note": "2026-08-15 v1 收斂：AD-02/AD-06/AD-07 由 verified 降為 probable——學術文獻／碑文為 literature-supported，非 primary official direct evidence；全表僅 AD-01 行天宮保留 verified（官方一手）。2026-08-15 v1.2.2 terminology sync（canonical schema）：adoption relation 屬 lineage claim，原欄位更名為 edge_level（值改為大寫 VERIFIED / PROBABLE，僅改欄位語義）；不新增 adoption、不變更 evidence text。",
   "status_terminology": {
     "edge_level": "adoption relation 是 lineage claim，一律使用 VERIFIED / PROBABLE / HYPOTHESIZED / UNRESOLVED（本表無 HYPOTHESIZED / UNRESOLVED 記錄）",
     "note": "source_observation_status 不適用於 adoption relation；Access / License 另由 access_status / license_status 表示"

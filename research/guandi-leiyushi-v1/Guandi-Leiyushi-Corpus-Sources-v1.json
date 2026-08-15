@@ -312,7 +312,7 @@
     }
   ],
   "status": "v1 DRAFT（待 Crystal review）",
-  "correction_note": "2026-08-15 v1 收斂：lineage edges 層 VERIFIED 僅保留 primary/official direct evidence（行天宮官方一手）；道藏↔現行文本比對因載體為 secondary mirror（維基文庫/籤詩網）降為 PROBABLE。2026-08-15 v1.2.2 terminology sync（canonical schema，PSD v1.2.2 定案）：source record 欄位 confidence → source_observation_status（verified→directly_observed、probable→indirectly_supported，僅改欄位語義，不變更任何觀察判斷）；edge membership 與 evidence text 全部維持不變；不再使用 confidence / source_confidence。",
+  "correction_note": "2026-08-15 v1 收斂：lineage edges 層 VERIFIED 僅保留 primary/official direct evidence（行天宮官方一手）；道藏↔現行文本比對因載體為 secondary mirror（維基文庫/籤詩網）降為 PROBABLE。2026-08-15 v1.2.2 terminology sync（canonical schema，PSD v1.2.2 定案）：source record 原欄位更名為 source_observation_status（值 direct/indirect 對應原 verified/probable，僅改欄位語義，不變更任何觀察判斷）；edge membership 與 evidence text 全部維持不變；舊欄位名不再使用，避免與 edge_level 混淆。",
   "edge_evidence_levels": {
     "verified": "primary / official direct evidence：本輪直接抓取官方或一手頁面確認",
     "probable": "literature-supported：可靠研究文獻／二手資料一致支持，但尚缺官方 concrete item 直接命中",
