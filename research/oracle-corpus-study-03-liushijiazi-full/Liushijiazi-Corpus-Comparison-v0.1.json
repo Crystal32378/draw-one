@@ -1,0 +1,2890 @@
+{
+  "task": "Liushijiazi（六十甲子籤）full corpus comparison — Phase B（Oracle Corpus Study 03 延伸）",
+  "generated_at": "2026-08-15",
+  "scope": "60 slips × carriers：北港官方圖檔 OCR（60/60）＋新港奉天宮官方籤板照片 OCR（subset 12）＋好廟網 fs60 網頁轉錄（60/60）",
+  "note": "comparison directly performed；比對動作本身非 lineage claim，不標 VERIFIED",
+  "carriers": {
+    "beigang": {
+      "name": "北港朝天宮官方",
+      "type": "official temple source",
+      "mode": "籤詩圖 OCR（autoglm）",
+      "caveat": "OCR 字形誤讀風險（戌→戊、巳→己、酉→西、申→甲 等）；干支以官網列表 label 為權威"
+    },
+    "xingang": {
+      "name": "新港奉天宮官方",
+      "type": "official temple source",
+      "mode": "捐獻籤板照片 OCR（subset 12）",
+      "caveat": "圖面僅干支＋（首N）＋詩文＋署名；OCR 直書數字順序會顛倒（首十六/首六十）"
+    },
+    "fs60": {
+      "name": "好廟網 fs60",
+      "type": "secondary database",
+      "mode": "網頁直接轉錄（60/60）",
+      "caveat": "與籤詩網疑似同源（mirror 群）；轉錄可能 normalize（籤詩網自述改常用同義字）"
+    }
+  },
+  "summary": {
+    "beigang_vs_fs60_categories": {
+      "orthographic_only": 17,
+      "identical": 36,
+      "substantive": 7
+    },
+    "total_slips": 60,
+    "xingang_subset": 60,
+    "xingang_vs_beigang_agreement": 45
+  },
+  "slips": [
+    {
+      "slip_number": 1,
+      "ganzhi": {
+        "beigang_official_list": "甲子",
+        "beigang_ocr": null,
+        "xingang_official": "甲子",
+        "fs60": "甲子"
+      },
+      "poem_beigang_aligned": [
+        "日出便見風雲散",
+        "光明清靜照世間",
+        "一向前途通大道",
+        "萬事清吉保平安"
+      ],
+      "poem_fs60": [
+        "日出便見風雲散",
+        "光明清淨照世間",
+        "一向前途通大道",
+        "萬事清吉保平安"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "光明清靜照世間",
+            "b": "光明清淨照世間"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "日出便見風雲散",
+        "光明清靜照世間",
+        "一向前途通大道",
+        "萬事清吉保平安"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "光明清靜照世間",
+            "b": "光明清淨照世間"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 2,
+      "ganzhi": {
+        "beigang_official_list": "甲寅",
+        "beigang_ocr": null,
+        "xingang_official": "甲寅",
+        "fs60": "甲寅"
+      },
+      "poem_beigang_aligned": [
+        "於今此景正當時",
+        "看看欲吐百花魁",
+        "若能遇得春色到",
+        "一洒清吉脫塵埃"
+      ],
+      "poem_fs60": [
+        "於今此景正當時",
+        "看看欲吐百花魁",
+        "若能遇得春色到",
+        "一洒清吉脫塵埃"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "於今此景正當時",
+        "看看欲吐百花魁",
+        "若能遇得春色到",
+        "一洒清吉脫塵埃"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 3,
+      "ganzhi": {
+        "beigang_official_list": "甲辰",
+        "beigang_ocr": null,
+        "xingang_official": "甲辰",
+        "fs60": "甲辰"
+      },
+      "poem_beigang_aligned": [
+        "勸君把定心莫虛",
+        "天註衣祿自有餘",
+        "和合重重常吉慶",
+        "時來終遇得明珠"
+      ],
+      "poem_fs60": [
+        "勸君把定心莫虛",
+        "天註衣祿自有餘",
+        "和合重重常吉慶",
+        "時來終遇得明珠"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "勸君把定心莫虛",
+        "天註衣祿自有餘",
+        "和合重重常吉慶",
+        "時來終遇得明珠"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 4,
+      "ganzhi": {
+        "beigang_official_list": "甲午",
+        "beigang_ocr": null,
+        "xingang_official": "甲午",
+        "fs60": "甲午"
+      },
+      "poem_beigang_aligned": [
+        "風恬浪靜可行舟",
+        "恰是中秋月一輪",
+        "凡事不須多憂慮",
+        "福祿自有慶家門"
+      ],
+      "poem_fs60": [
+        "風恬浪靜可行舟",
+        "恰是中秋月一輪",
+        "凡事不須多憂慮",
+        "福祿自有慶家門"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "風恬浪靜可行舟",
+        "恰是中秋月一輪",
+        "凡事不須多憂慮",
+        "福祿自有慶家門"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 5,
+      "ganzhi": {
+        "beigang_official_list": "甲申",
+        "beigang_ocr": null,
+        "xingang_official": "甲申",
+        "fs60": "甲申"
+      },
+      "poem_beigang_aligned": [
+        "只恐前途命有變",
+        "勸君作急可宜先",
+        "且守長江無大事",
+        "命逢太白守身邊"
+      ],
+      "poem_fs60": [
+        "只恐前途命有變",
+        "勸君作急可宜先",
+        "且守長江無大事",
+        "命逢太白守身邊"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "只恐前途命有變",
+        "勸君作急可宜先",
+        "且守長江無大事",
+        "命逢太白守身邊"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 6,
+      "ganzhi": {
+        "beigang_official_list": "甲戍",
+        "beigang_ocr": null,
+        "xingang_official": "甲戌",
+        "fs60": "甲戌"
+      },
+      "poem_beigang_aligned": [
+        "風雲致雨落洋洋",
+        "天災時氣必有傷",
+        "命內此事難和合",
+        "更逢一足出外鄉"
+      ],
+      "poem_fs60": [
+        "風雲致雨落洋洋",
+        "天災時氣必有傷",
+        "命內此事難和合",
+        "更逢一足出外鄉"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "風雲致雨落洋洋",
+        "天災時氣必有傷",
+        "命內此事難和合",
+        "更逢一足出外鄉"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 7,
+      "ganzhi": {
+        "beigang_official_list": "乙丑",
+        "beigang_ocr": null,
+        "xingang_official": "乙丑",
+        "fs60": "乙丑"
+      },
+      "poem_beigang_aligned": [
+        "雲開月出見分明",
+        "不須進退問前途",
+        "婚姻皆由天註定",
+        "和合清吉萬事成"
+      ],
+      "poem_fs60": [
+        "雲開月出正分明",
+        "不須進退問前程",
+        "婚姻皆由天註定",
+        "和合清吉萬事成"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "雲開月出見分明",
+            "b": "雲開月出正分明"
+          },
+          {
+            "line": 2,
+            "a": "不須進退問前途",
+            "b": "不須進退問前程"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "雲開月出見分明",
+        "不須進退問前程",
+        "婚姻皆由天註定",
+        "和合清吉萬事成"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "不須進退問前程",
+            "b": "不須進退問前途"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "雲開月出見分明",
+            "b": "雲開月出正分明"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 8,
+      "ganzhi": {
+        "beigang_official_list": "乙卯",
+        "beigang_ocr": null,
+        "xingang_official": "乙卯",
+        "fs60": "乙卯"
+      },
+      "poem_beigang_aligned": [
+        "禾稻看看結成完",
+        "此事必定兩相全",
+        "回到家中寬心坐",
+        "妻兒鼓舞樂團圓"
+      ],
+      "poem_fs60": [
+        "禾稻看看結成完",
+        "此事必定兩相全",
+        "回到家中寬心坐",
+        "妻兒鼓舞樂團圓"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "禾稻看看結成完",
+        "此事必定兩相全",
+        "回到家中寬心坐",
+        "妻兒皷舞樂團圓"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "妻兒皷舞樂團圓",
+            "b": "妻兒鼓舞樂團圓"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "妻兒皷舞樂團圓",
+            "b": "妻兒鼓舞樂團圓"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 9,
+      "ganzhi": {
+        "beigang_official_list": "乙巳",
+        "beigang_ocr": null,
+        "xingang_official": "乙巳",
+        "fs60": "乙巳"
+      },
+      "poem_beigang_aligned": [
+        "龍虎相隨在深山",
+        "君爾何須背後看",
+        "不知此去相愛悞",
+        "他日與我卻無干"
+      ],
+      "poem_fs60": [
+        "龍虎相隨在深山",
+        "君爾何須背後看",
+        "不知此去相愛愉",
+        "他日與我卻無干"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "不知此去相愛悞",
+            "b": "不知此去相愛愉"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "龍虎相隨在深山",
+        "君爾何須背後看",
+        "不知此去相愛悞",
+        "他日與我卻無干"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "不知此去相愛悞",
+            "b": "不知此去相愛愉"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 10,
+      "ganzhi": {
+        "beigang_official_list": "乙未",
+        "beigang_ocr": null,
+        "xingang_official": "乙未",
+        "fs60": "乙未"
+      },
+      "poem_beigang_aligned": [
+        "花開結子一半枯",
+        "可惜今年爾虛度",
+        "漸漸日落西山去",
+        "勸君不用向前途"
+      ],
+      "poem_fs60": [
+        "花開結子一半枯",
+        "可惜今年汝虛度",
+        "漸漸日落西山去",
+        "勸君不用向前途"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "可惜今年爾虛度",
+            "b": "可惜今年汝虛度"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "花開結子一半枯",
+        "可惜今年爾虛度",
+        "漸漸日落西山去",
+        "勸君不用向前途"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "可惜今年爾虛度",
+            "b": "可惜今年汝虛度"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 11,
+      "ganzhi": {
+        "beigang_official_list": "乙酉",
+        "beigang_ocr": null,
+        "xingang_official": "乙酉",
+        "fs60": "乙酉"
+      },
+      "poem_beigang_aligned": [
+        "靈雞漸漸見分明",
+        "凡事且看子丑寅",
+        "雲開月出照天下",
+        "郎君即便見太平"
+      ],
+      "poem_fs60": [
+        "靈雞漸漸見分明",
+        "凡事且看子丑寅",
+        "雲開月出照天下",
+        "郎君即便見太平"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "靈雞漸漸見分明",
+        "凡事且看子丑寅",
+        "雲開月出照天下",
+        "郎君即便見太平"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 12,
+      "ganzhi": {
+        "beigang_official_list": "乙亥",
+        "beigang_ocr": null,
+        "xingang_official": "乙亥",
+        "fs60": "乙亥"
+      },
+      "poem_beigang_aligned": [
+        "長江風浪漸漸靜",
+        "于今得進可安寧",
+        "必有貴人相扶助",
+        "凶事脫出見太平"
+      ],
+      "poem_fs60": [
+        "長江風浪漸漸靜",
+        "于今得進可安寧",
+        "必有貴人相扶助",
+        "凶事脫出見太平"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "長江風浪漸漸靜",
+        "于今得進可安寧",
+        "必有貴人相扶助",
+        "兇事脫出見太平"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "兇事脫出見太平",
+            "b": "凶事脫出見太平"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "兇事脫出見太平",
+            "b": "凶事脫出見太平"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 13,
+      "ganzhi": {
+        "beigang_official_list": "丙子",
+        "beigang_ocr": null,
+        "xingang_official": "丙子",
+        "fs60": "丙子"
+      },
+      "poem_beigang_aligned": [
+        "命內正逢羅孛關",
+        "用盡心機總未休",
+        "作福問神難得過",
+        "恰是行舟上高灘"
+      ],
+      "poem_fs60": [
+        "命中正逢羅孛關",
+        "用盡心機總未休",
+        "作福問神難得過",
+        "恰是行舟上高灘"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "命內正逢羅孛關",
+            "b": "命中正逢羅孛關"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "命內正逢羅孛關",
+        "用盡心機總未休",
+        "作福問神難得過",
+        "恰是行舟上高灘"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "命內正逢羅孛關",
+            "b": "命中正逢羅孛關"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 14,
+      "ganzhi": {
+        "beigang_official_list": "丙寅",
+        "beigang_ocr": null,
+        "xingang_official": "丙寅",
+        "fs60": "丙寅"
+      },
+      "poem_beigang_aligned": [
+        "財中漸漸見分明",
+        "花開花謝結子成",
+        "寬心且看月中桂",
+        "郎君即便見太平"
+      ],
+      "poem_fs60": [
+        "財中漸漸見分明",
+        "花開花謝結子成",
+        "寬心且看月中桂",
+        "郎君即便見太平"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "財中漸漸見分明",
+        "花開花謝結子成",
+        "寬心且看月中桂",
+        "郎君即便見太平"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 15,
+      "ganzhi": {
+        "beigang_official_list": "丙辰",
+        "beigang_ocr": null,
+        "xingang_official": "丙辰",
+        "fs60": "丙辰"
+      },
+      "poem_beigang_aligned": [
+        "八十原來是太公",
+        "看看晚景遇文王",
+        "目下緊事休相問",
+        "勸君且守待運通"
+      ],
+      "poem_fs60": [
+        "八十原來是太公",
+        "看看晚景遇文王",
+        "目下緊事休相問",
+        "勸君且守待運通"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "八十原來是太公",
+        "看看晚景遇文王",
+        "目下繫事休相問",
+        "勸君且守待運通"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "目下繫事休相問",
+            "b": "目下緊事休相問"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "目下繫事休相問",
+            "b": "目下緊事休相問"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 16,
+      "ganzhi": {
+        "beigang_official_list": "丙午",
+        "beigang_ocr": null,
+        "xingang_official": "丙午",
+        "fs60": "丙午"
+      },
+      "poem_beigang_aligned": [
+        "不須作福不須求",
+        "用盡心機總未休",
+        "陽世不知陰世事",
+        "官法如爐不自由"
+      ],
+      "poem_fs60": [
+        "不須作福不須求",
+        "用盡心機總未休",
+        "陽世不知陰世事",
+        "官法如爐不自由"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "不須作福不須求",
+        "用盡心機總未休",
+        "陽世不知陰世事",
+        "官法如爐不自由"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 17,
+      "ganzhi": {
+        "beigang_official_list": "丙申",
+        "beigang_ocr": null,
+        "xingang_official": "丙申",
+        "fs60": "丙申"
+      },
+      "poem_beigang_aligned": [
+        "舊恨重重未改為",
+        "家中禍患不臨身",
+        "須當謹防宜作福",
+        "龍蛇交會得和合"
+      ],
+      "poem_fs60": [
+        "舊恨重重未改為",
+        "家中禍患不臨身",
+        "須當謹防宜作福",
+        "龍蛇交會得和合"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "舊恨重重未改爲",
+        "家中禍患不臨身",
+        "須當謹防宜作福",
+        "龍蛇交會得和合"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "舊恨重重未改爲",
+            "b": "舊恨重重未改為"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "舊恨重重未改爲",
+            "b": "舊恨重重未改為"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 18,
+      "ganzhi": {
+        "beigang_official_list": "丙戍",
+        "beigang_ocr": null,
+        "xingang_official": "丙戌",
+        "fs60": "丙戌"
+      },
+      "poem_beigang_aligned": [
+        "君問中間此言因",
+        "看看祿馬拱前程",
+        "求得貴人多得利",
+        "和合自有兩分明"
+      ],
+      "poem_fs60": [
+        "君問中間此言因",
+        "看看祿馬拱前程",
+        "若得貴人多得利",
+        "和合自有兩分明"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "求得貴人多得利",
+            "b": "若得貴人多得利"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "君問中間此言因",
+        "看看祿馬拱前程",
+        "求得貴人多得利",
+        "和合自有兩分明"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "求得貴人多得利",
+            "b": "若得貴人多得利"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 19,
+      "ganzhi": {
+        "beigang_official_list": "丁丑",
+        "beigang_ocr": null,
+        "xingang_official": "丁丑",
+        "fs60": "丁丑"
+      },
+      "poem_beigang_aligned": [
+        "富貴由命天註定",
+        "心高必然誤君期",
+        "不然且回依舊路",
+        "雲開月出兩分明"
+      ],
+      "poem_fs60": [
+        "富貴由命天註定",
+        "心高必然誤君期",
+        "不然且回依舊路",
+        "雲開月出自分明"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "雲開月出兩分明",
+            "b": "雲開月出自分明"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "富貴由命天註定",
+        "心高必然誤君期",
+        "不然且回依舊路",
+        "雲開月出兩分明"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "雲開月出兩分明",
+            "b": "雲開月出自分明"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 20,
+      "ganzhi": {
+        "beigang_official_list": "丁卯",
+        "beigang_ocr": null,
+        "xingang_official": "丁卯",
+        "fs60": "丁卯"
+      },
+      "poem_beigang_aligned": [
+        "前途功名未得意",
+        "只恐命內有交加",
+        "兩家必定防損失",
+        "勸君且退莫咨嗟"
+      ],
+      "poem_fs60": [
+        "前途功名未得意",
+        "只恐命內有交加",
+        "兩家必定防損失",
+        "勸君且退莫咨嗟"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "前途功名未得意",
+        "只恐命內有交加",
+        "兩家必定防損失",
+        "勸君且退莫咨嗟"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 21,
+      "ganzhi": {
+        "beigang_official_list": "丁巳",
+        "beigang_ocr": null,
+        "xingang_official": "丁巳",
+        "fs60": "丁巳"
+      },
+      "poem_beigang_aligned": [
+        "十方佛法有靈通",
+        "大難禍患不相同",
+        "紅日當空常照耀",
+        "還有貴人到家堂"
+      ],
+      "poem_fs60": [
+        "十方佛法有靈通",
+        "大難禍患不相同",
+        "紅日當空常照耀",
+        "還有貴人到家堂"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "十方佛法有靈通",
+        "大難禍患不相同",
+        "紅日當空常照耀",
+        "還有貴人到家堂"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 22,
+      "ganzhi": {
+        "beigang_official_list": "丁未",
+        "beigang_ocr": null,
+        "xingang_official": "丁未",
+        "fs60": "丁未"
+      },
+      "poem_beigang_aligned": [
+        "太公家業八十成",
+        "月出光輝四海明",
+        "命內自然逢大吉",
+        "茅屋中間百事亨"
+      ],
+      "poem_fs60": [
+        "太公家業八十成",
+        "月出光輝四海明",
+        "命內自然逢大吉",
+        "茅屋中間百事亨"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "太公家業八十成",
+        "月出光輝四海明",
+        "命內自然逢大吉",
+        "茅屋中間百事亨"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 23,
+      "ganzhi": {
+        "beigang_official_list": "丁酉",
+        "beigang_ocr": null,
+        "xingang_official": "丁酉",
+        "fs60": "丁酉"
+      },
+      "poem_beigang_aligned": [
+        "欲去長江水闊茫",
+        "前途未遂運未通",
+        "如今絲綸常在手",
+        "只恐魚水不相逢"
+      ],
+      "poem_fs60": [
+        "欲去長江水闊茫",
+        "前途未遂運未通",
+        "如今絲綸常在手",
+        "只恐魚水不相逢"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "欲去長江水濁茫",
+        "前途未遂運未通",
+        "如今絲綸常在手",
+        "只恐魚水不相逢"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "欲去長江水濁茫",
+            "b": "欲去長江水闊茫"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "欲去長江水濁茫",
+            "b": "欲去長江水闊茫"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 24,
+      "ganzhi": {
+        "beigang_official_list": "丁亥",
+        "beigang_ocr": null,
+        "xingang_official": "丁亥",
+        "fs60": "丁亥"
+      },
+      "poem_beigang_aligned": [
+        "月出光輝四海明",
+        "前途祿位見太平",
+        "浮雲掃退終無事",
+        "可保禍患不臨身"
+      ],
+      "poem_fs60": [
+        "月出光輝四海明",
+        "前途祿位見太平",
+        "浮雲掃退終無事",
+        "可保禍患不臨身"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "月出光輝四海明",
+        "前途祿位見太平",
+        "浮雲掃退終無事",
+        "可保禍患不臨身"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 25,
+      "ganzhi": {
+        "beigang_official_list": "戊子",
+        "beigang_ocr": null,
+        "xingang_official": "戊子",
+        "fs60": "戊子"
+      },
+      "poem_beigang_aligned": [
+        "總是前途莫心勞",
+        "求神問聖枉是多",
+        "但看雞犬日過後",
+        "不須作福事如何"
+      ],
+      "poem_fs60": [
+        "總是前途莫心勞",
+        "求神問聖枉是多",
+        "但看雞犬日過後",
+        "不須作福事如何"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "總是前途莫心勞",
+        "求神問聖枉是多",
+        "但看雞犬日過後",
+        "不須作福事如何"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 26,
+      "ganzhi": {
+        "beigang_official_list": "戊寅",
+        "beigang_ocr": null,
+        "xingang_official": "戊寅",
+        "fs60": "戊寅"
+      },
+      "poem_beigang_aligned": [
+        "選出牡丹第一枝",
+        "勸君折取莫遲疑",
+        "世間若問相知處",
+        "萬事逢春正及時"
+      ],
+      "poem_fs60": [
+        "選出牡丹第一枝",
+        "勸君折取莫遲疑",
+        "世間若問相知處",
+        "萬事逢春正及時"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "選出牡丹第一枝",
+        "勸君折取莫遲疑",
+        "世間若問相知處",
+        "萬事逢春正及時"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 27,
+      "ganzhi": {
+        "beigang_official_list": "戊辰",
+        "beigang_ocr": null,
+        "xingang_official": "戊辰",
+        "fs60": "戊辰"
+      },
+      "poem_beigang_aligned": [
+        "君爾寬心且自由",
+        "門庭清吉家無憂",
+        "財寶自然終吉利",
+        "凡事無傷不用求"
+      ],
+      "poem_fs60": [
+        "君爾寬心且自由",
+        "門庭清吉家無憂",
+        "財寶自然終吉利",
+        "凡事無傷不用求"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "君爾寬心且自由",
+        "門庭清吉家無憂",
+        "財寶自然終吉利",
+        "凡事無傷不用求"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 28,
+      "ganzhi": {
+        "beigang_official_list": "戊午",
+        "beigang_ocr": null,
+        "xingang_official": "戊午",
+        "fs60": "戊午"
+      },
+      "poem_beigang_aligned": [
+        "於今莫作此當時",
+        "虎落平陽被犬欺",
+        "世間凡事何難定",
+        "千山萬水也遲疑"
+      ],
+      "poem_fs60": [
+        "於今莫作此當時",
+        "虎落平陽被犬欺",
+        "世間凡事何難定",
+        "千山萬水也遲疑"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "於今莫作此當時",
+        "虎落平洋被犬欺",
+        "世間凡事何難定",
+        "千山萬水也遲疑"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "虎落平洋被犬欺",
+            "b": "虎落平陽被犬欺"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "虎落平洋被犬欺",
+            "b": "虎落平陽被犬欺"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 29,
+      "ganzhi": {
+        "beigang_official_list": "戊申",
+        "beigang_ocr": null,
+        "xingang_official": "戊申",
+        "fs60": "戊申"
+      },
+      "poem_beigang_aligned": [
+        "枯木可惜未逢春",
+        "如今還在暗中藏",
+        "寬心且守風霜退",
+        "還君依舊作乾坤"
+      ],
+      "poem_fs60": [
+        "枯木可惜未逢春",
+        "如今反在暗中藏",
+        "寬心且守風霜退",
+        "還君依舊作乾坤"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "如今還在暗中藏",
+            "b": "如今反在暗中藏"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "枯木可惜未逢春",
+        "如今還在暗中藏",
+        "寬心且守風霜退",
+        "還君依舊作乾坤"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "如今還在暗中藏",
+            "b": "如今反在暗中藏"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 30,
+      "ganzhi": {
+        "beigang_official_list": "戊戍",
+        "beigang_ocr": null,
+        "xingang_official": "戊戌",
+        "fs60": "戊戌"
+      },
+      "poem_beigang_aligned": [
+        "漸漸看此月中和",
+        "過後須妨未得高",
+        "改變顏色前途去",
+        "凡事必定見重勞"
+      ],
+      "poem_fs60": [
+        "漸漸看此月中和",
+        "過後須防未得高",
+        "改變顏色前途去",
+        "凡事必定見重勞"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "過後須妨未得高",
+            "b": "過後須防未得高"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "漸漸看此月中和",
+        "過後須妨未得高",
+        "改變顏色前途去",
+        "凡事必定見重勞"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "過後須妨未得高",
+            "b": "過後須防未得高"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 31,
+      "ganzhi": {
+        "beigang_official_list": "己丑",
+        "beigang_ocr": null,
+        "xingang_official": "己丑",
+        "fs60": "己丑"
+      },
+      "poem_beigang_aligned": [
+        "綠柳蒼蒼正當時",
+        "任君此去作乾坤",
+        "花葉結實無殘謝",
+        "福祿自有慶家門"
+      ],
+      "poem_fs60": [
+        "綠柳蒼蒼正當時",
+        "任君此去作乾坤",
+        "花果結實無殘謝",
+        "福祿自有慶家門"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "花葉結實無殘謝",
+            "b": "花果結實無殘謝"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "綠柳蒼蒼正當時",
+        "任君此去作乾坤",
+        "花葉結寔無殘謝",
+        "福祿自有慶家門"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "花葉結寔無殘謝",
+            "b": "花葉結實無殘謝"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "花葉結寔無殘謝",
+            "b": "花果結實無殘謝"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 32,
+      "ganzhi": {
+        "beigang_official_list": "己卯",
+        "beigang_ocr": null,
+        "xingang_official": "己卯",
+        "fs60": "己卯"
+      },
+      "poem_beigang_aligned": [
+        "龍虎相交在門前",
+        "此事必定兩相連",
+        "黃金忽然變成鐵",
+        "何用作福問神仙"
+      ],
+      "poem_fs60": [
+        "龍虎相交在門前",
+        "此事必定兩相連",
+        "黃金忽然變成鐵",
+        "何用作福問神仙"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "龍虎相交在門前",
+        "此事必定兩相連",
+        "黃金忽然變成鐵",
+        "何用作福問神仙"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 33,
+      "ganzhi": {
+        "beigang_official_list": "己巳",
+        "beigang_ocr": null,
+        "xingang_official": "己巳",
+        "fs60": "己巳"
+      },
+      "poem_beigang_aligned": [
+        "欲去長江水闊茫",
+        "行舟把定未遭風",
+        "戶內用心再作福",
+        "看看魚水得相逢"
+      ],
+      "poem_fs60": [
+        "欲去長江水闊茫",
+        "行舟把定未遭風",
+        "戶內用心再作福",
+        "看看魚水得相逢"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "欲去長江水濶茫",
+        "行舟把定未遭風",
+        "戶內用心再作福",
+        "看看魚水得相逢"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "欲去長江水濶茫",
+            "b": "欲去長江水闊茫"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "欲去長江水濶茫",
+            "b": "欲去長江水闊茫"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 34,
+      "ganzhi": {
+        "beigang_official_list": "己未",
+        "beigang_ocr": null,
+        "xingang_official": "己未",
+        "fs60": "己未"
+      },
+      "poem_beigang_aligned": [
+        "危險高山行過盡",
+        "莫嫌此路有重重",
+        "若見蘭桂漸漸發",
+        "去蛇反轉變成龍"
+      ],
+      "poem_fs60": [
+        "危險高山行過盡",
+        "莫嫌此路有重重",
+        "若見蘭桂漸漸發",
+        "長蛇反轉變成龍"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "去蛇反轉變成龍",
+            "b": "長蛇反轉變成龍"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "危險高山行過盡",
+        "莫嫌此路有重重",
+        "若見蘭桂漸漸發",
+        "去蛇反轉變成龍"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "去蛇反轉變成龍",
+            "b": "長蛇反轉變成龍"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 35,
+      "ganzhi": {
+        "beigang_official_list": "己酉",
+        "beigang_ocr": null,
+        "xingang_official": "己酉",
+        "fs60": "己酉"
+      },
+      "poem_beigang_aligned": [
+        "此事何須用心機",
+        "前途變怪自然知",
+        "看看此去得和合",
+        "漸漸脫出見太平"
+      ],
+      "poem_fs60": [
+        "此事何須用心機",
+        "前途變怪自然知",
+        "看看此去得和合",
+        "漸漸脫出見太平"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "此事何須用心機",
+        "前途變怪自然知",
+        "看看此去得和合",
+        "漸漸脫出見太平"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 36,
+      "ganzhi": {
+        "beigang_official_list": "己亥",
+        "beigang_ocr": null,
+        "xingang_official": "己亥",
+        "fs60": "己亥"
+      },
+      "poem_beigang_aligned": [
+        "福如東海壽如山",
+        "君爾何須嘆苦難",
+        "命內自然逢大吉",
+        "祈保分明得自安"
+      ],
+      "poem_fs60": [
+        "福如東海壽如山",
+        "君爾何須嘆苦難",
+        "命內自然逢大吉",
+        "祈保分明自平安"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "祈保分明得自安",
+            "b": "祈保分明自平安"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "福如東海壽如山",
+        "君爾何須嘆苦難",
+        "命內自然逢大吉",
+        "祈保分明得自安"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "祈保分明得自安",
+            "b": "祈保分明自平安"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 37,
+      "ganzhi": {
+        "beigang_official_list": "庚子",
+        "beigang_ocr": null,
+        "xingang_official": "庚子",
+        "fs60": "庚子"
+      },
+      "poem_beigang_aligned": [
+        "運逢得意身顯變",
+        "君爾身中皆有益",
+        "一向前途無難事",
+        "決意之中保清吉"
+      ],
+      "poem_fs60": [
+        "運逢得意身顯變",
+        "君爾身中皆有益",
+        "一向前途無難事",
+        "決意之中保清吉"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "運逢得意身顯變",
+        "君爾身中皆有盜",
+        "一向前途無難事",
+        "決意之中保清吉"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "君爾身中皆有盜",
+            "b": "君爾身中皆有益"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "君爾身中皆有盜",
+            "b": "君爾身中皆有益"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 38,
+      "ganzhi": {
+        "beigang_official_list": "庚寅",
+        "beigang_ocr": null,
+        "xingang_official": "庚寅",
+        "fs60": "庚寅"
+      },
+      "poem_beigang_aligned": [
+        "名顯有意在中間",
+        "不須祈禱心自安",
+        "看看早晚日過後",
+        "即時得意在中間"
+      ],
+      "poem_fs60": [
+        "名顯有意在中央",
+        "不須祈禱心自安",
+        "看看早晚日過後",
+        "即時得意在其間"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "名顯有意在中間",
+            "b": "名顯有意在中央"
+          },
+          {
+            "line": 4,
+            "a": "即時得意在中間",
+            "b": "即時得意在其間"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "名顯有意在中間",
+        "不須祈禱心自安",
+        "看看早晚日過後",
+        "即時得意在中間"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "名顯有意在中間",
+            "b": "名顯有意在中央"
+          },
+          {
+            "line": 4,
+            "a": "即時得意在中間",
+            "b": "即時得意在其間"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 39,
+      "ganzhi": {
+        "beigang_official_list": "庚辰",
+        "beigang_ocr": null,
+        "xingang_official": "庚辰",
+        "fs60": "庚辰"
+      },
+      "poem_beigang_aligned": [
+        "意中若問神仙路",
+        "勸爾且退望高樓",
+        "寬心且守寬心坐",
+        "必然遇得貴人扶"
+      ],
+      "poem_fs60": [
+        "意中若問神仙路",
+        "勸爾且退望高樓",
+        "寬心且守寬心坐",
+        "必然遇得貴人扶"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "意中若問神仙路",
+        "勸爾且退望高樓",
+        "寬心且守寬心坐",
+        "必然遇得貴人扶"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 40,
+      "ganzhi": {
+        "beigang_official_list": "庚午",
+        "beigang_ocr": null,
+        "xingang_official": "庚午",
+        "fs60": "庚午"
+      },
+      "poem_beigang_aligned": [
+        "平生富貴成祿位",
+        "君家門戶定光輝",
+        "此中必定無損失",
+        "夫妻百歲喜相隨"
+      ],
+      "poem_fs60": [
+        "平生富貴成祿位",
+        "君家門戶定光輝",
+        "此中必定無損失",
+        "夫妻百歲喜相隨"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "平生富貴成祿位",
+        "君家門戶定光輝",
+        "此中必定無損失",
+        "夫妻百歲喜相隨"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 41,
+      "ganzhi": {
+        "beigang_official_list": "庚申",
+        "beigang_ocr": null,
+        "xingang_official": "庚申",
+        "fs60": "庚申"
+      },
+      "poem_beigang_aligned": [
+        "今行到手寔難推",
+        "歌歌暢飲自徘徊",
+        "雞犬相聞消息近",
+        "婚姻夙世結成雙"
+      ],
+      "poem_fs60": [
+        "今行到此實難推",
+        "歌歌暢飲自徘徊",
+        "雞犬相聞消息近",
+        "婚姻夙世結成雙"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "今行到手寔難推",
+            "b": "今行到此實難推"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "今行到手寔難推",
+        "歌歌暢飲自徘徊",
+        "雞犬相聞消息近",
+        "婚姻夙世結成雙"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "今行到手寔難推",
+            "b": "今行到此實難推"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 42,
+      "ganzhi": {
+        "beigang_official_list": "庚戍",
+        "beigang_ocr": null,
+        "xingang_official": "庚戌",
+        "fs60": "庚戌"
+      },
+      "poem_beigang_aligned": [
+        "一重江水一重山",
+        "誰知此去路又難",
+        "任他改求終不過",
+        "是非終久未得安"
+      ],
+      "poem_fs60": [
+        "一重江水一重山",
+        "誰知此去路又難",
+        "任他改求終不過",
+        "是非終久未得安"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "一重江水一重山",
+        "誰知此去路又難",
+        "任他改求終不過",
+        "是非終久未得安"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 43,
+      "ganzhi": {
+        "beigang_official_list": "辛丑",
+        "beigang_ocr": null,
+        "xingang_official": "辛丑",
+        "fs60": "辛丑"
+      },
+      "poem_beigang_aligned": [
+        "一年作事急如飛",
+        "君爾寬心莫遲疑",
+        "貴人還在千里外",
+        "音信月中漸漸知"
+      ],
+      "poem_fs60": [
+        "一年作事急如飛",
+        "君爾寬心莫遲疑",
+        "貴人還在千里外",
+        "音信月中漸漸知"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "一年作事急如飛",
+        "君爾寬心莫遲疑",
+        "貴人還在千里外",
+        "音信月中漸漸知"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 44,
+      "ganzhi": {
+        "beigang_official_list": "辛卯",
+        "beigang_ocr": null,
+        "xingang_official": "辛卯",
+        "fs60": "辛卯"
+      },
+      "poem_beigang_aligned": [
+        "客到前途多得利",
+        "君爾何故兩相疑",
+        "雖是中間逢進退",
+        "月出光輝得運時"
+      ],
+      "poem_fs60": [
+        "客到前途多得利",
+        "君爾何故兩相疑",
+        "雖是中間逢進退",
+        "月出光輝得運時"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "客到前途多得利",
+        "君爾何故兩相疑",
+        "雖是中間逢進退",
+        "月出光輝得運時"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 45,
+      "ganzhi": {
+        "beigang_official_list": "辛巳",
+        "beigang_ocr": null,
+        "xingang_official": "辛巳",
+        "fs60": "辛巳"
+      },
+      "poem_beigang_aligned": [
+        "花開今已結成果",
+        "富貴榮華終到老",
+        "君子小人結會合",
+        "萬事清吉莫煩惱"
+      ],
+      "poem_fs60": [
+        "花開今已結成果",
+        "富貴榮華終到老",
+        "君子小人相會合",
+        "萬事清吉莫煩惱"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "君子小人結會合",
+            "b": "君子小人相會合"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "花開今已結成菓",
+        "富貴榮華終到老",
+        "君子小人結會合",
+        "萬事清吉莫煩惱"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "花開今已結成菓",
+            "b": "花開今已結成果"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "花開今已結成菓",
+            "b": "花開今已結成果"
+          },
+          {
+            "line": 3,
+            "a": "君子小人結會合",
+            "b": "君子小人相會合"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 46,
+      "ganzhi": {
+        "beigang_official_list": "辛未",
+        "beigang_ocr": null,
+        "xingang_official": "辛未",
+        "fs60": "辛未"
+      },
+      "poem_beigang_aligned": [
+        "功名得位與君顯",
+        "前途富貴喜安然",
+        "若遇一輪明月照",
+        "十五團圓照滿天"
+      ],
+      "poem_fs60": [
+        "功名得意與君顯",
+        "前途富貴喜安然",
+        "若遇一輪明月照",
+        "十五團圓光滿天"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "功名得位與君顯",
+            "b": "功名得意與君顯"
+          },
+          {
+            "line": 4,
+            "a": "十五團圓照滿天",
+            "b": "十五團圓光滿天"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "功名得位與君顯",
+        "前途富貴喜安然",
+        "若遇一輪明月照",
+        "十五團圓照滿天"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "功名得位與君顯",
+            "b": "功名得意與君顯"
+          },
+          {
+            "line": 4,
+            "a": "十五團圓照滿天",
+            "b": "十五團圓光滿天"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 47,
+      "ganzhi": {
+        "beigang_official_list": "辛酉",
+        "beigang_ocr": null,
+        "xingang_official": "辛酉",
+        "fs60": "辛酉"
+      },
+      "poem_beigang_aligned": [
+        "君爾何須問聖跡",
+        "自己心中皆有益",
+        "于今且看月中旬",
+        "凶事脫出化成吉"
+      ],
+      "poem_fs60": [
+        "君爾何須問聖跡",
+        "自己心中皆有益",
+        "於今且看月中旬",
+        "凶事脫出化成吉"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "于今且看月中旬",
+            "b": "於今且看月中旬"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "君爾何須問聖蹟",
+        "自己心中皆有益",
+        "于今且看月中旬",
+        "凶事脫出化成吉"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "君爾何須問聖蹟",
+            "b": "君爾何須問聖跡"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "君爾何須問聖蹟",
+            "b": "君爾何須問聖跡"
+          },
+          {
+            "line": 3,
+            "a": "于今且看月中旬",
+            "b": "於今且看月中旬"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 48,
+      "ganzhi": {
+        "beigang_official_list": "辛亥",
+        "beigang_ocr": null,
+        "xingang_official": "辛亥",
+        "fs60": "辛亥"
+      },
+      "poem_beigang_aligned": [
+        "陰世作事未和同",
+        "雲遮月色正朦朧",
+        "心中意欲前途去",
+        "只恐前途運未通"
+      ],
+      "poem_fs60": [
+        "陽世作事未和同",
+        "雲遮月色正朦朧",
+        "心中意欲前途去",
+        "只恐命內運未通"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "陰世作事未和同",
+            "b": "陽世作事未和同"
+          },
+          {
+            "line": 4,
+            "a": "只恐前途運未通",
+            "b": "只恐命內運未通"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "陰世作事未和同",
+        "雲遮月色正朦朧",
+        "心中意欲前途去",
+        "只恐前途運未通"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "陰世作事未和同",
+            "b": "陽世作事未和同"
+          },
+          {
+            "line": 4,
+            "a": "只恐前途運未通",
+            "b": "只恐命內運未通"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 49,
+      "ganzhi": {
+        "beigang_official_list": "壬子",
+        "beigang_ocr": null,
+        "xingang_official": "壬子",
+        "fs60": "壬子"
+      },
+      "poem_beigang_aligned": [
+        "言語雖多不可從",
+        "風雲靜處未行龍",
+        "暗中終得明消息",
+        "君屬何須問重重"
+      ],
+      "poem_fs60": [
+        "言語雖多不可從",
+        "風雲靜處未行龍",
+        "暗中終得明消息",
+        "君爾何須問重重"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "君屬何須問重重",
+            "b": "君爾何須問重重"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "言語雖多不可從",
+        "風雲靜處未行龍",
+        "暗中終得明消息",
+        "君爾何須問重重"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "君爾何須問重重",
+            "b": "君屬何須問重重"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 50,
+      "ganzhi": {
+        "beigang_official_list": "壬寅",
+        "beigang_ocr": null,
+        "xingang_official": "壬寅",
+        "fs60": "壬寅"
+      },
+      "poem_beigang_aligned": [
+        "佛前發誓無異心",
+        "且看前途得好音",
+        "此物原來本是鐵",
+        "亦能變化得成金"
+      ],
+      "poem_fs60": [
+        "佛前發誓無異心",
+        "且看前途得好音",
+        "此物原來本是鐵",
+        "也能變化得成金"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "亦能變化得成金",
+            "b": "也能變化得成金"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "佛前發誓無異心",
+        "且看前途得好音",
+        "此物原來本是鐵",
+        "亦能變化得成金"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 4,
+            "a": "亦能變化得成金",
+            "b": "也能變化得成金"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 51,
+      "ganzhi": {
+        "beigang_official_list": "壬辰",
+        "beigang_ocr": null,
+        "xingang_official": "壬辰",
+        "fs60": "壬辰"
+      },
+      "poem_beigang_aligned": [
+        "東西南北不堪行",
+        "前途此事正可當",
+        "勸君把定莫煩惱",
+        "家門自有保安康"
+      ],
+      "poem_fs60": [
+        "東西南北不堪行",
+        "前途此事正可當",
+        "勸君把定莫煩惱",
+        "家門自有保安康"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "東西南北不堪行",
+        "前途此事正可當",
+        "勸君把定莫煩惱",
+        "家門自有保安康"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 52,
+      "ganzhi": {
+        "beigang_official_list": "壬午",
+        "beigang_ocr": null,
+        "xingang_official": "壬午",
+        "fs60": "壬午"
+      },
+      "poem_beigang_aligned": [
+        "功名事業本由天",
+        "不須介念意懸懸",
+        "若問中間遲與速",
+        "風雲際會在眼前"
+      ],
+      "poem_fs60": [
+        "功名事業本由天",
+        "不須掛念意懸懸",
+        "若問中間遲與速",
+        "風雲際會在眼前"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "不須介念意懸懸",
+            "b": "不須掛念意懸懸"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "功名事業本由天",
+        "不須介意意懸懸",
+        "若問中間運與速",
+        "風雲際會在眼前"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "不須介意意懸懸",
+            "b": "不須介念意懸懸"
+          },
+          {
+            "line": 3,
+            "a": "若問中間運與速",
+            "b": "若問中間遲與速"
+          }
+        ],
+        "category": "substantive"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "不須介意意懸懸",
+            "b": "不須掛念意懸懸"
+          },
+          {
+            "line": 3,
+            "a": "若問中間運與速",
+            "b": "若問中間遲與速"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 53,
+      "ganzhi": {
+        "beigang_official_list": "壬申",
+        "beigang_ocr": null,
+        "xingang_official": "壬申",
+        "fs60": "壬申"
+      },
+      "poem_beigang_aligned": [
+        "看君來問心中事",
+        "積善之家慶有餘",
+        "運亨財子雙雙至",
+        "指日喜氣溢門閭"
+      ],
+      "poem_fs60": [
+        "看君來問心中事",
+        "積善之家慶有餘",
+        "運亨財子雙雙至",
+        "指日喜氣溢門閭"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "看君來問心中事",
+        "積善之家慶有餘",
+        "運亨財子雙雙至",
+        "指日喜氣溢門閭"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 54,
+      "ganzhi": {
+        "beigang_official_list": "壬戍",
+        "beigang_ocr": null,
+        "xingang_official": "壬戌",
+        "fs60": "壬戌"
+      },
+      "poem_beigang_aligned": [
+        "孤燈寂寂夜沉沉",
+        "萬事清吉萬事成",
+        "若逢陰中有善果",
+        "燒得好香達神明"
+      ],
+      "poem_fs60": [
+        "孤燈寂寂夜沉沉",
+        "萬事清吉萬事成",
+        "若逢陰中有善果",
+        "燒得好香達神明"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "孤燈寂寂夜沉沉",
+        "萬事清吉萬事成",
+        "若逢陰中有善果",
+        "燒得好香達神明"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 55,
+      "ganzhi": {
+        "beigang_official_list": "癸丑",
+        "beigang_ocr": null,
+        "xingang_official": "癸丑",
+        "fs60": "癸丑"
+      },
+      "poem_beigang_aligned": [
+        "須知進退總虛言",
+        "看看發暗未必全",
+        "珠玉深藏還未變",
+        "心中但得枉徒然"
+      ],
+      "poem_fs60": [
+        "須知進退總言虛",
+        "看看發暗未必全",
+        "珠玉深藏還未變",
+        "心中但得枉徒然"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "須知進退總虛言",
+            "b": "須知進退總言虛"
+          }
+        ],
+        "category": "orthographic_only"
+      },
+      "poem_xingang_aligned": [
+        "須知進退總虛言",
+        "看看發暗未必全",
+        "珠玉深藏還未變",
+        "心中但得枉徒然"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "須知進退總虛言",
+            "b": "須知進退總言虛"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    },
+    {
+      "slip_number": 56,
+      "ganzhi": {
+        "beigang_official_list": "癸卯",
+        "beigang_ocr": null,
+        "xingang_official": "癸卯",
+        "fs60": "癸卯"
+      },
+      "poem_beigang_aligned": [
+        "病中若得苦心勞",
+        "到底完全總未遭",
+        "去後不須回頭問",
+        "心中事務盡消磨"
+      ],
+      "poem_fs60": [
+        "病中若得苦心勞",
+        "到底完全總未遭",
+        "去後不須回頭問",
+        "心中事務盡消磨"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "病中若得苦心勞",
+        "到底完全總未遭",
+        "去後不須回頭問",
+        "心中事務盡消磨"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 57,
+      "ganzhi": {
+        "beigang_official_list": "癸巳",
+        "beigang_ocr": null,
+        "xingang_official": "癸巳",
+        "fs60": "癸巳"
+      },
+      "poem_beigang_aligned": [
+        "勸君把定心莫虛",
+        "前途富貴喜安然",
+        "到底中間無大事",
+        "又遇神仙守安居"
+      ],
+      "poem_fs60": [
+        "勸君把定心莫虛",
+        "前途清吉得運時",
+        "到底中間無大事",
+        "又遇神仙守安居"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "前途富貴喜安然",
+            "b": "前途清吉得運時"
+          }
+        ],
+        "category": "substantive"
+      },
+      "poem_xingang_aligned": [
+        "勸君把定心莫虛",
+        "前途富貴喜安然",
+        "到底中間無大事",
+        "又遇神仙守安居"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 2,
+            "a": "前途富貴喜安然",
+            "b": "前途清吉得運時"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 58,
+      "ganzhi": {
+        "beigang_official_list": "癸未",
+        "beigang_ocr": null,
+        "xingang_official": "癸未",
+        "fs60": "癸未"
+      },
+      "poem_beigang_aligned": [
+        "蛇身意欲變成龍",
+        "只恐命內運未通",
+        "久病且作寬心坐",
+        "言語雖多不可從"
+      ],
+      "poem_fs60": [
+        "蛇身意欲變成龍",
+        "只恐命內運未通",
+        "久病且作寬心坐",
+        "言語雖多不可從"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "蛇身意欲變成龍",
+        "只恐命內運未通",
+        "久病且作寬心坐",
+        "言語雖多不可從"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      }
+    },
+    {
+      "slip_number": 59,
+      "ganzhi": {
+        "beigang_official_list": "癸酉",
+        "beigang_ocr": null,
+        "xingang_official": "癸酉",
+        "fs60": "癸酉"
+      },
+      "poem_beigang_aligned": [
+        "有心作福莫遲疑",
+        "求名清吉正當時",
+        "此事必能成會合",
+        "財寶自然喜相隨"
+      ],
+      "poem_fs60": [
+        "有心作福莫遲疑",
+        "求名清吉正當時",
+        "此事必能成會合",
+        "財寶自然喜相隨"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "poem_xingang_aligned": [
+        "有心作福莫迟疑",
+        "求名清吉正当時",
+        "此事必能成会合",
+        "财宝自能喜相随"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "有心作福莫迟疑",
+            "b": "有心作福莫遲疑"
+          },
+          {
+            "line": 2,
+            "a": "求名清吉正当時",
+            "b": "求名清吉正當時"
+          },
+          {
+            "line": 3,
+            "a": "此事必能成会合",
+            "b": "此事必能成會合"
+          },
+          {
+            "line": 4,
+            "a": "财宝自能喜相随",
+            "b": "財寶自然喜相隨"
+          }
+        ],
+        "category": "substantive"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 1,
+            "a": "有心作福莫迟疑",
+            "b": "有心作福莫遲疑"
+          },
+          {
+            "line": 2,
+            "a": "求名清吉正当時",
+            "b": "求名清吉正當時"
+          },
+          {
+            "line": 3,
+            "a": "此事必能成会合",
+            "b": "此事必能成會合"
+          },
+          {
+            "line": 4,
+            "a": "财宝自能喜相随",
+            "b": "財寶自然喜相隨"
+          }
+        ],
+        "category": "substantive"
+      }
+    },
+    {
+      "slip_number": 60,
+      "ganzhi": {
+        "beigang_official_list": "癸亥",
+        "beigang_ocr": null,
+        "xingang_official": "癸亥",
+        "fs60": "癸亥"
+      },
+      "poem_beigang_aligned": [
+        "月出光輝本清吉",
+        "浮雲總是蔽陰色",
+        "內外用心再作福",
+        "當官分理便有益"
+      ],
+      "poem_fs60": [
+        "月出光輝本清吉",
+        "浮雲總是蔽陰色",
+        "戶內用心再作福",
+        "當官分理便有益"
+      ],
+      "beigang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "內外用心再作福",
+            "b": "戶內用心再作福"
+          }
+        ],
+        "category": "substantive",
+        "note": "內外/戶內：1 字差但語義實質（SN-03-12）——分類為 substantive_divergence；北港＋新港 2 獨立官方 primary 已指定「內外」為 reference（reference_designated），mirror「戶內」substantive attestation 保留"
+      },
+      "poem_xingang_aligned": [
+        "月出光輝本清吉",
+        "浮雲總是蔽陰色",
+        "內外用心再作福",
+        "當官分理便有益"
+      ],
+      "xingang_vs_beigang": {
+        "diffs": [],
+        "category": "identical"
+      },
+      "xingang_vs_fs60": {
+        "diffs": [
+          {
+            "line": 3,
+            "a": "內外用心再作福",
+            "b": "戶內用心再作福"
+          }
+        ],
+        "category": "orthographic_only"
+      }
+    }
+  ]
+}

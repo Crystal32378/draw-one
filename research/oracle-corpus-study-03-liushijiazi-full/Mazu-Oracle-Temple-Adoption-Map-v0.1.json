@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-08-15",
+  "task": "Oracle Corpus Study 03（Phase A 補查）— 媽祖籤 temple-by-temple adoption map v0.2",
+  "supersedes": "Oracle Corpus Study 03 v0.1（封版包未動，本檔為延伸更新）",
+  "corpus_candidates_found": {
+    "liushijiazi_60": "六十甲子籤（60+籤首/籤王；干支序；卦象記號+五行+方位）——北港/新港/慈祐宮/關渡宮(self-label)/鎮海宮/育德",
+    "penghu_tianhou_100": "澎湖天后宮一百籤（100；籤解格式 功名/生意/六甲…）——台南大天后宮/白沙屯(候選)/鹿港(籤詩網聲明)/關渡宮(籤詩網聲明，與官方 self-label 衝突)",
+    "note": "兩套皆被俗稱『媽祖籤』——名稱 conflation 確認；同一廟可能多籤系統（關渡宮、白沙屯聖籤/藥籤）"
+  },
+  "adoptions_count": 14,
+  "adoptions": [
+    {
+      "id": "AD-M01", "temple": "北港朝天宮", "deity": "天上聖母（北港媽）", "region": "雲林北港",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60 干支序（甲子/甲寅/甲辰…）",
+      "official_source": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list",
+      "evidence_level": "VERIFIED（adoption 事實）→ claim PROBABLE awaiting human approval",
+      "evidence": "官方一手：列表 60 籤干支序＋籤詩圖 60/60 全量下載 OCR（2026-08-15；59 張 2024-08-05 批次、第59籤 2025-06-21 批次）",
+      "notes": "官網 list 用字漂移：第6/18/30/42/54 籤作『戍』；2016 北港媽祖擲筊修訂版（ydm secondary）"
+    },
+    {
+      "id": "AD-M02", "temple": "新港奉天宮", "deity": "天上聖母（新港媽）", "region": "嘉義新港",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60 干支序",
+      "official_source": "https://www.hsinkangmazu.org.tw/?act=menuinfo&ml_id=20231222005&cmd=list",
+      "evidence_level": "VERIFIED（adoption 事實）→ claim PROBABLE awaiting human approval",
+      "evidence": "官方一手：列表頁 60 首 JS 陣列（第1首籤詩 甲子…第60首籤詩 癸亥，干支序完整）＋捐獻籤板照片 60/60 下載（信士邱福來 法號聖慧 謹獻；2023-12 批次）＋subset 12 籤 OCR",
+      "notes": "籤板照片圖面＝干支＋（首N）＋四句詩＋署名，無五行/卦頭；解析文字在官網頁面 content 欄位；圖檔需 Referer"
+    },
+    {
+      "id": "AD-M03", "temple": "松山慈祐宮", "deity": "天上聖母（錫口媽）", "region": "台北松山",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60",
+      "official_source": "https://www.ssjyg.org.tw/EBook.aspx",
+      "evidence_level": "VERIFIED（官方 self-label）",
+      "evidence": "官方頁面標題『媽祖 六十甲子籤詩解』（2026-08-15）；EBook 內容為 JS 載入，逐籤未核",
+      "notes": "self-label『六十甲子籤詩解』；籤詩內容載體未取得"
+    },
+    {
+      "id": "AD-M04", "temple": "關渡宮", "deity": "天上聖母", "region": "台北北投",
+      "corpus_candidate": "六十甲子籤（官方 self-label）／澎湖一百籤（籤詩網聲明）——衝突主張",
+      "numbering": "UNKNOWN（頁面未取得）",
+      "official_source": "https://www.kuantu.org.tw/（首頁『線上60甲子籤』連結 → net.civil.taipei/SignedPoetry）",
+      "evidence_level": "PROBABLE（self-label 直接觀察）",
+      "evidence": "官方首頁含『線上60甲子籤』連結（2026-08-15 直接觀察）；目標域名 net.civil.taipei DNS 不解析（NXDOMAIN，2026-08-15）→ 頁面內容未取得",
+      "notes": "籤詩網《澎湖一百籤》導言稱關渡宮亦用澎湖一百籤——與官方 self-label 衝突；可能多籤系統或籤詩網資訊過時，待考"
+    },
+    {
+      "id": "AD-M05", "temple": "台南大天后宮（祀典大天后宮）", "deity": "天上聖母", "region": "台南中西區",
+      "corpus_candidate": "澎湖天后宮一百籤", "numbering": "1-100（第一首帶『震』標記？待確認）",
+      "official_source": "https://www.gtainanmazu.org.tw/?act=menuinfo&ml_id=20220121002&cmd=detail&mi_id=20220121002",
+      "evidence_level": "VERIFIED（官方一手第一首）",
+      "evidence": "『天上聖母籤詩-第一首／曉日瞳瞳萬象融…』＋釋解（v0.1 已取）；其餘 99 首未抓",
+      "notes": ""
+    },
+    {
+      "id": "AD-M06", "temple": "白沙屯拱天宮", "deity": "白沙屯媽", "region": "苗栗通霄",
+      "corpus_candidate": "澎湖天后宮一百籤（候選）", "numbering": "1-100",
+      "official_source": null,
+      "evidence_level": "PROBABLE",
+      "evidence": "mstn.org『白沙屯媽祖百首聖籤』（第一首曉日曈曈萬象融＝澎湖一百籤第1首；頁面見『拱天宮101首』——100+籤王？待核）；FB 記載拱天宮求籤有聖籤/藥籤兩桶",
+      "notes": "官方線上籤未見；mstn 為社群站（非拱天宮官方）；『101首』結構待確認"
+    },
+    {
+      "id": "AD-M07", "temple": "鹿港天后宮", "deity": "天上聖母（鹿港媽）", "region": "彰化鹿港",
+      "corpus_candidate": "澎湖一百籤（籤詩網聲明，secondary）——官方內容未取得",
+      "numbering": "UNKNOWN",
+      "official_source": "https://www.lugangmazu.org/ask/",
+      "evidence_level": "PROBABLE（secondary 聲明）／官方內容 UNRESOLVED",
+      "evidence": "籤詩網《澎湖一百籤》導言列鹿港為採用廟宇（2026-08-15 直接觀察）；官方 ask 頁仍為 JS 互動載入未取得（技術 blocker；stage.lugangmazu.org/ask_n.php 空回應）",
+      "notes": "升級：v0.1 純 UNRESOLVED → 現有 secondary 候選 corpus；官方一手仍缺"
+    },
+    {
+      "id": "AD-M08", "temple": "大甲鎮瀾宮", "deity": "大甲媽", "region": "台中大甲",
+      "corpus_candidate": "六十甲子籤（候選）", "numbering": "1-60（候選）",
+      "official_source": null,
+      "evidence_level": "PROBABLE",
+      "evidence": "官方 FB（Dajiamazu）『六十甲子媽祖靈籤』（就饗/尬鍋/丰禾 線上求籤活動，2026-08-15 搜索）；官網 dajiamazu.org.tw 未見線上籤詩",
+      "notes": "self-label 見 FB；官網逐籤未驗"
+    },
+    {
+      "id": "AD-M09", "temple": "鎮海宮（東港，王爺廟）", "deity": "鎮海元帥（非媽祖）", "region": "屏東東港",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60",
+      "official_source": "https://www.8327777.org.tw/?act=menuinfo&ml_id=20260202001&cmd=list",
+      "evidence_level": "VERIFIED（官方明言）",
+      "evidence": "官方『鎮海宮依循此古法設立「六十甲子靈籤」』（v0.1）",
+      "notes": "非媽祖廟採用六十甲子籤——deity adoption 案例"
+    },
+    {
+      "id": "AD-M10", "temple": "椰城鳳山廟（印尼雅加達）", "deity": "清元真君／天狗將軍（非媽祖）", "region": "印尼雅加達",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60",
+      "official_source": null,
+      "evidence_level": "PROBABLE",
+      "evidence": "UBM 論文《六十甲子签诗之差异分析》（v0.1）",
+      "notes": "跨國＋跨神 adoption"
+    },
+    {
+      "id": "AD-M11", "temple": "育德媽祖同修會（ydm）", "deity": "天上聖母", "region": "台灣（網路）",
+      "corpus_candidate": "六十甲子籤", "numbering": "1-60 干支序",
+      "official_source": "http://www.ydm.com.tw/lot.asp",
+      "evidence_level": "VERIFIED（2016 修訂事件自述）",
+      "evidence": "新版頁面（2026-08-15 重抓）：60 籤導覽存在但內容 JS 載入；v0.1 已取第1/60籤全文",
+      "notes": "2016 北港媽祖指示逐字擲筊修訂版；第60籤用『戶內』＝網路系"
+    },
+    {
+      "id": "AD-M12", "temple": "澎湖天后宮（origin claim）", "deity": "天上聖母", "region": "澎湖馬公",
+      "corpus_candidate": "澎湖天后宮一百籤（origin）", "numbering": "1-100",
+      "official_source": null,
+      "evidence_level": "PROBABLE（secondary）",
+      "evidence": "好廟網/籤詩網/temples.tw 一致聲明『源自澎湖天后宮』；本宮官網檢索 0 結果（v0.1）",
+      "notes": "origin claim 為 secondary 群一致；本宮一手未取得"
+    },
+    {
+      "id": "AD-M13", "temple": "講美龍德宮（澎湖）", "deity": "玉皇三公主（非媽祖）", "region": "澎湖講美",
+      "corpus_candidate": "澎湖天后宮一百籤", "numbering": "1-100",
+      "official_source": null,
+      "evidence_level": "PROBABLE（secondary）",
+      "evidence": "籤詩網/好廟網導言：『澎湖當地的講美龍德宮（主祀玉皇三公主）也用此本籤詩』（2026-08-15 直接觀察）",
+      "notes": "跨神 adoption（澎湖一百籤）——新增"
+    },
+    {
+      "id": "AD-M14", "temple": "台中天后宮", "deity": "天上聖母", "region": "台中",
+      "corpus_candidate": "UNKNOWN", "numbering": "UNKNOWN",
+      "official_source": "https://tcmazu.org/pray/",
+      "evidence_level": "UNRESOLVED",
+      "evidence": "官方線上求籤頁存在（2026-08-15 搜索發現）；籤文由 JS 互動載入，未取得（同鹿港型 blocker）",
+      "notes": "任務外 bonus 觀察，僅記錄"
+    }
+  ],
+  "status": "v0.2（Phase A 補查完成）"
+}

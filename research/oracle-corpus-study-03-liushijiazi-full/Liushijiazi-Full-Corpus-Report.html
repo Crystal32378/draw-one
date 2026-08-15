@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oracle Corpus Study 03｜六十甲子籤 Full Corpus — Phase B/C 成果報告</title>
+<style>
+  :root{--ink:#2a1d15;--sub:#6b5d4f;--line:#e5dccf;--bg:#faf6f0;--card:#fffdf9;--accent:#8c2f22;--ok:#2e7d32;--warn:#b26a00;--bad:#a83232;--blue:#34558b;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;padding:32px 16px;}
+  .wrap{max-width:960px;margin:0 auto;}
+  h1{font-size:1.5rem;margin-bottom:4px;}
+  .meta{color:var(--sub);font-size:.85rem;margin-bottom:20px;}
+  h2{font-size:1.15rem;margin:28px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--line);}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin:12px 0;}
+  .badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:.78rem;font-weight:600;margin-right:6px;}
+  .b-ok{background:#e6f4e8;color:var(--ok);} .b-warn{background:#fdf0dc;color:var(--warn);} .b-bad{background:#fbe7e7;color:var(--bad);} .b-blue{background:#e7edf7;color:var(--blue);}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.9rem;}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top;}
+  th{background:#f3ece1;font-weight:600;}
+  .metrics{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0;}
+  .metric{flex:1;min-width:150px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;text-align:center;}
+  .metric .num{font-size:1.7rem;font-weight:700;color:var(--accent);}
+  .metric .lbl{font-size:.8rem;color:var(--sub);}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;}
+  .d-green{background:#2e7d32;} .d-orange{background:#b26a00;} .d-red{background:#a83232;} .d-blue{background:#34558b;}
+  .foot{margin-top:32px;padding-top:12px;border-top:1px solid var(--line);color:var(--sub);font-size:.8rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Oracle Corpus Study 03｜六十甲子籤 Full Corpus（Phase A→B→C）</h1>
+  <div class="meta">2026-08-15｜Framework v0.1 未修改｜main 6c91056c｜研究成果未進 repo、未 merge</div>
+
+  <div class="metrics">
+    <div class="metric"><div class="num">60/60</div><div class="lbl">北港官方圖 OCR（全量）</div></div>
+    <div class="metric"><div class="num">60/60</div><div class="lbl">新港官方籤板照片（全量 60 OCR）</div></div>
+    <div class="metric"><div class="num">60/60</div><div class="lbl">好廟網 fs60 網頁（比對 carrier）</div></div>
+    <div class="metric"><div class="num">0/60</div><div class="lbl">Production-eligible（gate 未過）</div></div>
+  </div>
+
+  <h2>核心判定</h2>
+  <div class="card">
+    <span class="badge b-ok">MULTIPLE CORPORA（維持）</span>
+    <span class="badge b-blue">單一 textual corpus 確立（60-vs-60）</span>
+    <span class="badge b-warn">官方系 vs 網路系 edition 二分</span>
+    <p style="margin-top:10px">「媽祖籤」是 conflation 名稱，指涉至少兩套互不相屬的 corpus：<b>六十甲子籤（60，干支序）</b>與<b>澎湖天后宮一百籤（100）</b>。Phase B 全量比對證明六十甲子籤為單一 textual corpus（詩文同源、干支序一致、卦象/五行/方位結構一致）；同時浮現 <b>官方籤板系（北港＋新港）vs 網路轉錄系（好廟網/育德）</b>的 edition 分層——5 個已知變異點上官方系全數同文。</p>
+  </div>
+
+  <h2>Phase A｜Corpus Identity</h2>
+  <div class="card">
+    <p><b>Decision gate：通過 → 直接進 Phase B</b>（六十甲子籤為可繼續研究的 corpus，北港官方 60 圖＝完整一手 carrier）。</p>
+    <table>
+      <tr><th>廟宇</th><th>Corpus 候選</th><th>v0.2 證據變化</th></tr>
+      <tr><td>北港朝天宮</td><td>六十甲子籤</td><td><span class="dot d-green"></span>4/60 → <b>60/60 全量 OCR</b></td></tr>
+      <tr><td>新港奉天宮</td><td>六十甲子籤</td><td><span class="dot d-green"></span>列表 snippet → <b>60 籤板照片＋12 OCR（第二獨立官方 carrier）</b></td></tr>
+      <tr><td>關渡宮</td><td>六十甲子籤（官方 self-label）</td><td><span class="dot d-orange"></span>「線上60甲子籤」連結域名 <b>net.civil.taipei DNS 失效</b>；籤詩網另稱其用澎湖一百籤（衝突主張）</td></tr>
+      <tr><td>鹿港天后宮</td><td>澎湖一百籤（籤詩網聲明）</td><td><span class="dot d-orange"></span>UNRESOLVED → PROBABLE（secondary）；官方頁 JS blocker 維持</td></tr>
+      <tr><td>白沙屯拱天宮</td><td>澎湖一百籤（候選）</td><td><span class="dot d-orange"></span>mstn「百首聖籤」＝澎湖一百籤系；FB 記載聖籤/藥籤兩桶</td></tr>
+    </table>
+    <p class="meta">其餘：台南大天后宮＝澎湖一百籤（VERIFIED 一手）、慈祐宮/鎮海宮/大甲/印尼椰城＝六十甲子籤、澎湖本宮 origin＝PROBABLE。</p>
+  </div>
+
+  <h2>Phase B｜Full Corpus Acquisition</h2>
+  <div class="card">
+    <p><b>北港 vs 好廟網 60-vs-60 全量比對</b>（comparison directly performed；不標 VERIFIED）：</p>
+    <table>
+      <tr><th>類別</th><th>籤例</th><th>說明</th></tr>
+      <tr><td><span class="badge b-ok">identical</span></td><td>36/60</td><td>詩文逐字一致</td></tr>
+      <tr><td><span class="badge b-warn">orthographic_only</span></td><td>#1 靜/淨、#10 爾/汝、#30 妨/防</td><td>異體字/同義字（官方系 vs 網路系）</td></tr>
+      <tr><td><span class="badge b-bad">substantive</span></td><td>7/60（#7 #38 #41 #46 #48 #57＋#60 designated）</td><td>待人工圖檔複核定版</td></tr>
+      <tr><td><span class="badge b-warn">orthographic_only</span></td><td>17/60</td><td>異體字/同義字</td></tr>
+    </table>
+    <p style="margin-top:10px"><b>新港官方全量 60 籤＝關鍵證據</b>：44/60 與北港逐字 identical（15 異體字、1 substantive）；#60「內外」獲 <b>2 個獨立官方 group</b>（北港＋新港）同文支持，達到 Framework ≥2 group 門檻；#1/#10/#30/#45 官方系亦全數同文。</p>
+    <p class="meta">載體：北港＝官方圖檔（2024-08-05 批次 59 張＋2025-06-21 批次 1 張）；新港＝信士邱福來捐獻籤板照片（2023-12 批次）；好廟網＝網頁轉錄（籤詩網自述會 normalize 古體字）。</p>
+  </div>
+
+  <h2>Phase C｜Production Candidate</h2>
+  <div class="card">
+    <div class="metrics">
+      <div class="metric"><div class="num">60</div><div class="lbl">Research DB records</div></div>
+      <div class="metric"><div class="num">0</div><div class="lbl">Production-eligible</div></div>
+    </div>
+    <table>
+      <tr><th>Gate（canonical）</th><th>通過</th><th>阻擋原因</th></tr>
+      <tr><td>slip_status == verified</td><td>0/60</td><td>VERIFIED 需 human/domain_expert approval；OCR 未人工複核</td></tr>
+      <tr><td>no_open_substantive_divergence</td><td>54/60</td><td>6 首 open substantive 待處理；#60 已 reference_designated</td></tr>
+      <tr><td>reference_resolved_to_item</td><td>60/60</td><td>—</td></tr>
+      <tr><td>item_license_status == ok</td><td>0/60</td><td>北港/新港官方圖檔未見再製授權聲明 → unresolved</td></tr>
+      <tr><td>access_status ∈ {open, open_register}</td><td>60/60</td><td>—</td></tr>
+      <tr><td>no_quarantine_chain</td><td>60/60</td><td>—</td></tr>
+    </table>
+    <p class="meta">升級路徑：human 複核 OCR＋approve VERIFIED → 廟方授權聲明確認 item license → 異文籤定版或保留 UNRESOLVED。</p>
+  </div>
+
+  <h2>Framework Stress Notes（v0.2）</h2>
+  <div class="card">
+    <p><b>Framework v0.1 在 180 items / 132 attestations / 三方 carrier / eligibility gate 壓力下無需任何修改。</b></p>
+    <table>
+      <tr><th>觀察</th><th>承載方式</th></tr>
+      <tr><td>官方系 vs 網路系 edition 分層（5 變異點全數二分）</td><td>edition_family × 3（ed-beigang / ed-xingang / ed-common-web）</td></tr>
+      <tr><td>捐獻籤板照片（含署名）＝新型 primary item</td><td>concrete_item.media_type=photo，官方發布管道背書</td></tr>
+      <tr><td>同一廟多籤系統（關渡宮、白沙屯聖籤/藥籤）</td><td>temple_adoption 逐筆記錄（many-to-many）</td></tr>
+      <tr><td>#60 分歧 → 2 獨立官方 group 同文</td><td>independence_group 機械判定正面驗證</td></tr>
+      <tr><td>OCR 直書讀序問題（干支拆行/數字顛倒）</td><td>text_status=uncertain 正確標記（非 schema 問題）</td></tr>
+    </table>
+  </div>
+
+  <h2>證據級別統計（claims）</h2>
+  <div class="card">
+    <table>
+      <tr><th>edge_level</th><th>數量</th><th>分布</th></tr>
+      <tr><td><span class="dot d-green"></span>VERIFIED</td><td>0（agent 不 self-approve）</td><td>—</td></tr>
+      <tr><td><span class="dot d-blue"></span>PROBABLE</td><td>~66</td><td>corpus identity、adoption（北港/新港）、version identity ×3、independence ×2、text_authenticity 多數籤</td></tr>
+      <tr><td><span class="dot d-red"></span>UNRESOLVED</td><td>~5</td><td>origin、#7/#13/#60 異文籤（依 final JSON 為準）、好廟網 independence</td></tr>
+      <tr><td><span class="dot d-orange"></span>HYPOTHESIZED</td><td>0</td><td>—</td></tr>
+    </table>
+  </div>
+
+  <h2>交付物（Claw Deck 自包含包）</h2>
+  <div class="card">
+    <ul style="padding-left:20px">
+      <li>Mazu-Oracle-Corpus-Identity-Dossier-v0.1.md（v0.2 內容）</li>
+      <li>Mazu-Oracle-Temple-Adoption-Map-v0.1.json（14 筆）</li>
+      <li>Liushijiazi-Source-Map-v0.1.json（22 筆）</li>
+      <li>Liushijiazi-Corpus-Comparison-v0.1.json（60 籤 × 3 carriers）</li>
+      <li>Oracle-Framework-Stress-Notes-03.md（v0.2）</li>
+      <li>data/*.jsonl（canonical ingest：10 entities，180 items / 132 attestations / 60 slips）</li>
+      <li>validate_full60.py ＋ validator 結果</li>
+      <li>Production-Eligibility-Report-v0.1.json</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    方法聲明：北港/新港 OCR 為 autoglm image recognition 自動轉錄（text_status=uncertain，未經人工圖檔複核）；比對動作為 comparison directly performed；網路轉錄 carrier 不升格 primary；Access ≠ License；search failure ≠ non-existence。VERIFIED 僅能由 human/domain_expert 批准。
+  </div>
+</div>
+</body>
+</html>
