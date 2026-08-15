@@ -7,7 +7,7 @@
 ## 這個目錄回答什麼
 
 - 觀音籤（100 首）與《觀世音菩薩感應靈課》（三十二卦）的版本 lineage——目前**必須分開建模**，不得合併。
-- 每條 lineage edge 的證據級別：fact／probable／hypothesis／unresolved，不確定的 edge 維持不知道，不得黏起來。
+- 每條 lineage edge 的證據級別：verified／probable／hypothesized／unresolved，不確定的 edge 維持不知道，不得黏起來。
 - 未來建立可信籤詩資料庫時，值得優先取得的公開來源在哪裡（`sources.json`）。
 
 ## 檔案
