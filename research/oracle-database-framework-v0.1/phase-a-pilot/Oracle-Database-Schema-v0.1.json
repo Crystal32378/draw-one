@@ -1,0 +1,1414 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Draw One Oracle Knowledge Database Schema v0.1 (normalization pass)",
+  "description": "Canonical schema for Draw One oracle knowledge base. Entity stores facts; all evidence levels live in claim.edge_level. Source content_class drives contamination quarantine; license remains an independent production gate. No canonicalization without source evidence.",
+  "$comment": "Framework version: 0.1 (normalization pass). Machine-readable schema version remains schema_version=0.1.",
+  "$defs": {
+    "edge_level": {
+      "enum": [
+        "VERIFIED",
+        "PROBABLE",
+        "HYPOTHESIZED",
+        "UNRESOLVED"
+      ]
+    },
+    "source_observation_status": {
+      "enum": [
+        "directly_observed",
+        "carried_forward",
+        "indirectly_supported",
+        "unresolved"
+      ]
+    },
+    "acquisition_status": {
+      "enum": [
+        "fulltext_obtained",
+        "abstract_obtained",
+        "bibliographic_record_only",
+        "secondary_mention_only",
+        "not_obtained"
+      ]
+    },
+    "content_class": {
+      "enum": [
+        "original_source",
+        "human_transcription",
+        "ai_generated_or_summarized",
+        "mixed_or_unknown"
+      ]
+    },
+    "access_status": {
+      "enum": [
+        "open",
+        "open_register",
+        "restricted",
+        "paid",
+        "local_not_committed",
+        "unknown"
+      ]
+    },
+    "license_status": {
+      "enum": [
+        "ok",
+        "unsure",
+        "no"
+      ]
+    },
+    "platform_rights_status": {
+      "enum": [
+        "verified",
+        "unsure",
+        "not_checked"
+      ]
+    },
+    "item_license_status": {
+      "enum": [
+        "ok",
+        "unsure",
+        "no",
+        "unresolved"
+      ]
+    },
+    "relationship": {
+      "enum": [
+        "identical_text",
+        "orthographic_only",
+        "substantive_divergence",
+        "unresolved_relationship"
+      ]
+    },
+    "corpus": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "corpus",
+      "type": "object",
+      "required": [
+        "corpus_id",
+        "display_name",
+        "name_family",
+        "adoption_deities",
+        "numbering_system",
+        "identity_claim_ids",
+        "status"
+      ],
+      "properties": {
+        "corpus_id": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]+$"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "name_family": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "self_identification": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "slip_number": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "text": {
+              "type": "string"
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "slip_number",
+            "text"
+          ],
+          "description": "文本內自述身分；null 表示無此機制"
+        },
+        "origin_tradition": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "未解析可不填（unknown stays unknown）"
+        },
+        "origin_deity": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "可 null：origin 未解析時留空，由 origin_claim_ids 的 UNRESOLVED claim 記錄"
+        },
+        "origin_place": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "origin_date_fact": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "純字串 fact；證據級別不內嵌，由 origin_claim_ids 承載"
+        },
+        "adoption_deities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "deity"
+            ],
+            "properties": {
+              "deity": {
+                "type": "string"
+              },
+              "note": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "numbering_system": {
+          "type": "string"
+        },
+        "expected_count": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "identity_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "claim reference：edge_level 由 claim 承載，entity 不內嵌證據級別"
+        },
+        "origin_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "claim reference：edge_level 由 claim 承載，entity 不內嵌證據級別"
+        },
+        "conflation_warning": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "active",
+            "retired"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "edition_family": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "edition_family",
+      "type": "object",
+      "required": [
+        "family_id",
+        "corpus_id",
+        "name",
+        "family_claim_ids",
+        "status"
+      ],
+      "properties": {
+        "family_id": {
+          "type": "string"
+        },
+        "corpus_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "lineage_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "family_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "claim reference：edge_level 由 claim 承載，entity 不內嵌證據級別"
+        },
+        "mirror_group": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "網路轉錄群標記"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "active",
+            "retired"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "concrete_item": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "concrete_item",
+      "type": "object",
+      "required": [
+        "item_id",
+        "family_id",
+        "source_record_id",
+        "independence_group_id",
+        "media_type",
+        "access_status",
+        "license_status",
+        "source_observation_status"
+      ],
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "family_id": {
+          "type": "string"
+        },
+        "source_record_id": {
+          "type": "string",
+          "description": "provenance graph：item 機械可追到來源記錄"
+        },
+        "independence_group_id": {
+          "type": "string",
+          "description": "獨立來源群；同 group 內不構成獨立證據"
+        },
+        "mirror_of": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "指向同 group master item"
+        },
+        "media_type": {
+          "enum": [
+            "printed_edition",
+            "temple_pamphlet",
+            "scan",
+            "photo",
+            "website",
+            "digital_pdf",
+            "fulltext_database",
+            "manuscript",
+            "other"
+          ]
+        },
+        "holder": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "absolute local path 不進 repo；本機證據寫 local evidence available; not committed"
+        },
+        "digital_checksum": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "access_status": {
+          "enum": [
+            "open",
+            "open_register",
+            "restricted",
+            "paid",
+            "local_not_committed",
+            "unknown"
+          ]
+        },
+        "license_status": {
+          "enum": [
+            "ok",
+            "unsure",
+            "no"
+          ]
+        },
+        "platform_rights_status": {
+          "enum": [
+            "verified",
+            "unsure",
+            "not_checked"
+          ]
+        },
+        "item_license_status": {
+          "enum": [
+            "ok",
+            "unsure",
+            "no",
+            "unresolved"
+          ]
+        },
+        "source_observation_status": {
+          "enum": [
+            "directly_observed",
+            "carried_forward",
+            "indirectly_supported",
+            "unresolved"
+          ]
+        },
+        "verification_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "independence_group": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "independence_group",
+      "type": "object",
+      "required": [
+        "group_id",
+        "member_item_ids",
+        "group_claim_ids"
+      ],
+      "properties": {
+        "group_id": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "master_item_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "群內源頭；null＝源頭未知（合法狀態）"
+        },
+        "member_item_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "group_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "claim reference：edge_level 由 claim 承載，entity 不內嵌證據級別"
+        }
+      }
+    },
+    "slip": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "slip",
+      "type": "object",
+      "required": [
+        "slip_id",
+        "corpus_id",
+        "slip_number"
+      ],
+      "properties": {
+        "slip_id": {
+          "type": "string"
+        },
+        "corpus_id": {
+          "type": "string"
+        },
+        "slip_number": {
+          "type": [
+            "integer",
+            "string"
+          ]
+        },
+        "traditional_title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "legacy_entry_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "$comment": "A slip with one attestation is legal and needs no variant_group. Coverage is required only when a slip has two or more attestations; every such attestation must be covered by at least one variant_group."
+    },
+    "attestation": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "attestation",
+      "type": "object",
+      "required": [
+        "attestation_id",
+        "slip_id",
+        "item_id",
+        "family_id",
+        "source_text",
+        "text_status"
+      ],
+      "properties": {
+        "attestation_id": {
+          "type": "string"
+        },
+        "slip_id": {
+          "type": "string"
+        },
+        "item_id": {
+          "type": "string"
+        },
+        "family_id": {
+          "type": "string"
+        },
+        "source_text": {
+          "type": "string",
+          "description": "逐字籤詩原文；Layer 1 禁 paraphrase"
+        },
+        "text_normalized": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "derived；validator 自動計算，不手填"
+        },
+        "numbering_in_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "title_in_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fortune_in_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "commentary_layers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "required": [
+              "layer_name",
+              "text"
+            ],
+            "properties": {
+              "layer_name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "verbatim": {
+                "type": "boolean",
+                "default": true
+              }
+            }
+          }
+        },
+        "transcription_method": {
+          "enum": [
+            "manual",
+            "ocr",
+            "copied_from_repo",
+            null
+          ]
+        },
+        "transcription_by": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "transcribed_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "text_status": {
+          "enum": [
+            "verbatim_confirmed",
+            "partial",
+            "uncertain"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "variant_group": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "variant_group",
+      "type": "object",
+      "required": [
+        "variant_group_id",
+        "slip_id",
+        "attestation_ids",
+        "relationship"
+      ],
+      "properties": {
+        "variant_group_id": {
+          "type": "string"
+        },
+        "slip_id": {
+          "type": "string"
+        },
+        "attestation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2
+        },
+        "relationship": {
+          "enum": [
+            "identical_text",
+            "orthographic_only",
+            "substantive_divergence",
+            "unresolved_relationship"
+          ]
+        },
+        "divergence_description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "resolution_status": {
+          "enum": [
+            "none",
+            "documented",
+            "reference_designated"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "temple_adoption": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "temple_adoption",
+      "type": "object",
+      "required": [
+        "adoption_id",
+        "corpus_id",
+        "temple",
+        "deity",
+        "evidence_claim_ids"
+      ],
+      "properties": {
+        "adoption_id": {
+          "type": "string"
+        },
+        "corpus_id": {
+          "type": "string"
+        },
+        "temple": {
+          "type": "string"
+        },
+        "deity": {
+          "type": "string"
+        },
+        "region": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "adoption_date_fact": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "純字串 fact；證據級別由 claim"
+        },
+        "evidence_claim_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "claim reference：edge_level 由 claim 承載，entity 不內嵌證據級別"
+        },
+        "source_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "claim": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "claim",
+      "type": "object",
+      "required": [
+        "claim_id",
+        "target_type",
+        "target_id",
+        "claim_type",
+        "edge_level",
+        "evidence_summary",
+        "checked_by",
+        "checked_at",
+        "status"
+      ],
+      "properties": {
+        "claim_id": {
+          "type": "string"
+        },
+        "target_type": {
+          "enum": [
+            "slip",
+            "attestation",
+            "item",
+            "family",
+            "corpus",
+            "adoption",
+            "variant_group",
+            "independence_group"
+          ]
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "claim_type": {
+          "enum": [
+            "text_authenticity",
+            "numbering",
+            "title",
+            "fortune_grade",
+            "allusion_story",
+            "item_existence",
+            "independence",
+            "license",
+            "version_identity",
+            "lineage",
+            "corpus_identity",
+            "adoption"
+          ]
+        },
+        "edge_level": {
+          "enum": [
+            "VERIFIED",
+            "PROBABLE",
+            "HYPOTHESIZED",
+            "UNRESOLVED"
+          ]
+        },
+        "evidence_summary": {
+          "type": "string"
+        },
+        "checked_by": {
+          "enum": [
+            "human",
+            "domain_expert",
+            "agent_review"
+          ]
+        },
+        "checked_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "source_ids": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "enum": [
+            "verified",
+            "probable",
+            "unresolved",
+            "quarantine"
+          ],
+          "description": "claim review state; quarantine is reserved for content contamination. license restrictions remain a separate item-level production gate."
+        },
+        "quarantine_reason": {
+          "enum": [
+            "content_contamination",
+            "content_class_unresolved"
+          ],
+          "description": "Only content reasons can quarantine a claim; there is intentionally no license quarantine reason."
+        },
+        "approval": {
+          "type": "object",
+          "properties": {
+            "approved_by": {
+              "enum": [
+                "human",
+                "domain_expert"
+              ]
+            },
+            "approved_at": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          },
+          "required": [
+            "approved_by",
+            "approved_at"
+          ],
+          "additionalProperties": false,
+          "description": "Required to close a VERIFIED claim. checked_by records who inspected; approval records the human/domain authority that may upgrade."
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "quarantine"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "quarantine_reason"
+            ]
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "quarantine_reason"
+            ]
+          },
+          "then": {
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "quarantine"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "edge_level"
+            ],
+            "properties": {
+              "edge_level": {
+                "const": "VERIFIED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "approval",
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "verified"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "edge_level",
+              "approval"
+            ],
+            "properties": {
+              "edge_level": {
+                "const": "VERIFIED"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source_record": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "source_record",
+      "type": "object",
+      "required": [
+        "source_id",
+        "name",
+        "type",
+        "content_class",
+        "source_observation_status",
+        "access_status",
+        "license_status"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "enum": [
+            "primary",
+            "secondary"
+          ],
+          "description": "normalization pass：literature 唯一 source-of-truth 在 literature_record"
+        },
+        "content_class": {
+          "$ref": "#/$defs/content_class",
+          "description": "機械污染判定欄位；ai_generated_or_summarized 造成 content quarantine，mixed_or_unknown 造成 unresolved gate；兩者都不改寫 claim.edge_level。"
+        },
+        "holder": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_observation_status": {
+          "enum": [
+            "directly_observed",
+            "carried_forward",
+            "indirectly_supported",
+            "unresolved"
+          ]
+        },
+        "access_status": {
+          "enum": [
+            "open",
+            "open_register",
+            "restricted",
+            "paid",
+            "local_not_committed",
+            "unknown"
+          ]
+        },
+        "license_status": {
+          "enum": [
+            "ok",
+            "unsure",
+            "no"
+          ]
+        },
+        "priority": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            null
+          ]
+        },
+        "verification_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "literature_record": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "literature_record",
+      "type": "object",
+      "required": [
+        "lit_id",
+        "title",
+        "acquisition_status"
+      ],
+      "properties": {
+        "lit_id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "venue": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "type": {
+          "enum": [
+            "journal",
+            "thesis",
+            "book",
+            "series",
+            "other",
+            null
+          ]
+        },
+        "url": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "acquisition_status": {
+          "enum": [
+            "fulltext_obtained",
+            "abstract_obtained",
+            "bibliographic_record_only",
+            "secondary_mention_only",
+            "not_obtained"
+          ]
+        },
+        "verification_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "interpretation": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "interpretation",
+      "type": "object",
+      "required": [
+        "interpretation_id",
+        "slip_id",
+        "kind",
+        "text",
+        "based_on_attestation_ids",
+        "author"
+      ],
+      "properties": {
+        "interpretation_id": {
+          "type": "string"
+        },
+        "slip_id": {
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "meaning",
+            "advice",
+            "modern_rewrite",
+            "story_note"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "based_on_attestation_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "author": {
+          "enum": [
+            "drawone",
+            "human"
+          ]
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "reviewed",
+            "approved"
+          ]
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updated_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "reference_edition": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "title": "reference_edition",
+      "type": "object",
+      "required": [
+        "reference_id",
+        "corpus_id",
+        "decided_by",
+        "decided_at",
+        "resolution_status"
+      ],
+      "properties": {
+        "reference_id": {
+          "type": "string"
+        },
+        "corpus_id": {
+          "type": "string"
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "item_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attestation_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "resolved concrete attestation for production; must resolve to an attestation whose item_id equals reference item_id"
+        },
+        "resolution_status": {
+          "enum": [
+            "display_only",
+            "resolved"
+          ],
+          "description": "display_only may remain family-level; resolved is required for production and must include item_id + attestation_id"
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "decided_by": {
+          "type": "string"
+        },
+        "decided_at": {
+          "type": "string"
+        },
+        "supersedes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "family_id"
+          ],
+          "properties": {
+            "family_id": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "required": [
+            "item_id"
+          ],
+          "properties": {
+            "item_id": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "resolution_status": {
+                "const": "resolved"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "item_id",
+              "attestation_id"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "attestation_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "type": "object",
+  "required": [
+    "schema_version",
+    "entities"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "vocabulary": {
+      "type": "object",
+      "description": "Vocabulary 不得跨層混用；edge_level 只屬 claim",
+      "properties": {
+        "edge_level": {
+          "description": "claim 專用；唯一證據級別欄位",
+          "enum": [
+            "VERIFIED",
+            "PROBABLE",
+            "HYPOTHESIZED",
+            "UNRESOLVED"
+          ]
+        },
+        "source_observation_status": {
+          "description": "source_record 專用；不是 lineage evidence",
+          "enum": [
+            "directly_observed",
+            "carried_forward",
+            "indirectly_supported",
+            "unresolved"
+          ]
+        },
+        "acquisition_status": {
+          "description": "literature_record 專用；不是 lineage evidence",
+          "enum": [
+            "fulltext_obtained",
+            "abstract_obtained",
+            "bibliographic_record_only",
+            "secondary_mention_only",
+            "not_obtained"
+          ]
+        },
+    "content_class": {
+      "$ref": "#/$defs/content_class",
+      "description": "來源內容分類；ai_generated_or_summarized 觸發內容污染 quarantine，mixed_or_unknown 保持 unresolved gate。"
+        },
+        "access_status": {
+          "enum": [
+            "open",
+            "open_register",
+            "restricted",
+            "paid",
+            "local_not_committed",
+            "unknown"
+          ]
+        },
+        "license_status": {
+          "enum": [
+            "ok",
+            "unsure",
+            "no"
+          ]
+        },
+        "platform_rights_status": {
+          "enum": [
+            "verified",
+            "unsure",
+            "not_checked"
+          ]
+        },
+        "item_license_status": {
+          "enum": [
+            "ok",
+            "unsure",
+            "no",
+            "unresolved"
+          ]
+        },
+        "relationship": {
+          "enum": [
+            "identical_text",
+            "orthographic_only",
+            "substantive_divergence",
+            "unresolved_relationship"
+          ]
+        },
+        "diff_category": {
+          "enum": [
+            "exact",
+            "orthographic_only",
+            "substantive_variant",
+            "numbering_mismatch",
+            "missing",
+            "decode_issue"
+          ]
+        },
+        "slip_status": {
+          "enum": [
+            "verified",
+            "probable",
+            "unresolved",
+            "quarantine",
+            "no_evidence"
+          ],
+          "description": "validator derived only from text_authenticity claims and attestation state; adoption, lineage, license, and independence claims cannot set probable/verified."
+        }
+      }
+    },
+    "entities": {
+      "type": "object",
+      "description": "13 entities；每 entity 為 JSONL 檔案",
+      "properties": {
+        "corpus": {
+          "$ref": "#/$defs/corpus"
+        },
+        "edition_family": {
+          "$ref": "#/$defs/edition_family"
+        },
+        "concrete_item": {
+          "$ref": "#/$defs/concrete_item"
+        },
+        "independence_group": {
+          "$ref": "#/$defs/independence_group"
+        },
+        "slip": {
+          "$ref": "#/$defs/slip"
+        },
+        "attestation": {
+          "$ref": "#/$defs/attestation"
+        },
+        "variant_group": {
+          "$ref": "#/$defs/variant_group"
+        },
+        "temple_adoption": {
+          "$ref": "#/$defs/temple_adoption"
+        },
+        "claim": {
+          "$ref": "#/$defs/claim"
+        },
+        "source_record": {
+          "$ref": "#/$defs/source_record"
+        },
+        "literature_record": {
+          "$ref": "#/$defs/literature_record"
+        },
+        "interpretation": {
+          "$ref": "#/$defs/interpretation"
+        },
+        "reference_edition": {
+          "$ref": "#/$defs/reference_edition"
+        }
+      }
+    }
+  }
+}
