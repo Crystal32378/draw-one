@@ -1,1 +1,328 @@
-TODO
+{
+  "generated_at": "2026-08-15",
+  "task": "Oracle Corpus Study 02 — 關帝百籤／雷雨師百籤 Provenance & Lineage Dossier",
+  "scope_note": "只做 research；不修改 repo；不聯絡外部單位；不購買；不登入付費資料庫；不收集個人聯絡資料",
+  "corpus_identity_answer": {
+    "verdict": "『雷雨師一百籤』『關聖帝君一百籤』『關帝靈籤』『天仙雷雨師籤』『城隍籤』指向同一 corpus（100籤）——多源二手一致＋道藏本與現行本第1/100籤文本比對一致（VERIFIED）",
+    "caution": "名稱同一≠文本完全同一；各廟印本體例與文字可能因翻刻/改版有差異（如冨/富異體）；『關帝百首籤詩』為台灣常見書名",
+    "different_corpus": [
+      "觀音一百籤（龍山寺系）",
+      "六十甲子籤",
+      "福德正神籤（烘爐地系28/100籤）",
+      "月老百籤（候查）"
+    ]
+  },
+  "lineage": {
+    "corpus_family": "雷雨師一百籤 / 關聖帝君一百籤 / 關帝靈籤 / 城隍籤（同 corpus 不同名稱）",
+    "name_origin": {
+      "雷雨師": "第100籤自述『我本天仙雷雨師』（VERIFIED：道藏本與現行本同文）",
+      "關帝籤": "明清《明聖經》言關公『執掌雷部』→以關帝為雷雨仙；關帝廟多採用（PROBABLE）",
+      "城隍籤": "城隍廟多採用（VERIFIED 二手多源）",
+      "關聖帝君一百籤": "台灣常見稱呼（行天宮下載區即此名）"
+    },
+    "edges": {
+      "verified_edges": [
+        {
+          "edge": "行天宮官網提供『關聖帝君一百籤』電子籤詩",
+          "evidence": "ht.org.tw/p7_download156.htm 官方一手抓取（2026-08-15）；jpg 208×800"
+        }
+      ],
+      "probable_edges": [
+        {
+          "edge": "道藏本《護國嘉濟江東王靈籤》文本 ↔ 現行雷雨師文本（全量 100 籤）",
+          "evidence": "維基文庫 vs 籤詩網 100 籤 diff（2026-08-15 一手比對動作）：0 mismatch、0 missing、26 籤完全一致、73 籤單字級 edition 差異；兩側載體皆 secondary mirror → 外推 PROBABLE（詳見 Guandi-Leiyushi-Corpus-Diff-v1.json）"
+        },
+        {
+          "edge": "南宋寶慶年間(1225-1227)傅燁撰《護國嘉濟江東王靈籤》於贛州聖濟廟",
+          "evidence": "vocus/udn/道教文化中心/識典古籍一致（學術二手）；宋濂1371碑文佐證"
+        },
+        {
+          "edge": "關帝廟襲用此籤並改稱《關帝百首籤詩》",
+          "evidence": "vocus（引《關帝聖君聖籤考》盧湛）；udn（明聖經執掌雷部說）—二手一致"
+        },
+        {
+          "edge": "台灣現行版本源於清光緒年間書商王錢印本",
+          "evidence": "vocus（『根據文獻資料』）—單一二手，未複驗"
+        },
+        {
+          "edge": "城隍廟、其他主神廟多採用此籤",
+          "evidence": "籤詩網、台灣好廟網、buddhamind 二手一致"
+        },
+        {
+          "edge": "香港孔廟、文昌帝君廟採用雷雨師籤",
+          "evidence": "籤詩網（二手）—需廟方一手驗證"
+        },
+        {
+          "edge": "車城福安宮（福德正神）採用關帝百首籤詩系統",
+          "evidence": "vocus 以福安宮為格式範例（二手）；需廟方一手確認"
+        },
+        {
+          "edge": "龍霄殿（東嶽大帝）第100籤文本=觀音一百籤第100籤",
+          "evidence": "龍霄殿官網與台灣好廟網觀音百籤第100籤同文（2026-08-15比對）；需多籤號驗證"
+        }
+      ],
+      "hypothesized_edges": [
+        {
+          "edge": "月老廟『月老百籤』可能借用雷雨師或獨立",
+          "evidence": "政大論文主題存在；內容未讀—HYPOTHESIS"
+        }
+      ],
+      "unresolved_edges": [
+        {
+          "edge": "《關帝聖君聖籤》（寧波延慶寺僧人假託）與雷雨師的文本關係",
+          "evidence": "vocus 稱『不傳』；文本未見"
+        },
+        {
+          "edge": "《正統道藏》各版本（涵芬樓/三家本）間的文本差異",
+          "evidence": "未比對"
+        },
+        {
+          "edge": "行天宮現用實體籤與官網電子籤是否同一印版",
+          "evidence": "未 item-to-item 驗證"
+        }
+      ]
+    },
+    "conflicts_preserved": [
+      "文本起源：南宋傅燁(寶慶1225-1227)道藏本說 vs 弘道協會『關帝靈籤創始元末至明初』說——可能分別指文本起源與關帝名義起點，但未證實，兩說並存",
+      "『關帝籤』之名：udn 主因明聖經雷部說；vocus 主因關帝廟襲用後改稱——不同機制敘述，皆二手"
+    ]
+  },
+  "sources_count": 17,
+  "sources": [
+    {
+      "id": "GL-S01",
+      "name": "行天宮官網「中文電子籤詩下載」",
+      "type": "temple_official",
+      "holder": "財團法人台北行天宮",
+      "url": "https://www.ht.org.tw/p7_download156.htm",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "2024/03/21更新；籤詩為官方圖片(jpg, 208x800)非PDF；檔名 Upload/file_202403211720571.jpg 起；本輪一手抓取頁面+圖片驗證。命名：『關聖帝君一百籤』下載區（頁面標題為中文電子籤詩下載）",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S02",
+      "name": "維基文庫《護國嘉濟江東王靈籤》（道藏本全文）",
+      "type": "fulltext_digital",
+      "holder": "維基文庫",
+      "url": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "本輪一手抓取：第1籤『巍巍獨步向雲間…』與第100籤『我本天仙雷雨師…』，與現行雷雨師文本一致（第1籤僅冨/富異體）",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S03",
+      "name": "ctext《正統道藏》本《護國嘉濟江東王靈籤》掃描",
+      "type": "fulltext_database",
+      "holder": "中國哲學書電子化計劃",
+      "url": "https://ctext.org/library.pl?if=gb&res=84978",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "道藏第1012～1013冊，正一部；掃描影像需確認（未本輪抓取影像）",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S04",
+      "name": "道教文化中心資料庫《護國嘉濟江東王靈籤》條目",
+      "type": "academic_database",
+      "holder": "香港中文大學道教文化研究中心",
+      "url": "https://zh.daoinfo.org/index.php?title=護國嘉濟江東王靈籤",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "『原不題撰人。一卷，收入《正統道藏》正一部。編首載明洪武辛亥(1371)宋濂撰〈贛州聖濟廟靈跡碑〉稱秦人石固自漢高祖以來迄元末…』",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S05",
+      "name": "識典古籍《护国嘉济江东王灵签》",
+      "type": "fulltext_digital",
+      "holder": "識典古籍",
+      "url": "https://www.shidianguji.com/book/DZ1305",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "DZ1305；『南宋傅烨撰』；一百条灵签，每条七言绝句谶诗+四言八句解谶诗+三…（結構說明，未本輪抓全文）",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S06",
+      "name": "籤詩網·雷雨師一百籤（全集）",
+      "type": "website_secondary",
+      "holder": "籤詩研究室",
+      "url": "http://www.chance.org.tw/籤詩集/雷雨師一百籤/籤詩網‧雷雨師一百籤.htm",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "本輪一手抓取(Big5轉碼)：第1籤『巍巍獨步向雲間』；『此名之由來可以由第一百籤中得知，是由天仙雷雨師所降』；『尤以關帝廟、城隍廟多採用…故有人稱它為關帝籤、城隍籤，而且雷雨師籤詩也可以在其他主神之寺廟見到』；提香港孔廟、文昌帝君廟",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S07",
+      "name": "台灣好廟網·關聖帝君一百籤",
+      "type": "website_secondary",
+      "holder": "temple01.com",
+      "url": "https://qiangua.temple01.com/qianshi.php?t=fs100",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "verification_date": "2026-08-15",
+      "notes": "『日月潭文武廟、臺北行天宮、新竹城隍廟等採用…由天仙雷雨師所降，又稱它為關帝籤、城隍籤』",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S08",
+      "name": "台灣好廟網·觀音一百籤第100籤",
+      "type": "website_secondary",
+      "holder": "temple01.com",
+      "url": "https://qiangua.temple01.com/qianshi.php?t=fs_yin100&s=100",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "verification_date": "2026-08-15",
+      "notes": "『欲就東兮欲就西…』＝龍霄殿第100籤同文→龍霄殿疑用觀音百籤 corpus（跨神祇adoption，非雷雨師）",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S09",
+      "name": "賴翠杏《籤詩典故與民間文學之關聯性研究―以臺灣地區流傳關帝百籤為範圍》",
+      "type": "thesis",
+      "holder": "學位論文",
+      "url": "https://blog.udn.com/frankjin/177663365",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "udn訪問稿引用；論文本身需國圖博碩士系統查證",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S10",
+      "name": "林文欽〈高雄地區關帝廟籤詩之研究─以《關帝百首籤詩》為中心〉",
+      "type": "journal",
+      "holder": "lawdata",
+      "url": "https://lawdata.com.tw/tw/detail.aspx?no=200525",
+      "access_status": "restricted",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "『台灣百年以上大廟通行…以百首籤詩及六十首籤詩兩套系統最為廣泛使用，其中又以《關帝百首籤詩》最為盛行』",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S11",
+      "name": "苗栗玉清宮籤詩研究─以《關聖帝君應驗桃園明聖經》為例（碩論 106HCU01183004）",
+      "type": "thesis",
+      "holder": "國圖博碩士論文",
+      "url": "https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22106HCU01183004%22",
+      "access_status": "restricted",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "摘要：玉清宮『關聖帝君聖籤』即雷雨師詩籤，名稱由來見第100籤（天仙雷雨師所降）",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S12",
+      "name": "vocus〈關於籤詩的小常識〉",
+      "type": "website_secondary",
+      "holder": "vocus作者",
+      "url": "https://vocus.cc/article/5f09eaa0fd89780001f41689",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "本輪抓全文：傅燁南宋寶慶造籤於贛州聖濟廟；《關帝聖君聖籤》寧波延慶寺僧人假託不傳；清光緒王錢書商印本；體例（干支/籤序/吉凶/籤頭故事/詩文/聖意/東坡解/碧仙註/解曰/釋義/占驗）；車城福安宮格式範例；吉凶分布數據",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S13",
+      "name": "udn〈籤詩由來簡史〉（公視台語台訪問稿）",
+      "type": "website_secondary",
+      "holder": "udn部落格 frankjin",
+      "url": "https://blog.udn.com/frankjin/177663365",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "A",
+      "verification_date": "2026-08-15",
+      "notes": "本輪抓全文：石固鎮水之神→客家嘉濟尊王；南宋傅燁撰《護國嘉濟江東王靈籤》；明清《明聖經》『關公執掌雷部』→稱雷雨師",
+      "source_observation_status": "directly_observed"
+    },
+    {
+      "id": "GL-S14",
+      "name": "中華關聖帝君弘道協會〈淺談《關帝靈籤》之教化作用〉",
+      "type": "religious_organization",
+      "holder": "中華關聖帝君弘道協會",
+      "url": "https://www.guansaint.org.tw/guansaint-video-article2.htm?title=book-fate-list2-5",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "verification_date": "2026-08-15",
+      "notes": "『《關帝靈籤》創始於元末至明初，已流傳至少600多年』—與南宋文本說有張力，保存衝突",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S15",
+      "name": "《關聖帝君萬應靈籤（紫氣）:雷雨師一百籤》出版品",
+      "type": "publisher",
+      "holder": "柿子文化(柿子新世界)",
+      "url": "https://www.got1shop.com/goods.php?id=3013485",
+      "access_status": "paid",
+      "license_status": "unsure",
+      "priority": "B",
+      "verification_date": "2026-08-15",
+      "notes": "『最早出現於南宋時期，原名護國嘉濟江東王靈籤，明朝中後期開始被各地關…』；香港書店(mybookone.hk)同書流通",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S16",
+      "name": "全國宗教資訊網·關聖帝君條目",
+      "type": "government",
+      "holder": "內政部",
+      "url": "https://religion.moi.gov.tw/Knowledge/Content?ci=2&cid=286",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "B",
+      "verification_date": "2026-08-15",
+      "notes": "關羽封號史（中唐天台護法、宋真宗崇寧真君等）—關帝信仰背景",
+      "source_observation_status": "indirectly_supported"
+    },
+    {
+      "id": "GL-S17",
+      "name": "政大《臺灣月老廟及其月老百籤研究》",
+      "type": "thesis",
+      "holder": "政大",
+      "url": "https://ah.lib.nccu.edu.tw/item?item_id=150538",
+      "access_status": "open",
+      "license_status": "unsure",
+      "priority": "C",
+      "verification_date": "2026-08-15",
+      "notes": "月老百籤來源分析—月老廟百籤是否借用雷雨師/獨立，待查（corpus 邊界）",
+      "source_observation_status": "indirectly_supported"
+    }
+  ],
+  "status": "v1 DRAFT（待 Crystal review）",
+  "correction_note": "2026-08-15 v1 收斂：lineage edges 層 VERIFIED 僅保留 primary/official direct evidence（行天宮官方一手）；道藏↔現行文本比對因載體為 secondary mirror（維基文庫/籤詩網）降為 PROBABLE。2026-08-15 v1.2.2 terminology sync（canonical schema，PSD v1.2.2 定案）：source record 欄位 confidence → source_observation_status（verified→directly_observed、probable→indirectly_supported，僅改欄位語義，不變更任何觀察判斷）；edge membership 與 evidence text 全部維持不變；不再使用 confidence / source_confidence。",
+  "edge_evidence_levels": {
+    "verified": "primary / official direct evidence：本輪直接抓取官方或一手頁面確認",
+    "probable": "literature-supported：可靠研究文獻／二手資料一致支持，但尚缺官方 concrete item 直接命中",
+    "hypothesized": "有動機但無直接證據的推測",
+    "unresolved": "未取得一手證據；已知存在但未確認"
+  },
+  "status_terminology": {
+    "edge_level": "唯一使用 VERIFIED / PROBABLE / HYPOTHESIZED / UNRESOLVED 的欄位；lineage / adoption claim 的證據級別。VERIFIED 僅限 primary/official direct evidence",
+    "source_observation_status": "source record 本身的觀察狀態，不是 lineage evidence：directly_observed / carried_forward / indirectly_supported / unresolved",
+    "acquisition_status": "literature record 的取得狀態，不是 lineage evidence：fulltext_obtained / abstract_obtained / bibliographic_record_only / secondary_mention_only / not_obtained",
+    "note": "source_observation_status 與 acquisition_status 均不得解讀為 edge_level；Access、License 另各自由 access_status、license_status 表示"
+  }
+}

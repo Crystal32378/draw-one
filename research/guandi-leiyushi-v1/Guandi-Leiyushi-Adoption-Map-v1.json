@@ -1,1 +1,113 @@
-TODO
+{
+  "generated_at": "2026-08-15",
+  "task": "Guandi/Leiyushi corpus temple adoption map v1",
+  "corpus_family": "雷雨師一百籤（＝關聖帝君一百籤／關帝靈籤／城隍籤）",
+  "key_finding": "同一 textual corpus 跨寺廟、跨地區、跨神祇採用（關帝廟/城隍廟/福德正神廟/孔子文昌廟候選）—重大 finding，但多數 adoption 證據為二手，需廟方一手確認",
+  "adoptions_count": 9,
+  "adoptions": [
+    {
+      "id": "AD-01",
+      "temple": "台北行天宮",
+      "deity": "關聖帝君（五聖恩主之首）",
+      "region": "taiwan_north",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "官網電子籤詩下載（一手，2026-08-15）",
+      "source_url": "https://www.ht.org.tw/p7_download156.htm",
+      "notes": "『關聖帝君一百籤』命名；恩主公信仰",
+      "edge_level": "VERIFIED"
+    },
+    {
+      "id": "AD-02",
+      "temple": "苗栗玉清宮",
+      "deity": "關聖帝君",
+      "region": "taiwan_mid",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "碩論摘要（106HCU01183004）『關聖帝君聖籤…又稱為雷雨師詩籤』",
+      "source_url": "https://ndltd.ncl.edu.tw/cgi-bin/gs32/gsweb.cgi?o=dnclcdr&s=id=%22106HCU01183004%22",
+      "notes": "論文以玉清宮為研究對象（2026-08-15 v1 收斂：verified→probable，學術文獻支持非官方一手）",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-03",
+      "temple": "新竹城隍廟",
+      "deity": "城隍（跨神祇）",
+      "region": "taiwan_north",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "台灣好廟網『新竹城隍廟等採用』（二手）",
+      "source_url": "https://qiangua.temple01.com/qianshi.php?t=fs100",
+      "notes": "『城隍籤』別名之由；需廟方一手確認",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-04",
+      "temple": "日月潭文武廟",
+      "deity": "關聖帝君+孔子（文武）",
+      "region": "taiwan_mid",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "台灣好廟網『日月潭文武廟…採用』（二手）",
+      "source_url": "https://qiangua.temple01.com/qianshi.php?t=fs100",
+      "notes": "文武廟同時祀文聖武聖",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-05",
+      "temple": "車城福安宮",
+      "deity": "福德正神（跨神祇）",
+      "region": "taiwan_south",
+      "corpus": "雷雨師/關帝百籤（福安宮格式）",
+      "evidence": "vocus 以福安宮為關帝百首籤詩格式範例（二手）",
+      "source_url": "https://vocus.cc/article/5f09eaa0fd89780001f41689",
+      "notes": "台灣最悠久福德正神廟；若屬實為重大跨神祇 adoption 案例；需廟方一手確認",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-06",
+      "temple": "高雄地區關帝廟（複數）",
+      "deity": "關聖帝君",
+      "region": "taiwan_south",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "林文欽論文《高雄地區關帝廟籤詩之研究─以關帝百首籤詩為中心》",
+      "source_url": "https://lawdata.com.tw/tw/detail.aspx?no=200525",
+      "notes": "『高雄地區關帝廟絕大多數…主祀神其為關聖帝君』（2026-08-15 v1 收斂：verified→probable，學術文獻支持非官方一手）",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-07",
+      "temple": "贛州聖濟廟（origin）",
+      "deity": "石固／護國嘉濟江東王",
+      "region": "china_jiangxi",
+      "corpus": "《護國嘉濟江東王靈籤》（道藏本）",
+      "evidence": "道教文化中心資料庫＋宋濂1371碑文＋識典古籍DZ1305",
+      "source_url": "https://zh.daoinfo.org/index.php?title=護國嘉濟江東王靈籤",
+      "notes": "文本 origin 場域；傅燁南宋寶慶造籤（PROBABLE）（2026-08-15 v1 收斂：verified→probable，學術文獻支持非官方一手）",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-08",
+      "temple": "香港孔廟、文昌帝君廟（候選）",
+      "deity": "孔子/文昌（跨神祇）",
+      "region": "hong_kong",
+      "corpus": "雷雨師/關帝百籤",
+      "evidence": "籤詩網『香港的孔廟、文昌帝君廟』（二手）",
+      "source_url": "http://www.chance.org.tw/籤詩集/雷雨師一百籤/籤詩網‧雷雨師一百籤.htm",
+      "notes": "跨地區+跨神祇；需廟方一手確認",
+      "edge_level": "PROBABLE"
+    },
+    {
+      "id": "AD-09",
+      "temple": "高雄龍霄殿（東嶽廟）",
+      "deity": "東嶽大帝",
+      "region": "taiwan_south",
+      "corpus": "觀音一百籤（非雷雨師）",
+      "evidence": "龍霄殿第100籤與台灣好廟網觀音百籤第100籤同文（2026-08-15比對）",
+      "source_url": "https://www.longcheng.org.tw/?act=jieqianyuandi&cmd=detail&ad_id=202211240001882",
+      "notes": "corpus 邊界釐清：龍霄殿疑用觀音 corpus——東嶽廟跨神祇採用觀音籤；需多籤號驗證",
+      "edge_level": "PROBABLE"
+    }
+  ],
+  "correction_note": "2026-08-15 v1 收斂：AD-02/AD-06/AD-07 由 verified 降為 probable——學術文獻／碑文為 literature-supported，非 primary official direct evidence；全表僅 AD-01 行天宮保留 verified（官方一手）。2026-08-15 v1.2.2 terminology sync（canonical schema）：欄位 confidence → edge_level（verified→VERIFIED、probable→PROBABLE，僅改欄位語義）；不新增 adoption、不變更 evidence text。",
+  "status_terminology": {
+    "edge_level": "adoption relation 是 lineage claim，一律使用 VERIFIED / PROBABLE / HYPOTHESIZED / UNRESOLVED（本表無 HYPOTHESIZED / UNRESOLVED 記錄）",
+    "note": "source_observation_status 不適用於 adoption relation；Access / License 另由 access_status / license_status 表示"
+  }
+}
