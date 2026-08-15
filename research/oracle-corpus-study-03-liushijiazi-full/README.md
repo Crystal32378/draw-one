@@ -21,7 +21,7 @@
 | `Oracle-Database-Schema-v0.1.json` | Schema 副本（validator 用，自包含） |
 | `validate_full60.py` | Validator（`python3 validate_full60.py`；含 reference_edition chain trace） |
 | `semantic_regression.py` | Semantic regression tests（`python3 semantic_regression.py`；re-gate 後新增） |
-| `generate_ingest.py` | 產生器（需 `.openclaw/tmp/study03/` 原始資料，見下） |
+| `generate_ingest.py` | 產生器（需 OCR/acquisition 產物，以 `STUDY03_TMP` 注入，見下） |
 | `Liushijiazi-Full-Corpus-Report.html` | 成果報告 HTML（可直接開啟） |
 
 ## 如何重跑驗證
@@ -42,7 +42,7 @@ python3 eligibility_report.py
 - **新港奉天宮官方**：`https://www.hsinkangmazu.org.tw/?act=menuinfo&ml_id=20231222005&cmd=list`（60 首捐獻籤板照片＋解析文字；圖檔需 Referer）
 - **好廟網 fs60**（comparison carrier，不升格 primary）：`https://qiangua.temple01.com/qianshi.php?t=fs60`
 
-原始下載與 OCR 產物在 workspace `.openclaw/tmp/study03/`（本包不含 180 張圖檔與 OCR 中間檔；concrete_item 有 sha256 可對照）。
+原始下載與 OCR 產物（北港 `ocr/NN.txt`、新港 `ocr/hsk_NN.txt`、`fs60_full.json`、`beigang_slip_urls.json`、`hsinkang_details.json`）**不在 repo 內**，以環境變數 `STUDY03_TMP` 指向其目錄注入（本包不含 180 張圖檔與 OCR 中間檔；concrete_item 有 sha256 可對照）。未注入或路徑無效時，pipeline script 會明確 fail。
 
 ## 主要結論
 

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Build final Liushijiazi corpus comparison JSON (60 slips, 3 carriers)."""
-import json, re, os
+import json, sys, re, os
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-TMP = os.path.join(os.path.dirname(BASE), ".openclaw", "tmp", "study03")
+TMP = os.environ.get("STUDY03_TMP") or ""
+if not TMP or not os.path.isdir(TMP) or not os.path.isdir(os.path.join(TMP, "ocr")):
+    sys.exit(f"ERROR: STUDY03_TMP 無效（{TMP}）：需包含 ocr/ 子目錄。請以環境變數 STUDY03_TMP 注入。")
 
 BG_URLS = json.load(open(os.path.join(TMP, "beigang_slip_urls.json")))
 FS60 = {r["slip_number"]: r for r in json.load(open(os.path.join(TMP, "fs60_full.json")))}

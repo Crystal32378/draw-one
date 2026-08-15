@@ -3,10 +3,12 @@
 Run AFTER main batch. Slips: 3,6,7,9,10,11,13 + any poem-uncertain.
 Output: ocr/review/NN.txt
 """
-import json, subprocess, time, os, hashlib
+import json, sys, subprocess, time, os, hashlib
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-TMP = os.path.join(os.path.dirname(BASE), ".openclaw", "tmp", "study03")
+TMP = os.environ.get("STUDY03_TMP") or ""
+if not TMP or not os.path.isdir(TMP) or not os.path.isdir(os.path.join(TMP, "ocr")):
+    sys.exit(f"ERROR: STUDY03_TMP 無效（{TMP}）：需包含 ocr/ 子目錄。請以環境變數 STUDY03_TMP 注入。")
 TARGETS = [3, 6, 7, 9, 10, 11, 13]
 PROMPT = ("這是一張北港朝天宮官方六十甲子籤詩圖。請只專注轉錄以下欄位，逐字輸出，不要解說："
           "1) 籤號干支（如甲子）；2) 卦名（如乾為天卦）；3) 卦象記號（○/● 序列）；"

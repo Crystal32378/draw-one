@@ -7,7 +7,11 @@ Output: data/*.jsonl + eligibility_report.json  (self-contained package)
 import json, re, os, hashlib, glob, sys
 
 BASE = os.path.dirname(os.path.abspath(__file__))
-TMP = os.path.join(os.path.dirname(BASE), ".openclaw", "tmp", "study03")
+# 依賴注入：STUDY03_TMP 指向 OCR/acquisition 產物目錄（北港 ocr/NN.txt、新港 ocr/hsk_NN.txt、fs60_full.json 等）。
+# repo-safe：不允許本機絕對路徑推導；未注入或無效時明確失敗。
+TMP = os.environ.get("STUDY03_TMP") or ""
+if not TMP or not os.path.isdir(TMP) or not os.path.isdir(os.path.join(TMP, "ocr")):
+    sys.exit(f"ERROR: STUDY03_TMP 無效（{TMP}）：需包含 ocr/ 子目錄（北港 OCR 產物）。請以環境變數 STUDY03_TMP 注入。")
 OUT = os.path.join(BASE, "data")
 os.makedirs(OUT, exist_ok=True)
 
@@ -22,7 +26,15 @@ def sha256(path):
 BG_URLS = json.load(open(os.path.join(TMP, "beigang_slip_urls.json")))
 FS60 = {r["slip_number"]: r for r in json.load(open(os.path.join(TMP, "fs60_full.json")))}
 HSK = {int(k): v for k, v in json.load(open(os.path.join(TMP, "hsinkang_details.json"))).items()}
-COMP = {r["slip_number"]: r for r in json.load(open(os.path.join(TMP, "liushijiazi_comparison_base.json"))) if r.get("status") == "done"}
+# divergence_description 來源：package 內最終 comparison JSON（自足，不依賴開發環境的 base 產物）
+_CMP_FINAL2 = os.path.join(BASE, "Liushijiazi-Corpus-Comparison-v0.1.json")
+if os.path.exists(_CMP_FINAL2):
+    _cmp2 = json.load(open(_CMP_FINAL2, encoding="utf-8"))["slips"]
+    COMP = {r["slip_number"]: {"poem_diffs": [{"line": d.get("line"), "beigang": d.get("a"), "fs60": d.get("b")}
+                                for d in r["beigang_vs_fs60"]["diffs"] if not d.get("unresolved")]}
+           for r in _cmp2}
+else:
+    COMP = {}
 HSK_SUBSET = [n for n in range(1, 61) if os.path.exists(os.path.join(TMP, "ocr", f"hsk_{n:02d}.txt"))]
 # HUMAN_OBSERVED：Crystal 目視官方圖檔確認「carrier 的 observed transcription」（attestation 層證據）
 # 依 Framework canonical：human 目視≠slip-level text_authenticity VERIFIED；
