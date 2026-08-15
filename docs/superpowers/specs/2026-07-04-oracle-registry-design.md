@@ -1,3 +1,5 @@
+> **SUPERSEDED (2026-08-15)** — 本設計已被 [`2026-08-15-oracle-knowledge-base-v1.md`](./2026-08-15-oracle-knowledge-base-v1.md) 取代（證據優先模型：8 JSONL entities、逐字 attestation、variant_groups、狀態由 validator 推導、reference_editions 以 source_id 主指定）。本文件保留為歷史 artifact，不再實作。
+
 # Oracle Registry & Draw-Pool Design (Phase 2)
 
 **Status:** Draft v2, pending user approval  
