@@ -1,10 +1,11 @@
 # Draw One｜Primary Source Acquisition Dossier v1
 
 > 觀音靈籤 100／《觀音靈課》相關版本與文獻 lineage 的公開來源研究檔。
-> 產出日期：2026-08-15 ｜ 版本：**v1.2（FINAL / RESEARCH COMPLETE）**（semantics repair：lineage edges 證據四級化、龍霄殿降級、故宮 CC0 拆 platform/item 兩層、conflation 措辭修正；v1.2 micro-patch：VERIFIED 語義收斂、龍山寺／淺草寺降級為 literature-supported、NDL negative finding 措辭收斂；v1.2.1 terminology 對齊：System A 歷史節點降級、文獻表改取得狀態）
+> 產出日期：2026-08-15 ｜ 版本：**v1.2.2（FINAL / RESEARCH COMPLETE）**（semantics repair：lineage edges 證據四級化、龍霄殿降級、故宮 CC0 拆 platform/item 兩層、conflation 措辭修正；v1.2 micro-patch：VERIFIED 語義收斂、龍山寺／淺草寺降級為 literature-supported、NDL negative finding 措辭收斂；v1.2.1 terminology 對齊：System A 歷史節點降級、文獻表改取得狀態；v1.2.2 schema semantics repair：source observation 與 literature acquisition 改為獨立 enum）
 > **本包封存，不再擴 research。**
 
-> 狀態標籤（edge 層級）：`VERIFIED`＝**僅限 primary / official direct evidence**（本輪直接抓取官方或一手頁面確認）；`PROBABLE`＝literature-supported（可靠研究文獻／二手資料一致支持，但尚缺官方 concrete item 直接命中）；`HYPOTHESIS`＝有動機但無直接證據的推測；`UNRESOLVED`＝未取得一手證據。
+> 狀態標籤（**只有 edge 層級**）：`VERIFIED`＝**僅限 primary / official direct evidence**（本輪直接抓取官方或一手頁面確認）；`PROBABLE`＝literature-supported（可靠研究文獻／二手資料一致支持，但尚缺官方 concrete item 直接命中）；`HYPOTHESIZED`＝有動機但無直接證據的推測；`UNRESOLVED`＝未取得一手證據。
+> Source record 只使用 `source_observation_status`：`directly_observed`／`carried_forward`／`indirectly_supported`／`unresolved`。Literature record 只使用 `acquisition_status`：`fulltext_obtained`／`abstract_obtained`／`bibliographic_record_only`／`secondary_mention_only`／`not_obtained`。兩者都不是 lineage evidence，也不使用 `confidence`。
 > **Lineage 紀律：不確定的 edge 不得因為故事合理就升級；文獻支持 ≠ 官方一手驗證。**
 
 ---
@@ -63,7 +64,7 @@
         │  MT-1 已證官網現行版無籤詩電子 item → 缺官方 concrete item 直接命中
         │
         ├─[UNRESOLVED] 龍山寺系與淺草寺系 item-to-item 對應關係：pilot 已發現同籤號文本分歧，但比對未完成
-        ├─[HYPOTHESIS] pilot guanyin-003 分歧可能與不同文本系統或 edition family 有關（無直接證據）
+        ├─[HYPOTHESIZED] pilot guanyin-003 分歧可能與不同文本系統或 edition family 有關（無直接證據）
         └─[UNRESOLVED] 高雄龍霄殿（東嶽廟）與龍山寺系文本關係：第100籤文本存在差異，
                          需直接 item-to-item 複驗後才能判定為跨廟版本分歧
 ```
@@ -72,19 +73,19 @@
 
 ## 2. 文獻 Lineage（研究文獻，作為版本地圖）
 
-| 文獻 | 類型 | 為何重要 | URL | 取得狀態 |
+| 文獻 | 類型 | 為何重要 | URL | 取得狀態（`acquisition_status`） |
 |---|---|---|---|---|
-| 辛德勇〈述石印明萬曆刻本《觀世音感應靈課》〉，《中國典籍與文化》2004(3) | 期刊論文 | 萬曆刻本→1932 石印本關係的第一手考證 | lsqn.cn 轉載（douban 群轉載同文） | 已取得（轉載全文） |
-| 王濤〈長安殘書見精神〉，《藏書家》第8輯 | 期刊文章 | 長安殘書（萬曆刻本）發現始末 | 同上轉載提及 | 已取得（轉載提及） |
-| 陳冠至《明代佛教典籍出版研究》（博士論文） | 學位論文 | 佛教典籍出版史脈絡；記徐乃昌得孤本、印光序 | fju.edu.tw PDF | 已取得（全文 PDF） |
-| 薛皓文《臺灣艋舺龍山寺籤詩及其文學性研究》（2007 碩論） | 學位論文 | 唯一以龍山寺百首觀音籤為專題的碩論；六章含源流、典故出處 | ndltd.ncl.edu.tw/r/8z8esh；Airiti U0021-2910200810574807 | 已取得（書目與摘要） |
-| 陳進國〈寺廟靈籤的流傳與風水信仰的擴散〉 | 期刊論文 | 閩台寺廟籤詩文本與風水信仰；跨廟文本流傳 | chinafolklore.org NewsID=2931 | 已取得（網頁全文） |
-| 濮文起編《中國歷代觀音文獻集成》卷6《觀音靈應圖經》（中華全國圖書館文獻縮微複製中心，1998） | 叢書 | 觀音文獻大型彙編，含靈應圖經 | books.google.com（書目頁） | 已取得（書目）；內容需館藏 |
-| 《元三大師御籤本の研究：おみくじを読み解く》 | 專書 | 日本御籤本（元三大師百籤系）系統研究 | ndlsearch.ndl.go.jp R100000002-I000010080893 | 已取得（書目） |
-| 明治聖徳記念学会〈「おみくじ」の起源與諸相 追考〉 | 學會刊物 PDF | 天竺靈籤與元三大師籤比較（「天竺霊籤は一番を缺く」） | meijiseitoku.org/pdf/f58-3.pdf | 已取得（PDF 摘要） |
-| 貞享元年刊《元三大師百籤》插圖研究（jstage jsartdesign 6_11） | 期刊論文 | 江戶御籤本版本學 | jstage.jst.go.jp | 已取得（摘要） |
+| 辛德勇〈述石印明萬曆刻本《觀世音感應靈課》〉，《中國典籍與文化》2004(3) | 期刊論文 | 萬曆刻本→1932 石印本關係的第一手考證 | lsqn.cn 轉載（douban 群轉載同文） | `fulltext_obtained`（轉載全文） |
+| 王濤〈長安殘書見精神〉，《藏書家》第8輯 | 期刊文章 | 長安殘書（萬曆刻本）發現始末 | 同上轉載提及 | `secondary_mention_only`（轉載提及） |
+| 陳冠至《明代佛教典籍出版研究》（博士論文） | 學位論文 | 佛教典籍出版史脈絡；記徐乃昌得孤本、印光序 | fju.edu.tw PDF | `fulltext_obtained`（全文 PDF） |
+| 薛皓文《臺灣艋舺龍山寺籤詩及其文學性研究》（2007 碩論） | 學位論文 | 唯一以龍山寺百首觀音籤為專題的碩論；六章含源流、典故出處 | ndltd.ncl.edu.tw/r/8z8esh；Airiti U0021-2910200810574807 | `abstract_obtained`（書目與摘要） |
+| 陳進國〈寺廟靈籤的流傳與風水信仰的擴散〉 | 期刊論文 | 閩台寺廟籤詩文本與風水信仰；跨廟文本流傳 | chinafolklore.org NewsID=2931 | `fulltext_obtained`（網頁全文） |
+| 濮文起編《中國歷代觀音文獻集成》卷6《觀音靈應圖經》（中華全國圖書館文獻縮微複製中心，1998） | 叢書 | 觀音文獻大型彙編，含靈應圖經 | books.google.com（書目頁） | `bibliographic_record_only`（書目）；內容需館藏 |
+| 《元三大師御籤本の研究：おみくじを読み解く》 | 專書 | 日本御籤本（元三大師百籤系）系統研究 | ndlsearch.ndl.go.jp R100000002-I000010080893 | `bibliographic_record_only`（書目） |
+| 明治聖徳記念学会〈「おみくじ」の起源與諸相 追考〉 | 學會刊物 PDF | 天竺靈籤與元三大師籤比較（「天竺霊籤は一番を缺く」） | meijiseitoku.org/pdf/f58-3.pdf | `abstract_obtained`（PDF 摘要） |
+| 貞享元年刊《元三大師百籤》插圖研究（jstage jsartdesign 6_11） | 期刊論文 | 江戶御籤本版本學 | jstage.jst.go.jp | `abstract_obtained`（摘要） |
 
-> 說明：本表「取得狀態」標示**文獻本身是否已取得**（全文／書目／摘要），與 lineage claim 的 `VERIFIED`（僅限官方一手）為**不同層級**，兩者不得混用。
+> 說明：本表 `acquisition_status` 標示**文獻本身取得到的層級**，與 lineage edge 的 `edge_level`（唯一使用 VERIFIED / PROBABLE / HYPOTHESIZED / UNRESOLVED）為**不同層級**，不得混用。
 
 ---
 
@@ -101,7 +102,7 @@
 | PSD-A05 | 台灣好廟網·東京淺草觀音寺一百籤 | 二手全文（含 lineage 說明） | 公開 | qiangua.temple01.com/qianshi.php?t=fs_akt100；載「中國天竺靈籤傳至比叡山，通稱漢詩一百／元三大師百御籤」（PROBABLE lineage 說明） |
 | PSD-A06 | 淺草寺百籤 2011 復刻 PDF | 本地文件 | local evidence available; not committed | 實體文本；sha256 c589742c561c5eb7137b4685b4a162eb69a8e3caed0684bc8a1fa441fb5168fa；Oracle KB pilot 既有材料 |
 | PSD-A07 | 高雄龍霄殿官網靈籤解籤 | 寺廟官方 | 公開 | longcheng.org.tw；第 100 籤一手抓取（「欲就東兮欲就西…」）。**與先前記錄的龍山寺相關文本存在差異；需直接 item-to-item 複驗後才能判定為跨廟版本分歧** |
-| PSD-A08 | 國立故宮博物院·典藏資料檢索 | 博物館數位典藏 | 公開 | digitalarchive.npm.gov.tw；**platform rights = VERIFIED**（官方 CC0 公眾領域貢獻宣告，低階圖像約 41 萬幅）；**item license = UNRESOLVED**（CC0 僅涵蓋書畫／器物／織品，古籍善本不在已確認範圍） |
+| PSD-A08 | 國立故宮博物院·典藏資料檢索 | 博物館數位典藏 | 公開 | digitalarchive.npm.gov.tw；`platform_rights_status = directly_observed`（官方 CC0 公眾領域貢獻宣告，低階圖像約 41 萬幅）；item license 尚未確認（CC0 僅涵蓋書畫／器物／織品，古籍善本不在已確認範圍） |
 | PSD-A09 | 中研院傅斯年圖書館（善本全文影像） | 學術數位典藏 | 公開（新增開放 452 種） | 452 種善本全文影像已開放；是否含觀音靈課 UNRESOLVED |
 
 ### B 級（檢索管道／需登入或進一步確認）
@@ -122,15 +123,17 @@
 | PSD-B12 | 博揚文化（籤詩研究專書出版） | 出版社 | 付費 | 《籤詩：臺灣民間信仰研究的新視野》等（Cultural Network 已記錄） |
 | PSD-B13 | 文化部國家文化記憶庫 opendata（民俗宗教 datasetId=753，18,583 筆） | 開放資料集 | 公開 | 可程式化批次取用；籤詩文物檢索需進一步篩選 |
 
+> Source table 的 `Access` 對應 JSON `access_status`；source record 的觀察狀態另以 JSON `source_observation_status` 記錄（`directly_observed`／`carried_forward`／`indirectly_supported`／`unresolved`）。這個欄位不是 edge evidence，也不使用 `confidence`。
+
 ---
 
 ## 4. 官方 Rights／Reuse 聲明（本輪一手驗證）
 
 | 機構 | 頁面 | 聲明內容 | 狀態 |
 |---|---|---|---|
-| 國立故宮博物院 | digitalarchive.npm.gov.tw 首頁 | 書畫、器物、織品低階圖像約 41 萬幅以「公眾領域貢獻宣告」（CC0）開放，不須註明出處 | **platform_rights_status = VERIFIED**（一手抓取頁面）；**item_license_status = UNRESOLVED**（古籍 item 不在已確認範圍） |
-| 華藏淨宗學會 | fabo.hwadzan.com/Fabo/1555 | 法寶免費流通；需註冊帳號；庫存 38 | VERIFIED（一手抓取） |
-| 其餘（龍山寺、行天宮、朝天宮、國圖、中研院、ctext、IA、HathiTrust、佛學數位圖書館等） | — | 均未在本輪逐頁確認 reuse 條款 | UNRESOLVED（沿用 Cultural Network 的 Access ≠ License 紀律：access 開放不代表 license ok） |
+| 國立故宮博物院 | digitalarchive.npm.gov.tw 首頁 | 書畫、器物、織品低階圖像約 41 萬幅以「公眾領域貢獻宣告」（CC0）開放，不須註明出處 | `platform_rights_status = directly_observed`（一手抓取頁面）；item license 未確認（古籍 item 不在已確認範圍） |
+| 華藏淨宗學會 | fabo.hwadzan.com/Fabo/1555 | 法寶免費流通；需註冊帳號；庫存 38 | `source_observation_status = directly_observed`；對應現代流通 edge 為 `edge_level=VERIFIED`（一手抓取） |
+| 其餘（龍山寺、行天宮、朝天宮、國圖、中研院、ctext、IA、HathiTrust、佛學數位圖書館等） | — | 均未在本輪逐頁確認 reuse 條款 | reuse terms 尚未確認（沿用 Cultural Network 的 Access ≠ License 紀律：access 開放不代表 license ok） |
 
 ---
 
@@ -138,10 +141,10 @@
 
 | # | 項目 | 狀態 | 結果摘要 |
 |---|---|---|---|
-| 1 | 龍山寺 concrete item／第 100 籤直接驗證 | **UNRESOLVED**（官網無此 item 已 VERIFIED） | 官網現行版無籤詩電子頁；舊路徑 eBooks/046.pdf 404 |
-| 2 | 國圖館藏（rbook 查「觀音靈課」） | **UNRESOLVED**（需瀏覽器手動） | rbook 為 session 型系統，curl 走不完；aleweb OPAC 連線失敗 |
-| 3 | 日本 NDL item | **VERIFIED（限定本輪 query）** | 本輪以指定 NDL Search / Digital Collection query 未檢出公開數位 item（Search failure ≠ non-existence） |
-| 4 | 中國國圖／萬曆刻本 | **命中**：國圖有複製版館藏（非萬曆原件） | 《南无大慈悲灵感观世音菩萨三十二课》DOC 004826983（縮微中心複製版） |
+| 1 | 龍山寺 concrete item／第 100 籤直接驗證 | `absence_observed_item_unresolved`（官網無此 item） | 官網現行版無籤詩電子頁；舊路徑 eBooks/046.pdf 404 |
+| 2 | 國圖館藏（rbook 查「觀音靈課」） | `query_incomplete`（需瀏覽器手動） | rbook 為 session 型系統，curl 走不完；aleweb OPAC 連線失敗 |
+| 3 | 日本 NDL item | `query_result_observed_item_unresolved`（限定本輪 query） | 本輪以指定 NDL Search / Digital Collection query 未檢出公開數位 item（Search failure ≠ non-existence） |
+| 4 | 中國國圖／萬曆刻本 | `holding_record_observed_original_unresolved` | 《南无大慈悲灵感观世音菩萨三十二课》DOC 004826983（縮微中心複製版） |
 
 ### 5.1 龍山寺 concrete item
 
@@ -166,14 +169,16 @@ NDL Search OpenSearch API（2026-08-15）一手查詢：
 - IMPRINT：全国图书馆文献缩微中心（縮微複製版；出版者與濮文起《中國歷代觀音文獻集成》同一機構脈絡）
 - **注意**：此為複製版館藏記錄，**不等於**明萬曆 20 年刻本原件在國圖；原件館藏仍 UNRESOLVED。
 
-> 結構化結果（含每項 verification 標記）見 sources.json 的 `must_test_results`。
+> 結構化結果（含每項 `observation_status` 標記）見 sources.json 的 `must_test_results`。
 
 ---
 
 ## 6. 品質與驗證紀律
 
 - 全部紀錄 verification date = 2026-08-15；`VERIFIED` 僅限 **primary / official direct evidence**（本輪直接抓取官方或一手頁面者）。
-- **兩個層級不得混用**：`edge_level`（lineage claim 的證據級別：VERIFIED 僅限官方一手；PROBABLE 含 literature-supported／secondary-source-supported）與 `source_confidence`（來源記錄本身是否本輪實際抓取）為不同層級；文獻表「取得狀態」同理僅標示文獻是否已取得，不作為 claim 級別。
+- **三組狀態不得混用**：`edge_level`（唯一使用 `VERIFIED / PROBABLE / HYPOTHESIZED / UNRESOLVED` 的 lineage claim 證據級別）／`source_observation_status`（source record 的觀察狀態）／`acquisition_status`（literature record 的取得層級）各自獨立；JSON 不再使用模糊的 `confidence`。
+- `source_observation_status` enum：`directly_observed`／`carried_forward`／`indirectly_supported`／`unresolved`。
+- `acquisition_status` enum：`fulltext_obtained`／`abstract_obtained`／`bibliographic_record_only`／`secondary_mention_only`／`not_obtained`。
 - **Lineage edge 證據四級**：`verified_edges`（官方一手）／`probable_edges`（literature-supported，可靠文獻／二手一致但缺官方 concrete item）／`hypothesized_edges`（有動機無證據）／`unresolved_edges`（未取得一手證據）。不確定的 edge 不得因故事合理而升級。
 - 二手全文網站（籤詩網、台灣好廟網）定位為**文本對照**與**線索**，不作授權來源，也不作為 VERIFIED 依據。
 - **platform rights ≠ item license**：平台政策已驗證（如故宮 CC0）不代表具體古籍 item 已確認可 reuse。
