@@ -1,6 +1,6 @@
 # Draw One — Research Status Board
 
-**Last updated:** 2026-08-16 15:05 (Asia/Taipei)
+**Last updated:** 2026-08-16 15:08 (Asia/Taipei)
 
 > This file reports research progress only. Source-of-truth evidence remains in corpus packages and historical registry.
 
@@ -9,8 +9,8 @@
 | Corpus | Historical baseline | Modern temple reference | Next gate |
 |---|---|---|---|
 | 六十甲子籤 | 🔴 0/60 — 古本文字未取得（臺灣記憶 attestation 已登記） | 🟢 北港官方＋新港 60/60 已 OCR | 🟡 取得可逐字比較的古本 → Historical Comparison PR |
-| 觀音一百籤 | 🟡 11/103 頁 OCR 進行中（早稻田 E1387） | 🟡 好廟網／籤詩網等已識別，同源判定 pending | 🟡 E1387 100 籤完成 → Historical Baseline Ingestion PR |
-| 關帝百籤 | 🟢 100/100 — 道藏 baseline 完成 | 🟢 現行廟宇版本比對完成（27/100 直接支持） | 🟡 清刊本 transcription → Historical Edition Ingestion PR |
+| 觀音一百籤 | 🟡 11/103 頁 OCR 進行中（早稻田 E1387） | 🟢 龍山寺／龍霄殿等主要 modern carriers 已確認；secondary mirrors 已識別 | 🟡 E1387 100 籤完成 → Historical Baseline Ingestion PR |
+| 關帝百籤 | 🟢 100/100 — 道藏 baseline 完成；27/100 與現代 reading 直接／字形級支持 | 🟢 主要 modern carrier/reference 已確認 | 🟡 清刊本 transcription → Historical Edition Ingestion PR |
 
 ### Last checkpoint
 
