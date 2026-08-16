@@ -1,17 +1,17 @@
 [
   {
-    "edition_id": "ed-liushijiazi-1912-beigang-taiwanmemory",
+    "edition_id": "ed-liushijiazi-beigang-shengmu-lingqianzhi-taiwanmemory",
     "corpus_id": "liushijiazi",
-    "title": "北港朝天宮籤詩古本（民國元年系，臺灣記憶數位檔）",
+    "title": "北港聖母靈籤紙",
     "publication_date": null,
-    "approximate_date": "1912（民國元年）— Crystal 目視確認古本；確切年份待 metadata 補登",
+    "approximate_date": "年代不詳（臺灣記憶 metadata 2026-08-16 抄錄）；Study 03 source map 1912 系為 PROBABLE，未獲此本確認",
     "author": null,
     "compiler": null,
     "publisher": null,
-    "holding_institution": "國家圖書館臺灣記憶（Taiwan Memory）× 北港朝天宮 2024 數位化合作案",
-    "digital_source": "https://tm.ncl.edu.tw（確切識別號待 Crystal 補登）",
+    "holding_institution": "北港朝天宮文物館典藏（國家圖書館數位化，2024 合作案）",
+    "digital_source": "https://tm.ncl.edu.tw/article?u=054_103_000011（臺灣記憶識別號 P00126）",
     "edition_type": "historical_edition",
-    "completeness": "unknown（目視確認古本存在；是否 60 籤完整未確認）",
+    "completeness": "unknown（24 頁，頁面描述「每頁印有用2籤」；是否涵蓋完整 60 籤未確認，不推測）",
     "text_access_status": "not_obtained",
     "image_access_status": "viewable_not_licensed",
     "reuse_status": "not_licensed",
@@ -19,11 +19,11 @@
     "comparison_status": "not_completed",
     "relationship_to_other_editions": "北港官方現行版（src-beigang-official, ed-beigang-chaotiangong）之早期版本／歷史前身（PROBABLE）；與日治《聖籤解》可能同源（未驗證）",
     "evidence": [
+      "臺灣記憶詳細頁抄錄（browser agent，2026-08-16）：正式題名「北港聖母靈籤紙」、識別號 P00126、原件典藏單位北港朝天宮文物館、類型文件、黑白、24 頁、中文、收藏人曾水龍社王耀洲、關鍵詞籤紙/六十甲子籤/北港聖母靈籤",
       "Crystal 目視確認（2026-08-16）：是古本；數位物件不授權 production reuse",
-      "國圖×北港朝天宮 2024 文獻數位化合作案（吳柏岳，國圖館刊 2025.6）— 數位檔進臺灣記憶",
-      "Study 03 source map：北港 1912 古本為廟藏（PROBABLE）"
+      "國圖×北港朝天宮 2024 文獻數位化合作案（吳柏岳，國圖館刊 2025.6）— 數位檔進臺灣記憶"
     ],
-    "notes": "數位物件（影像）不授權 reuse → 僅作 historical provenance / attestation；古籍文字依智財局見解屬已無著作財產權，但此數位檔之製版/版面權利不授權 → 不得搬用影像或逐字轉錄自該檔；需另找同一 reading 之合法可利用來源",
+    "notes": "數位物件（影像）不授權 reuse → 僅作 historical provenance / attestation；古籍文字依智財局見解屬已無著作財產權，但此數位檔之製版/版面權利不授權 → 不得搬用影像或逐字轉錄自該檔；需另找同一 reading 之合法可利用來源。metadata 來源：臺灣記憶詳細頁（browser agent 抄錄，未下載/未轉錄內容）",
     "role_in_draw_one": "historical_attestation"
   },
   {
