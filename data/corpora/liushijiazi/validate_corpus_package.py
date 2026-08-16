@@ -93,8 +93,8 @@ def main():
     check("A9. 每籤 3 attestations", all(
         len([a for a in atts if a["slip_number"] == n]) == 3 for n in range(1, 61)),
         "slip 的 attestation 數 ≠ 3")
-    check("A10. sources 3", len(sources) == 3, f"len={len(sources)}")
-    check("A11. claims 70", len(claims) == 70, f"len={len(claims)}")
+    check("A10. sources 4", len(sources) == 4, f"len={len(sources)}")  # +1: src-taiwan-memory-beigang (2026-08-16 historical attestation)
+    check("A11. claims 71", len(claims) == 71, f"len={len(claims)}")  # +1: cl-historical-attestation-taiwan-memory-01
     check("A12. corpus 層 license unresolved",
           corpus["license_status"] == "unresolved" and corpus["production_eligible"] is False,
           f"license_status={corpus.get('license_status')}")
