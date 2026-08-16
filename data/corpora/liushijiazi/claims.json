@@ -1,0 +1,1253 @@
+[
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-adoption-beigang-01",
+    "claim_type": "adoption",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official"
+    ],
+    "notes": "awaiting human/domain_expert approval",
+    "reason": "官方一手直接證據：北港朝天宮官網 60 籤列表（干支序）＋籤詩圖檔 60/60（2026-08-15 直接觀察＋全量 OCR）——北港採用六十甲子籤 corpus；VERIFIED 需 human approval",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ad-beigang-chaotiangong",
+    "target_type": "adoption"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-adoption-xingang-01",
+    "claim_type": "adoption",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-xingang-fengtiangong"
+    ],
+    "notes": "awaiting human/domain_expert approval",
+    "reason": "官方一手直接證據：新港奉天宮官網 60 首列表（干支序）＋捐獻籤板照片 60/60（2026-08-15 直接觀察＋subset 12 OCR）——新港採用六十甲子籤 corpus；VERIFIED 需 human approval",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ad-xingang-fengtiangong",
+    "target_type": "adoption"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-corpus-identity-01",
+    "claim_type": "corpus_identity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-xingang-fengtiangong",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "全量比對完成（詩文同源、干支序一致、卦象/五行/方位結構一致）；VERIFIED 需 human/domain_expert approval，agent 不 self-approve",
+    "reason": "六十甲子籤為單一 textual corpus：Phase B 全量 60-vs-60 比對（北港官方圖檔 OCR vs 好廟網 fs60；comparison directly performed，不標 VERIFIED）＋新港官方 subset 12 籤交叉＋北港/新港/慈祐宮官方 self-label＋籤詩網集體主張（secondary）",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "corpus_liushijiazi_60",
+    "target_type": "corpus"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-independence-beigang-01",
+    "claim_type": "independence",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official"
+    ],
+    "notes": "機械判準：group_id 不同即獨立",
+    "reason": "北港朝天宮官方一手（廟方自有發布圖檔，60/60 直接觀察）；與網路轉錄群（籤詩網/好廟網/育德）不同源；agent 無 approval 不 VERIFIED",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ig-beigang-official",
+    "target_type": "independence_group"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-independence-haomiaowang-01",
+    "claim_type": "independence",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "",
+    "reason": "好廟網 fs60 與籤詩網/育德疑似同源（mirror 群），未做機械判定——不因兩網站內容相同就當成兩個 independent sources",
+    "slip_number": null,
+    "status": "UNRESOLVED",
+    "status_detail": "unresolved",
+    "target_id": "ig-haomiaowang-fs60",
+    "target_type": "independence_group"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-independence-xingang-01",
+    "claim_type": "independence",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-xingang-fengtiangong"
+    ],
+    "notes": "機械判準：group_id 不同即獨立",
+    "reason": "新港奉天宮官方一手（廟方官網發布捐獻籤板照片，60/60 直接觀察）；與北港（ig-beigang-official）不同廟、不同發布管道→機械上獨立 group；agent 無 approval 不 VERIFIED",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ig-xingang-official",
+    "target_type": "independence_group"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-origin-unresolved-01",
+    "claim_type": "lineage",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [],
+    "notes": "不因全量比對而改變——比對證明 corpus 一致性，不證明起源",
+    "reason": "六十甲子籤具體起源（何人何處）無法考據；林國平研究指籤詩出現不早於南宋（literature 層轉引，原文未取得）——不知道就標不知道",
+    "slip_number": null,
+    "status": "UNRESOLVED",
+    "status_detail": "unresolved",
+    "target_id": "corpus_liushijiazi_60",
+    "target_type": "corpus"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-001",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第1籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 1,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-001",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-002",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第2籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 2,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-002",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-003",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第3籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 3,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-003",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-004",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第4籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 4,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-004",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-005",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第5籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 5,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-005",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-006",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第6籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 6,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-006",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-007",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第7籤）；Crystal 目視官方圖檔確認 observed transcription：雲開月出見分明／不須進退問前途（L1-L2 目視確認）；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 7,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-007",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-008",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第8籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 8,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-008",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-009",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第9籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 9,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-009",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-010",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第10籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 10,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-010",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-011",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第11籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 11,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-011",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-012",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第12籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 12,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-012",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-013",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第13籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 13,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-013",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-014",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第14籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 14,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-014",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-015",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第15籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 15,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-015",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-016",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第16籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 16,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-016",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-017",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第17籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 17,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-017",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-018",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第18籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 18,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-018",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-019",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official"
+    ],
+    "notes": "VERIFIED：human approval（2026-08-15 Crystal 目視）+ 無 open substantive divergence",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第19籤）；Crystal 目視官方圖檔確認 observed transcription：天註定（L1 目視確認，批次 OCR 誤讀注已修正）／兩分明（L4 目視確認）；無 open substantive divergence",
+    "slip_number": 19,
+    "status": "VERIFIED",
+    "status_detail": "verified",
+    "target_id": "slip-lsjz-019",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-020",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第20籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 20,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-020",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-021",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第21籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 21,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-021",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-022",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第22籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 22,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-022",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-023",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第23籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 23,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-023",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-024",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第24籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 24,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-024",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-025",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第25籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 25,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-025",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-026",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第26籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 26,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-026",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-027",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第27籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 27,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-027",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-028",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第28籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 28,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-028",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-029",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第29籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 29,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-029",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-030",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第30籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 30,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-030",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-031",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第31籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 31,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-031",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-032",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第32籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 32,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-032",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-033",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第33籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 33,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-033",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-034",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第34籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 34,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-034",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-035",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第35籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 35,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-035",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-036",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第36籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 36,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-036",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-037",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第37籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 37,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-037",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-038",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第38籤）；Crystal 目視官方圖檔確認 observed transcription：名顯有意在中間（L1）／即時得意在中間（L4）目視確認；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 38,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-038",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-039",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第39籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 39,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-039",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-040",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第40籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 40,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-040",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-041",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第41籤）；Crystal 目視官方圖檔確認 observed transcription：今行到手寔難推（L1 目視確認）；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 41,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-041",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-042",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第42籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 42,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-042",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-043",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第43籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 43,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-043",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-044",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第44籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 44,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-044",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-045",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第45籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 45,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-045",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-046",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第46籤）；Crystal 目視官方圖檔確認 observed transcription：功名得位與君顯（L1）／十五團圓照滿天（L4）目視確認；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 46,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-046",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-047",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第47籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 47,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-047",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-048",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第48籤）；Crystal 目視官方圖檔確認 observed transcription：陰世作事未和同（L1 目視確認）；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 48,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-048",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-049",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第49籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 49,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-049",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-050",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第50籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 50,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-050",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-051",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第51籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 51,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-051",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-052",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第52籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 52,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-052",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-053",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第53籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 53,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-053",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-054",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第54籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 54,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-054",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-055",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第55籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 55,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-055",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-056",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第56籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 56,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-056",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-057",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "PROBABLE：一手 verbatim（human 目視）+ 跨 carrier 比對；有 open substantive_divergence，依 canonical 不得 VERIFIED（awaiting divergence 定版決策）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第57籤）；Crystal 目視官方圖檔確認 observed transcription：前途富貴喜安然（L2 目視確認）；仍有 open substantive divergence，divergence 保留不 merge",
+    "slip_number": 57,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-057",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-058",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第58籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 58,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-058",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-text-059",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "VERIFIED 需 human/domain_expert approval（含 OCR 人工複核圖檔）",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第59籤）；詩文跨 carrier 交叉一致（異體字除外）",
+    "slip_number": 59,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "slip-lsjz-059",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "human",
+    "claim_id": "cl-text-060",
+    "claim_type": "text_authenticity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-xingang-fengtiangong"
+    ],
+    "notes": "VERIFIED：human approval（2026-08-15 Crystal 目視）+ 無 open substantive divergence",
+    "reason": "北港一手官方圖檔 OCR verbatim（60/60 全量）+ 好廟網 fs60 交叉比對（第60籤）；Crystal 目視官方圖檔確認 observed transcription：內外用心再作福（L3 目視確認）；無 open substantive divergence；第3句「內外」北港＋新港 2 個獨立官方 group 同文（新港 attestation 已 human 目視確認）",
+    "slip_number": 60,
+    "status": "VERIFIED",
+    "status_detail": "verified",
+    "target_id": "slip-lsjz-060",
+    "target_type": "slip"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-version-beigang-01",
+    "claim_type": "version_identity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-beigang-official",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "",
+    "reason": "北港朝天宮版為六十甲子籤的 edition variant：詩文同源（60-vs-60 全量比對）＋北港特有註釋層（漁業聖意/廟公的話/卦名）＋#60「內外」實質異文——comparison-based",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ed-beigang-chaotiangong",
+    "target_type": "family"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-version-commonweb-01",
+    "claim_type": "version_identity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "",
+    "reason": "好廟網 fs60 文本與北港版同 corpus、詩文高度一致（60-vs-60 全量：僅異體字與少數異文）；與籤詩網疑似同源（mirror 群，未機械判定）——僅 comparison 用途",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ed-liushijiazi-common-web",
+    "target_type": "family"
+  },
+  {
+    "checked_at": "2026-08-15",
+    "checked_by": "agent_review",
+    "claim_id": "cl-version-xingang-01",
+    "claim_type": "version_identity",
+    "corpus_id": "liushijiazi",
+    "evidence_ids": [
+      "src-xingang-fengtiangong",
+      "src-haomiaowang-fs60"
+    ],
+    "notes": "",
+    "reason": "新港奉天宮版為六十甲子籤的 edition variant：subset 12 籤詩文與北港/好廟網同源（含第1籤「清靜」與北港同、好廟網「清淨」異）——comparison-based",
+    "slip_number": null,
+    "status": "PROBABLE",
+    "status_detail": "probable",
+    "target_id": "ed-xingang-fengtiangong",
+    "target_type": "family"
+  }
+]

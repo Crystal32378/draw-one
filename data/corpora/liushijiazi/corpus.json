@@ -1,0 +1,149 @@
+{
+  "adoption_deities": [
+    {
+      "deity": "天上聖母（媽祖）",
+      "note": "台灣媽祖廟主流採用（北港/新港/慈祐宮官方一手；關渡/大甲 PROBABLE）"
+    },
+    {
+      "deity": "玉皇上帝（天公）",
+      "note": "籤詩網：天公廟亦有採用此組籤詩"
+    },
+    {
+      "deity": "鎮海元帥",
+      "note": "東港鎮海宮（王爺廟）官方明言採用——跨神 adoption"
+    },
+    {
+      "deity": "清元真君／天狗將軍",
+      "note": "印尼椰城鳳山廟以他神名義使用（UBM 學術論文）——跨國跨神 adoption"
+    }
+  ],
+  "corpus_id": "liushijiazi",
+  "corpus_status": "PROBABLE",
+  "corpus_status_source": "cl-corpus-identity-01（Study 03：六十甲子籤為單一 textual corpus；VERIFIED 需 human/domain_expert approval）",
+  "edition_families": [
+    {
+      "family_claim_ids": [
+        "cl-version-beigang-01"
+      ],
+      "family_id": "ed-beigang-chaotiangong",
+      "lineage_note": "北港朝天宮官方線上籤詩圖檔（2024-08-05 批次為主、第59籤 2025-06-21 批次）；含漁業聖意（討海/作塭/魚苗）、廟公的話、卦頭故事等北港特有註釋層；#60 用「內外」與通用網路版「戶內」為實質異文；圖含卦名（乾為天卦等）＋卦象記號",
+      "mirror_group": null,
+      "name": "北港朝天宮版",
+      "status": "draft"
+    },
+    {
+      "family_claim_ids": [
+        "cl-version-xingang-01"
+      ],
+      "family_id": "ed-xingang-fengtiangong",
+      "lineage_note": "新港奉天宮官方線上籤詩圖（信士邱福來 法號聖慧 捐獻籤板照片，2023-12 批次）；圖面為 干支＋（首N）＋四句詩＋捐獻署名——無五行/卦頭/聖意層；解析文字另存於官網頁面（content 欄位）",
+      "mirror_group": null,
+      "name": "新港奉天宮版",
+      "status": "draft"
+    },
+    {
+      "family_claim_ids": [
+        "cl-version-commonweb-01"
+      ],
+      "family_id": "ed-liushijiazi-common-web",
+      "lineage_note": "網路轉錄群（好廟網 fs60；疑與籤詩網同源——未機械判定）；含卦象記號/五行/方位/詩文/故事/籤解；轉錄可能 normalize（籤詩網自述改常用同義字）",
+      "mirror_group": null,
+      "name": "通用網路轉錄版（好廟網 fs60 系）",
+      "status": "draft"
+    }
+  ],
+  "identity": {
+    "corpus_deity_distinction": "「媽祖籤」不是單一 corpus：六十甲子籤為獨立 textual corpus，被多神多廟採用（見 adoption_deities）；不得與其他媽祖廟使用的其他籤系混為同一 dataset",
+    "name_family": [
+      "六十甲子籤",
+      "六十首籤",
+      "六十甲子聖母詩籤（碩論用語）",
+      "媽祖籤（conflation 俗名）",
+      "天上聖母籤（conflation 俗名）"
+    ],
+    "origin_deity": null,
+    "origin_place": null,
+    "origin_tradition": null,
+    "self_identification": null
+  },
+  "known_temple_adoptions": [
+    {
+      "adoption_date_fact": null,
+      "adoption_id": "ad-beigang-chaotiangong",
+      "deity": "天上聖母（北港媽）",
+      "evidence_claim_ids": [
+        "cl-adoption-beigang-01"
+      ],
+      "notes": "2026-08-15 直接觀察：官網 60 籤列表（干支序）＋籤詩圖檔 60/60 全量下載 OCR；adoption 事實官方一手（edge_level 見 claim，awaiting human approval）",
+      "region": "雲林縣北港鎮",
+      "source_ids": [
+        "src-beigang-official"
+      ],
+      "temple": "北港朝天宮"
+    },
+    {
+      "adoption_date_fact": null,
+      "adoption_id": "ad-xingang-fengtiangong",
+      "deity": "天上聖母（新港媽）",
+      "evidence_claim_ids": [
+        "cl-adoption-xingang-01"
+      ],
+      "notes": "2026-08-15 直接觀察：官網 60 首列表（干支序）＋捐獻籤板照片 60/60 下載、subset 12 籤 OCR；adoption 事實官方一手（edge_level 見 claim，awaiting human approval）",
+      "region": "嘉義縣新港鄉",
+      "source_ids": [
+        "src-xingang-fengtiangong"
+      ],
+      "temple": "新港奉天宮"
+    }
+  ],
+  "last_validated_package": {
+    "clean_rebuild": "byte-level identical to frozen PR package",
+    "eligibility": "0/60 production-eligible",
+    "main_commit": "f589d58",
+    "package_path": "research/oracle-corpus-study-03-liushijiazi-full",
+    "semantic_regression": "211 PASS / 0 FAIL",
+    "validator": "2204 PASS / 0 FAIL"
+  },
+  "license_note": "item_license_status 180/180 = unresolved（北港/新港官方圖檔未見再製授權聲明）→ production_eligible = 0/60",
+  "license_status": "unresolved",
+  "lot_count": 60,
+  "name_en": "Liushijiazi",
+  "name_zh": "六十甲子籤",
+  "production_eligible": false,
+  "provenance_status": {
+    "corpus_identity": "PROBABLE",
+    "independence_groups": [
+      {
+        "group_id": "ig-beigang-official",
+        "rationale": "北港朝天宮官方一手（廟方自有發布的籤詩圖檔，60/60 直接觀察下載）"
+      },
+      {
+        "group_id": "ig-xingang-official",
+        "rationale": "新港奉天宮官方一手（廟方官網發布的捐獻籤板照片，60/60 直接觀察下載；與北港不同廟、不同發布管道→機械上獨立）"
+      },
+      {
+        "group_id": "ig-haomiaowang-fs60",
+        "rationale": "好廟網 fs60 網頁群（疑似與籤詩網同源 mirror 群，未機械判定；僅 comparison 用途）"
+      }
+    ],
+    "note": "官方 primary sources 皆 directly_observed（2026-08-15）；全量比對完成；corpus identity 為 PROBABLE（awaiting human approval）",
+    "sources": [
+      {
+        "source_id": "src-beigang-official",
+        "source_observation_status": "directly_observed",
+        "type": "primary"
+      },
+      {
+        "source_id": "src-xingang-fengtiangong",
+        "source_observation_status": "directly_observed",
+        "type": "primary"
+      },
+      {
+        "source_id": "src-haomiaowang-fs60",
+        "source_observation_status": "directly_observed",
+        "type": "secondary"
+      }
+    ]
+  },
+  "reference_method": "comparison-based reference designation（60-vs-60 全量比對後，北港官方圖檔版指定為 reference edition；60/60 reference chain 皆 resolved）"
+}
