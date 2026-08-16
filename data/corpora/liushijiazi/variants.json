@@ -1,0 +1,479 @@
+[
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「光明清靜照世間」vs 好廟網「光明清淨照世間」；新港 subset OCR（01）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "光明清靜照世間",
+    "slip_number": 1,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-001-01",
+    "variant_text": "光明清淨照世間"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「雲開月出見分明」vs 好廟網「雲開月出正分明」；第2句 北港「不須進退問前途」vs 好廟網「不須進退問前程」；新港 subset OCR（07）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "雲開月出見分明",
+    "slip_number": 7,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-007-01",
+    "variant_text": "雲開月出正分明"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第1句 北港「雲開月出見分明」vs 好廟網「雲開月出正分明」；第2句 北港「不須進退問前途」vs 好廟網「不須進退問前程」；新港 subset OCR（07）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "不須進退問前途",
+    "slip_number": 7,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-007-02",
+    "variant_text": "不須進退問前程"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句 北港「不知此去相愛悞」vs 好廟網「不知此去相愛愉」；新港 subset OCR（09）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "不知此去相愛悞",
+    "slip_number": 9,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-009-01",
+    "variant_text": "不知此去相愛愉"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「可惜今年爾虛度」vs 好廟網「可惜今年汝虛度」；新港 subset OCR（10）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "可惜今年爾虛度",
+    "slip_number": 10,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-010-01",
+    "variant_text": "可惜今年汝虛度"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「命內正逢羅孛關」vs 好廟網「命中正逢羅孛關」；新港 subset OCR（13）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "命內正逢羅孛關",
+    "slip_number": 13,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-013-01",
+    "variant_text": "命中正逢羅孛關"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句 北港「求得貴人多得利」vs 好廟網「若得貴人多得利」；新港 subset OCR（18）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "求得貴人多得利",
+    "slip_number": 18,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-018-01",
+    "variant_text": "若得貴人多得利"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第4句 北港「雲開月出兩分明」vs 好廟網「雲開月出自分明」；新港 subset OCR（19）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "雲開月出兩分明",
+    "slip_number": 19,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-019-01",
+    "variant_text": "雲開月出自分明"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「如今還在暗中藏」vs 好廟網「如今反在暗中藏」；新港 subset OCR（29）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "如今還在暗中藏",
+    "slip_number": 29,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-029-01",
+    "variant_text": "如今反在暗中藏"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「過後須妨未得高」vs 好廟網「過後須防未得高」；新港 subset OCR（30）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "過後須妨未得高",
+    "slip_number": 30,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-030-01",
+    "variant_text": "過後須防未得高"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句 北港「花葉結實無殘謝」vs 好廟網「花果結實無殘謝」；新港 subset OCR（31）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "花葉結實無殘謝",
+    "slip_number": 31,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-031-01",
+    "variant_text": "花果結實無殘謝"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第4句 北港「去蛇反轉變成龍」vs 好廟網「長蛇反轉變成龍」；新港 subset OCR（34）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "去蛇反轉變成龍",
+    "slip_number": 34,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-034-01",
+    "variant_text": "長蛇反轉變成龍"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第4句 北港「祈保分明得自安」vs 好廟網「祈保分明自平安」；新港 subset OCR（36）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "祈保分明得自安",
+    "slip_number": 36,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-036-01",
+    "variant_text": "祈保分明自平安"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「名顯有意在中間」vs 好廟網「名顯有意在中央」；第4句 北港「即時得意在中間」vs 好廟網「即時得意在其間」；新港 subset OCR（38）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "名顯有意在中間",
+    "slip_number": 38,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-038-01",
+    "variant_text": "名顯有意在中央"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第1句 北港「名顯有意在中間」vs 好廟網「名顯有意在中央」；第4句 北港「即時得意在中間」vs 好廟網「即時得意在其間」；新港 subset OCR（38）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "即時得意在中間",
+    "slip_number": 38,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-038-02",
+    "variant_text": "即時得意在其間"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「今行到手寔難推」vs 好廟網「今行到此實難推」；新港 subset OCR（41）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "今行到手寔難推",
+    "slip_number": 41,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-041-01",
+    "variant_text": "今行到此實難推"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句 北港「君子小人結會合」vs 好廟網「君子小人相會合」；新港 subset OCR（45）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "君子小人結會合",
+    "slip_number": 45,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-045-01",
+    "variant_text": "君子小人相會合"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「功名得位與君顯」vs 好廟網「功名得意與君顯」；第4句 北港「十五團圓照滿天」vs 好廟網「十五團圓光滿天」；新港 subset OCR（46）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "功名得位與君顯",
+    "slip_number": 46,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-046-01",
+    "variant_text": "功名得意與君顯"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第1句 北港「功名得位與君顯」vs 好廟網「功名得意與君顯」；第4句 北港「十五團圓照滿天」vs 好廟網「十五團圓光滿天」；新港 subset OCR（46）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "十五團圓照滿天",
+    "slip_number": 46,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-046-02",
+    "variant_text": "十五團圓光滿天"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句 北港「于今且看月中旬」vs 好廟網「於今且看月中旬」；新港 subset OCR（47）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "于今且看月中旬",
+    "slip_number": 47,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-047-01",
+    "variant_text": "於今且看月中旬"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「陰世作事未和同」vs 好廟網「陽世作事未和同」；第4句 北港「只恐前途運未通」vs 好廟網「只恐命內運未通」；新港 subset OCR（48）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "陰世作事未和同",
+    "slip_number": 48,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-048-01",
+    "variant_text": "陽世作事未和同"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第1句 北港「陰世作事未和同」vs 好廟網「陽世作事未和同」；第4句 北港「只恐前途運未通」vs 好廟網「只恐命內運未通」；新港 subset OCR（48）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "只恐前途運未通",
+    "slip_number": 48,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-048-02",
+    "variant_text": "只恐命內運未通"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第4句 北港「君屬何須問重重」vs 好廟網「君爾何須問重重」；新港 subset OCR（49）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "君屬何須問重重",
+    "slip_number": 49,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-049-01",
+    "variant_text": "君爾何須問重重"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 4,
+    "notes": "第4句 北港「亦能變化得成金」vs 好廟網「也能變化得成金」；新港 subset OCR（50）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "亦能變化得成金",
+    "slip_number": 50,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-050-01",
+    "variant_text": "也能變化得成金"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「不須介念意懸懸」vs 好廟網「不須掛念意懸懸」；新港 subset OCR（52）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "不須介念意懸懸",
+    "slip_number": 52,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-052-01",
+    "variant_text": "不須掛念意懸懸"
+  },
+  {
+    "classification": "orthographic_only",
+    "corpus_id": "liushijiazi",
+    "line": 1,
+    "notes": "第1句 北港「須知進退總虛言」vs 好廟網「須知進退總言虛」；新港 subset OCR（55）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "須知進退總虛言",
+    "slip_number": 55,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-055-01",
+    "variant_text": "須知進退總言虛"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 2,
+    "notes": "第2句 北港「前途富貴喜安然」vs 好廟網「前途清吉得運時」；新港 subset OCR（57）加入比對",
+    "reference_selected": false,
+    "reference_source_ids": [
+      "src-beigang-official"
+    ],
+    "reference_text": "前途富貴喜安然",
+    "slip_number": 57,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-057-01",
+    "variant_text": "前途清吉得運時"
+  },
+  {
+    "classification": "substantive_divergence",
+    "corpus_id": "liushijiazi",
+    "line": 3,
+    "notes": "第3句：北港官方「內外」＋新港官方「內外」（2 個獨立官方 group，皆 human 目視）vs 好廟網/育德「戶內」（網路 mirror 群）——substantive_divergence；北港＋新港 2 獨立官方 primary 已指定「內外」為 reference（reference_designated），mirror「戶內」substantive attestation 保留不消除",
+    "reference_selected": true,
+    "reference_source_ids": [
+      "src-beigang-official",
+      "src-xingang-fengtiangong"
+    ],
+    "reference_text": "內外用心再作福",
+    "slip_number": 60,
+    "source_ids": [
+      "src-haomiaowang-fs60"
+    ],
+    "variant_id": "var-lsjz-060-01",
+    "variant_text": "戶內用心再作福"
+  }
+]
