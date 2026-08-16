@@ -1,0 +1,230 @@
+[
+  {
+    "edition_id": "ed-liushijiazi-beigang-shengmu-lingqianzhi-taiwanmemory",
+    "old_role": "historical_attestation",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-liushijiazi-shengqianjie-japanera",
+    "old_role": "historical_attestation",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-liushijiazi-qianzhi-p00124-taiwanmemory",
+    "old_role": "historical_attestation",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-hyakusen-waseda-e1387",
+    "old_role": "historical_baseline_candidate",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "candidate",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-egusho-1684",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-egusho-1688",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-hyakusensho-1752",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation",
+        "interpretation_source"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-eidai-dai-zassho-1856",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-handan-1861",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation",
+        "interpretation_source"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-hyakusen-wakai-1813-kyoto",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation",
+        "interpretation_source"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-tianzhu-lingqian-southern-song",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-tianzhu-lingqian-hongwu",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-hyakusen-1684-ndl",
+    "old_role": "identified_historical_edition",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guandi-daozang-fuye-1225",
+    "old_role": "historical_baseline",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "baseline",
+      "content_roles": [
+        "textual_attestation",
+        "lineage_evidence"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guandi-gusu-niushi-qing",
+    "old_role": "historical_attestation",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  },
+  {
+    "edition_id": "ed-guandi-guansheng-dijun-1826",
+    "old_role": "historical_attestation",
+    "new": {
+      "edition_period": "historical",
+      "baseline_status": "identified",
+      "content_roles": [
+        "textual_attestation"
+      ]
+    },
+    "semantic_equivalent": true,
+    "old_relationship_text_preserved_in": "relationships[].note",
+    "old_evidence_text_preserved_in": "evidence[].source"
+  }
+]

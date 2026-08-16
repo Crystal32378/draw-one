@@ -1,0 +1,405 @@
+[
+  {
+    "edition_id": "ed-guanyin-hyakusen-waseda-e1387",
+    "corpus_id": "guanyin",
+    "title": "《百籤》（hyakusen）",
+    "edition_period": "historical",
+    "baseline_status": "candidate",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "江戶中期（元禄8年=1695 翠簾屋又右衛門刊之後刷）",
+    "author": null,
+    "compiler": null,
+    "publisher": "定栄堂（大坂心斎橋南）；共同刊行：吉文字屋次郎兵衛（江戸日本橋南）",
+    "holding_institution": "早稻田大學圖書館（雲英文庫，雲英末雄舊蔵）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/bunko31/bunko31_e1387/index.html（圖檔 https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/）",
+    "edition_type": "historical_edition",
+    "completeness": "complete（109 頁，約 100 籤，每頁 1 籤；結構已確認）",
+    "text_access_status": "in_progress",
+    "image_access_status": "obtained",
+    "reuse_status": "unclear",
+    "transcription_status": "in_progress",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "annotation_of",
+        "target_edition_id": "external/unregistered",
+        "note": "譜系：南宋《天竺靈籤》→ 比叡山元三大師百籤 → 本版（序文自述「此百籤、震旦國天竺寺より出たり」）；與 E1371/E1372 御鬮絵鈔、E1382 百籤鈔同系（未比對）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "早稻田古典籍總合資料庫書誌（請求記号 文庫31 E1387）"
+      },
+      {
+        "evidence_type": "textual_attestation",
+        "source": "〈百籤序〉轉錄（2026-08-16）：天竺靈籤譜系直接證據"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "hyakusen-baseline-waseda-e1387.json（研究層骨架）"
+      }
+    ],
+    "notes": "FOUND ≠ BASELINE：OCR/transcription 尚未完成，不升完整 baseline；完成 100 籤轉錄後可申請升為 historical_baseline"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-egusho-1684",
+    "corpus_id": "guanyin",
+    "title": "《元三大師御鬮絵鈔》",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": "1684（貞享元）",
+    "approximate_date": "1684",
+    "author": null,
+    "compiler": null,
+    "publisher": "村上勘兵衛",
+    "holding_institution": "早稻田大學圖書館（文庫31 E1371）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/bunko31/bunko31_e1371/index.html",
+    "edition_type": "historical_edition",
+    "completeness": "unknown（未檢查頁數）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "related_holding",
+        "target_edition_id": "external/unregistered",
+        "note": "與 E1387《百籤》同為元三大師百籤系；早 11 年刊"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com おみくじアーカイブ 數位古籍清單"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "早稻田古典籍總合資料庫書誌"
+      }
+    ],
+    "notes": "已定位未轉錄；如 E1387 轉錄受阻，可作為備援版本"
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-egusho-1688",
+    "corpus_id": "guanyin",
+    "title": "《元三大師御鬮絵鈔》（別版）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": "1688（貞享5）",
+    "approximate_date": "1688",
+    "author": null,
+    "compiler": null,
+    "publisher": "出版者不明",
+    "holding_institution": "早稻田大學圖書館（文庫31 E1372）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/bunko31/bunko31_e1372/index.html",
+    "edition_type": "historical_edition",
+    "completeness": "unknown",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "external/unregistered",
+        "note": "1684 版之別版（相差 4 年）；同系"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "早稻田古典籍總合資料庫書誌"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "edition_id": "ed-guanyin-hyakusensho-1752",
+    "corpus_id": "guanyin",
+    "title": "《百籤鈔》（hyakusenshō）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation",
+      "interpretation_source"
+    ],
+    "publication_date": "1752（宝暦2）",
+    "approximate_date": "1752",
+    "author": "柴田隋万（撰）",
+    "compiler": null,
+    "publisher": "和泉屋仁兵衛（下谷池之端）；畫：西村重長（1697-1756）",
+    "holding_institution": "早稻田大學圖書館（文庫31 E1382）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/bunko31/bunko31_e1382/index.html",
+    "edition_type": "annotated_commentary（「鈔」＝註解本，含 interpretation 層）",
+    "completeness": "unknown",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "annotation_of",
+        "target_edition_id": "external/unregistered",
+        "note": "《百籤》之註解本；同一百籤系"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "早稻田古典籍總合資料庫書誌"
+      }
+    ],
+    "notes": "含 interpretation 層（鈔）；若採用其解說需另評估（interpretation_source 候選，非本次範圍）"
+  },
+  {
+    "edition_id": "ed-guanyin-eidai-dai-zassho-1856",
+    "corpus_id": "guanyin",
+    "title": "《永代大雑書万暦大成》（收錄元三大師みくじ）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": "1856（安政3）",
+    "approximate_date": "1856",
+    "author": null,
+    "compiler": null,
+    "publisher": "敦賀屋九兵衛",
+    "holding_institution": "早稻田大學圖書館（文庫31 E1395）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/bunko31/bunko31_e1395/index.html",
+    "edition_type": "compilation_inclusion（類書收錄本）",
+    "completeness": "unknown（類書，僅部分頁為元三大師みくじ）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "compilation_contains",
+        "target_edition_id": "external/unregistered",
+        "note": "類書收錄元三大師みくじ（同系，可作 cross-check）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-handan-1861",
+    "corpus_id": "guanyin",
+    "title": "《元三大師御鬮判断鈔》",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation",
+      "interpretation_source"
+    ],
+    "publication_date": "1861（文久元）",
+    "approximate_date": "1861",
+    "author": null,
+    "compiler": null,
+    "publisher": "丁子屋平兵衛",
+    "holding_institution": "早稻田大學圖書館（ハ04 06205）",
+    "digital_source": "https://www.wul.waseda.ac.jp/kotenseki/html/ha04/ha04_06205/index.html",
+    "edition_type": "annotated_commentary（「判断鈔」＝判斷/註解本）",
+    "completeness": "unknown",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "annotation_of",
+        "target_edition_id": "external/unregistered",
+        "note": "元三大師みくじ註解系"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單"
+      }
+    ],
+    "notes": "含 interpretation 層"
+  },
+  {
+    "edition_id": "ed-guanyin-hyakusen-wakai-1813-kyoto",
+    "corpus_id": "guanyin",
+    "title": "《元三大師百籖和解》",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation",
+      "interpretation_source"
+    ],
+    "publication_date": "1813（文化10）",
+    "approximate_date": "1813",
+    "author": "黙頑",
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "京都大學附屬圖書館（日藏/未刊/756）",
+    "digital_source": "京都大學貴重資料デジタルアーカイブ（RMDA）— 詳細檢索待補",
+    "edition_type": "annotated_commentary（「和解」＝註解本）",
+    "completeness": "unknown",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "annotation_of",
+        "target_edition_id": "external/unregistered",
+        "note": "元三大師百籤註解系；與早稻田系互為獨立館藏"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單（請求記号 日藏/未刊/756）"
+      }
+    ],
+    "notes": "含 interpretation 層（和解）；RMDA 檢索 URL 待補"
+  },
+  {
+    "edition_id": "ed-guanyin-tianzhu-lingqian-southern-song",
+    "corpus_id": "guanyin",
+    "title": "《天竺靈籤》南宋本（宋代版畫）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "南宋（12-13 世紀）",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "中國國家圖書館（中華古籍資源庫）",
+    "digital_source": "read.nlc.cn（需註冊）— 詳細檢索待補",
+    "edition_type": "historical_edition（最早版）",
+    "completeness": "unknown",
+    "text_access_status": "requires_registration",
+    "image_access_status": "requires_registration",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "external/unregistered",
+        "note": "天竺靈籤系最早版本；比叡山百籤之淵源（序文證據）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單（「宋代版畫 (南宋本 天竺霊籤) 中国国家図書館」）"
+      }
+    ],
+    "notes": "譜系源頭，價值最高但需註冊取得；E1387 序文已提供譜系文字證據"
+  },
+  {
+    "edition_id": "ed-guanyin-tianzhu-lingqian-hongwu",
+    "corpus_id": "guanyin",
+    "title": "《天竺靈籤》洪武本",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "明洪武（1368-1398）",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "中國國家圖書館（中華古籍資源庫）",
+    "digital_source": "read.nlc.cn（需註冊）— 詳細檢索待補",
+    "edition_type": "historical_edition",
+    "completeness": "unknown",
+    "text_access_status": "requires_registration",
+    "image_access_status": "requires_registration",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "related_holding",
+        "target_edition_id": "external/unregistered",
+        "note": "南宋本之後的明代重刊（明萬曆前版畫）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單（「明萬曆前版畫一 (洪武本 天竺霊籤) 中国国家図書館」）"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "edition_id": "ed-guanyin-gensandai-hyakusen-1684-ndl",
+    "corpus_id": "guanyin",
+    "title": "《元三大師百籤》／《観音百籤占決諺解》（NDL 藏）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": "1684（貞享元）",
+    "approximate_date": "1684",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "國立國會圖書館デジタルコレクション",
+    "digital_source": "dl.ndl.go.jp（需登入）— 詳細檢索待補",
+    "edition_type": "historical_edition",
+    "completeness": "unknown",
+    "text_access_status": "requires_registration",
+    "image_access_status": "requires_registration",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "annotation_of",
+        "target_edition_id": "external/unregistered",
+        "note": "與早稻田 1684《元三大師御鬮絵鈔》同年代之獨立館藏（互證用）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "2026-08-15 NDL 檢索紀錄（影印本存在，需登入）"
+      }
+    ],
+    "notes": "NDL 需登入（Crystal 指示不要一直撞同一扇門）→ 優先早稻田系；此條保留為 identified"
+  }
+]

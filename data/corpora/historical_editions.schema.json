@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/Crystal32378/draw-one/blob/main/data/corpora/historical_editions.schema.json",
+  "title": "Draw One Historical Editions Registry",
+  "description": "Machine-readable data contract for historical editions registry. Historical registry only; modern editions are rejected by invariant I3.",
+  "schema_version": "1.1.0",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "edition_id", "corpus_id", "title",
+      "edition_period", "baseline_status", "content_roles",
+      "publication_date", "approximate_date",
+      "author", "compiler", "publisher",
+      "holding_institution", "digital_source", "edition_type", "completeness",
+      "text_access_status", "image_access_status", "reuse_status",
+      "transcription_status", "comparison_status",
+      "relationships", "evidence", "notes"
+    ],
+    "properties": {
+      "edition_id": { "type": "string", "pattern": "^ed-[a-z0-9-]+$" },
+      "corpus_id": { "enum": ["liushijiazi", "guanyin", "guandi"] },
+      "title": { "type": "string", "minLength": 1 },
+      "edition_period": { "const": "historical" },
+      "baseline_status": { "enum": ["identified", "candidate", "baseline"] },
+      "content_roles": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": { "enum": ["textual_attestation", "interpretation_source", "lineage_evidence"] }
+      },
+      "publication_date": { "type": ["string", "null"] },
+      "approximate_date": { "type": "string" },
+      "author": { "type": ["string", "null"] },
+      "compiler": { "type": ["string", "null"] },
+      "publisher": { "type": ["string", "null"] },
+      "holding_institution": { "type": "string" },
+      "digital_source": { "type": "string" },
+      "edition_type": { "type": "string" },
+      "completeness": { "type": "string" },
+      "text_access_status": { "enum": ["obtained", "in_progress", "not_obtained", "requires_registration", "not_applicable"] },
+      "image_access_status": { "enum": ["obtained", "viewable", "viewable_not_licensed", "not_obtained", "requires_registration", "requires_visit_or_application", "not_applicable"] },
+      "reuse_status": { "enum": ["not_licensed", "unclear", "not_applied", "public_domain_supported", "license_required"] },
+      "transcription_status": { "enum": ["completed", "in_progress", "not_completed"] },
+      "comparison_status": { "enum": ["completed", "in_progress", "not_completed"] },
+      "relationships": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["relationship_type", "target_edition_id"],
+          "properties": {
+            "relationship_type": {
+              "enum": ["same_lineage", "predecessor", "successor", "annotation_of", "compilation_contains", "independent_holding", "related_holding", "unresolved"]
+            },
+            "target_edition_id": { "type": "string" },
+            "note": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "evidence": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["evidence_type", "source"],
+          "properties": {
+            "evidence_type": {
+              "enum": ["existence", "acquisition", "lineage", "textual_attestation", "human_observation", "bibliographic_record"]
+            },
+            "source": { "type": "string", "minLength": 1 },
+            "detail": { "type": "string" },
+            "date": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "notes": { "type": "string" }
+    },
+    "additionalProperties": false
+  }
+}

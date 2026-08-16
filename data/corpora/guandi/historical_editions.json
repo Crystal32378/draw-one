@@ -1,0 +1,129 @@
+[
+  {
+    "edition_id": "ed-guandi-daozang-fuye-1225",
+    "corpus_id": "guandi",
+    "title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+    "edition_period": "historical",
+    "baseline_status": "baseline",
+    "content_roles": [
+      "textual_attestation",
+      "lineage_evidence"
+    ],
+    "publication_date": "1445（《正統道藏》收錄）",
+    "approximate_date": "原作南宋宝慶 1225–1227（傅燁撰）；道藏本 1445",
+    "author": "傅燁（南宋莆田）",
+    "compiler": null,
+    "publisher": "《正統道藏》正一部（1445）",
+    "holding_institution": "道藏本（維基文庫/ctext 全文轉錄）",
+    "digital_source": "https://zh.wikisource.org（護國嘉濟江東王靈籤全文）；ctext.org",
+    "edition_type": "historical_edition（primary source）",
+    "completeness": "complete（100/100）",
+    "text_access_status": "obtained",
+    "image_access_status": "not_applicable",
+    "reuse_status": "public_domain_supported",
+    "transcription_status": "completed",
+    "comparison_status": "completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "external/unregistered",
+        "note": "現行台灣各廟關帝籤之 lineage 源頭（道藏 → 清刊本 → 現行）；與姑蘇鈕氏清刊本、1826 龍文齋本同系"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "Guandi Dossier v1（2026-08-15）"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "3-Corpus Historical Baseline 比較報告（2026-08-16）：27/100 直接支持"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "Raw Text Rights Closure v0.1：RAW_TEXT_PUBLIC_DOMAIN_SUPPORTED"
+      }
+    ],
+    "notes": "唯一已達完整 historical baseline 之 corpus；73 首 substantive 為 lineage provenance（早期 vs 現行雙 reading 保留）"
+  },
+  {
+    "edition_id": "ed-guandi-gusu-niushi-qing",
+    "corpus_id": "guandi",
+    "title": "《關帝靈籤》姑蘇鈕氏藏板（清刊本）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "清代（未確認確切年份）",
+    "author": null,
+    "compiler": null,
+    "publisher": "姑蘇鈕氏藏板",
+    "holding_institution": "Wikimedia Commons（掃描檔）",
+    "digital_source": "https://commons.wikimedia.org/wiki/File:關帝靈籤.姑蘇鈕氏藏板",
+    "edition_type": "historical_edition",
+    "completeness": "unknown（File 頁存在；圖檔未取得、未 OCR——不得假設 100/100）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable",
+    "reuse_status": "public_domain_supported",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "external/unregistered",
+        "note": "道藏（南宋）與現行本之間的中間版本（清代）；道藏 → 清刊本 → 現行 lineage 之第二節點"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單（「關帝靈籤.姑蘇鈕氏藏板.清刊本 [関帝みくじ] Wikimedia Commons」）"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "2026-08-16 Commons File 頁確認存在；imageinfo API 未取到原圖（待重試）"
+      }
+    ],
+    "notes": "找到書名 ≠ 100/100 已完成；圖檔取得 + OCR 後才可評估是否升 historical_baseline_candidate"
+  },
+  {
+    "edition_id": "ed-guandi-guansheng-dijun-1826",
+    "corpus_id": "guandi",
+    "title": "《關聖帝君萬應靈籤》2 卷（龍文齋藏板）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": "1826（道光6）",
+    "approximate_date": "1826",
+    "author": "尚勤堂馬宅（著）",
+    "compiler": null,
+    "publisher": "北京龍文齋刻字舖藏板",
+    "holding_institution": "國立國會圖書館デジタルコレクション",
+    "digital_source": "dl.ndl.go.jp（請求記号 166.6-Ka479；需登入）",
+    "edition_type": "historical_edition",
+    "completeness": "unknown",
+    "text_access_status": "requires_registration",
+    "image_access_status": "requires_registration",
+    "reuse_status": "unclear",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "external/unregistered",
+        "note": "清代北京刊本；道藏 → 清刊本 → 現行 lineage 之另一清代節點"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "omikujisuki.com 數位古籍清單（請求記号 166.6-Ka479）"
+      }
+    ],
+    "notes": "NDL 需登入；清代刻本可與姑蘇鈕氏本互證（若取得）"
+  }
+]

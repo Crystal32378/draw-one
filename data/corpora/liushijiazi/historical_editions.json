@@ -1,0 +1,136 @@
+[
+  {
+    "edition_id": "ed-liushijiazi-beigang-shengmu-lingqianzhi-taiwanmemory",
+    "corpus_id": "liushijiazi",
+    "title": "北港聖母靈籤紙",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "年代不詳（臺灣記憶 metadata 2026-08-16 抄錄）；Study 03 source map 1912 系為 PROBABLE，未獲此本確認",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "北港朝天宮文物館典藏（國家圖書館數位化，2024 合作案）",
+    "digital_source": "https://tm.ncl.edu.tw/article?u=054_103_000011（臺灣記憶識別號 P00126）",
+    "edition_type": "historical_edition",
+    "completeness": "unknown（24 頁，頁面描述「每頁印有用2籤」；是否涵蓋完整 60 籤未確認，不推測）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable_not_licensed",
+    "reuse_status": "not_licensed",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "ed-beigang-chaotiangong",
+        "note": "北港官方現行版（src-beigang-official, ed-beigang-chaotiangong）之早期版本／歷史前身（PROBABLE）；與日治《聖籤解》可能同源（未驗證）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "textual_attestation",
+        "source": "Crystal 截圖（2026-08-16）：詳細頁 + 內文頁一手確認；metadata：北港聖母靈籤紙／P00126／年代不詳／原件／黑白／24 頁／每頁 2 籤／敬刊：晉水龍社王輝渤；內文範例 2 籤已轉錄（含解曰）"
+      },
+      {
+        "evidence_type": "textual_attestation",
+        "source": "臺灣記憶詳細頁抄錄（browser agent，2026-08-16）：識別號 P00126、原件典藏單位北港朝天宮文物館、關鍵詞籤紙/六十甲子籤/北港聖母靈籤"
+      },
+      {
+        "evidence_type": "human_observation",
+        "source": "Crystal 目視確認（2026-08-16）：是古本；數位物件不授權 production reuse"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "國圖×北港朝天宮 2024 文獻數位化合作案（吳柏岳，國圖館刊 2025.6）— 數位檔進臺灣記憶"
+      }
+    ],
+    "notes": "數位物件（影像）不授權 reuse → 僅作 historical provenance / attestation；古籍文字依智財局見解屬已無著作財產權，但此數位檔之製版/版面權利不授權 → 不得搬用影像或逐字轉錄自該檔；需另找同一 reading 之合法可利用來源。內文頁 footer「晉水龍社王輝渤敬刊」（截圖一手確認；先前 browser agent 抄「曾水龍社王耀洲」為誤讀，已修正）"
+  },
+  {
+    "edition_id": "ed-liushijiazi-shengqianjie-japanera",
+    "corpus_id": "liushijiazi",
+    "title": "日治時期北港朝天宮聖籤解",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "日治時期（未確認確切年份）",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "中央研究院臺灣史研究所檔案館（郭双富庋藏 → 臺灣民間宗教文書 → 籤詩）",
+    "digital_source": "https://tais.ith.sinica.edu.tw/browse-0000045845.html（目錄頁；實體館藏）",
+    "edition_type": "historical_edition（題名含「籤解」，籤詩正文 vs 解說之比例未確認）",
+    "completeness": "unknown（館藏存在已確認；冊數/頁數/籤數未確認）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "requires_visit_or_application",
+    "reuse_status": "not_applied",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "same_lineage",
+        "target_edition_id": "ed-liushijiazi-1912-beigang-taiwanmemory",
+        "note": "與 1912 北港古本（ed-liushijiazi-1912-beigang-taiwanmemory）可能同源或互補（未驗證）；日治時期北港朝天宮官方出版脈絡"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "中研院臺史所檔案館目錄：tais.ith.sinica.edu.tw/browse-0000045845.html（層級資料頁確認）"
+      },
+      {
+        "evidence_type": "bibliographic_record",
+        "source": "申請資訊整理：Shenqianjie-Digital-Copy-Application-Guide.md（2026-08-16）"
+      }
+    ],
+    "notes": "role 判斷：evidence 不足判定文本 vs 解說比例 → 保守標 historical_attestation，不自行推定為 interpretation_source；取得數位複本後再判定是否需另標 interpretation_source"
+  },
+  {
+    "edition_id": "ed-liushijiazi-qianzhi-p00124-taiwanmemory",
+    "corpus_id": "liushijiazi",
+    "title": "籤紙（北港朝天宮典藏）",
+    "edition_period": "historical",
+    "baseline_status": "identified",
+    "content_roles": [
+      "textual_attestation"
+    ],
+    "publication_date": null,
+    "approximate_date": "年代不詳（臺灣記憶 metadata）",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "北港朝天宮文物館典藏（國家圖書館數位化）",
+    "digital_source": "臺灣記憶識別號 P00124（詳細頁 URL 待補）",
+    "edition_type": "historical_edition",
+    "completeness": "unknown（10 頁彩色，每頁 6 籤；每籤對應不同神明——與六十甲子籤系統之對應關係未確認）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable_not_licensed",
+    "reuse_status": "not_licensed",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [
+      {
+        "relationship_type": "unresolved",
+        "target_edition_id": "external/unregistered",
+        "note": "與 P00126 北港聖母靈籤紙同為北港朝天宮文物館籤紙藏品；內文為多神籤詩（長庚星君／子宮天子／濟順師公／福德正神／註生娘娘／天上聖母等），與六十甲子籤之關係 unresolved（關鍵詞含「六十甲子籤」「靈詩」，不推定）"
+      }
+    ],
+    "evidence": [
+      {
+        "evidence_type": "textual_attestation",
+        "source": "Crystal 截圖（2026-08-16）：詳細頁一手確認；metadata：籤紙／P00124／年代不詳／原件／彩色／10 頁／每頁 6 籤／敬獻者施修鏞、龔秀記；內文頁 6 籤範例已轉錄"
+      },
+      {
+        "evidence_type": "existence",
+        "source": "臺灣記憶（tm.ncl.edu.tw）藏品頁"
+      }
+    ],
+    "notes": "與 P00126 不同藏品（彩色 10 頁 vs 黑白 24 頁）；license 同為不授權 reuse；本筆登記為 historical attestation，六十甲子關聯性待後續確認（不展開研究）"
+  }
+]
