@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "purpose": "Slip text identity — 每一段籤詩文字的身分證（Phase 1 golden sample，3 slips）",
+  "note": "Deity / tradition association 是 Draw One 的 living-tradition mapping，不等於主張該神明是 corpus 的歷史起源。異體字與原始字形原樣保存，不 canonicalize。",
+  "corpus_id": "guandi",
+  "slips": [
+    {
+      "deity_tradition": "關帝（living-tradition mapping）",
+      "corpus_id": "guandi",
+      "slip_number": 1,
+      "original_slip_label": "第一",
+      "poem_text": "巍巍獨步向雲間，玉殿千官第一班。\n冨貴榮華天付汝，福如東海壽如山。",
+      "edition_id": "ed-guandi-daozang-fuye-1225",
+      "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+      "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
+      "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/1 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
+      "transcription_status": "PROBABLE",
+      "notes": "「冨」為異體字（保留原樣，不改成「富」）。Diff v1 分類：orthographic_only（僅異體字差異）。"
+    },
+    {
+      "deity_tradition": "關帝（living-tradition mapping）",
+      "corpus_id": "guandi",
+      "slip_number": 2,
+      "original_slip_label": "第二",
+      "poem_text": "盈虛消息總天時，自此君當百事宜。\n若問前程歸縮地，更須方寸好修為。",
+      "edition_id": "ed-guandi-daozang-fuye-1225",
+      "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+      "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
+      "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/2 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
+      "transcription_status": "PROBABLE",
+      "notes": "Diff v1 分類：exact（與現行雷雨師一致）。"
+    },
+    {
+      "deity_tradition": "關帝（living-tradition mapping）",
+      "corpus_id": "guandi",
+      "slip_number": 3,
+      "original_slip_label": "第三",
+      "poem_text": "衣食自然生處有，勸君不用苦勞心。\n但能孝悌兼忠信，福祿來成禍不侵。",
+      "edition_id": "ed-guandi-daozang-fuye-1225",
+      "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+      "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
+      "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/3 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
+      "transcription_status": "PROBABLE",
+      "notes": "Diff v1 分類：substantive_variant（道藏 vs 現行有字詞差異，雙 reading 保留）。"
+    }
+  ]
+}
