@@ -1,0 +1,55 @@
+[
+  {
+    "edition_id": "ed-liushijiazi-1912-beigang-taiwanmemory",
+    "corpus_id": "liushijiazi",
+    "title": "北港朝天宮籤詩古本（民國元年系，臺灣記憶數位檔）",
+    "publication_date": null,
+    "approximate_date": "1912（民國元年）— Crystal 目視確認古本；確切年份待 metadata 補登",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "國家圖書館臺灣記憶（Taiwan Memory）× 北港朝天宮 2024 數位化合作案",
+    "digital_source": "https://tm.ncl.edu.tw（確切識別號待 Crystal 補登）",
+    "edition_type": "historical_edition",
+    "completeness": "unknown（目視確認古本存在；是否 60 籤完整未確認）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "viewable_not_licensed",
+    "reuse_status": "not_licensed",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationship_to_other_editions": "北港官方現行版（src-beigang-official, ed-beigang-chaotiangong）之早期版本／歷史前身（PROBABLE）；與日治《聖籤解》可能同源（未驗證）",
+    "evidence": [
+      "Crystal 目視確認（2026-08-16）：是古本；數位物件不授權 production reuse",
+      "國圖×北港朝天宮 2024 文獻數位化合作案（吳柏岳，國圖館刊 2025.6）— 數位檔進臺灣記憶",
+      "Study 03 source map：北港 1912 古本為廟藏（PROBABLE）"
+    ],
+    "notes": "數位物件（影像）不授權 reuse → 僅作 historical provenance / attestation；古籍文字依智財局見解屬已無著作財產權，但此數位檔之製版/版面權利不授權 → 不得搬用影像或逐字轉錄自該檔；需另找同一 reading 之合法可利用來源",
+    "role_in_draw_one": "historical_attestation"
+  },
+  {
+    "edition_id": "ed-liushijiazi-shengqianjie-japanera",
+    "corpus_id": "liushijiazi",
+    "title": "日治時期北港朝天宮聖籤解",
+    "publication_date": null,
+    "approximate_date": "日治時期（未確認確切年份）",
+    "author": null,
+    "compiler": null,
+    "publisher": null,
+    "holding_institution": "中央研究院臺灣史研究所檔案館（郭双富庋藏 → 臺灣民間宗教文書 → 籤詩）",
+    "digital_source": "https://tais.ith.sinica.edu.tw/browse-0000045845.html（目錄頁；實體館藏）",
+    "edition_type": "historical_edition（題名含「籤解」，籤詩正文 vs 解說之比例未確認）",
+    "completeness": "unknown（館藏存在已確認；冊數/頁數/籤數未確認）",
+    "text_access_status": "not_obtained",
+    "image_access_status": "requires_visit_or_application",
+    "reuse_status": "not_applied",
+    "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationship_to_other_editions": "與 1912 北港古本（ed-liushijiazi-1912-beigang-taiwanmemory）可能同源或互補（未驗證）；日治時期北港朝天宮官方出版脈絡",
+    "evidence": [
+      "中研院臺史所檔案館目錄：tais.ith.sinica.edu.tw/browse-0000045845.html（層級資料頁確認）",
+      "申請資訊整理：Shenqianjie-Digital-Copy-Application-Guide.md（2026-08-16）"
+    ],
+    "notes": "role 判斷：evidence 不足判定文本 vs 解說比例 → 保守標 historical_attestation，不自行推定為 interpretation_source；取得數位複本後再判定是否需另標 interpretation_source",
+    "role_in_draw_one": "historical_attestation"
+  }
+]
