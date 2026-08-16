@@ -28,16 +28,36 @@ data/corpora/
 | 觀音一百籤 | 10 | historical_baseline_candidate ×1、identified_historical_edition ×9 |
 | 關帝百籤 | 3 | historical_baseline ×1、historical_attestation ×2 |
 
-## role_in_draw_one 語義
+## Schema（v1.1.0，2026-08-16 福 Gate NARROW REPAIR）
 
-| Role | 意義 |
+資料契約：`data/corpora/historical_editions.schema.json`（JSON Schema draft-07，`schema_version: "1.1.0"`）
+
+維度拆解（取代 v1.0.0 混合維度 `role_in_draw_one`）：
+
+| 欄位 | 值域 | 意義 |
+|---|---|---|
+| `edition_period` | `historical` / `modern` | 版本時代；**registry 只收 historical**（invariant I3 拒絕 modern） |
+| `baseline_status` | `identified` / `candidate` / `baseline` | 目前做到哪一步：已定位／候選（ingestion 中）／完整 baseline |
+| `content_roles` | array：`textual_attestation` / `interpretation_source` / `lineage_evidence` | 這份版本在 Draw One 扮演的內容角色 |
+| `relationships` | structured array（`relationship_type` + `target_edition_id` + `note`） | 版本間關係（same_lineage／predecessor／annotation_of／compilation_contains／independent_holding／unresolved…） |
+| `evidence` | structured array（`evidence_type` + `source`） | 證據分型：existence／acquisition／lineage／textual_attestation／human_observation／bibliographic_record |
+
+### Cross-field invariants（validator 內建）
+
+| # | 規則 |
 |---|---|
-| `historical_baseline` | 已完成完整轉錄＋比對，可作為 production text basis 之歷史依據（目前唯一：道藏本關帝籤 100/100） |
-| `historical_baseline_candidate` | 正在 ingestion／轉錄中，完成前**不**升 baseline（目前：早稻田 E1387《百籤》） |
-| `historical_attestation` | 已確認存在之歷史版本，作為 provenance 證據；未完成轉錄或未取得文本 |
-| `identified_historical_edition` | 已定位（館藏/書誌確認）但未進一步處理之歷史版本 |
-| `modern_attestation` | 現代版本（目前無 registry，見 TODO） |
-| `interpretation_source` | 解說層來源（目前無登記，見 TODO） |
+| I1 | `baseline_status=baseline` → transcription **且** comparison 皆 `completed` |
+| I2 | `baseline_status=candidate` → transcription **不得** `completed`（candidate 不當 completed baseline） |
+| I3 | `edition_period=modern` → 拒絕（historical registry 不收 modern edition） |
+| I4 | evidence 非空且結構化（evidence_type + source） |
+| I5 | edition_id 全 registry 唯一 |
+| I6 | content_roles 非空 |
+| I7 | relationships 結構化 |
+
+### Migration（v1.0.0 → v1.1.0）
+
+`migrate_historical_editions_1.1.0.py` + `migration_summary_1.1.0.json`：16 筆全部遷移，研究結論文字逐字保留
+（舊 evidence → `evidence[].source`；舊 relationship 全文 → `relationships[].note`）；15 筆原始研究結論 **semantic-equivalent**（M2/M3 檢查）。
 
 ## 已知 TODO（不擴建新 schema，僅記錄）
 
