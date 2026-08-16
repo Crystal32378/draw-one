@@ -20,7 +20,27 @@ except ImportError:
 
 BASE = Path(__file__).resolve().parent
 SCHEMA_PATH = BASE / "historical_editions.schema.json"
-MIGRATION_PATH = BASE / "migration_summary_1.1.0.json"
+AUDIT_PATH = BASE / "migration_audit_1.1.0.json"
+
+# a modern-period fixture that MUST be rejected by the schema itself
+MODERN_FIXTURE = [{
+    "edition_id": "ed-fixture-modern",
+    "corpus_id": "guanyin",
+    "title": "fixture modern edition (must be rejected)",
+    "edition_period": "modern",
+    "baseline_status": "identified",
+    "content_roles": ["textual_attestation"],
+    "publication_date": None,
+    "approximate_date": "2026",
+    "author": None, "compiler": None, "publisher": None,
+    "holding_institution": "fixture", "digital_source": "fixture",
+    "edition_type": "fixture", "completeness": "fixture",
+    "text_access_status": "not_obtained", "image_access_status": "viewable",
+    "reuse_status": "unclear", "transcription_status": "not_completed",
+    "comparison_status": "not_completed",
+    "relationships": [], "evidence": [{"evidence_type": "existence", "source": "fixture"}],
+    "notes": "fixture",
+}]
 
 
 def load_editions():
@@ -60,6 +80,10 @@ def main():
         check("S3. jsonschema validation", not errs, f"errors={len(errs)}")
         for e in errs[:5]:
             print(f"    schema error: {list(e.path)} {e.message}")
+        # S4: schema itself must reject a modern-period fixture (hard boundary)
+        modern_errs = list(v.iter_errors(MODERN_FIXTURE))
+        check("S4. schema rejects modern fixture (const boundary)", len(modern_errs) > 0,
+              f"modern_fixture_errors={len(modern_errs)}")
     else:
         # minimal fallback: required fields + enum checks
         required = set(schema["items"]["required"])
@@ -101,31 +125,33 @@ def main():
         ok_rel = all(isinstance(r, dict) and "relationship_type" in r and "target_edition_id" in r for r in rels)
         check(f"I7. {eid}: relationships structured", ok_rel, f"n={len(rels)}")
 
-    # --- M: migration record (semantic equivalence vs v1.0.0) ---
-    if MIGRATION_PATH.exists():
-        mig = json.loads(MIGRATION_PATH.read_text(encoding="utf-8"))
-        all_equiv = all(m.get("semantic_equivalent") for m in mig)
-        check("M1. migration summary complete", len(mig) == len(editions), f"mig={len(mig)} editions={len(editions)}")
-        check("M2. all records semantic-equivalent", all_equiv)
-        # M3: mapping table correctness
-        expected = {
-            "historical_baseline": ("historical", "baseline", ["textual_attestation", "lineage_evidence"]),
-            "historical_baseline_candidate": ("historical", "candidate", ["textual_attestation"]),
-            "historical_attestation": ("historical", "identified", ["textual_attestation"]),
-            "identified_historical_edition": ("historical", "identified", ["textual_attestation"]),
-        }
-        map_ok = True
-        for m in mig:
-            exp = expected.get(m["old_role"])
-            if exp is None:
-                map_ok = False
-                continue
-            got = (m["new"]["edition_period"], m["new"]["baseline_status"])
-            if got != (exp[0], exp[1]):
-                map_ok = False
-        check("M3. role mapping table correct", map_ok)
+    # --- M: migration audit (mechanical hash proof, no manual flags) ---
+    if AUDIT_PATH.exists():
+        audit = json.loads(AUDIT_PATH.read_text(encoding="utf-8"))
+        recs = audit.get("records", [])
+        check("M1. audit manifest exists & complete", len(recs) == len(editions),
+              f"audit={len(recs)} editions={len(editions)}")
+        # M2: 15 preserved records — all field hashes equal (identity/evidence/relation/notes)
+        preserved = [r for r in recs if not r.get("is_new_record")]
+        ok_id = all(r["identity"]["pre"] == r["identity"]["post"] for r in preserved)
+        ok_ev = all(r["evidence"]["pre"] == r["evidence"]["post"] for r in preserved)
+        ok_rel = all(r["relation"]["pre"] == r["relation"]["post"] for r in preserved)
+        ok_nt = all(r["notes"]["pre"] == r["notes"]["post"] for r in preserved)
+        check("M2. preserved records: identity hashes equal", ok_id, f"{sum(1 for r in preserved if r['identity']['pre']==r['identity']['post'])}/{len(preserved)}")
+        check("M2b. preserved records: evidence hashes equal", ok_ev, f"{sum(1 for r in preserved if r['evidence']['pre']==r['evidence']['post'])}/{len(preserved)}")
+        check("M2c. preserved records: relationship hashes equal", ok_rel, f"{sum(1 for r in preserved if r['relation']['pre']==r['relation']['post'])}/{len(preserved)}")
+        check("M2d. preserved records: notes hashes equal", ok_nt, f"{sum(1 for r in preserved if r['notes']['pre']==r['notes']['post'])}/{len(preserved)}")
+        # M3: full 3-dim mapping (period + status + content_roles) for ALL records
+        all_map = all(r.get("mapping", {}).get("match") for r in recs)
+        check("M3. 3-dim mapping match (all records)", all_map,
+              f"{sum(1 for r in recs if r.get('mapping',{}).get('match'))}/{len(recs)}")
+        # M4: P00124 is a new record, not part of preserved-15 claim
+        new_recs = [r for r in recs if r.get("is_new_record")]
+        check("M4. new record flagged (P00124)", len(new_recs) == 1 and new_recs[0]["edition_id"] == "ed-liushijiazi-qianzhi-p00124-taiwanmemory",
+              f"new={[r['edition_id'] for r in new_recs]}")
+        check("M5. preserved count = 15", len(preserved) == 15, f"preserved={len(preserved)}")
     else:
-        check("M1. migration summary exists", False, "migration_summary_1.1.0.json missing")
+        check("M1. audit manifest exists", False, "migration_audit_1.1.0.json missing")
 
     # --- summary ---
     from collections import Counter

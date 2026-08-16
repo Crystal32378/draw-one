@@ -22,11 +22,12 @@ data/corpora/
 
 ## 登記總覽（2026-08-16）
 
-| Corpus | editions | roles |
+| Corpus | editions | roles（v1.1.0 三維） |
 |---|---|---|
-| 六十甲子籤 | 2 | historical_attestation ×2 |
-| 觀音一百籤 | 10 | historical_baseline_candidate ×1、identified_historical_edition ×9 |
-| 關帝百籤 | 3 | historical_baseline ×1、historical_attestation ×2 |
+| 六十甲子籤（liushijiazi） | **3** | identified ×3（含 **P00124 = new record**，見下） |
+| 觀音一百籤（guanyin） | **10** | candidate ×1、identified ×9 |
+| 關帝百籤（guandi） | **3** | baseline ×1、identified ×2 |
+| **Total** | **16** | **15 preserved records + 1 newly added unresolved historical attestation（P00124）** |
 
 ## Schema（v1.1.0，2026-08-16 福 Gate NARROW REPAIR）
 
@@ -54,10 +55,15 @@ data/corpora/
 | I6 | content_roles 非空 |
 | I7 | relationships 結構化 |
 
-### Migration（v1.0.0 → v1.1.0）
+### Migration & Audit Trail（v1.0.0 → v1.1.0）
 
-`migrate_historical_editions_1.1.0.py` + `migration_summary_1.1.0.json`：16 筆全部遷移，研究結論文字逐字保留
-（舊 evidence → `evidence[].source`；舊 relationship 全文 → `relationships[].note`）；15 筆原始研究結論 **semantic-equivalent**（M2/M3 檢查）。
+- **Pre-migration canonical 來源**：`data/corpora/.audit/pre/<corpus>.json`（git e2456ea，v1.0.0 格式）
+- **Audit**：`audit_migration_1.1.0.py` → `migration_audit_1.1.0.json`
+  - 每筆對 identity／evidence 原文／relationships 原文／notes 計算 normalized SHA-256（pre vs post）
+  - 原 role → 三維 mapping（edition_period + baseline_status + content_roles）機械驗證
+  - **15 preserved records：identity/evidence/relation/notes/mapping 全數 hash 相等（無 drift）**
+  - **P00124 標 `is_new_record: true`，不納入 preserved-15 宣稱**（migration 後新增之 unresolved historical attestation）
+- **Schema hard boundary**：`edition_period` 為 `const: "historical"`——JSON Schema 本身拒絕 modern records（validator S4 fixture 驗證）
 
 ## 已知 TODO（不擴建新 schema，僅記錄）
 

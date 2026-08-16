@@ -21,7 +21,7 @@
       "edition_id": { "type": "string", "pattern": "^ed-[a-z0-9-]+$" },
       "corpus_id": { "enum": ["liushijiazi", "guanyin", "guandi"] },
       "title": { "type": "string", "minLength": 1 },
-      "edition_period": { "enum": ["historical", "modern"] },
+      "edition_period": { "const": "historical" },
       "baseline_status": { "enum": ["identified", "candidate", "baseline"] },
       "content_roles": {
         "type": "array",

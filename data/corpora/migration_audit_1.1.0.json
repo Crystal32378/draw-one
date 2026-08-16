@@ -1,0 +1,650 @@
+{
+  "schema_version": "1.1.0",
+  "records": [
+    {
+      "edition_id": "ed-liushijiazi-beigang-shengmu-lingqianzhi-taiwanmemory",
+      "corpus_id": "liushijiazi",
+      "is_new_record": false,
+      "old_role": "historical_attestation",
+      "identity": {
+        "pre": "5dd7adc19c9a03cc871121fd7cfc158135560516c3cd7fa97a942fb47d29f2e6",
+        "post": "5dd7adc19c9a03cc871121fd7cfc158135560516c3cd7fa97a942fb47d29f2e6"
+      },
+      "evidence": {
+        "pre": "df93c17e4c7b6dcf765c8dde4740743ae7558f97ab49e7345566043a13d33d13",
+        "post": "df93c17e4c7b6dcf765c8dde4740743ae7558f97ab49e7345566043a13d33d13"
+      },
+      "relation": {
+        "pre": "474de4af42373b908f8ce8aefd3a0a1e2038472a2aa5b7c90a623729e91d5453",
+        "post": "474de4af42373b908f8ce8aefd3a0a1e2038472a2aa5b7c90a623729e91d5453"
+      },
+      "notes": {
+        "pre": "60e4225831b441754f78f3ea131a188425aeee5e82b26a2f3498dee4d31c2dd4",
+        "post": "60e4225831b441754f78f3ea131a188425aeee5e82b26a2f3498dee4d31c2dd4"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-liushijiazi-shengqianjie-japanera",
+      "corpus_id": "liushijiazi",
+      "is_new_record": false,
+      "old_role": "historical_attestation",
+      "identity": {
+        "pre": "c927f29b3cd5065ce08c4e90304726b4511c8f436da7c19269f8dcd0fa4ee766",
+        "post": "c927f29b3cd5065ce08c4e90304726b4511c8f436da7c19269f8dcd0fa4ee766"
+      },
+      "evidence": {
+        "pre": "d3bd9e62a8d07ad6004981682315f46248aa5a1a61bab97e5db541f9a8b35724",
+        "post": "d3bd9e62a8d07ad6004981682315f46248aa5a1a61bab97e5db541f9a8b35724"
+      },
+      "relation": {
+        "pre": "6c1cd9c196dc032818e745dab075829aeea06758ddef291ba9563c462191fa1c",
+        "post": "6c1cd9c196dc032818e745dab075829aeea06758ddef291ba9563c462191fa1c"
+      },
+      "notes": {
+        "pre": "cec0248708f2e18300c8386934896ab8114f6c7c0b0e12f978865c0347f8f3a3",
+        "post": "cec0248708f2e18300c8386934896ab8114f6c7c0b0e12f978865c0347f8f3a3"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-liushijiazi-qianzhi-p00124-taiwanmemory",
+      "corpus_id": "liushijiazi",
+      "is_new_record": true,
+      "old_role": "historical_attestation",
+      "identity": {
+        "pre": "9a2aa36b62b0bfbcac5c33a9e71d753071131c705fab215046369485f4b164d3",
+        "post": "9a2aa36b62b0bfbcac5c33a9e71d753071131c705fab215046369485f4b164d3"
+      },
+      "evidence": {
+        "pre": "606f5af144266c395356a61f4334eb0166e2f4b0fae3827d14761756e55a0a7d",
+        "post": "606f5af144266c395356a61f4334eb0166e2f4b0fae3827d14761756e55a0a7d"
+      },
+      "relation": {
+        "pre": "cd433afb8142010dfc073961001ea68ee1f1b3a0b220ca219670381e9c2db1b9",
+        "post": "cd433afb8142010dfc073961001ea68ee1f1b3a0b220ca219670381e9c2db1b9"
+      },
+      "notes": {
+        "pre": "38c6df12a4eb49d0d51876e505f064e7ef79bc3a31c088d27a6d883555f04c8a",
+        "post": "38c6df12a4eb49d0d51876e505f064e7ef79bc3a31c088d27a6d883555f04c8a"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-hyakusen-waseda-e1387",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "historical_baseline_candidate",
+      "identity": {
+        "pre": "c0da474743c477415a8c3a6c26956322ee0ee72e43a10266654b54e7543a80e7",
+        "post": "c0da474743c477415a8c3a6c26956322ee0ee72e43a10266654b54e7543a80e7"
+      },
+      "evidence": {
+        "pre": "f8e0e26872a74044a0af08f03b9c16b1db22949549a5dfba21e1a04480649575",
+        "post": "f8e0e26872a74044a0af08f03b9c16b1db22949549a5dfba21e1a04480649575"
+      },
+      "relation": {
+        "pre": "e488337f9c9d621ec218ea2bf3797b3d205f444cf5ed57770186f7c354b6a2b5",
+        "post": "e488337f9c9d621ec218ea2bf3797b3d205f444cf5ed57770186f7c354b6a2b5"
+      },
+      "notes": {
+        "pre": "daaa43d46b134a0dfd10feff3668a03a6d60ef725600cd160757f2cdc1e24fad",
+        "post": "daaa43d46b134a0dfd10feff3668a03a6d60ef725600cd160757f2cdc1e24fad"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "candidate",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "candidate",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-gensandai-egusho-1684",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "b48fa14a42c7d34ccc687b4d23e64f9b2b6ff1347cd3c7ff65e1374713ad6a9c",
+        "post": "b48fa14a42c7d34ccc687b4d23e64f9b2b6ff1347cd3c7ff65e1374713ad6a9c"
+      },
+      "evidence": {
+        "pre": "daf0cc1e686df24401686d80f5d265756893abac5b40617d844db38815fcd6ce",
+        "post": "daf0cc1e686df24401686d80f5d265756893abac5b40617d844db38815fcd6ce"
+      },
+      "relation": {
+        "pre": "061f15ab4ba3dc5843e0c7306fbc233fbdb705271867b115c150bceed09512b1",
+        "post": "061f15ab4ba3dc5843e0c7306fbc233fbdb705271867b115c150bceed09512b1"
+      },
+      "notes": {
+        "pre": "6541be649c3bb67dc9fc4ecc619b61b5e888b5b160797f4c9fdb780d825c13cd",
+        "post": "6541be649c3bb67dc9fc4ecc619b61b5e888b5b160797f4c9fdb780d825c13cd"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-gensandai-egusho-1688",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "1be264d49cfb505ba6f23c07f4a08d9c65d7ac52ad954497911a24558f67d8c2",
+        "post": "1be264d49cfb505ba6f23c07f4a08d9c65d7ac52ad954497911a24558f67d8c2"
+      },
+      "evidence": {
+        "pre": "224ac52827fd3fdd7a53682a83a88413839487d7ac5cc8d58afc75d084ea9c57",
+        "post": "224ac52827fd3fdd7a53682a83a88413839487d7ac5cc8d58afc75d084ea9c57"
+      },
+      "relation": {
+        "pre": "f3b8d93d6e076270195ee8dd6bb753060e74f2d331d94770cd15709c30e3752d",
+        "post": "f3b8d93d6e076270195ee8dd6bb753060e74f2d331d94770cd15709c30e3752d"
+      },
+      "notes": {
+        "pre": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "post": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-hyakusensho-1752",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "463e5eeb68e679a29f7a0dcae03998e34fbf835dacd1d47b6677707ad1110602",
+        "post": "463e5eeb68e679a29f7a0dcae03998e34fbf835dacd1d47b6677707ad1110602"
+      },
+      "evidence": {
+        "pre": "224ac52827fd3fdd7a53682a83a88413839487d7ac5cc8d58afc75d084ea9c57",
+        "post": "224ac52827fd3fdd7a53682a83a88413839487d7ac5cc8d58afc75d084ea9c57"
+      },
+      "relation": {
+        "pre": "24b5ecf395fd2db2f4960d13e82a02adee3135b644540829d420c669069848d7",
+        "post": "24b5ecf395fd2db2f4960d13e82a02adee3135b644540829d420c669069848d7"
+      },
+      "notes": {
+        "pre": "15120894cc881c9edc66dbb591c7c5daf771e627fdb5f2de73f8a7a7719d2ecc",
+        "post": "15120894cc881c9edc66dbb591c7c5daf771e627fdb5f2de73f8a7a7719d2ecc"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-eidai-dai-zassho-1856",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "df367b0cc30c386eb7c5ed634ab4799a1e08c606fbde1916e12cb60c8909e95d",
+        "post": "df367b0cc30c386eb7c5ed634ab4799a1e08c606fbde1916e12cb60c8909e95d"
+      },
+      "evidence": {
+        "pre": "cdeddbf01c05f83f7bfce5e7fc520616aef20352d450d26a948e376eb797fcba",
+        "post": "cdeddbf01c05f83f7bfce5e7fc520616aef20352d450d26a948e376eb797fcba"
+      },
+      "relation": {
+        "pre": "6b2fd3de7023b706a7a1c85edf0db05a19bbed486a58ff086c028e3563d39595",
+        "post": "6b2fd3de7023b706a7a1c85edf0db05a19bbed486a58ff086c028e3563d39595"
+      },
+      "notes": {
+        "pre": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "post": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-gensandai-handan-1861",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "d6b40b4c140cf3884a79a6bd5c9b804cb3b3fe6db37228e9b3e387e975beb3bd",
+        "post": "d6b40b4c140cf3884a79a6bd5c9b804cb3b3fe6db37228e9b3e387e975beb3bd"
+      },
+      "evidence": {
+        "pre": "cdeddbf01c05f83f7bfce5e7fc520616aef20352d450d26a948e376eb797fcba",
+        "post": "cdeddbf01c05f83f7bfce5e7fc520616aef20352d450d26a948e376eb797fcba"
+      },
+      "relation": {
+        "pre": "11a6b32a7c10d459de6c4eb34d175be03b255a16940644da931fba60f95dde41",
+        "post": "11a6b32a7c10d459de6c4eb34d175be03b255a16940644da931fba60f95dde41"
+      },
+      "notes": {
+        "pre": "46b8ac9ade585db8ddb7b3abbd6b2b468292b012884d076644a8a1fdb2853c0a",
+        "post": "46b8ac9ade585db8ddb7b3abbd6b2b468292b012884d076644a8a1fdb2853c0a"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-hyakusen-wakai-1813-kyoto",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "5c6d124560525c190f2b43e077b9cc5c96c57d7e0b805554c580fc20323c4911",
+        "post": "5c6d124560525c190f2b43e077b9cc5c96c57d7e0b805554c580fc20323c4911"
+      },
+      "evidence": {
+        "pre": "f06724d78b711db95e694a7e1020e0cfef7f94da6deb1ffe95f81f0c0ed0de80",
+        "post": "f06724d78b711db95e694a7e1020e0cfef7f94da6deb1ffe95f81f0c0ed0de80"
+      },
+      "relation": {
+        "pre": "359a31c151fb825cd9e8423ef9045bc9b2b7cd0e0c6d0367e5b83f256a1aece7",
+        "post": "359a31c151fb825cd9e8423ef9045bc9b2b7cd0e0c6d0367e5b83f256a1aece7"
+      },
+      "notes": {
+        "pre": "86662d9a3a1c6a2890ba048755de30d1e1c5ea2c220e3e389b5205718c6c2e29",
+        "post": "86662d9a3a1c6a2890ba048755de30d1e1c5ea2c220e3e389b5205718c6c2e29"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "interpretation_source",
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-tianzhu-lingqian-southern-song",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "1cccce28eab9f2556d3dacd2dd143eb58134333501ceb4e13f43c942020661e4",
+        "post": "1cccce28eab9f2556d3dacd2dd143eb58134333501ceb4e13f43c942020661e4"
+      },
+      "evidence": {
+        "pre": "2971d5499ef6a0fbbaf5776a6cba2c7a2922162002887405f7497ea4c5f93708",
+        "post": "2971d5499ef6a0fbbaf5776a6cba2c7a2922162002887405f7497ea4c5f93708"
+      },
+      "relation": {
+        "pre": "27374766d516a949feaca31c764ad029b07196189cb1c227ada4aefcf3e88f92",
+        "post": "27374766d516a949feaca31c764ad029b07196189cb1c227ada4aefcf3e88f92"
+      },
+      "notes": {
+        "pre": "615b2e7c70f8eed7921ccf3af90d4a921f1b6229d730817638e45b5619cccaa1",
+        "post": "615b2e7c70f8eed7921ccf3af90d4a921f1b6229d730817638e45b5619cccaa1"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-tianzhu-lingqian-hongwu",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "2603643e5fdef2d2bf033f7f2815058f024a3b0585894418956d1f71fce60188",
+        "post": "2603643e5fdef2d2bf033f7f2815058f024a3b0585894418956d1f71fce60188"
+      },
+      "evidence": {
+        "pre": "a51c36c382cc08f713d1c933f8b676402d20a740d469b0d18f379f0ccee8f03d",
+        "post": "a51c36c382cc08f713d1c933f8b676402d20a740d469b0d18f379f0ccee8f03d"
+      },
+      "relation": {
+        "pre": "c0a45e5c0cdd111d6fd68886fcbdf2804402f835d43b1deca6e2199b9aab57c9",
+        "post": "c0a45e5c0cdd111d6fd68886fcbdf2804402f835d43b1deca6e2199b9aab57c9"
+      },
+      "notes": {
+        "pre": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+        "post": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guanyin-gensandai-hyakusen-1684-ndl",
+      "corpus_id": "guanyin",
+      "is_new_record": false,
+      "old_role": "identified_historical_edition",
+      "identity": {
+        "pre": "7aa93756ef056651dddb47543934bba9b43d87db6b4c3d992b3c95345cc487d2",
+        "post": "7aa93756ef056651dddb47543934bba9b43d87db6b4c3d992b3c95345cc487d2"
+      },
+      "evidence": {
+        "pre": "72f4ae03e8c278f15d788b20e843c0f9ca18bfe4fa324e93aaeefb1128e70b7b",
+        "post": "72f4ae03e8c278f15d788b20e843c0f9ca18bfe4fa324e93aaeefb1128e70b7b"
+      },
+      "relation": {
+        "pre": "b8fe0d78ca6a8ca53908c479f69a5628dc5be911af885f4b25be39390f0b0e96",
+        "post": "b8fe0d78ca6a8ca53908c479f69a5628dc5be911af885f4b25be39390f0b0e96"
+      },
+      "notes": {
+        "pre": "e3e3c36d8d1a890288bd412d8a4fe2fb764c21329bea7b53b9fb4b236481ddad",
+        "post": "e3e3c36d8d1a890288bd412d8a4fe2fb764c21329bea7b53b9fb4b236481ddad"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guandi-daozang-fuye-1225",
+      "corpus_id": "guandi",
+      "is_new_record": false,
+      "old_role": "historical_baseline",
+      "identity": {
+        "pre": "f73aab0f56a4e25cc52bfffe78f9f3a8beb7ebe621173f18fd3ba721a5b19ca7",
+        "post": "f73aab0f56a4e25cc52bfffe78f9f3a8beb7ebe621173f18fd3ba721a5b19ca7"
+      },
+      "evidence": {
+        "pre": "dbdcce8c81499b4c613d11d62a5c2bff013fa56c9c67ad77d3f2b87e3dd84e33",
+        "post": "dbdcce8c81499b4c613d11d62a5c2bff013fa56c9c67ad77d3f2b87e3dd84e33"
+      },
+      "relation": {
+        "pre": "051abf1ab2f514b4e5aeedfbe434fb50c2b2904314153b293fe07725cc053c6b",
+        "post": "051abf1ab2f514b4e5aeedfbe434fb50c2b2904314153b293fe07725cc053c6b"
+      },
+      "notes": {
+        "pre": "3827da9350fdfd5eef64d1d4241422a2d062967d89ae2668440fcb6887b58890",
+        "post": "3827da9350fdfd5eef64d1d4241422a2d062967d89ae2668440fcb6887b58890"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "baseline",
+          [
+            "lineage_evidence",
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "baseline",
+          [
+            "lineage_evidence",
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guandi-gusu-niushi-qing",
+      "corpus_id": "guandi",
+      "is_new_record": false,
+      "old_role": "historical_attestation",
+      "identity": {
+        "pre": "b8429e9779e012ddb23f77fa9b05f95a0cc03a06d53e73c3b54830bb70a800f0",
+        "post": "b8429e9779e012ddb23f77fa9b05f95a0cc03a06d53e73c3b54830bb70a800f0"
+      },
+      "evidence": {
+        "pre": "10da7234b2755be2bc1ed304dc6f743683f243be0a6c9ef7a87ed949f9cd677a",
+        "post": "10da7234b2755be2bc1ed304dc6f743683f243be0a6c9ef7a87ed949f9cd677a"
+      },
+      "relation": {
+        "pre": "69182631bd08fda38b2e633c8b1a3747044c587544173fdb9826efdd1541fb40",
+        "post": "69182631bd08fda38b2e633c8b1a3747044c587544173fdb9826efdd1541fb40"
+      },
+      "notes": {
+        "pre": "96c2ba05e59d729386d43b34e1ef888b3d6655b251324436b019e18475dbe9a2",
+        "post": "96c2ba05e59d729386d43b34e1ef888b3d6655b251324436b019e18475dbe9a2"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    },
+    {
+      "edition_id": "ed-guandi-guansheng-dijun-1826",
+      "corpus_id": "guandi",
+      "is_new_record": false,
+      "old_role": "historical_attestation",
+      "identity": {
+        "pre": "124aa4776d5c3a12247a65c2e15cc4f64da8a655c0fe286bc8071550da991db9",
+        "post": "124aa4776d5c3a12247a65c2e15cc4f64da8a655c0fe286bc8071550da991db9"
+      },
+      "evidence": {
+        "pre": "24decc8485a46525d06f9cb9ee75bc62bdb8031f590420e8b5b86f4dfc79c7fe",
+        "post": "24decc8485a46525d06f9cb9ee75bc62bdb8031f590420e8b5b86f4dfc79c7fe"
+      },
+      "relation": {
+        "pre": "c2df6e47e1ddeb20d0515af7a65ae38f8c971176c89bde99060d0f93755634a8",
+        "post": "c2df6e47e1ddeb20d0515af7a65ae38f8c971176c89bde99060d0f93755634a8"
+      },
+      "notes": {
+        "pre": "0a111abb5cec440d7b46763df2b98a642474e9775e91bb715564851b433d8b50",
+        "post": "0a111abb5cec440d7b46763df2b98a642474e9775e91bb715564851b433d8b50"
+      },
+      "mapping": {
+        "expected": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "got": [
+          "historical",
+          "identified",
+          [
+            "textual_attestation"
+          ]
+        ],
+        "match": true
+      }
+    }
+  ],
+  "summary": {
+    "total_records": 16,
+    "preserved_records": 15,
+    "new_record": 1,
+    "preserved_ok": {
+      "identity": 15,
+      "evidence": 15,
+      "relation": 15,
+      "notes": 15,
+      "mapping": 15
+    },
+    "all_preserved": true
+  }
+}
