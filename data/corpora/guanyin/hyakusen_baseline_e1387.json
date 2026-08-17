@@ -1,0 +1,90 @@
+[
+  {
+    "page": "p0001",
+    "slip_number": null,
+    "ocr_text": "This is the cover (or back cover) of the book \"Hyakusen\" (百籤). It is a plain, aged brown paper surface with traditional binding; there is no text, poem, or illustration on this page.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0001.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0002",
+    "slip_number": null,
+    "ocr_text": "This page contains the **Preface (序)** to *Hyakusen* (百籤), not a divination poem (籤詩).\n\n**Content Description:**\n*   **Left Page:** Titled **「百籤序」** (Preface to the One Hundred Lots). It is a prose introduction explaining the origins of this oracle collection. The text states that these 100 lots were traditionally drawn from the treasury box at **Konponchūdō (根本中堂)** on **Mount Hiei (比叡山)**, the headquarters of the Tendai school. It mentions the date (the third day of the first month), the figure **Ganzan Daishi (元三大師)**, and explains that the lots were widely distributed across the provinces like spring rain, providing guidance to people. It concludes by noting that the text was printed for wide circulation.\n*   **Right Page:** Appears to be a **blank page** (verso), with some visible staining/wear but no text.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0002.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0003",
+    "slip_number": null,
+    "ocr_text": "This page does **not** contain a divination poem (籤詩). Instead, it is the **preface/introduction section** combined with **illustrations**.\n\n**Page Content Summary:**\n\n*   **Right Page (Recto):** Contains the opening preface (序) explaining the origins and usage of the oracle. It describes the \"Hundred Lots\" (百籤) as a method for determining auspiciousness and misfortune through the compassion of Kannon (Avalokiteśvara). It prescribes ritual practices such as reciting the Lotus Sutra's Universal Gate Chapter (法華普門品) three times, chanting mantras for forms like the Thousand-armed (千手) and Eleven-faced (十一面) Kannon 333 times each, and performing 33 prostrations (禮拝三十三度).\n\n*   **Left Page (Verso):** Features line-drawing illustrations of three forms of Kannon Bodhisattva:\n    *   Sho-Kan-Jizai-O-Bosatsu (正觀自在王菩薩)\n    *   Senju-Sengen-Dai-Bosatsu (千手千眼大菩薩)\n    *   Juichimen-Kanzeon-Daishi (十一面觀世音大士)\n    \n    Below the images are supplementary notes titled \"**籤不合時**\" (For when the lots do not match/fit), listing specific days of the sexagenary cycle (甲乙日, 丙丁日, 己午申酉, 寅卯亥子) for reference.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0003.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0004",
+    "slip_number": null,
+    "ocr_text": "This page is **not a divination poem (籤詩)** page. It contains the **preface and ritual prayers** (序文・願文) for using the oracle, specifically:\n\n*   **Right page:** The **Prayer Text (願文)** — containing instructions on auspicious days/times for drawing lots (referencing the ten heavenly stems and twelve earthly branches), followed by a invocation to Avalokiteśvara (Kannon Bodhisattva) and the formal request for divine judgment (\"謹按經曰...\" through \"...垂證明\").\n*   **Left page:** The **Farewell/Dedication Text (奉送文)** — a concluding prayer to send off the invoked deities back to their original seats after the divination is complete, ending with the heading \"影向道場\" (Manifestation Dojo).\n\nThis is the introductory matter before the actual numbered lottery poems begin.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0004.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0005",
+    "slip_number": null,
+    "ocr_text": "**Transcription of the Lot Poem (籤詩):**\n\nFirst  \nGreat Fortune  \nPrecious Stupa Tower  \nSafe Upon the High Peak  \nAll People Look Up to It  \nDo Not Treat It Casually  \n\n---\n\n**Page Content Description:**  \nThe image shows an open book spread. The **right page (recto)** is the **title page**, containing publication information: the book title *Hyakusen* ( Hundred Lots), printed at Komatsu Temple on Mount Daizi, proofread against the temple’s authentic text; dated Genroku 8 (1695), Year of the Boar, 5th month, auspicious day; published by Suiren-ya Mataemon at Nihonbashi Minami.  \n\nThe **left page (verso)** contains **Lot Number 1** (rated “Great Fortune”) with the four-line poem transcribed above, followed by extensive prose commentary/explanation (占解) which has been omitted per your instructions.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0005.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0006",
+    "slip_number": null,
+    "ocr_text": "**Page Content Description:**\n\nThis is an **introductory/preface page** (序文・解說) from the *Hyakusen* (百籤), not a specific numbered lot poem page. It contains the following:\n\n**Left Page:**\n- **Header:** 「第一 前為後吉」(First: What comes before becomes what follows; auspicious)\n- **Four Main Category Headings** (in large script):\n  1. **月被浮雲翳** (The moon is obscured by floating clouds)\n  2. **正事自昏迷** (Proper affairs naturally become confused/darkened)\n  3. **辛氣陰合祐** (Hardship secretly combines with blessings)\n  4. **何慮不眉開** (Why worry that brows will not open [with joy]?)\n\nBeneath each heading is detailed commentary in cursive Japanese kana (註釋/解說).\n\n**Right Page:**\nA lengthy prose explanation in Japanese (vertical text) discussing the general philosophy of the divination system—explaining the interplay of fortune and misfortune (*kichi* and *kyo*), the cyclical nature of luck, principles for interpreting the lots, and guidance on how to apply the readings to various life circumstances (career, relationships, health, etc.).\n\n**Summary:** This spread serves as the **general introduction or table of principles** establishing the conceptual framework for the hundred lots, rather than displaying a specific individual lot poem (籤詩) with its number and full verse.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0006.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0007",
+    "slip_number": 3,
+    "ocr_text": "Based on the image provided, **this page does not contain a divination poem (籤詩)**.\n\n**Page Content Description:**\nThis is a two-page spread (pages for the **Third Lot / 第三籤**) from the Edo-period divination manual *Hyakusen* (百籤). \n\n*   **Left Page (Top):** Contains printed header text indicating the lot number and fortune rating (**「第三前高後小吉」** – Third, \"Front High Back Small,\" Lucky), followed by four vertical columns of printed keywords/phrases (**「愁損忠良」、「青霄月下炷香」、「難熊防小過」、「願學時長」**) which serve as thematic headings for this lot's fortune.\n*   **Main Body (Both Pages):** Filled with dense **handwritten commentary and interpretations** (占解/注釈) in cursive Japanese script (kana-majiri), providing detailed explanations of the lot's meaning for various aspects of life (such as waiting for people, business, illness, lost items, etc.). \n\nSince the page consists primarily of explanatory prose and thematic keywords rather than a formal Chinese-style divination poem, no poem transcription is provided per your instructions.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0007.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0008",
+    "slip_number": null,
+    "ocr_text": "This page is **Volume/Section 4** (第四) of *Hyakusen* (百籤). It contains **explanatory commentary and interpretations** (占解/註釋) — not the actual divination poems (籤詩).\n\nSpecifically, the left page displays the **titles/headings** for three separate lots:\n\n*   **君恩祿未封** (Kun on roku mifū / The Lord's grace and salary remain unsealed)\n*   **者逢候手印** (Mono ai sōji tein / Meeting someone; awaiting the seal/handprint)\n*   **好事始念公** (Kōji shi nen kō / Good affairs begin with public-mindedness)\n\nBeneath each heading (and filling the entire right-hand page) is dense text written in **cursive kana** (Japanese syllabary) providing the detailed divination readings, auspicious/inauspicious explanations, and advice associated with each lot. As instructed, this interpretive text has not been transcribed.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0008.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0009",
+    "slip_number": null,
+    "ocr_text": "Based on the image provided, this page contains **Lot Number 5 ( Fifth)** with a **4-line Chinese poem (籤詩)**. The right-hand page contains divination commentary which, per your instructions, is omitted below.\n\nHere is the complete transcription:\n\n**第五丙**\n家道未能昌\n危危保禍殃\n暗雲侵月桂\n佳人一炷香",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0009.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0010",
+    "slip_number": 7,
+    "ocr_text": "This page does **not** contain a **籤詩** (lot poem/divination verse).\n\n**Page Content Description:**\n\nThis is a two-page spread from **Volume 6, End Matter** (第六末) of the *Hyakusen* (百籤) divination manual. Rather than presenting a specific numbered lot with a poetic oracle, this spread contains **categorical instructions and explanatory prose**:\n\n*   **Left Page:** Features four major subject headings with corresponding descriptions in cursive Japanese script (kana-majiri):\n    1.  **宅墓興兩** (Houses and Graves: Both Prosper)\n    2.  **人事有又託** (Human Affairs: Matters of Entrustment/Dependence)\n    3.  **傷敗損失防** (Precautions Against Injury, Defeat, and Loss)\n    4.  **祈福始中和** (Prayers for Blessings Begin with Harmony)\n\n*   **Right Page:** Consists entirely of dense vertical columns of running text (likely detailed annotations, usage instructions, or elaborations on the four categories listed on the facing page).\n\nThere is no lot number (e.g., \"第三,\" \"第七番\") or classical Chinese-style poem (kansi) present on this page.",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0010.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  },
+  {
+    "page": "p0019",
+    "slip_number": 15,
+    "ocr_text": "**Lot Number:**  \n第十五籤  \n\n**Poem Text:**  \n年非數亦孤  \n矢病未能鯨  \n摩蒼舟未登  \n龍臥失明珠",
+    "locator": "https://archive.wul.waseda.ac.jp/kosho/bunko31/bunko31_e1387/bunko31_e1387_0019.jpg",
+    "confidence": "pending_human_review",
+    "unresolved_characters": []
+  }
+]
