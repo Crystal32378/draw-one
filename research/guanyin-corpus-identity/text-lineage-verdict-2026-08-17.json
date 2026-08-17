@@ -30,5 +30,19 @@
     "IA 候選": "archive.org 3 筆「觀音靈籤」（guanyinlingqianguangdongban 廣東版 / gylq00 / guanyinlingqian）——IA 暫時 502，待恢復後 fingerprint",
     "台灣古籤線索": "薛皓文 2007《臺灣艋舺龍山寺籤詩及其文學性研究》（台大碩論，含籤詩探源章）；金清海訪問稿：龍山寺觀音籤=日據時代百年古籤",
     "verdict": "fingerprint 尚未命中；日本全線+感應靈課已淘汰；剩餘候選：南宋天竺靈籤（國圖 16761）、明清觀音靈籤坊刻本、IA 3 本、台灣早期刊本"
+  },
+  "update_2026-08-17_ia_guangdong_FINGERPRINT_HIT": {
+    "source": "archive.org item guanyinlingqianguangdongban（觀音靈籤/观音灵签，廣東版）",
+    "scan_info": "48 頁 PNG（scan 1-48），2020-09-04 上傳；結構＝扉頁（「堂經佛」）＋卦目錄（scan 2-3）＋100 籤正文（scan 4-28，每頁 4 籤，直排右起）",
+    "slip1_OCR": "「開天開地作良診」＋「吉日良時萬物全」＋「人行忠正帝王宣」＋解曰「觀音降筆」「批對盤古初開天地…之象」「諸事皆吉」",
+    "slip1_reconstructed": "天開地闢結良緣／日吉時良萬物全／人行忠正帝王宣（OCR 變體：開↔天、闢→開、結→作、緣→診、辰→時）",
+    "guanyinqiaowang_comparison": "籤詩網 #1：天開地闢結良緣，日吉時辰萬物全，若得此籤非小可，人得忠正帝王宣；解曰「急速兆速，年未值時，觀音降筆」→ 同一文本系統（細部異文待逐字核：日吉時辰/吉日時良、人得/人行、若得此籤非小可/未見）",
+    "verdict": "【FINGERPRINT #1 命中】廣東版《觀音靈籤》＝天開地闢系（與台灣觀音一百籤同文本系統）——第一個被確認的非日本 historical carrier",
+    "remaining": [
+      "#50（scan 16）與 #100（scan 28）詩文待 OCR 服務恢復後驗證",
+      "出版資訊/年代未確認（扉頁掃描品質不足）",
+      "IA 另兩本（guanyinlingqian / gylq00）待交叉驗證",
+      "與南宋天竺靈籤（國圖 16761）的關係待查"
+    ]
   }
 }
