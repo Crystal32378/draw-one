@@ -1,7 +1,7 @@
 # WHY THESE SOURCES / WHY THIS CORPUS — Positioning
 
 **Last updated:** 2026-08-17 13:00 (Asia/Taipei)
-**Status:** v0.2 — production source update（艋舺龍山寺版 = Taiwan reference edition）
+**Status:** v0.3 — production migration complete（100/100 對齊艋舺龍山寺版）
 
 > This file reports research positioning only. Source-of-truth evidence remains in corpus packages and historical registry.
 
@@ -30,10 +30,10 @@ Draw One 的**繁中／台灣 reference edition** 採**艋舺龍山寺《觀世�
 - **Production edition（艋舺龍山寺版）**＝ 使用者實際讀到的籤詩文本
 - **Provenance layer**＝ 保留其他版本（鹿港／大陸／廣東／福建）與歷史來源作為 lineage evidence
 - **chance.org.tw（籤詩網）**＝ secondary transcription，保留作 comparison witness（不刪除、不當 production source）
-- **transcription confidence 與 migration 分離**：chance.org.tw 文字的 witness transcription confidence 維持 PROBABLE（不因 production 決策而覆蓋）；逐籤依艋舺版核對尚未完成 → production migration 標 TRANSCRIPTION_PENDING（不假裝已完成切換）
+- **production migration 已完成（COMPLETE）**：100/100 籤 poem_text 已逐籤對齊艋舺龍山寺百首版，transcription_status 升 VERIFIED（核對方法見 current slip_texts 的 production_source.migration_result）
 - 薛皓文 2008 論文附錄二 ＝ transcription/comparison evidence，非 historical primary source
 
-**Production suitability ≠ historical priority；reference edition ≠ canonical ancestor。** 歷史 witness 研究持續獨立進行，不因 production 決策而停止。
+**Production suitability ≠ historical priority；reference edition ≠ canonical ancestor。** Historical Witness Hunt 已 FROZEN，移入 Phase 2 backlog（林國平紙本／南平《觀世音靈簽精解》／中國國圖／安海早期籤簿），不標記為「正在持續」。
 
 ## Current lineage vs parallel historical tradition
 
