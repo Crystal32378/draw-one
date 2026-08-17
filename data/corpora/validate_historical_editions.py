@@ -72,7 +72,7 @@ def main():
 
     # --- S: JSON Schema ---
     schema = json.loads(SCHEMA_PATH.read_text(encoding="utf-8"))
-    check("S2. schema version", schema.get("schema_version") == "1.1.0",
+    check("S2. schema version", schema.get("schema_version") == "1.1.1",
           f"version={schema.get('schema_version')}")
     if HAS_JSONSCHEMA:
         v = Draft7Validator(schema)
