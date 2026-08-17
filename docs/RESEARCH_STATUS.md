@@ -9,18 +9,20 @@
 | Corpus | Historical baseline | Modern temple reference | Next gate |
 |---|---|---|---|
 | 六十甲子籤 | 🔴 0/60 — 古本文字未取得（臺灣記憶 attestation 已登記） | 🟢 北港官方＋新港 60/60 已 OCR | 🟡 取得可逐字比較的古本 → Historical Comparison PR |
-| 觀音一百籤 | 🔴 0/100（baseline target 重新定位中） | 🟢 龍山寺／龍霄殿等主要 modern carriers 已確認 | 🔴 **Target Recalibration（2026-08-17）**：京大 RB00017894／早稻田 E1387 → parallel_tradition（日本元三大師百籤系統，3-slip fingerprint 0/100 匹配）；《観音百籤占決諺解》(1687) REJECT；下一批候選轉向中國觀音靈籤／天竺靈籤數位典藏 | |
+| 觀音一百籤 | 🔴 0/100（baseline target 重新定位中） | 🟢 **艋舺龍山寺百首版 = Taiwan production/reference edition**（chance.org.tw 降為 secondary transcription；100/100 尚待逐籤依艋舺版核對 → TRANSCRIPTION_PENDING） | 🔴 **Target Recalibration（2026-08-17）**：京大 RB00017894／早稻田 E1387 → parallel_tradition（日本元三大師百籤系統，3-slip fingerprint 0/100 匹配）；《観音百籤占決諺解》(1687) REJECT；下一批候選轉向中國觀音靈籤／天竺靈籤數位典藏 | |
 | 關帝百籤 | 🟢 100/100 — 道藏 baseline 完成；27/100 與現代 reading 直接／字形級支持 | 🟢 主要 modern carrier/reference 已確認 | 🟡 清刊本 transcription → Historical Edition Ingestion PR |
 
 ## Tracking rationale
 
 > We prioritize sources that are historically meaningful, institutionally preserved, textually traceable, and useful for connecting ancient source → modern tradition.
 
-| Corpus | Radar locked on | Why |
-|---|---|---|
-| 觀音一百籤 | 京都大學／早稻田 historical editions | 頂級學術館藏、早期版本、原件影像與可追溯 locator；適合建立 historical baseline |
-| 關帝百籤 | 《正統道藏》＋哈佛燕京清刊本 | 早期宗教典籍傳本已有 baseline；清刊本可補中間 textual lineage |
-| 六十甲子籤 | 北港古本文物＋臺灣記憶／臺史所 | 台灣在地傳承的歷史載體，可把現代北港／新港版本往前接回歷史 |
+**Production / reference edition ≠ canonical ancestor；production suitability ≠ historical priority。** reference edition 是給使用者的 living-tradition 文本；historical edition 是追蹤文本源流的歷史證據——兩者不同軸線，互不取代，也不因 production 決策而停止 historical witness research。
+
+| Corpus | Production / reference edition | Historical radar | Variant / lineage witnesses |
+|---|---|---|---|
+| 觀音一百籤 | 🟢 艋舺龍山寺百首版（Taiwan reference；chance.org.tw 降為 secondary transcription） | 京都大學／早稻田（元三大師系）＋南宋天竺靈籤 = parallel tradition | 鹿港／大陸／廣東／福建版本 = variant + lineage evidence（不覆寫進艋舺文本） |
+| 關帝百籤 | 🟢 主要 modern carrier/reference | 《正統道藏》＋哈佛燕京清刊本 | — |
+| 六十甲子籤 | 🟢 北港朝天宮官方版 | 北港古本文物＋臺灣記憶／臺史所 | 新港／通用網路轉錄版 = variant |
 
 ### Last checkpoint
 
