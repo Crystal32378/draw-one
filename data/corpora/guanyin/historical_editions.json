@@ -4,7 +4,7 @@
     "corpus_id": "guanyin",
     "title": "《百籤》（hyakusen）",
     "edition_period": "historical",
-    "baseline_status": "candidate",
+    "baseline_status": "parallel_tradition",
     "content_roles": [
       "textual_attestation"
     ],
@@ -43,7 +43,7 @@
         "source": "hyakusen-baseline-waseda-e1387.json（研究層骨架）"
       }
     ],
-    "notes": "FOUND ≠ BASELINE：OCR/transcription 尚未完成，不升完整 baseline；完成 100 籤轉錄後可申請升為 historical_baseline"
+    "notes": "FOUND ≠ BASELINE：OCR/transcription 尚未完成，不升完整 baseline；完成 100 籤轉錄後可申請升為 historical_baseline\n角色變更（2026-08-17）：元三大師百籤系統（日本）— parallel historical tradition，不再是 baseline candidate。3-slip fingerprint：日本元三大師おみくじ第一番「七宝浮図塔 高峰頂上安」系，與台灣淺草系觀音一百籤（第一番「天開地闢結良緣」）文本 0/100 匹配。"
   },
   {
     "edition_id": "ed-guanyin-gensandai-egusho-1684",
@@ -254,7 +254,7 @@
     "corpus_id": "guanyin",
     "title": "《元三大師百籖和解》",
     "edition_period": "historical",
-    "baseline_status": "identified",
+    "baseline_status": "parallel_tradition",
     "content_roles": [
       "textual_attestation",
       "interpretation_source"
@@ -286,7 +286,7 @@
         "source": "omikujisuki.com 數位古籍清單（請求記号 日藏/未刊/756）"
       }
     ],
-    "notes": "含 interpretation 層（和解）；RMDA 檢索 URL 待補"
+    "notes": "含 interpretation 層（和解）；RMDA 檢索 URL 待補\n角色變更（2026-08-17）：元三大師百籤系統（日本）— parallel historical tradition，不再是 baseline candidate。第一番「七宝浮図塔 高峰頂上安 衆人皆仰望 莫作等閑看」與現代日本元三大師おみくじ（川崎大師/比叡山/妙法寺）同一詩文；與淺草系 0/100 匹配。page→slip map：100/100 籤號存在（kyoto_pagemap_final.json）。"
   },
   {
     "edition_id": "ed-guanyin-tianzhu-lingqian-southern-song",

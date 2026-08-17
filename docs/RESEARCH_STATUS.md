@@ -1,39 +1,35 @@
 # Draw One — Research Status Board
 
-**Last updated:** 2026-08-16 15:29 (Asia/Taipei)
+**Last updated:** 2026-08-17 (Asia/Taipei)
+**Status:** Research Frozen / Production Ready
 
-> This file reports research progress only. Source-of-truth evidence remains in corpus packages and historical registry.
+> Source-of-truth evidence remains in corpus packages and historical registry.
+
+## Guanyin Corpus — Final verdict（2026-08-17 固定）
+
+- **current lineage** = 天開地闢系（台灣繁中 production/reference 採艋舺龍山寺百首版，100/100 已對齊）
+- **parallel tradition** = 七寶浮圖／元三系，與南宋《天竺靈籤》有 textual continuity（非台灣系祖先）
+- **current-lineage historical witness** = UNRESOLVED
+- **安海龍山寺 → 台灣龍山寺** = inferred / unverified（僅薛皓文 2008 推論）
+- **Research state** = Historical Witness Hunt FROZEN，移入 Phase 2 backlog
 
 ## Corpora
 
-| Corpus | Historical baseline | Modern temple reference | Next gate |
+| Corpus | Production / reference | Historical baseline | State |
 |---|---|---|---|
-| 六十甲子籤 | 🔴 0/60 — 古本文字未取得（臺灣記憶 attestation 已登記） | 🟢 北港官方＋新港 60/60 已 OCR | 🟡 取得可逐字比較的古本 → Historical Comparison PR |
-| 觀音一百籤 | 🟡 11/103 頁 OCR 進行中（早稻田 E1387） | 🟢 龍山寺／龍霄殿等主要 modern carriers 已確認；secondary mirrors 已識別 | 🟡 E1387 100 籤完成 → Historical Baseline Ingestion PR |
-| 關帝百籤 | 🟢 100/100 — 道藏 baseline 完成；27/100 與現代 reading 直接／字形級支持 | 🟢 主要 modern carrier/reference 已確認 | 🟡 清刊本 transcription → Historical Edition Ingestion PR |
+| 觀音一百籤 | 🟢 艋舺龍山寺百首版（100/100 VERIFIED） | 🔴 current-lineage UNRESOLVED；七寶浮圖系 = parallel_tradition | 🧊 Research Frozen → Phase 2 backlog |
+| 關帝百籤 | 🟢 主要 modern carrier 已確認 | 🟢 道藏 baseline 完成（100/100） | 🟡 清刊本 transcription（Phase 2） |
+| 六十甲子籤 | 🟢 北港官方＋新港 60/60 已 OCR | 🔴 0/60 古本文字未取得 | 🧊 等可逐字比較古本 |
 
-## Tracking rationale
+## Superseded research stages
 
-> We prioritize sources that are historically meaningful, institutionally preserved, textually traceable, and useful for connecting ancient source → modern tradition.
+- **淺草系假設** → SUPERSEDED：日本境內無獨立「淺草系」候選；淺草寺官方 PDF 亦屬元三大師系
+- **南宋《天竺靈籤》作為天開地闢系候選** → SUPERSEDED：南宋天竺靈籤屬七寶浮圖／元三系祖先，與台灣系 0/100 匹配
+- **Target Recalibration（2026-08-17）** → SUPERSEDED（已定案）：京大 RB00017894／早稻田 E1387 → parallel_tradition；《観音百籤占決諺解》(1687) REJECT
 
-| Corpus | Radar locked on | Why |
-|---|---|---|
-| 觀音一百籤 | 京都大學／早稻田 historical editions | 頂級學術館藏、早期版本、原件影像與可追溯 locator；適合建立 historical baseline |
-| 關帝百籤 | 《正統道藏》＋哈佛燕京清刊本 | 早期宗教典籍傳本已有 baseline；清刊本可補中間 textual lineage |
-| 六十甲子籤 | 北港古本文物＋臺灣記憶／臺史所 | 台灣在地傳承的歷史載體，可把現代北港／新港版本往前接回歷史 |
+## Phase 2 backlog（Historical Witness Hunt FROZEN）
 
-### Last checkpoint
-
-- 六十甲子籤：2026-08-16（Registry 15+1 定案，PR #12 merged）
-- 觀音一百籤：2026-08-16 15:00（OCR 管線 11 頁）
-- 關帝百籤：2026-08-16（3-Corpus Historical Baseline 比較封箱）
-
-## Infrastructure
-
-| 項目 | 狀態 |
-|---|---|
-| PR #11 Liushijiazi Corpus Package | ✅ merged |
-| PR #12 Historical Editions Registry | ✅ merged |
-| Guanyin Historical Baseline Ingestion | ⏳ E1387 OCR 進行中 |
-| Liushijiazi Historical Comparison | ⏳ 等待可逐字比較的古本文字 |
-| Guandi Historical Edition Ingestion | ⏳ 等待清刊本 transcription |
+- 林國平 1998 論文紙本（廈大圖書館）
+- 南平《觀世音靈簽精解》
+- 中國國圖明清「天開地闢」系刊本
+- 安海早期籤簿
