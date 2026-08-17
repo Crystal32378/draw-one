@@ -101,5 +101,16 @@
       "是否值得升級 Historical Baseline Candidate": "否——無可追溯出版年代，層級＝當代流通版（與籤詩網同級）；不能作為 historical baseline"
     },
     "verdict": "IA 三筆「觀音靈籤」＝同一本近代廣東流通版的重複上傳（2 筆同掃描、1 筆同版本不同掃描）——確認屬天開地闢系，但非 historical carrier。下一批候選：有年代的明清「天開地闢」系觀音籤刊本（台灣/中國典藏）"
+  },
+  "update_2026-08-17_bl_guanyinqian": {
+    "五問答": {
+      "書名/館藏號": "《觀音籤》（拼音題名 Kuan-yin chien）；British Library 登錄號 15101.c.31；台灣國圖中文古籍聯合目錄收錄（來源：國家圖書館中文古籍聯合目錄）",
+      "年代": "無法確認——書目無出版地（[S.l.]）無出版年；數量 ff.28＋ff.2[MS]（28葉＋2葉手稿）；BL 15101 系列為 19 世紀編目體系（書可能清代刊本，但僅推測 UNVERIFIED）",
+      "數位影像": "未找到——BL Explore/catalogue.bl.uk 皆無法檢索（SPA/400）；BL 公開數位化中文書清單未見此號；線上不可查看",
+      "fingerprint": "無法執行（看不到內容）",
+      "lineage": "無法判定"
+    },
+    "處置": "按規則：無年代＋看不到內容 → 記錄 bibliographic attestation，不深入追。不升 Historical Baseline Candidate",
+    "notes": "此條價值：證明「觀音籤」單行本在 19 世紀已流入英國（BL 藏），為天開地闢系或其他系在清代流通的間接線索；若未來 BL 數位化此號或有人實體閱覽，再補 fingerprint"
   }
 }
