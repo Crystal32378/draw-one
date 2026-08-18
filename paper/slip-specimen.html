@@ -57,9 +57,16 @@
     if (!entry) continue;
     const sec = document.createElement("section");
     sec.className = "spec";
+    // corpus data never enters innerHTML — labels are assembled from
+    // textContent so future corpus strings can't become executable markup
     const label = document.createElement("div");
     label.className = "spec-label";
-    label.innerHTML = `<b>${entry.corpus_id}</b>　${window.SLIP_RENDER.tabText(entry)}・${entry.provenance.transcription_status}`;
+    const corpusMark = document.createElement("b");
+    corpusMark.textContent = entry.corpus_id;
+    label.appendChild(corpusMark);
+    label.appendChild(
+      document.createTextNode(`　${window.SLIP_RENDER.tabText(entry)}・${entry.provenance.transcription_status}`)
+    );
     sec.appendChild(label);
     window.SLIP_RENDER.mountSlip(sec, entry);
     root.appendChild(sec);

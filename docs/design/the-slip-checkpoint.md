@@ -28,7 +28,20 @@
 
 ## Truth rules（與 production truth layer 的契約）
 
-- 紙上的每一個字逐字來自 `DRAW_POOL` entry（historical_text ＋ provenance）。產品文案永遠不穿紙的形式。
+紙上的文字分三類，各有明確的來源與保證，不得混同：
+
+1. **歷史詩文（逐字保證）** — 詩文欄逐字取自 `DRAW_POOL` entry 的 `historical_text.poem_text`，
+   不增刪一字（斷句是排版，不是改寫）。簽條的干支直接取 `original_slip_label`；
+   「第○籤」為 `slip_number` 的中文數字導出形式。
+2. **來源與狀態（provenance 導出）** — 版記首行「據○○本」與狀態詞為固定的產品措辭，
+   與 pool 的 `provenance`（edition／transcription_status）一一對應，定義於 `slip-render.js`。
+   狀態翻譯誠實且不可升級：VERIFIED＝已對勘、PROBABLE＝待複核。
+3. **產品印記（明示品牌）** — 「抽一謹錄」落款與「抽一」朱印是 Draw One 的印記，
+   不是歷史文本——如同實物籤紙上的刊印者落款。印記永遠只出現在版記欄，不進詩文欄。
+
+其餘規則：
+
+- 上述三類以外的產品文案永遠不穿紙的形式（不上紙）。
 - 歷史形式只配已驗證的歷史文本；未來若加入歷史解/聖意，須先過 corpus provenance（蝦蝦研究線），才有資格上紙。
 - 吉凶一視同仁：所有籤共用同一塊「版」的語言，不對吉籤/凶籤給不同視覺獎勵。
 

@@ -1,8 +1,10 @@
 /* ==========================================================================
    The Slip — Draw One 籤紙 design language (V2A checkpoint)
    一張真的會有人拿在手上的籤：欄欄有界、字起於頂、版記貼緣、印蓋其上。
-   TRUTH RULE: everything typeset on the paper comes verbatim from DRAW_POOL
-   corpus entries. Product copy never wears the paper's form.
+   TRUTH RULE: poem text is verbatim DRAW_POOL historical_text; the colophon
+   is derived 1:1 from provenance; 「抽一謹錄」/「抽一」 are explicit product
+   marks confined to the colophon column. No other product copy wears the
+   paper's form. (Full contract: docs/design/the-slip-checkpoint.md)
    FREEZE: once PR #22 lands, change only for functional issues.
    ========================================================================== */
 

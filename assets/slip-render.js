@@ -1,8 +1,13 @@
 // slip-render.js — The Slip renderer (V2A checkpoint).
 //
-// Renders ONE pool entry as a paper slip. Truth rules:
-//   - Text on the paper comes verbatim from the DRAW_POOL entry
-//     (historical_text + provenance). No product copy on the paper.
+// Renders ONE pool entry as a paper slip. Truth rules (full contract in
+// docs/design/the-slip-checkpoint.md):
+//   - Poem text is VERBATIM DRAW_POOL historical_text; the tab is the pool's
+//     original_slip_label (or the Chinese-numeral form of slip_number).
+//   - The colophon source line + status word are fixed product phrasings
+//     derived 1:1 from provenance (defined below), never an upgrade.
+//   - 「抽一謹錄」/「抽一」 are explicit Draw One product marks (like a
+//     printer's colophon), confined to the colophon column.
 //   - The "plate" quirks (per-character jitter, weight, ink take) are seeded
 //     by the entry id: the same slip always prints the same way.
 //   - STATUS_WORD is an honest translation, never an upgrade:
