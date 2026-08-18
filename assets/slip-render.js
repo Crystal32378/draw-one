@@ -55,7 +55,9 @@
         `slip-render fail-closed: ${entry.id} provenance edition_title does not match the colophon registry`
       );
     }
-    if (!(entry.provenance?.transcription_status in STATUS_WORD)) {
+    // Object.hasOwn — the `in` operator would accept prototype keys like
+    // "toString" and typeset function source onto the paper.
+    if (!Object.hasOwn(STATUS_WORD, entry.provenance?.transcription_status)) {
       throw new Error(
         `slip-render fail-closed: ${entry.id} transcription_status "${entry.provenance?.transcription_status}" has no honest colophon word`
       );
