@@ -45,7 +45,14 @@ function loadPool() {
 
 // Rebuild from source so the suite tests the current corpus, not a stale pool.
 console.log("T0 rebuild pool from corpus sources");
-execFileSync("node", [join(ROOT, "scripts", "build-draw-pool.mjs")], { stdio: "pipe" });
+try {
+  execFileSync("node", [join(ROOT, "scripts", "build-draw-pool.mjs")], { stdio: "pipe" });
+} catch (e) {
+  console.error("  ✗ T0 FAILED — the production build gate rejected the current corpus:\n");
+  console.error(String(e.stderr ?? e.message));
+  console.error("The suite cannot continue against a corpus that fails the gate (fail-closed).");
+  process.exit(1);
+}
 const pool = loadPool();
 
 // ---------------------------------------------------------------------------
@@ -146,6 +153,11 @@ buildMustFail("strip provenance source_locator", (d) => (d.slips[1].source_locat
 buildMustFail("undecodable named entity in poem", (d) => (d.slips[6].poem_text += "&nbsp;"));
 buildMustFail("out-of-range numeric entity (&#x110000;)", (d) => (d.slips[8].poem_text += "&#x110000;"));
 buildMustFail("surrogate numeric entity (&#xD800;)", (d) => (d.slips[9].poem_text += "&#xD800;"));
+buildMustFail("U+FFFD replacement char in poem", (d) => (d.slips[10].poem_text += "�"));
+buildMustFail("control residue in poem (U+0007)", (d) => (d.slips[11].poem_text += "\u0007"));
+buildMustFail("control residue CR in poem (U+000D)", (d) => (d.slips[12].poem_text += "\r"));
+buildMustFail("lone surrogate code unit in poem", (d) => (d.slips[13].poem_text += "\uD800"));
+buildMustFail("U+FFFD in edition_title", (d) => (d.slips[14].edition_title += "�"));
 
 // ---------------------------------------------------------------------------
 console.log("T5 public page truth rules");

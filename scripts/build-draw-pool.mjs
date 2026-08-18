@@ -79,6 +79,27 @@ const REQUIRED_ENTRY_FIELDS = [
 // the corpus maintainers. Any entity that survives decoding (named entities,
 // malformed refs) fails the build.
 const RESIDUAL_ENTITY = /&#?[0-9a-zA-Z]+;/;
+
+// Permanent encoding-corruption gate. Mechanical corruption classes that can
+// never be legitimate in curated corpus text (mojibake #18/#72 class):
+//   - U+FFFD replacement character (a decode already failed upstream)
+//   - C0/C1 control residue (only \n is a legal control in poem_text)
+//   - lone UTF-16 surrogates (broken code-unit pairs)
+// Semantic mojibake (wrong-but-valid characters) remains corpus-review
+// territory; these gates catch everything mechanically detectable.
+const ENCODING_CORRUPTION = [
+  { name: "replacement-char", re: /�/ },
+  { name: "control-residue", re: /[\u0000-\u0009\u000B-\u001F\u007F-\u009F]/ },
+  { name: "lone-surrogate", re: /(?:[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF])/ },
+];
+const CORRUPTION_CHECKED_FIELDS = [
+  "poem_text",
+  "original_slip_label",
+  "edition_title",
+  "edition_date_period",
+  "deity_tradition",
+  "source_locator",
+];
 function decodeCharRefs(text, counter) {
   return String(text).replace(/&#(x?)([0-9a-fA-F]+);/g, (match, hex, digits) => {
     const cp = parseInt(digits, hex ? 16 : 10);
@@ -136,6 +157,14 @@ for (const spec of MANIFEST) {
     s.original_slip_label = decodeCharRefs(s.original_slip_label ?? "", decoded);
     if (RESIDUAL_ENTITY.test(s.poem_text) || RESIDUAL_ENTITY.test(s.original_slip_label)) {
       gate(`${id}/no-residual-entities`, false, `undecodable entity remains in text`);
+    }
+    for (const field of CORRUPTION_CHECKED_FIELDS) {
+      const v = String(s[field] ?? "");
+      for (const c of ENCODING_CORRUPTION) {
+        if (c.re.test(v)) {
+          gate(`${id}/encoding-corruption`, false, `${c.name} in field ${field}`);
+        }
+      }
     }
     for (const f of REQUIRED_ENTRY_FIELDS) {
       if (s[f] === undefined || s[f] === null || String(s[f]).trim() === "") {
