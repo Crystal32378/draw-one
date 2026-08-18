@@ -15,7 +15,7 @@
     }
   ],
   "before_sha256": "4587b21d7dfcb454d357b238a3eb592e041a20cfaf8035280a1c16c9e42956e7",
-  "after_sha256": "7cef762d1824250ab00202310592f6584e266785e9782a7f13ee3c1e7d19a026",
+  "after_sha256": "470dd9944ad9fc8062e456fecdf54062cada271dcd73538f35fd37d5238db243",
   "integrity_checks": {
     "slip_count": 100,
     "sn_no_missing": true,
@@ -195,5 +195,28 @@
       "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p130（倒序百首籤）",
       "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「着」（異體/簡化字形，屬 encoding residue，非原文差異）"
     }
-  ]
+  ],
+  "textual_repairs": [
+    {
+      "corpus": "guanyin",
+      "slip_number": 18,
+      "field": "poem_text",
+      "type": "source-textual-repair (mojibake)",
+      "before": "金烏西墜兔東臨 日夜循環�琤j今 僧道得之無不利 工商農士各開心",
+      "after": "金烏西墜兔東臨 日夜循環亘古今 僧道得之無不利 工商農士各開心",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p171（倒序百首籤）",
+      "confirmation": "整頁 OCR（附錄二 p171）讀出「日夜循環亘古今」（亘 U+4E98）。原「�琤j」= U+FFFD + 琤(U+7424) + j(U+006A) 三字元，屬 UTF-8 解碼錯誤殘留，非原文差異。"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 72,
+      "field": "poem_text",
+      "type": "source-textual-repair (mojibake)",
+      "before": "弄蜂須要求他蜜 只怕遭他尾上針 雖是眼前有異路 暗�堬`藏荊棘林",
+      "after": "弄蜂須要求他蜜 只怕遭他尾上針 雖是眼前有異路 暗裏深藏荊棘林",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p144（倒序百首籤）",
+      "confirmation": "整頁 OCR（附錄二 p144）讀出「暗裏深藏荊棘林」（裏 U+88CF）。原「�堬`」= U+FFFD + 堬(U+582C) + backtick(U+0060) 三字元，屬 UTF-8 解碼錯誤殘留，非原文差異。"
+    }
+  ],
+  "textual_repair_note": "以下為 source textual repair（mojibake 解碼錯誤還原），與上方 lossless HTML entity decode 分開標記。"
 }
