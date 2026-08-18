@@ -1,5 +1,5 @@
 {
-  "content_version": "678ff7bb4385a28d761a627dd762ca0b346229d26838e0e79e6aeec4e83c0950",
+  "content_version": "66068302782a9e690bd1d16c208678ac5022036d36a64b62d9a9d296249e9125",
   "status": "PASSED",
   "total_entries": 260,
   "corpora": [
@@ -9,9 +9,9 @@
       "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
       "slip_count": 100,
       "source_file": "data/corpora/guanyin/slip_texts.json",
-      "source_sha256": "8f6e00e112e9a217eb5079c1706de293c0023c6f7cc2664192444c100c745a09",
+      "source_sha256": "d39a84013bc00d2c14285316e1e4430d087d527e2891bd2c82cf9eab45a019f7",
       "data_quality": {
-        "decoded_char_refs": 16
+        "decoded_char_refs": 0
       },
       "status_summary": {
         "VERIFIED": 100
@@ -49,5 +49,5 @@
   ],
   "gates_evaluated": 12,
   "gate_failures": 0,
-  "pool_sha256": "b2d6ecfa663d8254344d57f2099b52c81b9a76fe461466b8836651cd54fcb8ad"
+  "pool_sha256": "fc06b19d37fb957543b959c1da7d85e628e885401c48b235fb9655a56fc38fe5"
 }
