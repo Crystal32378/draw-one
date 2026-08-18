@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>抽一 Draw One</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400..700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
 <style>
   /* ------------------------------------------------------------------
      抽一 Draw One — paper prototype
@@ -150,73 +150,118 @@
     color: #4a3c26;
   }
 
-  /* ---------- ⑤ the slip (紙) ---------- */
-  .slip-stage { padding: 12px 0 8px; display: flex; flex-direction: column; align-items: center; }
-  .slip {
-    width: min(340px, 100%);
-    min-height: 560px;
-    position: relative;
-    background:
-      radial-gradient(ellipse at 30% 20%, rgba(120, 100, 60, 0.04), transparent 60%),
-      radial-gradient(ellipse at 75% 80%, rgba(120, 100, 60, 0.05), transparent 55%),
-      var(--paper);
-    border: 1px solid rgba(74, 66, 52, 0.55);
-    box-shadow:
-      inset 0 0 0 4px var(--paper),
-      inset 0 0 0 5px rgba(74, 66, 52, 0.5),
-      0 1px 3px rgba(38, 33, 25, 0.16);
-    padding: 16px;
-    display: flex; flex-direction: row-reverse; gap: 12px;
-    animation: settle 420ms cubic-bezier(0.2, 0.8, 0.3, 1);
-  }
-  @keyframes settle {
-    from { opacity: 0; transform: translateY(-26px); }
-    to { opacity: 1; transform: none; }
-  }
-  .slip-head { display: flex; flex-direction: column; align-items: center; }
+  /* ---------- ⑤ the slip (紙) ----------
+     真的印刷品，不是 specimen：欄欄有界、字起於頂、版記貼緣、
+     同一支籤永遠印出同一套瑕疵（以籤 id 為種子的「版」）。 */
+  .slip-stage { padding: 4px 0 8px; display: flex; flex-direction: column; align-items: center; }
+  .slip-wrap { position: relative; width: min(330px, 100%); margin-top: 92px; }
+  /* 簽條：突出紙緣的實體簽（承北港形制） */
   .slip-tab {
+    position: absolute; top: 0; right: 14px; transform: translateY(-86%);
     writing-mode: vertical-rl;
-    font-family: "Noto Serif TC", serif; font-weight: 700;
-    font-size: 21px; letter-spacing: 0.14em; line-height: 1.15;
-    border: 1.5px solid var(--rule);
-    padding: 10px 7px; background: var(--paper);
+    font-family: "Noto Serif TC", serif; font-weight: 650;
+    font-size: 19px; letter-spacing: 0.1em; line-height: 1.12;
+    border: 1.5px solid var(--rule); border-bottom: 0;
+    padding: 8px 6px 10px; background: var(--paper);
+    filter: url(#rough);
   }
-  .slip-poem {
-    flex: 1;
+  .slip {
+    position: relative;
+    width: 100%;
+    min-height: 396px;
+    background: var(--paper);
+    border: 1.5px solid rgba(58, 51, 40, 0.8);
+    box-shadow: 0 1px 3px rgba(38, 33, 25, 0.16);
+    padding: 12px;
+    animation: settle 420ms cubic-bezier(0.2, 0.8, 0.3, 1);
+    filter: none;
+  }
+  /* 內框：與外框構成雙線版框；套印不完全 = 第二道硃砂殘影 */
+  .slip::before {
+    content: ""; position: absolute; inset: 5px;
+    border: 1px solid rgba(58, 51, 40, 0.62);
+    pointer-events: none;
+    filter: url(#rough);
+  }
+  .slip::after {
+    content: ""; position: absolute; inset: 5px;
+    border: 1px solid rgba(166, 58, 43, 0.14);
+    transform: translate(0.7px, -0.6px);
+    pointer-events: none;
+    filter: url(#rough);
+  }
+  /* 紙的時間摩擦力：極輕的煙燻與斑漬（multiply，不做泛黃濾鏡） */
+  .slip-grime {
+    position: absolute; inset: 0; pointer-events: none;
+    mix-blend-mode: multiply;
+    background:
+      radial-gradient(140px 90px at 88% 96%, rgba(72, 58, 38, 0.07), transparent 70%),
+      radial-gradient(90px 60px at 6% 3%, rgba(72, 58, 38, 0.05), transparent 70%),
+      radial-gradient(24px 18px at 22% 78%, rgba(60, 48, 30, 0.05), transparent 75%),
+      radial-gradient(10px 8px at 64% 12%, rgba(60, 48, 30, 0.06), transparent 80%);
+  }
+  .slip-cols {
+    position: relative;
+    display: flex; flex-direction: row-reverse;
+    justify-content: space-between;
+    min-height: 368px;
+  }
+  .s-col {
     writing-mode: vertical-rl;
+    padding: 14px 6px 12px;
+  }
+  .s-col:not(:first-child) { border-right: 1px solid rgba(58, 51, 40, 0.34); }
+  /* 題名欄（籤本名） */
+  .s-title {
     font-family: "Noto Serif TC", serif; font-weight: 600;
-    font-size: 29px; letter-spacing: 0.26em; line-height: 1.0;
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
-    gap: 18px; padding: 8px 0;
+    font-size: 14px; letter-spacing: 0.3em; line-height: 1.25;
+    padding-top: 15px;
   }
-  /* 版記：真正的版記是完整句子的落款欄，靠紙緣、無分隔符 */
-  .slip-colophon {
-    writing-mode: vertical-rl;
-    display: flex; align-items: flex-start; gap: 7px;
-    padding-left: 6px;
+  /* 詩文欄：實物的字是大的——詩就是這張紙的主體 */
+  .s-poem {
+    flex: 1 1 0;
+    display: flex; justify-content: center;
+    font-family: "Noto Serif TC", serif;
+    font-size: 40px; letter-spacing: 0.09em; line-height: 1.05;
+    padding: 16px 4px 12px;
   }
-  .slip-colophon .col {
+  .s-poem .ch, .s-title .ch, .s-colo .ch { display: inline-block; }
+  /* 版記欄：貼左緣、兩行落款、印蓋於其上 */
+  .s-colo {
     font-family: "Noto Serif TC", serif; font-weight: 500;
-    font-size: 11px; letter-spacing: 0.3em; line-height: 1.5;
-    color: var(--ink-soft);
+    font-size: 10.5px; letter-spacing: 0.24em; line-height: 1.5;
+    color: #57503f;
+    padding: 15px 4px 12px 3px;
+    position: relative;
   }
-  .slip-colophon .col.mark { color: var(--ink); }
-  /* 印：朱文印 — 硃砂框硃砂字、微轉、multiply 疊在紙纖維上 */
+  .s-colo > span:not(.seal) { display: block; }
   .seal {
-    margin-top: auto;
+    position: absolute; left: 2px; bottom: 6px;
     writing-mode: vertical-rl;
     display: grid; place-items: center;
-    width: 32px; height: 40px;
+    width: 30px; height: 38px;
     color: var(--cinnabar);
     border: 2px solid var(--cinnabar);
     border-radius: 2px 3px 2px 3px;
     font-family: "Noto Serif TC", serif; font-weight: 700;
-    font-size: 13.5px; letter-spacing: 0.12em; line-height: 1;
-    transform: rotate(-1.6deg);
+    font-size: 12.5px; letter-spacing: 0.1em; line-height: 1;
+    transform: rotate(-2.1deg);
     mix-blend-mode: multiply;
-    opacity: 0.82;
-    box-shadow: inset 0 0 4px rgba(166, 58, 43, 0.4);
+    opacity: 0.88;
+    filter: url(#rough);
+  }
+  /* 墨色不均：印面上的漏白斑 */
+  .seal::after {
+    content: ""; position: absolute; inset: -2px;
+    background:
+      radial-gradient(5px 4px at 76% 22%, var(--paper) 40%, transparent 70%),
+      radial-gradient(4px 3px at 18% 64%, var(--paper) 35%, transparent 70%),
+      radial-gradient(3px 5px at 55% 88%, var(--paper) 30%, transparent 75%);
+    opacity: 0.55;
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(-26px); }
+    to { opacity: 1; transform: none; }
   }
 
   /* ---------- desk layers under the slip ---------- */
@@ -260,6 +305,12 @@
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="7" result="n" />
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" />
+  </filter>
+</svg>
 <div class="app">
   <div class="bar">
     <button id="backBtn" aria-label="返回">←</button>
@@ -291,7 +342,7 @@
         <div class="stick" id="tubeStick"></div>
         <div class="tube"></div>
       </div>
-      <p class="draw-hint" id="drawHint">按住籤筒，把籤慢慢抽出來</p>
+      <p class="draw-hint" id="drawHint">按住籤枝，往上抽</p>
     </div>
   </section>
 
@@ -307,7 +358,10 @@
   <section class="screen" id="s-slip">
     <div class="slip-stage">
       <div class="repeat-strip" id="repeatStrip" hidden>這個問題已有一支籤。一事一籤——為你翻開的是同一張。</div>
-      <div class="slip" id="slipPaper"></div>
+      <div class="slip-wrap">
+        <div class="slip-tab" id="slipTab"></div>
+        <div class="slip" id="slipPaper"></div>
+      </div>
 
       <div class="desk-block" id="qEcho" hidden>
         <div class="desk-label">你的問題</div>
@@ -430,44 +484,51 @@
     show("draw");
   });
 
-  /* ---------- ③ draw: long-press pulls the stick; user labor, no fake wait ---------- */
-  const PULL_MS = 1400;
-  let pulling = false, pullStart = 0, raf = 0;
+  /* ---------- ③ draw: drag pulls the stick — 動作門檻，不是時間門檻 ---------- */
+  const PULL_DIST = 130;      // px of upward drag to draw
+  let pulling = false, startY = 0, lastProgress = 0, ticked = false;
   const stickEl = $("tubeStick");
   const REST = 158, TOP = -40;
 
-  function pullFrame(ts) {
-    if (!pulling) return;
-    const t = Math.min(1, (ts - pullStart) / PULL_MS);
-    const y = REST + (TOP - REST) * t;
+  function setStick(progress) {
+    const y = REST + (TOP - REST) * progress;
     stickEl.style.transform = `translateX(-50%) translateY(${y}px)`;
-    if (t >= 1) { pulling = false; completeDraw(); return; }
-    raf = requestAnimationFrame(pullFrame);
   }
   function startPull(ev) {
     if (!POOL || pulling) return;
     ev.preventDefault();
-    pulling = true;
-    pullStart = performance.now();
-    raf = requestAnimationFrame(pullFrame);
+    pulling = true; ticked = false;
+    startY = ev.clientY;
+    lastProgress = 0;
+    stickEl.style.transition = "none";
   }
-  function cancelPull() {
+  function movePull(ev) {
+    if (!pulling) return;
+    // 籤枝跟手走：拖多少動多少，尾段輕微阻尼
+    const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
+    const progress = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
+    lastProgress = progress;
+    setStick(progress);
+    if (!ticked && progress > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
+    if (progress >= 1) { pulling = false; completeDraw(); }
+  }
+  function endPull() {
     if (!pulling) return;
     pulling = false;
-    cancelAnimationFrame(raf);
-    stickEl.style.transition = "transform 260ms ease";
-    stickEl.style.transform = `translateX(-50%) translateY(${REST}px)`;
-    setTimeout(() => (stickEl.style.transition = "none"), 280);
+    stickEl.style.transition = "transform 240ms ease";
+    setStick(0);
+    setTimeout(() => (stickEl.style.transition = "none"), 260);
   }
   $("tubeWrap").addEventListener("pointerdown", startPull);
-  window.addEventListener("pointerup", cancelPull);
-  window.addEventListener("pointercancel", cancelPull);
+  window.addEventListener("pointermove", movePull);
+  window.addEventListener("pointerup", endPull);
+  window.addEventListener("pointercancel", endPull);
   // dev shortcut for desktop review: ?devdraw=1 → single click completes the pull
   if (new URLSearchParams(location.search).get("devdraw") === "1") {
-    $("tubeWrap").addEventListener("click", () => { if (!pulling) { pulling = false; completeDraw(); } });
+    $("tubeWrap").addEventListener("click", () => { if (lastProgress < 1) { pulling = false; completeDraw(); } });
   }
 
-  function uniformDraw(corpusId) {
+    function uniformDraw(corpusId) {
     const c = POOL.entries.filter((e) => e.corpus_id === corpusId);
     return c[Math.floor(Math.random() * c.length)];
   }
@@ -494,22 +555,59 @@
       .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
   }
 
+  /* 「版」的瑕疵：以籤 id 為種子——同一支籤永遠印出同一套字位微顫與墨色。 */
+  function plateRng(seedStr) {
+    let h = 2166136261;
+    for (const c of seedStr) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+    return () => { h = Math.imul(h ^ (h >>> 15), 2246822519) >>> 0; return (h >>> 8) / 16777216; };
+  }
+  function inkChars(text, rng, { dx = 0.5, dr = 0.5, w = [560, 60], op = 0.08 } = {}) {
+    return [...text].map((ch) => {
+      const x = (rng() * 2 - 1) * dx;
+      const y = (rng() * 2 - 1) * dx;
+      const r = (rng() * 2 - 1) * dr;
+      const wt = Math.round(w[0] + (rng() * 2 - 1) * w[1]);
+      const o = 1 - rng() * op;
+      return `<span class="ch" style="transform:translate(${x.toFixed(2)}px,${y.toFixed(2)}px) rotate(${r.toFixed(2)}deg);font-weight:${wt};opacity:${o.toFixed(3)}">${esc(ch)}</span>`;
+    }).join("");
+  }
+
   function renderSlip(entry) {
     const deity = DEITIES.find((d) => d.corpusId === entry.corpus_id);
-    const lines = entry.historical_text.poem_text.split(/\n|／/).filter(Boolean);
+    const lines = entry.historical_text.poem_text
+      .split(/[\n／]/)
+      .flatMap((l) => l.split(/[\s　]+/))
+      .flatMap((l) => l.split(/(?<=[，。；！？])/))
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .flatMap((l) => {
+        // corpus 偶有整首連寫無分隔（轉錄格式不一，已回報 corpus 端）：規則詩句等分斷行
+        if (l.length <= 9) return [l];
+        const n = l.length % 7 === 0 ? 7 : l.length % 5 === 0 ? 5 : Math.ceil(l.length / 4);
+        const out = [];
+        for (let i = 0; i < l.length; i += n) out.push(l.slice(i, i + n));
+        return out;
+      });
     const status = STATUS_WORD[entry.provenance.transcription_status] ?? entry.provenance.transcription_status;
+    const rng = plateRng(entry.id);
+    const poemCols = lines.map((l) =>
+      `<div class="s-col s-poem">${inkChars(l, rng, { dx: 0.55, dr: 0.55, w: [620, 55], op: 0.1 })}</div>`).join("");
     return `
-      <div class="slip-head"><div class="slip-tab">${esc(tabText(entry))}</div></div>
-      <div class="slip-poem">${lines.map((l) => `<span>${esc(l)}</span>`).join("")}</div>
-      <div class="slip-colophon">
-        <span class="col">${esc(deity.colophonSource)}</span>
-        <span class="col mark">抽一謹錄　${esc(status)}</span>
-        <span class="seal">抽一</span>
+      <div class="slip-grime"></div>
+      <div class="slip-cols">
+        <div class="s-col s-title">${inkChars(deity.editionShort, rng, { dx: 0.4, dr: 0.4, w: [600, 40], op: 0.06 })}</div>
+        ${poemCols}
+        <div class="s-col s-colo">
+          <span>${inkChars(deity.colophonSource, rng, { dx: 0.3, dr: 0.3, w: [500, 30], op: 0.05 })}</span>
+          <span>${inkChars("抽一謹錄　" + status, rng, { dx: 0.3, dr: 0.3, w: [500, 30], op: 0.05 })}</span>
+          <span class="seal">抽一</span>
+        </div>
       </div>`;
   }
 
-  function renderSlipScreen() {
+    function renderSlipScreen() {
     const entry = entryById(currentResolved.entryId);
+    $("slipTab").textContent = tabText(entry);
     $("slipPaper").innerHTML = renderSlip(entry);
     $("repeatStrip").hidden = !currentResolved.repeated;
     const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
