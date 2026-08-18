@@ -29,7 +29,7 @@
 <body>
   <header class="head">
     <h1>The Slip — 籤紙檢查點</h1>
-    <p>V2A design checkpoint：固定六張真籤（每套 corpus 兩張），逐字取自 production draw pool。同一支籤永遠印出同一套「版」的瑕疵——重新整理此頁，字位微顫與墨色不會變。North star：一張真的會有人拿在手上的籤。</p>
+    <p>V2A design checkpoint：固定六張真籤（每套 corpus 兩張），六張籤的歷史詩文逐字取自 production draw pool；版記由 provenance 導出，「抽一」為明示產品印記。同一支籤永遠印出同一套「版」的瑕疵——重新整理此頁，字位微顫與墨色不會變。North star：一張真的會有人拿在手上的籤。</p>
   </header>
   <div id="specimens"></div>
 
@@ -68,7 +68,16 @@
       document.createTextNode(`　${window.SLIP_RENDER.tabText(entry)}・${entry.provenance.transcription_status}`)
     );
     sec.appendChild(label);
-    window.SLIP_RENDER.mountSlip(sec, entry);
+    try {
+      window.SLIP_RENDER.mountSlip(sec, entry);
+    } catch (err) {
+      // fail-closed: provenance/registry mismatch refuses to typeset the paper
+      const refusal = document.createElement("p");
+      refusal.style.color = "var(--slip-cinnabar)";
+      refusal.style.fontSize = "13px";
+      refusal.textContent = "此籤未通過 provenance 對應檢查，拒絕排版（fail-closed）：" + err.message;
+      sec.appendChild(refusal);
+    }
     root.appendChild(sec);
   }
 })();

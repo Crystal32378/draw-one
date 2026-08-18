@@ -18,14 +18,50 @@
 (function () {
   "use strict";
 
-  // Colophon source lines per corpus — 版記 wording (據…本 form).
-  const CORPUS_COLOPHON = {
-    liushijiazi: "據北港朝天宮官方六十甲子籤本",
-    guanyin: "據艋舺龍山寺觀世音靈籤百首本",
-    guandi: "據道藏護國嘉濟江東王靈籤本",
+  // Colophon registry — the ONLY corpora The Slip knows how to typeset.
+  // expected_edition_title PINS each registry row to the pool's provenance:
+  // if the corpus edition ever changes upstream, rendering fails closed until
+  // this registry is consciously updated. The provenance correspondence is a
+  // program guarantee, not a documentation promise.
+  const COLOPHON_REGISTRY = {
+    liushijiazi: {
+      expected_edition_title: "北港朝天宮官方六十甲子籤（modern reference edition）",
+      source_line: "據北港朝天宮官方六十甲子籤本",
+      title_short: "北港朝天宮六十甲子籤",
+    },
+    guanyin: {
+      expected_edition_title: "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
+      source_line: "據艋舺龍山寺觀世音靈籤百首本",
+      title_short: "艋舺龍山寺觀世音靈籤百首",
+    },
+    guandi: {
+      expected_edition_title: "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+      source_line: "據道藏護國嘉濟江東王靈籤本",
+      title_short: "護國嘉濟江東王靈籤（道藏本）",
+    },
   };
 
   const STATUS_WORD = { VERIFIED: "已對勘", PROBABLE: "待複核" };
+
+  // Fail-closed resolution: unknown corpus, mismatched edition_title, or a
+  // transcription status outside the honest vocabulary refuses to typeset.
+  function colophonFor(entry) {
+    const reg = COLOPHON_REGISTRY[entry.corpus_id];
+    if (!reg) {
+      throw new Error(`slip-render fail-closed: unknown corpus "${entry.corpus_id}"`);
+    }
+    if (entry.provenance?.edition_title !== reg.expected_edition_title) {
+      throw new Error(
+        `slip-render fail-closed: ${entry.id} provenance edition_title does not match the colophon registry`
+      );
+    }
+    if (!(entry.provenance?.transcription_status in STATUS_WORD)) {
+      throw new Error(
+        `slip-render fail-closed: ${entry.id} transcription_status "${entry.provenance?.transcription_status}" has no honest colophon word`
+      );
+    }
+    return reg;
+  }
 
   const CN_DIGITS = "〇一二三四五六七八九";
   function toCn(n) {
@@ -113,12 +149,14 @@
     document.body.appendChild(holder);
   }
 
-  // innerHTML for a .slip element.
-  function renderSlip(entry, { editionTitleShort } = {}) {
+  // innerHTML for a .slip element. Throws (fail-closed) when the entry's
+  // provenance does not match the colophon registry.
+  function renderSlip(entry) {
+    const reg = colophonFor(entry);
     const lines = poemLines(entry.historical_text.poem_text);
-    const status = STATUS_WORD[entry.provenance.transcription_status] ?? entry.provenance.transcription_status;
-    const colophonSource = CORPUS_COLOPHON[entry.corpus_id] ?? entry.provenance.edition_title;
-    const titleShort = editionTitleShort ?? corpusTitleShort(entry.corpus_id);
+    const status = STATUS_WORD[entry.provenance.transcription_status];
+    const colophonSource = reg.source_line;
+    const titleShort = reg.title_short;
     const rng = plateRng(entry.id);
     const poemCols = lines
       .map((l) => `<div class="s-col s-poem">${inkChars(l, rng, { dx: 0.55, dr: 0.55, w: [620, 55], op: 0.1 })}</div>`)
@@ -136,16 +174,10 @@
       </div>`;
   }
 
-  function corpusTitleShort(corpusId) {
-    return {
-      liushijiazi: "北港朝天宮六十甲子籤",
-      guanyin: "艋舺龍山寺觀世音靈籤百首",
-      guandi: "護國嘉濟江東王靈籤（道藏本）",
-    }[corpusId] ?? "";
-  }
-
   // Builds the full slip object (wrap + tab + paper) into a container.
-  function mountSlip(container, entry, opts) {
+  // Renders BEFORE mutating the DOM so a fail-closed throw leaves no partial slip.
+  function mountSlip(container, entry) {
+    const paperHtml = renderSlip(entry);
     ensureFilterDefs();
     const wrap = document.createElement("div");
     wrap.className = "slip-wrap";
@@ -154,11 +186,11 @@
     tab.textContent = tabText(entry);
     const paper = document.createElement("div");
     paper.className = "slip";
-    paper.innerHTML = renderSlip(entry, opts);
+    paper.innerHTML = paperHtml;
     wrap.append(tab, paper);
     container.appendChild(wrap);
     return wrap;
   }
 
-  window.SLIP_RENDER = { tabText, renderSlip, mountSlip, poemLines, plateRng, ensureFilterDefs, STATUS_WORD };
+  window.SLIP_RENDER = { tabText, renderSlip, mountSlip, poemLines, plateRng, ensureFilterDefs, STATUS_WORD, COLOPHON_REGISTRY };
 })();
