@@ -30,9 +30,11 @@ public draw path — boot-checks the pool, disables drawing if it fails; no fall
   first draw (localStorage); switching deity cannot re-draw the same question; empty questions
   bind per browser session. Logic layer only — UI presentation of the rule is deliberately
   minimal (one neutral disclosure line) pending the design round.
-- **Regression suite (`scripts/test-draw-pool.mjs`)** — 43 checks: completeness (260),
+- **Regression suite (`scripts/test-draw-pool.mjs`)** — 50 checks: completeness (260),
   byte-identical slip↔text mapping, deity mapping, 9 fail-closed tamper scenarios, page-level
-  banned strings, interpretation lint, draw-policy behaviour. Run before any deploy.
+  banned strings, interpretation lint, draw-policy behaviour incl. hash-collision regression,
+  deterministic build artifacts. Runs in CI (`.github/workflows/production-truth.yml`), which
+  also asserts the committed pool matches a rebuild from corpus sources.
 
 ## Authority fixes shipped
 

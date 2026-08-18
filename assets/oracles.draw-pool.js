@@ -2,7 +2,7 @@
 // Every entry passed the fail-closed production gates. Regenerate via: node scripts/build-draw-pool.mjs
 window.DRAW_POOL = {
   "schema": "draw-pool/1.0",
-  "built_at": "2026-08-18T12:35:48.545Z",
+  "content_version": "678ff7bb4385a28d761a627dd762ca0b346229d26838e0e79e6aeec4e83c0950",
   "policy": {
     "allowed_transcription_status": [
       "VERIFIED",

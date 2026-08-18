@@ -180,7 +180,7 @@ if (errors.length > 0) {
   mkdirSync(dirname(REPORT_PATH), { recursive: true });
   writeFileSync(
     REPORT_PATH,
-    JSON.stringify({ built_at: new Date().toISOString(), status: "FAILED", errors, gates: gateResults }, null, 2)
+    JSON.stringify({ status: "FAILED", errors, gates: gateResults }, null, 2)
   );
   console.error(`BUILD FAILED — ${errors.length} gate violation(s). Pool NOT emitted (fail-closed).`);
   for (const e of errors.slice(0, 20)) console.error("  ✗ " + e);
@@ -191,9 +191,13 @@ if (errors.length > 0) {
 // Emit pool. Presentation-only fields (display name, emoji) live in the UI
 // config, not here; this file carries truth only.
 // ---------------------------------------------------------------------------
+// Deterministic identity: derived from corpus content only, so rebuilding
+// from unchanged sources is byte-identical and never dirties the work tree.
+const contentVersion = sha256(corpora.map((c) => `${c.spec.corpus_id}:${c.source_sha256}`).join("\n"));
+
 const pool = {
   schema: "draw-pool/1.0",
-  built_at: new Date().toISOString(),
+  content_version: contentVersion,
   policy: {
     allowed_transcription_status: [...ALLOWED_TRANSCRIPTION_STATUS],
     fail_closed: true,
@@ -241,7 +245,7 @@ writeFileSync(
   REPORT_PATH,
   JSON.stringify(
     {
-      built_at: pool.built_at,
+      content_version: contentVersion,
       status: "PASSED",
       total_entries: total,
       corpora: pool.corpora,

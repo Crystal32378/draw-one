@@ -28,7 +28,7 @@
   // PRODUCT_DECISION: binding lifetime for empty questions. v1 = browser session.
   const EMPTY_QUESTION_STORE = () => window.sessionStorage;
 
-  const STORE_KEY = "drawone.bindings.v1";
+  const STORE_KEY = "drawone.bindings.v2";
 
   function normalizeQuestion(q) {
     return String(q ?? "")
@@ -37,7 +37,9 @@
       .trim();
   }
 
-  // djb2 — stable, dependency-free key for a normalized question.
+  // djb2 — bucket key only. A 32-bit hash DOES collide (e.g. "0000000r" and
+  // "00000020"), so the hash never decides identity: each bucket stores the
+  // full normalized question and lookups compare it verbatim.
   function questionKey(normalized) {
     let h = 5381;
     for (let i = 0; i < normalized.length; i++) h = ((h << 5) + h + normalized.charCodeAt(i)) >>> 0;
@@ -62,21 +64,30 @@
 
   const memoryFallback = {};
 
+  // Each bucket is an ARRAY of records; identity is decided by comparing the
+  // stored question_normalized verbatim, never by the hash alone.
+  function findRecord(bucket, normalized) {
+    if (!Array.isArray(bucket)) return null;
+    return bucket.find((r) => r && r.question_normalized === normalized) ?? null;
+  }
+
   /**
    * resolveDraw({ question, corpusId, drawFn })
    *   drawFn(corpusId) → entry  (only called when a NEW draw is permitted)
-   * Returns { entry, repeated, boundAt, boundCorpusId }.
+   * Returns { entryId, repeated, boundAt, boundCorpusId }.
    */
   function resolveDraw({ question, corpusId, drawFn }) {
     const normalized = normalizeQuestion(question);
     const isEmpty = normalized === "";
     const store = isEmpty ? EMPTY_QUESTION_STORE : NAMED_QUESTION_STORE;
     const key = isEmpty ? "q:__empty_session__" : questionKey(normalized);
+    // Empty questions share one session bucket; their identity token is "".
+    const identity = isEmpty ? "" : normalized;
 
     let bindings = readBindings(store);
-    if (memoryFallback[key]) bindings[key] = memoryFallback[key];
+    const merged = [...(Array.isArray(bindings[key]) ? bindings[key] : []), ...(memoryFallback[key] ?? [])];
 
-    const existing = bindings[key];
+    const existing = findRecord(merged, identity);
     if (existing) {
       return {
         entryId: existing.entry_id,
@@ -91,11 +102,11 @@
       entry_id: entry.id,
       corpus_id: entry.corpus_id,
       bound_at: new Date().toISOString(),
-      question_normalized: isEmpty ? null : normalized,
+      question_normalized: identity,
     };
     bindings = readBindings(store);
-    bindings[key] = record;
-    memoryFallback[key] = record;
+    bindings[key] = [...(Array.isArray(bindings[key]) ? bindings[key] : []), record];
+    memoryFallback[key] = [...(memoryFallback[key] ?? []), record];
     writeBindings(store, bindings);
 
     return { entryId: entry.id, repeated: false, boundAt: record.bound_at, boundCorpusId: entry.corpus_id };

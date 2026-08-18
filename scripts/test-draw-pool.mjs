@@ -154,7 +154,12 @@ check(
 // Any CJK run of 12+ chars inside the inline <script> must be UI copy, not slip text.
 const inline = html.slice(html.lastIndexOf("<script>"), html.lastIndexOf("</script>"));
 const cjkRuns = inline.match(/[㐀-鿿，。？！——]{12,}/g) ?? [];
-const UI_COPY_ALLOWLIST = [/籤詩資料層未通過驗證/, /這個問題先前已抽過籤/, /治理管線完成前不提供/, /verified draw pool/];
+const UI_COPY_ALLOWLIST = [/籤詩資料層未通過驗證/, /這個問題先前已抽過籤/, /治理管線完成前不提供/, /governed draw pool/];
+check(
+  "public copy does not overclaim 'verified draw pool'",
+  !html.includes("verified draw pool"),
+  "158/260 entries are PROBABLE — copy must say governed, not verified"
+);
 check(
   "inline script CJK strings are UI copy only",
   cjkRuns.every((run) => UI_COPY_ALLOWLIST.some((re) => re.test(run))),
@@ -200,6 +205,36 @@ check("different question draws fresh", other.repeated === false && drawCalls ==
 const emptyA = P.resolveDraw({ question: "", corpusId: "guanyin", drawFn });
 const emptyB = P.resolveDraw({ question: "   ", corpusId: "guandi", drawFn });
 check("empty question binds within session", emptyA.repeated === false && emptyB.repeated === true);
+
+// Hash-collision regression (found by Codex review): "0000000r" and
+// "00000020" share the same djb2 bucket AND length. Identity must be decided
+// by the stored full normalized question, never by the hash key alone.
+check(
+  "collision fixture still collides (guards fixture validity)",
+  P.questionKey("0000000r") === P.questionKey("00000020")
+);
+let seq = 0;
+const seqDraw = () => ({ id: "seq" + ++seq, corpus_id: "guanyin" });
+const colA = P.resolveDraw({ question: "0000000r", corpusId: "guanyin", drawFn: seqDraw });
+const colB = P.resolveDraw({ question: "00000020", corpusId: "guanyin", drawFn: seqDraw });
+check("colliding questions draw independently", colB.repeated === false && colB.entryId !== colA.entryId);
+const colA2 = P.resolveDraw({ question: "0000000r", corpusId: "guanyin", drawFn: seqDraw });
+const colB2 = P.resolveDraw({ question: "00000020", corpusId: "guanyin", drawFn: seqDraw });
+check(
+  "each colliding question keeps its own binding",
+  colA2.repeated === true && colA2.entryId === colA.entryId && colB2.repeated === true && colB2.entryId === colB.entryId
+);
+
+// ---------------------------------------------------------------------------
+console.log("T8 deterministic build artifacts");
+const poolBytes1 = readFileSync(join(ROOT, "assets", "oracles.draw-pool.js"));
+const report1 = readFileSync(join(ROOT, "data", "production", "draw-pool.report.json"));
+execFileSync("node", [join(ROOT, "scripts", "build-draw-pool.mjs")], { stdio: "pipe" });
+const poolBytes2 = readFileSync(join(ROOT, "assets", "oracles.draw-pool.js"));
+const report2 = readFileSync(join(ROOT, "data", "production", "draw-pool.report.json"));
+check("rebuild from unchanged sources is byte-identical (pool)", poolBytes1.equals(poolBytes2));
+check("rebuild from unchanged sources is byte-identical (report)", report1.equals(report2));
+check("pool carries content_version, no wallclock timestamp", pool.content_version && !("built_at" in pool));
 
 // ---------------------------------------------------------------------------
 console.log(`\n${passed} passed, ${failed} failed`);
