@@ -19,6 +19,9 @@ window.DRAW_POOL = {
       "slip_count": 100,
       "source_file": "data/corpora/guanyin/slip_texts.json",
       "source_sha256": "8f6e00e112e9a217eb5079c1706de293c0023c6f7cc2664192444c100c745a09",
+      "data_quality": {
+        "decoded_char_refs": 16
+      },
       "status_summary": {
         "VERIFIED": 100
       }
@@ -30,6 +33,9 @@ window.DRAW_POOL = {
       "slip_count": 100,
       "source_file": "data/corpora/guandi/slip_texts.json",
       "source_sha256": "903bb98c96b487642136fb929ad6996425a0504e975c48f50cf58a399ab5f6ae",
+      "data_quality": {
+        "decoded_char_refs": 0
+      },
       "status_summary": {
         "PROBABLE": 100
       }
@@ -41,6 +47,9 @@ window.DRAW_POOL = {
       "slip_count": 60,
       "source_file": "data/corpora/liushijiazi/slip_texts.json",
       "source_sha256": "aa54acd813a1d22cca63388ca2a60ff31801de137887b2756fd75dbcdbbc6014",
+      "data_quality": {
+        "decoded_char_refs": 0
+      },
       "status_summary": {
         "PROBABLE": 58,
         "VERIFIED": 2
@@ -217,7 +226,7 @@ window.DRAW_POOL = {
       "slip_number": 10,
       "original_slip_label": "第010籤",
       "historical_text": {
-        "poem_text": "櫝藏無價寶和珍 只管他鄉外處尋 好似將燈來&#35220;火 不如安靜莫勞心"
+        "poem_text": "櫝藏無價寶和珍 只管他鄉外處尋 好似將燈來覔火 不如安靜莫勞心"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -289,7 +298,7 @@ window.DRAW_POOL = {
       "slip_number": 14,
       "original_slip_label": "第014籤",
       "historical_text": {
-        "poem_text": "宛如仙鶴出樊籠 脫&#21364;羈縻處處通 南北東西無障&#30861; 任君直上九霄中"
+        "poem_text": "宛如仙鶴出樊籠 脫却羈縻處處通 南北東西無障碍 任君直上九霄中"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -415,7 +424,7 @@ window.DRAW_POOL = {
       "slip_number": 21,
       "original_slip_label": "第021籤",
       "historical_text": {
-        "poem_text": "陰陽道合總由天 女嫁男婚豈偶然 但看龍蛇堪運動 熊羆&#21494;夢喜團圓"
+        "poem_text": "陰陽道合總由天 女嫁男婚豈偶然 但看龍蛇堪運動 熊羆叶夢喜團圓"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -433,7 +442,7 @@ window.DRAW_POOL = {
       "slip_number": 22,
       "original_slip_label": "第022籤",
       "historical_text": {
-        "poem_text": "四郊田畝皆枯竭 久旱俄然三日霖 花&#33747;草芽俱潤澤 始知一雨值千金"
+        "poem_text": "四郊田畝皆枯竭 久旱俄然三日霖 花菓草芽俱潤澤 始知一雨值千金"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -469,7 +478,7 @@ window.DRAW_POOL = {
       "slip_number": 24,
       "original_slip_label": "第024籤",
       "historical_text": {
-        "poem_text": "不成鄰里不成家 水泡痴人似落花 若問君恩難得力 到頭畢竟事如&#34100;"
+        "poem_text": "不成鄰里不成家 水泡痴人似落花 若問君恩難得力 到頭畢竟事如蔴"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -667,7 +676,7 @@ window.DRAW_POOL = {
       "slip_number": 35,
       "original_slip_label": "第035籤",
       "historical_text": {
-        "poem_text": "衣冠重整就宿風 道是無功卻有功 掃卻當途荊棘&#30861; 三人共議事相同"
+        "poem_text": "衣冠重整就宿風 道是無功卻有功 掃卻當途荊棘碍 三人共議事相同"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -901,7 +910,7 @@ window.DRAW_POOL = {
       "slip_number": 48,
       "original_slip_label": "第048籤",
       "historical_text": {
-        "poem_text": "&#40318;鳥秋光化作鵬 遨翔得意盡飛騰 直沖萬里雲霄外 任是諸禽總不能"
+        "poem_text": "鵾鳥秋光化作鵬 遨翔得意盡飛騰 直沖萬里雲霄外 任是諸禽總不能"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1009,7 +1018,7 @@ window.DRAW_POOL = {
       "slip_number": 54,
       "original_slip_label": "第054籤",
       "historical_text": {
-        "poem_text": "夢中得寶醒來無 應說巫山只是虛 苦問婚姻&#24183;病訟 別尋生路得相宜"
+        "poem_text": "夢中得寶醒來無 應說巫山只是虛 苦問婚姻幷病訟 別尋生路得相宜"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1117,7 +1126,7 @@ window.DRAW_POOL = {
       "slip_number": 60,
       "original_slip_label": "第060籤",
       "historical_text": {
-        "poem_text": "抱薪救火火增&#28895; 燒卻三千及大千 若問營謀併出入 不如收拾莫憂燃"
+        "poem_text": "抱薪救火火增烟 燒卻三千及大千 若問營謀併出入 不如收拾莫憂燃"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1297,7 +1306,7 @@ window.DRAW_POOL = {
       "slip_number": 70,
       "original_slip_label": "第070籤",
       "historical_text": {
-        "poem_text": "朝朝役役恰如蜂 飛來飛去西復東 春暮花殘無&#35220;處 此身不戀舊叢中"
+        "poem_text": "朝朝役役恰如蜂 飛來飛去西復東 春暮花殘無覔處 此身不戀舊叢中"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1369,7 +1378,7 @@ window.DRAW_POOL = {
       "slip_number": 74,
       "original_slip_label": "第074籤",
       "historical_text": {
-        "poem_text": "慵飛野鶴自投籠 欲舉鵬霄落陷中 南北東西混障&#30861; 此身憔悴恨無窮"
+        "poem_text": "慵飛野鶴自投籠 欲舉鵬霄落陷中 南北東西混障碍 此身憔悴恨無窮"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1495,7 +1504,7 @@ window.DRAW_POOL = {
       "slip_number": 81,
       "original_slip_label": "第081籤",
       "historical_text": {
-        "poem_text": "庭前葉落暮秋時 行客奔程勢若飛 謝得天公輕&#30528;力 順風相送寶船歸"
+        "poem_text": "庭前葉落暮秋時 行客奔程勢若飛 謝得天公輕着力 順風相送寶船歸"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1747,7 +1756,7 @@ window.DRAW_POOL = {
       "slip_number": 95,
       "original_slip_label": "第095籤",
       "historical_text": {
-        "poem_text": "事業功勳暮與朝 榮華物態不勝饒 報君記取金雞&#39722; 福祿聲名價自超"
+        "poem_text": "事業功勳暮與朝 榮華物態不勝饒 報君記取金雞鬪 福祿聲名價自超"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1783,7 +1792,7 @@ window.DRAW_POOL = {
       "slip_number": 97,
       "original_slip_label": "第097籤",
       "historical_text": {
-        "poem_text": "園林月色搖&#30094;影 恍若鋪成滿地瓊 幾度兒童來收拾 豈知收拾總無成"
+        "poem_text": "園林月色搖疎影 恍若鋪成滿地瓊 幾度兒童來收拾 豈知收拾總無成"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1819,7 +1828,7 @@ window.DRAW_POOL = {
       "slip_number": 99,
       "original_slip_label": "第099籤",
       "historical_text": {
-        "poem_text": "等閑騎馬&#30528;鞭來 半有憂危半有財 似火方燒頭上屋 天教一雨蕩殃災"
+        "poem_text": "等閑騎馬着鞭來 半有憂危半有財 似火方燒頭上屋 天教一雨蕩殃災"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
