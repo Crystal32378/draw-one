@@ -2,7 +2,7 @@
 // Every entry passed the fail-closed production gates. Regenerate via: node scripts/build-draw-pool.mjs
 window.DRAW_POOL = {
   "schema": "draw-pool/1.0",
-  "content_version": "678ff7bb4385a28d761a627dd762ca0b346229d26838e0e79e6aeec4e83c0950",
+  "content_version": "66068302782a9e690bd1d16c208678ac5022036d36a64b62d9a9d296249e9125",
   "policy": {
     "allowed_transcription_status": [
       "VERIFIED",
@@ -18,9 +18,9 @@ window.DRAW_POOL = {
       "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
       "slip_count": 100,
       "source_file": "data/corpora/guanyin/slip_texts.json",
-      "source_sha256": "8f6e00e112e9a217eb5079c1706de293c0023c6f7cc2664192444c100c745a09",
+      "source_sha256": "d39a84013bc00d2c14285316e1e4430d087d527e2891bd2c82cf9eab45a019f7",
       "data_quality": {
-        "decoded_char_refs": 16
+        "decoded_char_refs": 0
       },
       "status_summary": {
         "VERIFIED": 100
@@ -370,7 +370,7 @@ window.DRAW_POOL = {
       "slip_number": 18,
       "original_slip_label": "第018籤",
       "historical_text": {
-        "poem_text": "金烏西墜兔東臨 日夜循環�琤j今 僧道得之無不利 工商農士各開心"
+        "poem_text": "金烏西墜兔東臨 日夜循環亘古今 僧道得之無不利 工商農士各開心"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
@@ -1342,7 +1342,7 @@ window.DRAW_POOL = {
       "slip_number": 72,
       "original_slip_label": "第072籤",
       "historical_text": {
-        "poem_text": "弄蜂須要求他蜜 只怕遭他尾上針 雖是眼前有異路 暗�堬`藏荊棘林"
+        "poem_text": "弄蜂須要求他蜜 只怕遭他尾上針 雖是眼前有異路 暗裏深藏荊棘林"
       },
       "provenance": {
         "edition_id": "ed-guanyin-mengjia-longshan-modern",
