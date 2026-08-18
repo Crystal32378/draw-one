@@ -1,0 +1,24 @@
+name: production-truth
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  truth-layer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run production truth-layer regression suite
+        run: node scripts/test-draw-pool.mjs
+
+      - name: Committed draw pool must match a rebuild from corpus sources
+        run: |
+          node scripts/build-draw-pool.mjs
+          git diff --exit-code -- assets/oracles.draw-pool.js data/production/draw-pool.report.json
