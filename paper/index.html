@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>抽一 Draw One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  /* ------------------------------------------------------------------
+     抽一 Draw One — paper prototype
+     Truth rules: the paper (slip) renders ONLY corpus text via DRAW_POOL;
+     everything the product says lives on the desk, in sans, horizontal.
+     No artificial delays: every reveal beat is a user action.
+     ------------------------------------------------------------------ */
+  :root {
+    --desk: #e9e4d8;
+    --paper: #f5efe2;
+    --ink: #262119;
+    --ink-soft: #6f6757;
+    --cinnabar: #a63a2b;
+    --rule: #4a4234;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--desk);
+    color: var(--ink);
+    font-family: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  .app {
+    max-width: 430px;
+    min-height: 100dvh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding: calc(14px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));
+  }
+
+  /* ---------- top bar (desk furniture) ---------- */
+  .bar {
+    display: flex; align-items: center; justify-content: space-between;
+    min-height: 34px;
+    font-size: 13px; color: var(--ink-soft);
+  }
+  .bar button {
+    background: none; border: 0; font: inherit; color: var(--ink-soft);
+    padding: 6px 2px; cursor: pointer; letter-spacing: 0.08em;
+  }
+  .wordmark {
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    letter-spacing: 0.3em; font-size: 14px; color: var(--ink);
+  }
+
+  .screen { flex: 1; display: none; flex-direction: column; }
+  .screen.on { display: flex; }
+
+  h1 {
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    font-size: 26px; letter-spacing: 0.06em; line-height: 1.5;
+    margin-top: 8vh;
+  }
+  .sub { margin-top: 10px; font-size: 13.5px; line-height: 1.9; color: var(--ink-soft); }
+
+  /* ---------- ① ask ---------- */
+  textarea {
+    width: 100%; min-height: 128px; margin-top: 26px;
+    background: transparent;
+    border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.4);
+    font: inherit; font-size: 17px; line-height: 1.9; color: var(--ink);
+    resize: none; padding: 6px 2px 12px;
+  }
+  textarea:focus { outline: none; border-bottom-color: var(--ink); }
+  textarea::placeholder { color: #a49a88; }
+  .foot-note { margin-top: auto; padding-top: 24px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+
+  .primary {
+    margin-top: 26px;
+    align-self: flex-end;
+    background: var(--ink); color: var(--paper);
+    border: 0; font: inherit; font-size: 15px; letter-spacing: 0.2em;
+    padding: 13px 26px; cursor: pointer;
+  }
+  .primary:disabled { opacity: 0.3; }
+  .ghost {
+    background: none; border: 0; font: inherit; font-size: 13px;
+    color: var(--ink-soft); letter-spacing: 0.1em; cursor: pointer;
+    padding: 10px 2px; text-decoration: underline; text-underline-offset: 4px;
+  }
+
+  /* ---------- ② choose deity ---------- */
+  .deity-list { margin-top: 30px; display: grid; }
+  .deity {
+    display: flex; align-items: baseline; justify-content: space-between; gap: 14px;
+    padding: 22px 2px;
+    background: none; border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.28);
+    font: inherit; text-align: left; cursor: pointer;
+  }
+  .deity:first-child { border-top: 1px solid rgba(74, 66, 52, 0.28); }
+  .deity-name {
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    font-size: 24px; letter-spacing: 0.22em;
+  }
+  .deity-edition { font-size: 12px; color: var(--ink-soft); text-align: right; line-height: 1.7; }
+
+  /* ---------- ③ draw (long press) ---------- */
+  .draw-stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .tube-wrap { position: relative; width: 120px; height: 340px; overflow: hidden; }
+  .stick {
+    position: absolute; left: 50%; bottom: 96px;
+    width: 22px; height: 190px;
+    transform: translateX(-50%) translateY(158px);
+    background: linear-gradient(90deg, #d9c9a3, #cbb98f 55%, #b9a67c);
+    border: 1px solid rgba(74, 66, 52, 0.55);
+    border-radius: 11px 11px 3px 3px;
+    transition: none;
+  }
+  .tube {
+    position: absolute; left: 0; bottom: 0;
+    width: 120px; height: 168px;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-radius: 6px 6px 10px 10px;
+    box-shadow: inset 0 10px 14px -10px rgba(38, 33, 25, 0.5);
+  }
+  .tube::after {
+    content: "籤"; position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 30px;
+    color: rgba(38, 33, 25, 0.72);
+  }
+  .draw-hint { margin-top: 26px; position: relative; font-size: 13.5px; color: var(--ink-soft); letter-spacing: 0.12em; }
+
+  /* ---------- ④ stick result ---------- */
+  .stick-stage { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+  .stick-large {
+    width: 46px; height: 320px;
+    background: linear-gradient(90deg, #dccda8, #cbb98f 55%, #b7a479);
+    border: 1px solid rgba(74, 66, 52, 0.6);
+    border-radius: 23px 23px 5px 5px;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding-top: 30px;
+  }
+  .stick-label {
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 700;
+    font-size: 22px; letter-spacing: 0.3em;
+    color: #4a3c26;
+  }
+
+  /* ---------- ⑤ the slip (紙) ---------- */
+  .slip-stage { padding: 12px 0 8px; display: flex; flex-direction: column; align-items: center; }
+  .slip {
+    width: min(340px, 100%);
+    min-height: 560px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(120, 100, 60, 0.04), transparent 60%),
+      radial-gradient(ellipse at 75% 80%, rgba(120, 100, 60, 0.05), transparent 55%),
+      var(--paper);
+    border: 1px solid rgba(74, 66, 52, 0.55);
+    box-shadow:
+      inset 0 0 0 4px var(--paper),
+      inset 0 0 0 5px rgba(74, 66, 52, 0.5),
+      0 1px 3px rgba(38, 33, 25, 0.16);
+    padding: 16px;
+    display: flex; flex-direction: row-reverse; gap: 12px;
+    animation: settle 420ms cubic-bezier(0.2, 0.8, 0.3, 1);
+  }
+  @keyframes settle {
+    from { opacity: 0; transform: translateY(-26px); }
+    to { opacity: 1; transform: none; }
+  }
+  .slip-head { display: flex; flex-direction: column; align-items: center; }
+  .slip-tab {
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 700;
+    font-size: 21px; letter-spacing: 0.14em; line-height: 1.15;
+    border: 1.5px solid var(--rule);
+    padding: 10px 7px; background: var(--paper);
+  }
+  .slip-poem {
+    flex: 1;
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    font-size: 29px; letter-spacing: 0.26em; line-height: 1.0;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    gap: 18px; padding: 8px 0;
+  }
+  /* 版記：真正的版記是完整句子的落款欄，靠紙緣、無分隔符 */
+  .slip-colophon {
+    writing-mode: vertical-rl;
+    display: flex; align-items: flex-start; gap: 7px;
+    padding-left: 6px;
+  }
+  .slip-colophon .col {
+    font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 11px; letter-spacing: 0.3em; line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .slip-colophon .col.mark { color: var(--ink); }
+  /* 印：朱文印 — 硃砂框硃砂字、微轉、multiply 疊在紙纖維上 */
+  .seal {
+    margin-top: auto;
+    writing-mode: vertical-rl;
+    display: grid; place-items: center;
+    width: 32px; height: 40px;
+    color: var(--cinnabar);
+    border: 2px solid var(--cinnabar);
+    border-radius: 2px 3px 2px 3px;
+    font-family: "Noto Serif TC", serif; font-weight: 700;
+    font-size: 13.5px; letter-spacing: 0.12em; line-height: 1;
+    transform: rotate(-1.6deg);
+    mix-blend-mode: multiply;
+    opacity: 0.82;
+    box-shadow: inset 0 0 4px rgba(166, 58, 43, 0.4);
+  }
+
+  /* ---------- desk layers under the slip ---------- */
+  .desk-block { width: min(340px, 100%); margin-top: 22px; }
+  .desk-label { font-size: 11px; letter-spacing: 0.24em; color: var(--ink-soft); margin-bottom: 8px; }
+  .desk-text { font-size: 14.5px; line-height: 1.95; }
+  .repeat-strip {
+    width: min(340px, 100%);
+    margin-bottom: 14px;
+    font-size: 12.5px; line-height: 1.8; color: var(--ink-soft);
+    border-left: 2px solid var(--cinnabar);
+    padding-left: 10px;
+  }
+  .note-input {
+    width: 100%; min-height: 74px; margin-top: 4px;
+    background: transparent; border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.4);
+    font: inherit; font-size: 15px; line-height: 1.9; color: var(--ink);
+    resize: none; padding: 4px 2px 10px;
+  }
+  .note-input:focus { outline: none; border-bottom-color: var(--ink); }
+  .slip-actions { width: min(340px, 100%); display: flex; justify-content: space-between; align-items: center; margin-top: 26px; }
+
+  /* ---------- ⑥ 籤簿 ---------- */
+  .book-list { margin-top: 26px; display: grid; }
+  .book-entry {
+    display: grid; gap: 6px;
+    padding: 18px 2px;
+    border-bottom: 1px solid rgba(74, 66, 52, 0.28);
+    background: none; border-top: 0; border-left: 0; border-right: 0;
+    font: inherit; text-align: left; cursor: pointer;
+  }
+  .book-entry:first-child { border-top: 1px solid rgba(74, 66, 52, 0.28); }
+  .book-line1 { display: flex; justify-content: space-between; align-items: baseline; }
+  .book-tab { font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 18px; letter-spacing: 0.1em; }
+  .book-date { font-size: 12px; color: var(--ink-soft); }
+  .book-q { font-size: 13.5px; color: var(--ink-soft); line-height: 1.7;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .book-empty { margin-top: 40px; font-size: 14px; color: var(--ink-soft); line-height: 2; }
+
+  .error-strip { margin-top: 30px; font-size: 13.5px; color: var(--cinnabar); line-height: 1.8; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="bar">
+    <button id="backBtn" aria-label="返回">←</button>
+    <div class="wordmark">抽一</div>
+    <button id="bookBtn">籤簿</button>
+  </div>
+
+  <!-- ① ask -->
+  <section class="screen" id="s-ask">
+    <h1>今天想問什麼？</h1>
+    <p class="sub">把心裡的事寫成一句具體的問題。寫得越清楚，這支籤越有得對照。</p>
+    <textarea id="question" rows="3" placeholder="例如：我在這段關係裡真正害怕的是什麼？"></textarea>
+    <button class="primary" id="toChoose">寫好了</button>
+    <p class="foot-note">抽籤不是預言未來，而是幫你重新看見自己的內心與處境。同一個問題，只抽一支籤。</p>
+  </section>
+
+  <!-- ② choose -->
+  <section class="screen" id="s-choose">
+    <h1>向誰求籤？</h1>
+    <p class="sub">每位神明各承一套傳世籤本。抽出的籤詩逐字來自該版本。</p>
+    <div class="deity-list" id="deityList"></div>
+    <p class="foot-note" id="chooseNote"></p>
+  </section>
+
+  <!-- ③ draw -->
+  <section class="screen" id="s-draw">
+    <div class="draw-stage">
+      <div class="tube-wrap" id="tubeWrap">
+        <div class="stick" id="tubeStick"></div>
+        <div class="tube"></div>
+      </div>
+      <p class="draw-hint" id="drawHint">按住籤筒，把籤慢慢抽出來</p>
+    </div>
+  </section>
+
+  <!-- ④ stick -->
+  <section class="screen" id="s-stick">
+    <div class="stick-stage">
+      <div class="stick-large"><span class="stick-label" id="stickLabel"></span></div>
+      <button class="primary" id="takeSlip">取籤詩</button>
+    </div>
+  </section>
+
+  <!-- ⑤ slip -->
+  <section class="screen" id="s-slip">
+    <div class="slip-stage">
+      <div class="repeat-strip" id="repeatStrip" hidden>這個問題已有一支籤。一事一籤——為你翻開的是同一張。</div>
+      <div class="slip" id="slipPaper"></div>
+
+      <div class="desk-block" id="qEcho" hidden>
+        <div class="desk-label">你的問題</div>
+        <div class="desk-text" id="qEchoText"></div>
+      </div>
+
+      <div class="desk-block">
+        <div class="desk-label">想記下什麼嗎（可以不寫）</div>
+        <textarea class="note-input" id="noteInput" placeholder="此刻想到的，幾個字就好。"></textarea>
+      </div>
+
+      <div class="slip-actions">
+        <button class="ghost" id="againBtn">問另一件事</button>
+        <button class="primary" id="keepBtn">收進籤簿</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⑥ book -->
+  <section class="screen" id="s-book">
+    <h1>籤簿</h1>
+    <p class="sub">回看，是抽籤的後半段：當時問了什麼、籤說了什麼、後來呢。</p>
+    <div class="book-list" id="bookList"></div>
+    <p class="book-empty" id="bookEmpty" hidden>還沒有籤。</p>
+  </section>
+</div>
+
+<script src="../assets/oracles.draw-pool.js"></script>
+<script src="../assets/draw-policy.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- truth boot check: no pool, no drawing, no fallback ---------- */
+  const POOL = (window.DRAW_POOL && window.DRAW_POOL.schema === "draw-pool/1.0" && window.DRAW_POOL.entries?.length)
+    ? window.DRAW_POOL : null;
+
+  /* ---------- presentation (desk furniture only; slip text is pool-only) ---------- */
+  const DEITIES = [
+    { corpusId: "liushijiazi", name: "媽祖", editionShort: "北港朝天宮六十甲子籤", colophonSource: "據北港朝天宮官方六十甲子籤本" },
+    { corpusId: "guanyin", name: "觀音", editionShort: "艋舺龍山寺觀世音靈籤百首", colophonSource: "據艋舺龍山寺觀世音靈籤百首本" },
+    { corpusId: "guandi", name: "關帝", editionShort: "護國嘉濟江東王靈籤（道藏本）", colophonSource: "據道藏護國嘉濟江東王靈籤本" },
+  ];
+  const STATUS_WORD = { VERIFIED: "已對勘", PROBABLE: "待複核" }; // honest, per-slip
+
+  const CN_DIGITS = "〇一二三四五六七八九";
+  function toCn(n) {
+    if (n <= 10) return n === 10 ? "十" : CN_DIGITS[n];
+    if (n < 20) return "十" + CN_DIGITS[n % 10];
+    if (n < 100) return CN_DIGITS[Math.floor(n / 10)] + "十" + (n % 10 ? CN_DIGITS[n % 10] : "");
+    return "一百";
+  }
+  function tabText(entry) {
+    if (entry.corpus_id === "liushijiazi") return entry.original_slip_label; // 干支
+    return "第" + toCn(entry.slip_number) + "籤";
+  }
+
+  /* ---------- state ---------- */
+  const BOOK_KEY = "drawone.book.v1";
+  let currentDeity = null;
+  let currentResolved = null; // { entryId, repeated }
+  let viewingBookEntry = null;
+
+  const $ = (id) => document.getElementById(id);
+  const screens = ["ask", "choose", "draw", "stick", "slip", "book"];
+  let screenStack = ["ask"];
+
+  function show(name, { push = true } = {}) {
+    if (push) screenStack.push(name);
+    for (const s of screens) $("s-" + s).classList.toggle("on", s === name);
+    $("backBtn").style.visibility = screenStack.length > 1 ? "visible" : "hidden";
+    window.scrollTo(0, 0);
+  }
+  function back() {
+    if (screenStack.length <= 1) return;
+    screenStack.pop();
+    show(screenStack[screenStack.length - 1], { push: false });
+  }
+
+  function readBook() {
+    try { return JSON.parse(localStorage.getItem(BOOK_KEY) ?? "[]") ?? []; } catch { return []; }
+  }
+  function writeBook(b) { try { localStorage.setItem(BOOK_KEY, JSON.stringify(b)); } catch {} }
+
+  function entryById(id) { return POOL.entries.find((e) => e.id === id); }
+
+  /* ---------- ① ask ---------- */
+  $("toChoose").addEventListener("click", () => show("choose"));
+
+  /* ---------- ② choose ---------- */
+  function renderDeities() {
+    if (!POOL) {
+      $("deityList").innerHTML = "";
+      $("chooseNote").textContent = "";
+      $("s-choose").insertAdjacentHTML("beforeend",
+        '<p class="error-strip">籤詩資料層未通過驗證，暫停抽籤。（fail-closed：沒有 verified corpus 就沒有籤。）</p>');
+      return;
+    }
+    $("deityList").innerHTML = DEITIES.map((d) => {
+      const meta = POOL.corpora.find((c) => c.corpus_id === d.corpusId);
+      return `<button class="deity" data-corpus="${d.corpusId}">
+          <span class="deity-name">${d.name}</span>
+          <span class="deity-edition">${d.editionShort}<br />共 ${meta.slip_count} 首</span>
+        </button>`;
+    }).join("");
+    $("chooseNote").textContent = "選神明是文化的入口；回答你的不是神明，也不是系統，而是一首流傳下來的籤詩。";
+  }
+  $("deityList").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-corpus]");
+    if (!b) return;
+    currentDeity = DEITIES.find((d) => d.corpusId === b.dataset.corpus);
+    // 一事一籤：已綁定的問題直接翻到那張紙，不再走抽籤動作
+    const bound = window.DRAW_POLICY.peekBinding({ question: $("question").value });
+    if (bound) {
+      currentResolved = { entryId: bound.entryId, repeated: true };
+      renderSlipScreen();
+      show("slip");
+      return;
+    }
+    show("draw");
+  });
+
+  /* ---------- ③ draw: long-press pulls the stick; user labor, no fake wait ---------- */
+  const PULL_MS = 1400;
+  let pulling = false, pullStart = 0, raf = 0;
+  const stickEl = $("tubeStick");
+  const REST = 158, TOP = -40;
+
+  function pullFrame(ts) {
+    if (!pulling) return;
+    const t = Math.min(1, (ts - pullStart) / PULL_MS);
+    const y = REST + (TOP - REST) * t;
+    stickEl.style.transform = `translateX(-50%) translateY(${y}px)`;
+    if (t >= 1) { pulling = false; completeDraw(); return; }
+    raf = requestAnimationFrame(pullFrame);
+  }
+  function startPull(ev) {
+    if (!POOL || pulling) return;
+    ev.preventDefault();
+    pulling = true;
+    pullStart = performance.now();
+    raf = requestAnimationFrame(pullFrame);
+  }
+  function cancelPull() {
+    if (!pulling) return;
+    pulling = false;
+    cancelAnimationFrame(raf);
+    stickEl.style.transition = "transform 260ms ease";
+    stickEl.style.transform = `translateX(-50%) translateY(${REST}px)`;
+    setTimeout(() => (stickEl.style.transition = "none"), 280);
+  }
+  $("tubeWrap").addEventListener("pointerdown", startPull);
+  window.addEventListener("pointerup", cancelPull);
+  window.addEventListener("pointercancel", cancelPull);
+  // dev shortcut for desktop review: ?devdraw=1 → single click completes the pull
+  if (new URLSearchParams(location.search).get("devdraw") === "1") {
+    $("tubeWrap").addEventListener("click", () => { if (!pulling) { pulling = false; completeDraw(); } });
+  }
+
+  function uniformDraw(corpusId) {
+    const c = POOL.entries.filter((e) => e.corpus_id === corpusId);
+    return c[Math.floor(Math.random() * c.length)];
+  }
+
+  function completeDraw() {
+    if (navigator.vibrate) navigator.vibrate(18);
+    const question = $("question").value;
+    currentResolved = window.DRAW_POLICY.resolveDraw({
+      question,
+      corpusId: currentDeity.corpusId,
+      drawFn: uniformDraw,
+    });
+    const entry = entryById(currentResolved.entryId);
+    $("stickLabel").textContent = tabText(entry);
+    stickEl.style.transform = `translateX(-50%) translateY(${REST}px)`;
+    show("stick");
+  }
+
+  /* ---------- ④ stick → ⑤ slip ---------- */
+  $("takeSlip").addEventListener("click", () => { renderSlipScreen(); show("slip"); });
+
+  function esc(v) {
+    return String(v).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  }
+
+  function renderSlip(entry) {
+    const deity = DEITIES.find((d) => d.corpusId === entry.corpus_id);
+    const lines = entry.historical_text.poem_text.split(/\n|／/).filter(Boolean);
+    const status = STATUS_WORD[entry.provenance.transcription_status] ?? entry.provenance.transcription_status;
+    return `
+      <div class="slip-head"><div class="slip-tab">${esc(tabText(entry))}</div></div>
+      <div class="slip-poem">${lines.map((l) => `<span>${esc(l)}</span>`).join("")}</div>
+      <div class="slip-colophon">
+        <span class="col">${esc(deity.colophonSource)}</span>
+        <span class="col mark">抽一謹錄　${esc(status)}</span>
+        <span class="seal">抽一</span>
+      </div>`;
+  }
+
+  function renderSlipScreen() {
+    const entry = entryById(currentResolved.entryId);
+    $("slipPaper").innerHTML = renderSlip(entry);
+    $("repeatStrip").hidden = !currentResolved.repeated;
+    const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
+    $("qEcho").hidden = !q;
+    $("qEchoText").textContent = q;
+    // pre-fill note if this draw is already in the book (repeated view)
+    const book = readBook();
+    const existing = book.find((b) => b.entryId === entry.id && b.question === q);
+    $("noteInput").value = existing?.note ?? "";
+    viewingBookEntry = existing ?? null;
+  }
+
+  $("keepBtn").addEventListener("click", () => {
+    const entry = entryById(currentResolved.entryId);
+    const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
+    const note = $("noteInput").value.trim();
+    const book = readBook();
+    const existing = book.find((b) => b.entryId === entry.id && b.question === q);
+    if (existing) existing.note = note;
+    else book.unshift({ ts: new Date().toISOString(), question: q, entryId: entry.id, corpusId: entry.corpus_id, note });
+    writeBook(book);
+    renderBook();
+    screenStack = ["ask"];
+    show("book", { push: true });
+  });
+
+  $("againBtn").addEventListener("click", () => {
+    $("question").value = "";
+    $("noteInput").value = "";
+    screenStack = ["ask"];
+    show("ask", { push: false });
+  });
+
+  /* ---------- ⑥ book ---------- */
+  function renderBook() {
+    const book = readBook();
+    $("bookEmpty").hidden = book.length > 0;
+    $("bookList").innerHTML = book.map((b, i) => {
+      const entry = entryById(b.entryId);
+      if (!entry) return "";
+      const d = new Date(b.ts);
+      const date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      const deity = DEITIES.find((x) => x.corpusId === b.corpusId);
+      return `<button class="book-entry" data-i="${i}">
+          <span class="book-line1">
+            <span class="book-tab">${esc(tabText(entry))}・${esc(deity?.name ?? "")}</span>
+            <span class="book-date">${date}</span>
+          </span>
+          <span class="book-q">${esc(b.question || "（未寫問題）")}</span>
+        </button>`;
+    }).join("");
+  }
+  $("bookList").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-i]");
+    if (!b) return;
+    const rec = readBook()[Number(b.dataset.i)];
+    if (!rec) return;
+    currentResolved = { entryId: rec.entryId, repeated: true };
+    $("question").value = rec.question;
+    renderSlipScreen();
+    $("repeatStrip").hidden = true; // viewing from the book is not a repeat warning
+    show("slip");
+  });
+
+  /* ---------- bar ---------- */
+  $("backBtn").addEventListener("click", back);
+  $("bookBtn").addEventListener("click", () => { renderBook(); show("book"); });
+
+  /* ---------- boot ---------- */
+  renderDeities();
+  show("ask", { push: false });
+})();
+</script>
+</body>
+</html>
