@@ -1,0 +1,189 @@
+/* ==========================================================================
+   The Slip — Draw One 籤紙 design language (V2A checkpoint)
+   一張真的會有人拿在手上的籤：欄欄有界、字起於頂、版記貼緣、印蓋其上。
+   TRUTH RULE: everything typeset on the paper comes verbatim from DRAW_POOL
+   corpus entries. Product copy never wears the paper's form.
+   FREEZE: once PR #22 lands, change only for functional issues.
+   ========================================================================== */
+
+:root {
+  --slip-desk: #e9e4d8;
+  --slip-paper: #f5efe2;
+  --slip-ink: #262119;
+  --slip-ink-soft: #57503f;
+  --slip-cinnabar: #a63a2b;
+  --slip-rule: #4a4234;
+}
+
+.slip-wrap {
+  position: relative;
+  width: min(330px, 100%);
+  /* leaves room for the protruding tab */
+  margin-top: 92px;
+}
+
+/* 簽條：突出紙緣的實體簽（承北港形制，取其位不取其形） */
+.slip-tab {
+  position: absolute;
+  top: 0;
+  right: 14px;
+  transform: translateY(-86%);
+  writing-mode: vertical-rl;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 650;
+  font-size: 19px;
+  letter-spacing: 0.1em;
+  line-height: 1.12;
+  border: 1.5px solid var(--slip-rule);
+  border-bottom: 0;
+  padding: 8px 6px 10px;
+  background: var(--slip-paper);
+  filter: url(#slip-rough);
+}
+
+.slip {
+  position: relative;
+  width: 100%;
+  min-height: 396px;
+  background: var(--slip-paper);
+  border: 1.5px solid rgba(58, 51, 40, 0.8);
+  box-shadow: 0 1px 3px rgba(38, 33, 25, 0.16);
+  padding: 12px;
+  animation: slip-settle 420ms cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+/* 內框：與外框構成雙線版框；套印不完全＝第二道硃砂殘影 */
+.slip::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(58, 51, 40, 0.62);
+  pointer-events: none;
+  filter: url(#slip-rough);
+}
+.slip::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid rgba(166, 58, 43, 0.14);
+  transform: translate(0.7px, -0.6px);
+  pointer-events: none;
+  filter: url(#slip-rough);
+}
+
+/* 紙的時間摩擦力：極輕煙燻斑漬（multiply；活的印刷，不是 antique 濾鏡） */
+.slip-grime {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(140px 90px at 88% 96%, rgba(72, 58, 38, 0.07), transparent 70%),
+    radial-gradient(90px 60px at 6% 3%, rgba(72, 58, 38, 0.05), transparent 70%),
+    radial-gradient(24px 18px at 22% 78%, rgba(60, 48, 30, 0.05), transparent 75%),
+    radial-gradient(10px 8px at 64% 12%, rgba(60, 48, 30, 0.06), transparent 80%);
+}
+
+.slip-cols {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  min-height: 368px;
+}
+
+.s-col {
+  writing-mode: vertical-rl;
+  padding: 14px 6px 12px;
+}
+.s-col:not(:first-child) {
+  border-right: 1px solid rgba(58, 51, 40, 0.34);
+}
+
+/* 題名欄（籤本名，最右） */
+.s-title {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3em;
+  line-height: 1.25;
+  padding-top: 15px;
+}
+
+/* 詩文欄：實物的字是大的——詩就是這張紙的主體 */
+.s-poem {
+  flex: 1 1 0;
+  display: flex;
+  justify-content: center;
+  font-family: "Noto Serif TC", serif;
+  font-size: 40px;
+  letter-spacing: 0.09em;
+  line-height: 1.05;
+  padding: 16px 4px 12px;
+}
+
+.s-poem .ch,
+.s-title .ch,
+.s-colo .ch {
+  display: inline-block;
+}
+
+/* 版記欄：貼左緣、落款欄式、印蓋於其上 */
+.s-colo {
+  font-family: "Noto Serif TC", serif;
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.24em;
+  line-height: 1.5;
+  color: var(--slip-ink-soft);
+  padding: 15px 4px 12px 3px;
+  position: relative;
+}
+.s-colo > span:not(.slip-seal) {
+  display: block;
+}
+
+/* 印：朱文印——硃砂框硃砂字、微轉、multiply 疊在紙纖維上、墨色不均 */
+.slip-seal {
+  position: absolute;
+  left: 2px;
+  bottom: 6px;
+  writing-mode: vertical-rl;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 38px;
+  color: var(--slip-cinnabar);
+  border: 2px solid var(--slip-cinnabar);
+  border-radius: 2px 3px 2px 3px;
+  font-family: "Noto Serif TC", serif;
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  transform: rotate(-2.1deg);
+  mix-blend-mode: multiply;
+  opacity: 0.88;
+  filter: url(#slip-rough);
+}
+.slip-seal::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background:
+    radial-gradient(5px 4px at 76% 22%, var(--slip-paper) 40%, transparent 70%),
+    radial-gradient(4px 3px at 18% 64%, var(--slip-paper) 35%, transparent 70%),
+    radial-gradient(3px 5px at 55% 88%, var(--slip-paper) 30%, transparent 75%);
+  opacity: 0.55;
+}
+
+@keyframes slip-settle {
+  from {
+    opacity: 0;
+    transform: translateY(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
