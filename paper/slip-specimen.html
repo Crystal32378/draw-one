@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Slip — Draw One 籤紙檢查點（V2A）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400..700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/slip.css" />
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--slip-desk);
+    color: var(--slip-ink);
+    font-family: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+    padding: 30px 16px 90px;
+  }
+  .head { max-width: 420px; margin: 0 auto; }
+  .head h1 { font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 20px; letter-spacing: 0.1em; }
+  .head p { margin-top: 8px; font-size: 13px; line-height: 1.85; color: var(--slip-ink-soft); }
+  .spec { max-width: 420px; margin: 56px auto 0; display: flex; flex-direction: column; align-items: center; }
+  .spec-label {
+    align-self: flex-start;
+    font-size: 12px; letter-spacing: 0.22em; color: var(--slip-ink-soft); margin-bottom: 4px;
+  }
+  .spec-label b { color: var(--slip-cinnabar); font-weight: 500; }
+</style>
+</head>
+<body>
+  <header class="head">
+    <h1>The Slip — 籤紙檢查點</h1>
+    <p>V2A design checkpoint：固定六張真籤（每套 corpus 兩張），六張籤的歷史詩文逐字取自 production draw pool；版記由 provenance 導出，「抽一」為明示產品印記。同一支籤永遠印出同一套「版」的瑕疵——重新整理此頁，字位微顫與墨色不會變。North star：一張真的會有人拿在手上的籤。</p>
+  </header>
+  <div id="specimens"></div>
+
+<script src="../assets/oracles.draw-pool.js"></script>
+<script src="../assets/slip-render.js"></script>
+<script>
+(function () {
+  "use strict";
+  const FIXED = [
+    "liushijiazi-001", // 甲子 — 六十甲子起首
+    "liushijiazi-044", // 干支中段
+    "guanyin-003",     // 燕將獨守聊城（實物對照用：龍山寺現行紙）
+    "guanyin-039",     // 已對勘 VERIFIED 樣本
+    "guandi-006",      // 道藏本含標點的句讀分欄
+    "guandi-085",      // 長句兩欄樣本
+  ];
+  const pool = window.DRAW_POOL;
+  const root = document.getElementById("specimens");
+  if (!pool || pool.schema !== "draw-pool/1.0") {
+    root.innerHTML = '<p style="max-width:420px;margin:40px auto;color:var(--slip-cinnabar)">draw pool 未通過驗證，檢查點無法渲染（fail-closed）。</p>';
+    return;
+  }
+  for (const id of FIXED) {
+    const entry = pool.entries.find((e) => e.id === id);
+    if (!entry) continue;
+    const sec = document.createElement("section");
+    sec.className = "spec";
+    // corpus data never enters innerHTML — labels are assembled from
+    // textContent so future corpus strings can't become executable markup
+    const label = document.createElement("div");
+    label.className = "spec-label";
+    const corpusMark = document.createElement("b");
+    corpusMark.textContent = entry.corpus_id;
+    label.appendChild(corpusMark);
+    label.appendChild(
+      document.createTextNode(`　${window.SLIP_RENDER.tabText(entry)}・${entry.provenance.transcription_status}`)
+    );
+    sec.appendChild(label);
+    try {
+      window.SLIP_RENDER.mountSlip(sec, entry);
+    } catch (err) {
+      // fail-closed: provenance/registry mismatch refuses to typeset the paper
+      const refusal = document.createElement("p");
+      refusal.style.color = "var(--slip-cinnabar)";
+      refusal.style.fontSize = "13px";
+      refusal.textContent = "此籤未通過 provenance 對應檢查，拒絕排版（fail-closed）：" + err.message;
+      sec.appendChild(refusal);
+    }
+    root.appendChild(sec);
+  }
+})();
+</script>
+</body>
+</html>
