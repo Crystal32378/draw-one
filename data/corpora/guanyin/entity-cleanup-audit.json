@@ -1,0 +1,199 @@
+{
+  "corpus": "guanyin",
+  "operation": "lossless HTML numeric character reference decode",
+  "total_entities_found": 17,
+  "unresolved": [
+    {
+      "corpus": "guanyin",
+      "slip_number": 70,
+      "field": "poem_text",
+      "before": "&#35220;",
+      "after": "覔",
+      "codepoint": "U+8994",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p145（倒序百首籤）",
+      "confirmation": "UNRESOLVED：OCR 整頁讀出「覓」（正體 U+89BF），entity 為「覔」（異體 U+8994），上从「不」vs「爫」字形差異，需人工核對原圖"
+    }
+  ],
+  "before_sha256": "4587b21d7dfcb454d357b238a3eb592e041a20cfaf8035280a1c16c9e42956e7",
+  "after_sha256": "7cef762d1824250ab00202310592f6584e266785e9782a7f13ee3c1e7d19a026",
+  "integrity_checks": {
+    "slip_count": 100,
+    "sn_no_missing": true,
+    "sn_no_dup": true,
+    "status_unchanged": true,
+    "provenance_untouched": true,
+    "residual_entities": 0
+  },
+  "entries": [
+    {
+      "corpus": "guanyin",
+      "slip_number": 10,
+      "field": "poem_text",
+      "before": "&#35220;",
+      "after": "覔",
+      "codepoint": "U+8994",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p175（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「覔」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 14,
+      "field": "poem_text",
+      "before": "&#21364;",
+      "after": "却",
+      "codepoint": "U+5374",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p173（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「却」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 14,
+      "field": "poem_text",
+      "before": "&#30861;",
+      "after": "碍",
+      "codepoint": "U+788D",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p173（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「碍」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 21,
+      "field": "poem_text",
+      "before": "&#21494;",
+      "after": "叶",
+      "codepoint": "U+53F6",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p169（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「叶」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 22,
+      "field": "poem_text",
+      "before": "&#33747;",
+      "after": "菓",
+      "codepoint": "U+83D3",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p169（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「菓」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 24,
+      "field": "poem_text",
+      "before": "&#34100;",
+      "after": "蔴",
+      "codepoint": "U+8534",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p168（倒序百首籤）",
+      "confirmation": "LOSSLESS：entity code point U+8534=蔴；整頁 OCR 誤讀「蘇」（草字頭+麻形近）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 35,
+      "field": "poem_text",
+      "before": "&#30861;",
+      "after": "碍",
+      "codepoint": "U+788D",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p162（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「碍」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 48,
+      "field": "poem_text",
+      "before": "&#40318;",
+      "after": "鵾",
+      "codepoint": "U+9D7E",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p156（倒序百首籤）",
+      "confirmation": "LOSSLESS：entity code point U+9D7E=鵾；整頁 OCR 誤讀「鶌」（鳥字旁形近）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 54,
+      "field": "poem_text",
+      "before": "&#24183;",
+      "after": "幷",
+      "codepoint": "U+5E77",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p153（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「幷」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 54,
+      "field": "comparison_witness",
+      "before": "&#24183;",
+      "after": "幷",
+      "codepoint": "U+5E77",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p153（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「幷」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 60,
+      "field": "poem_text",
+      "before": "&#28895;",
+      "after": "烟",
+      "codepoint": "U+70DF",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p150（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「烟」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 70,
+      "field": "poem_text",
+      "before": "&#35220;",
+      "after": "覔",
+      "codepoint": "U+8994",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p145（倒序百首籤）",
+      "confirmation": "UNRESOLVED：OCR 整頁讀出「覓」（正體 U+89BF），entity 為「覔」（異體 U+8994），上从「不」vs「爫」字形差異，需人工核對原圖"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 74,
+      "field": "poem_text",
+      "before": "&#30861;",
+      "after": "碍",
+      "codepoint": "U+788D",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p143（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「碍」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 81,
+      "field": "poem_text",
+      "before": "&#30528;",
+      "after": "着",
+      "codepoint": "U+7740",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p139（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「着」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 95,
+      "field": "poem_text",
+      "before": "&#39722;",
+      "after": "鬪",
+      "codepoint": "U+9B2A",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p132（倒序百首籤）",
+      "confirmation": "LOSSLESS：entity code point U+9B2A=鬪；整頁 OCR 誤讀「事」"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 97,
+      "field": "poem_text",
+      "before": "&#30094;",
+      "after": "疎",
+      "codepoint": "U+758E",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p131（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「疎」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    },
+    {
+      "corpus": "guanyin",
+      "slip_number": 99,
+      "field": "poem_text",
+      "before": "&#30528;",
+      "after": "着",
+      "codepoint": "U+7740",
+      "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p130（倒序百首籤）",
+      "confirmation": "OCR-CONFIRMED：整頁 OCR 原文即「着」（異體/簡化字形，屬 encoding residue，非原文差異）"
+    }
+  ]
+}
