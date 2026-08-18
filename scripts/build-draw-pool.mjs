@@ -80,9 +80,16 @@ const REQUIRED_ENTRY_FIELDS = [
 // malformed refs) fails the build.
 const RESIDUAL_ENTITY = /&#?[0-9a-zA-Z]+;/;
 function decodeCharRefs(text, counter) {
-  return String(text).replace(/&#(x?)([0-9a-fA-F]+);/g, (_, hex, digits) => {
+  return String(text).replace(/&#(x?)([0-9a-fA-F]+);/g, (match, hex, digits) => {
+    const cp = parseInt(digits, hex ? 16 : 10);
+    // Only Unicode scalar values may decode. Anything else (out of range,
+    // surrogate, zero) is left in place so the residual-entity gate fails the
+    // build through the normal fail-closed path — never by throwing.
+    if (!Number.isInteger(cp) || cp <= 0 || cp > 0x10ffff || (cp >= 0xd800 && cp <= 0xdfff)) {
+      return match;
+    }
     counter.n++;
-    return String.fromCodePoint(parseInt(digits, hex ? 16 : 10));
+    return String.fromCodePoint(cp);
   });
 }
 
