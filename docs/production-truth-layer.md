@@ -51,22 +51,25 @@ public draw path — boot-checks the pool, disables drawing if it fails; no fall
 | guandi | 100 | 100 PROBABLE | 關帝 | 《護國嘉濟江東王靈籤》道藏本（維基文庫一手抓取，道藏影像待逐籤核對） |
 | liushijiazi | 60 | 58 PROBABLE / 2 VERIFIED | 媽祖（北港朝天宮） | 北港朝天宮官方六十甲子籤 |
 
-## Needs a product decision (engineering will not decide these)
+## Ratified product decisions
 
-1. **PROBABLE display policy.** 158/260 entries are PROBABLE (single-witness verbatim capture,
-   pending second-witness check). The gate admits them and the UI currently shows the raw
-   status string. Should PROBABLE render differently, carry an explanation, or be held back
-   until VERIFIED?
-2. **Question-binding lifetime.** 一事一籤 currently binds a question forever (until browser
+1. **PROBABLE enters production (ratified by Crystal, 2026-08-18).** VERIFIED + PROBABLE are
+   both production-eligible; the status must be carried honestly and may never be presented as
+   VERIFIED. Rationale: the corpus is a continuously converging provenance pipeline —
+   second-witness verification is ongoing research work, not a one-time gate. The build
+   allowlist `{VERIFIED, PROBABLE}` is the standing policy.
+
+## Needs a product decision (engineering will not decide these)
+1. **Question-binding lifetime.** 一事一籤 currently binds a question forever (until browser
    storage is cleared). Whether an old question may be asked anew after N days is a product
    call (`PRODUCT_DECISION` markers in draw-policy.js).
-3. **月老.** Removed because no corpus exists. Restoring it requires a curated corpus, not copy.
-4. **Interpretation pipeline.** Production ships none. Reintroducing AI interpretation needs:
+2. **月老.** Removed because no corpus exists. Restoring it requires a curated corpus, not copy.
+3. **Interpretation pipeline.** Production ships none. Reintroducing AI interpretation needs:
    governed generation, `lintInterpretationVoice` gating, and the labeling policy from the
    design round (「AI 解讀永遠是另一件展品」).
-5. **Provenance display depth.** Current UI shows one edition line + status. The
+4. **Provenance display depth.** Current UI shows one edition line + status. The
    incident doc's "no provenance in frontend" rule vs POSITIONING's provenance-visible stance
    still needs a ratified policy; this build takes the minimal-truth middle.
-6. **Presentation残留.** Deity emoji (🌊🪷⚔️), the 1.2 s draw delay, placeholder question
+5. **Presentation残留.** Deity emoji (🌊🪷⚔️), the 1.2 s draw delay, placeholder question
    examples, and marketing side panels were intentionally left untouched — they are design-round
    territory.
