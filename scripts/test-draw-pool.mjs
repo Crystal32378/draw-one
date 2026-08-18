@@ -113,6 +113,11 @@ function buildMustFail(label, mutate) {
   const sandbox = join(tmpdir(), `drawone-failclosed-${Date.now()}-${Math.random().toString(36).slice(2)}`);
   cpSync(join(ROOT, "data"), join(sandbox, "data"), { recursive: true });
   cpSync(join(ROOT, "scripts"), join(sandbox, "scripts"), { recursive: true });
+  // Pre-seed a stale generated pool: a failed build must DELETE it, not merely
+  // refrain from writing a new one (found in Codex final review).
+  const stalePoolPath = join(sandbox, "assets", "oracles.draw-pool.js");
+  mkdirSync(join(sandbox, "assets"), { recursive: true });
+  writeFileSync(stalePoolPath, "window.DRAW_POOL = { stale: true };\n");
   const corpusPath = join(sandbox, "data", "corpora", "guandi", "slip_texts.json");
   const doc = JSON.parse(readFileSync(corpusPath, "utf8"));
   mutate(doc);
@@ -123,8 +128,8 @@ function buildMustFail(label, mutate) {
   } catch {
     failedAsExpected = true;
   }
-  const poolEmitted = existsSync(join(sandbox, "assets", "oracles.draw-pool.js"));
-  check(`${label} → build fails, no pool emitted`, failedAsExpected && !poolEmitted);
+  const stalePoolRemoved = !existsSync(stalePoolPath);
+  check(`${label} → build fails AND stale pool deleted`, failedAsExpected && stalePoolRemoved);
   rmSync(sandbox, { recursive: true, force: true });
 }
 buildMustFail("remove one slip", (d) => d.slips.pop());
@@ -139,6 +144,8 @@ buildMustFail("reintroduce banned fake seed poem", (d) => (d.slips[9].poem_text 
 buildMustFail("cross-attribute corpus_id", (d) => (d.slips[2].corpus_id = "guanyin"));
 buildMustFail("strip provenance source_locator", (d) => (d.slips[1].source_locator = ""));
 buildMustFail("undecodable named entity in poem", (d) => (d.slips[6].poem_text += "&nbsp;"));
+buildMustFail("out-of-range numeric entity (&#x110000;)", (d) => (d.slips[8].poem_text += "&#x110000;"));
+buildMustFail("surrogate numeric entity (&#xD800;)", (d) => (d.slips[9].poem_text += "&#xD800;"));
 
 // ---------------------------------------------------------------------------
 console.log("T5 public page truth rules");
