@@ -63,20 +63,31 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-console.log("T2 slip_number ↔ poem_text byte-identical to corpus source");
+console.log("T2 slip_number ↔ poem_text identical to corpus source (after char-ref transcoding)");
+// mirror the build's lossless numeric-entity decode (異體字 preserved verbatim)
+const decodeRefs = (t) =>
+  String(t).replace(/&#(x?)([0-9a-fA-F]+);/g, (_, hex, d) => String.fromCodePoint(parseInt(d, hex ? 16 : 10)));
 let mismatches = 0;
 for (const corpusId of Object.keys(byCorpus)) {
   const src = JSON.parse(readFileSync(join(ROOT, "data", "corpora", corpusId, "slip_texts.json"), "utf8"));
   const bySlip = new Map(src.slips.map((s) => [s.slip_number, s]));
   for (const e of byCorpus[corpusId]) {
     const s = bySlip.get(e.slip_number);
-    if (!s || s.poem_text !== e.historical_text.poem_text) mismatches++;
-    if (!s || s.original_slip_label !== e.original_slip_label) mismatches++;
+    if (!s || decodeRefs(s.poem_text) !== e.historical_text.poem_text) mismatches++;
+    if (!s || decodeRefs(s.original_slip_label) !== e.original_slip_label) mismatches++;
     if (!s || s.edition_title !== e.provenance.edition_title) mismatches++;
     if (!s || s.transcription_status !== e.provenance.transcription_status) mismatches++;
   }
 }
 check("0 field mismatches across all 260 entries", mismatches === 0, `${mismatches} mismatches`);
+check(
+  "no HTML character references reach the pool",
+  pool.entries.every((e) => !/&#?[0-9a-zA-Z]+;/.test(e.historical_text.poem_text + e.original_slip_label))
+);
+check(
+  "decoded char-ref counts reported per corpus",
+  pool.corpora.every((c) => Number.isInteger(c.data_quality?.decoded_char_refs))
+);
 
 // ---------------------------------------------------------------------------
 console.log("T3 deity ↔ corpus mapping (no cross-attribution)");
@@ -127,6 +138,7 @@ buildMustFail("duplicate a slip_number", (d) => (d.slips[5].slip_number = d.slip
 buildMustFail("reintroduce banned fake seed poem", (d) => (d.slips[9].poem_text = "寶劍光芒出匣時，群邪退散正當宜。"));
 buildMustFail("cross-attribute corpus_id", (d) => (d.slips[2].corpus_id = "guanyin"));
 buildMustFail("strip provenance source_locator", (d) => (d.slips[1].source_locator = ""));
+buildMustFail("undecodable named entity in poem", (d) => (d.slips[6].poem_text += "&nbsp;"));
 
 // ---------------------------------------------------------------------------
 console.log("T5 public page truth rules");

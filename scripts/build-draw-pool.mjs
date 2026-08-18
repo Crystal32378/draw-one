@@ -72,6 +72,20 @@ const REQUIRED_ENTRY_FIELDS = [
   "deity_tradition",
 ];
 
+// Some corpus transcriptions carry rare/variant glyphs as HTML numeric
+// character references (e.g. "&#28895;" for 烟). Decoding is a lossless
+// transcoding of the SAME character — it preserves 異體字 exactly and never
+// canonicalizes. Counts are reported per corpus as a data-quality flag for
+// the corpus maintainers. Any entity that survives decoding (named entities,
+// malformed refs) fails the build.
+const RESIDUAL_ENTITY = /&#?[0-9a-zA-Z]+;/;
+function decodeCharRefs(text, counter) {
+  return String(text).replace(/&#(x?)([0-9a-fA-F]+);/g, (_, hex, digits) => {
+    counter.n++;
+    return String.fromCodePoint(parseInt(digits, hex ? 16 : 10));
+  });
+}
+
 const errors = [];
 const gateResults = [];
 
@@ -108,8 +122,14 @@ for (const spec of MANIFEST) {
 
   const numbers = new Set();
   const deities = new Set();
+  const decoded = { n: 0 };
   for (const s of slips) {
     const id = `${spec.corpus_id}#${s.slip_number}`;
+    s.poem_text = decodeCharRefs(s.poem_text ?? "", decoded);
+    s.original_slip_label = decodeCharRefs(s.original_slip_label ?? "", decoded);
+    if (RESIDUAL_ENTITY.test(s.poem_text) || RESIDUAL_ENTITY.test(s.original_slip_label)) {
+      gate(`${id}/no-residual-entities`, false, `undecodable entity remains in text`);
+    }
     for (const f of REQUIRED_ENTRY_FIELDS) {
       if (s[f] === undefined || s[f] === null || String(s[f]).trim() === "") {
         gate(`${id}/required-field`, false, `missing or empty field: ${f}`);
@@ -151,7 +171,7 @@ for (const spec of MANIFEST) {
     `deity_tradition values in corpus: ${[...deities].join(" | ") || "(none)"}`
   );
 
-  corpora.push({ spec, doc, slips, deity: [...deities][0] ?? null, source_sha256: sha256(raw) });
+  corpora.push({ spec, doc, slips, deity: [...deities][0] ?? null, source_sha256: sha256(raw), decoded_char_refs: decoded.n });
 }
 
 // Cross-corpus attribution guard: an identical full poem text appearing under
@@ -210,6 +230,7 @@ const pool = {
     slip_count: c.slips.length,
     source_file: c.spec.file,
     source_sha256: c.source_sha256,
+    data_quality: { decoded_char_refs: c.decoded_char_refs },
     status_summary: c.slips.reduce((acc, s) => ((acc[s.transcription_status] = (acc[s.transcription_status] ?? 0) + 1), acc), {}),
   })),
   entries: corpora.flatMap((c) =>
