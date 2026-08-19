@@ -65,65 +65,149 @@
     padding: 13px 30px 13px 34px; color: var(--ink); cursor: pointer;
   }
 
-  /* ============ 埕 ============ */
-  #s-court {
+  /* ============ 埕（v2：轉身全景＋前中後景） ============
+     你站在埕裡：水平拖動＝轉身。一次正對一站，鄰站被畫框自然裁掉。
+     初始面向＝中軸空段（日期與沿革的遠牆）——不正對任何一位。
+     層速：遠景 0.35x／中景 1x／地面 0.9x／近景柱緣 1.55x。 */
+  #s-court { background: var(--ground); }
+  .court-view {
+    position: relative; flex: 1; overflow: hidden;
+    touch-action: pan-y; cursor: grab;
+  }
+  .court-view:active { cursor: grabbing; }
+  .layer { position: absolute; inset: 0; pointer-events: none; }
+
+  /* 遠景：簷影帶＋遠牆面 */
+  .far-strip {
+    position: absolute; top: 0; height: 100%; display: flex;
+    will-change: transform;
+  }
+  .far-sky {
+    position: absolute; left: 0; right: 0; top: 0; height: 30%;
+    background: linear-gradient(180deg, rgba(52, 45, 34, 0.26), rgba(52, 45, 34, 0.06) 55%, transparent);
+  }
+  .far-wall {
+    position: absolute; left: -20%; right: -20%; top: 26%; height: 26%;
+    background: linear-gradient(180deg, #cbc3ae, #c3bba6);
+    border-bottom: 1px solid rgba(74, 66, 52, 0.35);
+  }
+
+  /* 地面：埕面三段光帶＋鋪面縫（隨轉身微移） */
+  .ground-fixed {
+    position: absolute; left: 0; right: 0; top: 52%; bottom: 0;
+    background: linear-gradient(180deg, #cfc7b2 0%, var(--ground) 34%, #ded7c6 100%);
+  }
+  .ground-joints {
+    position: absolute; top: 52%; bottom: 0; height: auto; display: flex;
+    will-change: transform;
+  }
+  .ground-joints i {
+    display: block; width: 1px; margin-right: 88px;
+    background: linear-gradient(180deg, transparent, rgba(74, 66, 52, 0.12) 40%, rgba(74, 66, 52, 0.05));
+  }
+  .ground-path {
+    position: absolute; left: 50%; bottom: 0; top: 58%;
+    width: 150px; transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(245, 239, 226, 0.0), rgba(245, 239, 226, 0.16));
+    clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+    transition: opacity 300ms ease;
+  }
+
+  /* 中景：站列（殿與空段） */
+  .stage-strip {
+    position: absolute; top: 0; height: 100%; display: flex; align-items: flex-start;
+    will-change: transform;
+  }
+  .station {
+    position: relative; flex: 0 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    transform-origin: 50% 42%;
+    will-change: transform;
+  }
+  /* 殿的立面：簷＋門洞＋匾＋門檻——全平面，無裝飾 */
+  .facade { position: relative; margin-top: 12%; cursor: pointer; pointer-events: auto; }
+  .facade .eave {
+    height: 16px; margin: 0 -10%;
+    background: #4a4234;
+    clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
+    opacity: 0.82;
+  }
+  .facade .doorway {
+    width: 172px; height: 218px; margin: 0 auto;
     background:
-      radial-gradient(120% 90% at 50% 62%, var(--ground) 40%, var(--ground-far) 100%);
+      linear-gradient(180deg, rgba(38, 33, 25, 0.78) 0%, rgba(38, 33, 25, 0.6) 46%, rgba(58, 51, 40, 0.42) 100%);
+    border: 1px solid rgba(58, 51, 40, 0.6); border-top: 0;
+    position: relative;
   }
-  /* 遠處：簷影一線（上緣的暗帶＝對面的殿簷下） */
-  .court-eaves {
-    height: 34px; flex: 0 0 auto;
-    background: linear-gradient(180deg, rgba(52, 45, 34, 0.22), transparent);
+  .facade .threshold {
+    height: 7px; margin: 0 6px;
+    background: rgba(58, 51, 40, 0.5);
   }
-  .court-field { position: relative; flex: 1; }
-  /* 牌匾：只有聖號。左右緣懸掛，中軸永遠留空 */
-  .plaque {
-    position: absolute;
-    writing-mode: vertical-rl;
+  .facade .plaque2 {
+    position: absolute; left: 50%; top: 14px; transform: translateX(-50%);
+    writing-mode: horizontal-tb;
     background: var(--paper);
-    border: 1.5px solid var(--rule);
-    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.22);
+    border: 1.5px solid var(--rule); border-top: 3px solid var(--rule);
     font-family: "Noto Serif TC", serif; font-weight: 650;
-    letter-spacing: 0.16em; line-height: 1.15;
+    font-size: 19px; letter-spacing: 0.3em; text-indent: 0.3em;
+    padding: 7px 10px 6px; white-space: nowrap;
     color: var(--ink);
-    padding: 12px 7px 14px;
-    cursor: pointer;
-    border-top: 4px solid var(--rule); /* 懸掛感：頂邊粗 */
+    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.3);
   }
-  .plaque:hover { transform: translateY(1px); }
-  .plaque .last-mark {
-    display: block;
-    font-family: "Noto Sans TC", sans-serif; font-weight: 400;
-    font-size: 10px; letter-spacing: 0.2em; color: var(--ink-soft);
-    margin-left: 6px;
+  .facade .last-mark2 {
+    position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%);
+    font-size: 10px; letter-spacing: 0.2em; color: var(--ink-soft); white-space: nowrap;
   }
-  .plaque.hypothetical { opacity: 0.62; border-style: dashed; }
-  .plaque .build-mark {
-    display: block;
-    font-family: "Noto Sans TC", sans-serif; font-weight: 400;
-    font-size: 10px; letter-spacing: 0.2em; color: var(--cinnabar);
-    margin-left: 6px;
+  .station.hypothetical .doorway {
+    background: linear-gradient(180deg, rgba(38, 33, 25, 0.1), rgba(38, 33, 25, 0.05));
+    border-style: dashed;
   }
-  /* 埕心：日期與節氣寫在地上；中軸上唯一的東西是「空與時間」 */
-  .court-heart {
-    position: absolute; left: 0; right: 0; top: 42%;
+  .station.hypothetical .plaque2 { border-style: dashed; opacity: 0.72; }
+  .station.hypothetical .eave { opacity: 0.3; }
+  .build-mark2 {
+    position: absolute; left: 50%; top: 58%; transform: translateX(-50%);
+    font-size: 11px; letter-spacing: 0.3em; color: var(--cinnabar); white-space: nowrap;
+  }
+  /* 中軸空段：埕心遠望——日期節氣寫在牆前，沿革在下 */
+  .station.void-station { pointer-events: auto; cursor: default; }
+  .void-heart {
+    margin-top: 34%;
     text-align: center;
-    color: rgba(74, 66, 52, 0.75);
+    color: rgba(74, 66, 52, 0.8);
     font-family: "Noto Serif TC", serif; font-weight: 500;
-    font-size: 13px; letter-spacing: 0.42em; text-indent: 0.42em;
-    pointer-events: none;
+    font-size: 14px; letter-spacing: 0.42em; text-indent: 0.42em;
+    white-space: nowrap;
   }
-  .court-chronicle {
-    position: absolute; left: 0; right: 0; top: calc(42% + 30px);
-    text-align: center;
+  .void-chron {
+    margin-top: 14px; text-align: center;
   }
-  .court-chronicle button {
+  .void-chron button {
     background: none; border: 0; font: inherit;
     font-size: 11px; letter-spacing: 0.3em; text-indent: 0.3em;
-    color: rgba(111, 103, 87, 0.8); cursor: pointer;
+    color: rgba(111, 103, 87, 0.85); cursor: pointer; pointer-events: auto;
     text-decoration: underline; text-underline-offset: 4px;
     text-decoration-color: rgba(111, 103, 87, 0.4);
   }
+
+  /* 近景：柱緣（站與站之間，最快層，局部遮擋） */
+  .near-strip {
+    position: absolute; top: 0; height: 100%; display: flex;
+    will-change: transform;
+  }
+  .near-strip i {
+    display: block; width: 30px; height: 118%; margin-top: -6%;
+    background: linear-gradient(90deg, #b3ab97, #a29a86 55%, #948c78);
+    border-left: 1px solid rgba(74, 66, 52, 0.4);
+    border-right: 1px solid rgba(38, 33, 25, 0.5);
+  }
+
+  .turn-hint {
+    position: absolute; left: 0; right: 0; bottom: 8px;
+    text-align: center; font-size: 11px; letter-spacing: 0.26em; text-indent: 0.26em;
+    color: rgba(111, 103, 87, 0.75); pointer-events: none;
+    transition: opacity 400ms ease;
+  }
+
   /* 案：在你身邊（畫面底部），不在埕中央 */
   .desk {
     flex: 0 0 auto;
@@ -321,16 +405,18 @@
 
   <!-- 埕 -->
   <section class="screen" id="s-court">
-    <div class="court-eaves"></div>
-    <div class="court-field" id="courtField">
-      <div class="court-heart" id="courtHeart"></div>
-      <div class="court-chronicle"><button id="chronBtn">本廟沿革</button></div>
+    <div class="court-view" id="courtView">
+      <div class="layer"><div class="far-strip" id="farStrip"><div class="far-sky"></div><div class="far-wall"></div></div></div>
+      <div class="layer"><div class="ground-fixed"></div><div class="ground-joints" id="groundJoints"></div><div class="ground-path" id="groundPath"></div></div>
+      <div class="layer"><div class="stage-strip" id="stageStrip"></div></div>
+      <div class="layer"><div class="near-strip" id="nearStrip"></div></div>
+      <div class="turn-hint" id="turnHint">左右拖動，轉身</div>
     </div>
     <div class="desk">
       <div class="book-object" id="bookObj">籤簿<span class="count" id="bookCount"></span></div>
       <div class="ask-zone" id="askZone">
         <div class="ask-label">今天想問什麼</div>
-        <textarea id="question" rows="1" placeholder="寫下來，再走向其中一殿。"></textarea>
+        <textarea id="question" rows="1" placeholder="寫下來，轉身走向一殿。"></textarea>
         <div class="walk-hint" id="walkHint"></div>
       </div>
     </div>
@@ -460,41 +546,224 @@
     for (const s of ["gate", "court", "hall"]) $("s-" + s).classList.toggle("on", s === name);
   }
 
-  /* ---------- 埕 ---------- */
-  function renderCourt() {
-    const d = new Date();
-    $("courtHeart").textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+  /* ---------- 埕 v2：轉身全景引擎 ---------- */
+  // 站列（左→右）：外左…內左｜中軸空段｜內右…外右。初始面向＝空段（無主位）。
+  function buildStations() {
+    const halls = HALLS.filter((h) => !h.hypothetical);
+    const hyp = HALLS.filter((h) => h.hypothetical);
+    // 同期落成三殿：內右 觀世音、內左 天上聖母、外右 關帝；增建（假設）在外左
+    const left = [halls.find((h) => h.id === "mazu")].filter(Boolean);
+    const right = [halls.find((h) => h.id === "guanyin"), halls.find((h) => h.id === "guandi")].filter(Boolean);
+    return [...hyp, ...left.reverse(), { void: true }, ...right];
+  }
+  let STATIONS = buildStations();
+  let voidIndex = STATIONS.findIndex((s) => s.void);
 
-    const field = $("courtField");
-    field.querySelectorAll(".plaque").forEach((el) => el.remove());
+  const FACING_KEY = "arrival.facing.v1";
+  const view = $("courtView");
+  const stageStrip = $("stageStrip");
+  const farStrip = $("farStrip");
+  const groundJoints = $("groundJoints");
+  const nearStrip = $("nearStrip");
+
+  let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
+  let dragging = false, dragStartX = 0, dragStartScroll = 0, velocity = 0, lastX = 0, lastT = 0;
+  let raf = 0, hasTurned = false;
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function stationCenter(i) { return i * stationW; }
+  function nearestStation() { return Math.max(0, Math.min(STATIONS.length - 1, Math.round(scroll / stationW))); }
+
+  function buildCourt() {
+    STATIONS = buildStations();
+    voidIndex = STATIONS.findIndex((s) => s.void);
+    const vw = view.clientWidth || Math.min(430, innerWidth);
+    stationW = Math.round(vw * 0.68);
+    pad0 = Math.round((vw - stationW) / 2);
+
+    stageStrip.innerHTML = "";
     const lastHall = store.get(LASTHALL_KEY, null);
-    for (const h of HALLS) {
-      const p = document.createElement("button");
-      p.className = "plaque" + (h.hypothetical ? " hypothetical" : "");
-      p.style.top = h.pos.top;
-      p.style[h.pos.side] = "12px";
-      p.style.fontSize = "20px";
-      p.dataset.hall = h.id;
-      p.textContent = h.deity;
-      if (h.hypothetical) {
-        const m = document.createElement("span");
-        m.className = "build-mark";
-        m.textContent = "增建中";
-        p.appendChild(m);
-      } else if (lastHall?.id === h.id) {
-        const m = document.createElement("span");
-        m.className = "last-mark";
-        m.textContent = "上次到訪・" + (lastHall.date ?? "");
-        p.appendChild(m);
+    for (const s of STATIONS) {
+      const st = document.createElement("div");
+      st.className = "station" + (s.hypothetical ? " hypothetical" : "") + (s.void ? " void-station" : "");
+      st.style.width = stationW + "px";
+      if (s.void) {
+        const d = new Date();
+        st.innerHTML = "";
+        const heart = document.createElement("div");
+        heart.className = "void-heart";
+        heart.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+        const chron = document.createElement("div");
+        chron.className = "void-chron";
+        const b = document.createElement("button");
+        b.textContent = "本廟沿革";
+        b.dataset.chron = "1";
+        chron.appendChild(b);
+        st.append(heart, chron);
+      } else {
+        const f = document.createElement("div");
+        f.className = "facade";
+        f.dataset.hall = s.id;
+        const eave = document.createElement("div"); eave.className = "eave";
+        const door = document.createElement("div"); door.className = "doorway";
+        const plq = document.createElement("div"); plq.className = "plaque2"; plq.textContent = s.deity;
+        door.appendChild(plq);
+        if (s.hypothetical) {
+          const bm = document.createElement("div"); bm.className = "build-mark2"; bm.textContent = "增建中";
+          door.appendChild(bm);
+        }
+        const th = document.createElement("div"); th.className = "threshold";
+        f.append(eave, door, th);
+        if (!s.hypothetical && lastHall?.id === s.id) {
+          const lm = document.createElement("div"); lm.className = "last-mark2";
+          lm.textContent = "上次到訪・" + (lastHall.date ?? "");
+          f.appendChild(lm);
+        }
+        st.appendChild(f);
       }
-      field.appendChild(p);
+      stageStrip.appendChild(st);
     }
 
-    const book = store.get(BOOK_KEY, []);
-    $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
+    groundJoints.innerHTML = "";
+    const jointCount = Math.ceil((STATIONS.length * stationW + vw * 2) / 88);
+    for (let i = 0; i < jointCount; i++) groundJoints.appendChild(document.createElement("i"));
+    groundJoints.style.left = (-vw) + "px";
 
+    nearStrip.innerHTML = "";
+    for (let i = 0; i <= STATIONS.length; i++) {
+      const p = document.createElement("i");
+      p.style.marginLeft = (i === 0 ? 0 : Math.round(stationW * 1.55) - 30) + "px";
+      nearStrip.appendChild(p);
+    }
+    nearStrip.style.left = Math.round(pad0 * 1.55 - stationW * 0.775) + "px";
+
+    applyFrame();
+  }
+
+  function applyFrame() {
+    const vw = view.clientWidth || 1;
+    const t = pad0 - scroll;
+    stageStrip.style.transform = `translateX(${t}px)`;
+    farStrip.style.transform = `translateX(${(pad0 - scroll) * 0.35}px)`;
+    groundJoints.style.transform = `translateX(${(pad0 - scroll) * 0.9}px)`;
+    nearStrip.style.transform = `translateX(${(0 - scroll) * 1.55}px)`;
+    // 近大遠小：依離視野中心的距離縮放（正對＝1，鄰站≈0.85）
+    STATIONS.forEach((s, i) => {
+      const el = stageStrip.children[i];
+      if (!el) return;
+      const d = Math.min(1.4, Math.abs(stationCenter(i) - scroll) / stationW);
+      const sc = 1 - 0.15 * Math.min(1, d);
+      el.style.transform = `scale(${sc.toFixed(3)})`;
+      el.style.opacity = (1 - 0.18 * Math.min(1, d)).toFixed(3);
+    });
+    // 地面引路：只在正對某殿時浮現
+    const ni = nearestStation();
+    const settledOnHall = !STATIONS[ni].void && Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
+    $("groundPath").style.opacity = settledOnHall ? "1" : "0";
+  }
+
+  function animate() {
+    raf = 0;
+    if (!dragging) {
+      const diff = targetScroll - scroll;
+      if (Math.abs(diff) > 0.4) {
+        scroll += reduceMotion ? diff : diff * 0.11;
+      } else {
+        scroll = targetScroll;
+      }
+    }
+    applyFrame();
+    if (!dragging && scroll !== targetScroll) raf = requestAnimationFrame(animate);
+    else updateFacingUI();
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(animate); }
+
+  function settleToNearest() {
+    let i = nearestStation();
+    // 慣性：依釋放速度多轉半站
+    if (!reduceMotion && Math.abs(velocity) > 0.55) {
+      i = Math.max(0, Math.min(STATIONS.length - 1, i + (velocity < 0 ? 1 : -1)));
+    }
+    targetScroll = stationCenter(i);
+    kick();
+  }
+
+  view.addEventListener("pointerdown", (ev) => {
+    if (ev.target.closest("[data-chron]")) return;
+    dragging = true;
+    dragStartX = lastX = ev.clientX;
+    dragStartScroll = scroll;
+    lastT = performance.now();
+    velocity = 0;
+    view.setPointerCapture(ev.pointerId);
+  });
+  view.addEventListener("pointermove", (ev) => {
+    if (!dragging) return;
+    const now = performance.now();
+    velocity = (ev.clientX - lastX) / Math.max(1, now - lastT);
+    lastX = ev.clientX; lastT = now;
+    scroll = Math.max(-stationW * 0.25, Math.min(stationCenter(STATIONS.length - 1) + stationW * 0.25,
+      dragStartScroll - (ev.clientX - dragStartX)));
+    if (!hasTurned && Math.abs(ev.clientX - dragStartX) > 30) {
+      hasTurned = true;
+      $("turnHint").style.opacity = "0";
+    }
+    applyFrame();
+  });
+  const release = (ev) => {
+    if (!dragging) return;
+    dragging = false;
+    const moved = Math.abs(ev.clientX - dragStartX) > 8;
+    settleToNearest();
+    if (!moved) {
+      const facade = ev.target.closest("[data-hall]");
+      if (facade) {
+        const idx = STATIONS.findIndex((s) => s.id === facade.dataset.hall);
+        const facedNow = Math.abs(stationCenter(idx) - scroll) < stationW * 0.3;
+        if (facedNow) {
+          enterHall(STATIONS[idx]);
+        } else {
+          targetScroll = stationCenter(idx); // 先轉身面對，靠近才進殿
+          kick();
+        }
+      }
+    }
+  };
+  view.addEventListener("pointerup", release);
+  view.addEventListener("pointercancel", () => { dragging = false; settleToNearest(); });
+  view.addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-chron]");
+    if (b) openChron();
+  });
+
+  function updateFacingUI() {
+    const s = STATIONS[nearestStation()];
+    if (!s) return;
+    if (s.void) {
+      store.set(FACING_KEY, "void");
+    } else {
+      store.set(FACING_KEY, s.id);
+    }
     updateWalkHint();
   }
+
+  function faceStation(idOrVoid, { instant } = {}) {
+    const i = idOrVoid === "void" ? voidIndex : STATIONS.findIndex((s) => s.id === idOrVoid);
+    const idx = i >= 0 ? i : voidIndex;
+    targetScroll = stationCenter(idx);
+    if (instant) { scroll = targetScroll; applyFrame(); updateFacingUI(); }
+    else kick();
+  }
+
+  function renderCourt() {
+    buildCourt();
+    const facing = store.get(FACING_KEY, "void");
+    faceStation(facing, { instant: true });
+    const book = store.get(BOOK_KEY, []);
+    $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
+    updateWalkHint();
+  }
+  addEventListener("resize", () => { if ($("s-court").classList.contains("on")) renderCourt(); });
 
   function updateWalkHint() {
     const bound = POOL && window.DRAW_POLICY.peekBinding({ question: $("question").value });
@@ -509,35 +778,54 @@
         enterHall(hall, { boundEntry: entry });
       });
       $("walkHint").appendChild(strip);
-    } else {
-      $("walkHint").textContent = POOL ? "寫好了就走向其中一殿。" : "籤詩資料層未通過驗證，暫停抽籤（fail-closed）。";
+      return;
     }
+    if (!POOL) {
+      $("walkHint").textContent = "籤詩資料層未通過驗證，暫停抽籤（fail-closed）。";
+      return;
+    }
+    const s = STATIONS[nearestStation()];
+    if (!s || s.void) $("walkHint").textContent = "左右轉身，走向一殿。";
+    else if (s.hypothetical) $("walkHint").textContent = "月老殿增建中——籤本仍在考證。";
+    else $("walkHint").textContent = `正對　${s.deity}殿——點門內，進殿。`;
   }
   $("question").addEventListener("input", updateWalkHint);
 
-  $("courtField").addEventListener("click", (ev) => {
-    const p = ev.target.closest("[data-hall]");
-    if (!p) return;
-    enterHall(HALLS.find((h) => h.id === p.dataset.hall));
-  });
-
-  /* ---------- 走向殿（前進 transition） ---------- */
+  /* ---------- 走向殿（前進＝門洞放大） ---------- */
   function enterHall(hall, { boundEntry } = {}) {
     currentHall = hall;
+    store.set(FACING_KEY, hall.id ?? "void");
     const court = $("s-court");
-    court.style.transform = "translateY(24%) scale(1.04)";
+    court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
     setTimeout(() => {
       court.style.transform = ""; court.style.opacity = "";
       renderHall(hall, { boundEntry });
       show("hall");
-    }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 380);
+    }, reduceMotion ? 0 : 400);
   }
 
   $("backBtn").addEventListener("click", () => {
     renderCourt();
     show("court");
   });
+
+  function openChron() {
+    const list = $("chronList");
+    list.innerHTML = "";
+    for (const g of chronDates()) {
+      const dEl = document.createElement("p");
+      dEl.className = "d";
+      dEl.textContent = g.d;
+      list.appendChild(dEl);
+      for (const it of g.items) {
+        const p = document.createElement("p");
+        p.textContent = it;
+        list.appendChild(p);
+      }
+    }
+    $("chronOverlay").classList.add("on");
+  }
 
   /* ---------- 殿 ---------- */
   function renderHall(hall, { boundEntry } = {}) {
@@ -680,23 +968,6 @@
       ...(HALLS.some((h) => h.hypothetical) ? [{ d: "（假設情境）", items: [HYPOTHETICAL_4TH.chron] }] : []),
     ];
   }
-  $("chronBtn").addEventListener("click", () => {
-    const list = $("chronList");
-    list.innerHTML = "";
-    for (const g of chronDates()) {
-      const dEl = document.createElement("p");
-      dEl.className = "d";
-      dEl.textContent = g.d;
-      list.appendChild(dEl);
-      for (const it of g.items) {
-        const p = document.createElement("p");
-        p.textContent = it;
-        list.appendChild(p);
-      }
-    }
-    $("chronOverlay").classList.add("on");
-  });
-
   $("bookObj").addEventListener("click", () => {
     const book = store.get(BOOK_KEY, []);
     $("bookEmpty").hidden = book.length > 0;
