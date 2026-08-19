@@ -72,6 +72,22 @@
   }
 
   /**
+   * peekBinding({ question }) — read-only: returns the existing binding for a
+   * question ({ entryId, boundAt, boundCorpusId }) or null. Never binds.
+   */
+  function peekBinding({ question }) {
+    const normalized = normalizeQuestion(question);
+    const isEmpty = normalized === "";
+    const store = isEmpty ? EMPTY_QUESTION_STORE : NAMED_QUESTION_STORE;
+    const key = isEmpty ? "q:__empty_session__" : questionKey(normalized);
+    const identity = isEmpty ? "" : normalized;
+    const bindings = readBindings(store);
+    const merged = [...(Array.isArray(bindings[key]) ? bindings[key] : []), ...(memoryFallback[key] ?? [])];
+    const r = findRecord(merged, identity);
+    return r ? { entryId: r.entry_id, boundAt: r.bound_at, boundCorpusId: r.corpus_id } : null;
+  }
+
+  /**
    * resolveDraw({ question, corpusId, drawFn })
    *   drawFn(corpusId) → entry  (only called when a NEW draw is permitted)
    * Returns { entryId, repeated, boundAt, boundCorpusId }.
@@ -131,5 +147,5 @@
     return { ok: violations.length === 0, violations };
   }
 
-  window.DRAW_POLICY = { normalizeQuestion, questionKey, resolveDraw, lintInterpretationVoice, STORE_KEY };
+  window.DRAW_POLICY = { normalizeQuestion, questionKey, peekBinding, resolveDraw, lintInterpretationVoice, STORE_KEY };
 })();

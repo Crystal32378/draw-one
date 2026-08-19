@@ -1,0 +1,753 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>抽一 Draw One — 埕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400..700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/slip.css?v=3" />
+<style>
+  /* ------------------------------------------------------------------
+     The Arrival — 埕與沿革 prototype (V2B)
+     基本單位是埕，不是殿。中軸留空：畫面正中央自上而下不放任何東西。
+     第一人稱直式構圖：下＝你（案、籤簿），中＝空的埕，上緣兩側＝諸殿。
+     牌匾只有聖號——能比較的才是 provider card，一個名字加一個方向不是。
+     空間公共（對誰都一樣），記憶私人（只在你的籤簿與案上）。
+     ------------------------------------------------------------------ */
+  :root {
+    --ground: #d9d2c0;        /* 埕的地 */
+    --ground-far: #c7bfab;    /* 埕的遠處（簷影） */
+    --paper: #f5efe2;
+    --ink: #262119;
+    --ink-soft: #6f6757;
+    --cinnabar: #a63a2b;
+    --rule: #4a4234;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Noto Sans TC", ui-sans-serif, system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .app { position: relative; max-width: 430px; height: 100dvh; margin: 0 auto; overflow: hidden; }
+  .screen {
+    position: absolute; inset: 0;
+    display: none; flex-direction: column;
+    transition: transform 520ms cubic-bezier(0.3, 0.7, 0.2, 1), opacity 520ms ease;
+  }
+  .screen.on { display: flex; }
+  @media (prefers-reduced-motion: reduce) { .screen { transition: none; } }
+
+  /* ============ 山門（初訪一次） ============ */
+  #s-gate {
+    background: var(--ground);
+    align-items: center; justify-content: center;
+    padding: 0 34px;
+  }
+  .gate-rules {
+    border-top: 1px solid rgba(74, 66, 52, 0.5);
+    border-bottom: 1px solid rgba(74, 66, 52, 0.5);
+    padding: 30px 6px;
+    display: grid; gap: 20px;
+  }
+  .gate-rules p {
+    font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 16px; letter-spacing: 0.24em; line-height: 1.7;
+  }
+  .gate-enter {
+    margin-top: 44px;
+    background: none; border: 1px solid var(--rule);
+    font: inherit; font-family: "Noto Serif TC", serif;
+    font-size: 16px; letter-spacing: 0.5em; text-indent: 0.5em;
+    padding: 13px 30px 13px 34px; color: var(--ink); cursor: pointer;
+  }
+
+  /* ============ 埕 ============ */
+  #s-court {
+    background:
+      radial-gradient(120% 90% at 50% 62%, var(--ground) 40%, var(--ground-far) 100%);
+  }
+  /* 遠處：簷影一線（上緣的暗帶＝對面的殿簷下） */
+  .court-eaves {
+    height: 34px; flex: 0 0 auto;
+    background: linear-gradient(180deg, rgba(52, 45, 34, 0.22), transparent);
+  }
+  .court-field { position: relative; flex: 1; }
+  /* 牌匾：只有聖號。左右緣懸掛，中軸永遠留空 */
+  .plaque {
+    position: absolute;
+    writing-mode: vertical-rl;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.22);
+    font-family: "Noto Serif TC", serif; font-weight: 650;
+    letter-spacing: 0.16em; line-height: 1.15;
+    color: var(--ink);
+    padding: 12px 7px 14px;
+    cursor: pointer;
+    border-top: 4px solid var(--rule); /* 懸掛感：頂邊粗 */
+  }
+  .plaque:hover { transform: translateY(1px); }
+  .plaque .last-mark {
+    display: block;
+    font-family: "Noto Sans TC", sans-serif; font-weight: 400;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--ink-soft);
+    margin-left: 6px;
+  }
+  .plaque.hypothetical { opacity: 0.62; border-style: dashed; }
+  .plaque .build-mark {
+    display: block;
+    font-family: "Noto Sans TC", sans-serif; font-weight: 400;
+    font-size: 10px; letter-spacing: 0.2em; color: var(--cinnabar);
+    margin-left: 6px;
+  }
+  /* 埕心：日期與節氣寫在地上；中軸上唯一的東西是「空與時間」 */
+  .court-heart {
+    position: absolute; left: 0; right: 0; top: 42%;
+    text-align: center;
+    color: rgba(74, 66, 52, 0.75);
+    font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.42em; text-indent: 0.42em;
+    pointer-events: none;
+  }
+  .court-chronicle {
+    position: absolute; left: 0; right: 0; top: calc(42% + 30px);
+    text-align: center;
+  }
+  .court-chronicle button {
+    background: none; border: 0; font: inherit;
+    font-size: 11px; letter-spacing: 0.3em; text-indent: 0.3em;
+    color: rgba(111, 103, 87, 0.8); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 4px;
+    text-decoration-color: rgba(111, 103, 87, 0.4);
+  }
+  /* 案：在你身邊（畫面底部），不在埕中央 */
+  .desk {
+    flex: 0 0 auto;
+    background: linear-gradient(180deg, rgba(245, 239, 226, 0.0), rgba(245, 239, 226, 0.72) 26%, rgba(245, 239, 226, 0.92));
+    border-top: 1px solid rgba(74, 66, 52, 0.42);
+    padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
+    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: end;
+  }
+  .book-object {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    box-shadow: 2px 2px 0 -1px var(--paper), 2px 2px 0 0 var(--rule);
+    padding: 10px 8px 12px;
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    font-size: 14px; letter-spacing: 0.2em;
+    cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .book-object .count {
+    writing-mode: horizontal-tb;
+    font-family: "Noto Sans TC", sans-serif; font-weight: 400;
+    font-size: 10px; color: var(--ink-soft); letter-spacing: 0.1em;
+  }
+  .ask-zone { display: grid; gap: 8px; }
+  .ask-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
+  .ask-zone textarea {
+    width: 100%; min-height: 44px; max-height: 96px;
+    background: transparent; border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.45);
+    font: inherit; font-size: 15.5px; line-height: 1.7; color: var(--ink);
+    resize: none; padding: 2px 2px 8px;
+  }
+  .ask-zone textarea:focus { outline: none; border-bottom-color: var(--ink); }
+  .ask-zone textarea::placeholder { color: #a79d8a; }
+  .bound-strip {
+    font-size: 12.5px; line-height: 1.7; color: var(--ink-soft);
+    border-left: 2px solid var(--cinnabar); padding-left: 10px;
+    cursor: pointer;
+  }
+  .walk-hint { font-size: 11px; letter-spacing: 0.14em; color: rgba(111, 103, 87, 0.85); }
+
+  /* ============ 殿 ============ */
+  #s-hall { background: linear-gradient(180deg, #cfc7b2 0%, var(--ground) 30%); overflow-y: auto; }
+  .hall-top {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: calc(10px + env(safe-area-inset-top)) 14px 0;
+  }
+  .hall-back {
+    background: none; border: 0; font: inherit; font-size: 13px;
+    letter-spacing: 0.2em; color: var(--ink-soft); cursor: pointer; padding: 8px;
+  }
+  .hall-body { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 0 20px 40px; }
+  /* 聖號：殿內唯一的不對稱——比誰都大，位於上方 */
+  .tablet {
+    margin-top: 2px;
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 700;
+    font-size: clamp(52px, 17vw, 68px);
+    letter-spacing: 0.28em;
+    line-height: 1.05;
+    color: var(--ink);
+    border: 2px solid var(--rule);
+    border-top: 6px solid var(--rule);
+    background: var(--paper);
+    padding: 26px 12px 30px;
+    box-shadow: 0 2px 3px rgba(38, 33, 25, 0.2);
+  }
+  .hall-sub {
+    margin-top: 12px;
+    font-size: 11.5px; letter-spacing: 0.3em; text-indent: 0.3em;
+    color: var(--ink-soft);
+  }
+  .hall-desk {
+    width: 100%; max-width: 340px; margin-top: 30px;
+    border-top: 1px solid rgba(74, 66, 52, 0.42);
+    padding-top: 16px;
+    display: grid; gap: 8px;
+  }
+  .present-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
+  .present-q { font-size: 15px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
+  .present-q.empty { color: var(--ink-soft); font-family: "Noto Sans TC", sans-serif; font-size: 13px; }
+
+  /* 籤筒（沿用 V2A 的拖抽） */
+  .tube-stage { margin-top: 34px; display: flex; flex-direction: column; align-items: center; }
+  .tube-wrap { position: relative; width: 110px; height: 300px; overflow: hidden; touch-action: none; }
+  .stick {
+    position: absolute; left: 50%; bottom: 86px;
+    width: 20px; height: 170px;
+    transform: translateX(-50%) translateY(140px);
+    background: linear-gradient(90deg, #d9c9a3, #cbb98f 55%, #b9a67c);
+    border: 1px solid rgba(74, 66, 52, 0.55);
+    border-radius: 10px 10px 3px 3px;
+  }
+  .tube {
+    position: absolute; left: 0; bottom: 0;
+    width: 110px; height: 150px;
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    border-radius: 6px 6px 10px 10px;
+    box-shadow: inset 0 10px 14px -10px rgba(38, 33, 25, 0.5);
+  }
+  .tube::after {
+    content: "籤"; position: absolute; inset: 0;
+    display: grid; place-items: center;
+    font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 27px;
+    color: rgba(38, 33, 25, 0.7);
+  }
+  .tube-hint { margin-top: 20px; font-size: 12.5px; letter-spacing: 0.14em; color: var(--ink-soft); }
+
+  .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px; }
+  .stick-large {
+    width: 42px; height: 280px;
+    background: linear-gradient(90deg, #dccda8, #cbb98f 55%, #b7a479);
+    border: 1px solid rgba(74, 66, 52, 0.6);
+    border-radius: 21px 21px 5px 5px;
+    display: flex; align-items: flex-start; justify-content: center; padding-top: 26px;
+  }
+  .stick-label {
+    writing-mode: vertical-rl;
+    font-family: "Noto Serif TC", serif; font-weight: 700;
+    font-size: 20px; letter-spacing: 0.3em; color: #4a3c26;
+  }
+  .take-btn {
+    background: var(--ink); color: var(--paper); border: 0; font: inherit;
+    font-size: 14px; letter-spacing: 0.3em; text-indent: 0.3em;
+    padding: 12px 26px; cursor: pointer;
+  }
+
+  .slip-stage { display: none; flex-direction: column; align-items: center; width: 100%; }
+  .note-zone { width: 100%; max-width: 340px; margin-top: 22px; display: grid; gap: 8px; }
+  .note-zone textarea {
+    width: 100%; min-height: 60px;
+    background: transparent; border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.45);
+    font: inherit; font-size: 14.5px; line-height: 1.8; color: var(--ink);
+    resize: none; padding: 2px 2px 8px;
+  }
+  .note-zone textarea:focus { outline: none; border-bottom-color: var(--ink); }
+  .slip-actions { width: 100%; max-width: 340px; margin-top: 24px; display: flex; justify-content: flex-end; }
+
+  /* 未落成之殿（hypothetical stress test） */
+  .unbuilt {
+    margin-top: 40px; max-width: 300px;
+    font-size: 13.5px; line-height: 2; color: var(--ink-soft); text-align: center;
+  }
+
+  /* ============ 沿革 / 籤簿 overlay ============ */
+  .overlay {
+    position: absolute; inset: 0; z-index: 30;
+    background: rgba(38, 33, 25, 0.28);
+    display: none; align-items: flex-end;
+  }
+  .overlay.on { display: flex; }
+  .sheet {
+    width: 100%; max-height: 78dvh; overflow-y: auto;
+    background: var(--paper);
+    border-top: 1.5px solid var(--rule);
+    padding: 22px 22px calc(28px + env(safe-area-inset-bottom));
+  }
+  .sheet h2 {
+    font-family: "Noto Serif TC", serif; font-weight: 600;
+    font-size: 17px; letter-spacing: 0.3em;
+    margin-bottom: 6px;
+  }
+  .sheet .sheet-sub { font-size: 12px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 14px; }
+  .chron-list { display: grid; gap: 10px; }
+  .chron-list p { font-size: 13.5px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
+  .chron-list .d { color: var(--ink-soft); font-family: "Noto Sans TC", sans-serif; font-size: 11.5px; letter-spacing: 0.1em; }
+  .book-list { display: grid; }
+  .book-entry {
+    display: grid; gap: 5px; padding: 14px 2px;
+    border-bottom: 1px solid rgba(74, 66, 52, 0.25);
+    background: none; border-top: 0; border-left: 0; border-right: 0;
+    font: inherit; text-align: left; cursor: pointer;
+  }
+  .book-line1 { display: flex; justify-content: space-between; align-items: baseline; }
+  .book-tab { font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 16px; }
+  .book-date { font-size: 11px; color: var(--ink-soft); }
+  .book-q { font-size: 12.5px; color: var(--ink-soft); line-height: 1.7;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .book-empty { font-size: 13px; color: var(--ink-soft); line-height: 2; }
+</style>
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- 山門：初訪一次 -->
+  <section class="screen" id="s-gate">
+    <div class="gate-rules">
+      <p>一事一籤，不重問</p>
+      <p>紙上只有考證過的文本</p>
+      <p>諸神同尊，殿序依沿革</p>
+    </div>
+    <button class="gate-enter" id="enterBtn">入內</button>
+  </section>
+
+  <!-- 埕 -->
+  <section class="screen" id="s-court">
+    <div class="court-eaves"></div>
+    <div class="court-field" id="courtField">
+      <div class="court-heart" id="courtHeart"></div>
+      <div class="court-chronicle"><button id="chronBtn">本廟沿革</button></div>
+    </div>
+    <div class="desk">
+      <div class="book-object" id="bookObj">籤簿<span class="count" id="bookCount"></span></div>
+      <div class="ask-zone" id="askZone">
+        <div class="ask-label">今天想問什麼</div>
+        <textarea id="question" rows="1" placeholder="寫下來，再走向其中一殿。"></textarea>
+        <div class="walk-hint" id="walkHint"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 殿 -->
+  <section class="screen" id="s-hall">
+    <div class="hall-top">
+      <button class="hall-back" id="backBtn">↩ 回埕</button>
+      <span></span>
+    </div>
+    <div class="hall-body">
+      <div class="tablet" id="tablet"></div>
+      <div class="hall-sub" id="hallSub"></div>
+
+      <div class="hall-desk" id="hallDesk">
+        <div class="present-label">所問之事</div>
+        <div class="present-q" id="presentQ"></div>
+      </div>
+
+      <div class="tube-stage" id="tubeStage">
+        <div class="tube-wrap" id="tubeWrap">
+          <div class="stick" id="tubeStick"></div>
+          <div class="tube"></div>
+        </div>
+        <div class="tube-hint">按住籤枝，往上抽</div>
+      </div>
+
+      <div class="stick-stage" id="stickStage">
+        <div class="stick-large"><span class="stick-label" id="stickLabel"></span></div>
+        <button class="take-btn" id="takeBtn">取籤詩</button>
+      </div>
+
+      <div class="slip-stage" id="slipStage">
+        <div id="slipMount" style="width:100%;display:flex;justify-content:center;"></div>
+        <div class="note-zone">
+          <div class="present-label">想記下什麼嗎（可以不寫）</div>
+          <textarea id="noteInput" placeholder="幾個字就好。"></textarea>
+        </div>
+        <div class="slip-actions">
+          <button class="take-btn" id="keepBtn">收進籤簿・回埕</button>
+        </div>
+      </div>
+
+      <div class="unbuilt" id="unbuilt" hidden></div>
+    </div>
+  </section>
+
+  <!-- overlays -->
+  <div class="overlay" id="chronOverlay"><div class="sheet">
+    <h2>本廟沿革</h2>
+    <p class="sheet-sub">本廟無主祀，諸神同尊；殿序依落成，落成依籤本考證完成之日。</p>
+    <div class="chron-list" id="chronList"></div>
+  </div></div>
+
+  <div class="overlay" id="bookOverlay"><div class="sheet">
+    <h2>籤簿</h2>
+    <p class="sheet-sub">回看是抽籤的後半段：當時問了什麼、籤說了什麼、後來呢。</p>
+    <div class="book-list" id="bookList"></div>
+    <p class="book-empty" id="bookEmpty" hidden>還沒有籤。</p>
+  </div></div>
+
+</div>
+
+<script src="../assets/oracles.draw-pool.js?v=3"></script>
+<script src="../assets/draw-policy.js?v=3"></script>
+<script src="../assets/slip-render.js?v=3"></script>
+<script>
+(function () {
+  "use strict";
+
+  const POOL = (window.DRAW_POOL && window.DRAW_POOL.schema === "draw-pool/1.0" && window.DRAW_POOL.entries?.length)
+    ? window.DRAW_POOL : null;
+
+  /* ------------------------------------------------------------------
+     殿的登記：殿＝神明／傳統（聖號經 provenance 確認），corpus＝殿內容。
+     天上聖母殿供六十甲子籤，係因 production edition 採北港朝天宮來源；
+     不宣稱六十甲子籤系普遍專屬媽祖。
+     位置：牌匾僅懸於左右兩緣（中軸永遠留空），序依沿革。
+     月老殿為 hypothetical 擴建 stress test（?halls=4），非 production。
+     ------------------------------------------------------------------ */
+  const HALLS = [
+    { id: "guanyin", deity: "觀世音", corpusId: "guanyin", sub: "觀世音靈籤・艋舺龍山寺",
+      pos: { side: "right", top: "6%" }, chron: "觀世音殿・籤本百首對勘完成" },
+    { id: "mazu", deity: "天上聖母", corpusId: "liushijiazi", sub: "六十甲子籤・北港朝天宮",
+      pos: { side: "left", top: "10%" }, chron: "天上聖母殿・六十甲子籤本考證完成" },
+    { id: "guandi", deity: "關帝", corpusId: "guandi", sub: "護國嘉濟江東王靈籤・道藏本",
+      pos: { side: "right", top: "34%" }, chron: "關帝殿・道藏籤本轉錄完成" },
+  ];
+  const HYPOTHETICAL_4TH = {
+    id: "yuelao", deity: "月老", corpusId: null, sub: "籤本整理中",
+    pos: { side: "left", top: "38%" }, chron: "（假設）月老殿・增建中", hypothetical: true,
+  };
+  if (new URLSearchParams(location.search).get("halls") === "4") HALLS.push(HYPOTHETICAL_4TH);
+
+  const DEVDRAW = new URLSearchParams(location.search).get("devdraw") === "1";
+
+  /* ---------- 節氣（2026 近似表；prototype 用） ---------- */
+  const TERMS = [[1,5,"小寒"],[1,20,"大寒"],[2,4,"立春"],[2,18,"雨水"],[3,5,"驚蟄"],[3,20,"春分"],
+    [4,4,"清明"],[4,19,"穀雨"],[5,5,"立夏"],[5,20,"小滿"],[6,5,"芒種"],[6,21,"夏至"],
+    [7,6,"小暑"],[7,22,"大暑"],[8,7,"立秋"],[8,23,"處暑"],[9,7,"白露"],[9,22,"秋分"],
+    [10,8,"寒露"],[10,23,"霜降"],[11,7,"立冬"],[11,22,"小雪"],[12,6,"大雪"],[12,21,"冬至"]];
+  function currentTerm(d) {
+    let name = "冬至";
+    for (const [m, day, n] of TERMS) {
+      if (d.getMonth() + 1 > m || (d.getMonth() + 1 === m && d.getDate() >= day)) name = n;
+    }
+    return name;
+  }
+  const CND = "〇一二三四五六七八九";
+  const cnNum = (n) => (n <= 10 ? (n === 10 ? "十" : CND[n]) : n < 20 ? "十" + CND[n % 10] : CND[Math.floor(n / 10)] + "十" + (n % 10 ? CND[n % 10] : ""));
+
+  /* ---------- state ---------- */
+  const VISITED_KEY = "arrival.visited.v1";
+  const LASTHALL_KEY = "arrival.lasthall.v1";
+  const BOOK_KEY = "drawone.book.v1";
+  let currentHall = null;
+  let currentResolved = null;
+
+  const $ = (id) => document.getElementById(id);
+  const store = {
+    get: (k, f) => { try { return JSON.parse(localStorage.getItem(k) ?? "null") ?? f; } catch { return f; } },
+    set: (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  };
+
+  function show(name) {
+    for (const s of ["gate", "court", "hall"]) $("s-" + s).classList.toggle("on", s === name);
+  }
+
+  /* ---------- 埕 ---------- */
+  function renderCourt() {
+    const d = new Date();
+    $("courtHeart").textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+
+    const field = $("courtField");
+    field.querySelectorAll(".plaque").forEach((el) => el.remove());
+    const lastHall = store.get(LASTHALL_KEY, null);
+    for (const h of HALLS) {
+      const p = document.createElement("button");
+      p.className = "plaque" + (h.hypothetical ? " hypothetical" : "");
+      p.style.top = h.pos.top;
+      p.style[h.pos.side] = "12px";
+      p.style.fontSize = "20px";
+      p.dataset.hall = h.id;
+      p.textContent = h.deity;
+      if (h.hypothetical) {
+        const m = document.createElement("span");
+        m.className = "build-mark";
+        m.textContent = "增建中";
+        p.appendChild(m);
+      } else if (lastHall?.id === h.id) {
+        const m = document.createElement("span");
+        m.className = "last-mark";
+        m.textContent = "上次到訪・" + (lastHall.date ?? "");
+        p.appendChild(m);
+      }
+      field.appendChild(p);
+    }
+
+    const book = store.get(BOOK_KEY, []);
+    $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
+
+    updateWalkHint();
+  }
+
+  function updateWalkHint() {
+    const bound = POOL && window.DRAW_POLICY.peekBinding({ question: $("question").value });
+    if (bound) {
+      $("walkHint").innerHTML = "";
+      const strip = document.createElement("div");
+      strip.className = "bound-strip";
+      strip.textContent = "這個問題已有一支籤——案上放著，點看。";
+      strip.addEventListener("click", () => {
+        const entry = POOL.entries.find((e) => e.id === bound.entryId);
+        const hall = HALLS.find((h) => h.corpusId === entry.corpus_id) ?? HALLS[0];
+        enterHall(hall, { boundEntry: entry });
+      });
+      $("walkHint").appendChild(strip);
+    } else {
+      $("walkHint").textContent = POOL ? "寫好了就走向其中一殿。" : "籤詩資料層未通過驗證，暫停抽籤（fail-closed）。";
+    }
+  }
+  $("question").addEventListener("input", updateWalkHint);
+
+  $("courtField").addEventListener("click", (ev) => {
+    const p = ev.target.closest("[data-hall]");
+    if (!p) return;
+    enterHall(HALLS.find((h) => h.id === p.dataset.hall));
+  });
+
+  /* ---------- 走向殿（前進 transition） ---------- */
+  function enterHall(hall, { boundEntry } = {}) {
+    currentHall = hall;
+    const court = $("s-court");
+    court.style.transform = "translateY(24%) scale(1.04)";
+    court.style.opacity = "0";
+    setTimeout(() => {
+      court.style.transform = ""; court.style.opacity = "";
+      renderHall(hall, { boundEntry });
+      show("hall");
+    }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 380);
+  }
+
+  $("backBtn").addEventListener("click", () => {
+    renderCourt();
+    show("court");
+  });
+
+  /* ---------- 殿 ---------- */
+  function renderHall(hall, { boundEntry } = {}) {
+    $("tablet").textContent = hall.deity;
+    $("hallSub").textContent = hall.sub;
+    $("tubeStage").style.display = "none";
+    $("stickStage").style.display = "none";
+    $("slipStage").style.display = "none";
+    $("unbuilt").hidden = true;
+    $("hallDesk").style.display = "";
+
+    const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
+    $("presentQ").textContent = q || "（未寫問題——空手而來也可以）";
+    $("presentQ").classList.toggle("empty", !q);
+
+    if (hall.hypothetical || !hall.corpusId) {
+      // 未落成之殿：誠實 fail-closed，不可抽
+      $("hallDesk").style.display = "none";
+      $("unbuilt").hidden = false;
+      $("unbuilt").textContent = "本殿尚未落成——籤本仍在來源考證中。考證完成、通過治理之日，沿革記上會有這一殿。";
+      return;
+    }
+
+    if (!POOL) {
+      $("unbuilt").hidden = false;
+      $("unbuilt").textContent = "籤詩資料層未通過驗證，暫停抽籤（fail-closed）。";
+      return;
+    }
+
+    // 一事一籤：已綁定 → 案上直接是那張紙
+    const bound = boundEntry ?? (() => {
+      const b = window.DRAW_POLICY.peekBinding({ question: $("question").value });
+      return b ? POOL.entries.find((e) => e.id === b.entryId) : null;
+    })();
+    if (bound) {
+      showSlip(bound, { repeated: !boundEntry });
+      return;
+    }
+
+    $("tubeStage").style.display = "flex";
+    resetStick();
+  }
+
+  /* ---------- 拖抽 ---------- */
+  const PULL_DIST = 130;
+  let pulling = false, startY = 0, ticked = false;
+  const stickEl = $("tubeStick");
+  const REST = 140, TOP = -34;
+  function setStick(p) { stickEl.style.transform = `translateX(-50%) translateY(${REST + (TOP - REST) * p}px)`; }
+  function resetStick() { stickEl.style.transition = "none"; setStick(0); }
+  $("tubeWrap").addEventListener("pointerdown", (ev) => {
+    if (!POOL || pulling) return;
+    ev.preventDefault();
+    pulling = true; ticked = false; startY = ev.clientY;
+    stickEl.style.transition = "none";
+  });
+  window.addEventListener("pointermove", (ev) => {
+    if (!pulling) return;
+    const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
+    const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
+    setStick(p);
+    if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
+    if (p >= 1) { pulling = false; completeDraw(); }
+  });
+  const endPull = () => {
+    if (!pulling) return;
+    pulling = false;
+    stickEl.style.transition = "transform 240ms ease"; setStick(0);
+  };
+  window.addEventListener("pointerup", endPull);
+  window.addEventListener("pointercancel", endPull);
+  if (DEVDRAW) $("tubeWrap").addEventListener("click", () => { if (!pulling) completeDraw(); });
+
+  function uniformDraw(corpusId) {
+    const c = POOL.entries.filter((e) => e.corpus_id === corpusId);
+    return c[Math.floor(Math.random() * c.length)];
+  }
+
+  function completeDraw() {
+    if (navigator.vibrate) navigator.vibrate(16);
+    currentResolved = window.DRAW_POLICY.resolveDraw({
+      question: $("question").value,
+      corpusId: currentHall.corpusId,
+      drawFn: uniformDraw,
+    });
+    const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
+    $("tubeStage").style.display = "none";
+    $("stickLabel").textContent = window.SLIP_RENDER.tabText(entry);
+    $("stickStage").style.display = "flex";
+  }
+
+  $("takeBtn").addEventListener("click", () => {
+    const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
+    showSlip(entry, { repeated: false });
+  });
+
+  function showSlip(entry, { repeated }) {
+    $("tubeStage").style.display = "none";
+    $("stickStage").style.display = "none";
+    $("slipStage").style.display = "flex";
+    const mount = $("slipMount");
+    mount.innerHTML = "";
+    try {
+      window.SLIP_RENDER.mountSlip(mount, entry);
+    } catch (err) {
+      const p = document.createElement("p");
+      p.style.color = "var(--cinnabar)"; p.style.fontSize = "13px"; p.style.lineHeight = "1.8";
+      p.textContent = "此籤未通過 provenance 對應檢查，拒絕排版（fail-closed）：" + err.message;
+      mount.appendChild(p);
+      return;
+    }
+    const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
+    const book = store.get(BOOK_KEY, []);
+    const existing = book.find((b) => b.entryId === entry.id && b.question === q);
+    $("noteInput").value = existing?.note ?? "";
+    currentResolved = { entryId: entry.id, repeated };
+  }
+
+  $("keepBtn").addEventListener("click", () => {
+    const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
+    const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
+    const note = $("noteInput").value.trim();
+    const book = store.get(BOOK_KEY, []);
+    const existing = book.find((b) => b.entryId === entry.id && b.question === q);
+    if (existing) existing.note = note;
+    else book.unshift({ ts: new Date().toISOString(), question: q, entryId: entry.id, corpusId: entry.corpus_id, note });
+    store.set(BOOK_KEY, book);
+    const d = new Date();
+    store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
+    $("question").value = "";
+    renderCourt();
+    show("court");
+  });
+
+  /* ---------- 沿革 / 籤簿 overlays ---------- */
+  function chronDates() {
+    // 落成日＝籤本通過 production gate 之日（同期落成，沿革如實記載）
+    return [
+      { d: "二〇二六年八月十八日・同期落成", items: HALLS.filter((h) => !h.hypothetical).map((h) => h.chron) },
+      ...(HALLS.some((h) => h.hypothetical) ? [{ d: "（假設情境）", items: [HYPOTHETICAL_4TH.chron] }] : []),
+    ];
+  }
+  $("chronBtn").addEventListener("click", () => {
+    const list = $("chronList");
+    list.innerHTML = "";
+    for (const g of chronDates()) {
+      const dEl = document.createElement("p");
+      dEl.className = "d";
+      dEl.textContent = g.d;
+      list.appendChild(dEl);
+      for (const it of g.items) {
+        const p = document.createElement("p");
+        p.textContent = it;
+        list.appendChild(p);
+      }
+    }
+    $("chronOverlay").classList.add("on");
+  });
+
+  $("bookObj").addEventListener("click", () => {
+    const book = store.get(BOOK_KEY, []);
+    $("bookEmpty").hidden = book.length > 0;
+    const list = $("bookList");
+    list.innerHTML = "";
+    book.forEach((b, i) => {
+      const entry = POOL?.entries.find((e) => e.id === b.entryId);
+      if (!entry) return;
+      const d = new Date(b.ts);
+      const btn = document.createElement("button");
+      btn.className = "book-entry";
+      const l1 = document.createElement("span"); l1.className = "book-line1";
+      const t = document.createElement("span"); t.className = "book-tab";
+      t.textContent = window.SLIP_RENDER.tabText(entry);
+      const dt = document.createElement("span"); dt.className = "book-date";
+      dt.textContent = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}.${String(d.getDate()).padStart(2, "0")}`;
+      l1.append(t, dt);
+      const ql = document.createElement("span"); ql.className = "book-q";
+      ql.textContent = b.question || "（未寫問題）";
+      btn.append(l1, ql);
+      btn.addEventListener("click", () => {
+        $("bookOverlay").classList.remove("on");
+        const hall = HALLS.find((h) => h.corpusId === entry.corpus_id) ?? HALLS[0];
+        currentHall = hall;
+        $("question").value = b.question;
+        renderHall(hall, { boundEntry: entry });
+        show("hall");
+      });
+      list.appendChild(btn);
+    });
+    $("bookOverlay").classList.add("on");
+  });
+
+  for (const id of ["chronOverlay", "bookOverlay"]) {
+    $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
+  }
+
+  /* ---------- boot：初訪走山門，之後永遠落在埕 ---------- */
+  $("enterBtn").addEventListener("click", () => {
+    store.set(VISITED_KEY, true);
+    renderCourt();
+    show("court");
+  });
+
+  if (store.get(VISITED_KEY, false)) {
+    renderCourt();
+    show("court");
+  } else {
+    show("gate");
+  }
+})();
+</script>
+</body>
+</html>
