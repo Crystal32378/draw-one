@@ -47,7 +47,7 @@
 ## Provenance / Reproducibility
 
 - **source_locator**：`zh.wikisource.org/wiki/護國嘉濟江東王靈籤/{1–100}`，每筆可回查
-- **transcription_status**：199 PROBABLE（基於維基文庫全文一手抓取）＋ 1 UNRESOLVED（#100 解曰缺字）。道藏影像（ctext）逐籤核對後方可升 VERIFIED
+- **transcription_status**：199 PROBABLE（基於維基文庫全文直接抓取）＋ 1 UNRESOLVED（#100 解曰缺字）。道藏影像（ctext）逐籤核對後方可升 VERIFIED
 - **抽樣逐字對照**：#5 / #25 / #50 / #75 / #95 重新抓取維基文庫，解曰＋聖意逐字一致
 - **異體字**（如「冨」「隲」）原樣保存，不 canonicalize
 
