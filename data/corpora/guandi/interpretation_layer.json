@@ -580,7 +580,7 @@
       "source_locator": "zh.wikisource.org/wiki/護國嘉濟江東王靈籤/26",
       "transcription_status": "PROBABLE",
       "layer_class": "historical",
-      "variants_or_notes": ""
+      "variants_or_notes": "second-witness（chance.org.tw 雷雨師籤）作「人信還」；維基文庫「辛」疑為「人」之 transcription 誤讀，逐字保留原文"
     },
     {
       "corpus": "guandi",
@@ -954,7 +954,7 @@
       "source_locator": "zh.wikisource.org/wiki/護國嘉濟江東王靈籤/43",
       "transcription_status": "PROBABLE",
       "layer_class": "historical",
-      "variants_or_notes": "維基文庫原標「聖意；」用分號，應為「聖意：」之標點 typo"
+      "variants_or_notes": "維基文庫原標「聖意；」用分號，應為「聖意：」之標點 typo；second-witness（chance.org.tw 雷雨師籤）作「功名遂。子嗣歡。訟病險。終必安。失物在。行人還。婚宜遠。利不難」；維基文庫「行人歸二失物還」缺標點，疑為「失物在。行人還」之誤讀／缺標點，逐字保留原文"
     },
     {
       "corpus": "guandi",
@@ -1273,7 +1273,7 @@
       "source_locator": "zh.wikisource.org/wiki/護國嘉濟江東王靈籤/58",
       "transcription_status": "PROBABLE",
       "layer_class": "historical",
-      "variants_or_notes": ""
+      "variants_or_notes": "second-witness（chance.org.tw 雷雨師籤）作「求名必得」；維基文庫「爻」疑為「必」之 transcription 誤讀，逐字保留原文"
     },
     {
       "corpus": "guandi",
@@ -1493,7 +1493,7 @@
       "source_locator": "zh.wikisource.org/wiki/護國嘉濟江東王靈籤/68",
       "transcription_status": "PROBABLE",
       "layer_class": "historical",
-      "variants_or_notes": ""
+      "variants_or_notes": "second-witness（chance.org.tw 雷雨師籤）作「貪心不止」；維基文庫「責」疑為「貪」之 transcription 誤讀，逐字保留原文"
     },
     {
       "corpus": "guandi",
@@ -2197,7 +2197,7 @@
       "source_locator": "zh.wikisource.org/wiki/護國嘉濟江東王靈籤/100",
       "transcription_status": "UNRESOLVED",
       "layer_class": "historical",
-      "variants_or_notes": "「□□」為道藏本缺字（識典古籍 DZ1305 亦作「□□」）；chance.org.tw 雷雨師籤流通本作「更修陰騭，神必佑之」，缺字疑為「神必佑」。另「視福神」識典古籍作「禍福神」、「几百」識典古籍作「凡百」，皆疑為維基文庫 transcription 誤讀，本欄逐字保留維基文庫原文。"
+      "variants_or_notes": "「□□」為道藏本缺字（識典古籍 DZ1305 亦作「□□」）；chance.org.tw 雷雨師籤流通本作「更修陰騭，神必佑之」，缺字疑為「神必佑」。另「視福神」識典古籍作「禍福神」、「几百」識典古籍作「凡百」，皆疑為維基文庫 transcription 誤讀，本欄逐字保留維基文庫原文。；「□□」為道藏本缺字（識典古籍 DZ1305 亦作「□□」）；chance.org.tw 雷雨師流通本作「更修陰騭，神必佑之」，缺字疑為「神必佑」。另「視福神」識典古籍作「禍福神」、「几百」作「凡百」，皆疑為維基文庫 transcription 誤讀，本欄逐字保留維基文庫原文。"
     },
     {
       "corpus": "guandi",
