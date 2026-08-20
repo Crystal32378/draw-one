@@ -65,10 +65,11 @@
     padding: 13px 30px 13px 34px; color: var(--ink); cursor: pointer;
   }
 
-  /* ============ 埕（v2：轉身全景＋前中後景） ============
-     你站在埕裡：水平拖動＝轉身。一次正對一站，鄰站被畫框自然裁掉。
-     初始面向＝中軸空段（日期與沿革的遠牆）——不正對任何一位。
-     層速：遠景 0.35x／中景 1x／地面 0.9x／近景柱緣 1.55x。 */
+  /* ============ 埕（v3：牆、量體、落地） ============
+     你站在埕裡：水平拖動＝轉身。geometry：地平線 54%，連續遠側牆 24%–54%
+     跑滿整條站列（殿長在牆上，不浮空）；殿＝凸出牆面的量體（簷＋側影＋
+     門洞＋台階落地）；柱在站與站之間、1.55x 近景速，正對時在畫框外。
+     左右交替擴建＝Draw One 自己的 geometry hypothesis（非文化依據）。 */
   #s-court { background: var(--ground); }
   .court-view {
     position: relative; flex: 1; overflow: hidden;
@@ -77,128 +78,164 @@
   .court-view:active { cursor: grabbing; }
   .layer { position: absolute; inset: 0; pointer-events: none; }
 
-  /* 遠景：簷影帶＋遠牆面 */
-  .far-strip {
-    position: absolute; top: 0; height: 100%; display: flex;
-    will-change: transform;
-  }
+  /* 遠景（0.35x）：天光與遠簷影 */
+  .far-strip { position: absolute; inset: 0; will-change: transform; }
   .far-sky {
-    position: absolute; left: 0; right: 0; top: 0; height: 30%;
-    background: linear-gradient(180deg, rgba(52, 45, 34, 0.26), rgba(52, 45, 34, 0.06) 55%, transparent);
+    position: absolute; left: -200%; right: -200%; top: 0; height: 26%;
+    background: linear-gradient(180deg, #e3ddcd 0%, #ddd6c4 70%, #d7d0bd 100%);
   }
-  .far-wall {
-    position: absolute; left: -20%; right: -20%; top: 26%; height: 26%;
-    background: linear-gradient(180deg, #cbc3ae, #c3bba6);
-    border-bottom: 1px solid rgba(74, 66, 52, 0.35);
-  }
-
-  /* 地面：埕面三段光帶＋鋪面縫（隨轉身微移） */
-  .ground-fixed {
-    position: absolute; left: 0; right: 0; top: 52%; bottom: 0;
-    background: linear-gradient(180deg, #cfc7b2 0%, var(--ground) 34%, #ded7c6 100%);
-  }
-  .ground-joints {
-    position: absolute; top: 52%; bottom: 0; height: auto; display: flex;
-    will-change: transform;
-  }
-  .ground-joints i {
-    display: block; width: 1px; margin-right: 88px;
-    background: linear-gradient(180deg, transparent, rgba(74, 66, 52, 0.12) 40%, rgba(74, 66, 52, 0.05));
-  }
-  .ground-path {
-    position: absolute; left: 50%; bottom: 0; top: 58%;
-    width: 150px; transform: translateX(-50%);
-    background: linear-gradient(180deg, rgba(245, 239, 226, 0.0), rgba(245, 239, 226, 0.16));
-    clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
-    transition: opacity 300ms ease;
+  .far-eaveshadow {
+    position: absolute; left: -200%; right: -200%; top: 0; height: 9%;
+    background: linear-gradient(180deg, rgba(52, 45, 34, 0.30), transparent);
   }
 
-  /* 中景：站列（殿與空段） */
+  /* 中景（1x）：連續遠側牆＋殿量體 */
   .stage-strip {
-    position: absolute; top: 0; height: 100%; display: flex; align-items: flex-start;
+    position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: stretch;
     will-change: transform;
+  }
+  /* 牆：跑滿整條站列，殿長在牆上 */
+  .stage-strip::before {
+    content: ""; position: absolute; left: -60%; right: -60%;
+    top: 24%; height: 30%;
+    background: linear-gradient(180deg, #cfc8b4 0%, #cac2ad 78%, #c2ba a4 100%);
+    background: linear-gradient(180deg, #cfc8b4 0%, #cac2ad 78%, #c2baa4 100%);
+    border-top: 1px solid rgba(74, 66, 52, 0.28);
+    box-shadow: inset 0 -14px 18px -14px rgba(52, 45, 34, 0.35);
+  }
+  /* 牆腳線＝地平線 */
+  .stage-strip::after {
+    content: ""; position: absolute; left: -60%; right: -60%;
+    top: 54%; height: 1px;
+    background: rgba(74, 66, 52, 0.4);
   }
   .station {
-    position: relative; flex: 0 0 auto;
-    display: flex; flex-direction: column; align-items: center;
-    transform-origin: 50% 42%;
-    will-change: transform;
+    position: relative; flex: 0 0 auto; height: 100%;
+    transform-origin: 50% 44%;
+    will-change: transform, opacity;
   }
-  /* 殿的立面：簷＋門洞＋匾＋門檻——全平面，無裝飾 */
-  .facade { position: relative; margin-top: 12%; cursor: pointer; pointer-events: auto; }
+
+  /* 殿＝凸出牆面的量體 */
+  .facade { position: absolute; inset: 0; cursor: pointer; pointer-events: auto; }
+  /* 凸出的殿身：比牆亮半階、左右各一道側影＝進深 */
+  .facade .body {
+    position: absolute; left: 13%; right: 13%; top: 21.5%; bottom: 46%;
+    background: linear-gradient(180deg, #d6cfba 0%, #d1c9b3 100%);
+    border-left: 1px solid rgba(74, 66, 52, 0.30);
+    border-right: 1px solid rgba(38, 33, 25, 0.42);
+    box-shadow:
+      inset -6px 0 8px -6px rgba(38, 33, 25, 0.4),
+      inset 6px 0 8px -6px rgba(245, 239, 226, 0.5);
+  }
+  /* 簷：出簷比殿身寬，簷下有影 */
   .facade .eave {
-    height: 16px; margin: 0 -10%;
+    position: absolute; left: 8%; right: 8%; top: 19%; height: 3%;
     background: #4a4234;
-    clip-path: polygon(0 0, 100% 0, 94% 100%, 6% 100%);
-    opacity: 0.82;
+    clip-path: polygon(0 0, 100% 0, 96% 100%, 4% 100%);
   }
+  .facade .eave-shadow {
+    position: absolute; left: 10%; right: 10%; top: 22%; height: 4.5%;
+    background: linear-gradient(180deg, rgba(38, 33, 25, 0.34), transparent);
+  }
+  /* 門洞：牆體上的洞，直達門檻 */
   .facade .doorway {
-    width: 172px; height: 218px; margin: 0 auto;
-    background:
-      linear-gradient(180deg, rgba(38, 33, 25, 0.78) 0%, rgba(38, 33, 25, 0.6) 46%, rgba(58, 51, 40, 0.42) 100%);
-    border: 1px solid rgba(58, 51, 40, 0.6); border-top: 0;
-    position: relative;
+    position: absolute; left: 27%; right: 27%; top: 27.5%; bottom: 47.5%;
+    background: linear-gradient(180deg, rgba(24, 21, 15, 0.88) 0%, rgba(38, 33, 25, 0.72) 55%, rgba(58, 51, 40, 0.5) 100%);
+    border: 1px solid rgba(38, 33, 25, 0.55); border-bottom: 0;
   }
-  .facade .threshold {
-    height: 7px; margin: 0 6px;
-    background: rgba(58, 51, 40, 0.5);
+  /* 台階：兩級，把殿接到地上 */
+  .facade .steps {
+    position: absolute; left: 24%; right: 24%; top: 52.5%; height: 1.2%;
+    background: rgba(58, 51, 40, 0.42);
+  }
+  .facade .steps::after {
+    content: ""; position: absolute; left: -5%; right: -5%; top: 130%; height: 90%;
+    background: rgba(58, 51, 40, 0.3);
   }
   .facade .plaque2 {
-    position: absolute; left: 50%; top: 14px; transform: translateX(-50%);
-    writing-mode: horizontal-tb;
+    position: absolute; left: 50%; top: 23.5%; transform: translateX(-50%);
     background: var(--paper);
     border: 1.5px solid var(--rule); border-top: 3px solid var(--rule);
     font-family: "Noto Serif TC", serif; font-weight: 650;
-    font-size: 19px; letter-spacing: 0.3em; text-indent: 0.3em;
-    padding: 7px 10px 6px; white-space: nowrap;
+    font-size: 18px; letter-spacing: 0.28em; text-indent: 0.28em;
+    padding: 6px 9px 5px; white-space: nowrap;
     color: var(--ink);
-    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.3);
+    box-shadow: 0 2px 3px rgba(38, 33, 25, 0.35);
   }
   .facade .last-mark2 {
-    position: absolute; left: 50%; bottom: -26px; transform: translateX(-50%);
+    position: absolute; left: 50%; top: 56.5%; transform: translateX(-50%);
     font-size: 10px; letter-spacing: 0.2em; color: var(--ink-soft); white-space: nowrap;
   }
-  .station.hypothetical .doorway {
-    background: linear-gradient(180deg, rgba(38, 33, 25, 0.1), rgba(38, 33, 25, 0.05));
+  /* 未落成（假設性增建）：只有放樣輪廓 */
+  .station.hypothetical .facade .body {
+    background: none;
+    border: 1px dashed rgba(74, 66, 52, 0.5);
+    box-shadow: none;
+  }
+  .station.hypothetical .facade .doorway {
+    background: rgba(38, 33, 25, 0.06);
     border-style: dashed;
   }
-  .station.hypothetical .plaque2 { border-style: dashed; opacity: 0.72; }
-  .station.hypothetical .eave { opacity: 0.3; }
+  .station.hypothetical .facade .eave { opacity: 0.25; }
+  .station.hypothetical .facade .eave-shadow { display: none; }
+  .station.hypothetical .plaque2 { border-style: dashed; opacity: 0.75; }
   .build-mark2 {
-    position: absolute; left: 50%; top: 58%; transform: translateX(-50%);
+    position: absolute; left: 50%; top: 40%; transform: translateX(-50%);
     font-size: 11px; letter-spacing: 0.3em; color: var(--cinnabar); white-space: nowrap;
   }
-  /* 中軸空段：埕心遠望——日期節氣寫在牆前，沿革在下 */
+
+  /* 中軸空段＝牆上的刻字與沿革碑：埕的邊界，不是誰的殿 */
   .station.void-station { pointer-events: auto; cursor: default; }
   .void-heart {
-    margin-top: 34%;
+    position: absolute; left: 0; right: 0; top: 30%;
     text-align: center;
-    color: rgba(74, 66, 52, 0.8);
+    color: rgba(64, 57, 44, 0.85);
     font-family: "Noto Serif TC", serif; font-weight: 500;
     font-size: 14px; letter-spacing: 0.42em; text-indent: 0.42em;
     white-space: nowrap;
   }
   .void-chron {
-    margin-top: 14px; text-align: center;
+    position: absolute; left: 50%; top: 37%; transform: translateX(-50%);
   }
   .void-chron button {
-    background: none; border: 0; font: inherit;
-    font-size: 11px; letter-spacing: 0.3em; text-indent: 0.3em;
-    color: rgba(111, 103, 87, 0.85); cursor: pointer; pointer-events: auto;
-    text-decoration: underline; text-underline-offset: 4px;
-    text-decoration-color: rgba(111, 103, 87, 0.4);
+    background: var(--paper);
+    border: 1px solid rgba(74, 66, 52, 0.55); border-top: 2.5px solid rgba(74, 66, 52, 0.7);
+    font: inherit; font-family: "Noto Serif TC", serif;
+    font-size: 11.5px; letter-spacing: 0.3em; text-indent: 0.3em;
+    color: var(--ink-soft); cursor: pointer; pointer-events: auto;
+    padding: 6px 10px 5px;
+    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.25);
   }
 
-  /* 近景：柱緣（站與站之間，最快層，局部遮擋） */
-  .near-strip {
-    position: absolute; top: 0; height: 100%; display: flex;
+  /* 地面（0.9x 鋪面縫＋固定光帶＋引路） */
+  .ground-fixed {
+    position: absolute; left: 0; right: 0; top: 54%; bottom: 0;
+    background: linear-gradient(180deg, #c9c1ac 0%, var(--ground) 30%, #ddd6c5 100%);
+  }
+  .ground-joints {
+    position: absolute; top: 54%; bottom: 0; display: flex;
     will-change: transform;
   }
+  .ground-joints i {
+    display: block; width: 1px; margin-right: 92px;
+    background: linear-gradient(180deg, rgba(74, 66, 52, 0.16), rgba(74, 66, 52, 0.04));
+    transform: rotate(0.001deg);
+  }
+  .ground-path {
+    position: absolute; left: 50%; bottom: 0; top: 54%;
+    width: 190px; transform: translateX(-50%);
+    background: linear-gradient(180deg, rgba(245, 239, 226, 0.22), rgba(245, 239, 226, 0.05));
+    clip-path: polygon(41% 0, 59% 0, 100% 100%, 0 100%);
+    transition: opacity 320ms ease;
+  }
+
+  /* 近景（1.55x）：柱，站與站之間；正對時在畫框外，轉身時掃過 */
+  .near-strip { position: absolute; inset: 0; will-change: transform; }
   .near-strip i {
-    display: block; width: 30px; height: 118%; margin-top: -6%;
-    background: linear-gradient(90deg, #b3ab97, #a29a86 55%, #948c78);
-    border-left: 1px solid rgba(74, 66, 52, 0.4);
-    border-right: 1px solid rgba(38, 33, 25, 0.5);
+    position: absolute; top: -4%; bottom: -2%; width: 34px;
+    background: linear-gradient(90deg, #b9b19c 0%, #a8a08b 45%, #90886f 100%);
+    border-left: 1px solid rgba(245, 239, 226, 0.35);
+    border-right: 2px solid rgba(38, 33, 25, 0.45);
   }
 
   .turn-hint {
@@ -406,7 +443,7 @@
   <!-- 埕 -->
   <section class="screen" id="s-court">
     <div class="court-view" id="courtView">
-      <div class="layer"><div class="far-strip" id="farStrip"><div class="far-sky"></div><div class="far-wall"></div></div></div>
+      <div class="layer"><div class="far-strip" id="farStrip"><div class="far-sky"></div><div class="far-eaveshadow"></div></div></div>
       <div class="layer"><div class="ground-fixed"></div><div class="ground-joints" id="groundJoints"></div><div class="ground-path" id="groundPath"></div></div>
       <div class="layer"><div class="stage-strip" id="stageStrip"></div></div>
       <div class="layer"><div class="near-strip" id="nearStrip"></div></div>
@@ -544,6 +581,7 @@
 
   function show(name) {
     for (const s of ["gate", "court", "hall"]) $("s-" + s).classList.toggle("on", s === name);
+    if (name === "court") requestAnimationFrame(applyFrame);
   }
 
   /* ---------- 埕 v2：轉身全景引擎 ---------- */
@@ -568,6 +606,7 @@
 
   let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
   let dragging = false, dragStartX = 0, dragStartScroll = 0, velocity = 0, lastX = 0, lastT = 0;
+  let downTarget = null;
   let raf = 0, hasTurned = false;
   const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -589,7 +628,6 @@
       st.style.width = stationW + "px";
       if (s.void) {
         const d = new Date();
-        st.innerHTML = "";
         const heart = document.createElement("div");
         heart.className = "void-heart";
         heart.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
@@ -604,18 +642,23 @@
         const f = document.createElement("div");
         f.className = "facade";
         f.dataset.hall = s.id;
-        const eave = document.createElement("div"); eave.className = "eave";
-        const door = document.createElement("div"); door.className = "doorway";
-        const plq = document.createElement("div"); plq.className = "plaque2"; plq.textContent = s.deity;
-        door.appendChild(plq);
-        if (s.hypothetical) {
-          const bm = document.createElement("div"); bm.className = "build-mark2"; bm.textContent = "增建中";
-          door.appendChild(bm);
+        for (const cls of ["body", "eave", "eave-shadow", "doorway", "steps"]) {
+          const el = document.createElement("div");
+          el.className = cls;
+          f.appendChild(el);
         }
-        const th = document.createElement("div"); th.className = "threshold";
-        f.append(eave, door, th);
-        if (!s.hypothetical && lastHall?.id === s.id) {
-          const lm = document.createElement("div"); lm.className = "last-mark2";
+        const plq = document.createElement("div");
+        plq.className = "plaque2";
+        plq.textContent = s.deity;
+        f.appendChild(plq);
+        if (s.hypothetical) {
+          const bm = document.createElement("div");
+          bm.className = "build-mark2";
+          bm.textContent = "增建中";
+          f.appendChild(bm);
+        } else if (lastHall?.id === s.id) {
+          const lm = document.createElement("div");
+          lm.className = "last-mark2";
           lm.textContent = "上次到訪・" + (lastHall.date ?? "");
           f.appendChild(lm);
         }
@@ -630,35 +673,42 @@
     groundJoints.style.left = (-vw) + "px";
 
     nearStrip.innerHTML = "";
-    for (let i = 0; i <= STATIONS.length; i++) {
+    // 柱位＝站與站的交界（stage 座標 (i+0.5)*stationW，相對站0中心）。
+    // 螢幕位置 = vw/2 + (柱位 - scroll)*1.55；正對任一站時柱在畫框外。
+    for (let i = 0; i < STATIONS.length - 1; i++) {
       const p = document.createElement("i");
-      p.style.marginLeft = (i === 0 ? 0 : Math.round(stationW * 1.55) - 30) + "px";
+      p.dataset.bx = (i + 0.5) * stationW;
       nearStrip.appendChild(p);
     }
-    nearStrip.style.left = Math.round(pad0 * 1.55 - stationW * 0.775) + "px";
 
     applyFrame();
   }
 
   function applyFrame() {
-    const vw = view.clientWidth || 1;
-    const t = pad0 - scroll;
-    stageStrip.style.transform = `translateX(${t}px)`;
-    farStrip.style.transform = `translateX(${(pad0 - scroll) * 0.35}px)`;
+    // overflow:hidden 容器仍可能被瀏覽器 focus/click 自動捲動——每幀歸零
+    if (view.scrollLeft) view.scrollLeft = 0;
+    const app = document.getElementById("app");
+    if (app.scrollLeft) app.scrollLeft = 0;
+    const vw = view.clientWidth || Math.min(430, innerWidth);
+    stageStrip.style.transform = `translateX(${pad0 - scroll}px)`;
+    farStrip.style.transform = `translateX(${-scroll * 0.35}px)`;
     groundJoints.style.transform = `translateX(${(pad0 - scroll) * 0.9}px)`;
-    nearStrip.style.transform = `translateX(${(0 - scroll) * 1.55}px)`;
-    // 近大遠小：依離視野中心的距離縮放（正對＝1，鄰站≈0.85）
+    for (const p of nearStrip.children) {
+      const x = vw / 2 + (Number(p.dataset.bx) - scroll) * 1.55 - 17;
+      p.style.transform = `translateX(${x}px)`;
+    }
+    // 近大遠小＝透視，不是位階：每一站被正對時的尺度完全相等
     STATIONS.forEach((s, i) => {
       const el = stageStrip.children[i];
       if (!el) return;
       const d = Math.min(1.4, Math.abs(stationCenter(i) - scroll) / stationW);
-      const sc = 1 - 0.15 * Math.min(1, d);
+      const sc = 1 - 0.13 * Math.min(1, d);
       el.style.transform = `scale(${sc.toFixed(3)})`;
-      el.style.opacity = (1 - 0.18 * Math.min(1, d)).toFixed(3);
+      el.style.opacity = (1 - 0.14 * Math.min(1, d)).toFixed(3);
     });
-    // 地面引路：只在正對某殿時浮現
     const ni = nearestStation();
-    const settledOnHall = !STATIONS[ni].void && Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
+    const settledOnHall = !STATIONS[ni].void && !STATIONS[ni].hypothetical &&
+      Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
     $("groundPath").style.opacity = settledOnHall ? "1" : "0";
   }
 
@@ -689,7 +739,7 @@
   }
 
   view.addEventListener("pointerdown", (ev) => {
-    if (ev.target.closest("[data-chron]")) return;
+    downTarget = ev.target;
     dragging = true;
     dragStartX = lastX = ev.clientX;
     dragStartScroll = scroll;
@@ -716,7 +766,8 @@
     const moved = Math.abs(ev.clientX - dragStartX) > 8;
     settleToNearest();
     if (!moved) {
-      const facade = ev.target.closest("[data-hall]");
+      if (downTarget?.closest("[data-chron]")) { openChron(); return; }
+      const facade = downTarget?.closest("[data-hall]");
       if (facade) {
         const idx = STATIONS.findIndex((s) => s.id === facade.dataset.hall);
         const facedNow = Math.abs(stationCenter(idx) - scroll) < stationW * 0.3;
@@ -731,10 +782,6 @@
   };
   view.addEventListener("pointerup", release);
   view.addEventListener("pointercancel", () => { dragging = false; settleToNearest(); });
-  view.addEventListener("click", (ev) => {
-    const b = ev.target.closest("[data-chron]");
-    if (b) openChron();
-  });
 
   function updateFacingUI() {
     const s = STATIONS[nearestStation()];
