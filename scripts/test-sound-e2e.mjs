@@ -88,17 +88,22 @@ check("hall targets: busLP 300 / busGain 0.5（同步 crossfade）",
 check("葉聲退遠 targets: leafLP 1100 / leafGain 0.35",
   p.targets.leafLP === 1100 && p.targets.leafGain === 0.35);
 
-console.log("E3 devdraw 全流程 → Slip 靜默與回埕還原");
+console.log("E3 devdraw 全流程 → Slip 靜默、收籤句點、回埕還原");
 await page.click("#tubeWrap");
 await sleep(200);
 await page.click("#takeBtn");
 await sleep(300);
 p = await params();
 check("展籤：世界閉嘴 (world duck 0.0001)", p.slip === true && p.targets.world === 0.0001);
+check("新抽的籤沒有帶走列（先收，才是你的）", await page.$eval("#takeawayZone", (el) => el.hidden));
 await page.click("#keepBtn");
-await sleep(400);
+await sleep(500);
+check("收籤句點：紙收起一拍（slip-away beat 進行中）",
+  await page.$eval("#slipStage", (el) => el.classList.contains("slip-away")));
+await sleep(1100);
 p = await params();
 check("收籤回埕：空氣展開還原", p.space === "court" && p.slip === false && p.targets.busLP === 800 && p.targets.world === 1);
+check("回埕無新增 prompt——沒有人留你", await page.$eval("#s-court", (el) => el.classList.contains("on")));
 
 console.log("E4 ?halls=4 月老 fail-closed — 無殿內聲態");
 await page.goto(pageURL("?halls=4&devdraw=1"));
@@ -133,6 +138,48 @@ await page.click("#soundToggleCourt");
 await sleep(300);
 p = await params();
 check("再開：toggle 點擊本身是手勢，直接有聲", p.enabled === true && p.started === true);
+
+console.log("E7 天氣票 — 換票不換殿（dev flag ?weather=）");
+p = await params();
+check("預設票＝cloudy（74af5ef 基準）", p.weather === "cloudy");
+await page.goto(pageURL("?weather=rain&devdraw=1"));
+await page.mouse.click(195, 400);
+await sleep(300);
+p = await params();
+check("?weather=rain：票已上、空間照常", p.weather === "rain" && p.space === "court");
+await page.mouse.click(360, 280); await sleep(1000);
+await page.mouse.click(195, 280); await sleep(900);
+p = await params();
+check("雨天進殿＝同一扇窗（hall 變換值與 cloudy 字面相同）",
+  p.space === "hall" && p.weather === "rain" && p.targets.busLP === 300 && p.targets.busGain === 0.5);
+await page.click("#backBtn");
+await sleep(300);
+
+console.log("E8 帶走這支籤 — 籤簿中的紙、完整產圖 pipeline");
+await page.goto(pageURL("?devdraw=1"));
+await page.mouse.click(195, 400);
+await sleep(200);
+await page.click("#bookObj");
+await sleep(200);
+await page.click(".book-entry");
+await sleep(500);
+check("籤簿的籤有帶走列", await page.$eval("#takeawayZone", (el) => !el.hidden));
+await page.click("#copyBtn");
+await sleep(300);
+const copyTxt = await page.$eval("#copyBtn", (el) => el.textContent);
+check("複製籤文有回饋（已複製／複製失敗，皆不崩）", copyTxt === "已複製" || copyTxt === "複製失敗");
+// headless 的 navigator.share 會開不出 share sheet 而永遠 pending——stub 掉，
+// 逼走 download 路徑（要驗的是產圖 pipeline；share sheet 本身屬真機驗收）
+await page.evaluate(() => { navigator.canShare = undefined; });
+await page.click("#takeawayBtn");
+let takeawayOk = false;
+for (let i = 0; i < 40; i++) { // 產圖含字型子集下載，寬限 20s
+  await sleep(500);
+  const t = await page.$eval("#takeawayBtn", (el) => el.textContent);
+  if (t === "帶走這支籤") { takeawayOk = true; break; }
+  if (t.includes("失敗")) break;
+}
+check("產圖 pipeline 完整跑通（字型內嵌×SVG×canvas×PNG）", takeawayOk);
 
 console.log("E6 console 乾淨");
 check("no console/page errors", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));

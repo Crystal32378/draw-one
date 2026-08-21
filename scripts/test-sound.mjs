@@ -52,7 +52,7 @@ check("no periodic scheduler (setInterval) — 陣風沒有節拍器",
   !/setInterval/.test(sound));
 check("main script uses only the public sound API",
   (main.match(/ARRIVAL_SOUND\??\.(\w+)/g) ?? [])
-    .every((m) => /\.(start|space|slip|tree|setEnabled|enabled|getParams)\b/.test(m)));
+    .every((m) => /\.(start|space|slip|weather|tree|setEnabled|enabled|getParams)\b/.test(m)));
 
 console.log("S2 three-hall equality — 一份 hall 參數表，API 不收身分");
 const spacesM = sound.match(/const SPACES = \{[\s\S]*?\n  \};/);
@@ -71,6 +71,15 @@ check("葉聲退遠：hall leafLP/leafGain 皆低於 court",
 check("setSpace accepts only court/hall — 連身分參數都不存在",
   /name !== "court" && name !== "hall"/.test(sound));
 check("sound layer never reads hall identity fields", !/hall\.id|\.deity/.test(sound));
+const weathersM = sound.match(/const WEATHERS = \{[\s\S]*?\n  \};/);
+check("weather ticket：exactly 4 weathers (sunny/cloudy/rain/wind)",
+  !!weathersM && ["sunny:", "cloudy:", "rain:", "wind:"].every((k) => weathersM[0].includes(k)) &&
+  (weathersM[0].match(/\n    \w+:\s+\{/g) ?? []).length === 4);
+check("天氣永不出現在空間變換——殿不知道天氣，殿只知道「外面」",
+  !!weathersM && !/busLP|busGain|exLP|exGain|interior|leafLP:|leafGain:/.test(weathersM[0]) &&
+  !/sunny|cloudy|rainOn|voices/.test(spacesM?.[0] ?? "x"));
+check("殿內 presence 是 SPACES 常數（court 0 / hall 一份字面值）",
+  /court: \{[^\n]*interior: 0 \}/.test(spacesM?.[0] ?? "") && /hall:\s+\{[^\n]*interior: 0\.\d+ \}/.test(spacesM?.[0] ?? ""));
 
 console.log("S3 fail-closed — 月老增建中，無殿內聲態");
 const hallCalls = main.match(/ARRIVAL_SOUND\??\.space\("hall"\)/g) ?? [];
@@ -86,15 +95,21 @@ check("guard lives in enterHall (與 400ms 轉場同步，非 renderHall 補刀)
   })());
 
 console.log("S4 air grammar — 陣風無週期、Slip 靜默、回埕還原");
-check("gust intervals 20–70s, envelopes 2–8s (Crystal taste-gate r1 校準值)",
-  /waitMin: 20, waitMax: 70, lenMin: 2, lenMax: 8/.test(sound));
-check("連兩陣壓到 ≤5% (doubleChance: 0.05)", /doubleChance: 0\.05/.test(sound));
-check("layer balance：風退位、葉敘事（leafGustMax > windGustMax）",
+check("cloudy 票＝74af5ef taste-gate 基準（20–70s／2–8s 原封）",
+  /cloudy: \{ air: 0\.018[\s\S]{0,220}gustWaitMin: 20, gustWaitMax: 70, gustLenMin: 2, gustLenMax: 8/.test(sound));
+check("每張票 leafPeak > windPeak——世界被風吹動，不是 whoosh",
   (() => {
-    const w = sound.match(/windGustMax: ([\d.]+)/), l = sound.match(/leafGustMax: ([\d.]+)/);
-    return w && l && Number(l[1]) > Number(w[1]);
+    const rows = [...(weathersM?.[0] ?? "").matchAll(/windPeak: ([\d.]+),[^\n]*leafPeak: ([\d.]+)/g)];
+    return rows.length === 4 && rows.every(([, w, l]) => Number(l) > Number(w));
   })());
-check("葉晚 100–300ms 跟上", /leafLagMin: 0\.10, leafLagMax: 0\.30/.test(sound));
+check("windy afternoon 不是颱風（wind 票 windPeak ≤ 0.06；r1 曾是 0.11）",
+  (() => { const m = (weathersM?.[0] ?? "").match(/wind:\s+\{[^\n]*windPeak: ([\d.]+)/); return m && Number(m[1]) <= 0.06; })());
+check("雨只屬於 rain 票、voices 只屬於 sunny 票",
+  ((weathersM?.[0] ?? "").match(/rainOn: 1/g) ?? []).length === 1 &&
+  ((weathersM?.[0] ?? "").match(/voices: true/g) ?? []).length === 1);
+check("蟬有季節（月份 gate）、雨會呼吸、雨落樹冠走葉鏈（跟樹 pan／跟收窄）",
+  /getMonth\(\) \+ 1 >= 5/.test(sound) && /rainBreath/.test(sound) && /canopyGain\.connect\(n\.leafSpaceLP\)/.test(sound));
+check("葉晚 100–300ms 跟上", /leafMin: 0\.10, leafMax: 0\.30/.test(sound));
 check("風先起、葉聲帶 lag 跟上 (t0 + lag)", /t0 \+ lag/.test(sound));
 check("crossfade 與視覺轉場同步 (XFADE = 0.4)", /const XFADE = 0\.4/.test(sound));
 check("pan 上限 ±0.3、slew ≈1s", /const PAN_MAX = 0\.3/.test(sound) && /const PAN_SLEW = 0\.35/.test(sound));
@@ -122,6 +137,28 @@ check("兩顆「聲」toggle（案上＋殿內）同一元件",
   (html.match(/class="sound-toggle"/g) ?? []).length === 2);
 check("toggle 是唯一新增 interaction（lived 物件仍 pointer-events: none）",
   /\.lived \{ position: absolute; pointer-events: none; \}/.test(html));
+
+console.log("S6 天氣改變地方，不改變神意＋Exit/帶走契約");
+const policySrc2 = readFileSync(join(ROOT, "assets", "draw-policy.js"), "utf8");
+check("draw-policy 完全不知道 weather 存在", !/weather/i.test(policySrc2));
+check("resolveDraw 呼叫不含 weather（天氣不進 draw）",
+  (() => {
+    const call = main.slice(main.indexOf("resolveDraw({"), main.indexOf("drawFn: uniformDraw") + 40);
+    return call.length > 0 && !/weather/i.test(call);
+  })());
+check("weather 只在 boot 設定一次（visit-fixed，埕內無 weather controls）",
+  (main.match(/ARRIVAL_SOUND\??\.weather\(/g) ?? []).length === 1);
+check("收籤＝句點：紙收起一拍（slip-away beat），無「籤已收」旁白",
+  /slip-away/.test(main) && /\.slip-stage\.slip-away/.test(html) && !/籤已收/.test(html));
+check("帶走＝籤簿中每張紙的能力（existing 才顯示，不在 ending 跳 CTA）",
+  /takeawayZone"\)\.hidden = !existing/.test(main));
+const shareBlock = main.slice(main.indexOf("帶走這支籤（share artifact"), main.indexOf("沿革 / 籤簿 overlays"));
+check("share 不含使用者問題／筆記／visit 紀錄",
+  shareBlock.length > 0 && !/question|noteInput|LASTHALL|BOOK_KEY/.test(shareBlock));
+check("share 無 growth 文案（navigator.share 只給檔案，不給 title/text/url）",
+  /navigator\.share\(\{ files: \[file\] \}\)/.test(shareBlock) && !/title:|text:|url:/.test(shareBlock));
+check("artifact＝frozen 元件原樣 render（走 SLIP_RENDER.mountSlip，不 fork 排版）",
+  /SLIP_RENDER\.mountSlip\(art, entry\)/.test(shareBlock));
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);
