@@ -732,7 +732,8 @@
     margin-top: 2px;
     writing-mode: vertical-rl;
     font-family: "Noto Serif TC", serif; font-weight: 700;
-    font-size: clamp(52px, 17vw, 68px);
+    --tablet-fs: clamp(52px, 17vw, 68px); /* 匾同規格：字級基準；字多則隨匾縮（renderHall） */
+    font-size: var(--tablet-fs);
     letter-spacing: 0.28em;
     line-height: 1.05;
     color: var(--ink);
@@ -785,6 +786,18 @@
     border-top: 1px solid rgba(74, 66, 52, 0.42);
     padding-top: 16px;
     display: grid; gap: 8px;
+  }
+  /* 儀式不得沉到摺線下（Crystal iPhone 實測：天上聖母籤筒整支在畫面外）——
+     小視窗收斂殿內節奏，讓籤筒上緣進畫面；聖號仍是殿內最大的字 */
+  @media (max-height: 720px) {
+    .hall-top { padding-top: calc(6px + env(safe-area-inset-top)); }
+    .tablet { --tablet-fs: clamp(42px, 13vw, 52px); padding: 10px 10px 12px; }
+    .hall-sub { margin-top: 6px; }
+    .censer { margin-top: 8px; }
+    .hall-desk { margin-top: 12px; padding-top: 10px; }
+    .tube-stage { margin-top: 8px; }
+    .tube-wrap { height: 246px; } /* 削籤枝上升的留白 headroom，筒身圖形要進畫面 */
+    .stick { bottom: 32px; } /* 底緣維持 214px（246−32）＝拉的視覺幾何不變；PULL_DIST 不動 */
   }
   .present-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
   .present-q { font-size: 15px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
@@ -2140,6 +2153,10 @@ window.ARRIVAL_SOUND = (function () {
   /* ---------- 殿 ---------- */
   function renderHall(hall, { boundEntry } = {}) {
     $("tablet").textContent = hall.deity;
+    // 匾同規格，字隨匾：聖號字數多則字級收斂，匾高（＝儀式的位置）不因誰而沉。
+    // 依字數不依身分（typography, not identity）——四字匾曾把籤筒推出手機畫面。
+    $("tablet").style.fontSize = hall.deity.length > 3
+      ? `calc(var(--tablet-fs) * ${(3 / hall.deity.length).toFixed(3)})` : "";
     $("hallSub").textContent = hall.sub;
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";

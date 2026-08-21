@@ -220,6 +220,44 @@ check("?newday=1 撕票重過門檻（dev 後門，手賤型測試者專用）",
 await page.click("#enterBtn");
 await sleep(300);
 
+console.log("E11 儀式不沉摺線 — 手機高度、四字匾、真手勢（Crystal iPhone 實測回歸）");
+{
+  const pctx = await browser.newContext({ viewport: { width: 390, height: 664 }, hasTouch: true });
+  const pp = await pctx.newPage();
+  pp.on("pageerror", (e) => consoleErrors.push(String(e)));
+  const tubeTopAt = async (side) => {
+    await pp.goto(pageURL("?newday=1"));
+    await sleep(300);
+    await pp.click("#enterBtn");
+    await sleep(400);
+    await pp.fill("#question", "量筒位" + side + Date.now()); // 新問題＝走籤筒路（避開一事一籤綁定）
+    await pp.mouse.click(side === "left" ? 30 : 360, 250); await sleep(1000);
+    await pp.mouse.click(195, 250); await sleep(1000);
+    return {
+      hall: await pp.$eval("#tablet", (el) => el.textContent),
+      // 筒身圖形（wrap 底部 150px）才是使用者看得見的籤筒——不是 wrap 上緣
+      y: await pp.$eval("#tubeWrap", (el) => { const r = el.getBoundingClientRect(); return Math.round(r.bottom - 150); }),
+    };
+  };
+  const mazu = await tubeTopAt("left");
+  check("四字匾殿的筒身進畫面（664 高，籤筒看得見才抽得到）", mazu.hall === "天上聖母" && mazu.y < 620, `tubeTop=${mazu.y}`);
+  // 真手勢拉籤（不經 devdraw）
+  const box = await pp.$eval("#tubeWrap", (el) => { const r = el.getBoundingClientRect(); return { x: r.x + r.width / 2, y: Math.min(r.y + r.height * 0.6, 640) }; });
+  await pp.evaluate(async (b0) => {
+    const el = document.elementFromPoint(b0.x, b0.y);
+    const fire = (type, y, t) => t.dispatchEvent(new PointerEvent(type, { pointerId: 7, pointerType: "touch", isPrimary: true, clientX: b0.x, clientY: y, bubbles: true, cancelable: true }));
+    fire("pointerdown", b0.y, el);
+    for (let i = 1; i <= 20; i++) { fire("pointermove", b0.y - i * 8, window); await new Promise((r) => setTimeout(r, 16)); }
+    fire("pointerup", b0.y - 160, window);
+  }, box);
+  await sleep(400);
+  check("真手勢抽籤成功（stickStage 出現）", await pp.$eval("#stickStage", (el) => el.style.display === "flex"));
+  const guanyin = await tubeTopAt("right");
+  check("儀式等位：兩殿籤筒高度差 ≤ 6px（匾同規格）",
+    guanyin.hall === "觀世音" && Math.abs(guanyin.y - mazu.y) <= 6, `mazu=${mazu.y} guanyin=${guanyin.y}`);
+  await pctx.close();
+}
+
 console.log("E9 手感層 API");
 check("pull/stickOut/paperOut 都在公開 API 上",
   await page.evaluate(() => ["pull", "stickOut", "paperOut"].every((k) => typeof window.ARRIVAL_SOUND[k] === "function")));
