@@ -100,9 +100,14 @@
     content: ""; position: absolute; left: -60%; right: -60%;
     top: 24%; height: 30%;
     background:
+      /* 牆頭瓦壓頂：牆是砌出來的，不是一條色帶 */
+      linear-gradient(180deg, #b3ab97 0 2px, rgba(74, 66, 52, 0.30) 2px 3px, transparent 3px) top / 100% 6px no-repeat,
+      repeating-linear-gradient(90deg, rgba(74, 66, 52, 0.13) 0 2px, transparent 2px 13px) top / 100% 4px no-repeat,
+      /* 歲月斑與壁腳返潮 */
       radial-gradient(340px 90px at 30% 104%, rgba(74, 66, 52, 0.07), transparent 70%),
       radial-gradient(520px 130px at 68% -10%, rgba(245, 239, 226, 0.10), transparent 72%),
       radial-gradient(240px 70px at 84% 102%, rgba(74, 66, 52, 0.05), transparent 70%),
+      linear-gradient(0deg, rgba(74, 66, 52, 0.10), transparent 14%),
       linear-gradient(180deg, #cfc8b4 0%, #cac2ad 78%, #c2baa4 100%);
     border-top: 1px solid rgba(74, 66, 52, 0.28);
     box-shadow: inset 0 -14px 18px -14px rgba(52, 45, 34, 0.35);
@@ -293,14 +298,104 @@
       19px 1px 0 -1px #b2a992, 19px 1px 0 0 rgba(74, 66, 52, 0.35),
       9px -8px 0 -1px #a49b84, 9px -8px 0 0 rgba(74, 66, 52, 0.35);
   }
-  .lived.cushion { /* 階前拜墊：三殿都有（儀式同尊），擺位各自微偏 */
-    top: 55.4%; width: 30px; height: 9px; margin-left: -15px;
-    background: radial-gradient(50% 60% at 50% 38%, #a98a74 0 55%, #8f7360 100%);
+  .lived.cushion { /* 階前拜墊：三殿都有（儀式同尊），擺位各自微偏；布色是褪過的 */
+    top: 55.4%; width: 26px; height: 8px; margin-left: -13px;
+    background: radial-gradient(50% 60% at 50% 38%, #97775f 0 55%, #7d6350 100%);
     border-radius: 50%;
-    opacity: 0.55;
+    opacity: 0.5;
   }
   /* （自審刪除：曾有一把靠廊的傘——7px 寬讀不出傘形，只剩一根可疑的斜棍。
      歧義物是 noise，不是人味。） */
+  /* ---- Round 3.5 utility & weathering：有人在管，不只有人在拜 ---- */
+  /* （自審刪除 ×2：帚邊的畚斗——16px 只讀得出一顆石頭。同傘，歧義即 noise。） */
+  .lived.stools { /* 疊起的塑膠凳：用完收好，但疊得不齊 */
+    top: 51.2%; width: 24px; height: 20px;
+    background: linear-gradient(90deg, transparent 0 3px, rgba(118, 74, 64, 0.7) 3px 5px,
+      transparent 5px 19px, rgba(118, 74, 64, 0.7) 19px 21px, transparent 21px) bottom / 100% 8px no-repeat;
+  }
+  .lived.stools::before, .lived.stools::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 5px;
+    background: linear-gradient(180deg, #a4685a 0 3px, #8c574b 3px);
+    border-radius: 2px;
+  }
+  .lived.stools::before { top: 0; left: 1px; right: -1px; transform: rotate(-1.6deg); }
+  .lived.stools::after { top: 7px; }
+  .lived.ghost { /* 撕掉的舊公告：淺一塊的牆，角上還黏著殘膠 */
+    top: 39.6%; width: 17px; height: 22px;
+    background: rgba(245, 239, 226, 0.16);
+    border: 1px solid rgba(74, 66, 52, 0.10);
+    transform: rotate(1.1deg);
+  }
+  .lived.ghost::before, .lived.ghost::after {
+    content: ""; position: absolute; width: 4px; height: 3px;
+    background: rgba(245, 239, 226, 0.45);
+  }
+  .lived.ghost::before { top: -1px; left: 0; }
+  .lived.ghost::after { bottom: 2px; right: 1px; }
+  .lived.wallpatch { /* 補過的一塊牆：新灰比舊牆平、也比舊牆生 */
+    top: 44.2%; width: 27px; height: 19px;
+    background: rgba(214, 207, 188, 0.55);
+    border: 1px solid rgba(74, 66, 52, 0.10);
+    transform: rotate(-0.5deg);
+  }
+  .lived.downspout { /* 雨水管沿牆而下，兩個管箍 */
+    top: 24.4%; height: 30.2%; width: 5px;
+    background: linear-gradient(90deg, #b0a791, #9c937d 60%, #877e68);
+    border-right: 1px solid rgba(38, 33, 25, 0.3);
+  }
+  .lived.downspout::before, .lived.downspout::after {
+    content: ""; position: absolute; left: -2px; right: -2px; height: 3px;
+    background: #8f866f; border: 1px solid rgba(38, 33, 25, 0.25);
+  }
+  .lived.downspout::before { top: 17%; }
+  .lived.downspout::after { top: 63%; }
+  .lived.conduit { /* 電管線走牆面進配電箱 */
+    top: 24.4%; height: 16.8%; width: 2px;
+    background: rgba(74, 66, 52, 0.35);
+  }
+  .lived.utilbox { /* 配電箱：這裡有水電要管 */
+    top: 41%; width: 16px; height: 21px;
+    background: linear-gradient(180deg, #b8b09c, #a49b85);
+    border: 1px solid rgba(38, 33, 25, 0.4);
+    box-shadow: 0 1px 2px rgba(38, 33, 25, 0.25);
+  }
+  .lived.utilbox::before {
+    content: ""; position: absolute; left: 3px; right: 3px; top: 4px; bottom: 4px;
+    border: 1px solid rgba(74, 66, 52, 0.35);
+  }
+  .lived.tap { /* 洗埕的水龍頭 */
+    top: 49.6%; width: 3px; height: 14px;
+    background: #8f866f;
+  }
+  .lived.tap::after {
+    content: ""; position: absolute; top: 0; left: 0; width: 8px; height: 3px;
+    background: #7d7460; border-radius: 0 1px 1px 0;
+  }
+  .lived.bucket { /* 鍍鋅水桶等在龍頭下 */
+    top: 52.2%; width: 15px; height: 12px;
+    background: linear-gradient(90deg, #b7b4a2, #a5a290 45%, #8e8b79);
+    clip-path: polygon(5% 0, 95% 0, 86% 100%, 14% 100%);
+  }
+  .lived.bucket::before { /* 提把歪在一邊 */
+    content: ""; position: absolute; top: -6px; left: 2px; width: 11px; height: 7px;
+    border: 1px solid rgba(56, 50, 40, 0.5); border-bottom: 0;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    transform: rotate(-8deg);
+  }
+  .lived.extinguisher { /* 消防安檢是廟的真日常 */
+    top: 51.8%; width: 7px; height: 15px;
+    background: linear-gradient(90deg, #a24f41, #8a4237 60%, #6f352c);
+    border-radius: 3px 3px 1px 1px;
+  }
+  .lived.extinguisher::after {
+    content: ""; position: absolute; top: -3px; left: 1px; width: 4px; height: 3px;
+    background: #4a4234;
+  }
+  .lived.podpatch { /* 台基補過的一角：石色跟原來對不齊 */
+    left: 13.5%; top: 50.5%; width: 13px; height: 9px;
+    background: rgba(226, 219, 200, 0.75);
+    border: 1px solid rgba(74, 66, 52, 0.12);
+  }
   /* 未落成（假設性增建）：只有放樣輪廓 */
   .station.hypothetical .facade .body {
     background: none;
@@ -907,7 +1002,14 @@
           const cu = document.createElement("div");
           cu.className = "lived cushion";
           cu.style.left = `calc(50% + ${((si * 47) % 17) - 8}px)`;
+          cu.style.transform = `rotate(${((si * 29) % 7) - 3}deg)`;
           st.appendChild(cu);
+        }
+        // 中軸右一站的台基角補過（positional；補修是維護，不是位階）
+        if (si === voidIndex + 1) {
+          const pp = document.createElement("div");
+          pp.className = "lived podpatch";
+          st.appendChild(pp);
         }
       }
       stageStrip.appendChild(st);
@@ -930,10 +1032,22 @@
       // 今晨有人掃過：帚靠牆、葉掃攏一小堆（中軸左一站的外緣）
       put("broom", (voidIndex - 1 + 0.06) * stationW);
       put("leaves", (voidIndex - 1 + 0.045) * stationW + 15);
-      // 等的人坐的長凳：左一站與中軸之間的牆腳
+      // 座位角：長凳在用、塑膠凳疊起來收著；旁邊一塊補過的牆
       put("bench", voidIndex * stationW - 34);
-      // 一張普通公告：中軸右側牆上（右外側一帶刻意留白——真實不平均）
+      put("stools", voidIndex * stationW - 64);
+      put("wallpatch", voidIndex * stationW - 118);
+      // 公告牆：現在貼的一張＋撕掉那張留下的痕
       put("notice", (voidIndex + 1) * stationW + 8);
+      put("ghost", (voidIndex + 1) * stationW + 33);
+      // 雨水管：右二站交界的牆面（附屬構件，不是裝飾）
+      put("downspout", (voidIndex + 2) * stationW - 3);
+      // 後勤角（右端牆尾）：配電箱＋電管線、水龍頭＋水桶、滅火器——有人在管
+      const endX = (STATIONS.length - 1 + 0.88) * stationW;
+      put("conduit", endX + 32);
+      put("utilbox", endX + 25);
+      put("tap", endX + 52);
+      put("bucket", endX + 47);
+      put("extinguisher", endX + 4);
       // 增建中的殿旁：一小堆砌石料（工班的真實，不是 disabled 標籤）
       const hyp = STATIONS.findIndex((s) => s.hypothetical);
       if (hyp >= 0) put("stones", (hyp + 0.86) * stationW);
