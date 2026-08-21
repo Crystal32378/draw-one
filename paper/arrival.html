@@ -2365,8 +2365,25 @@ window.ARRIVAL_SOUND = (function () {
     const canvas = document.createElement("canvas");
     canvas.width = w * 2; canvas.height = h * 2; // 2x：紙要經得起看
     const c2d = canvas.getContext("2d");
-    c2d.scale(2, 2);
-    c2d.drawImage(img, 0, 0);
+    // WebKit/iOS：SVG 影像文件裡的 @font-face 是非同步的——第一繪是隱形字
+    // （無限 FOIT）。重繪到畫面穩定為止；Chrome 第一繪即穩，多繪無害。
+    const sample = () => {
+      const s = c2d.getImageData(0, Math.floor(h * 1.2), w * 2, 4).data; // 掃詩文區一條
+      let sum = 0;
+      for (let i = 0; i < s.length; i += 16) sum += s[i];
+      return sum;
+    };
+    let last = null, changed = false;
+    for (let i = 0; i < 10; i++) {
+      c2d.setTransform(2, 0, 0, 2, 0, 0);
+      c2d.clearRect(0, 0, w, h);
+      c2d.drawImage(img, 0, 0);
+      const sig = sample();
+      if (last !== null && sig === last && (changed || i >= 2)) break;
+      if (last !== null && sig !== last) changed = true;
+      last = sig;
+      await new Promise((r) => setTimeout(r, 250));
+    }
     return await new Promise((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error("png encode failed"))), "image/png"));
   }
   $("takeawayBtn").addEventListener("click", async () => {
