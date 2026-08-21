@@ -199,13 +199,14 @@
   /* 插角／雀替層：柱樑交接處的草仔曲線（木色骨＋青線彩飾，同一 motif 重複） */
   .facade .carve { position: absolute; left: 12%; right: 12%; top: 20.2%; height: 8.5%; }
   .facade .carve svg { display: block; width: 100%; height: 100%; }
-  /* 石獅一對：守門石雕的重量（≈0.85m 含座，以殿門 2.4m 為 world scale） */
+  /* 石獅一對：守門石雕的重量（≈0.85m 含座，以殿門 2.4m 為 world scale）。
+     bottom 錨定＝任何視窗高度都貼地；DOM 在柱之後＝頭臉永不被柱遮。 */
   .facade .lion {
-    position: absolute; top: 47%; width: 34px; height: 50px;
+    position: absolute; bottom: 44.6%; width: 34px; height: 50px;
   }
   .facade .lion svg { display: block; width: 100%; height: 100%; }
-  .facade .lion-l { left: 21%; }
-  .facade .lion-r { right: 21%; transform: scaleX(-1); }
+  .facade .lion-l { left: 19.5%; }
+  .facade .lion-r { right: 19.5%; transform: scaleX(-1); }
   /* 供奉軸：門內的神龕／案桌一瞥——被感知，不被展示 */
   .facade .altar {
     position: absolute; left: 31.5%; right: 31.5%; top: 28%; bottom: 50%;
@@ -311,7 +312,7 @@
      痕跡屬於地方，不屬於任何一位（無 per-hall styling 分支）。 */
   .lived { position: absolute; pointer-events: none; }
   .lived.bench { /* 等的人坐的長凳（≈1.5m），沒擺得很正 */
-    top: 51.6%; width: 88px; height: 7px;
+    bottom: 44.4%; margin-bottom: 19px; width: 88px; height: 7px;
     background: linear-gradient(180deg, #a4967a, #8a7c60);
     border: 1px solid rgba(74, 66, 52, 0.4);
     transform: rotate(-0.7deg);
@@ -323,7 +324,7 @@
   .lived.bench::before { left: 8px; }
   .lived.bench::after { right: 8px; transform: rotate(1.2deg); }
   .lived.broom { /* 竹掃帚靠牆（≈1.35m） */
-    top: 41.6%; width: 3.5px; height: 12.6%;
+    bottom: 44.2%; margin-bottom: 28px; width: 3.5px; height: 12.6%;
     background: linear-gradient(180deg, #9a8a68, #8a7a58);
     transform: rotate(8deg); transform-origin: 50% 100%;
   }
@@ -352,14 +353,14 @@
     opacity: 0.95;
   }
   .lived.stones { /* 增建殿旁的砌石料：工班的真實 */
-    top: 52%; width: 16px; height: 9px;
+    bottom: 46.4%; width: 16px; height: 9px;
     background: #a9a08a; border: 1px solid rgba(74, 66, 52, 0.4);
     box-shadow:
       19px 1px 0 -1px #b2a992, 19px 1px 0 0 rgba(74, 66, 52, 0.35),
       9px -8px 0 -1px #a49b84, 9px -8px 0 0 rgba(74, 66, 52, 0.35);
   }
   .lived.cushion { /* 階前拜墊：三殿都有（儀式同尊），擺位各自微偏；布色是褪過的 */
-    top: 55.4%; width: 26px; height: 8px; margin-left: -13px;
+    bottom: 43.4%; width: 26px; height: 8px; margin-left: -13px;
     background: radial-gradient(50% 60% at 50% 38%, #97775f 0 55%, #7d6350 100%);
     border-radius: 50%;
     opacity: 0.5;
@@ -415,7 +416,7 @@
     content: ""; position: absolute; left: -6%; right: -6%; bottom: -5px; height: 8px;
     background: radial-gradient(50% 100% at 50% 0, rgba(38, 33, 25, 0.22), transparent 75%);
   }
-  .lived.bike { top: 45.9%; width: 92px; height: 58px; transform: rotate(-6deg); } /* 成人車 ≈1.55m */
+  .lived.bike { bottom: 45.3%; width: 92px; height: 58px; transform: rotate(-6deg); } /* 成人車 ≈1.55m；bottom 錨定貼地 */
   .lived.bike svg { display: block; width: 100%; height: 100%; }
   .lived.leafbits { /* 樹下散葉：掃不完的 */
     top: 72%; width: 70px; height: 16px;
@@ -427,7 +428,7 @@
       radial-gradient(3px 2.5px at 92% 40%, rgba(96, 86, 56, 0.32), transparent 80%);
   }
   .lived.stools { /* 疊起的塑膠凳（≈0.45m）：用完收好，但疊得不齊 */
-    top: 50.7%; width: 29px; height: 23px;
+    bottom: 44.9%; width: 29px; height: 23px;
     background: linear-gradient(90deg, transparent 0 4px, rgba(118, 74, 64, 0.7) 4px 6px,
       transparent 6px 23px, rgba(118, 74, 64, 0.7) 23px 25px, transparent 25px) bottom / 100% 10px no-repeat;
   }
@@ -490,7 +491,7 @@
     background: #7d7460; border-radius: 0 1px 1px 0;
   }
   .lived.bucket { /* 鍍鋅水桶等在龍頭下（≈0.3m） */
-    top: 51.9%; width: 18px; height: 15px;
+    bottom: 45.6%; width: 18px; height: 15px;
     background: linear-gradient(90deg, #b7b4a2, #a5a290 45%, #8e8b79);
     clip-path: polygon(5% 0, 95% 0, 86% 100%, 14% 100%);
   }
@@ -501,7 +502,7 @@
     transform: rotate(-8deg);
   }
   .lived.extinguisher { /* 消防安檢是廟的真日常（≈0.5m） */
-    top: 50.9%; width: 9px; height: 22px;
+    bottom: 45.6%; width: 9px; height: 22px;
     background: linear-gradient(90deg, #a24f41, #8a4237 60%, #6f352c);
     border-radius: 4px 4px 1px 1px;
   }
@@ -1201,8 +1202,9 @@
         f.dataset.hall = s.id;
         // 疊序＝建築邏輯：牆身→退縮明間→堵→台基階→門→供奉軸→石獅→柱→插角→屋頂（簷壓柱頭）→簷影
         for (const cls of ["body", "recess", "frieze", "panel panel-l", "panel panel-r",
-          "podium", "steps", "doorway", "altar", "lion lion-l", "lion lion-r",
+          "podium", "steps", "doorway", "altar",
           "col col-ol", "col col-or", "col col-il", "col col-ir", "carve",
+          "lion lion-l", "lion lion-r",
           "roof", "eave-shadow"]) {
           const el = document.createElement("div");
           el.className = cls;
@@ -1273,10 +1275,10 @@
       put("leafbits", tx + 1.05 * stationW, { top: "82%", width: "50px" });
       // 磚砌矮台兩座：樹蔭下一座（乘涼），遠處一座小的。
       // 錨在站界（殿門中心＝strip (i+0.5)W；站界＝iW）——永不落在任何殿的正前方
-      put("bench-brick", voidIndex * stationW - 0.12 * stationW - 50, { width: "100px", height: "36px", top: "57.8%" });
-      put("bench-brick", (voidIndex + 2) * stationW + 0.08 * stationW - 35, { width: "70px", height: "26px", top: "56%" });
+      put("bench-brick", voidIndex * stationW - 0.12 * stationW - 50, { width: "100px", height: "36px", bottom: "36.6%" });
+      put("bench-brick", (voidIndex + 2) * stationW + 0.08 * stationW - 35, { width: "70px", height: "26px", bottom: "40%" });
       // 誰的腳踏車靠在牆邊（站界旁；成人車尺度）
-      put("bike", (voidIndex + 1) * stationW + 0.04 * stationW - 46).innerHTML = BIKE_SVG;
+      put("bike", (voidIndex + 1) * stationW - 62).innerHTML = BIKE_SVG; // 停在站界牆前，離殿身淨空
       // 樹身與樹冠（最後畫：樹在建築之前）
       put("tree-trunk", tx - 23).innerHTML = TRUNK_SVG;
       put("tree-canopy", tx - 0.45 * stationW, { width: Math.round(1.3 * stationW) + "px" }).innerHTML = CANOPY_SVG;
