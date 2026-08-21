@@ -23,6 +23,7 @@
     --ink-soft: #6f6757;
     --cinnabar: #a63a2b;
     --rule: #4a4234;
+    --qing: #4f6478; /* 佛頭青（褪過的礦物青）：本輪彩繪/線稿唯一冷色 */
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
@@ -41,9 +42,15 @@
   .screen.on { display: flex; }
   @media (prefers-reduced-motion: reduce) { .screen { transition: none; } }
 
-  /* ============ 山門（初訪一次） ============ */
+  /* ============ 山門（初訪一次） ============
+     底紋＝門檻感：王保原手稿式線描（角上插角草、中央曲團），
+     佛頭青單色、opacity ≤ .12——是「入廟前」，不是空白 landing。 */
   #s-gate {
-    background: var(--ground);
+    background:
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'><g fill='none' stroke='%234f6478' stroke-width='1.6' opacity='.12' stroke-linecap='round'><path d='M4 4 Q64 10 96 34 Q124 55 118 86 Q114 108 92 108 Q76 108 74 92 Q73 80 84 78'/><path d='M4 22 Q48 28 74 46 Q96 62 92 84'/><path d='M10 4 Q20 40 44 58'/><path d='M118 86 Q130 98 148 100'/></g></svg>") 14px 14px / 150px 150px no-repeat,
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'><g fill='none' stroke='%234f6478' stroke-width='1.6' opacity='.12' stroke-linecap='round' transform='rotate(180 80 80)'><path d='M4 4 Q64 10 96 34 Q124 55 118 86 Q114 108 92 108 Q76 108 74 92 Q73 80 84 78'/><path d='M4 22 Q48 28 74 46 Q96 62 92 84'/><path d='M10 4 Q20 40 44 58'/><path d='M118 86 Q130 98 148 100'/></g></svg>") calc(100% - 14px) calc(100% - 14px) / 150px 150px no-repeat,
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><g fill='none' stroke='%234f6478' stroke-width='1.4' opacity='.09' stroke-linecap='round'><circle cx='100' cy='100' r='56'/><circle cx='100' cy='100' r='60'/><path d='M100 58 Q130 62 134 92 Q136 112 118 116 Q104 119 100 106 Q97 96 108 94'/><path d='M100 58 Q130 62 134 92 Q136 112 118 116 Q104 119 100 106 Q97 96 108 94' transform='rotate(90 100 100)'/><path d='M100 58 Q130 62 134 92 Q136 112 118 116 Q104 119 100 106 Q97 96 108 94' transform='rotate(180 100 100)'/><path d='M100 58 Q130 62 134 92 Q136 112 118 116 Q104 119 100 106 Q97 96 108 94' transform='rotate(270 100 100)'/></g></svg>") center 44% / 280px 280px no-repeat,
+      var(--ground);
     align-items: center; justify-content: center;
     padding: 0 34px;
   }
@@ -145,18 +152,28 @@
       inset 10px 0 12px -9px rgba(38, 33, 25, 0.32),
       inset -10px 0 12px -9px rgba(38, 33, 25, 0.32);
   }
-  /* 水車堵：簷下留白的堵帶——框在，妝不上（克制是選擇，不是缺席） */
+  /* 水車堵：簷下堵帶上一道極淡的曲團草連續紋（礦物青線稿，手稿轉印感） */
   .facade .frieze {
     position: absolute; left: 13.6%; right: 13.6%; top: 22.8%; height: 2%;
-    background: rgba(245, 239, 226, 0.16);
+    background:
+      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='26' height='10' viewBox='0 0 26 10'><path d='M1 7 Q6 1 12 5 Q18 9 25 3' stroke='%234f6478' stroke-width='1' fill='none' opacity='.45' stroke-linecap='round'/></svg>") center / 26px 10px repeat-x,
+      rgba(245, 239, 226, 0.16);
     border-top: 1px solid rgba(74, 66, 52, 0.28);
     border-bottom: 1px solid rgba(74, 66, 52, 0.28);
   }
-  /* 堵面：側間身堵只留分格線，不上彩 */
+  /* 堵面：框飾型彩繪——佛頭青雙線框，中央留白（框在，題材不上） */
   .facade .panel {
     position: absolute; top: 30%; bottom: 52.5%;
     border: 1px solid rgba(74, 66, 52, 0.22);
     background: rgba(38, 33, 25, 0.03);
+  }
+  .facade .panel::before {
+    content: ""; position: absolute; inset: 2px;
+    border: 1px solid rgba(79, 100, 120, 0.42);
+  }
+  .facade .panel::after {
+    content: ""; position: absolute; inset: 5px;
+    border: 1px solid rgba(79, 100, 120, 0.20);
   }
   .facade .panel-l { left: 16.9%; width: 6.5%; }
   .facade .panel-r { right: 16.9%; width: 6.5%; }
@@ -178,6 +195,42 @@
   .facade .col-or { right: 12.3%; }
   .facade .col-il { left: 24.6%; }
   .facade .col-ir { right: 24.6%; }
+  /* 插角／雀替層：柱樑交接處的草仔曲線（木色骨＋青線彩飾，同一 motif 重複） */
+  .facade .carve { position: absolute; left: 12%; right: 12%; top: 20.2%; height: 8.5%; }
+  .facade .carve svg { display: block; width: 100%; height: 100%; }
+  /* 石獅一對：守門，不是擺飾——階邊、小於門洞、只做大輪廓 */
+  .facade .lion {
+    position: absolute; top: 49.4%; width: 22px; height: 33px;
+  }
+  .facade .lion svg { display: block; width: 100%; height: 100%; }
+  .facade .lion-l { left: 27%; }
+  .facade .lion-r { right: 27%; transform: scaleX(-1); }
+  /* 供奉軸：門內的神龕／案桌一瞥——被感知，不被展示 */
+  .facade .altar {
+    position: absolute; left: 31.5%; right: 31.5%; top: 28%; bottom: 50%;
+    overflow: hidden;
+  }
+  .facade .altar svg { display: block; width: 100%; height: 100%; }
+  @keyframes candle { 0%, 100% { opacity: 0.75; } 46% { opacity: 1; } 58% { opacity: 0.85; } }
+  .facade .altar .flames { animation: candle 5s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .facade .altar .flames { animation: none; } }
+  /* 燈籠列：廟埕頭頂的場域訊號——小、疏、低垂度，不壓中軸 */
+  .lived.lantern-rope { top: 4.6%; height: 1px; background: rgba(74, 66, 52, 0.30); }
+  .lived.lantern {
+    top: 5%; width: 11px; height: 13px;
+    background: radial-gradient(60% 52% at 50% 40%, #b25a48, #92473b 82%);
+    border-radius: 46% 46% 42% 42% / 56% 56% 44% 44%;
+    border-top: 2px solid rgba(74, 66, 52, 0.55);
+    box-shadow: inset 0 -2px 2px rgba(38, 33, 25, 0.25);
+  }
+  .lived.lantern::before { /* 吊繩 */
+    content: ""; position: absolute; top: -6px; left: 50%; width: 1px; height: 6px;
+    background: rgba(74, 66, 52, 0.5);
+  }
+  .lived.lantern::after { /* 纓 */
+    content: ""; position: absolute; bottom: -4px; left: 50%; margin-left: -0.5px;
+    width: 1px; height: 4px; background: rgba(140, 60, 45, 0.6);
+  }
   /* 台基：殿抬離埕面，階沿見光 */
   .facade .podium {
     position: absolute; left: 11%; right: 11%; top: 50%; height: 4.3%;
@@ -420,6 +473,10 @@
   .station.hypothetical .facade .recess,
   .station.hypothetical .facade .frieze,
   .station.hypothetical .facade .panel { display: none; }
+  /* 未落成＝未開光：無獅、無供奉、無雕飾彩繪 */
+  .station.hypothetical .facade .lion,
+  .station.hypothetical .facade .altar,
+  .station.hypothetical .facade .carve { display: none; }
   /* 放樣中的屋頂：同一骨架，只剩虛線輪廓（脊與簷口留形，屋面未上瓦） */
   .station.hypothetical .roof .r-face {
     fill: none; stroke: rgba(74, 66, 52, 0.5); stroke-width: 1.2; stroke-dasharray: 5 4;
@@ -878,6 +935,70 @@
       d="M 7 81 Q 1 77 3 70 M 233 81 Q 239 77 237 70"/>
   </svg>`;
 
+  /* ------------------------------------------------------------------
+     Round 4 sacred presence 模板（三殿同一份＝equality；月老全隱藏）。
+     石獅：地方宮廟尺度、只做大輪廓；供奉軸：門內一瞥（神龕輪廓＋案桌＋
+     爐＋燭＋花＋果），神不露全身——被感知，不被展示；插角：王保原式
+     草仔曲線，一個 motif 鏡射重複（木骨＋佛頭青彩飾線）。
+     ------------------------------------------------------------------ */
+  const LION_SVG = `<svg viewBox="0 0 44 66" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="#a89f88" stroke="rgba(56,50,40,0.55)" stroke-width="1.5" stroke-linejoin="round">
+      <circle cx="8.5" cy="30" r="3" fill="none"/>
+      <path d="M9 50 C6 41 8 34 14 31 L31 31 C36 34 37 42 35 50 Z"/>
+      <circle cx="17" cy="15" r="4.2"/><circle cx="23" cy="10.5" r="4.4"/><circle cx="30" cy="10.5" r="4.2"/><circle cx="35.5" cy="15" r="3.8"/>
+      <circle cx="14.5" cy="21" r="3.8"/><circle cx="37.5" cy="21.5" r="3.4"/>
+      <circle cx="26" cy="20" r="11"/>
+      <rect x="30" y="24" width="9.5" height="7.5" rx="3"/>
+      <rect x="29.5" y="37" width="5.2" height="14" rx="2.5"/>
+      <circle cx="30.5" cy="17.5" r="1.4" fill="#3a332a" stroke="none"/>
+      <rect x="3" y="50" width="38" height="11"/>
+    </g>
+  </svg>`;
+  const ALTAR_SVG = `<svg viewBox="0 0 100 145" preserveAspectRatio="none" aria-hidden="true">
+    <!-- 神在：不畫框、不露形——只有燭光洗上後壁的暖，與神幔簾邊一道 -->
+    <ellipse cx="50" cy="78" rx="34" ry="42" fill="rgba(214,164,100,0.085)"/>
+    <path d="M30 22 Q35 27 40 22 Q45 27 50 22 Q55 27 60 22 Q65 27 70 22" stroke="rgba(214,164,100,0.14)" stroke-width="1.4" fill="none"/>
+    <g opacity="0.8">
+      <rect x="16" y="108" width="68" height="24" fill="rgba(36,28,18,0.6)"/>
+      <path d="M14 106 L86 106" stroke="rgba(206,168,120,0.32)" stroke-width="2.2"/>
+      <g class="flames">
+        <circle cx="26" cy="86" r="4.5" fill="rgba(230,177,105,0.15)"/><circle cx="26" cy="86" r="1.6" fill="rgba(230,177,105,0.85)"/>
+        <circle cx="74" cy="86" r="4.5" fill="rgba(230,177,105,0.15)"/><circle cx="74" cy="86" r="1.6" fill="rgba(230,177,105,0.85)"/>
+      </g>
+      <rect x="24.9" y="89" width="2.2" height="16" fill="rgba(110,82,62,0.85)"/>
+      <rect x="72.9" y="89" width="2.2" height="16" fill="rgba(110,82,62,0.85)"/>
+      <path d="M35 98 l-1.5 8 h7.6 l-1.5 -8 Z" fill="rgba(88,102,114,0.5)"/>
+      <path d="M61 98 l-1.5 8 h7.6 l-1.5 -8 Z" fill="rgba(88,102,114,0.5)"/>
+      <g fill="rgba(158,98,82,0.55)"><circle cx="36" cy="93.5" r="1.5"/><circle cx="39" cy="95" r="1.3"/><circle cx="33.4" cy="95.6" r="1.2"/></g>
+      <g fill="rgba(168,142,84,0.5)"><circle cx="63" cy="93.5" r="1.5"/><circle cx="66" cy="95" r="1.3"/><circle cx="60.4" cy="95.6" r="1.2"/></g>
+      <path d="M48 102 v-13 M50 102 v-15 M52.4 102 v-12" stroke="rgba(70,56,40,0.85)" stroke-width="1.1"/>
+      <circle cx="48" cy="88.4" r="0.8" fill="rgba(201,106,63,0.9)"/><circle cx="50" cy="86.4" r="0.8" fill="rgba(201,106,63,0.9)"/><circle cx="52.4" cy="89.4" r="0.8" fill="rgba(201,106,63,0.9)"/>
+      <rect x="44.5" y="100" width="11" height="7.5" rx="3" fill="rgba(20,16,11,0.95)"/>
+      <g fill="rgba(166,112,68,0.6)"><circle cx="40.5" cy="104" r="1.9"/><circle cx="44" cy="105" r="1.9"/><circle cx="42.3" cy="101.8" r="1.8"/></g>
+      <g fill="rgba(166,112,68,0.6)"><circle cx="58" cy="104" r="1.9"/><circle cx="61.5" cy="105" r="1.9"/><circle cx="59.8" cy="101.8" r="1.8"/></g>
+    </g>
+  </svg>`;
+  const CARVE_SVG = `<svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true">
+    <g fill="none" stroke-linecap="round">
+      <g transform="translate(14 4)">
+        <path d="M0 4 Q16 4 24 12 Q31 19 28 31 Q26 40 18 40 Q11 40 11 33 Q11 27 17 27" stroke="#7a7160" stroke-width="2.4"/>
+        <path d="M0 11 Q13 11 19 17 Q24 22 22 30" stroke="rgba(79,100,120,0.55)" stroke-width="1.1"/>
+      </g>
+      <g transform="translate(63 4)">
+        <path d="M0 4 Q16 4 24 12 Q31 19 28 31 Q26 40 18 40 Q11 40 11 33 Q11 27 17 27" stroke="#7a7160" stroke-width="2.4"/>
+        <path d="M0 11 Q13 11 19 17 Q24 22 22 30" stroke="rgba(79,100,120,0.55)" stroke-width="1.1"/>
+      </g>
+      <g transform="translate(237 4) scale(-1 1)">
+        <path d="M0 4 Q16 4 24 12 Q31 19 28 31 Q26 40 18 40 Q11 40 11 33 Q11 27 17 27" stroke="#7a7160" stroke-width="2.4"/>
+        <path d="M0 11 Q13 11 19 17 Q24 22 22 30" stroke="rgba(79,100,120,0.55)" stroke-width="1.1"/>
+      </g>
+      <g transform="translate(286 4) scale(-1 1)">
+        <path d="M0 4 Q16 4 24 12 Q31 19 28 31 Q26 40 18 40 Q11 40 11 33 Q11 27 17 27" stroke="#7a7160" stroke-width="2.4"/>
+        <path d="M0 11 Q13 11 19 17 Q24 22 22 30" stroke="rgba(79,100,120,0.55)" stroke-width="1.1"/>
+      </g>
+    </g>
+  </svg>`;
+
   /* ---------- 節氣（2026 近似表；prototype 用） ---------- */
   const TERMS = [[1,5,"小寒"],[1,20,"大寒"],[2,4,"立春"],[2,18,"雨水"],[3,5,"驚蟄"],[3,20,"春分"],
     [4,4,"清明"],[4,19,"穀雨"],[5,5,"立夏"],[5,20,"小滿"],[6,5,"芒種"],[6,21,"夏至"],
@@ -971,13 +1092,17 @@
         const f = document.createElement("div");
         f.className = "facade";
         f.dataset.hall = s.id;
-        // 疊序＝建築邏輯：牆身→退縮明間→堵→台基階→門→柱→屋頂（簷壓柱頭）→簷影
+        // 疊序＝建築邏輯：牆身→退縮明間→堵→台基階→門→供奉軸→石獅→柱→插角→屋頂（簷壓柱頭）→簷影
         for (const cls of ["body", "recess", "frieze", "panel panel-l", "panel panel-r",
-          "podium", "steps", "doorway", "col col-ol", "col col-or", "col col-il", "col col-ir",
+          "podium", "steps", "doorway", "altar", "lion lion-l", "lion lion-r",
+          "col col-ol", "col col-or", "col col-il", "col col-ir", "carve",
           "roof", "eave-shadow"]) {
           const el = document.createElement("div");
           el.className = cls;
           if (cls === "roof") el.innerHTML = ROOF_SVG;
+          else if (cls === "altar") el.innerHTML = ALTAR_SVG;
+          else if (cls === "carve") el.innerHTML = CARVE_SVG;
+          else if (cls.startsWith("lion")) el.innerHTML = LION_SVG;
           f.appendChild(el);
         }
         const plq = document.createElement("div");
@@ -1051,6 +1176,20 @@
       // 增建中的殿旁：一小堆砌石料（工班的真實，不是 disabled 標籤）
       const hyp = STATIONS.findIndex((s) => s.hypothetical);
       if (hyp >= 0) put("stones", (hyp + 0.86) * stationW);
+      // 燈籠列：頭頂一條、小而疏；位置永遠落在半站點——中軸正上方必為空檔
+      const vw2 = view.clientWidth || Math.min(430, innerWidth);
+      const rope = document.createElement("div");
+      rope.className = "lived lantern-rope";
+      rope.style.left = (-vw2) + "px";
+      rope.style.width = (STATIONS.length * stationW + vw2 * 2) + "px";
+      stageStrip.appendChild(rope);
+      for (let k = -2; k < STATIONS.length * 2 + 2; k++) {
+        const el = document.createElement("div");
+        el.className = "lived lantern";
+        el.style.left = Math.round(k * (stationW / 2) + stationW / 4 - 5) + "px";
+        el.style.top = `calc(5% + ${((k * 37) % 5 + 5) % 5}px)`; // 吊長不一，人掛的
+        stageStrip.appendChild(el);
+      }
     }
 
     groundJoints.innerHTML = "";
