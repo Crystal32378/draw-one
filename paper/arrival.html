@@ -637,7 +637,24 @@
     background: linear-gradient(180deg, rgba(245, 239, 226, 0.0), rgba(245, 239, 226, 0.72) 26%, rgba(245, 239, 226, 0.92));
     border-top: 1px solid rgba(74, 66, 52, 0.42);
     padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
-    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: end;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: end;
+  }
+  /* 「聲」：空間空氣的開關——案上一顆、殿內同一顆（V2C；位置與預設值未拍板）。
+     偏好記在 localStorage：空間公共，記憶（要不要聽）私人。 */
+  .sound-toggle {
+    background: none;
+    border: 1px solid rgba(74, 66, 52, 0.45);
+    font: inherit; font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 13px; line-height: 1;
+    width: 28px; height: 28px; padding: 0;
+    color: var(--ink-soft); cursor: pointer;
+    position: relative;
+  }
+  .sound-toggle.off { color: rgba(111, 103, 87, 0.45); border-color: rgba(74, 66, 52, 0.22); }
+  .sound-toggle.off::after { /* 一道斜線＝暫且不聽 */
+    content: ""; position: absolute; left: 5px; right: 5px; top: 50%; height: 1px;
+    background: rgba(111, 103, 87, 0.55);
+    transform: rotate(-28deg);
   }
   .book-object {
     background: var(--paper);
@@ -881,6 +898,7 @@
         <textarea id="question" rows="1" placeholder="寫下來，轉身走向一殿。"></textarea>
         <div class="walk-hint" id="walkHint"></div>
       </div>
+      <button class="sound-toggle" id="soundToggleCourt" aria-label="聲音" aria-pressed="true">聲</button>
     </div>
   </section>
 
@@ -888,7 +906,7 @@
   <section class="screen" id="s-hall">
     <div class="hall-top">
       <button class="hall-back" id="backBtn">↩ 回埕</button>
-      <span></span>
+      <button class="sound-toggle" id="soundToggleHall" aria-label="聲音" aria-pressed="true">聲</button>
     </div>
     <div class="hall-body">
       <div class="tablet" id="tablet"></div>
@@ -952,6 +970,250 @@
 <script src="../assets/oracles.draw-pool.js?v=3"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
+<script>
+/* ==================== sound-layer:begin ====================
+   ARRIVAL_SOUND — 空間的空氣，不是音效（V2C Phase A spike）。
+
+   治理契約（source-level 斷言見 scripts/test-sound.mjs）：
+   - 聲音層只收空間狀態（court/hall/slip/樹的視野位置），零 mechanics 引用：
+     不讀抽籤 policy、不讀籤池、不讀任何神明身分——API 連身分參數都不收。
+   - 三殿 equality：hall 聲學參數只有一份字面值（SPACES.hall）。
+   - 增建殿 fail-closed 在呼叫端（enterHall guard）：增建中無殿內聲態，
+     埕的空氣照常經過工地。
+   - 全合成（噪音整形）：零音檔、零下載、零振盪器——
+     無音高源＝無旋律；包絡全隨機排程＝無週期 LFO。合成即誠實。
+   - AudioContext 只在手勢後啟動（山門「入內」／回訪首次觸碰埕）。
+     山門期間無聲（提案狀態，未拍板——見交付說明）。
+   - 「聲」偏好記在 localStorage（記憶私人）；預設開＋極低音量
+     （provisional，未拍板——見交付說明）。
+   - 展籤＝世界閉嘴：The Slip is protagonist。
+   ============================================================ */
+window.ARRIVAL_SOUND = (function () {
+  "use strict";
+  const PREF_KEY = "arrival.sound.v1";
+
+  /* —— 參數表（唯一事實來源；所有數值未經真機校準，見交付表）——
+     court→hall：減法優先——低通收窄、增益減半、葉聲退遠。無 room tone。 */
+  const SPACES = {
+    court: { busLP: 800, busGain: 1.0, leafLP: 4200, leafGain: 1.0 },
+    hall:  { busLP: 300, busGain: 0.5, leafLP: 1100, leafGain: 0.35 },
+  };
+  const LEVELS = {
+    master: 0.5,      // 總閘（真機音量只調這裡）
+    air: 0.055,       // 戶外 air bed：brown noise → LP200，不可辨識聲源
+    windIdle: 0.010,  // 無風時的風——幾乎不在
+    windGustMax: 0.11,
+    leafIdle: 0.016,  // 無風時的葉——樹一直站在那裡
+    leafGustMax: 0.10,
+    slipDuck: 0.0001, // 展籤：世界退到聽不見（不 suspend，回埕即展開）
+  };
+  const GUST = { waitMin: 8, waitMax: 45, lenMin: 2, lenMax: 8, doubleChance: 0.28, leafLagMin: 0.10, leafLagMax: 0.30 };
+  const XFADE = 0.4;     // 進殿／回埕 crossfade（秒）＝與視覺 400ms 轉場同步
+  const PAN_MAX = 0.3;   // 葉聲 pan 上限（subtle，不是音效定位）
+  const PAN_SLEW = 0.35; // setTargetAtTime tc：約 1s 到位
+
+  let ctx = null, started = false;
+  let enabled = readPref();
+  let space = "court";   // 物理空間："court" | "hall"
+  let slipOpen = false;  // 展籤 overlay 狀態
+  let n = null;          // node graph
+  let gustTimer = 0, flutterTimer = 0;
+
+  function readPref() {
+    try { const v = localStorage.getItem(PREF_KEY); return v === null ? true : v === "true"; }
+    catch { return true; }
+  }
+  function writePref(v) { try { localStorage.setItem(PREF_KEY, String(v)); } catch {} }
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  function noiseBuffer(kind, seconds) {
+    const len = Math.floor(ctx.sampleRate * seconds);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    if (kind === "brown") { // 漏積分白噪：能量集中低頻，聽不出「訊號感」
+      let last = 0;
+      for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.5; }
+    } else {
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    }
+    return buf;
+  }
+
+  function build() {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const brown = noiseBuffer("brown", 5);
+    const white = noiseBuffer("white", 3);
+    const src = (buf, rate) => {
+      const s = ctx.createBufferSource();
+      s.buffer = buf; s.loop = true;
+      if (rate) s.playbackRate.value = rate;
+      return s;
+    };
+    n = {};
+    n.master = ctx.createGain(); n.master.gain.value = 0; // 空氣是浮現的，不是開機音
+    n.world = ctx.createGain(); n.world.gain.value = 1;   // slip duck 作用在這
+    n.world.connect(n.master); n.master.connect(ctx.destination);
+
+    // 戶外 bus：air bed＋風（低頻帶、無 pan）。進殿收窄的是這條。
+    n.busLP = ctx.createBiquadFilter();
+    n.busLP.type = "lowpass"; n.busLP.frequency.value = SPACES.court.busLP; n.busLP.Q.value = 0.4;
+    n.busGain = ctx.createGain(); n.busGain.gain.value = SPACES.court.busGain;
+    n.busLP.connect(n.busGain); n.busGain.connect(n.world);
+
+    n.airSrc = src(brown);
+    n.airLP = ctx.createBiquadFilter();
+    n.airLP.type = "lowpass"; n.airLP.frequency.value = 200; n.airLP.Q.value = 0.5;
+    n.airGain = ctx.createGain(); n.airGain.gain.value = LEVELS.air;
+    n.airSrc.connect(n.airLP); n.airLP.connect(n.airGain); n.airGain.connect(n.busLP);
+
+    n.windSrc = src(brown, 0.82); // 同 buffer 異速＝去相關，重心更低
+    n.windBP = ctx.createBiquadFilter();
+    n.windBP.type = "bandpass"; n.windBP.frequency.value = 140; n.windBP.Q.value = 0.5;
+    n.windGain = ctx.createGain(); n.windGain.gain.value = LEVELS.windIdle;
+    n.windSrc.connect(n.windBP); n.windBP.connect(n.windGain); n.windGain.connect(n.busLP);
+
+    // 葉：高頻帶，不走戶外 busLP（800Hz 會悶死葉）；
+    // 自帶兩層濾波——space（進殿退遠）與 view（離開視野變鈍不消失）。
+    n.leafSrc = src(white);
+    n.leafBP = ctx.createBiquadFilter();
+    n.leafBP.type = "bandpass"; n.leafBP.frequency.value = 3000; n.leafBP.Q.value = 0.55;
+    n.leafSpaceLP = ctx.createBiquadFilter();
+    n.leafSpaceLP.type = "lowpass"; n.leafSpaceLP.frequency.value = SPACES.court.leafLP; n.leafSpaceLP.Q.value = 0.4;
+    n.leafViewLP = ctx.createBiquadFilter();
+    n.leafViewLP.type = "lowpass"; n.leafViewLP.frequency.value = 5200; n.leafViewLP.Q.value = 0.4;
+    n.leafDyn = ctx.createGain(); n.leafDyn.gain.value = LEVELS.leafIdle;
+    n.leafFlut = ctx.createGain(); n.leafFlut.gain.value = 0.8;
+    n.leafViewGain = ctx.createGain(); n.leafViewGain.gain.value = 1;
+    n.leafSpaceGain = ctx.createGain(); n.leafSpaceGain.gain.value = SPACES.court.leafGain;
+    n.pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+    let tail = n.leafSrc;
+    for (const nd of [n.leafBP, n.leafSpaceLP, n.leafViewLP, n.leafDyn, n.leafFlut, n.leafViewGain, n.leafSpaceGain]) {
+      tail.connect(nd); tail = nd;
+    }
+    if (n.pan) { tail.connect(n.pan); n.pan.connect(n.world); }
+    else tail.connect(n.world);
+
+    n.airSrc.start(); n.windSrc.start(rand(0, 2)); n.leafSrc.start(rand(0, 1.5));
+  }
+
+  function applyState(dur = XFADE) {
+    if (!n) return;
+    const t = ctx.currentTime, tc = Math.max(0.05, dur / 3);
+    const p = SPACES[space];
+    n.busLP.frequency.setTargetAtTime(p.busLP, t, tc);
+    n.busGain.gain.setTargetAtTime(p.busGain, t, tc);
+    n.leafSpaceLP.frequency.setTargetAtTime(p.leafLP, t, tc);
+    n.leafSpaceGain.gain.setTargetAtTime(p.leafGain, t, tc);
+    // 紙登場世界快讓位（~250ms 靜下）；回來時空氣慢慢展開（~600ms）
+    n.world.gain.setTargetAtTime(slipOpen ? LEVELS.slipDuck : 1, t, slipOpen ? 0.09 : 0.2);
+  }
+
+  function rampMaster(on) {
+    if (!n) return;
+    n.master.gain.setTargetAtTime(on ? LEVELS.master : 0, ctx.currentTime, on ? 0.5 : 0.12);
+  }
+
+  /* 陣風排程：間隔 8–45s、包絡 2–8s、強度隨機、偶爾連兩陣——沒有週期。
+     風先起；葉晚 100–300ms 跟上、亮度微開（樹知道風來了）。 */
+  function scheduleGust() {
+    clearTimeout(gustTimer);
+    gustTimer = setTimeout(fireGust, rand(GUST.waitMin, GUST.waitMax) * 1000);
+  }
+  function fireGust() {
+    if (!n || !enabled || ctx.state !== "running") { scheduleGust(); return; }
+    const len = rand(GUST.lenMin, GUST.lenMax);
+    const s = rand(0.25, 1);
+    const attack = len * rand(0.3, 0.45), release = len - attack;
+    const t0 = ctx.currentTime + 0.03;
+    const wPeak = LEVELS.windIdle + (LEVELS.windGustMax - LEVELS.windIdle) * s;
+    n.windGain.gain.setTargetAtTime(wPeak, t0, attack / 2.6);
+    n.windGain.gain.setTargetAtTime(LEVELS.windIdle, t0 + attack, release / 2.4);
+    n.windBP.frequency.setTargetAtTime(140 + 130 * s, t0, attack / 2.2); // 重心隨風抬——不是定頻扇葉
+    n.windBP.frequency.setTargetAtTime(140, t0 + attack, release / 2);
+    const lag = rand(GUST.leafLagMin, GUST.leafLagMax);
+    const lPeak = LEVELS.leafIdle + (LEVELS.leafGustMax - LEVELS.leafIdle) * s;
+    n.leafDyn.gain.setTargetAtTime(lPeak, t0 + lag, attack / 2.4);
+    n.leafDyn.gain.setTargetAtTime(LEVELS.leafIdle, t0 + lag + attack, release / 2.2);
+    n.leafBP.frequency.setTargetAtTime(3000 + 1000 * s, t0 + lag, attack / 2.2);
+    n.leafBP.frequency.setTargetAtTime(3000, t0 + lag + attack, release / 2);
+    if (Math.random() < GUST.doubleChance) gustTimer = setTimeout(fireGust, (len + rand(1.5, 4)) * 1000);
+    else scheduleGust();
+  }
+  function startFlutter() { // 葉的微顫：隨機間隔的振幅抖動，不是 LFO
+    clearTimeout(flutterTimer);
+    const step = () => {
+      if (n && enabled && ctx.state === "running") n.leafFlut.gain.setTargetAtTime(rand(0.55, 1), ctx.currentTime, 0.09);
+      flutterTimer = setTimeout(step, rand(140, 420));
+    };
+    step();
+  }
+
+  /* ---- public：主程式在既有狀態切換點呼叫，僅此而已 ---- */
+  function start() { // 手勢後才有聲；重複呼叫無害
+    if (!enabled) return;
+    if (!ctx) {
+      try { build(); } catch { ctx = null; n = null; return; }
+      applyState(0.1);
+      rampMaster(true);
+      scheduleGust();
+      startFlutter();
+      started = true;
+    } else if (ctx.state !== "running") {
+      ctx.resume().catch(() => {});
+    }
+  }
+  function setSpace(name) { // 不收身分——只有空間，沒有誰的殿
+    if (name !== "court" && name !== "hall") return;
+    space = name;
+    slipOpen = false;
+    applyState(XFADE);
+  }
+  function setSlip(open) {
+    slipOpen = !!open;
+    applyState(XFADE);
+  }
+  function tree(offsetPx, vw) { // 主程式推播樹在視野中的位置（px 偏移＋視窗寬）
+    if (!n || !vw) return;
+    const t = ctx.currentTime;
+    const x = offsetPx / (vw * 0.75);                    // ≈±1＝畫框邊緣
+    const pan = Math.max(-1, Math.min(1, x)) * PAN_MAX;
+    const away = Math.max(0, Math.abs(x) - 1);           // 出視野的程度
+    const g = 0.35 + 0.65 / (1 + away * 1.3);            // 變遠，不消失
+    const f = Math.max(1200, 5200 / (1 + away * 0.9));   // 變鈍
+    if (n.pan) n.pan.pan.setTargetAtTime(pan, t, PAN_SLEW);
+    n.leafViewGain.gain.setTargetAtTime(g, t, PAN_SLEW);
+    n.leafViewLP.frequency.setTargetAtTime(f, t, PAN_SLEW);
+  }
+  function setEnabled(v) {
+    enabled = !!v;
+    writePref(enabled);
+    if (enabled) {
+      if (!ctx) start(); // toggle 的點擊本身就是手勢
+      else { ctx.resume().catch(() => {}); rampMaster(true); }
+    } else if (ctx) {
+      rampMaster(false);
+      setTimeout(() => { if (!enabled && ctx && ctx.state === "running") ctx.suspend().catch(() => {}); }, 700);
+    }
+  }
+  function getParams() { // 驗收斷言用：目前狀態與目標值（不交形容詞）
+    return {
+      started, enabled, space, slip: slipOpen,
+      targets: { ...SPACES[space], world: slipOpen ? LEVELS.slipDuck : 1 },
+      spaces: SPACES, levels: LEVELS, gust: GUST, xfade: XFADE, panMax: PAN_MAX,
+    };
+  }
+
+  // iOS lifecycle：背景即靜（廟不跟著你出門）；回前景／中斷後正確恢復
+  document.addEventListener("visibilitychange", () => {
+    if (!ctx || !enabled) return;
+    if (document.visibilityState === "visible") { if (ctx.state !== "running") ctx.resume().catch(() => {}); }
+    else if (ctx.state === "running") ctx.suspend().catch(() => {});
+  });
+
+  return { start, space: setSpace, slip: setSlip, tree, setEnabled, enabled: () => enabled, getParams };
+})();
+/* ==================== sound-layer:end ==================== */
+</script>
 <script>
 (function () {
   "use strict";
@@ -1163,6 +1425,7 @@
   const nearStrip = $("nearStrip");
 
   let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
+  let treeSoundX = 0; // 老樹（葉聲源＝樹冠質心）的 strip 座標——dressCourt 寫入，applyFrame 推播給聲音層
   let dragging = false, dragStartX = 0, dragStartScroll = 0, velocity = 0, lastX = 0, lastT = 0;
   let downTarget = null;
   let raf = 0, hasTurned = false;
@@ -1269,6 +1532,7 @@
       // 老樹在埕的西端，早於三殿；?halls=4 時仍在工地更外側，永不擋殿。
       // 樹蔭先鋪（物件坐在影子上）；人間長在兩側，走向神前的路留在中央。
       const tx = -0.25 * stationW;
+      treeSoundX = tx + 0.2 * stationW; // 葉聲來自樹冠質心（冠幅 tx-0.45W..tx+0.85W），不是樹幹
       put("tree-shade", tx - 0.3 * stationW, { width: Math.round(2.35 * stationW) + "px" });
       put("tree-shade-wall", tx - 0.15 * stationW, { width: Math.round(0.9 * stationW) + "px" });
       put("leafbits", tx + 0.5 * stationW);
@@ -1363,6 +1627,8 @@
     const settledOnHall = !STATIONS[ni].void && !STATIONS[ni].hypothetical &&
       Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
     $("groundPath").style.opacity = settledOnHall ? "1" : "0";
+    // 樹在視野中的位置餵給聲音層（幾何由這裡推播；聲音層不讀 mechanics）
+    window.ARRIVAL_SOUND?.tree(treeSoundX + pad0 - scroll - vw / 2, vw);
   }
 
   function animate() {
@@ -1495,6 +1761,9 @@
   function enterHall(hall, { boundEntry } = {}) {
     currentHall = hall;
     sessionFacing = hall.id ?? "void";
+    // 聲音與 400ms 轉場同步收窄。月老 fail-closed 同構：增建中無殿內聲態，
+    // 埕的空氣照常經過工地（guard 同 renderHall 的 fail-closed 謂詞，非身分分支）。
+    if (!hall.hypothetical && hall.corpusId) window.ARRIVAL_SOUND?.space("hall");
     const court = $("s-court");
     court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
@@ -1506,6 +1775,7 @@
   }
 
   $("backBtn").addEventListener("click", () => {
+    window.ARRIVAL_SOUND?.space("court"); // 回埕：空氣展開還原
     renderCourt();
     show("court");
   });
@@ -1625,6 +1895,7 @@
   });
 
   function showSlip(entry, { repeated }) {
+    window.ARRIVAL_SOUND?.slip(true); // 紙是主角：世界閉嘴
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "flex";
@@ -1658,6 +1929,7 @@
     const d = new Date();
     store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
     $("question").value = "";
+    window.ARRIVAL_SOUND?.space("court"); // 收籤回埕：空氣展開還原
     renderCourt();
     show("court");
   });
@@ -1707,8 +1979,31 @@
     $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
   }
 
+  /* ---------- 聲音層掛點：手勢啟動＋「聲」toggle ---------- */
+  // AudioContext 必須在手勢後啟動：初訪＝山門「入內」；回訪＝首次觸碰埕。
+  // 山門期間不啟動——門檻之外無聲（提案狀態，未拍板）。
+  document.addEventListener("pointerdown", () => {
+    if (!$("s-gate").classList.contains("on")) window.ARRIVAL_SOUND?.start();
+  }, { passive: true });
+  function syncSoundUI() {
+    const on = !!window.ARRIVAL_SOUND?.enabled();
+    for (const el of document.querySelectorAll(".sound-toggle")) {
+      el.classList.toggle("off", !on);
+      el.setAttribute("aria-pressed", String(on));
+      el.title = on ? "聲・開（點一下轉靜）" : "聲・靜（點一下打開）";
+    }
+  }
+  for (const el of document.querySelectorAll(".sound-toggle")) {
+    el.addEventListener("click", () => {
+      window.ARRIVAL_SOUND?.setEnabled(!window.ARRIVAL_SOUND?.enabled());
+      syncSoundUI();
+    });
+  }
+  syncSoundUI();
+
   /* ---------- boot：初訪走山門，之後永遠落在埕 ---------- */
   $("enterBtn").addEventListener("click", () => {
+    window.ARRIVAL_SOUND?.start(); // 入內＝門檻上的手勢：空氣自此有聲
     store.set(VISITED_KEY, true);
     renderCourt();
     show("court");
