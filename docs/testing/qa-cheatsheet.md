@@ -13,6 +13,11 @@ production guard**——正常 user 不會看到；真正要防的是未來維�
 | `?devdraw=1` | 跳過拉籤手勢（點籤筒即完成抽籤） | 只縮短手勢，不繞過一事一籤 binding |
 | `?halls=4` | 顯示假設性月老殿（增建中，fail-closed stress test） | 非 production；無任何 draw path 與殿內聲態 |
 
+## 測試時被一事一籤關住？
+
+同一問題（含空白問題）永遠回同一支籤——這是產品規則，不是 bug。
+要重複測抽籤：**在案上寫一個新問題**即可；徹底重來用下方 localStorage。
+
 ## 本機狀態重置（devtools console）
 
 ```js

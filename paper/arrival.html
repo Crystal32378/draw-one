@@ -797,6 +797,7 @@
     .hall-desk { margin-top: 12px; padding-top: 10px; }
     .tube-stage { margin-top: 8px; }
     .tube-wrap { height: 246px; } /* 削籤枝上升的留白 headroom，筒身圖形要進畫面 */
+    .tube-hint { order: -1; margin: 0 0 10px; } /* 提示上移：筒半沉摺線下時，規則不能跟著沉 */
     .stick { bottom: 32px; } /* 底緣維持 214px（246−32）＝拉的視覺幾何不變；PULL_DIST 不動 */
   }
   .present-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
@@ -804,7 +805,9 @@
   .present-q.empty { color: var(--ink-soft); font-family: "Noto Sans TC", sans-serif; font-size: 13px; }
 
   /* 籤筒（沿用 V2A 的拖抽） */
-  .tube-stage { margin-top: 34px; display: flex; flex-direction: column; align-items: center; }
+  .tube-stage { margin-top: 34px; display: flex; flex-direction: column; align-items: center;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; /* 按住＝手勢，不是選「籤」字 */
+  }
   .tube-wrap { position: relative; width: 110px; height: 300px; overflow: hidden; touch-action: none; }
   .stick {
     position: absolute; left: 50%; bottom: 86px;
@@ -830,7 +833,9 @@
   }
   .tube-hint { margin-top: 20px; font-size: 12.5px; letter-spacing: 0.14em; color: var(--ink-soft); }
 
-  .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px; }
+  .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
   .stick-large {
     width: 42px; height: 280px;
     background: linear-gradient(90deg, #dccda8, #cbb98f 55%, #b7a479);
@@ -2246,6 +2251,8 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickLabel").textContent = window.SLIP_RENDER.tabText(entry);
     $("stickStage").style.display = "flex";
+    // 你抽動了世界，世界把籤端到你面前——手機上換幕的新主角常在摺線下
+    $("stickStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   }
 
   $("takeBtn").addEventListener("click", () => {
@@ -2259,6 +2266,7 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "flex";
+    $("slipStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); // 紙登場＝紙在眼前
     const mount = $("slipMount");
     mount.innerHTML = "";
     try {

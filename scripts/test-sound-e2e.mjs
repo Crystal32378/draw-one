@@ -240,7 +240,10 @@ console.log("E11 儀式不沉摺線 — 手機高度、四字匾、真手勢（C
     };
   };
   const mazu = await tubeTopAt("left");
-  check("四字匾殿的筒身進畫面（664 高，籤筒看得見才抽得到）", mazu.hall === "天上聖母" && mazu.y < 620, `tubeTop=${mazu.y}`);
+  // 初始 affordance＝提示完整可見＋筒口貼在摺線邊；換幕後由 auto-scroll 端上來
+  check("四字匾殿的筒口貼齊摺線（664 高）", mazu.hall === "天上聖母" && mazu.y <= 668, `tubeTop=${mazu.y}`);
+  check("小螢幕提示上移（規則不沉摺線）",
+    await pp.$eval(".tube-hint", (el) => el.getBoundingClientRect().bottom < 660));
   // 真手勢拉籤（不經 devdraw）
   const box = await pp.$eval("#tubeWrap", (el) => { const r = el.getBoundingClientRect(); return { x: r.x + r.width / 2, y: Math.min(r.y + r.height * 0.6, 640) }; });
   await pp.evaluate(async (b0) => {
@@ -250,8 +253,10 @@ console.log("E11 儀式不沉摺線 — 手機高度、四字匾、真手勢（C
     for (let i = 1; i <= 20; i++) { fire("pointermove", b0.y - i * 8, window); await new Promise((r) => setTimeout(r, 16)); }
     fire("pointerup", b0.y - 160, window);
   }, box);
-  await sleep(400);
+  await sleep(1000); // 含換幕捲動
   check("真手勢抽籤成功（stickStage 出現）", await pp.$eval("#stickStage", (el) => el.style.display === "flex"));
+  check("換幕把取籤詩端進畫面（世界把結果端到你面前）",
+    await pp.$eval("#takeBtn", (el) => { const r = el.getBoundingClientRect(); return r.top >= 0 && r.bottom <= 664; }));
   const guanyin = await tubeTopAt("right");
   check("儀式等位：兩殿籤筒高度差 ≤ 6px（匾同規格）",
     guanyin.hall === "觀世音" && Math.abs(guanyin.y - mazu.y) <= 6, `mazu=${mazu.y} guanyin=${guanyin.y}`);
