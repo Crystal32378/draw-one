@@ -1048,10 +1048,10 @@ window.ARRIVAL_SOUND = (function () {
   const LEVELS = {
     master: 0.5,       // 總閘
     slipDuck: 0.0001,  // 展籤：世界退到聽不見
-    rainWash: 0.010,   // 遠雨（整場雨在世界上）
-    rainStone: 0.012,  // 雨落石地：亮而疏的 tick
+    rainWash: 0.013,   // 遠雨（雨的身體——多數雨聲糊在這裡，不是散粒）
+    rainStone: 0.009,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
     rainCanopy: 0.020, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
-    rainDrip: 0.012,   // 簷滴：比雨慢半拍的個體
+    rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
     voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
   };
   const XFADE = 0.4;     // 進殿／回埕 crossfade（秒）＝與視覺 400ms 轉場同步
@@ -1075,10 +1075,10 @@ window.ARRIVAL_SOUND = (function () {
   const rand = (a, b) => a + Math.random() * (b - a);
   const W = () => WEATHERS[weather];
   const running = () => n && enabled && ctx.state === "running";
-  function loopTimer(key, fn, minS, maxS) { // 隨機間隔迴圈：停在 clearTimeout，不停在條件
+  function loopTimer(key, fn, minS, maxS, firstScale = 1) { // 隨機間隔迴圈；首發可提早（世界不讓人乾等）
     clearTimeout(timers[key]);
     const step = () => { fn(); timers[key] = setTimeout(step, rand(minS, maxS) * 1000); };
-    timers[key] = setTimeout(step, rand(minS, maxS) * 1000);
+    timers[key] = setTimeout(step, rand(minS, maxS) * firstScale * 1000);
   }
 
   /* ---- 噪音家族（唯一的合成原料）---- */
@@ -1104,7 +1104,8 @@ window.ARRIVAL_SOUND = (function () {
       const at = Math.floor(Math.random() * len);
       const dur = Math.floor(ctx.sampleRate * rand(minMs, maxMs) / 1000);
       const a = (0.25 + Math.random() * 0.75) ** 2;
-      for (let i = 0; i < dur && at + i < len; i++) d[at + i] += (Math.random() * 2 - 1) * a * (1 - i / dur) ** 2;
+      // 半正弦包絡＝軟起音：硬起音的顆粒是米粒落地，不是水（taste gate r3）
+      for (let i = 0; i < dur && at + i < len; i++) d[at + i] += (Math.random() * 2 - 1) * a * Math.sin(Math.PI * i / dur);
     }
     return buf;
   }
@@ -1195,8 +1196,8 @@ window.ARRIVAL_SOUND = (function () {
     r.washLP = biquad("lowpass", 1000, 0.4);
     r.washGain = gainNode(LEVELS.rainWash);
     r.washSrc.connect(r.washLP); r.washLP.connect(r.washGain); r.washGain.connect(r.master);
-    const stoneBuf = grainBuffer(8, 26, 3, 8);
-    r.stoneBP = biquad("bandpass", 3600, 0.8);
+    const stoneBuf = grainBuffer(8, 34, 5, 14); // 密一點、長一點＝糊成 patter
+    r.stoneBP = biquad("bandpass", 2700, 0.65); // 壓亮度：石地的雨不是敲的
     r.stoneGain = gainNode(LEVELS.rainStone);
     r.stoneBP.connect(r.stoneGain); r.stoneGain.connect(r.master);
     for (const rate of [1, 0.937]) { const s = src(stoneBuf, rate); s.connect(r.stoneBP); s.start(rand(0, 4)); }
@@ -1213,10 +1214,14 @@ window.ARRIVAL_SOUND = (function () {
     const t0 = ctx.currentTime + 0.02;
     const s = ctx.createBufferSource();
     s.buffer = n.rain.dripBuf; s.playbackRate.value = rand(0.85, 1.3);
-    const bp = biquad("bandpass", rand(1100, 1900), 5);
+    // 水滴的「啵」＝氣泡共振：高 Q 窄帶＋音高上滑（米粒是乾的，水會滑）
+    const f0 = rand(900, 1600);
+    const bp = biquad("bandpass", f0 * 0.72, 9);
+    bp.frequency.setValueAtTime(f0 * 0.72, t0);
+    bp.frequency.setTargetAtTime(f0, t0 + 0.008, 0.022);
     const g = gainNode(LEVELS.rainDrip * rand(0.4, 1));
     s.connect(bp); bp.connect(g); g.connect(n.rain.master);
-    s.start(t0); s.stop(t0 + 0.25);
+    s.start(t0); s.stop(t0 + 0.3);
   }
   function rainBreath() { // 雨的呼吸：忽大忽小，不是恆定音床
     if (!n.rain || !W().rainOn) return;
@@ -1334,15 +1339,15 @@ window.ARRIVAL_SOUND = (function () {
     }
     if (w.voices) {
       ensureVoices();
-      loopTimer("cicadaWave", cicadaWave, 15, 50);
+      loopTimer("cicadaWave", cicadaWave, 15, 50, 0.2); // 蟬早點在（3–10s 起第一潮）
       loopTimer("cicadaPulse", cicadaPulse, 0.06, 0.14);
-      loopTimer("bird", birdChirp, 25, 75);
-      loopTimer("bike", bikePass, 150, 420);
+      loopTimer("bird", birdChirp, 25, 75, 0.35);
+      loopTimer("bike", bikePass, 150, 420, 0.4);
     } else if (n.v) {
       if (n.v.cicadaOn) n.v.cicGain.gain.setTargetAtTime(0, t, 1);
       for (const k of ["cicadaWave", "cicadaPulse", "bird", "bike"]) clearTimeout(timers[k]);
     }
-    scheduleGust();
+    scheduleGust(0.3); // 第一陣風提早：入內後不用乾等一輪完整間隔
   }
   function rampMaster(on) {
     if (!n) return;
@@ -1351,9 +1356,9 @@ window.ARRIVAL_SOUND = (function () {
 
   /* 陣風：間隔／包絡依票（慢起慢退，無 whoosh、無週期、偶爾連兩陣）。
      風先起；葉晚 100–300ms 跟上、亮度微開——世界被風吹動。 */
-  function scheduleGust() {
+  function scheduleGust(firstScale = 1) {
     clearTimeout(timers.gust);
-    timers.gust = setTimeout(fireGust, rand(W().gustWaitMin, W().gustWaitMax) * 1000);
+    timers.gust = setTimeout(fireGust, rand(W().gustWaitMin, W().gustWaitMax) * firstScale * 1000);
   }
   function fireGust() {
     if (!running()) { scheduleGust(); return; }
