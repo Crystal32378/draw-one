@@ -1048,9 +1048,9 @@ window.ARRIVAL_SOUND = (function () {
   const LEVELS = {
     master: 0.5,       // 總閘
     slipDuck: 0.0001,  // 展籤：世界退到聽不見
-    rainWash: 0.013,   // 遠雨（雨的身體——多數雨聲糊在這裡，不是散粒）
-    rainStone: 0.009,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
-    rainCanopy: 0.020, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
+    rainWash: 0.008,   // 遠雨（雨的身體——這個值決定雨勢：疏雨，不是西北雨）
+    rainStone: 0.007,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
+    rainCanopy: 0.013, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
     rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
     voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
   };
@@ -1196,12 +1196,12 @@ window.ARRIVAL_SOUND = (function () {
     r.washLP = biquad("lowpass", 1000, 0.4);
     r.washGain = gainNode(LEVELS.rainWash);
     r.washSrc.connect(r.washLP); r.washLP.connect(r.washGain); r.washGain.connect(r.master);
-    const stoneBuf = grainBuffer(8, 34, 5, 14); // 密一點、長一點＝糊成 patter
+    const stoneBuf = grainBuffer(8, 14, 5, 14); // 疏雨：粒子稀一點，聽得見雨與雨之間
     r.stoneBP = biquad("bandpass", 2700, 0.65); // 壓亮度：石地的雨不是敲的
     r.stoneGain = gainNode(LEVELS.rainStone);
     r.stoneBP.connect(r.stoneGain); r.stoneGain.connect(r.master);
     for (const rate of [1, 0.937]) { const s = src(stoneBuf, rate); s.connect(r.stoneBP); s.start(rand(0, 4)); }
-    const canopyBuf = grainBuffer(6, 260, 2, 5);
+    const canopyBuf = grainBuffer(6, 90, 2, 5);
     r.canopyBP = biquad("bandpass", 1700, 0.5);
     r.canopyGain = gainNode(0);
     r.canopyBP.connect(r.canopyGain); r.canopyGain.connect(n.leafSpaceLP); // 匯入葉鏈中段
@@ -1330,7 +1330,7 @@ window.ARRIVAL_SOUND = (function () {
       ensureRain();
       n.rain.master.gain.setTargetAtTime(1, t, 2); // 雨慢慢落起來，不是開關
       n.rain.canopyGain.gain.setTargetAtTime(LEVELS.rainCanopy, t, 2);
-      loopTimer("drip", dripOnce, 0.4, 2.4);
+      loopTimer("drip", dripOnce, 0.7, 3.2);
       loopTimer("rainBreath", rainBreath, 6, 18);
     } else if (n.rain) {
       n.rain.master.gain.setTargetAtTime(0, t, 1.5);
