@@ -11,6 +11,7 @@
  *   S4 air grammar    — 陣風排程無週期；減法優先的空間參數；Slip 靜默
  *   S5 gesture/toggle — 手勢後啟動；「聲」偏好持久化；lifecycle resume
  * Runtime API 狀態斷言另見 test-sound-e2e.mjs（需 playwright-core，無則 skip）。
+ * Dev 後門（?weather / ?newday / ?devdraw / ?halls）見 docs/testing/qa-cheatsheet.md。
  */
 
 import { readFileSync } from "node:fs";

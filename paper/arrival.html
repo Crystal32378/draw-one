@@ -2467,6 +2467,7 @@ window.ARRIVAL_SOUND = (function () {
   const TICKET_KEY = "arrival.ticket.v1";
   const AUDITION_WEATHER = new URLSearchParams(location.search).get("weather");
   // dev 後門僅此兩個：?weather=（試聽，不寫票）、?newday=1（撕掉今天的票，重過門檻）
+  // 保留、不做 production guard——對 user 隱形，對 maintainer 顯眼：docs/testing/qa-cheatsheet.md
   if (new URLSearchParams(location.search).get("newday") === "1") {
     try { localStorage.removeItem(TICKET_KEY); } catch {}
   }

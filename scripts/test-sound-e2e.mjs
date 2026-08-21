@@ -6,6 +6,7 @@
  * Needs playwright-core + a local Chromium; without them it SKIPs (exit 0)
  * so the zero-dependency CI stays honest. Point at a browser with:
  *   PW_CORE=/path/to/node_modules/playwright-core  CHROMIUM=/path/to/chromium
+ * Dev 後門（?weather / ?newday / ?devdraw / ?halls）見 docs/testing/qa-cheatsheet.md。
  *
  * Asserts the acceptance-table state transitions（交參數，不交形容詞）：
  *   E1 山門無聲；「入內」手勢後 started、court targets (busLP 800)
