@@ -99,7 +99,11 @@
   .stage-strip::before {
     content: ""; position: absolute; left: -60%; right: -60%;
     top: 24%; height: 30%;
-    background: linear-gradient(180deg, #cfc8b4 0%, #cac2ad 78%, #c2baa4 100%);
+    background:
+      radial-gradient(340px 90px at 30% 104%, rgba(74, 66, 52, 0.07), transparent 70%),
+      radial-gradient(520px 130px at 68% -10%, rgba(245, 239, 226, 0.10), transparent 72%),
+      radial-gradient(240px 70px at 84% 102%, rgba(74, 66, 52, 0.05), transparent 70%),
+      linear-gradient(180deg, #cfc8b4 0%, #cac2ad 78%, #c2baa4 100%);
     border-top: 1px solid rgba(74, 66, 52, 0.28);
     box-shadow: inset 0 -14px 18px -14px rgba(52, 45, 34, 0.35);
   }
@@ -154,7 +158,9 @@
   /* 簷柱與角柱：三開間；柱撐簷，屋頂不再浮空。柱腳有礎 */
   .facade .col {
     position: absolute; top: 20%; bottom: 50%; width: 3.2%;
-    background: linear-gradient(90deg, #b6ad96 0%, #a49b81 50%, #8b8269 100%);
+    background:
+      linear-gradient(180deg, transparent 68%, rgba(38, 33, 25, 0.12) 100%),
+      linear-gradient(90deg, #b6ad96 0%, #a49b81 50%, #8b8269 100%);
     border-left: 1px solid rgba(245, 239, 226, 0.35);
     border-right: 1px solid rgba(38, 33, 25, 0.4);
   }
@@ -198,8 +204,15 @@
   }
   .facade .doorway::after {
     content: ""; position: absolute; left: -5%; right: -5%; bottom: -2px; height: 5px;
-    background: #8a8168;
+    background: linear-gradient(90deg, #8a8168 0%, #9d947c 44% 56%, #8a8168 100%); /* 門檻中段被踏亮 */
   }
+  .facade .doorway::before { /* 裡面有人：殿內的光極緩地呼吸，不是 portal */
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 58%;
+    background: radial-gradient(80% 95% at 50% 100%, rgba(166, 120, 60, 0.2), transparent 75%);
+    animation: hearth 9s ease-in-out infinite;
+  }
+  @keyframes hearth { 0%, 100% { opacity: 0.55; } 44% { opacity: 0.95; } 62% { opacity: 0.7; } }
+  @media (prefers-reduced-motion: reduce) { .facade .doorway::before { animation: none; opacity: 0.65; } }
   /* 階：三級，由台基落到埕 */
   .facade .steps {
     position: absolute; left: 36%; right: 36%; top: 50.9%; height: 4.6%;
@@ -208,6 +221,10 @@
       #d6ceba 0%, #d6ceba 30%, #a9a18b 30%, #a9a18b 34%,
       #cbc3ae 34%, #cbc3ae 64%, #a29a84 64%, #a29a84 68%,
       #c0b8a3 68%, #c0b8a3 96%, #99917b 96%, #99917b 100%);
+  }
+  .facade .steps::after { /* 階心被走亮：人都從中間上 */
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, transparent 32%, rgba(245, 239, 226, 0.24) 47% 53%, transparent 68%);
   }
   .facade .plaque2 {
     position: absolute; left: 50%; top: 23.5%; transform: translateX(-50%);
@@ -220,9 +237,70 @@
     box-shadow: 0 2px 3px rgba(38, 33, 25, 0.35);
   }
   .facade .last-mark2 {
-    position: absolute; left: 50%; top: 56.5%; transform: translateX(-50%);
+    position: absolute; left: 50%; top: 58%; transform: translateX(-50%);
     font-size: 10px; letter-spacing: 0.2em; color: var(--ink-soft); white-space: nowrap;
   }
+  /* ============ Lived layer：時間與人的痕跡 ============
+     全部 pointer-events:none、不可互動、不進 facade 模板。
+     局部聚集＋留白＋非對稱；位置以站序（相對 void）推算——
+     痕跡屬於地方，不屬於任何一位（無 per-hall styling 分支）。 */
+  .lived { position: absolute; pointer-events: none; }
+  .lived.bench { /* 等的人坐的長凳，沒擺得很正 */
+    top: 51.6%; width: 62px; height: 6px;
+    background: linear-gradient(180deg, #a4967a, #8a7c60);
+    border: 1px solid rgba(74, 66, 52, 0.4);
+    transform: rotate(-0.7deg);
+  }
+  .lived.bench::before, .lived.bench::after {
+    content: ""; position: absolute; top: 100%; width: 5px; height: 15px;
+    background: #857758; border: 1px solid rgba(74, 66, 52, 0.35); border-top: 0;
+  }
+  .lived.bench::before { left: 6px; }
+  .lived.bench::after { right: 6px; transform: rotate(1.2deg); }
+  .lived.broom { /* 竹掃帚靠牆 */
+    top: 42%; width: 3px; height: 11.4%;
+    background: linear-gradient(180deg, #9a8a68, #8a7a58);
+    transform: rotate(8deg); transform-origin: 50% 100%;
+  }
+  .lived.broom::after {
+    content: ""; position: absolute; top: 100%; left: 50%;
+    width: 17px; height: 24px; transform: translateX(-50%);
+    background:
+      repeating-linear-gradient(90deg, rgba(74, 66, 52, 0.25) 0 1px, transparent 1px 4px),
+      linear-gradient(180deg, #a08e66, #8f7d55);
+    clip-path: polygon(38% 0, 62% 0, 100% 100%, 0 100%);
+  }
+  .lived.leaves { /* 掃攏成一小堆的葉 */
+    top: 53.9%; width: 24px; height: 6px;
+    background: radial-gradient(60% 100% at 50% 100%, rgba(96, 86, 56, 0.5), rgba(96, 86, 56, 0.15) 80%, transparent);
+    border-radius: 50% 50% 0 0;
+  }
+  .lived.notice { /* 一張普通公告，貼得不很正，字讀不清 */
+    top: 38.5%; width: 19px; height: 26px;
+    background:
+      repeating-linear-gradient(180deg, transparent 0 5px, rgba(74, 66, 52, 0.28) 5px 6px) content-box,
+      var(--paper);
+    padding: 4px 3px;
+    border: 1px solid rgba(74, 66, 52, 0.35);
+    box-shadow: 0 1px 1px rgba(38, 33, 25, 0.2);
+    transform: rotate(-1.6deg);
+    opacity: 0.95;
+  }
+  .lived.stones { /* 增建殿旁的砌石料：工班的真實 */
+    top: 52%; width: 16px; height: 9px;
+    background: #a9a08a; border: 1px solid rgba(74, 66, 52, 0.4);
+    box-shadow:
+      19px 1px 0 -1px #b2a992, 19px 1px 0 0 rgba(74, 66, 52, 0.35),
+      9px -8px 0 -1px #a49b84, 9px -8px 0 0 rgba(74, 66, 52, 0.35);
+  }
+  .lived.cushion { /* 階前拜墊：三殿都有（儀式同尊），擺位各自微偏 */
+    top: 55.4%; width: 30px; height: 9px; margin-left: -15px;
+    background: radial-gradient(50% 60% at 50% 38%, #a98a74 0 55%, #8f7360 100%);
+    border-radius: 50%;
+    opacity: 0.55;
+  }
+  /* （自審刪除：曾有一把靠廊的傘——7px 寬讀不出傘形，只剩一根可疑的斜棍。
+     歧義物是 noise，不是人味。） */
   /* 未落成（假設性增建）：只有放樣輪廓 */
   .station.hypothetical .facade .body {
     background: none;
@@ -234,6 +312,7 @@
     border: 1px dashed rgba(74, 66, 52, 0.5);
   }
   .station.hypothetical .facade .doorway::after { display: none; }
+  .station.hypothetical .facade .doorway::before { display: none; } /* 未落成，裡面沒有人 */
   /* 放樣中的柱、台基、階：只有放樣輪廓，未砌石 */
   .station.hypothetical .facade .col,
   .station.hypothetical .facade .podium,
@@ -290,7 +369,9 @@
   /* 地面（0.9x 鋪面縫＋固定光帶＋引路） */
   .ground-fixed {
     position: absolute; left: 0; right: 0; top: 54%; bottom: 0;
-    background: linear-gradient(180deg, #c9c1ac 0%, var(--ground) 30%, #ddd6c5 100%);
+    background:
+      radial-gradient(46% 24% at 50% 58%, rgba(245, 239, 226, 0.16), transparent 76%),
+      linear-gradient(180deg, #c9c1ac 0%, var(--ground) 30%, #ddd6c5 100%);
   }
   .ground-joints {
     position: absolute; top: 54%; bottom: 0; display: flex;
@@ -367,7 +448,13 @@
   .walk-hint { font-size: 11px; letter-spacing: 0.14em; color: rgba(111, 103, 87, 0.85); }
 
   /* ============ 殿 ============ */
-  #s-hall { background: linear-gradient(180deg, #cfc7b2 0%, var(--ground) 30%); overflow-y: auto; }
+  /* 殿內的光不是燈箱：上方一團暖（燭），往下沉入地色 */
+  #s-hall {
+    background:
+      radial-gradient(340px 300px at 50% 9%, rgba(190, 150, 90, 0.12), transparent 72%),
+      linear-gradient(180deg, #cfc7b2 0%, var(--ground) 30%);
+    overflow-y: auto;
+  }
   .hall-top {
     display: flex; justify-content: space-between; align-items: flex-start;
     padding: calc(10px + env(safe-area-inset-top)) 14px 0;
@@ -397,6 +484,39 @@
     font-size: 11.5px; letter-spacing: 0.3em; text-indent: 0.3em;
     color: var(--ink-soft);
   }
+  /* 案前小香爐：爐裡有灰、枝插得不齊、一縷極輕的煙——剛有人來過 */
+  .censer { position: relative; width: 54px; height: 58px; margin-top: 22px; pointer-events: none; }
+  .censer .bowl {
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    width: 44px; height: 19px;
+    background: linear-gradient(180deg, #8f8570 0%, #6f6757 100%);
+    border-radius: 5px 5px 13px 13px;
+    box-shadow: inset 0 2px 2px rgba(245, 239, 226, 0.25), 0 1px 2px rgba(38, 33, 25, 0.3);
+  }
+  .censer .bowl::after {
+    content: ""; position: absolute; left: 4px; right: 4px; top: 2px; height: 4px;
+    border-radius: 4px; background: #c9c1ac;
+  }
+  .censer .incense { position: absolute; bottom: 15px; width: 2px; background: #7a5a44; transform-origin: 50% 100%; }
+  .censer .incense::after {
+    content: ""; position: absolute; top: -2px; left: 0; width: 2px; height: 3px;
+    background: #a63a2b; border-radius: 1px; opacity: 0.85;
+  }
+  .censer .i1 { left: 25px; height: 34px; }
+  .censer .i2 { left: 29px; height: 29px; transform: rotate(6deg); }
+  .censer .i3 { left: 22px; height: 26px; transform: rotate(-8deg); }
+  .censer .smoke {
+    position: absolute; left: 25px; bottom: 47px; width: 2px; height: 44px;
+    background: linear-gradient(180deg, transparent 0%, rgba(120, 110, 95, 0.38) 62%, rgba(120, 110, 95, 0.12) 100%);
+    filter: blur(2px);
+    transform-origin: 50% 100%;
+    animation: smoke-sway 10s ease-in-out infinite;
+  }
+  @keyframes smoke-sway {
+    0%, 100% { transform: rotate(-1deg) scaleY(1); opacity: 0.35; }
+    50% { transform: rotate(4deg) scaleY(1.12); opacity: 0.55; }
+  }
+  @media (prefers-reduced-motion: reduce) { .censer .smoke { animation: none; opacity: 0.3; } }
   .hall-desk {
     width: 100%; max-width: 340px; margin-top: 30px;
     border-top: 1px solid rgba(74, 66, 52, 0.42);
@@ -548,6 +668,12 @@
     <div class="hall-body">
       <div class="tablet" id="tablet"></div>
       <div class="hall-sub" id="hallSub"></div>
+
+      <div class="censer" id="censer" aria-hidden="true">
+        <span class="smoke"></span>
+        <span class="incense i1"></span><span class="incense i2"></span><span class="incense i3"></span>
+        <span class="bowl"></span>
+      </div>
 
       <div class="hall-desk" id="hallDesk">
         <div class="present-label">所問之事</div>
@@ -730,7 +856,7 @@
 
     stageStrip.innerHTML = "";
     const lastHall = store.get(LASTHALL_KEY, null);
-    for (const s of STATIONS) {
+    for (const [si, s] of STATIONS.entries()) {
       const st = document.createElement("div");
       st.className = "station" + (s.hypothetical ? " hypothetical" : "") + (s.void ? " void-station" : "");
       st.style.width = stationW + "px";
@@ -775,8 +901,42 @@
           f.appendChild(lm);
         }
         st.appendChild(f);
+        // 生活痕（站內、隨站 transform、不可互動；positional，不以神明分支）：
+        // 已落成的殿階前都有一方拜墊（儀式同尊），擺位各自微偏——人放的，不是設計師放的
+        if (!s.hypothetical) {
+          const cu = document.createElement("div");
+          cu.className = "lived cushion";
+          cu.style.left = `calc(50% + ${((si * 47) % 17) - 8}px)`;
+          st.appendChild(cu);
+        }
       }
       stageStrip.appendChild(st);
+    }
+    dressCourt();
+
+    /* --------------------------------------------------------------
+       Lived layer（presentation only）：埕有人過日子的痕跡。
+       局部聚集＋留白＋非對稱；全部 pointer-events:none，不新增 interaction；
+       位置以站序（相對 void）推算——痕跡屬於地方，不屬於任何一位。
+       中軸空段本身保持乾淨（治理留白不放東西）。
+       -------------------------------------------------------------- */
+    function dressCourt() {
+      const put = (cls, x) => {
+        const el = document.createElement("div");
+        el.className = "lived " + cls;
+        el.style.left = Math.round(x) + "px";
+        stageStrip.appendChild(el);
+      };
+      // 今晨有人掃過：帚靠牆、葉掃攏一小堆（中軸左一站的外緣）
+      put("broom", (voidIndex - 1 + 0.06) * stationW);
+      put("leaves", (voidIndex - 1 + 0.045) * stationW + 15);
+      // 等的人坐的長凳：左一站與中軸之間的牆腳
+      put("bench", voidIndex * stationW - 34);
+      // 一張普通公告：中軸右側牆上（右外側一帶刻意留白——真實不平均）
+      put("notice", (voidIndex + 1) * stationW + 8);
+      // 增建中的殿旁：一小堆砌石料（工班的真實，不是 disabled 標籤）
+      const hyp = STATIONS.findIndex((s) => s.hypothetical);
+      if (hyp >= 0) put("stones", (hyp + 0.86) * stationW);
     }
 
     groundJoints.innerHTML = "";
@@ -995,6 +1155,8 @@
     $("slipStage").style.display = "none";
     $("unbuilt").hidden = true;
     $("hallDesk").style.display = "";
+    // 香爐是使用痕跡：未落成的殿還沒有人來拜（presentation only）
+    $("censer").style.display = (hall.hypothetical || !hall.corpusId) ? "none" : "";
 
     const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
     $("presentQ").textContent = q || "（未寫問題——空手而來也可以）";
