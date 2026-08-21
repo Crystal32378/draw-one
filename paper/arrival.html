@@ -597,7 +597,9 @@
   let STATIONS = buildStations();
   let voidIndex = STATIONS.findIndex((s) => s.void);
 
-  const FACING_KEY = "arrival.facing.v1";
+  // 治理契約：boot/reload 永遠面向中軸空段（void）。朝向只活在 session 記憶體，
+  // 絕不持久化——「上一次朝向」不得成為隱性預設神明（無主位／諸神同尊）。
+  let sessionFacing = "void";
   const view = $("courtView");
   const stageStrip = $("stageStrip");
   const farStrip = $("farStrip");
@@ -787,9 +789,9 @@
     const s = STATIONS[nearestStation()];
     if (!s) return;
     if (s.void) {
-      store.set(FACING_KEY, "void");
+      sessionFacing = "void";
     } else {
-      store.set(FACING_KEY, s.id);
+      sessionFacing = s.id;
     }
     updateWalkHint();
   }
@@ -804,7 +806,7 @@
 
   function renderCourt() {
     buildCourt();
-    const facing = store.get(FACING_KEY, "void");
+    const facing = sessionFacing;
     faceStation(facing, { instant: true });
     const book = store.get(BOOK_KEY, []);
     $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
@@ -841,7 +843,7 @@
   /* ---------- 走向殿（前進＝門洞放大） ---------- */
   function enterHall(hall, { boundEntry } = {}) {
     currentHall = hall;
-    store.set(FACING_KEY, hall.id ?? "void");
+    sessionFacing = hall.id ?? "void";
     const court = $("s-court");
     court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
