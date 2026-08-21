@@ -65,6 +65,27 @@
     font-family: "Noto Serif TC", serif; font-weight: 500;
     font-size: 16px; letter-spacing: 0.24em; line-height: 1.7;
   }
+  /* 門檻上的日期節氣（回訪薄門檻的定位；與 void 刻字同一語言） */
+  .gate-date {
+    margin-bottom: 30px; text-align: center;
+    font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.32em; text-indent: 0.32em;
+    color: rgba(64, 57, 44, 0.75);
+  }
+  /* 天氣票：四個字，無 icon、無說明——怎麼理解是使用者的事。
+     選定＝一息安靜的落定；再點一次＝放回；不拿＝常日。 */
+  .gate-weather { margin-top: 42px; display: grid; gap: 16px; justify-items: center; }
+  .gw-label { font-size: 11.5px; letter-spacing: 0.3em; text-indent: 0.3em; color: var(--ink-soft); }
+  .gw-opts { display: flex; gap: 28px; }
+  .gw-opt {
+    background: none; border: 0; border-bottom: 1px solid transparent;
+    font: inherit; font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 19px; color: var(--ink-soft); cursor: pointer;
+    padding: 2px 5px 7px;
+    transition: color 400ms ease, border-color 400ms ease, opacity 400ms ease;
+  }
+  .gw-opt.on { color: var(--ink); border-bottom-color: rgba(74, 66, 52, 0.6); }
+  .gate-weather.chosen .gw-opt:not(.on) { opacity: 0.4; }
   .gate-enter {
     margin-top: 44px;
     background: none; border: 1px solid var(--rule);
@@ -893,12 +914,23 @@
 <body>
 <div class="app" id="app">
 
-  <!-- 山門：初訪一次 -->
+  <!-- 山門：初訪＝規矩＋天氣；之後每天第一次來＝薄門檻拿今天的票（D 拍板） -->
   <section class="screen" id="s-gate">
-    <div class="gate-rules">
+    <div class="gate-date" id="gateDate"></div>
+    <div class="gate-rules" id="gateRules">
       <p>一事一籤，不重問</p>
       <p>紙上只有考證過的文本</p>
       <p>諸神同尊，殿序依沿革</p>
+    </div>
+    <!-- 天氣票：不解釋（外界、心情、記憶、偏好都可以）；可不答＝常日 -->
+    <div class="gate-weather" id="gateWeather">
+      <span class="gw-label">今天天氣</span>
+      <span class="gw-opts">
+        <button class="gw-opt" data-w="sunny">晴</button>
+        <button class="gw-opt" data-w="cloudy">陰</button>
+        <button class="gw-opt" data-w="rain">雨</button>
+        <button class="gw-opt" data-w="wind">風</button>
+      </span>
     </div>
     <button class="gate-enter" id="enterBtn">入內</button>
   </section>
@@ -2428,10 +2460,24 @@ window.ARRIVAL_SOUND = (function () {
     $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
   }
 
-  /* ---------- 聲音層掛點：手勢啟動＋天氣票＋「聲」toggle ---------- */
-  // 天氣票（dev flag ?weather=sunny|cloudy|rain|wind；預設＝陰＝74af5ef 基準）。
-  // visit 內固定；入口 ritual（票怎麼拿）等回訪門檻拍板後另做。
-  window.ARRIVAL_SOUND?.weather(new URLSearchParams(location.search).get("weather"));
+  /* ---------- 天氣票（D 拍板：一天一張）＋聲音層掛點 ---------- */
+  // 票＝今天的：今天第一次來在門檻上拿，當日沿用，跨日作廢明天重拿。
+  // 記在 localStorage（記憶私人）——票是環境不是朝向，boot neutrality 不受影響。
+  // ?weather= 降級為純試聽 override：不寫票、不動門檻。不答＝常日。
+  const TICKET_KEY = "arrival.ticket.v1";
+  const AUDITION_WEATHER = new URLSearchParams(location.search).get("weather");
+  const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
+  const todaysTicket = () => { const t = store.get(TICKET_KEY, null); return t && t.date === todayStr() ? t : null; };
+  let gateWeather = null; // 門檻上選的票（null＝不拿＝常日）
+  window.ARRIVAL_SOUND?.weather(AUDITION_WEATHER ?? todaysTicket()?.weather);
+
+  for (const b of document.querySelectorAll(".gw-opt")) {
+    b.addEventListener("click", () => {
+      gateWeather = gateWeather === b.dataset.w ? null : b.dataset.w; // 再點一次＝放回
+      for (const o of document.querySelectorAll(".gw-opt")) o.classList.toggle("on", o.dataset.w === gateWeather);
+      $("gateWeather").classList.toggle("chosen", !!gateWeather);
+    });
+  }
   // AudioContext 必須在手勢後啟動：初訪＝山門「入內」；回訪＝首次觸碰埕。
   // 山門期間不啟動——門檻之外無聲（提案狀態，未拍板）。
   document.addEventListener("pointerdown", () => {
@@ -2453,18 +2499,26 @@ window.ARRIVAL_SOUND = (function () {
   }
   syncSoundUI();
 
-  /* ---------- boot：初訪走山門，之後永遠落在埕 ---------- */
+  /* ---------- boot：初訪走山門（規矩＋天氣）；「今天第一次來」過薄門檻拿票；
+     當日已有票＝直落埕（boot 落埕的修訂僅此一條，D 拍板） ---------- */
   $("enterBtn").addEventListener("click", () => {
+    if (!AUDITION_WEATHER) { // 試聽 override 不寫票
+      store.set(TICKET_KEY, { date: todayStr(), weather: gateWeather }); // 不答存 null＝常日
+      window.ARRIVAL_SOUND?.weather(gateWeather);
+    }
     window.ARRIVAL_SOUND?.start(); // 入內＝門檻上的手勢：空氣自此有聲
     store.set(VISITED_KEY, true);
     renderCourt();
     show("court");
   });
 
-  if (store.get(VISITED_KEY, false)) {
+  if (store.get(VISITED_KEY, false) && (AUDITION_WEATHER || todaysTicket())) {
     renderCourt();
     show("court");
   } else {
+    const d = new Date();
+    $("gateDate").textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+    $("gateRules").style.display = store.get(VISITED_KEY, false) ? "none" : "grid"; // 回訪＝薄門檻
     show("gate");
   }
 })();

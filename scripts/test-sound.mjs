@@ -125,8 +125,9 @@ console.log("S5 gesture / toggle / lifecycle");
 check("AudioContext built in exactly one place, called only from start()",
   (sound.match(/new \(window\.AudioContext/g) ?? []).length === 1 &&
   (sound.replace(/function build\(\)/, "").match(/build\(\)/g) ?? []).length === 1);
-check("初訪手勢＝山門「入內」啟動",
-  /enterBtn"\)\.addEventListener\("click[\s\S]{0,120}ARRIVAL_SOUND\?\.start\(\)/.test(main));
+check("初訪手勢＝山門「入內」啟動（拿票在啟動之前——選擇在寂靜中做）",
+  /enterBtn"\)\.addEventListener\("click[\s\S]{0,420}ARRIVAL_SOUND\?\.start\(\)/.test(main) &&
+  (() => { const b = main.slice(main.indexOf('enterBtn")')); return b.indexOf(".weather(") < b.indexOf(".start()"); })());
 check("回訪手勢＝首次觸碰（山門期間不啟動）",
   /pointerdown[\s\S]{0,160}s-gate[\s\S]{0,80}ARRIVAL_SOUND\?\.start\(\)/.test(main));
 check("「聲」偏好持久化 (writePref on setEnabled)",
@@ -146,8 +147,20 @@ check("resolveDraw 呼叫不含 weather（天氣不進 draw）",
     const call = main.slice(main.indexOf("resolveDraw({"), main.indexOf("drawFn: uniformDraw") + 40);
     return call.length > 0 && !/weather/i.test(call);
   })());
-check("weather 只在 boot 設定一次（visit-fixed，埕內無 weather controls）",
-  (main.match(/ARRIVAL_SOUND\??\.weather\(/g) ?? []).length === 1);
+check("weather 只在門檻側設定（boot 讀票＋入內拿票＝兩處，埕內無 weather controls）",
+  (main.match(/ARRIVAL_SOUND\??\.weather\(/g) ?? []).length === 2 &&
+  (() => { // 天氣選項只長在山門裡
+    const gate = html.slice(html.indexOf('id="s-gate"'), html.indexOf("</section>"));
+    return (html.match(/class="gw-opt"/g) ?? []).length === 4 && (gate.match(/class="gw-opt"/g) ?? []).length === 4;
+  })());
+check("一天一張票：日期戳、跨日作廢（todaysTicket 比對今天）",
+  /TICKET_KEY = "arrival\.ticket\.v1"/.test(main) && /t\.date === todayStr\(\)/.test(main));
+check("試聽 override 不寫票（?weather= 不進 localStorage）",
+  /if \(!AUDITION_WEATHER\) \{[\s\S]{0,200}store\.set\(TICKET_KEY/.test(main));
+check("不答＝常日（票存 null、setter 落到 cloudy）",
+  /weather: gateWeather \}/.test(main) && /WEATHERS\[name\] \? name : "cloudy"/.test(sound));
+check("票是環境不是朝向（TICKET 永不進 faceStation）",
+  !/faceStation\([^)]*[Tt]icket/.test(main));
 check("收籤＝句點：紙收起一拍（slip-away beat），無「籤已收」旁白",
   /slip-away/.test(main) && /\.slip-stage\.slip-away/.test(html) && !/籤已收/.test(html));
 check("帶走＝籤簿中每張紙的能力（existing 才顯示，不在 ending 跳 CTA）",

@@ -63,12 +63,17 @@ page.on("console", (m) => { if (m.type() === "error") consoleErrors.push(m.text(
 page.on("pageerror", (e) => consoleErrors.push(String(e)));
 const params = () => page.evaluate(() => window.ARRIVAL_SOUND.getParams());
 
-console.log("E1 山門無聲 → 入內手勢啟動");
+console.log("E1 山門無聲 → 天氣票 → 入內手勢啟動");
 await page.goto(pageURL("?devdraw=1"));
 let p = await params();
 check("boot at gate: not started (門檻之外無聲)", p.started === false && p.enabled === true);
-await page.click("#enterBtn");
+check("初訪門檻＝規矩＋天氣四字",
+  await page.$$eval(".gw-opt", (els) => els.length === 4) &&
+  await page.$eval("#gateRules", (el) => el.style.display !== "none"));
+await page.click("#enterBtn"); // 不選＝不答＝常日
 await sleep(300);
+const ticket1 = await page.evaluate(() => JSON.parse(localStorage.getItem("arrival.ticket.v1")));
+check("不答＝常日：票已拿（weather:null）、日期戳在", !!ticket1 && ticket1.weather === null && !!ticket1.date);
 p = await params();
 check("入內後 started、空間＝court", p.started === true && p.space === "court" && p.slip === false);
 check("court targets: busLP 800 / busGain 1 / world 1",
@@ -180,6 +185,30 @@ for (let i = 0; i < 40; i++) { // 產圖含字型子集下載，寬限 20s
   if (t.includes("失敗")) break;
 }
 check("產圖 pipeline 完整跑通（字型內嵌×SVG×canvas×PNG）", takeawayOk);
+
+console.log("E10 一天一張票 — 薄門檻、跨日作廢、當日沿用");
+await page.goto(pageURL("?devdraw=1"));
+check("當日已有票＝直落埕", await page.$eval("#s-court", (el) => el.classList.contains("on")));
+await page.evaluate(() => localStorage.setItem("arrival.ticket.v1", JSON.stringify({ date: "2000-1-1", weather: null })));
+await page.reload();
+await sleep(300);
+check("跨日票作廢＝薄門檻（規矩隱、日期節氣刻字在）",
+  await page.$eval("#s-gate", (el) => el.classList.contains("on")) &&
+  await page.$eval("#gateRules", (el) => el.style.display === "none") &&
+  await page.$eval("#gateDate", (el) => el.textContent.includes("・")));
+await page.click('.gw-opt[data-w="rain"]');
+await sleep(200);
+check("選票落定（其他字退開）", await page.$eval("#gateWeather", (el) => el.classList.contains("chosen")));
+await page.click("#enterBtn");
+await sleep(400);
+p = await params();
+let t2 = await page.evaluate(() => JSON.parse(localStorage.getItem("arrival.ticket.v1")));
+check("拿了雨票入內：weather=rain、票寫回今天", p.weather === "rain" && t2.weather === "rain");
+await page.reload();
+await sleep(300);
+p = await params();
+check("同日 reload：直落埕、票沿用",
+  (await page.$eval("#s-court", (el) => el.classList.contains("on"))) && p.weather === "rain");
 
 console.log("E9 手感層 API");
 check("pull/stickOut/paperOut 都在公開 API 上",
