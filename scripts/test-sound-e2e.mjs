@@ -205,6 +205,8 @@ await sleep(400);
 p = await params();
 let t2 = await page.evaluate(() => JSON.parse(localStorage.getItem("arrival.ticket.v1")));
 check("拿了雨票入內：weather=rain、票寫回今天", p.weather === "rain" && t2.weather === "rain");
+check("刻字回聲：中軸刻上今天的票（…・雨）",
+  await page.$eval(".void-heart", (el) => el.textContent.endsWith("・雨")));
 await page.reload();
 await sleep(300);
 p = await params();

@@ -1789,6 +1789,9 @@ window.ARRIVAL_SOUND = (function () {
         const heart = document.createElement("div");
         heart.className = "void-heart";
         heart.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+        // 票的回聲：地方把你的票寫進今天的石頭。常日不刻（unmarked default 不留痕）
+        const wChar = { sunny: "晴", cloudy: "陰", rain: "雨", wind: "風" }[AUDITION_WEATHER ?? todaysTicket()?.weather];
+        if (wChar) heart.textContent += `・${wChar}`;
         const chron = document.createElement("div");
         chron.className = "void-chron";
         const b = document.createElement("button");

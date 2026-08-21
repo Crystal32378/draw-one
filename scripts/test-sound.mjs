@@ -162,6 +162,8 @@ check("不答＝常日（票存 null、setter 落到 cloudy）",
   /weather: gateWeather \}/.test(main) && /WEATHERS\[name\] \? name : "cloudy"/.test(sound));
 check("票是環境不是朝向（TICKET 永不進 faceStation）",
   !/faceStation\([^)]*[Tt]icket/.test(main));
+check("刻字回聲：票寫進今天的石頭；常日不刻（wChar undefined 即無痕）",
+  /wChar\) heart\.textContent \+=/.test(main) && /sunny: "晴", cloudy: "陰", rain: "雨", wind: "風"/.test(main));
 check("收籤＝句點：紙收起一拍（slip-away beat），無「籤已收」旁白",
   /slip-away/.test(main) && /\.slip-stage\.slip-away/.test(html) && !/籤已收/.test(html));
 check("帶走＝籤簿中每張紙的能力（existing 才顯示，不在 ending 跳 CTA）",
