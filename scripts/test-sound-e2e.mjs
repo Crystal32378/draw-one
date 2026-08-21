@@ -181,6 +181,10 @@ for (let i = 0; i < 40; i++) { // 產圖含字型子集下載，寬限 20s
 }
 check("產圖 pipeline 完整跑通（字型內嵌×SVG×canvas×PNG）", takeawayOk);
 
+console.log("E9 手感層 API");
+check("pull/stickOut/paperOut 都在公開 API 上",
+  await page.evaluate(() => ["pull", "stickOut", "paperOut"].every((k) => typeof window.ARRIVAL_SOUND[k] === "function")));
+
 console.log("E6 console 乾淨");
 check("no console/page errors", consoleErrors.length === 0, consoleErrors.slice(0, 3).join(" | "));
 

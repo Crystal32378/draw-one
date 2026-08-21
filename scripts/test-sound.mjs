@@ -52,7 +52,7 @@ check("no periodic scheduler (setInterval) — 陣風沒有節拍器",
   !/setInterval/.test(sound));
 check("main script uses only the public sound API",
   (main.match(/ARRIVAL_SOUND\??\.(\w+)/g) ?? [])
-    .every((m) => /\.(start|space|slip|weather|tree|setEnabled|enabled|getParams)\b/.test(m)));
+    .every((m) => /\.(start|space|slip|weather|tree|pull|stickOut|paperOut|setEnabled|enabled|getParams)\b/.test(m)));
 
 console.log("S2 three-hall equality — 一份 hall 參數表，API 不收身分");
 const spacesM = sound.match(/const SPACES = \{[\s\S]*?\n  \};/);
@@ -159,6 +159,23 @@ check("share 無 growth 文案（navigator.share 只給檔案，不給 title/tex
   /navigator\.share\(\{ files: \[file\] \}\)/.test(shareBlock) && !/title:|text:|url:/.test(shareBlock));
 check("artifact＝frozen 元件原樣 render（走 SLIP_RENDER.mountSlip，不 fork 排版）",
   /SLIP_RENDER\.mountSlip\(art, entry\)/.test(shareBlock));
+
+console.log("S7 手感層（Phase B）— 手上的東西，不是空氣、不是音效");
+check("手感走 master 不走 world（世界閉嘴時你的手還有聲）",
+  /n\.hand\.connect\(n\.master\)/.test(sound) && !/n\.hand\.connect\(n\.world\)/.test(sound));
+check("三個手感事件各有唯一掛點",
+  (main.match(/ARRIVAL_SOUND\??\.pull\(/g) ?? []).length === 1 &&
+  (main.match(/ARRIVAL_SOUND\??\.stickOut\(\)/g) ?? []).length === 1 &&
+  (main.match(/ARRIVAL_SOUND\??\.paperOut\(\)/g) ?? []).length === 1);
+check("pull 掛在拖籤 gesture、stickOut 掛在 completeDraw（devdraw 同路）",
+  /setStick\(p\);\s*\n\s*window\.ARRIVAL_SOUND\?\.pull\(p\)/.test(main) &&
+  /function completeDraw[\s\S]{0,120}ARRIVAL_SOUND\?\.stickOut/.test(main));
+check("paperOut 只在取籤詩（takeBtn）——籤簿重看不再取紙",
+  /takeBtn"\)\.addEventListener\("click[\s\S]{0,120}paperOut/.test(main) &&
+  !/function showSlip[\s\S]{0,300}paperOut/.test(main));
+check("手感層音量是字面常數（handPull/handStick/handPaper）",
+  /handPull: 0\.0\d+/.test(sound) && /handStick: 0\.0\d+/.test(sound) && /handPaper: 0\.0\d+/.test(sound));
+check("拖籤粒子有節制（進度門檻，不是馬達）", /pullAcc < 0\.07/.test(sound));
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);

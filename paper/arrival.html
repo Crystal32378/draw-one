@@ -1053,6 +1053,9 @@ window.ARRIVAL_SOUND = (function () {
     rainCanopy: 0.013, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
     rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
     voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
+    handPull: 0.020,  // 手感層：筒內竹籤的細碎摩擦（拖籤時，跟手）
+    handStick: 0.030, // 手感層：籤枝離筒的一下輕竹響
+    handPaper: 0.022, // 手感層：取籤詩的紙聲（纖維，不是 whoosh）
   };
   const XFADE = 0.4;     // 進殿／回埕 crossfade（秒）＝與視覺 400ms 轉場同步
   const PAN_MAX = 0.3;   // 葉聲 pan 上限
@@ -1302,6 +1305,63 @@ window.ARRIVAL_SOUND = (function () {
     s.start(t0); s.stop(t0 + dur + 0.3);
   }
 
+  /* ---- 手感層（Phase B）：手上的東西，不是空氣 ----
+     走 master 不走 world——展籤時世界閉嘴，但紙自己的聲音是紙登場的一部分。
+     動作回饋不是音效：極小聲、乾、短，永不搶過視覺。收 gesture 進度與
+     動作事件（主程式推播），零 mechanics 引用；增建殿無 draw path＝天生無聲。 */
+  let pullAcc = 0, pullLast = 0;
+  function ensureHand() {
+    if (n.hand) return;
+    n.hand = gainNode(1);
+    n.hand.connect(n.master); // 不過 world：slip duck 靜的是世界，不是你的手
+    n.tickBuf = grainBuffer(0.012, 90, 5, 9);    // 一顆竹籤 tick
+    n.paperBuf = grainBuffer(0.22, 900, 1.5, 4); // 紙的細碎纖維
+  }
+  function pull(p) { // 拖籤枝：筒內竹籤的細碎摩擦，跟著手走
+    if (!running()) return;
+    ensureHand();
+    if (p < pullLast - 0.2) pullAcc = 0; // 鬆手回彈＝重新開始
+    if (p > pullLast) pullAcc += p - pullLast;
+    pullLast = p;
+    if (pullAcc < 0.07) return; // 每前進約 7% 才一粒——疏，不是馬達
+    pullAcc = 0;
+    const t0 = ctx.currentTime + 0.005;
+    const s = ctx.createBufferSource();
+    s.buffer = n.tickBuf; s.playbackRate.value = rand(0.8, 1.25);
+    const bp = biquad("bandpass", rand(1600, 2500), 2.5);
+    const g = gainNode(LEVELS.handPull * rand(0.5, 1));
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.1);
+  }
+  function stickOut() { // 籤枝離筒：兩下極輕的竹響——結果的重量在紙上，不在這
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.01;
+    for (const [f, q, g0, dt] of [[2100, 3, LEVELS.handStick * 0.6, 0], [1150, 6, LEVELS.handStick, 0.018]]) {
+      const s = ctx.createBufferSource();
+      s.buffer = n.tickBuf; s.playbackRate.value = rand(0.9, 1.1);
+      const bp = biquad("bandpass", f, q);
+      const g = gainNode(g0);
+      s.connect(bp); bp.connect(g); g.connect(n.hand);
+      s.start(t0 + dt); s.stop(t0 + dt + 0.12);
+    }
+  }
+  function paperOut() { // 取籤詩：一次紙的滑動——纖維的粗糙，不是 whoosh
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.01;
+    const s = ctx.createBufferSource();
+    s.buffer = n.paperBuf; s.playbackRate.value = rand(0.95, 1.1);
+    const bp = biquad("bandpass", 3300, 0.8);
+    bp.frequency.setTargetAtTime(2100, t0 + 0.05, 0.08); // 亮→鈍＝紙滑到底
+    const g = gainNode(0);
+    g.gain.setValueAtTime(0, t0);
+    g.gain.setTargetAtTime(LEVELS.handPaper, t0, 0.045);
+    g.gain.setTargetAtTime(0, t0 + 0.13, 0.05);
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.4);
+  }
+
   /* ---- 狀態套用 ---- */
   function applyState(dur = XFADE) { // 空間變換：對「任何室外」做同一件事
     if (!n) return;
@@ -1455,7 +1515,7 @@ window.ARRIVAL_SOUND = (function () {
     else if (ctx.state === "running") ctx.suspend().catch(() => {});
   });
 
-  return { start, space: setSpace, slip: setSlip, weather: setWeather, tree, setEnabled, enabled: () => enabled, getParams };
+  return { start, space: setSpace, slip: setSlip, weather: setWeather, tree, pull, stickOut, paperOut, setEnabled, enabled: () => enabled, getParams };
 })();
 /* ==================== sound-layer:end ==================== */
 </script>
@@ -2104,6 +2164,7 @@ window.ARRIVAL_SOUND = (function () {
     const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
     const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
     setStick(p);
+    window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
     if (p >= 1) { pulling = false; completeDraw(); }
   });
@@ -2123,6 +2184,7 @@ window.ARRIVAL_SOUND = (function () {
 
   function completeDraw() {
     if (navigator.vibrate) navigator.vibrate(16);
+    window.ARRIVAL_SOUND?.stickOut(); // 籤枝離筒（devdraw 同路）
     currentResolved = window.DRAW_POLICY.resolveDraw({
       question: $("question").value,
       corpusId: currentHall.corpusId,
@@ -2135,6 +2197,7 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   $("takeBtn").addEventListener("click", () => {
+    window.ARRIVAL_SOUND?.paperOut(); // 取籤詩的紙聲——僅此一處：籤簿重看不再取紙
     const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
     showSlip(entry, { repeated: false });
   });
