@@ -998,16 +998,20 @@ window.ARRIVAL_SOUND = (function () {
     court: { busLP: 800, busGain: 1.0, leafLP: 4200, leafGain: 1.0 },
     hall:  { busLP: 300, busGain: 0.5, leafLP: 1100, leafGain: 0.35 },
   };
+  /* Layer balance＝Crystal 真機 taste gate round 1 校準（2026-08-21）：
+     初版（air .055 / wind峰 .11 / 葉峰 .10 / 間隔 8–45s）聽起來像颱風——FAIL。
+     修正原則：風本身退到幾乎不可辨識，「樹知道風來了」由葉聲敘事，
+     不要求使用者先聽見風。平常幾乎只有空氣；偶爾葉輕輕多響幾秒，然後又沒有了。 */
   const LEVELS = {
-    master: 0.5,      // 總閘（真機音量只調這裡）
-    air: 0.055,       // 戶外 air bed：brown noise → LP200，不可辨識聲源
-    windIdle: 0.010,  // 無風時的風——幾乎不在
-    windGustMax: 0.11,
-    leafIdle: 0.016,  // 無風時的葉——樹一直站在那裡
-    leafGustMax: 0.10,
+    master: 0.5,      // 總閘（layer balance 錯不是靠這裡救）
+    air: 0.018,       // 戶外 air bed：brown noise → LP200，不可辨識聲源
+    windIdle: 0.002,  // 無風時的風——幾乎不在
+    windGustMax: 0.016, // 單獨 mute 掉幾乎不影響感受，反而是對的
+    leafIdle: 0.003,  // 無風時的葉——樹一直站在那裡
+    leafGustMax: 0.024, // 陣風的主要敘事者是葉，不是風
     slipDuck: 0.0001, // 展籤：世界退到聽不見（不 suspend，回埕即展開）
   };
-  const GUST = { waitMin: 8, waitMax: 45, lenMin: 2, lenMax: 8, doubleChance: 0.28, leafLagMin: 0.10, leafLagMax: 0.30 };
+  const GUST = { waitMin: 20, waitMax: 70, lenMin: 2, lenMax: 8, doubleChance: 0.05, leafLagMin: 0.10, leafLagMax: 0.30 };
   const XFADE = 0.4;     // 進殿／回埕 crossfade（秒）＝與視覺 400ms 轉場同步
   const PAN_MAX = 0.3;   // 葉聲 pan 上限（subtle，不是音效定位）
   const PAN_SLEW = 0.35; // setTargetAtTime tc：約 1s 到位
@@ -1113,8 +1117,8 @@ window.ARRIVAL_SOUND = (function () {
     n.master.gain.setTargetAtTime(on ? LEVELS.master : 0, ctx.currentTime, on ? 0.5 : 0.12);
   }
 
-  /* 陣風排程：間隔 8–45s、包絡 2–8s、強度隨機、偶爾連兩陣——沒有週期。
-     風先起；葉晚 100–300ms 跟上、亮度微開（樹知道風來了）。 */
+  /* 陣風排程：間隔 20–70s、包絡 2–8s（慢起慢退，避免 whoosh）、強度隨機、
+     連兩陣壓到 5%——沒有週期。風先起；葉晚 100–300ms 跟上、亮度微開。 */
   function scheduleGust() {
     clearTimeout(gustTimer);
     gustTimer = setTimeout(fireGust, rand(GUST.waitMin, GUST.waitMax) * 1000);

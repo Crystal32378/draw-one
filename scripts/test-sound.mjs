@@ -86,9 +86,14 @@ check("guard lives in enterHall (與 400ms 轉場同步，非 renderHall 補刀)
   })());
 
 console.log("S4 air grammar — 陣風無週期、Slip 靜默、回埕還原");
-check("gust intervals 8–45s, envelopes 2–8s (spec literals)",
-  /waitMin: 8, waitMax: 45, lenMin: 2, lenMax: 8/.test(sound));
-check("偶爾連兩陣 (doubleChance)", /doubleChance/.test(sound));
+check("gust intervals 20–70s, envelopes 2–8s (Crystal taste-gate r1 校準值)",
+  /waitMin: 20, waitMax: 70, lenMin: 2, lenMax: 8/.test(sound));
+check("連兩陣壓到 ≤5% (doubleChance: 0.05)", /doubleChance: 0\.05/.test(sound));
+check("layer balance：風退位、葉敘事（leafGustMax > windGustMax）",
+  (() => {
+    const w = sound.match(/windGustMax: ([\d.]+)/), l = sound.match(/leafGustMax: ([\d.]+)/);
+    return w && l && Number(l[1]) > Number(w[1]);
+  })());
 check("葉晚 100–300ms 跟上", /leafLagMin: 0\.10, leafLagMax: 0\.30/.test(sound));
 check("風先起、葉聲帶 lag 跟上 (t0 + lag)", /t0 \+ lag/.test(sound));
 check("crossfade 與視覺轉場同步 (XFADE = 0.4)", /const XFADE = 0\.4/.test(sound));
