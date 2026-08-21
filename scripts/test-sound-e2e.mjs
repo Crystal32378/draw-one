@@ -210,6 +210,13 @@ p = await params();
 check("同日 reload：直落埕、票沿用",
   (await page.$eval("#s-court", (el) => el.classList.contains("on"))) && p.weather === "rain");
 
+await page.goto(pageURL("?newday=1&devdraw=1"));
+await sleep(300);
+check("?newday=1 撕票重過門檻（dev 後門，手賤型測試者專用）",
+  await page.$eval("#s-gate", (el) => el.classList.contains("on")));
+await page.click("#enterBtn");
+await sleep(300);
+
 console.log("E9 手感層 API");
 check("pull/stickOut/paperOut 都在公開 API 上",
   await page.evaluate(() => ["pull", "stickOut", "paperOut"].every((k) => typeof window.ARRIVAL_SOUND[k] === "function")));

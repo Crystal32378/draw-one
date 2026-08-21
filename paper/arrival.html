@@ -2466,6 +2466,10 @@ window.ARRIVAL_SOUND = (function () {
   // ?weather= 降級為純試聽 override：不寫票、不動門檻。不答＝常日。
   const TICKET_KEY = "arrival.ticket.v1";
   const AUDITION_WEATHER = new URLSearchParams(location.search).get("weather");
+  // dev 後門僅此兩個：?weather=（試聽，不寫票）、?newday=1（撕掉今天的票，重過門檻）
+  if (new URLSearchParams(location.search).get("newday") === "1") {
+    try { localStorage.removeItem(TICKET_KEY); } catch {}
+  }
   const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
   const todaysTicket = () => { const t = store.get(TICKET_KEY, null); return t && t.date === todayStr() ? t : null; };
   let gateWeather = null; // 門檻上選的票（null＝不拿＝常日）
