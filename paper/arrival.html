@@ -362,6 +362,64 @@
      歧義物是 noise，不是人味。） */
   /* ---- Round 3.5 utility & weathering：有人在管，不只有人在拜 ---- */
   /* （自審刪除 ×2：帚邊的畚斗——16px 只讀得出一顆石頭。同傘，歧義即 noise。） */
+  /* ---- Round 5 courtyard life：埕自己的生活（普通的下午） ---- */
+  .lived.tree-shade { /* 樹蔭落進埕面＝時間、天氣、地方感；光影可過中軸，障礙物不行 */
+    top: 54%; bottom: 0;
+    background:
+      radial-gradient(44px 24px at 8% 22%, rgba(74, 66, 52, 0.15), transparent 62%),
+      radial-gradient(60px 30px at 15% 44%, rgba(74, 66, 52, 0.13), transparent 62%),
+      radial-gradient(38px 20px at 24% 28%, rgba(74, 66, 52, 0.14), transparent 62%),
+      radial-gradient(52px 26px at 20% 70%, rgba(74, 66, 52, 0.13), transparent 62%),
+      radial-gradient(34px 18px at 30% 52%, rgba(74, 66, 52, 0.12), transparent 62%),
+      radial-gradient(46px 22px at 11% 86%, rgba(74, 66, 52, 0.14), transparent 62%),
+      radial-gradient(40px 20px at 36% 80%, rgba(74, 66, 52, 0.11), transparent 62%),
+      radial-gradient(30px 16px at 40% 34%, rgba(74, 66, 52, 0.10), transparent 62%),
+      radial-gradient(44px 22px at 47% 60%, rgba(74, 66, 52, 0.09), transparent 62%),
+      radial-gradient(28px 15px at 53% 26%, rgba(74, 66, 52, 0.08), transparent 62%),
+      radial-gradient(36px 18px at 58% 78%, rgba(74, 66, 52, 0.08), transparent 62%),
+      radial-gradient(30px 16px at 64% 44%, rgba(74, 66, 52, 0.07), transparent 62%),
+      radial-gradient(26px 14px at 72% 64%, rgba(74, 66, 52, 0.06), transparent 62%),
+      radial-gradient(22px 12px at 80% 36%, rgba(74, 66, 52, 0.05), transparent 62%),
+      radial-gradient(20px 11px at 88% 70%, rgba(74, 66, 52, 0.045), transparent 62%);
+  }
+  .lived.tree-shade-wall { /* 枝影掃到牆上一點就好 */
+    top: 26%; height: 26%;
+    background:
+      radial-gradient(40px 26px at 20% 32%, rgba(74, 66, 52, 0.07), transparent 60%),
+      radial-gradient(52px 32px at 42% 62%, rgba(74, 66, 52, 0.055), transparent 60%),
+      radial-gradient(32px 22px at 64% 38%, rgba(74, 66, 52, 0.04), transparent 60%);
+  }
+  .lived.tree-canopy { top: -1%; height: 20%; }
+  .lived.tree-canopy svg { display: block; width: 100%; height: 100%; }
+  .lived.tree-trunk { top: 4%; height: 55%; width: 46px; }
+  .lived.tree-trunk svg { display: block; width: 100%; height: 100%; }
+  .lived.bench-brick { /* 磚砌矮台：有人會坐、會靠、會等人的地方 */
+    background:
+      repeating-linear-gradient(180deg, transparent 0 7px, rgba(74, 66, 52, 0.28) 7px 8px),
+      repeating-linear-gradient(90deg, transparent 0 14px, rgba(74, 66, 52, 0.12) 14px 15px),
+      linear-gradient(90deg, #a8836b, #9a7660 55%, #8a6a56);
+    border: 1px solid rgba(56, 50, 40, 0.4);
+  }
+  .lived.bench-brick::before { /* 石板檯面，出沿 */
+    content: ""; position: absolute; left: -4px; right: -4px; top: -7px; height: 7px;
+    background: linear-gradient(180deg, #d5cdb8, #c2baa5);
+    border: 1px solid rgba(56, 50, 40, 0.4);
+  }
+  .lived.bench-brick::after { /* 落地影 */
+    content: ""; position: absolute; left: -6%; right: -6%; bottom: -5px; height: 8px;
+    background: radial-gradient(50% 100% at 50% 0, rgba(38, 33, 25, 0.22), transparent 75%);
+  }
+  .lived.bike { top: 49.7%; width: 48px; height: 32px; transform: rotate(-7deg); }
+  .lived.bike svg { display: block; width: 100%; height: 100%; }
+  .lived.leafbits { /* 樹下散葉：掃不完的 */
+    top: 72%; width: 70px; height: 16px;
+    background:
+      radial-gradient(4px 3px at 12% 40%, rgba(96, 86, 56, 0.4), transparent 80%),
+      radial-gradient(3px 2.5px at 34% 70%, rgba(96, 86, 56, 0.35), transparent 80%),
+      radial-gradient(4px 3px at 55% 30%, rgba(96, 86, 56, 0.38), transparent 80%),
+      radial-gradient(3px 2.5px at 76% 60%, rgba(96, 86, 56, 0.3), transparent 80%),
+      radial-gradient(3px 2.5px at 92% 40%, rgba(96, 86, 56, 0.32), transparent 80%);
+  }
   .lived.stools { /* 疊起的塑膠凳：用完收好，但疊得不齊 */
     top: 51.2%; width: 24px; height: 20px;
     background: linear-gradient(90deg, transparent 0 3px, rgba(118, 74, 64, 0.7) 3px 5px,
@@ -988,6 +1046,32 @@
       <g fill="rgba(166,112,68,0.6)"><circle cx="58" cy="104" r="1.9"/><circle cx="61.5" cy="105" r="1.9"/><circle cx="59.8" cy="101.8" r="1.8"/></g>
     </g>
   </svg>`;
+  /* 埕西端的老樹（早於三殿）與靠牆的腳踏車 */
+  const TRUNK_SVG = `<svg viewBox="0 0 60 340" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M26 340 C24 300 22 260 24 210 C25 175 22 140 26 105 C28 82 24 55 28 30 L34 0 L44 0 C40 30 42 60 40 92 C38 130 42 170 40 210 C39 262 40 300 42 340 Z"
+      fill="#6b5f4e" stroke="rgba(38,33,25,0.35)" stroke-width="1.5"/>
+    <path d="M27 60 C18 44 12 30 12 12 M39 84 C48 70 52 58 54 44" stroke="#6b5f4e" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <path d="M8 340 C14 330 20 326 26 324 M56 340 C50 332 46 328 41 326" stroke="#6b5f4e" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </svg>`;
+  const CANOPY_SVG = `<svg viewBox="0 0 340 130" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#6f6b52" fill-opacity="0.75"
+      d="M28 0 H210 Q214 24 196 30 Q200 48 178 48 Q174 66 152 60 Q142 76 122 66 Q106 80 92 68 Q72 82 60 66 Q40 76 32 58 Q12 62 10 44 Q-4 32 2 14 Q10 2 28 0 Z"/>
+    <path fill="#807c60" fill-opacity="0.85" stroke="rgba(56,50,40,0.2)" stroke-width="1"
+      d="M0 0 H160 Q166 18 150 24 Q154 40 136 40 Q132 56 112 50 Q102 62 86 54 Q70 64 58 52 Q40 58 34 44 Q16 46 14 30 Q0 24 0 10 Z"/>
+    <path fill="#8b876b" fill-opacity="0.8" stroke="rgba(56,50,40,0.18)" stroke-width="1"
+      d="M150 0 H320 Q328 14 316 22 Q322 36 304 36 Q300 50 282 44 Q272 54 256 46 Q240 54 230 42 Q212 46 208 32 Q192 30 194 14 Q186 6 190 0 Z"/>
+    <ellipse cx="240" cy="58" rx="16" ry="8" fill="#7d795e" fill-opacity="0.55"/>
+    <ellipse cx="300" cy="46" rx="12" ry="6" fill="#7d795e" fill-opacity="0.4"/>
+    <ellipse cx="120" cy="76" rx="14" ry="7" fill="#6f6b52" fill-opacity="0.5"/>
+  </svg>`;
+  const BIKE_SVG = `<svg viewBox="0 0 48 32" aria-hidden="true">
+    <g stroke="rgba(56,50,40,0.65)" stroke-width="1.6" fill="none" stroke-linecap="round">
+      <circle cx="10" cy="22" r="8"/><circle cx="38" cy="22" r="8"/>
+      <path d="M10 22 L17 9 L34 9 L38 22 M17 9 L23 22 L38 22 M23 22 L10 22"/>
+      <path d="M15 6.5 L20 6.5 M33 8 Q35 5 38 5.5"/>
+      <circle cx="23" cy="22" r="2.2"/>
+    </g>
+  </svg>`;
   const CARVE_SVG = `<svg viewBox="0 0 300 56" preserveAspectRatio="none" aria-hidden="true">
     <g fill="none" stroke-linecap="round">
       <g transform="translate(14 4)">
@@ -1158,12 +1242,31 @@
        中軸空段本身保持乾淨（治理留白不放東西）。
        -------------------------------------------------------------- */
     function dressCourt() {
-      const put = (cls, x) => {
+      const put = (cls, x, style) => {
         const el = document.createElement("div");
         el.className = "lived " + cls;
         el.style.left = Math.round(x) + "px";
+        if (style) Object.assign(el.style, style);
         stageStrip.appendChild(el);
+        return el;
       };
+      // ── Round 5：埕的生活（普通的下午）──
+      // 老樹在埕的西端，早於三殿；?halls=4 時仍在工地更外側，永不擋殿。
+      // 樹蔭先鋪（物件坐在影子上）；人間長在兩側，走向神前的路留在中央。
+      const tx = -0.25 * stationW;
+      put("tree-shade", tx - 0.3 * stationW, { width: Math.round(2.35 * stationW) + "px" });
+      put("tree-shade-wall", tx - 0.15 * stationW, { width: Math.round(0.9 * stationW) + "px" });
+      put("leafbits", tx + 0.5 * stationW);
+      put("leafbits", tx + 1.05 * stationW, { top: "82%", width: "50px" });
+      // 磚砌矮台兩座：樹蔭下一座（乘涼），遠處一座小的。
+      // 錨在站界（殿門中心＝strip (i+0.5)W；站界＝iW）——永不落在任何殿的正前方
+      put("bench-brick", voidIndex * stationW - 0.12 * stationW - 38, { width: "76px", height: "30px", top: "59%" });
+      put("bench-brick", (voidIndex + 2) * stationW + 0.08 * stationW - 29, { width: "58px", height: "22px", top: "56.6%" });
+      // 誰的腳踏車靠在牆邊（站界旁）
+      put("bike", (voidIndex + 1) * stationW + 0.04 * stationW - 24).innerHTML = BIKE_SVG;
+      // 樹身與樹冠（最後畫：樹在建築之前）
+      put("tree-trunk", tx - 23).innerHTML = TRUNK_SVG;
+      put("tree-canopy", tx - 0.45 * stationW, { width: Math.round(1.3 * stationW) + "px" }).innerHTML = CANOPY_SVG;
       // 今晨有人掃過：帚靠牆、葉掃攏一小堆（中軸左一站的外緣）
       put("broom", (voidIndex - 1 + 0.06) * stationW);
       put("leaves", (voidIndex - 1 + 0.045) * stationW + 15);
