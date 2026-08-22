@@ -2201,6 +2201,13 @@ window.ARRIVAL_SOUND = (function () {
 
     $("tubeStage").style.display = "flex";
     resetStick();
+    // 進殿先見聖號一息，隨後步向案前——進殿本來就是往裡走，鏡頭跟著身體。
+    // 手機上籤筒常在摺線下，而半露的筒會攔截捲頁手勢（touch-action:none）：
+    // 把儀式完整框進畫面，碰筒＝就是要抽，捲頁的需求就消失了。
+    setTimeout(() => {
+      if ($("tubeStage").style.display !== "none" && $("s-hall").classList.contains("on"))
+        $("tubeStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "end" });
+    }, reduceMotion ? 0 : 650);
   }
 
   /* ---------- 拖抽 ---------- */
