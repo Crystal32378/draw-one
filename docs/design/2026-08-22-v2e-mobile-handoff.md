@@ -4,15 +4,22 @@
 `2026-08-21-v2c-v2e-sound-weather-handoff.md`（架構與契約）＋
 `docs/testing/qa-cheatsheet.md`（dev 後門）。
 
+> **FREEZE（2026-08-22 本輪收尾）：`43bd5e2` ＝ V2E final frozen baseline。**
+> Gate 軌跡：福 final gate → FIX REQUIRED（唯一 blocker：malformed weather key
+> 穿透 prototype chain）→ 修復 43bd5e2 → 大Ｇ代福 delta gate **PASS**。
+> GitHub 無 CI，全套數字記作本機 evidence：pool 60／slip 14／arrival 27／
+> sound 62／e2e 51，0 failed。本輪已關，往後改動＝新 delta，重新走 gate。
+
 ## 座標
 
-- Branch：`fable/v2e-touch-sound` @ **d1ba4a7**（已 push）
-- 福已 gate 的 frozen baseline：**24fab12**（V2E）；其上累積 **6 個 delta 未 gate**（見下）
-- 測試全綠：e2e 42／sound 60／arrival 27／pool 60／slip 14
+- Branch：`fable/v2e-touch-sound` @ **43bd5e2**（已 push）
+- **Frozen baseline：43bd5e2（V2E final，大Ｇ代福 delta gate 2026-08-22）**；
+  前一凍結點 24fab12，其後 7 個 delta 全數 gated（見下）
+- 測試全綠：e2e 51／sound 62／arrival 27／pool 60／slip 14
 - 本機 LAN server 供 iPhone 測試：`cd ~/Documents/奧德賽/draw-one-v2b && python3 -m http.server 8788 --bind 0.0.0.0`
   → `http://<Mac IP>:8788/paper/arrival.html`（IP 用 `ipconfig getifaddr en0` 查）
 
-## 已完成（24fab12 之後的 6 個 delta，內容都驗過本機 WebKit/chromium）
+## 已完成（24fab12 之後的 delta，全數 gated @ 43bd5e2）
 
 | SHA | 內容 |
 |---|---|
@@ -21,16 +28,18 @@
 | 2574ac0 | 匾同規格字隨匾（>3字 ×3/字數）＋max-height:720 殿內收斂＋tube-wrap 削 headroom |
 | cb2ef3b | iOS 選字劫持 pull→禁 user-select/callout；提示上移；換幕 auto-scroll（stickStage/slipStage） |
 | d1ba4a7 | 步向案前：進殿聖號一息後鏡頭走到案前框住儀式（半露筒攔截捲頁的根治） |
+| 43bd5e2 | 天氣 key own-property 檢查：toString/constructor/__proto__ 穿透 prototype chain（福 gate blocker）——sound 走 Object.hasOwn、刻字走 isValidWeather，亂值同常日；regression E12＋2 條 source contract，red-test 驗過舊碼全紅 |
 | （文件）| qa-cheatsheet 加一事一籤逃生說明、E11 手機迴歸擴充 |
 
-## 需要驗收
+## 驗收紀錄（本輪已關）
 
-1. **Crystal iPhone 真機走一輪**（最後一次卡在「滑不動」，d1ba4a7 後未重測）：
-   薄門檻拿票 → 進天上聖母 → 鏡頭步向案前 → 按住上抽（不卡、不跳選字）→
-   換幕自動端上取籤詩 → 紙 → 收籤 → 籤簿帶走 → **share 圖上有字**。
-   提醒她：重測抽籤要寫新問題（一事一籤）。
-2. 全過後 → **交福 mini gate**（6 delta 打包；描述照上表＋殘餘風險：
-   iOS lifecycle 已標準處理、真機音量僅 Crystal 校過 speaker 未校 AirPods）。
+1. ~~Crystal iPhone 真機走一輪~~ — 過（正常路徑全通：takeaway、native share/
+   fallback、weather/draw separation、ticket lifecycle、刻字、Slip 靜默、
+   月老 fail-closed；frozen 架構未觸碰）。
+2. ~~交福 gate~~ — 福 final gate 揪出唯一 blocker（malformed weather key），
+   修復 43bd5e2 後大Ｇ代福 delta gate PASS。
+3. 凍結時已知的殘餘風險：iOS lifecycle 已標準處理；真機音量僅 Crystal
+   校過 speaker，**未校 AirPods**。
 
 ## 尚待解決／等開題
 
