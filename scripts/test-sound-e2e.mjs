@@ -220,6 +220,38 @@ check("?newday=1 撕票重過門檻（dev 後門，手賤型測試者專用）",
 await page.click("#enterBtn");
 await sleep(300);
 
+console.log("E12 亂值天氣票 — prototype chain fail-closed（2026-08-22 gate blocker 回歸）");
+const setTicket = (w) => page.evaluate((wv) => {
+  const d = new Date();
+  localStorage.setItem("arrival.ticket.v1",
+    JSON.stringify({ date: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`, weather: wv }));
+}, w);
+// 亂票＝常日待遇：聲落 cloudy 基準、中軸不刻天氣尾綴（heart 僅日期・節氣一個「・」）
+for (const bad of ["toString", "constructor", "__proto__", "sleet-42"]) {
+  await setTicket(bad);
+  await page.goto(pageURL("?devdraw=1"));
+  await sleep(300);
+  p = await params();
+  const heart = await page.$eval(".void-heart", (el) => el.textContent);
+  check(`亂票 "${bad}"：聲退常日、刻字不留痕`,
+    p.weather === "cloudy" && !heart.includes("native code") && (heart.match(/・/g) ?? []).length === 1,
+    `weather=${p.weather} heart=${heart}`);
+}
+await page.goto(pageURL("?weather=toString&devdraw=1"));
+await sleep(300);
+p = await params();
+check("?weather=toString 試聽 override 同樣 fail-closed",
+  p.weather === "cloudy" &&
+  await page.$eval(".void-heart", (el) => (el.textContent.match(/・/g) ?? []).length === 1));
+for (const [v, ch] of [["sunny", "晴"], ["cloudy", "陰"], ["rain", "雨"], ["wind", "風"]]) {
+  await setTicket(v);
+  await page.goto(pageURL("?devdraw=1"));
+  await sleep(300);
+  p = await params();
+  check(`合法票 "${v}" 行為不變：聲=${v}、刻字 ・${ch}`,
+    p.weather === v && await page.$eval(".void-heart", (el, c) => el.textContent.endsWith("・" + c), ch));
+}
+
 console.log("E11 儀式不沉摺線 — 手機高度、四字匾、真手勢（Crystal iPhone 實測回歸）");
 {
   const pctx = await browser.newContext({ viewport: { width: 390, height: 664 }, hasTouch: true });

@@ -159,7 +159,12 @@ check("一天一張票：日期戳、跨日作廢（todaysTicket 比對今天）
 check("試聽 override 不寫票（?weather= 不進 localStorage）",
   /if \(!AUDITION_WEATHER\) \{[\s\S]{0,200}store\.set\(TICKET_KEY/.test(main));
 check("不答＝常日（票存 null、setter 落到 cloudy）",
-  /weather: gateWeather \}/.test(main) && /WEATHERS\[name\] \? name : "cloudy"/.test(sound));
+  /weather: gateWeather \}/.test(main) && /Object\.hasOwn\(WEATHERS, name\) \? name : "cloudy"/.test(sound));
+check("亂值 fail-closed（2026-08-22 gate blocker）：sound setter 用 own-property，不吃 prototype chain",
+  /Object\.hasOwn\(WEATHERS, name\)/.test(sound) && !/WEATHERS\[name\] \?/.test(sound));
+check("亂值 fail-closed：刻字走 isValidWeather（display 與 sound 同規、合法性集中一處）",
+  /const isValidWeather = \(name\) => typeof name === "string" && Object\.hasOwn\(WEATHER_CHARS, name\)/.test(main) &&
+  /isValidWeather\(wName\) \? WEATHER_CHARS\[wName\] : null/.test(main));
 check("票是環境不是朝向（TICKET 永不進 faceStation）",
   !/faceStation\([^)]*[Tt]icket/.test(main));
 check("刻字回聲：票寫進今天的石頭；常日不刻（wChar undefined 即無痕）",

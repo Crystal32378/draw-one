@@ -1524,7 +1524,8 @@ window.ARRIVAL_SOUND = (function () {
     applyState(XFADE);
   }
   function setWeather(name) { // 天氣票：boot 設定一次，visit 內固定
-    weather = WEATHERS[name] ? name : "cloudy";
+    // own-property 檢查：亂值 key（toString/__proto__ 等）會穿透 prototype chain，一律落回常日
+    weather = Object.hasOwn(WEATHERS, name) ? name : "cloudy";
     if (n) applyWeather(1.5);
   }
   function tree(offsetPx, vw) { // 主程式推播樹在視野中的位置（px 偏移＋視窗寬）
@@ -1808,7 +1809,9 @@ window.ARRIVAL_SOUND = (function () {
         heart.className = "void-heart";
         heart.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
         // 票的回聲：地方把你的票寫進今天的石頭。常日不刻（unmarked default 不留痕）
-        const wChar = { sunny: "晴", cloudy: "陰", rain: "雨", wind: "風" }[AUDITION_WEATHER ?? todaysTicket()?.weather];
+        // 亂值票同常日：isValidWeather 擋 prototype chain 穿透（toString/__proto__ 等不刻）
+        const wName = AUDITION_WEATHER ?? todaysTicket()?.weather;
+        const wChar = isValidWeather(wName) ? WEATHER_CHARS[wName] : null;
         if (wChar) heart.textContent += `・${wChar}`;
         const chron = document.createElement("div");
         chron.className = "void-chron";
@@ -2523,6 +2526,9 @@ window.ARRIVAL_SOUND = (function () {
   if (new URLSearchParams(location.search).get("newday") === "1") {
     try { localStorage.removeItem(TICKET_KEY); } catch {}
   }
+  // 票面合法值僅此四——合法性判斷集中一處（own-property，防 prototype chain 穿透）
+  const WEATHER_CHARS = { sunny: "晴", cloudy: "陰", rain: "雨", wind: "風" };
+  const isValidWeather = (name) => typeof name === "string" && Object.hasOwn(WEATHER_CHARS, name);
   const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
   const todaysTicket = () => { const t = store.get(TICKET_KEY, null); return t && t.date === todayStr() ? t : null; };
   let gateWeather = null; // 門檻上選的票（null＝不拿＝常日）
