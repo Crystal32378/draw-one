@@ -27,7 +27,7 @@
 
 每筆 entry 含：`corpus` / `slip_no` / `edition` / `field_type`（解曰｜聖意）/ `verbatim_text` / `source_locator` / `transcription_status` / `layer_class`（=living_tradition）/ `variants_or_notes`
 
-**transcription_status 分布：解曰 80 PROBABLE ＋ 20 UNRESOLVED；聖意 100 PROBABLE（verbatim 為附錄二 raw）**
+**transcription_status 分布：解曰 79 PROBABLE ＋ 21 UNRESOLVED；聖意 100 PROBABLE（verbatim 為附錄二 raw）**
 
 ## Authority Hierarchy 窄修記錄（2026-08 Gate FIX REQUIRED 後）
 
@@ -47,13 +47,13 @@
 | Assertion | 檢查內容 |
 |---|---|
 | A1 character coverage | verbatim 每個字（繁簡正規化後）必須在此籤 source（raw ∪ page）字元集內 |
-| A1b segment trace | 全部解曰（PROBABLE + UNRESOLVED）的 ≥2 字片段必須是 source 的 substring，防不同位置字重組拼裝 |
+| A1b segment trace | 全部解曰的 ≥2 字片段必須是 per-slip source（raw_jie + 該籤自己的 page 解曰片段）的 substring，防拼裝/cross-slip |
 | A2 chance isolation | chance 獨有字不得進 verbatim（chance 只能留 variants_or_notes 的 witness） |
 | A3 uncertainty | UNRESOLVED：textual 必含「□」；structural（欄位格式／詩體）可無 □，note 需標 structural |
 | A4 structure | 100 籤、每籤 2 筆、9 欄位齊全、layer_class 一致 |
 | A5 encoding | 無 U+FFFD／mojibake／異常控制字符 |
 
-輸入：`interpretation_layer.json` + `source_three_way.json`（raw_jie／page_ocr／chance_jie 三方）。繁簡／異體經正規化（為↔爲、換↔换、虛↔虚 等），只抓語義差異，不誤抓 OCR 繁簡混雜。A1 是 character-set coverage（只證字曾出現），A1b 才是詞序層的 substring traceability，兩者分工不宣稱 full traceability。
+輸入：`interpretation_layer.json` + `source_three_way.json`（raw_jie／page_ocr／chance_jie 三方）＋ `per_slip_page_jie.json`（每籤自己的 page 解曰片段，由 `build_per_slip_page_jie.py` 從 page_ocr 提取、與 verbatim 匹配生成）。A1b 不直接使用 whole-page page_ocr（同頁另一籤會造成 cross-slip false pass），改用 per-slip page 片段；無可靠 page 片段（如 #21 七言詩）則只用 raw_jie。繁簡／異體經正規化（為↔爲、換↔换、虛↔虚、蟄↔蛰、晩↔晚 等）。A1 是 character-set coverage（只證字曾出現），A1b 才是詞序層的 substring traceability，兩者分工不宣稱 full traceability。
 
 ## UNRESOLVED 清單（解曰 20 籤）
 
@@ -68,6 +68,7 @@
 | 12 | □換得絲。是笑□哭。要見分明。是見為福。 |
 | 13 | 因□得赦。病遇良醫。龍門得□。名顯□□。 |
 | 14 | 從心無慮。遠達亨衢。道心自在。任□所如。 |
+| 15 | 若得人怨。何事可伸。如言不信。到□勞心。 |
 | 16 | 得處□□。損中有□。□□□凶。君子得吉。 |
 | 17 | 心中不定。枉費看經。只是畫餅。□□□□。 |
 | 20 | 佛神護佑。百事無虛。想平生事。到□勝初。 |

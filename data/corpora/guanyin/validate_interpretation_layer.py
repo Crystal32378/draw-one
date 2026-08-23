@@ -18,6 +18,7 @@ import os
 HERE = os.path.dirname(os.path.abspath(__file__))
 LAYER = os.path.join(HERE, 'interpretation_layer.json')
 SRC = os.path.join(HERE, 'source_three_way.json')
+PER_SLIP = os.path.join(HERE, 'per_slip_page_jie.json')
 
 PUNCT = set('。，、；：！？．·「」『』（）()□　 ')
 
@@ -68,6 +69,7 @@ def has_mojibake(s):
 def main():
     layer = json.load(open(LAYER, encoding='utf-8'))
     src = {x['slip_no']: x for x in json.load(open(SRC, encoding='utf-8'))}
+    per_slip_page = json.load(open(PER_SLIP, encoding='utf-8'))
     entries = layer['entries']
     failures = []
 
@@ -101,11 +103,11 @@ def main():
         vt = e['verbatim_text']
         s = src[n]
         raw = s['raw_jie'] or ''
-        page = s['page_ocr'] or ''
+        page_jie = per_slip_page.get(str(n)) or ''
         chance = s['chance_jie'] or ''
 
-        # A1 character coverage（繁簡正規化後）——只證「字曾出現」，非詞序 traceability
-        source_chars = set(normalize(strip_punct(raw))) | set(normalize(strip_punct(page)))
+        # A1 character coverage（per-slip source：raw_jie + 該籤 page 解曰片段）
+        source_chars = set(normalize(strip_punct(raw))) | set(page_jie)
         verb_chars = set(normalize(strip_punct(vt).replace('□', '')))
         orphan = [ch for ch in verb_chars if ch not in source_chars]
         if orphan:
@@ -117,9 +119,9 @@ def main():
         if polluted:
             failures.append(('A2', f'#{n} chance 獨有字進 verbatim', ''.join(polluted)))
 
-        # A1b segment-level traceability（全部解曰：PROBABLE + UNRESOLVED，防拼裝）
+        # A1b segment-level traceability（per-slip source：raw_jie + 該籤自己的 page 解曰片段，防拼裝/cross-slip）
         raw_n = normalize(strip_punct(raw))
-        page_n = normalize(strip_punct(page))
+        page_n = per_slip_page.get(str(n)) or ''
         for seg in re.split('[□。，、；：！？．·]', normalize(vt)):
             if len(seg) >= 2 and seg not in raw_n and seg not in page_n:
                 failures.append(('A1b', f'#{n} 片段不在 source substring', seg))

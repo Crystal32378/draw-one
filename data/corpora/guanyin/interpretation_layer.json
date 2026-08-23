@@ -323,11 +323,11 @@
       "slip_no": 15,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "若得人怨。何事可伸。如言不信。到頭勞心。",
+      "verbatim_text": "若得人怨。何事可伸。如言不信。到□勞心。",
       "source_locator": "薛皓文2008附錄二 p172（籤 #15）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "首句 raw「若得人怨」（字序「得人」）非 chance「若人得怨」（「人得」）；四句 raw「到頭勞心」非語義推定「到底」。chance: 解曰 chance「若人得怨。何時可伸。好言不信。守舊待時。」，附錄二 raw「若得人怨。何事可伸。如言不信。到頭勞心。」"
+      "variants_or_notes": "首句 page+raw「若得人怨」（「得人」字序）確認；四句 page「到底」／raw「到頭」底/頭分歧標□（page 解曰行「若得人怨何事可伸如言不信到底勞心」確在）。chance: 解曰 chance「若人得怨。何時可伸。好言不信。守舊待時。」，附錄二「若得人怨。何事可伸。如言不信。到□勞心。」"
     },
     {
       "corpus": "guanyin",
