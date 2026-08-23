@@ -15,11 +15,11 @@
       "slip_no": 1,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "急速非速。言來時値。觀音降事。報與君知。",
+      "verbatim_text": "□□非□。□□時□。□音降□。報與君知。",
       "source_locator": "薛皓文2008附錄二 p179（籤 #1）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "前三句 page「急速非速／言來時値／觀音降事」／raw「為述非遙／信求時慎／親音降畢」／chance「急速兆速／年未值時／觀音降筆」三方分歧；四句「報與君知」raw+page+source image 確認。chance: 前三句 chance 為 witness 不採。"
+      "variants_or_notes": "前三句 raw/page 逐字分歧（raw「為述非遙／信求時慎／親音降畢」vs page「急速非速／言來時値／觀音降事」），僅 raw+page 一致字保留、分歧字標□；四句「報與君知」raw+page+source image 確認。chance: 前三句 chance「急速兆速／年未值時／觀音降筆」為 witness 不採。"
     },
     {
       "corpus": "guanyin",
@@ -301,11 +301,11 @@
       "slip_no": 14,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "從心無慮。遠達亨衢。道心自在。任意所如。",
+      "verbatim_text": "從心無慮。遠達亨衢。道心自在。任□所如。",
       "source_locator": "薛皓文2008附錄二 p173（籤 #14）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page 整頁「此籤」行四句齊全「從心無慮遠達亨衢道心自在任意所如」；raw 殘缺僅存「任悉所如」；首句「從心無慮」首字「從」page 獨證。chance: 解曰 chance「任意無虞。路有亨通。隨心自在。逍遙如人(神)。」，附錄二「從心無慮。遠達亨衢。道心自在。任意所如。」"
+      "variants_or_notes": "前三句 page 整頁「此籤」行單源（raw 殘缺僅存「任悉所如」）；四句 raw「任悉」／page「任意」悉/意分歧標□。chance: 解曰 chance「任意無虞。路有亨通。隨心自在。逍遙如人(神)。」，附錄二「從心無慮。遠達亨衢。道心自在。任□所如。」"
     },
     {
       "corpus": "guanyin",
@@ -459,7 +459,7 @@
       "source_locator": "薛皓文2008附錄二 p169（籤 #21）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "此籤「解曰」實為七言詩四句（非四言判詞），raw 原文逐字保留，未按四言硬斷、未改「葉」（疑「叶」異體但 source 未確）。chance: 解曰 chance 為四言「謀望從心。婚姻孕男。資財進益。更利田蠶。」，與附錄二七言格式不同，為 witness。"
+      "variants_or_notes": "structural：此籤「解曰」欄位為七言詩四句（非四言判詞），欄位格式異常；raw 原文逐字保留，未按四言硬斷、未改「葉」（疑「叶」異體但 source 未確）。chance: 解曰 chance 為四言「謀望從心。婚姻孕男。資財進益。更利田蠶。」，與附錄二七言格式不同，為 witness。"
     },
     {
       "corpus": "guanyin",
@@ -1687,11 +1687,11 @@
       "slip_no": 77,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "□夢說夢。聲名虛望。只好待時。貴人接引。",
+      "verbatim_text": "□夢說夢。聲名虛望。只好待時。□人□引。",
       "source_locator": "薛皓文2008附錄二 p141（籤 #77）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "首字「如」不見於 raw（夢說夢筆）與 page（夢說夢聲）兩 OCR，chance 作「如夢說夢」，補字存疑故標 □；「接引」(page)/「指引」(raw) 分歧，「聲名」之「聲」依 page。；chance: chance解曰「如夢說夢。聲名莫望。只待好時。貴人指示。」（虛望/莫望、只好/只待、接引/指示 異文）；chance聖意多項異：自身阻／求財虛／婚姻不合／六甲虛／田蠶不收／六畜損／尋人杳／移徙待時／失物遠／山墳改。"
+      "variants_or_notes": "四句 page「責人接引」／raw「貴人指引」責/貴、接/指分歧標□（原先「貴人接引」為 raw「貴人」+page「接引」拼裝，非 source substring）；二句 page「聲名虚望」／raw「名虛望」缺「聲」；首句 page/raw「夢說夢」三字缺首字。chance: 解曰 chance「如夢說夢。聲名莫望。只待好時。貴人指示。」，附錄二「□夢說夢。聲名虚望。只好待時。□人□引。」"
     },
     {
       "corpus": "guanyin",

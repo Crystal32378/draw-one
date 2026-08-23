@@ -2,16 +2,17 @@
 """觀音 interpretation layer automated data gate。
 
 把 authority hierarchy 變成機器可抓的 contract：
-  A1  traceability      — verbatim 每個字必須 traceable 到 source（raw ∪ page）
+  A1  character coverage — verbatim 每個字必須在此籤 source（raw ∪ page）字元集內
+  A1b segment trace     — UNRESOLVED 的 ≥2 字片段必須是 source 的 substring（防重組拼裝）
   A2  chance isolation  — chance 獨有字不得進 verbatim（chance 只能留 witness）
-  A3  uncertainty       — UNRESOLVED 必須保留 uncertainty（□ 或 note 標記分歧/缺字）
+  A3  uncertainty       — UNRESOLVED：textual 必含 □；structural 可無 □（note 需標 structural）
   A4  structure         — 100 籤、每籤 2 筆、9 欄位齊全、layer_class 一致
-  A5  encoding          — 無 U+FFFD / mojibake / control chars
+  A5  encoding          — 無 U+FFFD / mojibake / 異常控制字符
 
 用法：python3 validate_interpretation_layer.py
 exit 0 = PASS；exit 1 = FAIL（印出違規清單）
 """
-import json, sys, unicodedata
+import json, sys, re, unicodedata
 
 import os
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +24,7 @@ PUNCT = set('。，、；：！？．·「」『』（）()□　 ')
 # 繁→簡/異體→標準 映射（OCR 輸出繁簡混雜，gate 正規化後只抓語義差異，不誤抓繁簡）
 FAN2JIAN = {
     '爲':'为','為':'为','換':'换','緣':'缘','達':'达','逹':'达',
-    '穩':'稳','顯':'显','從':'从','諸':'诸','現':'现','誠':'诚',
+    '穩':'稳','顯':'显','從':'从','諸':'诸','現':'现','誠':'诚','虛':'虚',
     '時':'时','來':'来','觀':'观','報':'报','與':'与','飛':'飞',
     '萬':'万','說':'说','話':'话','頭':'头','長':'长','門':'门',
     '過':'过','邊':'边','還':'还','難':'难','對':'对','語':'语',
@@ -103,26 +104,34 @@ def main():
         page = s['page_ocr'] or ''
         chance = s['chance_jie'] or ''
 
-        # A1 traceability（繁簡正規化後，只抓語義差異）
+        # A1 character coverage（繁簡正規化後）——只證「字曾出現」，非詞序 traceability
         source_chars = set(normalize(strip_punct(raw))) | set(normalize(strip_punct(page)))
         verb_chars = set(normalize(strip_punct(vt).replace('□', '')))
         orphan = [ch for ch in verb_chars if ch not in source_chars]
         if orphan:
-            failures.append(('A1', f'#{n} verbatim 有字不 traceable 到 source', ''.join(orphan)))
+            failures.append(('A1', f'#{n} verbatim 有字不在此籤 source 字元集', ''.join(orphan)))
 
-        # A2 chance isolation（chance 獨有字不得進 verbatim）
+        # A2 chance character isolation（chance 獨有字不得進 verbatim）
         chance_unique = set(normalize(strip_punct(chance))) - source_chars
         polluted = [ch for ch in verb_chars if ch in chance_unique]
         if polluted:
             failures.append(('A2', f'#{n} chance 獨有字進 verbatim', ''.join(polluted)))
 
-        # A3 uncertainty preserved（UNRESOLVED）
+        # A1b segment-level traceability（UNRESOLVED / disputed entries）
+        if e['transcription_status'] == 'UNRESOLVED':
+            raw_n = normalize(strip_punct(raw))
+            page_n = normalize(strip_punct(page))
+            for seg in re.split('[□。，、；：！？．·]', normalize(vt)):
+                if len(seg) >= 2 and seg not in raw_n and seg not in page_n:
+                    failures.append(('A1b', f'#{n} 片段不在 source substring', seg))
+
+        # A3 uncertainty（UNRESOLVED：textual 必含 □；structural 可無 □）
         if e['transcription_status'] == 'UNRESOLVED':
             note = e['variants_or_notes'] or ''
             has_box = '□' in vt
-            has_flag = any(k in note for k in ('分歧', '缺', '未確', '殘缺', '不硬斷', '格式異常', '獨證'))
-            if not (has_box or has_flag):
-                failures.append(('A3', f'#{n} UNRESOLVED 未保留 uncertainty', vt[:20]))
+            is_structural = any(k in note for k in ('structural', '格式異常', '欄位格式', '欄位歸屬', '詩體'))
+            if not has_box and not is_structural:
+                failures.append(('A3', f'#{n} UNRESOLVED 無 □ 且非 structural', vt[:20]))
 
     # 彙總
     jie = [e for e in entries if e['field_type'] == '解曰']
@@ -136,8 +145,8 @@ def main():
             print(f'  [{a}] {where}: {detail}')
         sys.exit(1)
     else:
-        print('\n✅ GATE PASS — A1 traceability / A2 chance isolation / A3 uncertainty / '
-              'A4 structure / A5 encoding 全部通過')
+        print('\n✅ GATE PASS — A1 character coverage / A1b segment trace / A2 chance isolation / '
+              'A3 uncertainty(textual|structural) / A4 structure / A5 encoding 全部通過')
         sys.exit(0)
 
 if __name__ == '__main__':

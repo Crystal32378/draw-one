@@ -42,23 +42,24 @@
 
 ## Data Gate（機器可抓 contract）
 
-`validate_interpretation_layer.py` 五項 assertion，把 authority hierarchy 變成可回歸驗證的 gate：
+`validate_interpretation_layer.py` 六項 assertion，把 authority hierarchy 變成可回歸驗證的 gate：
 
 | Assertion | 檢查內容 |
 |---|---|
-| A1 traceability | verbatim 每個字（繁簡正規化後）必須 traceable 到 source（raw ∪ page），不憑空補字 |
+| A1 character coverage | verbatim 每個字（繁簡正規化後）必須在此籤 source（raw ∪ page）字元集內 |
+| A1b segment trace | UNRESOLVED 的 ≥2 字片段必須是 source 的 substring，防不同位置字重組拼裝 |
 | A2 chance isolation | chance 獨有字不得進 verbatim（chance 只能留 variants_or_notes 的 witness） |
-| A3 uncertainty | UNRESOLVED entry 必須含「□」或 note 標記分歧／缺字／未確 |
+| A3 uncertainty | UNRESOLVED：textual 必含「□」；structural（欄位格式／詩體）可無 □，note 需標 structural |
 | A4 structure | 100 籤、每籤 2 筆、9 欄位齊全、layer_class 一致 |
 | A5 encoding | 無 U+FFFD／mojibake／異常控制字符 |
 
-輸入：`interpretation_layer.json` + `source_three_way.json`（raw_jie／page_ocr／chance_jie 三方）。繁簡／異體經正規化（為↔爲、換↔换 等），只抓語義差異，不誤抓 OCR 繁簡混雜。
+輸入：`interpretation_layer.json` + `source_three_way.json`（raw_jie／page_ocr／chance_jie 三方）。繁簡／異體經正規化（為↔爲、換↔换、虛↔虚 等），只抓語義差異，不誤抓 OCR 繁簡混雜。A1 是 character-set coverage（只證字曾出現），A1b 才是詞序層的 substring traceability，兩者分工不宣稱 full traceability。
 
 ## UNRESOLVED 清單（解曰 20 籤）
 
 | # | verbatim（缺字以□標記） |
 |---|---|
-| 1 | 急速非速。言來時値。觀音降事。報與君知。 |
+| 1 | □□非□。□□時□。□音降□。報與君知。 |
 | 4 | 五五念五。□龍跨虎。事雖勞心。於中有補。 |
 | 5 | 望中心事。令可方求。百事營謀。正堪截□。 |
 | 7 | 退身可得。進步難為。只宜守□。切莫高扳。 |
@@ -66,7 +67,7 @@
 | 10 | 機緣若遇。何事不成。春無限□。□似真□。 |
 | 12 | □換得絲。是笑□哭。要見分明。是見為福。 |
 | 13 | 因□得赦。病遇良醫。龍門得□。名顯□□。 |
-| 14 | 從心無慮。遠達亨衢。道心自在。任意所如。 |
+| 14 | 從心無慮。遠達亨衢。道心自在。任□所如。 |
 | 16 | 得處□□。損中有□。□□□凶。君子得吉。 |
 | 17 | 心中不定。枉費看經。只是畫餅。□□□□。 |
 | 20 | 佛神護佑。百事無虛。想平生事。到□勝初。 |
@@ -76,7 +77,7 @@
 | 44 | □求心事。如同□。要知勝負。先□□□。 |
 | 48 | □□化□。諸禽不能。騰化時節。□□□□。 |
 | 65 | 得止且止。知□割自。□肉痛本。一□。 |
-| 77 | □夢說夢。聲名虛望。只好待時。貴人接引。 |
+| 77 | □夢說夢。聲名虛望。只好待時。□人□引。 |
 | 96 | 這此福□。諸人皆現。可用誠心。福德即到。 |
 
 ## Sampled Direct Source-Image Verification（3 籤）
