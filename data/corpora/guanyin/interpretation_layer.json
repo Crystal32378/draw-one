@@ -15,11 +15,11 @@
       "slip_no": 1,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "急速兆速。年未值時。觀音降筆。報與君知。",
+      "verbatim_text": "急速非速。言來時値。觀音降事。報與君知。",
       "source_locator": "薛皓文2008附錄二 p179（籤 #1）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "source image 核對：附錄二原文「報與君知」；chance 作「先報君知」為 chance 版本；chance: 解曰末句 chance 作「先報君知」，附錄二作「報與君知」"
+      "variants_or_notes": "前三句 page「急速非速／言來時値／觀音降事」／raw「為述非遙／信求時慎／親音降畢」／chance「急速兆速／年未值時／觀音降筆」三方分歧；四句「報與君知」raw+page+source image 確認。chance: 前三句 chance 為 witness 不採。"
     },
     {
       "corpus": "guanyin",
@@ -81,11 +81,11 @@
       "slip_no": 4,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "五五念五。騎龍跨虎。事雖勞心。於中有補。",
+      "verbatim_text": "五五念五。□龍跨虎。事雖勞心。於中有補。",
       "source_locator": "薛皓文2008附錄二 p178（籤 #4）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "附錄二原文「五五念五」（source image 確認，chance 作「淘沙成金」為 chance 版）；「騎龍跨虎」source image 辨識作「財施跨虎」、raw作「時龍跨虎」，分歧待核對；chance: 解曰首句 chance 作「淘沙成金」（附錄二 OCR「五五念五」未辨）；解曰 chance「騎龍踏虎／雖是勞心／于中有補」，附錄二作「騎龍跨虎／事雖勞心／於中有補」"
+      "variants_or_notes": "二句首字四方分歧：raw「時龍跨虎」／page「騎龍跨虎」／source image「財施跨虎」／chance「騎龍踏虎」，未確標□；三句 raw「事難勞心」／page「事雖勞心」難/雖分歧。chance: 首句 chance「淘沙成金」（附錄二「五五念五」）、二句 chance「騎龍踏虎」、三句 chance「雖是勞心」，皆為 witness 不採。"
     },
     {
       "corpus": "guanyin",
@@ -103,11 +103,11 @@
       "slip_no": 5,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "望中心事。西方可求。百事營謀。立地堪□。",
+      "verbatim_text": "望中心事。令可方求。百事營謀。正堪截□。",
       "source_locator": "薛皓文2008附錄二 p177（籤 #5）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "首句 raw/page 同作「望中心事」（chance「欲望心事」）；次句 raw/page 讀「令可方求／今可方求」，據 chance 比對疑為「西方可求」；三句 raw/page 同作「百事營謀」（chance「不如莫動」）；末句 page 作「立地堪」、raw 作「正堪截」（三字，缺末字），chance 作「立地可謀」，末字未辨。；chance: 解曰 chance「欲望心事。西方可求。不如莫動。立地可謀。」，附錄二作「望中心事。…百事營謀。立地堪□。」"
+      "variants_or_notes": "次句 raw「令可方求」／page「今可方求」令/今分歧（chance「西方可求」為 witness 不採）；四句 raw「正堪截」三字缺末字（page「立地堪」、chance「立地可謀」為 witness）；page 整頁「此籤」解曰行缺失。chance: 解曰 chance「欲望心事。西方可求。不如莫動。立地可謀。」，附錄二作「望中心事。…百事營謀。正堪截□。」"
     },
     {
       "corpus": "guanyin",
@@ -147,11 +147,11 @@
       "slip_no": 7,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "退身可得。進步為難。只宜守舊。莫望高扳。",
+      "verbatim_text": "退身可得。進步難為。只宜守□。切莫高扳。",
       "source_locator": "薛皓文2008附錄二 p176（籤 #7）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「退身可得進步難爲只宜守田切莫高扳此籤」；raw 作「退身可得進步難爲只宜守因勿妄想」。「守田／守因」疑為「守舊」誤讀（chance「只宜守舊」），「切莫高扳」chance 作「莫望高扳」。末二句字面有異，此據 page 字形並 chance 比對。；chance: 解曰 chance 末二句「只宜守舊。莫望高扳。」，附錄二 OCR「只宜守田／守因。切莫高扳」"
+      "variants_or_notes": "三句末字 source 分歧：page「只宜守田」／raw「只宜守因」／chance「只宜守舊」，未確標□；四句 page「切莫高扳」／raw「勿妄想」分歧，以 page 整頁「此籤」行為主；首句 raw「這身可得」／page「退身可得」這/退分歧。chance: 解曰 chance「退身可得。進步為難。只宜守舊。莫望高扳。」，附錄二「只宜守田/守因。切莫高扳/勿妄想」"
     },
     {
       "corpus": "guanyin",
@@ -191,11 +191,11 @@
       "slip_no": 9,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "心中正直。理順法寬。天無私意。莫空盧。",
+      "verbatim_text": "心中正直。原法寬□。天無私極。□空虛□。",
       "source_locator": "薛皓文2008附錄二 p175（籤 #9）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「心中正直理順法寬天無私意莫空盧」；raw 作「心中正直原法寬天無私極與空虛若北箕」。首二句與 chance（心中正直／理順法寬）合；後二句附錄二作「天無私意／莫空盧」（raw「極與空虛若北箕」），末字「盧」與 chance「終有分明」不符，末句「莫空盧」文義未確，保留原讀並標 UNRESOLVED。；chance: 解曰後二句 chance 作「聖無私語。終有分明。」，附錄二作「天無私意。莫空盧。」；聖意 chance「尋人至／失物祈福」，附錄二 raw「尋人阻／失物難尋」"
+      "variants_or_notes": "raw「心中正直原法寬天無私極與空虛若北箕」亂序缺字：二句「原法寬」三字缺一、三句「天無私極」、四句「與空虛若北箕」疑混入象註「皎月皆空」誤讀；page 整頁「此籤」行缺失。chance: 解曰 chance「心中正直。理順法寬。聖無私語。終有分明。」，附錄二 raw 作「原法寬／天無私極／…空虛…」，chance 為 witness 不採。"
     },
     {
       "corpus": "guanyin",
@@ -213,11 +213,11 @@
       "slip_no": 10,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "機緣若遇。何事不成。春無限。前似真。",
+      "verbatim_text": "機緣若遇。何事不成。春無限□。□似真□。",
       "source_locator": "薛皓文2008附錄二 p175（籤 #10）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "raw 作「機緣若遇何事不成春無限請似真」；page 作「機縁若遇何事不成春無限前似眞」。chance 作「姻緣會遇。何事不成。須無限意。眼前是真。」。附錄二三四句與 chance 分歧（「春無限／前似真」 vs 「須無限意／眼前是真」），字未確，標 UNRESOLVED。；chance: 解曰 chance「姻緣會遇。須無限意。眼前是真。」，附錄二「機緣若遇。春無限。前似真。」；聖意 raw 與 chance 多項相反，待核原影像"
+      "variants_or_notes": "三句「春無限」三字缺一；四句 raw「請似真」／page「前似眞」請/前分歧、三字缺一。chance: 解曰 chance「姻緣會遇。何事不成。須無限意。眼前是真。」，附錄二「機緣若遇。何事不成。春無限□。□似真□。」"
     },
     {
       "corpus": "guanyin",
@@ -257,11 +257,11 @@
       "slip_no": 12,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "換麻得絲。是笑誰哭。要見分明。是見為福。",
+      "verbatim_text": "□換得絲。是笑□哭。要見分明。是見為福。",
       "source_locator": "薛皓文2008附錄二 p174（籤 #12）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "raw 作「萬換得絲是笑誰哭要見分明是見為福」；page 作「蔴換得絲是笑雖哭要見分明是見爲福」。chance 作「換麻得絲。擊人雙足。要見分明。因災得福。」。附錄二二句（是笑誰哭／是笑雖哭）與四句（是見為福）與 chance 分歧，字未確，標 UNRESOLVED。；chance: 解曰 chance 二四句「擊人雙足。因災得福。」，附錄二「是笑誰哭。是見為福。」"
+      "variants_or_notes": "首句 page「蔴換得絲」／raw「萬換得絲」蔴/萬分歧（chance「換麻得絲」）；二句 page「是笑雖哭」／raw「是笑誰哭」雖/誰分歧。chance: 解曰 chance「換麻得絲。擊人雙足。要見分明。因災得福。」，附錄二「□換得絲。是笑□哭。要見分明。是見為福。」"
     },
     {
       "corpus": "guanyin",
@@ -279,11 +279,11 @@
       "slip_no": 13,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "囚人逢赦。病遇良醫。龍門得遇。名顯皇都。",
+      "verbatim_text": "因□得赦。病遇良醫。龍門得□。名顯□□。",
       "source_locator": "薛皓文2008附錄二 p173（籤 #13）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "raw 作「因徒得赦病遇良醫龍門得遇名顯揚光榮」；page 作「因徙得赦病遇良醫龍門得過名顯皇都之象」。chance 作「囚人逢赦。病即安然。龍門得遇。名遍名都。」。首句附錄二「因徒／因徙得赦」疑為「囚人逢赦」誤讀；四句附錄二(page)「名顯皇都」與 chance「名遍名都」異，此從附錄二。；chance: 解曰 chance「病即安然／名遍名都」，附錄二「病遇良醫／名顯皇都」"
+      "variants_or_notes": "首句 raw「因徒得赦」／page「因徙得赦」徒/徙分歧（chance「囚人逢赦」）；三句 raw「龍門得遇」／page「龍門得過」遇/過分歧；四句 raw「名顯揚光榮」五字／page「名顯皇都」揚光榮/皇都分歧。chance: 解曰 chance「囚人逢赦。病即安然。龍門得遇。名遍名都。」，附錄二「因□得赦。病遇良醫。龍門得□。名顯□□。」"
     },
     {
       "corpus": "guanyin",
@@ -301,11 +301,11 @@
       "slip_no": 14,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "任意無慮。遠達亨衢。道心自在。任意所如。",
+      "verbatim_text": "從心無慮。遠達亨衢。道心自在。任意所如。",
       "source_locator": "薛皓文2008附錄二 p173（籤 #14）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「從心無慮遠達亨衢道心自在任意所如」；raw 作「此籤自鶴沖霄之象凡事先難後吉任悉所如」。chance 作「任意無虞。路有亨通。隨心自在。逍遙如人(神)。」。附錄二(page)「從心無慮／遠達亨衢／道心自在／任意所如」與 chance 分歧，首字「從／任」未確，標 UNRESOLVED。；chance: 解曰整首 chance 作「任意無虞。路有亨通。隨心自在。逍遙如人(神)。」，與附錄二迥異"
+      "variants_or_notes": "page 整頁「此籤」行四句齊全「從心無慮遠達亨衢道心自在任意所如」；raw 殘缺僅存「任悉所如」；首句「從心無慮」首字「從」page 獨證。chance: 解曰 chance「任意無虞。路有亨通。隨心自在。逍遙如人(神)。」，附錄二「從心無慮。遠達亨衢。道心自在。任意所如。」"
     },
     {
       "corpus": "guanyin",
@@ -345,11 +345,11 @@
       "slip_no": 16,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "得處無失。損中有益。小人逢凶。君子順吉。",
+      "verbatim_text": "得處□□。損中有□。□□□凶。君子得吉。",
       "source_locator": "薛皓文2008附錄二 p172（籤 #16）",
-      "transcription_status": "PROBABLE",
+      "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「得處無僞損中有益順逆吉凶君子得吉」；raw 作「得處焦渴損中有道煩惱皆凶君子得吉」。chance 作「得處無失。損中有益。小人逢凶。君子順吉。」。附錄二三四句（順逆吉凶／君子得吉）與 chance 異，此據 page 字形並 chance 比對，字仍存疑。；chance: 解曰 chance「小人逢凶。君子順吉。」，附錄二「順逆吉凶。君子得吉。」"
+      "variants_or_notes": "首句 raw「得處焦渴」／page「得處無僞」／chance「得處無失」分歧；二句 raw「損中有道」／page「損中有益」道/益分歧；三句 raw「煩惱皆凶」／page「順逆吉凶」／chance「小人逢凶」前三字分歧、末字「凶」一致。chance: 解曰 chance「得處無失。損中有益。小人逢凶。君子順吉。」，附錄二「得處□□。損中有□。□□□凶。君子得吉。」"
     },
     {
       "corpus": "guanyin",
@@ -367,11 +367,11 @@
       "slip_no": 17,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "心中不定。枉費看經。恰似畫餅。充飢之象。",
+      "verbatim_text": "心中不定。枉費看經。只是畫餅。□□□□。",
       "source_locator": "薛皓文2008附錄二 p171（籤 #17）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「心中不定枉費看經只是畫餅充飢之象凡事」；raw 作「心中不定枉費思量只求餅充飢之事虛少實」。chance 作「心中不定。枉看經文。恰似書餅。食也難吞。」。附錄二三四句與 chance 分歧，末句「充飢之象」混入象註，字未確，標 UNRESOLVED。；chance: 解曰 chance「枉看經文。恰似書餅。食也難吞。」，附錄二「枉費看經。恰似畫餅。充飢之象。」"
+      "variants_or_notes": "二句 page「枉費看經」／raw「枉費思量」看經/思量分歧；三句 page「只是畫餅」／raw「只求餅」；四句 source 混入象註「充飢之象」，解曰第四句缺失。chance: 解曰 chance「心中不定。枉看經文。恰似書餅。食也難吞。」，附錄二「心中不定。枉費看經。只是畫餅。□□□□。」"
     },
     {
       "corpus": "guanyin",
@@ -389,11 +389,11 @@
       "slip_no": 18,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "心中無事。所作有功。如弓上箭。一發當空。",
+      "verbatim_text": "心中無事。所作有功。如弓上箭。一發當中。",
       "source_locator": "薛皓文2008附錄二 p171（籤 #18）",
       "transcription_status": "PROBABLE",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「心中無事所作有功如弓上箭一發當中」；raw 作「心中無事所作有功如弓上箭一發當中」。chance 作「…一發當空。」。末字附錄二「中」與 chance「空」異，此從附錄二（「中」）。；chance: 解曰末句 chance 作「一發當空」，附錄二作「一發當中」"
+      "variants_or_notes": "四句 raw+page「一發當中」確認；chance「一發當空」為 witness 不採。chance: 解曰 chance「心中無事。所作有功。如弓上箭。一發當空。」，附錄二「…一發當中。」"
     },
     {
       "corpus": "guanyin",
@@ -433,11 +433,11 @@
       "slip_no": 20,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "佛神護佑。百事無虛。想平生事。到底勝初。",
+      "verbatim_text": "佛神護佑。百事無虛。想平生事。到□勝初。",
       "source_locator": "薛皓文2008附錄二 p170（籤 #20）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「佛神護佑百事無虚想平生事到底勝初」；raw 作「佛神護佑百事無虛想平生事到成勝初」。chance 作「神佛護持。有災無危。途生平安。到底榮歸。」，與附錄二迥異。附錄二首二句可辨，後二句字未確，標 UNRESOLVED。；chance: 解曰整首 chance 作「神佛護持。有災無危。途生平安。到底榮歸。」，與附錄二迥異"
+      "variants_or_notes": "四句 page「到底勝初」／raw「到成勝初」底/成分歧，未確標□。chance: 解曰 chance「神佛護持。有災無危。途生平安。到底榮歸。」，與附錄二迥異。"
     },
     {
       "corpus": "guanyin",
@@ -455,11 +455,11 @@
       "slip_no": 21,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "陰陽道合。總由天。女嫁男婚。豈偶然。但看龍蛇。堪運動。熊羆葉夢。喜團圓。",
+      "verbatim_text": "陰陽道合總由天。女嫁男婚豈偶然。但看龍蛇堪運動。熊羆葉夢喜團圓。",
       "source_locator": "薛皓文2008附錄二 p169（籤 #21）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "raw 作「陰陽道合總由天 女嫁男婚豈偶然 但看龍蛇堪運動 熊羆葉夢喜團圓 此籤皆送婚姻…」；此為詩體（七言），非四言判詞。chance 作「謀望從心。婚姻孕男。資財進益。更利田蠶。」。附錄二此籤「解曰」實錄為七言詩句，與四言判詞格式不符，依原文保留並標 UNRESOLVED（格式異常）。；chance: 解曰 chance 作「謀望從心。婚姻孕男。資財進益。更利田蠶。」，附錄二為七言詩句「陰陽道合總由天。女嫁男婚豈偶然。…」"
+      "variants_or_notes": "此籤「解曰」實為七言詩四句（非四言判詞），raw 原文逐字保留，未按四言硬斷、未改「葉」（疑「叶」異體但 source 未確）。chance: 解曰 chance 為四言「謀望從心。婚姻孕男。資財進益。更利田蠶。」，與附錄二七言格式不同，為 witness。"
     },
     {
       "corpus": "guanyin",
@@ -543,11 +543,11 @@
       "slip_no": 25,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "訟終有理。病得安全。出入求謀。枯井逢泉。",
+      "verbatim_text": "訟中有理。病得安痊。出外求望。枯井逢泉。",
       "source_locator": "薛皓文2008附錄二 p167（籤 #25）",
       "transcription_status": "PROBABLE",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page_ocr 作「訟中有理病得安痊出外求望枯井逢泉」；raw 作「簽中有理禍得安泰出外求望枯井逢泉」。chance 作「訟終有理。病得安全。出入求謀。古井逢泉。」。附錄二「訟中有理／病得安痊／出外求望／枯井逢泉」與 chance 有細微異（中/終、安痊/安全、求望/求謀、枯/古），此從附錄二。；chance: 解曰 chance「訟終有理。病得安全。出入求謀。古井逢泉。」，附錄二「訟中有理。病得安痊。出外求望。枯井逢泉。」"
+      "variants_or_notes": "page「訟中有理／病得安痊／出外求望／枯井逢泉」；首句 raw「簽中有理」訟/簽分歧、二句 raw「禍得安泰」病/禍、痊/泰分歧。chance: 解曰 chance「訟終有理。病得安全。出入求謀。古井逢泉。」，附錄二「訟中有理。病得安痊。出外求望。枯井逢泉。」"
     },
     {
       "corpus": "guanyin",
@@ -895,11 +895,11 @@
       "slip_no": 41,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "只道一著。君子莫錯。牢把身心。不致耽攔。",
+      "verbatim_text": "只道一著。君子莫錯。宰把身心。不致耽攔。",
       "source_locator": "薛皓文2008附錄二 p159（籤 #41）",
       "transcription_status": "PROBABLE",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page作「只道一著/君子莫錯/宰把身心/不致耽攔」，raw作「只道一時君子莫猜疑把守心不致就」殘；chance作「只這一著。君子莫錯。牢記在心。不生寂寞」。宰疑牢(牢/宰形近)、著/時分歧；以page為主，宰/牢留註。；chance: 自身平常(附錄二平安)、求財守待(附錄二未得)、交易難(附錄二待時)；移徙祈保(附錄二中平)、疾病禳星(附錄二祈保)、山墳中平(附錄二呈祥)"
+      "variants_or_notes": "page「只道一著／君子莫錯／宰把身心／不致耽攔」；三句 raw「把守心」宰把/把守分歧、二句 raw「君子莫猜」錯/猜分歧。chance: 解曰 chance「只這一著。君子莫錯。牢記在心。不生寂寞。」，附錄二「只道一著。君子莫錯。宰把身心。不致耽攔。」"
     },
     {
       "corpus": "guanyin",
@@ -961,11 +961,11 @@
       "slip_no": 44,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "欺求心事。如同著祺。要知勝負。先著莫疑。",
+      "verbatim_text": "□求心事。如同□。要知勝負。先□□□。",
       "source_locator": "薛皓文2008附錄二 p158（籤 #44）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page作「欺求心事/如同著祺/要知勝負/先著莫疑」，raw作「批求心事/如同棋/要知勝負/先落其紙」；chance作「欲求心事。恰如圍棋。到底勝利。宜用心機」。首字欺/批/欲、末句先著莫疑/先落其紙分歧，未定。；chance: 解曰chance作「欲求心事。恰如圍棋。到底勝利。宜用心機」；自身平穩(附錄二白外)、婚姻未合(附錄二平合)、六甲女(附錄二損失)、山墳守舊(附錄二宜和)"
+      "variants_or_notes": "首句 page「欺求心事」／raw「批求心事」／chance「欲求心事」欺/批/欲分歧；二句 page「如同著祺」／raw「如同棋」；四句 page「先著莫疑」／raw「先落其紙」著/落、莫/其、疑/紙分歧，僅首字「先」一致。chance: 解曰 chance「欲求心事。恰如圍棋。到底勝利。宜用心機。」，附錄二「□求心事。如同□。要知勝負。先□□□。」"
     },
     {
       "corpus": "guanyin",
@@ -1049,11 +1049,11 @@
       "slip_no": 48,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "□化為鵬。諸禽不能。桂花時節。財祿□成。",
+      "verbatim_text": "□□化□。諸禽不能。騰化時節。□□□□。",
       "source_locator": "薛皓文2008附錄二 p156（籤 #48）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page作「鷗烏化鵬諸禽不能桂花時節財祿成」，raw作「鵑鵑化鵑諸禽不能騰化時節時來成北飛」，chance作「昆化為鵬。萬禽不能。桂香一折。福祿自增」。首句「□化為鵬」首字(鯤/烏/昆)與末句「財祿□成」無法確定，留□。；chance: 解曰chance作「昆化為鵬。萬禽不能。桂香一折。福祿自增」；求財秋旺/婚姻不合/六甲安/行人阻滯/田蠶中平/尋人見/移徙守舊/山墳安(附錄二殘)"
+      "variants_or_notes": "raw「鵑鵑化鵑／諸禽不能／騰化時節／時來成北飛」；page 解曰行缺失；首句「鵑鵑化鵑」疑誤讀、四句「時來成北飛」五字格式異常，標□。chance: 解曰 chance「昆化為鵬。萬禽不能。桂香一折。福祿自增。」，附錄二「鵑鵑化鵑。諸禽不能。騰化時節。時來成北飛。」"
     },
     {
       "corpus": "guanyin",
@@ -1423,11 +1423,11 @@
       "slip_no": 65,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "得止且止。知歡割自。己肉痛本。一般。",
+      "verbatim_text": "得止且止。知□割自。□肉痛本。一□。",
       "source_locator": "薛皓文2008附錄二 p147（籤 #65）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "整頁OCR『得止且止知歡割自己肉痛本一般』語義不通；chance作『知止則止知寬自寬割自身肉疾痛一般』；『知歡割自己肉痛本一般』字序待原圖核對；chance: 知止則止知寬自寬割自身肉疾痛一般（附錄二：得止且止知歡割自己肉痛本一般）"
+      "variants_or_notes": "page「得止且止知歡割自己肉痛本一般」語義不通，不硬斷；二句 page「知歡割自」／raw「知機到自」歡/機分歧；三句 page「己肉痛本」／raw「昌內病本」己/昌、肉/內、痛/病分歧；四句 page「一般」／raw「一投」般/投分歧。chance: 解曰 chance「知止則止。知寬自寬。割自身肉。疾痛一般。」，附錄二「得止且止。知□割自。□肉痛本。一□。」"
     },
     {
       "corpus": "guanyin",
@@ -2105,11 +2105,11 @@
       "slip_no": 96,
       "edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
       "field_type": "解曰",
-      "verbatim_text": "這此福曰。諸人皆現。可用誠心。福德即到。",
+      "verbatim_text": "這此福□。諸人皆現。可用誠心。福德即到。",
       "source_locator": "薛皓文2008附錄二 p132（籤 #96）",
       "transcription_status": "UNRESOLVED",
       "layer_class": "living_tradition",
-      "variants_or_notes": "page「這此福曰諸人皆現可用誠心福德即到」；raw「此福甲諸人皆現…福德即到此處」。「福曰」(raw作「福甲」) 之「曰/甲」疑為「份」之誤，字存疑，故標 UNRESOLVED。；chance: chance解曰「這些福份。眾人皆有。不用心忙。福德前定。」（這此福曰/這些福份、諸人皆現/眾人皆有、可用誠心/不用心忙、福德即到/福德前定 異文）；chance聖意：家宅許願／自身許經／求財正勝／交易大吉／婚姻好合／六甲喜／行人動／田蠶平穩／六畜欠利／尋人遇／公訟和／移徙吉／失物疾病禳星／山墳平。"
+      "variants_or_notes": "首句 page「這此福曰」／raw「此福甲」曰/甲分歧（疑「福份」），未確標□。chance: 解曰 chance「這些福份。眾人皆有。不用心忙。福德前定。」，附錄二「這此福□。諸人皆現。可用誠心。福德即到。」"
     },
     {
       "corpus": "guanyin",
