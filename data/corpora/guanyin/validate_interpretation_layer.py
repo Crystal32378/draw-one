@@ -41,7 +41,7 @@ FAN2JIAN = {
     '寫':'写','讀':'读','聞':'闻','問':'问','間':'间','頭':'头',
     '寶':'宝','禱':'祷','靈':'灵','籤':'签','廟':'庙','應':'应',
     '當':'当','當':'当','議':'议','診':'诊','療':'疗','護':'护',
-    '訟':'讼','財':'财','病':'病','禍':'祸','福':'福','祿':'禄',
+    '訟':'讼','財':'财','病':'病','禍':'祸','福':'福','祿':'禄','蟄':'蛰','蜇':'蛰','晩':'晚',
     '親':'亲','舊':'旧','遲':'迟','疑':'疑','謀':'谋','望':'望',
     '勝':'胜','負':'负','紙':'纸','著':'着','棋':'棋','畫':'画',
     '經':'经','文':'文','食':'食','吞':'吞','針':'针','線':'线',
@@ -117,13 +117,12 @@ def main():
         if polluted:
             failures.append(('A2', f'#{n} chance 獨有字進 verbatim', ''.join(polluted)))
 
-        # A1b segment-level traceability（UNRESOLVED / disputed entries）
-        if e['transcription_status'] == 'UNRESOLVED':
-            raw_n = normalize(strip_punct(raw))
-            page_n = normalize(strip_punct(page))
-            for seg in re.split('[□。，、；：！？．·]', normalize(vt)):
-                if len(seg) >= 2 and seg not in raw_n and seg not in page_n:
-                    failures.append(('A1b', f'#{n} 片段不在 source substring', seg))
+        # A1b segment-level traceability（全部解曰：PROBABLE + UNRESOLVED，防拼裝）
+        raw_n = normalize(strip_punct(raw))
+        page_n = normalize(strip_punct(page))
+        for seg in re.split('[□。，、；：！？．·]', normalize(vt)):
+            if len(seg) >= 2 and seg not in raw_n and seg not in page_n:
+                failures.append(('A1b', f'#{n} 片段不在 source substring', seg))
 
         # A3 uncertainty（UNRESOLVED：textual 必含 □；structural 可無 □）
         if e['transcription_status'] == 'UNRESOLVED':

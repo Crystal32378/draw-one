@@ -47,7 +47,7 @@
 | Assertion | 檢查內容 |
 |---|---|
 | A1 character coverage | verbatim 每個字（繁簡正規化後）必須在此籤 source（raw ∪ page）字元集內 |
-| A1b segment trace | UNRESOLVED 的 ≥2 字片段必須是 source 的 substring，防不同位置字重組拼裝 |
+| A1b segment trace | 全部解曰（PROBABLE + UNRESOLVED）的 ≥2 字片段必須是 source 的 substring，防不同位置字重組拼裝 |
 | A2 chance isolation | chance 獨有字不得進 verbatim（chance 只能留 variants_or_notes 的 witness） |
 | A3 uncertainty | UNRESOLVED：textual 必含「□」；structural（欄位格式／詩體）可無 □，note 需標 structural |
 | A4 structure | 100 籤、每籤 2 筆、9 欄位齊全、layer_class 一致 |
