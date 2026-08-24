@@ -65,6 +65,27 @@
     font-family: "Noto Serif TC", serif; font-weight: 500;
     font-size: 16px; letter-spacing: 0.24em; line-height: 1.7;
   }
+  /* 門檻上的日期節氣（回訪薄門檻的定位；與 void 刻字同一語言） */
+  .gate-date {
+    margin-bottom: 30px; text-align: center;
+    font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.32em; text-indent: 0.32em;
+    color: rgba(64, 57, 44, 0.75);
+  }
+  /* 天氣票：四個字，無 icon、無說明——怎麼理解是使用者的事。
+     選定＝一息安靜的落定；再點一次＝放回；不拿＝常日。 */
+  .gate-weather { margin-top: 42px; display: grid; gap: 16px; justify-items: center; }
+  .gw-label { font-size: 11.5px; letter-spacing: 0.3em; text-indent: 0.3em; color: var(--ink-soft); }
+  .gw-opts { display: flex; gap: 28px; }
+  .gw-opt {
+    background: none; border: 0; border-bottom: 1px solid transparent;
+    font: inherit; font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 19px; color: var(--ink-soft); cursor: pointer;
+    padding: 2px 5px 7px;
+    transition: color 400ms ease, border-color 400ms ease, opacity 400ms ease;
+  }
+  .gw-opt.on { color: var(--ink); border-bottom-color: rgba(74, 66, 52, 0.6); }
+  .gate-weather.chosen .gw-opt:not(.on) { opacity: 0.4; }
   .gate-enter {
     margin-top: 44px;
     background: none; border: 1px solid var(--rule);
@@ -637,7 +658,24 @@
     background: linear-gradient(180deg, rgba(245, 239, 226, 0.0), rgba(245, 239, 226, 0.72) 26%, rgba(245, 239, 226, 0.92));
     border-top: 1px solid rgba(74, 66, 52, 0.42);
     padding: 18px 20px calc(18px + env(safe-area-inset-bottom));
-    display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: end;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: end;
+  }
+  /* 「聲」：空間空氣的開關——案上一顆、殿內同一顆（V2C；位置與預設值未拍板）。
+     偏好記在 localStorage：空間公共，記憶（要不要聽）私人。 */
+  .sound-toggle {
+    background: none;
+    border: 1px solid rgba(74, 66, 52, 0.45);
+    font: inherit; font-family: "Noto Serif TC", serif; font-weight: 500;
+    font-size: 13px; line-height: 1;
+    width: 28px; height: 28px; padding: 0;
+    color: var(--ink-soft); cursor: pointer;
+    position: relative;
+  }
+  .sound-toggle.off { color: rgba(111, 103, 87, 0.45); border-color: rgba(74, 66, 52, 0.22); }
+  .sound-toggle.off::after { /* 一道斜線＝暫且不聽 */
+    content: ""; position: absolute; left: 5px; right: 5px; top: 50%; height: 1px;
+    background: rgba(111, 103, 87, 0.55);
+    transform: rotate(-28deg);
   }
   .book-object {
     background: var(--paper);
@@ -694,7 +732,8 @@
     margin-top: 2px;
     writing-mode: vertical-rl;
     font-family: "Noto Serif TC", serif; font-weight: 700;
-    font-size: clamp(52px, 17vw, 68px);
+    --tablet-fs: clamp(52px, 17vw, 68px); /* 匾同規格：字級基準；字多則隨匾縮（renderHall） */
+    font-size: var(--tablet-fs);
     letter-spacing: 0.28em;
     line-height: 1.05;
     color: var(--ink);
@@ -748,12 +787,27 @@
     padding-top: 16px;
     display: grid; gap: 8px;
   }
+  /* 儀式不得沉到摺線下（Crystal iPhone 實測：天上聖母籤筒整支在畫面外）——
+     小視窗收斂殿內節奏，讓籤筒上緣進畫面；聖號仍是殿內最大的字 */
+  @media (max-height: 720px) {
+    .hall-top { padding-top: calc(6px + env(safe-area-inset-top)); }
+    .tablet { --tablet-fs: clamp(42px, 13vw, 52px); padding: 10px 10px 12px; }
+    .hall-sub { margin-top: 6px; }
+    .censer { margin-top: 8px; }
+    .hall-desk { margin-top: 12px; padding-top: 10px; }
+    .tube-stage { margin-top: 8px; }
+    .tube-wrap { height: 246px; } /* 削籤枝上升的留白 headroom，筒身圖形要進畫面 */
+    .tube-hint { order: -1; margin: 0 0 10px; } /* 提示上移：筒半沉摺線下時，規則不能跟著沉 */
+    .stick { bottom: 32px; } /* 底緣維持 214px（246−32）＝拉的視覺幾何不變；PULL_DIST 不動 */
+  }
   .present-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
   .present-q { font-size: 15px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
   .present-q.empty { color: var(--ink-soft); font-family: "Noto Sans TC", sans-serif; font-size: 13px; }
 
   /* 籤筒（沿用 V2A 的拖抽） */
-  .tube-stage { margin-top: 34px; display: flex; flex-direction: column; align-items: center; }
+  .tube-stage { margin-top: 34px; display: flex; flex-direction: column; align-items: center;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; /* 按住＝手勢，不是選「籤」字 */
+  }
   .tube-wrap { position: relative; width: 110px; height: 300px; overflow: hidden; touch-action: none; }
   .stick {
     position: absolute; left: 50%; bottom: 86px;
@@ -779,7 +833,9 @@
   }
   .tube-hint { margin-top: 20px; font-size: 12.5px; letter-spacing: 0.14em; color: var(--ink-soft); }
 
-  .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px; }
+  .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px;
+    user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  }
   .stick-large {
     width: 42px; height: 280px;
     background: linear-gradient(90deg, #dccda8, #cbb98f 55%, #b7a479);
@@ -798,7 +854,28 @@
     padding: 12px 26px; cursor: pointer;
   }
 
-  .slip-stage { display: none; flex-direction: column; align-items: center; width: 100%; }
+  .slip-stage { display: none; flex-direction: column; align-items: center; width: 100%;
+    transition: transform 600ms cubic-bezier(0.5, 0, 0.8, 0.4), opacity 600ms ease; }
+  /* 收籤＝句點：紙收起（往身前收，不是飛走），一拍靜，世界再回來 */
+  .slip-stage.slip-away { transform: translateY(24%) scale(0.6); opacity: 0; }
+  @media (prefers-reduced-motion: reduce) { .slip-stage { transition: none; } }
+  /* 帶走這支籤：紙的能力，不是 CTA——安靜的一行字 */
+  .takeaway-zone { width: 100%; max-width: 340px; margin-top: 26px; display: flex; gap: 22px; }
+  .takeaway-btn {
+    background: none; border: 0; border-bottom: 1px solid rgba(74, 66, 52, 0.4);
+    font: inherit; font-size: 12.5px; letter-spacing: 0.2em;
+    color: var(--ink-soft); padding: 2px 1px 5px; cursor: pointer;
+  }
+  .takeaway-btn:disabled { opacity: 0.5; cursor: default; }
+  /* share artifact 的量測容器（隱形掛載；樣式由 computed-style 內聯帶進 SVG）。
+     padding-top＝擋住 slip-wrap 92px margin 的塌陷＋給突出的簽條呼吸 */
+  .takeaway-art { width: 398px; padding: 10px 34px 26px; background: #e9e4d8; }
+  .takeaway-art, .takeaway-art * { box-sizing: border-box; }
+  .takeaway-art .takeaway-date {
+    margin-top: 22px; text-align: center;
+    font-family: "Noto Serif TC", serif; font-size: 13px;
+    letter-spacing: 0.3em; text-indent: 0.3em; color: #57503f;
+  }
   .note-zone { width: 100%; max-width: 340px; margin-top: 22px; display: grid; gap: 8px; }
   .note-zone textarea {
     width: 100%; min-height: 60px;
@@ -855,12 +932,23 @@
 <body>
 <div class="app" id="app">
 
-  <!-- 山門：初訪一次 -->
+  <!-- 山門：初訪＝規矩＋天氣；之後每天第一次來＝薄門檻拿今天的票（D 拍板） -->
   <section class="screen" id="s-gate">
-    <div class="gate-rules">
+    <div class="gate-date" id="gateDate"></div>
+    <div class="gate-rules" id="gateRules">
       <p>一事一籤，不重問</p>
       <p>紙上只有考證過的文本</p>
       <p>諸神同尊，殿序依沿革</p>
+    </div>
+    <!-- 天氣票：不解釋（外界、心情、記憶、偏好都可以）；可不答＝常日 -->
+    <div class="gate-weather" id="gateWeather">
+      <span class="gw-label">今天天氣</span>
+      <span class="gw-opts">
+        <button class="gw-opt" data-w="sunny">晴</button>
+        <button class="gw-opt" data-w="cloudy">陰</button>
+        <button class="gw-opt" data-w="rain">雨</button>
+        <button class="gw-opt" data-w="wind">風</button>
+      </span>
     </div>
     <button class="gate-enter" id="enterBtn">入內</button>
   </section>
@@ -881,6 +969,7 @@
         <textarea id="question" rows="1" placeholder="寫下來，轉身走向一殿。"></textarea>
         <div class="walk-hint" id="walkHint"></div>
       </div>
+      <button class="sound-toggle" id="soundToggleCourt" aria-label="聲音" aria-pressed="true">聲</button>
     </div>
   </section>
 
@@ -888,7 +977,7 @@
   <section class="screen" id="s-hall">
     <div class="hall-top">
       <button class="hall-back" id="backBtn">↩ 回埕</button>
-      <span></span>
+      <button class="sound-toggle" id="soundToggleHall" aria-label="聲音" aria-pressed="true">聲</button>
     </div>
     <div class="hall-body">
       <div class="tablet" id="tablet"></div>
@@ -927,6 +1016,11 @@
         <div class="slip-actions">
           <button class="take-btn" id="keepBtn">收進籤簿・回埕</button>
         </div>
+        <!-- 帶走＝籤簿中每張紙的能力（已收的籤才有），不是流程的一步 -->
+        <div class="takeaway-zone" id="takeawayZone" hidden>
+          <button class="takeaway-btn" id="takeawayBtn">帶走這支籤</button>
+          <button class="takeaway-btn" id="copyBtn">複製籤文</button>
+        </div>
       </div>
 
       <div class="unbuilt" id="unbuilt" hidden></div>
@@ -952,6 +1046,530 @@
 <script src="../assets/oracles.draw-pool.js?v=3"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
+<script>
+/* ==================== sound-layer:begin ====================
+   ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
+
+   治理契約（source-level 斷言見 scripts/test-sound.mjs）：
+   - 聲音層只收空間狀態（court/hall/slip/weather/樹的視野位置），
+     零 mechanics 引用：不讀抽籤 policy、不讀籤池、不讀任何神明身分。
+   - 三殿 equality：hall 變換參數只有一份字面值（SPACES.hall），
+     且天氣永不出現在 SPACES——殿不知道天氣，殿只知道「外面」。
+   - 增建殿 fail-closed 在呼叫端（enterHall guard）：增建中無殿內聲態。
+   - 全合成（噪音整形）：零音檔、零下載、零振盪器——
+     無音高源；一切事件隨機排程＝無週期 LFO。合成即誠實。
+     （鳥聲＝高 Q 共振噪音、蟬＝窄帶噪音潮——仍是噪音家族，做假即殺。）
+   - 天氣票（Crystal 拍板 2026-08-21）：同一座廟、同一副骨架
+     （空氣×樹×牆外世界），天氣只增減聲部。visit 內固定。
+     目前掛 ?weather= dev flag 試聽；入口 ritual 等回訪門檻拍板。
+   - AudioContext 只在手勢後啟動；山門無聲（提案狀態）。
+   - 「聲」偏好記在 localStorage（記憶私人）；預設開（provisional）。
+   - 展籤＝世界閉嘴：The Slip is protagonist。
+   - 裝置時鐘只用於「合適季節的蟬」（月份）——void 刻字既有先例。
+   ============================================================ */
+window.ARRIVAL_SOUND = (function () {
+  "use strict";
+  const PREF_KEY = "arrival.sound.v1";
+
+  /* —— 空間變換表（唯一事實來源；殿內＝常數層＋同一扇窗，無天氣分支）—— */
+  const SPACES = {
+    court: { busLP: 800, busGain: 1.0, leafLP: 4200, leafGain: 1.0, exLP: 6000, exGain: 1.0, interior: 0 },
+    hall:  { busLP: 300, busGain: 0.5, leafLP: 1100, leafGain: 0.35, exLP: 550, exGain: 0.35, interior: 0.012 },
+  };
+
+  /* —— 天氣票：一副骨架的四種彈法。
+     憲法：每張票 leafPeak > windPeak——世界被風吹動，不是 whoosh。
+     cloudy＝74af5ef taste-gate 基準（陰）；預設票。
+     全部量級未經真機校準（taste gate r1 教訓：先小聲，再加）。 —— */
+  const WEATHERS = {
+    sunny:  { air: 0.012, airLP: 280, windIdle: 0.001, windPeak: 0.010, leafIdle: 0.002, leafPeak: 0.020,
+              gustWaitMin: 45, gustWaitMax: 100, gustLenMin: 2, gustLenMax: 6, double: 0.05,
+              distant: 0.003, rainOn: 0, voices: true },
+    cloudy: { air: 0.018, airLP: 200, windIdle: 0.002, windPeak: 0.016, leafIdle: 0.003, leafPeak: 0.024,
+              gustWaitMin: 20, gustWaitMax: 70, gustLenMin: 2, gustLenMax: 8, double: 0.05,
+              distant: 0.009, rainOn: 0, voices: false },
+    rain:   { air: 0.012, airLP: 180, windIdle: 0.001, windPeak: 0.008, leafIdle: 0.002, leafPeak: 0.012,
+              gustWaitMin: 60, gustWaitMax: 140, gustLenMin: 2, gustLenMax: 5, double: 0,
+              distant: 0.002, rainOn: 1, voices: false },
+    wind:   { air: 0.022, airLP: 220, windIdle: 0.005, windPeak: 0.045, leafIdle: 0.007, leafPeak: 0.055,
+              gustWaitMin: 10, gustWaitMax: 32, gustLenMin: 3, gustLenMax: 9, double: 0.22,
+              distant: 0.005, rainOn: 0, voices: false },
+  };
+  const LEVELS = {
+    master: 0.5,       // 總閘
+    slipDuck: 0.0001,  // 展籤：世界退到聽不見
+    rainWash: 0.008,   // 遠雨（雨的身體——這個值決定雨勢：疏雨，不是西北雨）
+    rainStone: 0.007,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
+    rainCanopy: 0.013, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
+    rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
+    voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
+    handPull: 0.020,  // 手感層：筒內竹籤的細碎摩擦（拖籤時，跟手）
+    handStick: 0.030, // 手感層：籤枝離筒的一下輕竹響
+    handPaper: 0.022, // 手感層：取籤詩的紙聲（纖維，不是 whoosh）
+  };
+  const XFADE = 0.4;     // 進殿／回埕 crossfade（秒）＝與視覺 400ms 轉場同步
+  const PAN_MAX = 0.3;   // 葉聲 pan 上限
+  const PAN_SLEW = 0.35; // setTargetAtTime tc：約 1s 到位
+  const GUST_LAG = { leafMin: 0.10, leafMax: 0.30 }; // 風先起，葉晚 100–300ms
+
+  let ctx = null, started = false;
+  let enabled = readPref();
+  let space = "court";      // 物理空間："court" | "hall"
+  let slipOpen = false;     // 展籤 overlay 狀態
+  let weather = "cloudy";   // 天氣票（visit-fixed；預設＝陰基準）
+  let n = null;             // node graph
+  const timers = {};        // 全部隨機 setTimeout 排程——沒有節拍器
+
+  function readPref() {
+    try { const v = localStorage.getItem(PREF_KEY); return v === null ? true : v === "true"; }
+    catch { return true; }
+  }
+  function writePref(v) { try { localStorage.setItem(PREF_KEY, String(v)); } catch {} }
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const W = () => WEATHERS[weather];
+  const running = () => n && enabled && ctx.state === "running";
+  function loopTimer(key, fn, minS, maxS, firstScale = 1) { // 隨機間隔迴圈；首發可提早（世界不讓人乾等）
+    clearTimeout(timers[key]);
+    const step = () => { fn(); timers[key] = setTimeout(step, rand(minS, maxS) * 1000); };
+    timers[key] = setTimeout(step, rand(minS, maxS) * firstScale * 1000);
+  }
+
+  /* ---- 噪音家族（唯一的合成原料）---- */
+  function noiseBuffer(kind, seconds) {
+    const len = Math.floor(ctx.sampleRate * seconds);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    if (kind === "brown") { // 漏積分白噪：能量集中低頻，聽不出「訊號感」
+      let last = 0;
+      for (let i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.5; }
+    } else {
+      for (let i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
+    }
+    return buf;
+  }
+  // 稀疏 transient 粒子（雨滴／滴答／棘輪）：建 buffer 時把粒子種好；
+  // 同一 buffer 兩個異速 source 疊放＝週期互質，聽不出 loop。
+  function grainBuffer(seconds, density, minMs, maxMs) {
+    const len = Math.floor(ctx.sampleRate * seconds);
+    const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+    const d = buf.getChannelData(0);
+    for (let g = 0; g < Math.floor(seconds * density); g++) {
+      const at = Math.floor(Math.random() * len);
+      const dur = Math.floor(ctx.sampleRate * rand(minMs, maxMs) / 1000);
+      const a = (0.25 + Math.random() * 0.75) ** 2;
+      // 半正弦包絡＝軟起音：硬起音的顆粒是米粒落地，不是水（taste gate r3）
+      for (let i = 0; i < dur && at + i < len; i++) d[at + i] += (Math.random() * 2 - 1) * a * Math.sin(Math.PI * i / dur);
+    }
+    return buf;
+  }
+  function src(buf, rate) {
+    const s = ctx.createBufferSource();
+    s.buffer = buf; s.loop = true;
+    if (rate) s.playbackRate.value = rate;
+    return s;
+  }
+  function biquad(type, freq, q) {
+    const f = ctx.createBiquadFilter();
+    f.type = type; f.frequency.value = freq; f.Q.value = q;
+    return f;
+  }
+  function gainNode(v) { const g = ctx.createGain(); g.gain.value = v; return g; }
+
+  /* ---- 骨架：四張票共用的一套樂器 ---- */
+  function build() {
+    ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const brown = noiseBuffer("brown", 5);
+    const white = noiseBuffer("white", 3);
+    n = {};
+    n.master = gainNode(0); // 空氣是浮現的，不是開機音
+    n.world = gainNode(1);  // slip duck 作用在這（殿內層也一起閉嘴）
+    n.world.connect(n.master); n.master.connect(ctx.destination);
+
+    // 戶外低頻 bus：air bed＋風＋牆外世界（無 pan）。進殿收窄的是這條。
+    n.busLP = biquad("lowpass", SPACES.court.busLP, 0.4);
+    n.busGain = gainNode(SPACES.court.busGain);
+    n.busLP.connect(n.busGain); n.busGain.connect(n.world);
+
+    n.airSrc = src(brown);
+    n.airLP = biquad("lowpass", W().airLP, 0.5);
+    n.airGain = gainNode(W().air);
+    n.airSrc.connect(n.airLP); n.airLP.connect(n.airGain); n.airGain.connect(n.busLP);
+
+    n.windSrc = src(brown, 0.82);
+    n.windBP = biquad("bandpass", 140, 0.5);
+    n.windGain = gainNode(W().windIdle);
+    n.windSrc.connect(n.windBP); n.windBP.connect(n.windGain); n.windGain.connect(n.busLP);
+
+    // 牆外世界（遠方生活感）：不可辨識的鈍存在。陰天它走近，熱天它退遠。
+    n.distSrc = src(brown, 0.6);
+    n.distBP = biquad("bandpass", 320, 0.4);
+    n.distGain = gainNode(W().distant);
+    n.distSrc.connect(n.distBP); n.distBP.connect(n.distGain); n.distGain.connect(n.busLP);
+
+    // 葉鏈：dyn/flut 在前（只調葉），space/view 在後（樹冠雨從中段匯入＝
+    // 雨在樹上跟著樹 pan、跟著進殿收窄——「這座埕在下雨」的關鍵）。
+    n.leafSrc = src(white);
+    n.leafBP = biquad("bandpass", 3000, 0.55);
+    n.leafDyn = gainNode(W().leafIdle);
+    n.leafFlut = gainNode(0.8);
+    n.leafSpaceLP = biquad("lowpass", SPACES.court.leafLP, 0.4);
+    n.leafViewLP = biquad("lowpass", 5200, 0.4);
+    n.leafViewGain = gainNode(1);
+    n.leafSpaceGain = gainNode(SPACES.court.leafGain);
+    n.pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+    let tail = n.leafSrc;
+    for (const nd of [n.leafBP, n.leafDyn, n.leafFlut, n.leafSpaceLP, n.leafViewLP, n.leafViewGain, n.leafSpaceGain]) {
+      tail.connect(nd); tail = nd;
+    }
+    if (n.pan) { tail.connect(n.pan); n.pan.connect(n.world); }
+    else tail.connect(n.world);
+
+    // 高頻外物 bus（雨石地／簷滴／晴 voices）：自己的窗，進殿一樣收窄
+    n.exBus = gainNode(1);
+    n.exLP = biquad("lowpass", SPACES.court.exLP, 0.4);
+    n.exGain = gainNode(SPACES.court.exGain);
+    n.exBus.connect(n.exLP); n.exLP.connect(n.exGain); n.exGain.connect(n.world);
+
+    // 殿內 presence：被牆包住的空氣（三殿同一份常數；埕內為零）
+    n.intSrc = src(brown, 0.5);
+    n.intLP = biquad("lowpass", 100, 0.5);
+    n.intGain = gainNode(SPACES.court.interior);
+    n.intSrc.connect(n.intLP); n.intLP.connect(n.intGain); n.intGain.connect(n.world);
+
+    n.airSrc.start(); n.windSrc.start(rand(0, 2)); n.leafSrc.start(rand(0, 1.5));
+    n.distSrc.start(rand(0, 2)); n.intSrc.start(rand(0, 1));
+  }
+
+  /* ---- 雨（lazy）：石地×樹冠×簷滴×遠洗——地方在出聲，不是 rain track ---- */
+  function ensureRain() {
+    if (n.rain) return;
+    const r = n.rain = {};
+    r.master = gainNode(0); r.master.connect(n.exBus);
+    r.washSrc = src(noiseBuffer("white", 3), 0.9);
+    r.washLP = biquad("lowpass", 1000, 0.4);
+    r.washGain = gainNode(LEVELS.rainWash);
+    r.washSrc.connect(r.washLP); r.washLP.connect(r.washGain); r.washGain.connect(r.master);
+    const stoneBuf = grainBuffer(8, 14, 5, 14); // 疏雨：粒子稀一點，聽得見雨與雨之間
+    r.stoneBP = biquad("bandpass", 2700, 0.65); // 壓亮度：石地的雨不是敲的
+    r.stoneGain = gainNode(LEVELS.rainStone);
+    r.stoneBP.connect(r.stoneGain); r.stoneGain.connect(r.master);
+    for (const rate of [1, 0.937]) { const s = src(stoneBuf, rate); s.connect(r.stoneBP); s.start(rand(0, 4)); }
+    const canopyBuf = grainBuffer(6, 90, 2, 5);
+    r.canopyBP = biquad("bandpass", 1700, 0.5);
+    r.canopyGain = gainNode(0);
+    r.canopyBP.connect(r.canopyGain); r.canopyGain.connect(n.leafSpaceLP); // 匯入葉鏈中段
+    for (const rate of [1, 0.911]) { const s = src(canopyBuf, rate); s.connect(r.canopyBP); s.start(rand(0, 3)); }
+    r.dripBuf = grainBuffer(0.05, 24, 4, 10); // 一顆
+    r.washSrc.start(rand(0, 2));
+  }
+  function dripOnce() {
+    if (!running() || !W().rainOn || !n.rain) return;
+    const t0 = ctx.currentTime + 0.02;
+    const s = ctx.createBufferSource();
+    s.buffer = n.rain.dripBuf; s.playbackRate.value = rand(0.85, 1.3);
+    // 水滴的「啵」＝氣泡共振：高 Q 窄帶＋音高上滑（米粒是乾的，水會滑）
+    const f0 = rand(900, 1600);
+    const bp = biquad("bandpass", f0 * 0.72, 9);
+    bp.frequency.setValueAtTime(f0 * 0.72, t0);
+    bp.frequency.setTargetAtTime(f0, t0 + 0.008, 0.022);
+    const g = gainNode(LEVELS.rainDrip * rand(0.4, 1));
+    s.connect(bp); bp.connect(g); g.connect(n.rain.master);
+    s.start(t0); s.stop(t0 + 0.3);
+  }
+  function rainBreath() { // 雨的呼吸：忽大忽小，不是恆定音床
+    if (!n.rain || !W().rainOn) return;
+    const t = ctx.currentTime, v = rand(0.55, 1.15);
+    n.rain.master.gain.setTargetAtTime(v, t, 3);
+    n.rain.canopyGain.gain.setTargetAtTime(LEVELS.rainCanopy * v, t, 3);
+  }
+
+  /* ---- 晴的 lived voices（lazy；不固定 loop，沒有哪個聲音是晴天 icon）---- */
+  function ensureVoices() {
+    if (n.v) return;
+    const v = n.v = {};
+    v.chirpBuf = grainBuffer(0.09, 12, 60, 90);
+    // 蟬：合適季節才有（5–9 月，裝置時鐘＝void 刻字先例）。遠處蟬潮，不是一隻。
+    v.cicadaOn = new Date().getMonth() + 1 >= 5 && new Date().getMonth() + 1 <= 9;
+    if (v.cicadaOn) {
+      v.cicSrc = src(noiseBuffer("white", 2));
+      v.cicBP = biquad("bandpass", 5200, 9);
+      v.cicPulse = gainNode(0.8);
+      v.cicGain = gainNode(0);
+      v.cicSrc.connect(v.cicBP); v.cicBP.connect(v.cicPulse); v.cicPulse.connect(v.cicGain); v.cicGain.connect(n.exBus);
+      v.cicSrc.start();
+    }
+    // 腳踏車棘輪：一串 tick，經過就走
+    v.bikeBuf = (() => {
+      const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * 3), ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let t = 0.05; t < 2.9; t += rand(0.055, 0.09)) {
+        const at = Math.floor(t * ctx.sampleRate), dur = Math.floor(ctx.sampleRate * 0.003);
+        for (let i = 0; i < dur; i++) d[at + i] = (Math.random() * 2 - 1) * (1 - i / dur);
+      }
+      return buf;
+    })();
+  }
+  function cicadaWave() { // 蟬潮起落：有時整段沒有
+    if (!running() || !W().voices || !n.v?.cicadaOn) return;
+    const quiet = Math.random() < 0.3;
+    n.v.cicGain.gain.setTargetAtTime(quiet ? 0 : LEVELS.voiceCicada * rand(0.3, 1), ctx.currentTime, 6);
+  }
+  function cicadaPulse() { // 蟬的顆粒感：快而不規則的振幅抖動
+    if (running() && W().voices && n.v?.cicadaOn) n.v.cicPulse.gain.setTargetAtTime(rand(0.35, 1), ctx.currentTime, 0.05);
+  }
+  function birdChirp() { // 遠處鳥聲：高 Q 共振噪音掃頻——像不像由 Crystal 判，做假即殺
+    if (!running() || !W().voices || Math.random() < 0.4) return;
+    const t0 = ctx.currentTime + 0.05;
+    const f0 = rand(2500, 3400);
+    const syll = 2 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < syll; i++) {
+      const at = t0 + i * rand(0.12, 0.26);
+      const s = ctx.createBufferSource(); s.buffer = n.v.chirpBuf;
+      const bp = biquad("bandpass", f0 * rand(0.95, 1.05), 16);
+      bp.frequency.setValueAtTime(bp.frequency.value, at);
+      bp.frequency.setTargetAtTime(bp.frequency.value * (Math.random() < 0.5 ? rand(1.12, 1.28) : rand(0.78, 0.9)), at + 0.015, 0.035);
+      const g = gainNode(0);
+      g.gain.setValueAtTime(0, at);
+      g.gain.setTargetAtTime(LEVELS.voiceBird, at + 0.002, 0.015);
+      g.gain.setTargetAtTime(0, at + 0.07, 0.03);
+      s.connect(bp); bp.connect(g); g.connect(n.exBus);
+      s.start(at); s.stop(at + 0.25);
+    }
+  }
+  function bikePass() { // 遠方腳踏車：偶爾一台，經過就沒有了
+    if (!running() || !W().voices || Math.random() < 0.45) return;
+    const t0 = ctx.currentTime + 0.05, dur = rand(2.6, 3.4);
+    const s = ctx.createBufferSource(); s.buffer = n.v.bikeBuf; s.playbackRate.value = rand(0.92, 1.08);
+    const bp = biquad("bandpass", 2200, 1);
+    const g = gainNode(0);
+    g.gain.setTargetAtTime(LEVELS.voiceBike, t0, dur * 0.35);
+    g.gain.setTargetAtTime(0, t0 + dur * 0.5, dur * 0.28);
+    s.connect(bp); bp.connect(g);
+    if (ctx.createStereoPanner) {
+      const p = ctx.createStereoPanner();
+      const dir = Math.random() < 0.5 ? 1 : -1;
+      p.pan.setValueAtTime(-0.18 * dir, t0);
+      p.pan.linearRampToValueAtTime(0.18 * dir, t0 + dur);
+      g.connect(p); p.connect(n.exBus);
+    } else g.connect(n.exBus);
+    s.start(t0); s.stop(t0 + dur + 0.3);
+  }
+
+  /* ---- 手感層（Phase B）：手上的東西，不是空氣 ----
+     走 master 不走 world——展籤時世界閉嘴，但紙自己的聲音是紙登場的一部分。
+     動作回饋不是音效：極小聲、乾、短，永不搶過視覺。收 gesture 進度與
+     動作事件（主程式推播），零 mechanics 引用；增建殿無 draw path＝天生無聲。 */
+  let pullAcc = 0, pullLast = 0;
+  function ensureHand() {
+    if (n.hand) return;
+    n.hand = gainNode(1);
+    n.hand.connect(n.master); // 不過 world：slip duck 靜的是世界，不是你的手
+    n.tickBuf = grainBuffer(0.012, 90, 5, 9);    // 一顆竹籤 tick
+    n.paperBuf = grainBuffer(0.22, 900, 1.5, 4); // 紙的細碎纖維
+  }
+  function pull(p) { // 拖籤枝：筒內竹籤的細碎摩擦，跟著手走
+    if (!running()) return;
+    ensureHand();
+    if (p < pullLast - 0.2) pullAcc = 0; // 鬆手回彈＝重新開始
+    if (p > pullLast) pullAcc += p - pullLast;
+    pullLast = p;
+    if (pullAcc < 0.07) return; // 每前進約 7% 才一粒——疏，不是馬達
+    pullAcc = 0;
+    const t0 = ctx.currentTime + 0.005;
+    const s = ctx.createBufferSource();
+    s.buffer = n.tickBuf; s.playbackRate.value = rand(0.8, 1.25);
+    const bp = biquad("bandpass", rand(1600, 2500), 2.5);
+    const g = gainNode(LEVELS.handPull * rand(0.5, 1));
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.1);
+  }
+  function stickOut() { // 籤枝離筒：兩下極輕的竹響——結果的重量在紙上，不在這
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.01;
+    for (const [f, q, g0, dt] of [[2100, 3, LEVELS.handStick * 0.6, 0], [1150, 6, LEVELS.handStick, 0.018]]) {
+      const s = ctx.createBufferSource();
+      s.buffer = n.tickBuf; s.playbackRate.value = rand(0.9, 1.1);
+      const bp = biquad("bandpass", f, q);
+      const g = gainNode(g0);
+      s.connect(bp); bp.connect(g); g.connect(n.hand);
+      s.start(t0 + dt); s.stop(t0 + dt + 0.12);
+    }
+  }
+  function paperOut() { // 取籤詩：一次紙的滑動——纖維的粗糙，不是 whoosh
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.01;
+    const s = ctx.createBufferSource();
+    s.buffer = n.paperBuf; s.playbackRate.value = rand(0.95, 1.1);
+    const bp = biquad("bandpass", 3300, 0.8);
+    bp.frequency.setTargetAtTime(2100, t0 + 0.05, 0.08); // 亮→鈍＝紙滑到底
+    const g = gainNode(0);
+    g.gain.setValueAtTime(0, t0);
+    g.gain.setTargetAtTime(LEVELS.handPaper, t0, 0.045);
+    g.gain.setTargetAtTime(0, t0 + 0.13, 0.05);
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.4);
+  }
+
+  /* ---- 狀態套用 ---- */
+  function applyState(dur = XFADE) { // 空間變換：對「任何室外」做同一件事
+    if (!n) return;
+    const t = ctx.currentTime, tc = Math.max(0.05, dur / 3);
+    const p = SPACES[space];
+    n.busLP.frequency.setTargetAtTime(p.busLP, t, tc);
+    n.busGain.gain.setTargetAtTime(p.busGain, t, tc);
+    n.leafSpaceLP.frequency.setTargetAtTime(p.leafLP, t, tc);
+    n.leafSpaceGain.gain.setTargetAtTime(p.leafGain, t, tc);
+    n.exLP.frequency.setTargetAtTime(p.exLP, t, tc);
+    n.exGain.gain.setTargetAtTime(p.exGain, t, tc);
+    n.intGain.gain.setTargetAtTime(p.interior, t, tc);
+    // 紙登場世界快讓位（~250ms 靜下）；回來時空氣慢慢展開（~600ms）
+    n.world.gain.setTargetAtTime(slipOpen ? LEVELS.slipDuck : 1, t, slipOpen ? 0.09 : 0.2);
+  }
+  function applyWeather(dur = 1.2) { // 換票（visit 內只在 boot 發生一次）
+    if (!n) return;
+    const t = ctx.currentTime, tc = Math.max(0.1, dur / 3);
+    const w = W();
+    n.airGain.gain.setTargetAtTime(w.air, t, tc);
+    n.airLP.frequency.setTargetAtTime(w.airLP, t, tc);
+    n.windGain.gain.setTargetAtTime(w.windIdle, t, tc);
+    n.leafDyn.gain.setTargetAtTime(w.leafIdle, t, tc);
+    n.distGain.gain.setTargetAtTime(w.distant, t, tc);
+    if (w.rainOn) {
+      ensureRain();
+      n.rain.master.gain.setTargetAtTime(1, t, 2); // 雨慢慢落起來，不是開關
+      n.rain.canopyGain.gain.setTargetAtTime(LEVELS.rainCanopy, t, 2);
+      loopTimer("drip", dripOnce, 0.7, 3.2);
+      loopTimer("rainBreath", rainBreath, 6, 18);
+    } else if (n.rain) {
+      n.rain.master.gain.setTargetAtTime(0, t, 1.5);
+      n.rain.canopyGain.gain.setTargetAtTime(0, t, 1.5);
+      clearTimeout(timers.drip); clearTimeout(timers.rainBreath);
+    }
+    if (w.voices) {
+      ensureVoices();
+      loopTimer("cicadaWave", cicadaWave, 15, 50, 0.2); // 蟬早點在（3–10s 起第一潮）
+      loopTimer("cicadaPulse", cicadaPulse, 0.06, 0.14);
+      loopTimer("bird", birdChirp, 25, 75, 0.35);
+      loopTimer("bike", bikePass, 150, 420, 0.4);
+    } else if (n.v) {
+      if (n.v.cicadaOn) n.v.cicGain.gain.setTargetAtTime(0, t, 1);
+      for (const k of ["cicadaWave", "cicadaPulse", "bird", "bike"]) clearTimeout(timers[k]);
+    }
+    scheduleGust(0.3); // 第一陣風提早：入內後不用乾等一輪完整間隔
+  }
+  function rampMaster(on) {
+    if (!n) return;
+    n.master.gain.setTargetAtTime(on ? LEVELS.master : 0, ctx.currentTime, on ? 0.5 : 0.12);
+  }
+
+  /* 陣風：間隔／包絡依票（慢起慢退，無 whoosh、無週期、偶爾連兩陣）。
+     風先起；葉晚 100–300ms 跟上、亮度微開——世界被風吹動。 */
+  function scheduleGust(firstScale = 1) {
+    clearTimeout(timers.gust);
+    timers.gust = setTimeout(fireGust, rand(W().gustWaitMin, W().gustWaitMax) * firstScale * 1000);
+  }
+  function fireGust() {
+    if (!running()) { scheduleGust(); return; }
+    const w = W();
+    const len = rand(w.gustLenMin, w.gustLenMax);
+    const s = rand(0.25, 1);
+    const attack = len * rand(0.3, 0.45), release = len - attack;
+    const t0 = ctx.currentTime + 0.03;
+    const wPeak = w.windIdle + (w.windPeak - w.windIdle) * s;
+    n.windGain.gain.setTargetAtTime(wPeak, t0, attack / 2.6);
+    n.windGain.gain.setTargetAtTime(w.windIdle, t0 + attack, release / 2.4);
+    n.windBP.frequency.setTargetAtTime(140 + 130 * s, t0, attack / 2.2); // 重心隨風抬——不是定頻扇葉
+    n.windBP.frequency.setTargetAtTime(140, t0 + attack, release / 2);
+    const lag = rand(GUST_LAG.leafMin, GUST_LAG.leafMax);
+    const lPeak = w.leafIdle + (w.leafPeak - w.leafIdle) * s;
+    n.leafDyn.gain.setTargetAtTime(lPeak, t0 + lag, attack / 2.4);
+    n.leafDyn.gain.setTargetAtTime(w.leafIdle, t0 + lag + attack, release / 2.2);
+    n.leafBP.frequency.setTargetAtTime(3000 + 1000 * s, t0 + lag, attack / 2.2);
+    n.leafBP.frequency.setTargetAtTime(3000, t0 + lag + attack, release / 2);
+    if (Math.random() < w.double) timers.gust = setTimeout(fireGust, (len + rand(1.5, 4)) * 1000);
+    else scheduleGust();
+  }
+  function flutterStep() { // 葉的微顫：隨機間隔的振幅抖動，不是 LFO
+    if (running()) n.leafFlut.gain.setTargetAtTime(rand(0.55, 1), ctx.currentTime, 0.09);
+  }
+  function distantWalk() { // 牆外世界的極慢起伏
+    if (running()) n.distGain.gain.setTargetAtTime(W().distant * rand(0.5, 1.1), ctx.currentTime, 2.5);
+  }
+
+  /* ---- public：主程式在既有狀態切換點呼叫，僅此而已 ---- */
+  function start() { // 手勢後才有聲；重複呼叫無害
+    if (!enabled) return;
+    if (!ctx) {
+      try { build(); } catch { ctx = null; n = null; return; }
+      applyState(0.1);
+      applyWeather(0.2);
+      rampMaster(true);
+      loopTimer("flutter", flutterStep, 0.14, 0.42);
+      loopTimer("distant", distantWalk, 5, 15);
+      started = true;
+    } else if (ctx.state !== "running") {
+      ctx.resume().catch(() => {});
+    }
+  }
+  function setSpace(name) { // 不收身分——只有空間，沒有誰的殿
+    if (name !== "court" && name !== "hall") return;
+    space = name;
+    slipOpen = false;
+    applyState(XFADE);
+  }
+  function setSlip(open) {
+    slipOpen = !!open;
+    applyState(XFADE);
+  }
+  function setWeather(name) { // 天氣票：boot 設定一次，visit 內固定
+    // own-property 檢查：亂值 key（toString/__proto__ 等）會穿透 prototype chain，一律落回常日
+    weather = Object.hasOwn(WEATHERS, name) ? name : "cloudy";
+    if (n) applyWeather(1.5);
+  }
+  function tree(offsetPx, vw) { // 主程式推播樹在視野中的位置（px 偏移＋視窗寬）
+    if (!n || !vw) return;
+    const t = ctx.currentTime;
+    const x = offsetPx / (vw * 0.75);                    // ≈±1＝畫框邊緣
+    const pan = Math.max(-1, Math.min(1, x)) * PAN_MAX;
+    const away = Math.max(0, Math.abs(x) - 1);           // 出視野的程度
+    const g = 0.35 + 0.65 / (1 + away * 1.3);            // 變遠，不消失
+    const f = Math.max(1200, 5200 / (1 + away * 0.9));   // 變鈍
+    if (n.pan) n.pan.pan.setTargetAtTime(pan, t, PAN_SLEW);
+    n.leafViewGain.gain.setTargetAtTime(g, t, PAN_SLEW);
+    n.leafViewLP.frequency.setTargetAtTime(f, t, PAN_SLEW);
+  }
+  function setEnabled(v) {
+    enabled = !!v;
+    writePref(enabled);
+    if (enabled) {
+      if (!ctx) start(); // toggle 的點擊本身就是手勢
+      else { ctx.resume().catch(() => {}); rampMaster(true); }
+    } else if (ctx) {
+      rampMaster(false);
+      setTimeout(() => { if (!enabled && ctx && ctx.state === "running") ctx.suspend().catch(() => {}); }, 700);
+    }
+  }
+  function getParams() { // 驗收斷言用：目前狀態與目標值（不交形容詞）
+    return {
+      started, enabled, space, slip: slipOpen, weather,
+      targets: { ...SPACES[space], world: slipOpen ? LEVELS.slipDuck : 1 },
+      spaces: SPACES, weathers: WEATHERS, levels: LEVELS, xfade: XFADE, panMax: PAN_MAX,
+    };
+  }
+
+  // iOS lifecycle：背景即靜（廟不跟著你出門）；回前景／中斷後正確恢復
+  document.addEventListener("visibilitychange", () => {
+    if (!ctx || !enabled) return;
+    if (document.visibilityState === "visible") { if (ctx.state !== "running") ctx.resume().catch(() => {}); }
+    else if (ctx.state === "running") ctx.suspend().catch(() => {});
+  });
+
+  return { start, space: setSpace, slip: setSlip, weather: setWeather, tree, pull, stickOut, paperOut, setEnabled, enabled: () => enabled, getParams };
+})();
+/* ==================== sound-layer:end ==================== */
+</script>
 <script>
 (function () {
   "use strict";
@@ -1163,6 +1781,7 @@
   const nearStrip = $("nearStrip");
 
   let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
+  let treeSoundX = 0; // 老樹（葉聲源＝樹冠質心）的 strip 座標——dressCourt 寫入，applyFrame 推播給聲音層
   let dragging = false, dragStartX = 0, dragStartScroll = 0, velocity = 0, lastX = 0, lastT = 0;
   let downTarget = null;
   let raf = 0, hasTurned = false;
@@ -1189,6 +1808,11 @@
         const heart = document.createElement("div");
         heart.className = "void-heart";
         heart.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+        // 票的回聲：地方把你的票寫進今天的石頭。常日不刻（unmarked default 不留痕）
+        // 亂值票同常日：isValidWeather 擋 prototype chain 穿透（toString/__proto__ 等不刻）
+        const wName = AUDITION_WEATHER ?? todaysTicket()?.weather;
+        const wChar = isValidWeather(wName) ? WEATHER_CHARS[wName] : null;
+        if (wChar) heart.textContent += `・${wChar}`;
         const chron = document.createElement("div");
         chron.className = "void-chron";
         const b = document.createElement("button");
@@ -1269,6 +1893,7 @@
       // 老樹在埕的西端，早於三殿；?halls=4 時仍在工地更外側，永不擋殿。
       // 樹蔭先鋪（物件坐在影子上）；人間長在兩側，走向神前的路留在中央。
       const tx = -0.25 * stationW;
+      treeSoundX = tx + 0.2 * stationW; // 葉聲來自樹冠質心（冠幅 tx-0.45W..tx+0.85W），不是樹幹
       put("tree-shade", tx - 0.3 * stationW, { width: Math.round(2.35 * stationW) + "px" });
       put("tree-shade-wall", tx - 0.15 * stationW, { width: Math.round(0.9 * stationW) + "px" });
       put("leafbits", tx + 0.5 * stationW);
@@ -1363,6 +1988,8 @@
     const settledOnHall = !STATIONS[ni].void && !STATIONS[ni].hypothetical &&
       Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
     $("groundPath").style.opacity = settledOnHall ? "1" : "0";
+    // 樹在視野中的位置餵給聲音層（幾何由這裡推播；聲音層不讀 mechanics）
+    window.ARRIVAL_SOUND?.tree(treeSoundX + pad0 - scroll - vw / 2, vw);
   }
 
   function animate() {
@@ -1495,6 +2122,9 @@
   function enterHall(hall, { boundEntry } = {}) {
     currentHall = hall;
     sessionFacing = hall.id ?? "void";
+    // 聲音與 400ms 轉場同步收窄。月老 fail-closed 同構：增建中無殿內聲態，
+    // 埕的空氣照常經過工地（guard 同 renderHall 的 fail-closed 謂詞，非身分分支）。
+    if (!hall.hypothetical && hall.corpusId) window.ARRIVAL_SOUND?.space("hall");
     const court = $("s-court");
     court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
@@ -1506,6 +2136,7 @@
   }
 
   $("backBtn").addEventListener("click", () => {
+    window.ARRIVAL_SOUND?.space("court"); // 回埕：空氣展開還原
     renderCourt();
     show("court");
   });
@@ -1530,6 +2161,10 @@
   /* ---------- 殿 ---------- */
   function renderHall(hall, { boundEntry } = {}) {
     $("tablet").textContent = hall.deity;
+    // 匾同規格，字隨匾：聖號字數多則字級收斂，匾高（＝儀式的位置）不因誰而沉。
+    // 依字數不依身分（typography, not identity）——四字匾曾把籤筒推出手機畫面。
+    $("tablet").style.fontSize = hall.deity.length > 3
+      ? `calc(var(--tablet-fs) * ${(3 / hall.deity.length).toFixed(3)})` : "";
     $("hallSub").textContent = hall.sub;
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
@@ -1569,6 +2204,13 @@
 
     $("tubeStage").style.display = "flex";
     resetStick();
+    // 進殿先見聖號一息，隨後步向案前——進殿本來就是往裡走，鏡頭跟著身體。
+    // 手機上籤筒常在摺線下，而半露的筒會攔截捲頁手勢（touch-action:none）：
+    // 把儀式完整框進畫面，碰筒＝就是要抽，捲頁的需求就消失了。
+    setTimeout(() => {
+      if ($("tubeStage").style.display !== "none" && $("s-hall").classList.contains("on"))
+        $("tubeStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "end" });
+    }, reduceMotion ? 0 : 650);
   }
 
   /* ---------- 拖抽 ---------- */
@@ -1589,6 +2231,7 @@
     const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
     const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
     setStick(p);
+    window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
     if (p >= 1) { pulling = false; completeDraw(); }
   });
@@ -1608,6 +2251,7 @@
 
   function completeDraw() {
     if (navigator.vibrate) navigator.vibrate(16);
+    window.ARRIVAL_SOUND?.stickOut(); // 籤枝離筒（devdraw 同路）
     currentResolved = window.DRAW_POLICY.resolveDraw({
       question: $("question").value,
       corpusId: currentHall.corpusId,
@@ -1617,17 +2261,22 @@
     $("tubeStage").style.display = "none";
     $("stickLabel").textContent = window.SLIP_RENDER.tabText(entry);
     $("stickStage").style.display = "flex";
+    // 你抽動了世界，世界把籤端到你面前——手機上換幕的新主角常在摺線下
+    $("stickStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   }
 
   $("takeBtn").addEventListener("click", () => {
+    window.ARRIVAL_SOUND?.paperOut(); // 取籤詩的紙聲——僅此一處：籤簿重看不再取紙
     const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
     showSlip(entry, { repeated: false });
   });
 
   function showSlip(entry, { repeated }) {
+    window.ARRIVAL_SOUND?.slip(true); // 紙是主角：世界閉嘴
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "flex";
+    $("slipStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); // 紙登場＝紙在眼前
     const mount = $("slipMount");
     mount.innerHTML = "";
     try {
@@ -1643,10 +2292,15 @@
     const book = store.get(BOOK_KEY, []);
     const existing = book.find((b) => b.entryId === entry.id && b.question === q);
     $("noteInput").value = existing?.note ?? "";
+    // 帶走＝籤簿中每張紙的能力：已收的籤才帶得走（在籤簿裡 ⟺ 是你的了）
+    $("takeawayZone").hidden = !existing;
+    currentTakeawayTs = existing?.ts ?? null;
     currentResolved = { entryId: entry.id, repeated };
   }
 
   $("keepBtn").addEventListener("click", () => {
+    const stage = $("slipStage");
+    if (stage.classList.contains("slip-away")) return; // 收一次就是一次
     const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
     const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
     const note = $("noteInput").value.trim();
@@ -1658,8 +2312,162 @@
     const d = new Date();
     store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
     $("question").value = "";
-    renderCourt();
-    show("court");
+    // 收籤＝句點：紙收起、一拍靜，然後世界回來。無旁白——沒有人留你。
+    stage.classList.add("slip-away");
+    setTimeout(() => {
+      stage.classList.remove("slip-away");
+      window.ARRIVAL_SOUND?.space("court"); // 回埕：空氣展開＝句點的迴響
+      renderCourt();
+      show("court");
+    }, reduceMotion ? 0 : 950);
+  });
+
+  /* ---------- 帶走這支籤（share artifact＝The Slip 本體，frozen 元件原樣 render） ----------
+     不分享：使用者問題、私人筆記、visit 紀錄、任何 growth 文案。
+     圖上只有：紙＋抽籤那天的日期・節氣。「複製連結」等 deploy 後才有連結可複製。 */
+  let currentTakeawayTs = null;
+
+  // 不讀 stylesheet（file:// 讀不到、http 才讀得到＝兩條路）：對量測 DOM 逐元素
+  // 抄 live computed style、把 ::before/::after 實體化——一條路，而且所見即所得。
+  function deepInline(src, dst) {
+    const srcKids = [...src.children], dstKids = [...dst.children];
+    for (let i = 0; i < srcKids.length; i++) deepInline(srcKids[i], dstKids[i]);
+    // computed style 會把 url(#slip-rough) 絕對化成頁面網址——SVG 內出現
+    // 外部引用會 taint canvas；把 base 剝掉，讓引用留在 SVG 文件內。
+    const deBase = (s) => s.split(location.href).join("");
+    const cs = getComputedStyle(src);
+    let t = "";
+    for (const prop of cs) t += prop + ":" + cs.getPropertyValue(prop) + ";";
+    dst.setAttribute("style", deBase(t) + "animation:none;transition:none;");
+    for (const pseudo of ["::before", "::after"]) {
+      const ps = getComputedStyle(src, pseudo);
+      if (!ps || ps.content === "none" || ps.content === "normal") continue;
+      let pt = "";
+      for (const prop of ps) pt += prop + ":" + ps.getPropertyValue(prop) + ";";
+      const el = document.createElement("span");
+      el.setAttribute("style", deBase(pt) + "animation:none;transition:none;");
+      if (pseudo === "::before") dst.insertBefore(el, dst.firstChild);
+      else dst.appendChild(el);
+    }
+  }
+  async function inlineFontCss(text) {
+    // SVG <img> 不允許外部資源：只抓這張紙用到的字（css2 text= 子集），base64 內嵌
+    const uniq = [...new Set(text.replace(/\s/g, ""))].join("");
+    const cssUrl = "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400..700&text=" + encodeURIComponent(uniq);
+    let css = await (await fetch(cssUrl)).text();
+    for (const [, u] of [...css.matchAll(/url\((https:[^)]+)\)/g)]) {
+      const bytes = new Uint8Array(await (await fetch(u)).arrayBuffer());
+      let bin = "";
+      for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+      css = css.replace(u, "data:font/woff2;base64," + btoa(bin));
+    }
+    return css;
+  }
+  async function renderTakeawayPng(entry, ts) {
+    // 先隱形掛一份實紙量尺寸（量測與 SVG 用同一份 CSS＝所見即所得）
+    const meas = document.createElement("div");
+    meas.style.cssText = "position:absolute;left:-9999px;top:0;";
+    document.body.appendChild(meas);
+    const art = document.createElement("div");
+    art.className = "takeaway-art";
+    meas.appendChild(art);
+    window.SLIP_RENDER.mountSlip(art, entry);
+    // 量測副本先殺動畫：否則 computed style 抄到 slip-settle 第 0 幀（opacity 0）
+    for (const el of [art, ...art.querySelectorAll("*")]) el.style.animation = "none";
+    const d = ts ? new Date(ts) : new Date();
+    const dl = document.createElement("div");
+    dl.className = "takeaway-date";
+    dl.textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+    art.appendChild(dl);
+    const w = art.offsetWidth, h = art.offsetHeight;
+    const artText = art.textContent;
+    const clone = art.cloneNode(true);
+    deepInline(art, clone); // 量測 DOM 還掛著＝computed style 是活的
+    meas.remove();
+    const artXml = new XMLSerializer().serializeToString(clone);
+    const filterDef = new XMLSerializer().serializeToString(document.getElementById("slip-rough"));
+    const css = await inlineFontCss(artText); // SVG 內只需要字型——其他樣式全在元素上
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><defs>${filterDef}</defs>` +
+      `<foreignObject width="100%" height="100%"><div xmlns="http://www.w3.org/1999/xhtml">` +
+      `<style><![CDATA[${css}]]></style>${artXml}</div></foreignObject></svg>`;
+    // data URI 而非 blob URL：blob＋foreignObject 在 file:// 下會 taint canvas
+    const img = await new Promise((res, rej) => {
+      const i = new Image();
+      i.onload = () => res(i);
+      i.onerror = () => rej(new Error("svg render failed"));
+      i.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    });
+    const canvas = document.createElement("canvas");
+    canvas.width = w * 2; canvas.height = h * 2; // 2x：紙要經得起看
+    const c2d = canvas.getContext("2d");
+    // WebKit/iOS：SVG 影像文件裡的 @font-face 是非同步的——第一繪是隱形字
+    // （無限 FOIT）。重繪到畫面穩定為止；Chrome 第一繪即穩，多繪無害。
+    const sample = () => {
+      const s = c2d.getImageData(0, Math.floor(h * 1.2), w * 2, 4).data; // 掃詩文區一條
+      let sum = 0;
+      for (let i = 0; i < s.length; i += 16) sum += s[i];
+      return sum;
+    };
+    let last = null, changed = false;
+    for (let i = 0; i < 10; i++) {
+      c2d.setTransform(2, 0, 0, 2, 0, 0);
+      c2d.clearRect(0, 0, w, h);
+      c2d.drawImage(img, 0, 0);
+      const sig = sample();
+      if (last !== null && sig === last && (changed || i >= 2)) break;
+      if (last !== null && sig !== last) changed = true;
+      last = sig;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+    return await new Promise((res, rej) => canvas.toBlob((b) => (b ? res(b) : rej(new Error("png encode failed"))), "image/png"));
+  }
+  $("takeawayBtn").addEventListener("click", async () => {
+    const btn = $("takeawayBtn");
+    const orig = "帶走這支籤";
+    btn.disabled = true;
+    btn.textContent = "備紙中";
+    try {
+      const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
+      const blob = await renderTakeawayPng(entry, currentTakeawayTs);
+      const file = new File([blob], "draw-one-slip.png", { type: "image/png" });
+      if (navigator.canShare?.({ files: [file] })) {
+        await navigator.share({ files: [file] }); // 不帶任何文案——紙自己說話
+      } else {
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "draw-one-slip.png";
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+      }
+      btn.textContent = orig;
+    } catch (err) {
+      if (err?.name === "AbortError") btn.textContent = orig; // 使用者收手不是錯
+      else {
+        console.warn("takeaway render failed:", err); // warn 不是 error：留診斷、不髒 console
+        btn.textContent = "產圖失敗——可先複製籤文";
+        setTimeout(() => { btn.textContent = orig; }, 2600);
+      }
+    }
+    btn.disabled = false;
+  });
+  $("copyBtn").addEventListener("click", async () => {
+    const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
+    const reg = window.SLIP_RENDER.COLOPHON_REGISTRY[entry.corpus_id];
+    const status = window.SLIP_RENDER.STATUS_WORD[entry.provenance.transcription_status];
+    const d = currentTakeawayTs ? new Date(currentTakeawayTs) : new Date();
+    const text = [
+      reg.title_short + "　" + window.SLIP_RENDER.tabText(entry),
+      entry.historical_text.poem_text,
+      reg.source_line + "　抽一謹錄　" + status,
+      `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`,
+    ].join("\n");
+    try {
+      await navigator.clipboard.writeText(text);
+      $("copyBtn").textContent = "已複製";
+    } catch {
+      $("copyBtn").textContent = "複製失敗";
+    }
+    setTimeout(() => { $("copyBtn").textContent = "複製籤文"; }, 1800);
   });
 
   /* ---------- 沿革 / 籤簿 overlays ---------- */
@@ -1707,17 +2515,73 @@
     $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
   }
 
-  /* ---------- boot：初訪走山門，之後永遠落在埕 ---------- */
+  /* ---------- 天氣票（D 拍板：一天一張）＋聲音層掛點 ---------- */
+  // 票＝今天的：今天第一次來在門檻上拿，當日沿用，跨日作廢明天重拿。
+  // 記在 localStorage（記憶私人）——票是環境不是朝向，boot neutrality 不受影響。
+  // ?weather= 降級為純試聽 override：不寫票、不動門檻。不答＝常日。
+  const TICKET_KEY = "arrival.ticket.v1";
+  const AUDITION_WEATHER = new URLSearchParams(location.search).get("weather");
+  // dev 後門僅此兩個：?weather=（試聽，不寫票）、?newday=1（撕掉今天的票，重過門檻）
+  // 保留、不做 production guard——對 user 隱形，對 maintainer 顯眼：docs/testing/qa-cheatsheet.md
+  if (new URLSearchParams(location.search).get("newday") === "1") {
+    try { localStorage.removeItem(TICKET_KEY); } catch {}
+  }
+  // 票面合法值僅此四——合法性判斷集中一處（own-property，防 prototype chain 穿透）
+  const WEATHER_CHARS = { sunny: "晴", cloudy: "陰", rain: "雨", wind: "風" };
+  const isValidWeather = (name) => typeof name === "string" && Object.hasOwn(WEATHER_CHARS, name);
+  const todayStr = () => { const d = new Date(); return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`; };
+  const todaysTicket = () => { const t = store.get(TICKET_KEY, null); return t && t.date === todayStr() ? t : null; };
+  let gateWeather = null; // 門檻上選的票（null＝不拿＝常日）
+  window.ARRIVAL_SOUND?.weather(AUDITION_WEATHER ?? todaysTicket()?.weather);
+
+  for (const b of document.querySelectorAll(".gw-opt")) {
+    b.addEventListener("click", () => {
+      gateWeather = gateWeather === b.dataset.w ? null : b.dataset.w; // 再點一次＝放回
+      for (const o of document.querySelectorAll(".gw-opt")) o.classList.toggle("on", o.dataset.w === gateWeather);
+      $("gateWeather").classList.toggle("chosen", !!gateWeather);
+    });
+  }
+  // AudioContext 必須在手勢後啟動：初訪＝山門「入內」；回訪＝首次觸碰埕。
+  // 山門期間不啟動——門檻之外無聲（提案狀態，未拍板）。
+  document.addEventListener("pointerdown", () => {
+    if (!$("s-gate").classList.contains("on")) window.ARRIVAL_SOUND?.start();
+  }, { passive: true });
+  function syncSoundUI() {
+    const on = !!window.ARRIVAL_SOUND?.enabled();
+    for (const el of document.querySelectorAll(".sound-toggle")) {
+      el.classList.toggle("off", !on);
+      el.setAttribute("aria-pressed", String(on));
+      el.title = on ? "聲・開（點一下轉靜）" : "聲・靜（點一下打開）";
+    }
+  }
+  for (const el of document.querySelectorAll(".sound-toggle")) {
+    el.addEventListener("click", () => {
+      window.ARRIVAL_SOUND?.setEnabled(!window.ARRIVAL_SOUND?.enabled());
+      syncSoundUI();
+    });
+  }
+  syncSoundUI();
+
+  /* ---------- boot：初訪走山門（規矩＋天氣）；「今天第一次來」過薄門檻拿票；
+     當日已有票＝直落埕（boot 落埕的修訂僅此一條，D 拍板） ---------- */
   $("enterBtn").addEventListener("click", () => {
+    if (!AUDITION_WEATHER) { // 試聽 override 不寫票
+      store.set(TICKET_KEY, { date: todayStr(), weather: gateWeather }); // 不答存 null＝常日
+      window.ARRIVAL_SOUND?.weather(gateWeather);
+    }
+    window.ARRIVAL_SOUND?.start(); // 入內＝門檻上的手勢：空氣自此有聲
     store.set(VISITED_KEY, true);
     renderCourt();
     show("court");
   });
 
-  if (store.get(VISITED_KEY, false)) {
+  if (store.get(VISITED_KEY, false) && (AUDITION_WEATHER || todaysTicket())) {
     renderCourt();
     show("court");
   } else {
+    const d = new Date();
+    $("gateDate").textContent = `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日・${currentTerm(d)}`;
+    $("gateRules").style.display = store.get(VISITED_KEY, false) ? "none" : "grid"; // 回訪＝薄門檻
     show("gate");
   }
 })();
