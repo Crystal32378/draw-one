@@ -92,8 +92,11 @@ check(
   pool.entries.every((e) => !/&#?[0-9a-zA-Z]+;/.test(e.historical_text.poem_text + e.original_slip_label))
 );
 check(
-  "decoded char-ref counts reported per corpus",
-  pool.corpora.every((c) => Number.isInteger(c.data_quality?.decoded_char_refs))
+  "decoded char-ref counts reported per corpus (build report, not public artifact)",
+  (() => {
+    const report = JSON.parse(readFileSync(join(ROOT, "data", "production", "draw-pool.report.json"), "utf8"));
+    return report.corpora.every((c) => Number.isInteger(c.data_quality?.decoded_char_refs));
+  })()
 );
 
 // ---------------------------------------------------------------------------
@@ -143,6 +146,12 @@ buildMustFail("remove one slip", (d) => d.slips.pop());
 buildMustFail("add one extra fabricated slip", (d) =>
   d.slips.push({ ...d.slips[0], slip_number: 101, poem_text: "看似很真的一首假籤詩文字內容在此" })
 );
+buildMustFail("non-empty interpretation in a source slip (fail closed, never strip-and-ship)", (d) => {
+  d.slips[7].interpretation = { 解曰: "不該出現在這裡的解讀文字" };
+});
+buildMustFail("non-empty interpretation under a variant key", (d) => {
+  d.slips[3].interpretation_notes = "draft interpretation text";
+});
 buildMustFail("downgrade status to UNVERIFIED", (d) => (d.slips[0].transcription_status = "UNVERIFIED"));
 buildMustFail("mark entry ai_generated", (d) => (d.slips[3].transcription_status = "ai_generated_or_summarized"));
 buildMustFail("blank a poem_text", (d) => (d.slips[7].poem_text = ""));
@@ -266,6 +275,45 @@ const report2 = readFileSync(join(ROOT, "data", "production", "draw-pool.report.
 check("rebuild from unchanged sources is byte-identical (pool)", poolBytes1.equals(poolBytes2));
 check("rebuild from unchanged sources is byte-identical (report)", report1.equals(report2));
 check("pool carries content_version, no wallclock timestamp", pool.content_version && !("built_at" in pool));
+
+// ---------------------------------------------------------------------------
+console.log("T9 public projection boundary — 研究帳本不隨 production payload 出門");
+// Hostile search: governance-only field names AND known ledger value canaries
+// must not appear anywhere in the browser artifact.
+const artifactSrc = poolBytes1.toString("utf8");
+const LEDGER_MARKERS = [
+  "source_locator", "source_file", "source_sha256", "edition_id",
+  "edition_date_period", "data_quality", "attestation", "retrieved_date",
+  "薛皓文",        // guanyin research witness（source_locator/date_period value canary）
+  "matsu.org.tw",  // liushijiazi official-site locator value canary
+  "附錄二",         // guanyin page-mapping value canary
+  "data/corpora",  // canonical file-path canary
+];
+for (const m of LEDGER_MARKERS) {
+  check(`artifact does not contain "${m}"`, !artifactSrc.includes(m));
+}
+// Strict shape allowlist: any new field must consciously pass this gate to
+// reach the public — accidental additions fail here.
+const sameKeys = (obj, allowed) => {
+  const keys = Object.keys(obj);
+  return keys.length === allowed.length && allowed.every((k) => keys.includes(k));
+};
+check("pool top-level keys are exactly the public set",
+  sameKeys(pool, ["schema", "content_version", "policy", "corpora", "entries"]));
+check("corpora summaries carry public claims only",
+  pool.corpora.every((c) => sameKeys(c, ["corpus_id", "deity_tradition", "edition_title", "slip_count", "status_summary"])));
+check("every entry carries exactly the runtime field set",
+  pool.entries.every((e) =>
+    sameKeys(e, ["id", "corpus_id", "deity_tradition", "slip_number", "original_slip_label", "historical_text", "provenance", "interpretation"]) &&
+    sameKeys(e.historical_text, ["poem_text"]) &&
+    sameKeys(e.provenance, ["edition_title", "transcription_status"])));
+// Projection, not deletion: the canonical ledger must remain fully intact.
+check("canonical corpora still carry the full governance fields (projection ≠ deletion)",
+  ["guanyin", "guandi", "liushijiazi"].every((corpusId) => {
+    const src = JSON.parse(readFileSync(join(ROOT, "data", "corpora", corpusId, "slip_texts.json"), "utf8"));
+    return src.slips.every((s) =>
+      ["source_locator", "edition_id", "edition_date_period"].every((f) => String(s[f] ?? "").trim() !== ""));
+  }));
 
 // ---------------------------------------------------------------------------
 console.log(`\n${passed} passed, ${failed} failed`);

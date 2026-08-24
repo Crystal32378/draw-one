@@ -13,12 +13,27 @@
  *   previously generated pool file, so a stale-but-valid pool can never mask
  *   a now-invalid corpus. No placeholder or fallback content is ever emitted.
  *
+ * PUBLIC PROJECTION (public exposure hardening):
+ *   The emitted pool is a PROJECTION of canonical data, not the canonical data
+ *   itself. All truth gates run against the FULL canonical fields first; only
+ *   after every gate passes are non-runtime governance fields stripped from
+ *   the browser artifact. The research ledger (source locators, source file
+ *   paths/hashes, edition internals, data-quality counters) stays in
+ *   data/corpora/ and in the build report — it does not ship to visitors.
+ *   Runtime keeps exactly what the UI reads: id / corpus_id / deity_tradition /
+ *   slip_number / original_slip_label / historical_text / provenance
+ *   {edition_title, transcription_status} — the last two are load-bearing for
+ *   slip-render's fail-closed colophon contract（已對勘／待複核）.
+ *
  * DATA MODEL (per pool entry):
  *   historical_text  — verbatim corpus text. Never synthesized, never merged.
- *   provenance       — edition / source / transcription status metadata.
- *   interpretation   — always null in this build. Generated interpretation may
- *                      only enter through a future governed pipeline and must
- *                      pass lintInterpretationVoice() (see draw-policy.js note).
+ *   provenance       — public colophon subset: edition_title + transcription_status.
+ *   interpretation   — always null in this build, and ASSERTED empty at the
+ *                      source: a non-empty interpretation field anywhere in a
+ *                      corpus slip fails the build (fail-closed, never
+ *                      strip-and-ship). Generated interpretation may only
+ *                      enter through a future governed pipeline and must pass
+ *                      lintInterpretationVoice() (see draw-policy.js note).
  */
 
 import { createHash } from "node:crypto";
@@ -195,6 +210,18 @@ for (const spec of MANIFEST) {
       }
     }
     if (s.deity_tradition) deities.add(s.deity_tradition);
+    // Interpretation must be EMPTY at the source. A non-empty interpretation
+    // field reaching this build means content bypassed the governed pipeline —
+    // fail closed rather than strip it and ship anyway.
+    for (const key of Object.keys(s)) {
+      if (!/interpretation/i.test(key)) continue;
+      const v = s[key];
+      const empty = v === null || v === undefined || (typeof v === "string" && v.trim() === "") ||
+        (Array.isArray(v) && v.length === 0) || (typeof v === "object" && !Array.isArray(v) && Object.keys(v).length === 0);
+      if (!empty) {
+        gate(`${id}/interpretation-empty`, false, `non-empty "${key}" in corpus slip — interpretation may only enter via a governed pipeline`);
+      }
+    }
   }
   gate(
     `${spec.corpus_id}/complete-sequence`,
@@ -251,6 +278,19 @@ if (errors.length > 0) {
 // from unchanged sources is byte-identical and never dirties the work tree.
 const contentVersion = sha256(corpora.map((c) => `${c.spec.corpus_id}:${c.source_sha256}`).join("\n"));
 
+// Governance-side corpus evidence — goes to the build report only, never to
+// the browser artifact (public projection boundary).
+const corporaEvidence = corpora.map((c) => ({
+  corpus_id: c.spec.corpus_id,
+  deity_tradition: c.deity,
+  edition_title: c.slips[0].edition_title,
+  slip_count: c.slips.length,
+  source_file: c.spec.file,
+  source_sha256: c.source_sha256,
+  data_quality: { decoded_char_refs: c.decoded_char_refs },
+  status_summary: c.slips.reduce((acc, s) => ((acc[s.transcription_status] = (acc[s.transcription_status] ?? 0) + 1), acc), {}),
+}));
+
 const pool = {
   schema: "draw-pool/1.0",
   content_version: contentVersion,
@@ -259,15 +299,11 @@ const pool = {
     fail_closed: true,
     interpretation: "none — generated interpretation is excluded from production until a governed pipeline exists",
   },
-  corpora: corpora.map((c) => ({
-    corpus_id: c.spec.corpus_id,
-    deity_tradition: c.deity,
-    edition_title: c.slips[0].edition_title,
-    slip_count: c.slips.length,
-    source_file: c.spec.file,
-    source_sha256: c.source_sha256,
-    data_quality: { decoded_char_refs: c.decoded_char_refs },
-    status_summary: c.slips.reduce((acc, s) => ((acc[s.transcription_status] = (acc[s.transcription_status] ?? 0) + 1), acc), {}),
+  // Public corpus summary: honest public claims only (what the corpus is, how
+  // many slips, transcription-status mix). No file paths, hashes, or
+  // data-quality counters — those are research-ledger evidence.
+  corpora: corporaEvidence.map(({ corpus_id, deity_tradition, edition_title, slip_count, status_summary }) => ({
+    corpus_id, deity_tradition, edition_title, slip_count, status_summary,
   })),
   entries: corpora.flatMap((c) =>
     c.slips.map((s) => ({
@@ -277,11 +313,12 @@ const pool = {
       slip_number: s.slip_number,
       original_slip_label: s.original_slip_label,
       historical_text: { poem_text: s.poem_text },
+      // Public colophon subset. edition_title + transcription_status are
+      // load-bearing (slip-render fail-closed registry match ＋ 已對勘／待複核).
+      // edition_id / edition_date_period / source_locator are canonical-side
+      // governance fields and never ship in the browser artifact.
       provenance: {
-        edition_id: s.edition_id,
         edition_title: s.edition_title,
-        edition_date_period: s.edition_date_period,
-        source_locator: s.source_locator,
         transcription_status: s.transcription_status,
       },
       interpretation: null,
@@ -305,7 +342,7 @@ writeFileSync(
       content_version: contentVersion,
       status: "PASSED",
       total_entries: total,
-      corpora: pool.corpora,
+      corpora: corporaEvidence,
       gates_evaluated: gateResults.length,
       gate_failures: 0,
       pool_sha256: sha256(readFileSync(POOL_PATH)),
