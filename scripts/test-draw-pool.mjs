@@ -152,6 +152,12 @@ buildMustFail("non-empty interpretation in a source slip (fail closed, never str
 buildMustFail("non-empty interpretation under a variant key", (d) => {
   d.slips[3].interpretation_notes = "draft interpretation text";
 });
+buildMustFail("NESTED interpretation hidden under a non-matching parent (Codex re-gate canary)", (d) => {
+  d.slips[5].governance = { interpretation_notes: "PRIVATE_INTERPRETATION_CANARY" };
+});
+buildMustFail("interpretation nested inside an array element", (d) => {
+  d.slips[9].review_log = [{ note: "ok" }, { interpretation_draft: "深埋的解讀草稿" }];
+});
 buildMustFail("downgrade status to UNVERIFIED", (d) => (d.slips[0].transcription_status = "UNVERIFIED"));
 buildMustFail("mark entry ai_generated", (d) => (d.slips[3].transcription_status = "ai_generated_or_summarized"));
 buildMustFail("blank a poem_text", (d) => (d.slips[7].poem_text = ""));

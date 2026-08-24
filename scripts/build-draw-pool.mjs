@@ -129,6 +129,25 @@ function decodeCharRefs(text, counter) {
   });
 }
 
+// Recursive interpretation scan: reports every non-empty value whose key path
+// contains "interpretation", at any nesting depth (objects and arrays).
+function isEmptyValue(v) {
+  return v === null || v === undefined || (typeof v === "string" && v.trim() === "") ||
+    (Array.isArray(v) && v.length === 0) ||
+    (typeof v === "object" && !Array.isArray(v) && Object.keys(v).length === 0);
+}
+function findInterpretation(node, path, report) {
+  if (node === null || typeof node !== "object") return;
+  const items = Array.isArray(node)
+    ? node.map((v, i) => [String(i), v])
+    : Object.entries(node);
+  for (const [key, v] of items) {
+    const p = path ? `${path}.${key}` : key;
+    if (/interpretation/i.test(key) && !isEmptyValue(v)) report(p);
+    findInterpretation(v, p, report);
+  }
+}
+
 const errors = [];
 const gateResults = [];
 
@@ -210,18 +229,14 @@ for (const spec of MANIFEST) {
       }
     }
     if (s.deity_tradition) deities.add(s.deity_tradition);
-    // Interpretation must be EMPTY at the source. A non-empty interpretation
-    // field reaching this build means content bypassed the governed pipeline —
-    // fail closed rather than strip it and ship anyway.
-    for (const key of Object.keys(s)) {
-      if (!/interpretation/i.test(key)) continue;
-      const v = s[key];
-      const empty = v === null || v === undefined || (typeof v === "string" && v.trim() === "") ||
-        (Array.isArray(v) && v.length === 0) || (typeof v === "object" && !Array.isArray(v) && Object.keys(v).length === 0);
-      if (!empty) {
-        gate(`${id}/interpretation-empty`, false, `non-empty "${key}" in corpus slip — interpretation may only enter via a governed pipeline`);
-      }
-    }
+    // Interpretation must be EMPTY at the source — at ANY depth. A non-empty
+    // interpretation field reaching this build means content bypassed the
+    // governed pipeline; fail closed rather than strip it and ship anyway.
+    // (Top-level-only scanning was bypassed by a nested
+    // governance.interpretation_notes canary — Codex re-gate 2026-08-24.)
+    findInterpretation(s, "", (path) => {
+      gate(`${id}/interpretation-empty`, false, `non-empty "${path}" in corpus slip — interpretation may only enter via a governed pipeline`);
+    });
   }
   gate(
     `${spec.corpus_id}/complete-sequence`,
