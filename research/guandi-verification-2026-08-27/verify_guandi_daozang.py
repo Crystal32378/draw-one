@@ -354,6 +354,8 @@ def main():
         f.write("## 本機檔案與 repo 的關係\n\n")
         f.write("- repo 只含 OCR 輸出（`ocr/` 下 combined.txt 與 jsonl）與工具；**不包含 PDF 本體與頁面 PNG**（17MB+，不入 repo）\n")
         f.write("- 重跑需先依本 manifest 下載 PDF；OCR 輸出已提交可稽核\n")
+        f.write("\n## Slip-region segmentation 方法（v0.5）\n\n")
+        f.write("`slip_regions.py` 逐行切分：marker=「第N」獨立行（允許 markdown 裝飾）；marker 後內容歸該籤直至下一 marker；頁首無主文字 excluded；編號衝突或缺 marker → fail closed（該頁對該籤不提供 evidence）。verify 與 variant analyzer 共用此 boundary。hostile regression：`regression_test.py` 全 PASS。\n")
     print(f"寫出：{OUT_REPORT}\n      {OUT_MD}\n      {OUT_SLIPS}\n      {OUT_MANIFEST}")
 
 
