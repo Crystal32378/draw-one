@@ -33,7 +33,7 @@ OUT_MD = os.path.join(PKG, "variant_analysis.md")
 sys.path.insert(0, HERE)
 import sys as _sys
 _sys.path.insert(0, PKG)
-from verify_guandi_daozang import normalize, strip_punct, ngram_hit_rate
+from verify_guandi_daozang import normalize, strip_punct, ngram_hit_rate, load_map
 
 # 已知形近誤讀對（OCR 讀法 → 正確讀法）——從實際差異中歸納，僅供分類參考
 KNOWN_SHAPE = {
@@ -167,6 +167,10 @@ def main():
     all_b = normalize(strip_punct("\n".join(pages_b.values())))
     all_c = normalize(strip_punct("\n".join(pages_c.values())))
 
+    import slip_regions as SR
+    regs_b, _sb = SR.load_path_regions_b(pages_b)
+    regs_c, _sc = SR.load_path_regions_c([AUTOGLM, AUTOGLM2])
+
     rep = json.load(open(REPORT, encoding="utf-8"))
     slips_doc = json.load(open(SLIPS, encoding="utf-8"))
     slips = {s["slip_number"]: s for s in slips_doc["slips"]}
@@ -175,16 +179,21 @@ def main():
     for r in rep["results"]:
         n = r["slip_number"]
         slip = slips.get(n, {})
+        cand_pages = load_map().get(str(n), [])
+        own_b = normalize(strip_punct(" ".join(
+            t for p in cand_pages for t in [regs_b.get(p, {}).get(n, "")] if t)))
+        own_c = normalize(strip_punct(" ".join(
+            t for p in cand_pages for t in [regs_c.get(p, {}).get(n, "")] if t)))
         for line in r["lines"]:
             if line["hit_b"] or line["hit_c"]:
                 continue
             ln = normalize(strip_punct(line["line"]))
-            rate_b, frag_b = best_fragment(ln, all_b)
-            rate_c, frag_c = best_fragment(ln, all_c)
+            rate_b, frag_b = best_fragment(ln, own_b)
+            rate_c, frag_c = best_fragment(ln, own_c)
             if rate_b >= rate_c:
-                rate, frag, src = rate_b, frag_b, "OCR-B"
+                rate, frag, src = rate_b, frag_b, "OCR-B(slip-region)"
             else:
-                rate, frag, src = rate_c, frag_c, "OCR-C"
+                rate, frag, src = rate_c, frag_c, "OCR-C(slip-region)"
             diffs = align(ln, frag) if frag else []
             # 分類修正：以 fragment 可信度分層（低 rate 的對齊不可靠，不當 variant 證據）
             real = [(x, y) for x, y in diffs if x != "∅" and y != "∅" and x != y]

@@ -10,9 +10,8 @@
   "textual_witness_count": 1
  },
  "transcription_grade": {
-  "B": 29,
-  "A": 16,
-  "LOW": 55
+  "LOW": 73,
+  "B": 27
  },
  "textual_witness_confidence": "single_witness_not_verified（全部 100 籤）",
  "total": 100,
@@ -24,32 +23,30 @@
    "lines": [
     {
      "line": "巍巍獨步向雲間，玉殿千官第一班。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      12
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "冨貴榮華天付汝，福如東海壽如山。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      12
-     ],
+     "pages_b": [],
      "pages_c": [
       12
      ]
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "巍巍獨步向雲間，玉殿千官第一班。"
+   ],
    "cand_pages": [
     12,
     29
@@ -57,12 +54,12 @@
    "ocr_pages": [
     12
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 12）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：巍巍獨步向雲間，玉殿千官第一班。"
   },
   {
    "slip_number": 2,
@@ -71,46 +68,39 @@
    "lines": [
     {
      "line": "盈虛消息總天時，自此君當百事宜。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      13
-     ],
-     "pages_c": [
-      13
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "若問前程歸縮地，更須方寸好修為。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      13
-     ],
-     "pages_c": [
-      13
-     ]
+     "pages_b": [],
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "盈虛消息總天時，自此君當百事宜。",
+    "若問前程歸縮地，更須方寸好修為。"
+   ],
    "cand_pages": [
     13
    ],
-   "ocr_pages": [
-    13
-   ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 13）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：盈虛消息總天時，自此君當百事宜。；若問前程歸縮地，更須方寸好修為。"
   },
   {
    "slip_number": 3,
@@ -120,13 +110,11 @@
     {
      "line": "衣食自然生處有，勸君不用苦勞心。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      14
-     ],
+     "pages_b": [],
      "pages_c": [
       14
      ]
@@ -134,13 +122,11 @@
     {
      "line": "但能孝悌兼忠信，福祿來成禍不侵。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      14
-     ],
+     "pages_b": [],
      "pages_c": [
       14
      ]
@@ -153,8 +139,8 @@
    "ocr_pages": [
     14
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 14）",
@@ -168,13 +154,11 @@
     {
      "line": "去年百事頗相宜，若較今年時漸衰。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      15
-     ],
+     "pages_b": [],
      "pages_c": [
       15
      ]
@@ -214,13 +198,11 @@
     {
      "line": "子有三般不自由，門庭蕭索冷如秋。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      15
-     ],
+     "pages_b": [],
      "pages_c": [
       15
      ]
@@ -260,13 +242,11 @@
     {
      "line": "何勞鼓瑟更吹笙，寸步如登萬里程。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      16
-     ],
+     "pages_b": [],
      "pages_c": [
       16
      ]
@@ -274,13 +254,11 @@
     {
      "line": "彼此懷疑不相信，休將私意托濃情。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      16
-     ],
+     "pages_b": [],
      "pages_c": [
       16
      ]
@@ -293,8 +271,8 @@
    "ocr_pages": [
     16
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 16）",
@@ -308,13 +286,11 @@
     {
      "line": "仙風道骨本天成，又遇仙宗為主盟。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      17
-     ],
+     "pages_b": [],
      "pages_c": [
       17
      ]
@@ -353,14 +329,12 @@
    "lines": [
     {
      "line": "年來耕稼苦無收，今歲田疇定有秋。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      18
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -375,20 +349,19 @@
     }
    ],
    "line_unresolved": [
+    "年來耕稼苦無收，今歲田疇定有秋。",
     "況遇太平無事日，士農工賈百無憂。"
    ],
    "cand_pages": [
     18
    ],
-   "ocr_pages": [
-    18
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 18）",
-   "notes": "line-level UNRESOLVED：況遇太平無事日，士農工賈百無憂。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：年來耕稼苦無收，今歲田疇定有秋。；況遇太平無事日，士農工賈百無憂。"
   },
   {
    "slip_number": 9,
@@ -397,46 +370,39 @@
    "lines": [
     {
      "line": "望渠消息向長安，常把菱花仔細看。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      19
-     ],
-     "pages_c": [
-      19
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "見說文書將入境，今朝喜色上眉端。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      19
-     ],
-     "pages_c": [
-      19
-     ]
+     "pages_b": [],
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "望渠消息向長安，常把菱花仔細看。",
+    "見說文書將入境，今朝喜色上眉端。"
+   ],
    "cand_pages": [
     19
    ],
-   "ocr_pages": [
-    19
-   ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 19）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：望渠消息向長安，常把菱花仔細看。；見說文書將入境，今朝喜色上眉端。"
   },
   {
    "slip_number": 10,
@@ -445,14 +411,12 @@
    "lines": [
     {
      "line": "病患時時命蹇衰，何須打瓦更鑽龜。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      19
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -467,20 +431,19 @@
     }
    ],
    "line_unresolved": [
+    "病患時時命蹇衰，何須打瓦更鑽龜。",
     "直教重見一陽復，始可求安仗佛持。"
    ],
    "cand_pages": [
     19
    ],
-   "ocr_pages": [
-    19
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 19）",
-   "notes": "line-level UNRESOLVED：直教重見一陽復，始可求安仗佛持。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：病患時時命蹇衰，何須打瓦更鑽龜。；直教重見一陽復，始可求安仗佛持。"
   },
   {
    "slip_number": 11,
@@ -502,13 +465,11 @@
     {
      "line": "誰道機關難料處，到頭獨立轉傷神。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      20
-     ],
+     "pages_b": [],
      "pages_c": [
       20
      ]
@@ -536,13 +497,11 @@
     {
      "line": "營為期望向春前，誰料秋來又不然。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      21
-     ],
+     "pages_b": [],
      "pages_c": [
       21
      ]
@@ -550,13 +509,11 @@
     {
      "line": "直遇清江貴公子，一生活計始安全。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      21
-     ],
+     "pages_b": [],
      "pages_c": [
       21
      ]
@@ -569,8 +526,8 @@
    "ocr_pages": [
     21
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 21）",
@@ -584,13 +541,11 @@
     {
      "line": "君今庚甲未亨通，且向江頭作釣前。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      22
-     ],
+     "pages_b": [],
      "pages_c": [
       22
      ]
@@ -630,13 +585,11 @@
     {
      "line": "一見佳人便喜歡，誰知向後有多般。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      23
-     ],
+     "pages_b": [],
      "pages_c": [
       23
      ]
@@ -644,13 +597,11 @@
     {
      "line": "人情冷暖君休訝，歷涉應知行路難。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      23
-     ],
+     "pages_b": [],
      "pages_c": [
       23
      ]
@@ -663,8 +614,8 @@
    "ocr_pages": [
     23
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 23）",
@@ -721,44 +672,42 @@
    "lines": [
     {
      "line": "官事悠悠難辯明，不如息了且歸耕。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      24
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "傍人扇惑君休信，此事當謀親弟兄。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      24
-     ],
+     "pages_b": [],
      "pages_c": [
       24
      ]
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "官事悠悠難辯明，不如息了且歸耕。"
+   ],
    "cand_pages": [
     24
    ],
    "ocr_pages": [
     24
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 24）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：官事悠悠難辯明，不如息了且歸耕。"
   },
   {
    "slip_number": 17,
@@ -767,46 +716,39 @@
    "lines": [
     {
      "line": "田園價貫好商量，事到公庭彼此傷。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      25
-     ],
-     "pages_c": [
-      25
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "縱是機關圖得勝，定為後世子孫殃。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      25
-     ],
-     "pages_c": [
-      25
-     ]
+     "pages_b": [],
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "田園價貫好商量，事到公庭彼此傷。",
+    "縱是機關圖得勝，定為後世子孫殃。"
+   ],
    "cand_pages": [
     25
    ],
-   "ocr_pages": [
-    25
-   ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 25）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：田園價貫好商量，事到公庭彼此傷。；縱是機關圖得勝，定為後世子孫殃。"
   },
   {
    "slip_number": 18,
@@ -815,42 +757,39 @@
    "lines": [
     {
      "line": "知君指擬似空華，底事茫茫未有涯。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      26
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "牢把腳根踏實地，善為善應永無差。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.0,
-     "pages_b": [
-      26
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "知君指擬似空華，底事茫茫未有涯。",
+    "牢把腳根踏實地，善為善應永無差。"
+   ],
    "cand_pages": [
     26
    ],
-   "ocr_pages": [
-    26
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 26）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：知君指擬似空華，底事茫茫未有涯。；牢把腳根踏實地，善為善應永無差。"
   },
   {
    "slip_number": 19,
@@ -859,46 +798,39 @@
    "lines": [
     {
      "line": "嗟子從來未得時，今年星運頗相宜。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      27
-     ],
-     "pages_c": [
-      27
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "營求動作都如意，和合婚姻誕貴兒。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      27
-     ],
-     "pages_c": [
-      27
-     ]
+     "pages_b": [],
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "嗟子從來未得時，今年星運頗相宜。",
+    "營求動作都如意，和合婚姻誕貴兒。"
+   ],
    "cand_pages": [
     27
    ],
-   "ocr_pages": [
-    27
-   ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 27）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：嗟子從來未得時，今年星運頗相宜。；營求動作都如意，和合婚姻誕貴兒。"
   },
   {
    "slip_number": 20,
@@ -907,17 +839,13 @@
    "lines": [
     {
      "line": "一生心事向誰論，十八灘頭說與君。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      27
-     ],
-     "pages_c": [
-      27
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "世事盡從流水去，功名富貴等浮雲。",
@@ -931,20 +859,19 @@
     }
    ],
    "line_unresolved": [
+    "一生心事向誰論，十八灘頭說與君。",
     "世事盡從流水去，功名富貴等浮雲。"
    ],
    "cand_pages": [
     27
    ],
-   "ocr_pages": [
-    27
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 27）",
-   "notes": "line-level UNRESOLVED：世事盡從流水去，功名富貴等浮雲。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：一生心事向誰論，十八灘頭說與君。；世事盡從流水去，功名富貴等浮雲。"
   },
   {
    "slip_number": 21,
@@ -995,13 +922,11 @@
     {
      "line": "碧玉池中開白蓮，裝嚴色相自天然。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      29
-     ],
+     "pages_b": [],
      "pages_c": [
       29
      ]
@@ -1009,13 +934,11 @@
     {
      "line": "生來骨格超凡俗，正是人間第一仙。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      29
-     ],
+     "pages_b": [],
      "pages_c": [
       29
      ]
@@ -1028,8 +951,8 @@
    "ocr_pages": [
     29
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 29）",
@@ -1042,42 +965,39 @@
    "lines": [
     {
      "line": "花開花落任春風，貴賤窮通百歲中。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      30
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "似子榮華今已矣，到頭萬事總歸空。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.0,
-     "pages_b": [
-      30
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "花開花落任春風，貴賤窮通百歲中。",
+    "似子榮華今已矣，到頭萬事總歸空。"
+   ],
    "cand_pages": [
     30
    ],
-   "ocr_pages": [
-    30
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 30）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：花開花落任春風，貴賤窮通百歲中。；似子榮華今已矣，到頭萬事總歸空。"
   },
   {
    "slip_number": 24,
@@ -1175,13 +1095,11 @@
     {
      "line": "年來豐歉皆天數，自是今年旱較多。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      32
-     ],
+     "pages_b": [],
      "pages_c": [
       32
      ]
@@ -1220,42 +1138,39 @@
    "lines": [
     {
      "line": "世間萬物皆有主，一粒一毫君莫取。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      33
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "英雄豪傑自天生，也須步步循規矩。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.0,
-     "pages_b": [
-      33
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "世間萬物皆有主，一粒一毫君莫取。",
+    "英雄豪傑自天生，也須步步循規矩。"
+   ],
    "cand_pages": [
     33
    ],
-   "ocr_pages": [
-    33
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 33）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：世間萬物皆有主，一粒一毫君莫取。；英雄豪傑自天生，也須步步循規矩。"
   },
   {
    "slip_number": 28,
@@ -1265,13 +1180,11 @@
     {
      "line": "公侯將相本無種，好把勤勞契上天。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      34
-     ],
+     "pages_b": [],
      "pages_c": [
       34
      ]
@@ -1279,13 +1192,11 @@
     {
      "line": "人事盡時天理見，材高豈得困林泉。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      34
-     ],
+     "pages_b": [],
      "pages_c": [
       34
      ]
@@ -1298,8 +1209,8 @@
    "ocr_pages": [
     34
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 34）",
@@ -1357,13 +1268,11 @@
     {
      "line": "奉公謹守莫欺心，自有亨通吉利臨。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      35
-     ],
+     "pages_b": [],
      "pages_c": [
       35
      ]
@@ -1403,13 +1312,11 @@
     {
      "line": "秋冬作事只尋常，春到門庭漸吉昌。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      36
-     ],
+     "pages_b": [],
      "pages_c": [
       36
      ]
@@ -1459,13 +1366,11 @@
     {
      "line": "事到頭時渾似夢，何如休要用心機。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      37
-     ],
+     "pages_b": [],
      "pages_c": [
       37
      ]
@@ -1505,13 +1410,11 @@
     {
      "line": "熟讀黃庭經一卷，不論貴賤與窮通。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      38
-     ],
+     "pages_b": [],
      "pages_c": [
       38
      ]
@@ -1540,44 +1443,42 @@
    "lines": [
     {
      "line": "春夏纔過秋又冬，紛紛謀慮攪心胸。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.7692307692307693,
-     "pages_b": [
-      39
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "貴人垂手來相援，休把私心情意濃。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      39
-     ],
+     "pages_b": [],
      "pages_c": [
       39
      ]
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "春夏纔過秋又冬，紛紛謀慮攪心胸。"
+   ],
    "cand_pages": [
     39
    ],
    "ocr_pages": [
     39
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 39）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：春夏纔過秋又冬，紛紛謀慮攪心胸。"
   },
   {
    "slip_number": 35,
@@ -1669,13 +1570,11 @@
     {
      "line": "焚香來告復何辭，善惡平分汝自知。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      41
-     ],
+     "pages_b": [],
      "pages_c": [
       41
      ]
@@ -1715,13 +1614,11 @@
     {
      "line": "蛩吟唧唧守孤幃，千里懸懸望信歸。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      42
-     ],
+     "pages_b": [],
      "pages_c": [
       42
      ]
@@ -1729,13 +1626,11 @@
     {
      "line": "等得榮華公子到，秋冬括括雨霏霏。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      42
-     ],
+     "pages_b": [],
      "pages_c": [
       42
      ]
@@ -1748,8 +1643,8 @@
    "ocr_pages": [
     42
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 42）",
@@ -1762,44 +1657,42 @@
    "lines": [
     {
      "line": "北山門下好安居，若問終時慎厥初。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      43
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "堪笑包藏許多事，鴻鱗難便好修書。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      43
-     ],
+     "pages_b": [],
      "pages_c": [
       43
      ]
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "北山門下好安居，若問終時慎厥初。"
+   ],
    "cand_pages": [
     43
    ],
    "ocr_pages": [
     43
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 43）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：北山門下好安居，若問終時慎厥初。"
   },
   {
    "slip_number": 40,
@@ -1809,13 +1702,11 @@
     {
      "line": "新來換得好規模，何用隨它步與趨。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      43
-     ],
+     "pages_b": [],
      "pages_c": [
       43
      ]
@@ -1855,13 +1746,11 @@
     {
      "line": "自南自北自東西，欲到天涯誰作梯。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      44
-     ],
+     "pages_b": [],
      "pages_c": [
       44
      ]
@@ -1900,15 +1789,13 @@
    "lines": [
     {
      "line": "我曾許汝事和諧，誰料修為汝自乖。",
-     "line_status": "confirmed",
+     "line_status": "unresolved",
      "hit_b": false,
-     "hit_c": true,
+     "hit_c": false,
      "rate_b": 0.8461538461538461,
      "rate_c": 1.0,
      "pages_b": [],
-     "pages_c": [
-      45
-     ]
+     "pages_c": []
     },
     {
      "line": "但改新圖莫依舊，營謀應得稱心懷。",
@@ -1922,20 +1809,19 @@
     }
    ],
    "line_unresolved": [
+    "我曾許汝事和諧，誰料修為汝自乖。",
     "但改新圖莫依舊，營謀應得稱心懷。"
    ],
    "cand_pages": [
     45
    ],
-   "ocr_pages": [
-    45
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 45）",
-   "notes": "line-level UNRESOLVED：但改新圖莫依舊，營謀應得稱心懷。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：我曾許汝事和諧，誰料修為汝自乖。；但改新圖莫依舊，營謀應得稱心懷。"
   },
   {
    "slip_number": 43,
@@ -1945,13 +1831,11 @@
     {
      "line": "一紙官書火急催，扁舟速下浪如雷。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      46
-     ],
+     "pages_b": [],
      "pages_c": [
       46
      ]
@@ -1959,13 +1843,11 @@
     {
      "line": "雖然目下多驚懼，保汝平安去復回。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      46
-     ],
+     "pages_b": [],
      "pages_c": [
       46
      ]
@@ -1978,8 +1860,8 @@
    "ocr_pages": [
     46
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 46）",
@@ -1993,13 +1875,11 @@
     {
      "line": "汝是人中最吉人，誤為誤作損精神。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      47
-     ],
+     "pages_b": [],
      "pages_c": [
       47
      ]
@@ -2082,46 +1962,39 @@
    "lines": [
     {
      "line": "君是山中萬戶侯，信知騎馬勝騎牛。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      48
-     ],
-     "pages_c": [
-      48
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "今朝馬上看山色，爭似騎牛得自由。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      48
-     ],
-     "pages_c": [
-      48
-     ]
+     "pages_b": [],
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "君是山中萬戶侯，信知騎馬勝騎牛。",
+    "今朝馬上看山色，爭似騎牛得自由。"
+   ],
    "cand_pages": [
     48
    ],
-   "ocr_pages": [
-    48
-   ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 48）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：君是山中萬戶侯，信知騎馬勝騎牛。；今朝馬上看山色，爭似騎牛得自由。"
   },
   {
    "slip_number": 47,
@@ -2141,13 +2014,11 @@
     {
      "line": "訟則終凶君記取，試於清夜把心捫。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      49
-     ],
+     "pages_b": [],
      "pages_c": [
       49
      ]
@@ -2176,14 +2047,12 @@
    "lines": [
     {
      "line": "登山涉水正天寒，兄弟親姻那得安。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      50
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -2198,20 +2067,19 @@
     }
    ],
    "line_unresolved": [
+    "登山涉水正天寒，兄弟親姻那得安。",
     "不遇虎頭人一喚，全家誰保汝重懼。"
    ],
    "cand_pages": [
     50
    ],
-   "ocr_pages": [
-    50
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 50）",
-   "notes": "line-level UNRESOLVED：不遇虎頭人一喚，全家誰保汝重懼。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：登山涉水正天寒，兄弟親姻那得安。；不遇虎頭人一喚，全家誰保汝重懼。"
   },
   {
    "slip_number": 49,
@@ -2265,13 +2133,11 @@
     {
      "line": "人說今年勝去年，也須步步要周旋。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      51
-     ],
+     "pages_b": [],
      "pages_c": [
       51
      ]
@@ -2323,13 +2189,11 @@
     {
      "line": "莫嘆年來不如意，喜逢新運稱心田。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      52
-     ],
+     "pages_b": [],
      "pages_c": [
       52
      ]
@@ -2369,13 +2233,11 @@
     {
      "line": "萬金忽報秋光好，活計扁舟渡北潮。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      53
-     ],
+     "pages_b": [],
      "pages_c": [
       53
      ]
@@ -2456,32 +2318,29 @@
     },
     {
      "line": "爭奈乘流風未便，青燈黃卷且勤勞。",
-     "line_status": "confirmed",
+     "line_status": "unresolved",
      "hit_b": false,
-     "hit_c": true,
+     "hit_c": false,
      "rate_b": 0.7692307692307693,
      "rate_c": 1.0,
      "pages_b": [],
-     "pages_c": [
-      55
-     ]
+     "pages_c": []
     }
    ],
    "line_unresolved": [
-    "萬人叢裹逞英豪，便欲飛騰霄漢高。"
+    "萬人叢裹逞英豪，便欲飛騰霄漢高。",
+    "爭奈乘流風未便，青燈黃卷且勤勞。"
    ],
    "cand_pages": [
     55
    ],
-   "ocr_pages": [
-    55
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 55）",
-   "notes": "line-level UNRESOLVED：萬人叢裹逞英豪，便欲飛騰霄漢高。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：萬人叢裹逞英豪，便欲飛騰霄漢高。；爭奈乘流風未便，青燈黃卷且勤勞。"
   },
   {
    "slip_number": 55,
@@ -2490,17 +2349,13 @@
    "lines": [
     {
      "line": "勤耕力作莫蹉跎，衣食隨時安分過。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      55
-     ],
-     "pages_c": [
-      55
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "縱使經商收倍利，不如逐歲凜禾多。",
@@ -2514,20 +2369,19 @@
     }
    ],
    "line_unresolved": [
+    "勤耕力作莫蹉跎，衣食隨時安分過。",
     "縱使經商收倍利，不如逐歲凜禾多。"
    ],
    "cand_pages": [
     55
    ],
-   "ocr_pages": [
-    55
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 55）",
-   "notes": "line-level UNRESOLVED：縱使經商收倍利，不如逐歲凜禾多。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：勤耕力作莫蹉跎，衣食隨時安分過。；縱使經商收倍利，不如逐歲凜禾多。"
   },
   {
    "slip_number": 56,
@@ -2546,32 +2400,29 @@
     },
     {
      "line": "一旦醜形臨月鏡，身投憲網莫咨嗟。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      56
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
    "line_unresolved": [
-    "心頭理曲強詞遮，直欲欺官行路斜。"
+    "心頭理曲強詞遮，直欲欺官行路斜。",
+    "一旦醜形臨月鏡，身投憲網莫咨嗟。"
    ],
    "cand_pages": [
     56
    ],
-   "ocr_pages": [
-    56
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 56）",
-   "notes": "line-level UNRESOLVED：心頭理曲強詞遮，直欲欺官行路斜。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：心頭理曲強詞遮，直欲欺官行路斜。；一旦醜形臨月鏡，身投憲網莫咨嗟。"
   },
   {
    "slip_number": 57,
@@ -2581,13 +2432,11 @@
     {
      "line": "事端百出慮雖長，莫聽人言自主張。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      57
-     ],
+     "pages_b": [],
      "pages_c": [
       57
      ]
@@ -2668,13 +2517,11 @@
     {
      "line": "門衰戶冷苦伶仃，自嘆祈求不一靈。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      59
-     ],
+     "pages_b": [],
      "pages_c": [
       59
      ]
@@ -2755,13 +2602,11 @@
     {
      "line": "嘯聚山林凶惡儔，善良無事苦煎憂。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      60
-     ],
+     "pages_b": [],
      "pages_c": [
       60
      ]
@@ -2769,13 +2614,11 @@
     {
      "line": "主人大笑出門去，不用干戈盜賊休。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      60
-     ],
+     "pages_b": [],
      "pages_c": [
       60
      ]
@@ -2788,8 +2631,8 @@
    "ocr_pages": [
     60
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 60）",
@@ -2844,13 +2687,11 @@
     {
      "line": "曩時敗北且圖南，筋力雖衰尚一堪。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      62
-     ],
+     "pages_b": [],
      "pages_c": [
       62
      ]
@@ -2858,13 +2699,11 @@
     {
      "line": "欲識前生君大數，前三三與後三三。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      62
-     ],
+     "pages_b": [],
      "pages_c": [
       62
      ]
@@ -2877,8 +2716,8 @@
    "ocr_pages": [
     62
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 62）",
@@ -2892,13 +2731,11 @@
     {
      "line": "吉人相遇本和同，況有持謀天水翁。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      63
-     ],
+     "pages_b": [],
      "pages_c": [
       63
      ]
@@ -2982,13 +2819,11 @@
     {
      "line": "耕耘只可在鄉邦，何用求謀過外方。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      64
-     ],
+     "pages_b": [],
      "pages_c": [
       64
      ]
@@ -3027,14 +2862,12 @@
    "lines": [
     {
      "line": "纔發君心天已知，何須問我決狐疑，",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      65
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -3049,20 +2882,19 @@
     }
    ],
    "line_unresolved": [
+    "纔發君心天已知，何須問我決狐疑，",
     "願子改圖從孝悌，不愁家室不相宜。"
    ],
    "cand_pages": [
     65
    ],
-   "ocr_pages": [
-    65
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 65）",
-   "notes": "line-level UNRESOLVED：願子改圖從孝悌，不愁家室不相宜。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：纔發君心天已知，何須問我決狐疑，；願子改圖從孝悌，不愁家室不相宜。"
   },
   {
    "slip_number": 68,
@@ -3084,13 +2916,11 @@
     {
      "line": "勸君止此求田舍，心欲多時何日厭。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      66
-     ],
+     "pages_b": [],
      "pages_c": [
       66
      ]
@@ -3130,13 +2960,11 @@
     {
      "line": "一夜樽前兄與弟，明朝仇敵又相隨。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      67
-     ],
+     "pages_b": [],
      "pages_c": [
       67
      ]
@@ -3164,13 +2992,11 @@
     {
      "line": "雷雨風雲各有司，至誠禱告莫生疑。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      67
-     ],
+     "pages_b": [],
      "pages_c": [
       67
      ]
@@ -3209,17 +3035,13 @@
    "lines": [
     {
      "line": "喜鵲簷前報好音，知君千里欲歸心。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      68
-     ],
-     "pages_c": [
-      68
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "繡幃重結鴛鴦帶，葉落霜飛寒色侵。",
@@ -3233,20 +3055,19 @@
     }
    ],
    "line_unresolved": [
+    "喜鵲簷前報好音，知君千里欲歸心。",
     "繡幃重結鴛鴦帶，葉落霜飛寒色侵。"
    ],
    "cand_pages": [
     68
    ],
-   "ocr_pages": [
-    68
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 68）",
-   "notes": "line-level UNRESOLVED：繡幃重結鴛鴦帶，葉落霜飛寒色侵。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：喜鵲簷前報好音，知君千里欲歸心。；繡幃重結鴛鴦帶，葉落霜飛寒色侵。"
   },
   {
    "slip_number": 72,
@@ -3268,13 +3089,11 @@
     {
      "line": "縱有榮華好時節，直須猴大換金鷄。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.9230769230769231,
-     "pages_b": [
-      69
-     ],
+     "pages_b": [],
      "pages_c": [
       69
      ]
@@ -3302,13 +3121,11 @@
     {
      "line": "憶昔蘭堂分半釵，而今忽把信期乖。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      70
-     ],
+     "pages_b": [],
      "pages_c": [
       70
      ]
@@ -3358,13 +3175,11 @@
     {
      "line": "身似菩提心似鏡，長安一道放春回。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      71
-     ],
+     "pages_b": [],
      "pages_c": [
       71
      ]
@@ -3394,13 +3209,11 @@
     {
      "line": "生前結得好婚姻，一笑相逢情自親。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      71
-     ],
+     "pages_b": [],
      "pages_c": [
       71
      ]
@@ -3440,13 +3253,11 @@
     {
      "line": "三千法律八千文，此事如何說與君。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      72
-     ],
+     "pages_b": [],
      "pages_c": [
       72
      ]
@@ -3454,13 +3265,11 @@
     {
      "line": "善惡兩途君自作，一生禍福事由分。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      72
-     ],
+     "pages_b": [],
      "pages_c": [
       72
      ]
@@ -3473,8 +3282,8 @@
    "ocr_pages": [
     72
    ],
-   "transcription_grade": "A",
-   "transcription_confidence": "HIGH",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 72）",
@@ -3487,42 +3296,39 @@
    "lines": [
     {
      "line": "木有根荄水有源，君當自此究其元。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      73
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "莫隨道路人閑語，訟到終四是至言。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      73
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "木有根荄水有源，君當自此究其元。",
+    "莫隨道路人閑語，訟到終四是至言。"
+   ],
    "cand_pages": [
     73
    ],
-   "ocr_pages": [
-    73
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 73）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：木有根荄水有源，君當自此究其元。；莫隨道路人閑語，訟到終四是至言。"
   },
   {
    "slip_number": 78,
@@ -3573,13 +3379,11 @@
     {
      "line": "乾亥來龍仔細看，坎居午向自當安。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      75
-     ],
+     "pages_b": [],
      "pages_c": [
       75
      ]
@@ -3619,13 +3423,11 @@
     {
      "line": "一朝無事忽遭官，也是門衰墳未安。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      75
-     ],
+     "pages_b": [],
      "pages_c": [
       75
      ]
@@ -3674,32 +3476,29 @@
     },
     {
      "line": "幸有當臺明月鏡，請來對照破機關。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.6153846153846154,
-     "pages_b": [
-      76
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
    "line_unresolved": [
-    "假君財物自當還，謀賴心欺他自奸。"
+    "假君財物自當還，謀賴心欺他自奸。",
+    "幸有當臺明月鏡，請來對照破機關。"
    ],
    "cand_pages": [
     76
    ],
-   "ocr_pages": [
-    76
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 76）",
-   "notes": "line-level UNRESOLVED：假君財物自當還，謀賴心欺他自奸。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：假君財物自當還，謀賴心欺他自奸。；幸有當臺明月鏡，請來對照破機關。"
   },
   {
    "slip_number": 82,
@@ -3749,44 +3548,39 @@
    "lines": [
     {
      "line": "隨分堂前赴粥饘，何須妄想苦憂煎。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      78
-     ],
-     "pages_c": [
-      78
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "主張門戶成難事，百歲寬閑得幾年。",
-     "line_status": "confirmed",
+     "line_status": "unresolved",
      "hit_b": false,
-     "hit_c": true,
+     "hit_c": false,
      "rate_b": 0.6153846153846154,
      "rate_c": 0.9230769230769231,
      "pages_b": [],
-     "pages_c": [
-      78
-     ]
+     "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "隨分堂前赴粥饘，何須妄想苦憂煎。",
+    "主張門戶成難事，百歲寬閑得幾年。"
+   ],
    "cand_pages": [
     78
    ],
-   "ocr_pages": [
-    78
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 78）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：隨分堂前赴粥饘，何須妄想苦憂煎。；主張門戶成難事，百歲寬閑得幾年。"
   },
   {
    "slip_number": 84,
@@ -3795,42 +3589,39 @@
    "lines": [
     {
      "line": "箇中事緒更紛然，當局須知一著先。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      79
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "長舌婦人休酷聽，力行禮義要心堅。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.0,
-     "pages_b": [
-      79
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "箇中事緒更紛然，當局須知一著先。",
+    "長舌婦人休酷聽，力行禮義要心堅。"
+   ],
    "cand_pages": [
     79
    ],
-   "ocr_pages": [
-    79
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 79）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：箇中事緒更紛然，當局須知一著先。；長舌婦人休酷聽，力行禮義要心堅。"
   },
   {
    "slip_number": 85,
@@ -3839,14 +3630,12 @@
    "lines": [
     {
      "line": "一春風雨正蕭蕭，千里行人去路遙。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      79
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -3861,20 +3650,19 @@
     }
    ],
    "line_unresolved": [
+    "一春風雨正蕭蕭，千里行人去路遙。",
     "移寡就多君得計，如何歸路轉無聊。"
    ],
    "cand_pages": [
     79
    ],
-   "ocr_pages": [
-    79
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 79）",
-   "notes": "line-level UNRESOLVED：移寡就多君得計，如何歸路轉無聊。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：一春風雨正蕭蕭，千里行人去路遙。；移寡就多君得計，如何歸路轉無聊。"
   },
   {
    "slip_number": 86,
@@ -3883,14 +3671,12 @@
    "lines": [
     {
      "line": "一般行貨好招邀，積少成多自富饒。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      80
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
@@ -3905,20 +3691,19 @@
     }
    ],
    "line_unresolved": [
+    "一般行貨好招邀，積少成多自富饒。",
     "長把他人比自己，管須自後勝今朝。"
    ],
    "cand_pages": [
     80
    ],
-   "ocr_pages": [
-    80
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 80）",
-   "notes": "line-level UNRESOLVED：長把他人比自己，管須自後勝今朝。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：一般行貨好招邀，積少成多自富饒。；長把他人比自己，管須自後勝今朝。"
   },
   {
    "slip_number": 87,
@@ -3938,13 +3723,11 @@
     {
      "line": "藩籬剖破渾無事，一種天生惜羽毛。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 0.9230769230769231,
      "rate_c": 1.0,
-     "pages_b": [
-      81
-     ],
+     "pages_b": [],
      "pages_c": [
       81
      ]
@@ -4141,42 +3924,39 @@
    "lines": [
     {
      "line": "今年禾穀不如前，物價喧騰倍百千。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.0,
-     "pages_b": [
-      85
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "災數流行多疫癘，一陽來復始安全。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 0.9230769230769231,
      "rate_c": 0.0,
-     "pages_b": [
-      85
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "今年禾穀不如前，物價喧騰倍百千。",
+    "災數流行多疫癘，一陽來復始安全。"
+   ],
    "cand_pages": [
     85
    ],
-   "ocr_pages": [
-    85
-   ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "ocr_pages": [],
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 85）",
-   "notes": ""
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：今年禾穀不如前，物價喧騰倍百千。；災數流行多疫癘，一陽來復始安全。"
   },
   {
    "slip_number": 93,
@@ -4197,30 +3977,30 @@
     },
     {
      "line": "節氣直交三伏始，喜逢滂沛足田園。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      86
-     ],
+     "pages_b": [],
      "pages_c": []
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "節氣直交三伏始，喜逢滂沛足田園。"
+   ],
    "cand_pages": [
     86
    ],
    "ocr_pages": [
     86
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 86）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：節氣直交三伏始，喜逢滂沛足田園。"
   },
   {
    "slip_number": 94,
@@ -4312,13 +4092,11 @@
     {
      "line": "婚姻子息莫嫌遲，但把精神仗佛持。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      88
-     ],
+     "pages_b": [],
      "pages_c": [
       88
      ]
@@ -4357,44 +4135,42 @@
    "lines": [
     {
      "line": "五十功名心已灰，那知富貴逼人來。",
-     "line_status": "confirmed",
-     "hit_b": true,
+     "line_status": "unresolved",
+     "hit_b": false,
      "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 0.8461538461538461,
-     "pages_b": [
-      89
-     ],
+     "pages_b": [],
      "pages_c": []
     },
     {
      "line": "更行好事存方寸，壽比岡陵位鼎台。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      89
-     ],
+     "pages_b": [],
      "pages_c": [
       89
      ]
     }
    ],
-   "line_unresolved": [],
+   "line_unresolved": [
+    "五十功名心已灰，那知富貴逼人來。"
+   ],
    "cand_pages": [
     89
    ],
    "ocr_pages": [
     89
    ],
-   "transcription_grade": "B",
-   "transcription_confidence": "MEDIUM",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 89）",
-   "notes": ""
+   "notes": "line-level UNRESOLVED：五十功名心已灰，那知富貴逼人來。"
   },
   {
    "slip_number": 98,
@@ -4404,13 +4180,11 @@
     {
      "line": "經商百出費精神，南北奔馳運未新。",
      "line_status": "confirmed",
-     "hit_b": true,
+     "hit_b": false,
      "hit_c": true,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      90
-     ],
+     "pages_b": [],
      "pages_c": [
       90
      ]
@@ -4490,17 +4264,13 @@
    "lines": [
     {
      "line": "我本天仙雷雨師，吉凶禍福我先知。",
-     "line_status": "confirmed",
-     "hit_b": true,
-     "hit_c": true,
+     "line_status": "unresolved",
+     "hit_b": false,
+     "hit_c": false,
      "rate_b": 1.0,
      "rate_c": 1.0,
-     "pages_b": [
-      91
-     ],
-     "pages_c": [
-      91
-     ]
+     "pages_b": [],
+     "pages_c": []
     },
     {
      "line": "至誠禱祝皆靈應，抽得終籤百事宜。",
@@ -4514,20 +4284,19 @@
     }
    ],
    "line_unresolved": [
+    "我本天仙雷雨師，吉凶禍福我先知。",
     "至誠禱祝皆靈應，抽得終籤百事宜。"
    ],
    "cand_pages": [
     91
    ],
-   "ocr_pages": [
-    91
-   ],
+   "ocr_pages": [],
    "transcription_grade": "LOW",
    "transcription_confidence": "LOW",
    "transcription_status": "PROBABLE",
    "textual_witness_confidence": "single_witness_not_verified",
-   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 91）",
-   "notes": "line-level UNRESOLVED：至誠禱祝皆靈應，抽得終籤百事宜。"
+   "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
+   "notes": "line-level UNRESOLVED：我本天仙雷雨師，吉凶禍福我先知。；至誠禱祝皆靈應，抽得終籤百事宜。"
   }
  ]
 }

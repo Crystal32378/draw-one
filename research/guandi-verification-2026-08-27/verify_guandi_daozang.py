@@ -14,10 +14,11 @@ witness 語義（名實相符）：
                                    不再稱 textual authenticity 的 VERIFIED）
       witness_independence       : 結構化說明
 
-matching boundary（修正）：
-  - 比對限定「該籤對應頁（cand_pages）」，不全 corpus 任意 bigram
-  - 不 normalize 掉 □
-  - 不把 裡/裏/里 合併（這些正是 candidate variant 觀察重點）
+matching boundary（v0.5，福第二輪）：slip-region scoped
+  - 由各 transcription path 自行切出 per-slip region（slip_regions.py，deterministic/fail-closed）
+  - 匹配只在該籤自己的 region 發生；neighboring slip text cannot satisfy current slip evidence
+  - 某頁某籤無法可靠切割（缺 marker / 衝突）→ fail closed：該頁不提供 evidence
+  - 不 normalize 掉 □；不併 裡/裏/里
 
 line-level：#70 等未確認句標 line status=unresolved，slip 維持 PROBABLE（低信心 candidate）
 
@@ -39,7 +40,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 if len(sys.argv) > 1:
     REPO = sys.argv[1]
 else:
-    REPO = os.path.abspath(os.path.join(HERE, "..", "..", "..")) if HERE.endswith("research/guandi-verification-2026-08-27") else HERE
+    # 本檔位於 <repo>/research/guandi-verification-2026-08-27/
+    REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 PKG = os.path.join(REPO, "research", "guandi-verification-2026-08-27")
 OCR_DIR = os.path.join(PKG, "ocr")
 B1 = os.path.join(OCR_DIR, "daozang_ocr_b1_combined.txt")
@@ -47,7 +49,18 @@ B2 = os.path.join(OCR_DIR, "daozang_ocr_b2_combined.txt")
 AUTOGLM = os.path.join(OCR_DIR, "daozang_pages_autoglm.jsonl")
 AUTOGLM2 = os.path.join(OCR_DIR, "daozang_pages_autoglm2.jsonl")
 SLIPS = os.path.join(REPO, "data", "corpora", "guandi", "slip_texts.json")
-MAP = json.load(open(os.path.join(PKG, "slip_page_map.json")))
+def get_page_map():
+    return json.load(open(os.path.join(PKG, "slip_page_map.json")))
+
+
+MAP_CACHE = None
+
+
+def load_map():
+    global MAP_CACHE
+    if MAP_CACHE is None:
+        MAP_CACHE = get_page_map()
+    return MAP_CACHE
 OUT_REPORT = os.path.join(PKG, "verification_report_v4.json")
 OUT_MD = os.path.join(PKG, "verification_report_v4.md")
 OUT_SLIPS = os.path.join(PKG, "slip_texts.verified_v4.json")
@@ -187,12 +200,20 @@ def main():
     slips_doc = json.load(open(SLIPS, encoding="utf-8"))
     slips = slips_doc["slips"]
 
+    from slip_regions import load_path_regions_b, load_path_regions_c
+    regions_b, seg_stats_b = load_path_regions_b(pages_b)
+    regions_c, seg_stats_c = load_path_regions_c([AUTOGLM, AUTOGLM2])
+    def region_norm(path_map, pg, num):
+        t = path_map.get(pg, {}).get(num, "")
+        return normalize(strip_punct(t, keep_box=True)) if t else ""
+    print(f"segmentation: B pages={len(pages_b)} conflict={len(seg_stats_b['conflict_pages'])} empty_region_pages={seg_stats_b['empty_region_pages']} | C conflict={len(seg_stats_c['conflict_pages'])} empty={seg_stats_c['empty_region_pages']}")
+
     results = []
     for slip in slips:
         n = slip["slip_number"]
         poem = slip["poem_text"]
         lines = [l for l in poem.split("\n") if l.strip()]
-        cand_pages = MAP.get(str(n), [])
+        cand_pages = load_map().get(str(n), [])
         line_out = []
         for line in lines:
             ln = normalize(strip_punct(line, keep_box=False))
@@ -203,11 +224,19 @@ def main():
             # page-scoped：只在 cand_pages 內比對
             hit_b, hit_c = False, False
             pages_b_hit, pages_c_hit = [], []
-            for p in cand_pages:
-                if p in norm_b and ngram_hit_rate(ln, norm_b[p]) >= 0.9:
+            own_b = [p for p in cand_pages]
+            for p in own_b:
+                reg = region_norm(regions_b, p, n)
+                if not reg:
+                    continue  # fail-closed：本頁此籤無可靠 region → 不提供 evidence
+                if ngram_hit_rate(ln, reg) >= 0.9:
                     hit_b = True
                     pages_b_hit.append(p)
-                if p in norm_c and ngram_hit_rate(ln, norm_c[p]) >= 0.9:
+            for p in own_b:
+                reg = region_norm(regions_c, p, n)
+                if not reg:
+                    continue
+                if ngram_hit_rate(ln, reg) >= 0.9:
                     hit_c = True
                     pages_c_hit.append(p)
             line_out.append({
