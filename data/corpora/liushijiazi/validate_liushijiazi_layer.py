@@ -8,10 +8,9 @@
   A3  uncertainty       — UNRESOLVED：textual_box 必含 □；structural_absent / ocr_anomaly 可無 □（reason code 標明）
   A4  structure         — 60 籤、每籤 6 筆、14 欄位齊全、layer_class 一致、confidence 合法值
   A5  encoding          — 無 U+FFFD / mojibake / 異常控制字符
-  A6  evidence coherence — confidence 必須由足夠 evidence 支撐：
-                           PROBABLE ⇒ obs=ocr_double_exact_agree ＋ agreement.mode=exact ＋ evidence≥2；
-                           CANDIDATE ⇒ obs∈{ocr_single_pass, ocr_recheck_single}；
-                           UNRESOLVED ⇒ reason code 必填且合法— manual_image_confirmation=false ⇒ source_observation_status≠human_image_confirmed；
+  A6  evidence coherence — confidence 必須由「真實存在的 evidence」支撐（不信自報 metadata）：
+                           validator 回頭載入 OCR-A jsonl 與 Study 03 attestations，重算 agreement；
+                           source ID 必須真實存在、彼此不同；自報 mode 與重算不符 → FAIL— manual_image_confirmation=false ⇒ source_observation_status≠human_image_confirmed；
                            UNRESOLVED ⇒ unresolved_reason_code 必填且合法；PROBABLE ⇒ code=null
   A7  anomaly gate      — 已知 OCR 異常籤（OCR_ANOMALY 清單）不得標 PROBABLE
 
@@ -46,7 +45,6 @@ REQ = ['corpus', 'slip_no', 'ganzhi', 'edition', 'field_type', 'verbatim_text',
 VALID_CONF = {"PROBABLE", "CANDIDATE", "UNRESOLVED"}
 VALID_OBS_ALL = {"ocr_single_pass", "ocr_recheck_single", "structural_absent",
                  "human_image_confirmed", "ocr_double_exact_agree"}
-VALID_OBS = {"ocr_single_pass", "ocr_recheck", "structural_absent", "human_image_confirmed"}
 VALID_CODE = {"textual_box", "structural_absent", "ocr_anomaly", "parse_artifact"}
 
 # 與 build 同步的已知 OCR 異常清單
@@ -89,11 +87,64 @@ def has_mojibake(s):
     return False
 
 
+def load_real_evidence():
+    """載入真實 OCR evidence（不信任何 entry 自報欄位）。"""
+    ocr_a = {}
+    p = os.path.join(CORPUS, "ocr_bg_2026-08-27.jsonl")
+    if os.path.exists(p):
+        for line in open(p, encoding="utf-8"):
+            try:
+                r = json.loads(line)
+                if r.get("status") == "ok":
+                    ocr_a[r["slip_number"]] = True
+            except Exception:
+                pass
+    legacy = {}
+    p2 = os.path.join(CORPUS, "attestations.json")
+    if os.path.exists(p2):
+        for att in json.load(open(p2, encoding="utf-8")):
+            if att.get("family_id") != "ed-beigang-chaotiangong":
+                continue
+            for layer in att.get("commentary_layers", []):
+                nm = layer.get("layer_name", "")
+                txt = layer.get("text") or ""
+                if not txt.strip():
+                    continue
+                if nm == "五行方位":
+                    legacy[(att["slip_number"], "五行方位")] = txt
+                elif "聖意" in nm and "籤閣" not in nm:
+                    legacy[(att["slip_number"], "聖意")] = txt
+    return {"ocr_a": ocr_a, "legacy": legacy, "recheck_allowed": {35}}
+
+
+def recompute_agreement(e, real):
+    """validator 自己重算 agreement（與 build 同一定義：normalize+whitespace-strip 後 exact 相等）。
+    second source 必須真實存在；不存在 → None（mode 非 exact）。"""
+    sn, ft = e["slip_no"], e["field_type"]
+    legacy = real["legacy"].get((sn, ft))
+    if legacy is None:
+        return None
+    import difflib as _d
+    va = re.sub(r"\s+", "", e["verbatim_text"] or "")
+    vb = re.sub(r"\s+", "", re.sub(r"[|:*#]", "", legacy))
+    if va and va == vb:
+        return "exact"
+    _ = _d.SequenceMatcher(None, va, vb).ratio()  # similarity 僅供 audit（不作為升級依據）
+    return "non_exact"
+
+
+def recompute_second(e, real):
+    """second observation 是否真實存在（供 evidence ID 檢查）。"""
+    return real["legacy"].get((e["slip_no"], e["field_type"]))
+
+
 def main():
     layer = json.load(open(LAYER, encoding="utf-8"))
     src = json.load(open(SRC, encoding="utf-8"))
     entries = layer["entries"]
     failures = []
+    real = load_real_evidence()
+    ctx = {"real_evidence": real}
     TRACE_FIELDS = ["卦名", "五行方位", "籤解", "卦運勢", "籤閣聖意"]
 
     # A4 結構
@@ -126,7 +177,8 @@ def main():
         if has_mojibake(e["verbatim_text"]) or has_mojibake(e["variants_or_notes"] or ""):
             failures.append(("A5", f'#{e["slip_no"]} mojibake', repr(e["verbatim_text"][:20])))
 
-    # A6 evidence coherence（evidence-driven confidence，福第二輪）
+    # A6 evidence coherence（v0.5：不信自報 metadata——回頭載入真實 evidence 重算）
+    real = ctx["real_evidence"]
     for e in entries:
         obs = e.get("source_observation_status")
         conf = e.get("transcription_confidence")
@@ -136,18 +188,38 @@ def main():
         if obs not in VALID_OBS_ALL:
             failures.append(("A6", f'#{e["slip_no"]} observation status 異常', str(obs)))
             continue
-        # manual confirmation 一致性
         mic = e.get("manual_image_confirmation")
         if (mic is True) != (obs == "human_image_confirmed"):
             failures.append(("A6", f'#{e["slip_no"]} manual_image_confirmation 與 obs 矛盾', f'mic={mic} obs={obs}'))
-        # PROBABLE 門檻：必須雙 pass exact agreement
+        # evidence ID 合法性：真實存在、無重複、彼此不同
+        if len(ev) != len(set(ev)):
+            failures.append(("A6", f'#{e["slip_no"]} evidence_sources 重複', str(ev)))
+        for sid in ev:
+            if sid not in {"ocr_a", "study03_legacy", "recheck"}:
+                failures.append(("A6", f'#{e["slip_no"]} 未知 evidence source ID', sid))
+        if "ocr_a" in ev and e["slip_no"] not in real["ocr_a"]:
+            failures.append(("A6", f'#{e["slip_no"]} 聲稱 ocr_a 但 OCR-A 無此籤記錄', ""))
+        if "study03_legacy" in ev:
+            if recompute_second(e, real) is None:
+                failures.append(("A6", f'#{e["slip_no"]} 聲稱 study03_legacy 但實際無此欄位 legacy layer', e["field_type"]))
+        if "recheck" in ev and e["slip_no"] not in real["recheck_allowed"]:
+            failures.append(("A6", f'#{e["slip_no"]} 聲稱 recheck 但 recheck 僅存在於限定籤', f'#{e["slip_no"]} {e["field_type"]}'))
+        # agreement 重算（validator 自己算，不信 entry 自報）
+        recomputed_mode = recompute_agreement(e, real)
+        self_reported = ag.get("mode")
         if conf == "PROBABLE":
-            if obs != "ocr_double_exact_agree" or ag.get("mode") != "exact" or len(ev) < 2:
-                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 缺可驗證 evidence basis',
-                                 f'obs={obs} mode={ag.get("mode")} ev={ev}'))
+            if recomputed_mode != "exact":
+                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 但重算 agreement 非 exact',
+                                 f'recomputed={recomputed_mode} self={self_reported}'))
+            if self_reported != "exact":
+                failures.append(("A6", f'#{e["slip_no"]} 自報 mode 與重算不符', f'self={self_reported} recomputed={recomputed_mode}'))
+            if obs != "ocr_double_exact_agree" or len(ev) < 2:
+                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 的 obs/evidence 不符門檻', f'obs={obs} ev={ev}'))
             if code is not None:
                 failures.append(("A6", f'#{e["slip_no"]} PROBABLE 卻有 reason code', str(code)))
         elif conf == "CANDIDATE":
+            if recomputed_mode == "exact" and obs in {"ocr_single_pass"}:
+                failures.append(("A6", f'#{e["slip_no"]} 重算 exact 卻只給 CANDIDATE（evidence 足而未升）', e["field_type"]))
             if obs not in {"ocr_single_pass", "ocr_recheck_single"}:
                 failures.append(("A6", f'#{e["slip_no"]} CANDIDATE 的 obs 不合法', str(obs)))
             if code is not None:
