@@ -1,50 +1,70 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-六十甲子 Historical Interpretation Layer — build 腳本（v0.1 草案）
+六十甲子 Historical Interpretation Layer — build 腳本（v0.3，福 re-gate 修正版）
 corpus: liushijiazi | layer: historical_interpretation
-edition: 北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主）
+edition: 北港朝天宮官方籤詩圖檔（2024-08-05 批次為主、第59籤 2025-06-21 批次）
 
-輸入：
-  1. bg_ocr_full.jsonl  — 本次批次 OCR（autoglm image recognition，中文逐字，production witness 的 transcription candidate）
-  2. attestations.json  — repo 既有北港 commentary_layers（Study 03 OCR，第二 candidate / comparison）
-  3. slips.json         — reference_text（籤詩四句）
+v0.3 變更（福 re-gate 2026-08-27）：
+  1. confidence 拆四欄（名實相符）：
+     - source_observation_status : 觀察途徑（ocr_single_pass / ocr_recheck / structural_absent / human_image_confirmed）
+     - transcription_confidence  : PROBABLE / UNRESOLVED（summary 用；transcription_status 保留為同義）
+     - manual_image_confirmation : bool（是否人類直接核圖；目前全 false，不假裝）
+     - unresolved_reason_code    : textual_box / structural_absent / ocr_anomaly / parse_artifact / null
+  2. 所有欄位 verbatim 去 markdown 殘留（** / ### / | 等），不只聖意
+  3. 已知 OCR 異常籤（#3 天水註卦、#25 浮山咸卦）標 unresolved_reason_code=ocr_anomaly，
+     不因「沒有 □」就 PROBABLE
+  4. #35 provenance 如實：source_observation_status=ocr_recheck（第二 OCR 重讀），
+     manual_image_confirmation=false（非人類核圖）
 
-輸出：
-  interpretation_layer.json — entries（卦名/五行方位/聖意/籤解/卦運勢/籤閣聖意 六欄；廟公的話/卦頭故事/圖示 收 source_texts 附錄）
-  source_texts.json         — per-slip source 全文（A1/A1b gate 用）
+輸入（repo clean checkout 相對路徑）：
+  <repo>/data/corpora/liushijiazi/ocr_bg_2026-08-27.jsonl  （OCR-A 原始輸出）
+  <repo>/data/corpora/liushijiazi/attestations.json          （legacy OCR-B comparison）
+  <repo>/data/corpora/liushijiazi/slips.json                 （reference_text）
 
-狀態語義（誠實標籤，never an upgrade）：
-  PROBABLE   = 兩次 OCR 一致 或 單一 OCR 通順無疑（待 source image 逐籤複核）
-  UNRESOLVED = OCR 分歧 / 可疑字 / 缺字（留 □ 或標 structural）
+輸出（寫入 <repo>/data/corpora/liushijiazi/）：
+  interpretation_layer.json   （entries，schema v0.2）
+  source_texts.json           （per-slip source）
 """
 import json
 import os
 import re
 import sys
 
-HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = None
 if len(sys.argv) > 1:
-    WORK = sys.argv[1]
+    REPO = sys.argv[1]
 else:
-    WORK = HERE
+    # 預設：本檔所在 repo（data/corpora/liushijiazi/ 的上一層上兩層）
+    HERE = os.path.dirname(os.path.abspath(__file__))
+    if HERE.endswith("data/corpora/liushijiazi"):
+        REPO = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+    else:
+        REPO = HERE
 
-OCR_JSONL = os.path.join(WORK, "bg_ocr_full.jsonl")
-ATTESTATIONS = os.path.join(WORK, "repo-delivery", "data", "corpora", "liushijiazi", "attestations.json")
-SLIPS = os.path.join(WORK, "repo-delivery", "data", "corpora", "liushijiazi", "slips.json")
-OUT_LAYER = os.path.join(WORK, "liushijiazi_interpretation_layer.json")
-OUT_SRC = os.path.join(WORK, "liushijiazi_source_texts.json")
+CORPUS_DIR = os.path.join(REPO, "data", "corpora", "liushijiazi")
+OCR_JSONL = os.path.join(CORPUS_DIR, "ocr_bg_2026-08-27.jsonl")
+ATTESTATIONS = os.path.join(CORPUS_DIR, "attestations.json")
+SLIPS = os.path.join(CORPUS_DIR, "slips.json")
+OUT_LAYER = os.path.join(CORPUS_DIR, "interpretation_layer.json")
+OUT_SRC = os.path.join(CORPUS_DIR, "source_texts.json")
 
 EDITION = "北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主、第59籤 2025-06-21 批次）"
 
 # 人工確認補欄（2026-08-27 第二 OCR 重讀 witness）：{slip_no: {field_type: (verbatim或None, note)}}
 # None = 確認圖檔無此欄位（structural）
 MANUAL_FIX = {
-    35: {"卦名": ("坤卦", "2026-08-27 第二 OCR 重讀確認（批次 OCR 漏讀卦名欄；圖檔干支己酉下方爲「坤卦」）")},
+    35: {"卦名": ("坤卦", "2026-08-27 第二 OCR 重讀（非人類核圖）：批次 OCR 漏讀卦名欄；圖檔干支己酉下方爲「坤卦」。manual_image_confirmation=false")},
     59: {"籤閣聖意": (None, "structural：2026-08-27 第二 OCR 重讀確認圖檔未設置獨立『籤閣聖意』欄位（相關判詞併入聖意表格）；圖檔另有『籤圖寓意』欄（商衡…）已收 appendix")},
 }
 
-# 欄位標題（含變體；解析時先抓 **標題** 再 normalize 匹配）
+# 已知 OCR 異常（形近誤讀候選，依鐵律不猜字 → 標 UNRESOLVED + ocr_anomaly，待人工核圖）
+OCR_ANOMALY = {
+    3: {"卦名": "「天水註卦」疑「天水訟卦」形近誤讀（註/訟）；不猜字，待核圖"},
+    25: {"卦名": "「浮山咸卦」疑「澤山咸卦」形近誤讀（浮/澤）；不猜字，待核圖"},
+}
+
+# 欄位標題（含變體）
 FIELD_ALIASES = [
     ("卦名", ["卦名"]),
     ("五行方位", ["五行方位", "五行"]),
@@ -52,7 +72,7 @@ FIELD_ALIASES = [
     ("籤解", ["籤解"]),
     ("卦運勢", ["卦運勢", "運勢"]),
     ("籤閣聖意", ["籤閣聖意"]),
-    ("廟公的話", ["廟公的話", "廟公的話"]),
+    ("廟公的話", ["廟公的話"]),
     ("卦頭故事", ["卦頭故事", "籤閣聖意詳文"]),
     ("籤詩標題", ["籤詩標題"]),
     ("籤詩四句", ["籤詩四句", "籤詩"]),
@@ -64,7 +84,6 @@ FIELD_ALIASES = [
 
 def normalize_title(t):
     t = t.strip()
-    # 去全形/半形括號、冒号、星號、井號、底線、反引號、連字號、空白、斜線
     t = re.sub(r"[：:\s*#_`\-\-【】〔〕「」『』（）()《》/／·．]", "", t)
     return t
 
@@ -74,13 +93,34 @@ def _known_field_titles():
     for _, aliases in FIELD_ALIASES:
         for a in aliases:
             known.add(normalize_title(a))
-    known.add("卦運勢")  # endswith 特例
+    known.add("卦運勢")
     return known
 
 
+def clean_markdown(content):
+    """去 markdown 殘留（** / ### / | 表格語法 / 分隔線），保留文字內容。"""
+    lines = content.split("\n")
+    out = []
+    for ln in lines:
+        s = ln.strip()
+        if not s:
+            continue
+        if re.fullmatch(r"[|:#\-\—\s]+", s):
+            continue
+        if re.fullmatch(r"\|?\s*項目\s*\|?\s*判詞[^|]*\|?", s) or re.fullmatch(r"項目\s*\|?\s*判詞.*", s):
+            continue
+        s = s.replace("|", "　").strip()
+        s = re.sub(r"\*{1,3}", "", s)
+        s = re.sub(r"#{1,6}", "", s)
+        s = re.sub(r"^[-—–]+\s*$", "", s)
+        s = re.sub(r"\s+", " ", s)
+        if s:
+            out.append(s)
+    result = "\n".join(out).strip()
+    return result if result else content
+
+
 def parse_ocr_fields(text):
-    """把單籤 OCR 輸出（markdown 結構）解析成 {欄位名: 內容}。
-    處理「### **標題**」與「**內容值**」混用格式：非欄位名的標題視為前一欄位的值。"""
     fields = {}
     KNOWN = _known_field_titles()
     heads = []
@@ -95,7 +135,6 @@ def parse_ocr_fields(text):
         tn = normalize_title(title)
         if not tn:
             continue
-        # 此標題是否為已知欄位
         is_field = False
         fname_hit = None
         for fname, aliases in FIELD_ALIASES:
@@ -108,9 +147,7 @@ def parse_ocr_fields(text):
             if is_field:
                 break
         if not is_field:
-            # 非欄位名標題（可能是內容值，如「**火風鼎卦**」）——併入前一欄位或忽略
             continue
-        # 找 content 終點：下一個「欄位標題」位置（跳過非欄位標題）
         j = i + 1
         nxt_pos = len(text)
         while j < len(heads):
@@ -130,7 +167,6 @@ def parse_ocr_fields(text):
             if n_is_field:
                 nxt_pos = heads[j][0]
                 break
-            # 非欄位標題 = 前一欄位的值的一部分 → 跳過
             skip.add(j)
             j += 1
         content = text[end:nxt_pos].strip()
@@ -140,56 +176,54 @@ def parse_ocr_fields(text):
     return fields
 
 
-def parse_shengyi_grid(text):
-    """解析聖意內容：嘗試拆成 (項目, 判詞) 對。OCR 格式多變，拆不開就整段保留。"""
-    items = []
-    # 常見格式：**項目**：判詞 或 * 項目：判詞 或 | 項目 | 判詞 |
-    pat = re.compile(r"(?:\*\*|\*)?([\u4e00-\u9fff]{2,4}?)（?[\u4e00-\u9fff]{0,2}?）?\*\*?\s*[：:]\s*([^\n*|]+)")
-    for m in pat.finditer(text):
-        items.append((m.group(1).strip(), m.group(2).strip()))
-    if not items:
-        # 表格格式
-        rows = re.findall(r"\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|", text)
-        for r in rows:
-            items.append((r[0].strip(), r[1].strip()))
-    return items
+def make_entry(sn, ganzhi, ftype, verbatim, locator, obs_status, confidence, unresolved_code, note):
+    return {
+        "corpus": "liushijiazi",
+        "slip_no": sn,
+        "ganzhi": ganzhi,
+        "edition": EDITION,
+        "field_type": ftype,
+        "verbatim_text": verbatim,
+        "source_locator": locator,
+        "transcription_status": confidence,  # summary（與 transcription_confidence 同值）
+        "transcription_confidence": confidence,
+        "source_observation_status": obs_status,
+        "manual_image_confirmation": False,
+        "unresolved_reason_code": unresolved_code,
+        "layer_class": "living_tradition",
+        "variants_or_notes": note or "",
+    }
 
 
-def clean_shengyi(content):
-    """清理聖意欄位的 OCR markdown 表格語法（|、:---:、標頭行），保留判詞內容文字。
-    圖檔原文無表格符號；此清理僅去除 OCR 輸出格式，不改變文字內容。"""
-    lines = content.split("\n")
-    out = []
-    for ln in lines:
-        s = ln.strip()
-        if not s:
-            continue
-        # 跳過表格分隔線與標頭
-        if re.fullmatch(r"[|:\-—\s]+", s):
-            continue
-        if re.fullmatch(r"\|\s*項目\s*\|\s*判詞[^|]*\|?", s) or re.fullmatch(r"項目\s*\|\s*判詞.*", s):
-            continue
-        # 去行內表格符號
-        s = s.replace("|", "　").strip()
-        s = re.sub(r"\*\*", "", s)
-        s = re.sub(r"^[-—–]+\s*$", "", s)
-        if s:
-            out.append(s)
-    result = "\n".join(out).strip()
-    return result if result else content
+def note_from(sn, ftype, fields, att):
+    notes = []
+    if not fields.get(ftype):
+        notes.append("OCR 未輸出此欄位")
+    if ftype == "聖意":
+        legacy = [l for l in att.get("commentary_layers", []) if "聖意" in l.get("layer_name", "")]
+        if legacy:
+            notes.append(f"legacy OCR（Study 03）聖意層：{legacy[0]['text'][:120]}")
+    if ftype == "五行方位":
+        legacy = [l for l in att.get("commentary_layers", []) if l.get("layer_name") == "五行方位"]
+        if legacy:
+            notes.append(f"legacy OCR（Study 03）：{legacy[0]['text'][:80]}")
+    return "；".join(notes)
 
 
 def main():
+    if not os.path.exists(OCR_JSONL):
+        print(f"❌ 找不到 OCR 輸入：{OCR_JSONL}")
+        print("   clean checkout 需先有 ocr_bg_2026-08-27.jsonl（見 research/liushijiazi-ocr/ 產出說明）")
+        sys.exit(1)
+
     ocr_recs = {}
-    if os.path.exists(OCR_JSONL):
-        with open(OCR_JSONL, encoding="utf-8") as f:
-            for line in f:
-                try:
-                    rec = json.loads(line)
-                    if rec.get("status") == "ok":
-                        ocr_recs[rec["slip_number"]] = rec
-                except Exception:
-                    pass
+    for line in open(OCR_JSONL, encoding="utf-8"):
+        try:
+            rec = json.loads(line)
+            if rec.get("status") == "ok":
+                ocr_recs[rec["slip_number"]] = rec
+        except Exception:
+            pass
     print(f"OCR records: {len(ocr_recs)}/60")
 
     with open(ATTESTATIONS, encoding="utf-8") as f:
@@ -220,130 +254,112 @@ def main():
         }
         source_texts[sn] = src
 
-        fields = parse_ocr_fields(src["ocr_full"]) if src["ocr_full"] else {}
-        # 統一 key：解析可能給「聖意」或「籤閣聖意」；「卦運勢」pattern 可能抓到「籤閣聖意」段落
-        # 基本資訊：干支在欄位外，直接從 ganzhi 來
+        fields = {k: clean_markdown(v) for k, v in parse_ocr_fields(src["ocr_full"]).items()} if src["ocr_full"] else {}
 
-        # 決定各欄位 verbatim + status
-        # 原則（對齊觀音層）：verbatim 採 OCR-A（本次批次）raw 原樣；
-        #   - OCR 無此欄位 → 缺欄（structural，note 標 OCR 未輸出）
-        #   - OCR 值含 □（OCR 自身無法辨識）→ UNRESOLVED
-        #   - 其餘 → PROBABLE（待 source image 逐籤複核）；legacy 分歧記錄於 notes，不降級（raw 保留原則）
-        def decide(fname, ocr_val, legacy_val=None):
+        def decide(fname, ocr_val):
+            """回傳 (confidence, unresolved_code)：
+            - ocr_val 含 □ → UNRESOLVED / textual_box
+            - fname 在 OCR_ANOMALY → UNRESOLVED / ocr_anomaly
+            - 其餘 → PROBABLE / null
+            """
+            if fname in OCR_ANOMALY.get(sn, {}):
+                return "UNRESOLVED", "ocr_anomaly"
             if not ocr_val:
                 return None, None
             if "□" in ocr_val:
-                return ocr_val, "UNRESOLVED"
-            return ocr_val, "PROBABLE"
+                return "UNRESOLVED", "textual_box"
+            return "PROBABLE", None
 
         # 1) 卦名
-        v, s = decide("卦名", fields.get("卦名"))
+        v = fields.get("卦名")
+        conf, code = decide("卦名", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "卦名", v, locator, s, note_from(sn, "卦名", fields, att)))
+            note = note_from(sn, "卦名", fields, att)
+            if sn in OCR_ANOMALY and "卦名" in OCR_ANOMALY[sn]:
+                note = (note + "；" + OCR_ANOMALY[sn]["卦名"]).strip("；")
+            entries.append(make_entry(sn, ganzhi, "卦名", v, locator, "ocr_single_pass", conf, code, note))
 
-        # 2) 五行方位（legacy 有）
+        # 2) 五行方位
         legacy_wx = None
         for layer in att.get("commentary_layers", []):
             if layer.get("layer_name") == "五行方位":
                 legacy_wx = layer.get("text")
-        v, s = decide("五行方位", fields.get("五行方位"), legacy_wx)
+        v = fields.get("五行方位")
+        conf, code = decide("五行方位", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "五行方位", v, locator, s, note_from(sn, "五行方位", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "五行方位", v, locator, "ocr_single_pass", conf, code, note_from(sn, "五行方位", fields, att)))
 
-        # 3) 聖意（legacy commentary_layers 聖意層）
+        # 3) 聖意
         legacy_sy = None
         for layer in att.get("commentary_layers", []):
             if "聖意" in layer.get("layer_name", ""):
                 legacy_sy = layer.get("text")
-        sy_raw = fields.get("聖意")
-        if sy_raw:
-            sy_raw = clean_shengyi(sy_raw)
-        v, s = decide("聖意", sy_raw, legacy_sy)
+        v = fields.get("聖意")
+        conf, code = decide("聖意", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "聖意", v, locator, s, note_from(sn, "聖意", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "聖意", v, locator, "ocr_single_pass", conf, code, note_from(sn, "聖意", fields, att)))
 
-        # 4) 籤解（卦解）
-        v, s = decide("籤解", fields.get("籤解"))
+        # 4) 籤解
+        v = fields.get("籤解")
+        conf, code = decide("籤解", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "籤解", v, locator, s, note_from(sn, "籤解", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "籤解", v, locator, "ocr_single_pass", conf, code, note_from(sn, "籤解", fields, att)))
 
         # 5) 卦運勢
-        v, s = decide("卦運勢", fields.get("卦運勢"))
+        v = fields.get("卦運勢")
+        conf, code = decide("卦運勢", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "卦運勢", v, locator, s, note_from(sn, "卦運勢", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "卦運勢", v, locator, "ocr_single_pass", conf, code, note_from(sn, "卦運勢", fields, att)))
 
         # 6) 籤閣聖意
-        v, s = decide("籤閣聖意", fields.get("籤閣聖意"))
+        v = fields.get("籤閣聖意")
+        conf, code = decide("籤閣聖意", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "籤閣聖意", v, locator, s, note_from(sn, "籤閣聖意", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "籤閣聖意", v, locator, "ocr_single_pass", conf, code, note_from(sn, "籤閣聖意", fields, att)))
 
         # 人工確認補欄（MANUAL_FIX）
         for fname, (val, note) in MANUAL_FIX.get(sn, {}).items():
             if any(e["slip_no"] == sn and e["field_type"] == fname for e in entries):
                 continue
             if val is not None:
-                entries.append(make_entry(sn, ganzhi, fname, val, locator, "PROBABLE", note))
+                entries.append(make_entry(sn, ganzhi, fname, val, locator, "ocr_recheck", "PROBABLE", None, note))
             else:
-                # structural 缺欄：建空 entry 標 UNRESOLVED + structural note
-                entries.append(make_entry(sn, ganzhi, fname, "", locator, "UNRESOLVED", note))
+                entries.append(make_entry(sn, ganzhi, fname, "", locator, "structural_absent", "UNRESOLVED", "structural_absent", note))
 
-        # 附錄層（不入 entries，保留在 source_texts）
-        for extra in ("廟公的話", "卦頭故事", "圖示"):
+        # 附錄層
+        for extra in ("廟公的話", "卦頭故事", "圖示", "判詞", "附註"):
             if fields.get(extra):
                 src[f"appendix_{extra}"] = fields[extra]
 
     layer = {
-        "schema_version": "0.1",
+        "schema_version": "0.2",
         "corpus_id": "liushijiazi",
         "layer": "historical_interpretation",
         "edition": EDITION,
         "field_types": ["卦名", "五行方位", "聖意", "籤解", "卦運勢", "籤閣聖意"],
+        "confidence_fields": {
+            "transcription_confidence": ["PROBABLE", "UNRESOLVED"],
+            "source_observation_status": ["ocr_single_pass", "ocr_recheck", "structural_absent", "human_image_confirmed"],
+            "manual_image_confirmation": "boolean（true = 人類直接核圖；2026-08-27 全 false）",
+            "unresolved_reason_code": ["textual_box", "structural_absent", "ocr_anomaly", "parse_artifact", None],
+        },
         "total_slips": 60,
         "total_entries": len(entries),
         "entries": entries,
         "status": "DRAFT",
-        "status_note": "OCR candidate 半自動建構；兩次 OCR 比對後標 PROBABLE/UNRESOLVED；待 source image 逐籤複核與福 review",
+        "status_note": "福 re-gate 修正版（2026-08-27）：confidence 拆四欄、markdown 清理、OCR 異常標記；manual_image_confirmation 全 false；待福 re-review",
     }
     with open(OUT_LAYER, "w", encoding="utf-8") as f:
         json.dump(layer, f, ensure_ascii=False, indent=1)
     with open(OUT_SRC, "w", encoding="utf-8") as f:
         json.dump(source_texts, f, ensure_ascii=False, indent=1)
 
-    n = layer["total_entries"]
-    pro = sum(1 for e in entries if e["transcription_status"] == "PROBABLE")
-    unr = sum(1 for e in entries if e["transcription_status"] == "UNRESOLVED")
-    print(f"entries: {n}（PROBABLE {pro} / UNRESOLVED {unr}）")
+    from collections import Counter
+    cnt = Counter(e["transcription_confidence"] for e in entries)
+    obs = Counter(e["source_observation_status"] for e in entries)
+    print(f"entries: {len(entries)}（confidence: {dict(cnt)}）")
+    print(f"observation: {dict(obs)}")
     print(f"寫出：{OUT_LAYER}\n      {OUT_SRC}")
-
-
-def make_entry(sn, ganzhi, ftype, verbatim, locator, status, note):
-    return {
-        "corpus": "liushijiazi",
-        "slip_no": sn,
-        "ganzhi": ganzhi,
-        "edition": EDITION,
-        "field_type": ftype,
-        "verbatim_text": verbatim,
-        "source_locator": locator,
-        "transcription_status": status,
-        "layer_class": "living_tradition",
-        "variants_or_notes": note or "",
-    }
-
-
-def note_from(sn, ftype, fields, att):
-    notes = []
-    if not fields.get(ftype):
-        notes.append("OCR 未輸出此欄位（可能圖檔缺欄或 OCR 漏讀）")
-    if ftype == "聖意":
-        legacy = [l for l in att.get("commentary_layers", []) if "聖意" in l.get("layer_name", "")]
-        if legacy:
-            notes.append(f"legacy OCR（Study 03）聖意層：{legacy[0]['text'][:120]}")
-    if ftype == "五行方位":
-        legacy = [l for l in att.get("commentary_layers", []) if l.get("layer_name") == "五行方位"]
-        if legacy:
-            notes.append(f"legacy OCR（Study 03）：{legacy[0]['text'][:80]}")
-    return "；".join(notes)
 
 
 if __name__ == "__main__":
