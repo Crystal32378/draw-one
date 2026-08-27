@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-六十甲子 Historical Interpretation Layer — build 腳本（v0.3，福 re-gate 修正版）
+六十甲子 Historical Interpretation Layer — build 腳本（v0.4，evidence-driven confidence）
 corpus: liushijiazi | layer: historical_interpretation
 edition: 北港朝天宮官方籤詩圖檔（2024-08-05 批次為主、第59籤 2025-06-21 批次）
+
+v0.4 變更（福第二輪 re-review）：PROBABLE 只能由「雙 OCR pass、normalize 後 exact 相等」的程式可驗證 agreement 產生；
+單次 OCR 一律 CANDIDATE（更弱 candidate status）；secondary observation 來源＝Study 03 legacy commentary_layers（同一官方影像的另一條 transcription path）；
+agreement 以 exact-match 為唯一自動升級路徑，diff 相似度僅存檔供人工審查，不作為 gate 依據。
 
 v0.3 變更（福 re-gate 2026-08-27）：
   1. confidence 拆四欄（名實相符）：
@@ -51,7 +55,9 @@ OUT_SRC = os.path.join(CORPUS_DIR, "source_texts.json")
 
 EDITION = "北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主、第59籤 2025-06-21 批次）"
 
-# 人工確認補欄（2026-08-27 第二 OCR 重讀 witness）：{slip_no: {field_type: (verbatim或None, note)}}
+# 人工確認補欄（2026-08-27 第二 OCR 重讀＝recheck pass）：{slip_no: {field_type: (verbatim或None, note)}}
+# 注意：recheck 是另一條 OCR transcription path（非人類核圖）；「坤卦」由 recheck 首度取得，
+# 屬 single recheck observation → CANDIDATE 級；僅當未來再有 pass 確認相同讀法才可升
 # None = 確認圖檔無此欄位（structural）
 MANUAL_FIX = {
     35: {"卦名": ("坤卦", "2026-08-27 第二 OCR 重讀（非人類核圖）：批次 OCR 漏讀卦名欄；圖檔干支己酉下方爲「坤卦」。manual_image_confirmation=false")},
@@ -176,7 +182,50 @@ def parse_ocr_fields(text):
     return fields
 
 
-def make_entry(sn, ganzhi, ftype, verbatim, locator, obs_status, confidence, unresolved_code, note):
+import difflib
+
+
+def compute_agreement(verbatim_field, second_obs_text):
+    """程式可驗證 agreement：第二條 OCR pass 的同欄位轉錄 vs 本次 verbatim。
+    唯一自動升級路徑 = normalize 後 exact 相等。diff 相似度僅存檔供人工審查。"""
+    if not second_obs_text:
+        return None
+    va = re.sub(r"\s+", "", verbatim_field or "")
+    vb = re.sub(r"\s+", "", re.sub(r"[|:*#]", "", second_obs_text))
+    mode = None
+    sim = round(difflib.SequenceMatcher(None, va, vb).ratio(), 3)
+    if va and va == vb:
+        mode = "exact"
+    return {"mode": mode, "similarity": sim,
+            "basis": "normalized-exact-equality only；similarity 僅供 audit",
+            "second_source": "study03_legacy_ocr"}
+
+
+def make_entry(sn, ganzhi, ftype, verbatim, locator, obs_status, confidence, unresolved_code, note,
+               evidence_sources=None, agreement=None):
+    ev = evidence_sources or ["ocr_a"]
+    entry = {
+        "corpus": "liushijiazi",
+        "slip_no": sn,
+        "ganzhi": ganzhi,
+        "edition": EDITION,
+        "field_type": ftype,
+        "verbatim_text": verbatim,
+        "source_locator": locator,
+        "transcription_status": confidence,
+        "transcription_confidence": confidence,
+        "source_observation_status": obs_status,
+        "manual_image_confirmation": False,
+        "unresolved_reason_code": unresolved_code,
+        "layer_class": "living_tradition",
+        "variants_or_notes": note or "",
+        "evidence_sources": ev,
+        "agreement": agreement,
+    }
+    return entry
+
+
+
     return {
         "corpus": "liushijiazi",
         "slip_no": sn,
@@ -256,75 +305,89 @@ def main():
 
         fields = {k: clean_markdown(v) for k, v in parse_ocr_fields(src["ocr_full"]).items()} if src["ocr_full"] else {}
 
-        def decide(fname, ocr_val):
-            """回傳 (confidence, unresolved_code)：
-            - ocr_val 含 □ → UNRESOLVED / textual_box
-            - fname 在 OCR_ANOMALY → UNRESOLVED / ocr_anomaly
-            - 其餘 → PROBABLE / null
+        def resolve(fname, ocr_val, legacy_text=None, is_recheck=False):
+            """evidence-driven status（福第二輪）：回傳 (obs, conf, code, evidence_sources, agreement, note)
+            - anomaly / □ → UNRESOLVED
+            - 雙 pass exact agreement → PROBABLE / ocr_double_exact_agree
+            - 單觀察 → CANDIDATE / ocr_single_pass 或 ocr_recheck_single
             """
             if fname in OCR_ANOMALY.get(sn, {}):
-                return "UNRESOLVED", "ocr_anomaly"
-            if not ocr_val:
-                return None, None
+                return ("ocr_single_pass", "UNRESOLVED", "ocr_anomaly",
+                        ["ocr_a"], None, OCR_ANOMALY[sn][fname])
+            if ocr_val is None:
+                return (None, None, None, None, None, None)
             if "□" in ocr_val:
-                return "UNRESOLVED", "textual_box"
-            return "PROBABLE", None
+                return ("ocr_single_pass", "UNRESOLVED", "textual_box", ["ocr_a"], None, "")
+            ag = compute_agreement(ocr_val, legacy_text)
+            if ag and ag["mode"] == "exact":
+                return ("ocr_double_exact_agree", "PROBABLE", None,
+                        ["ocr_a", "study03_legacy"], ag, "")
+            if is_recheck:
+                return ("ocr_recheck_single", "CANDIDATE", None,
+                        ["ocr_a", "recheck"], ag, "")
+            return ("ocr_single_pass", "CANDIDATE", None, ["ocr_a"], ag, "")
 
-        # 1) 卦名
+        def legacy_text_for(ftype):
+            for layer in att.get("commentary_layers", []):
+                ln_ = layer.get("layer_name", "")
+                if ftype == "五行方位" and ln_ == "五行方位":
+                    return layer.get("text")
+                if ftype == "聖意" and "聖意" in ln_ and "籤閣" not in ln_:
+                    return layer.get("text")
+            return None
+
+        # 1) 卦名（無 second observation 來源）
         v = fields.get("卦名")
-        conf, code = decide("卦名", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("卦名", v)
         if v:
-            note = note_from(sn, "卦名", fields, att)
-            if sn in OCR_ANOMALY and "卦名" in OCR_ANOMALY[sn]:
-                note = (note + "；" + OCR_ANOMALY[sn]["卦名"]).strip("；")
-            entries.append(make_entry(sn, ganzhi, "卦名", v, locator, "ocr_single_pass", conf, code, note))
+            note = (nt_ + "；" + note_from(sn, "卦名", fields, att)).strip("；")
+            entries.append(make_entry(sn, ganzhi, "卦名", v, locator, obs, conf, code, note, ev_, ag_))
 
-        # 2) 五行方位
-        legacy_wx = None
-        for layer in att.get("commentary_layers", []):
-            if layer.get("layer_name") == "五行方位":
-                legacy_wx = layer.get("text")
+        # 2) 五行方位（legacy 為 secondary pass）
         v = fields.get("五行方位")
-        conf, code = decide("五行方位", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("五行方位", v, legacy_text_for("五行方位"))
         if v:
-            entries.append(make_entry(sn, ganzhi, "五行方位", v, locator, "ocr_single_pass", conf, code, note_from(sn, "五行方位", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "五行方位", v, locator, obs, conf, code,
+                                      (nt_ + "；" + note_from(sn, "五行方位", fields, att)).strip("；"), ev_, ag_))
 
-        # 3) 聖意
-        legacy_sy = None
-        for layer in att.get("commentary_layers", []):
-            if "聖意" in layer.get("layer_name", ""):
-                legacy_sy = layer.get("text")
+        # 3) 聖意（legacy 為 secondary pass）
         v = fields.get("聖意")
-        conf, code = decide("聖意", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("聖意", v, legacy_text_for("聖意"))
         if v:
-            entries.append(make_entry(sn, ganzhi, "聖意", v, locator, "ocr_single_pass", conf, code, note_from(sn, "聖意", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "聖意", v, locator, obs, conf, code,
+                                      (nt_ + "；" + note_from(sn, "聖意", fields, att)).strip("；"), ev_, ag_))
 
-        # 4) 籤解
+        # 4) 籤解（無 second）
         v = fields.get("籤解")
-        conf, code = decide("籤解", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("籤解", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "籤解", v, locator, "ocr_single_pass", conf, code, note_from(sn, "籤解", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "籤解", v, locator, obs, conf, code,
+                                      (nt_ + "；" + note_from(sn, "籤解", fields, att)).strip("；"), ev_, ag_))
 
-        # 5) 卦運勢
+        # 5) 卦運勢（無 second）
         v = fields.get("卦運勢")
-        conf, code = decide("卦運勢", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("卦運勢", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "卦運勢", v, locator, "ocr_single_pass", conf, code, note_from(sn, "卦運勢", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "卦運勢", v, locator, obs, conf, code,
+                                      (nt_ + "；" + note_from(sn, "卦運勢", fields, att)).strip("；"), ev_, ag_))
 
-        # 6) 籤閣聖意
+        # 6) 籤閣聖意（無 second）
         v = fields.get("籤閣聖意")
-        conf, code = decide("籤閣聖意", v)
+        obs, conf, code, ev_, ag_, nt_ = resolve("籤閣聖意", v)
         if v:
-            entries.append(make_entry(sn, ganzhi, "籤閣聖意", v, locator, "ocr_single_pass", conf, code, note_from(sn, "籤閣聖意", fields, att)))
+            entries.append(make_entry(sn, ganzhi, "籤閣聖意", v, locator, obs, conf, code,
+                                      (nt_ + "；" + note_from(sn, "籤閣聖意", fields, att)).strip("；"), ev_, ag_))
 
-        # 人工確認補欄（MANUAL_FIX）
+        # 人工確認補欄（MANUAL_FIX）：recheck = 另一條 OCR path 的單次觀察 → CANDIDATE（誠實，不因重讀升級）
         for fname, (val, note) in MANUAL_FIX.get(sn, {}).items():
             if any(e["slip_no"] == sn and e["field_type"] == fname for e in entries):
                 continue
             if val is not None:
-                entries.append(make_entry(sn, ganzhi, fname, val, locator, "ocr_recheck", "PROBABLE", None, note))
+                entries.append(make_entry(sn, ganzhi, fname, val, locator, "ocr_recheck_single",
+                                          "CANDIDATE", None, note, ["recheck"], None))
             else:
-                entries.append(make_entry(sn, ganzhi, fname, "", locator, "structural_absent", "UNRESOLVED", "structural_absent", note))
+                entries.append(make_entry(sn, ganzhi, fname, "", locator, "structural_absent",
+                                          "UNRESOLVED", "structural_absent", note, [], None))
 
         # 附錄層
         for extra in ("廟公的話", "卦頭故事", "圖示", "判詞", "附註"):
@@ -357,8 +420,10 @@ def main():
     from collections import Counter
     cnt = Counter(e["transcription_confidence"] for e in entries)
     obs = Counter(e["source_observation_status"] for e in entries)
+    agrees = sum(1 for e in entries if e.get("agreement") and e["agreement"].get("mode") == "exact")
     print(f"entries: {len(entries)}（confidence: {dict(cnt)}）")
     print(f"observation: {dict(obs)}")
+    print(f"exact double-agreements: {agrees}")
     print(f"寫出：{OUT_LAYER}\n      {OUT_SRC}")
 
 

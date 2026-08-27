@@ -8,7 +8,10 @@
   A3  uncertainty       — UNRESOLVED：textual_box 必含 □；structural_absent / ocr_anomaly 可無 □（reason code 標明）
   A4  structure         — 60 籤、每籤 6 筆、14 欄位齊全、layer_class 一致、confidence 合法值
   A5  encoding          — 無 U+FFFD / mojibake / 異常控制字符
-  A6  evidence coherence— manual_image_confirmation=false ⇒ source_observation_status≠human_image_confirmed；
+  A6  evidence coherence — confidence 必須由足夠 evidence 支撐：
+                           PROBABLE ⇒ obs=ocr_double_exact_agree ＋ agreement.mode=exact ＋ evidence≥2；
+                           CANDIDATE ⇒ obs∈{ocr_single_pass, ocr_recheck_single}；
+                           UNRESOLVED ⇒ reason code 必填且合法— manual_image_confirmation=false ⇒ source_observation_status≠human_image_confirmed；
                            UNRESOLVED ⇒ unresolved_reason_code 必填且合法；PROBABLE ⇒ code=null
   A7  anomaly gate      — 已知 OCR 異常籤（OCR_ANOMALY 清單）不得標 PROBABLE
 
@@ -38,8 +41,11 @@ EXPECTED_FIELDS = ["卦名", "五行方位", "聖意", "籤解", "卦運勢", "�
 REQ = ['corpus', 'slip_no', 'ganzhi', 'edition', 'field_type', 'verbatim_text',
        'source_locator', 'transcription_status', 'transcription_confidence',
        'source_observation_status', 'manual_image_confirmation', 'unresolved_reason_code',
-       'layer_class', 'variants_or_notes']
-VALID_CONF = {"PROBABLE", "UNRESOLVED"}
+       'layer_class', 'variants_or_notes',
+       'evidence_sources', 'agreement']
+VALID_CONF = {"PROBABLE", "CANDIDATE", "UNRESOLVED"}
+VALID_OBS_ALL = {"ocr_single_pass", "ocr_recheck_single", "structural_absent",
+                 "human_image_confirmed", "ocr_double_exact_agree"}
 VALID_OBS = {"ocr_single_pass", "ocr_recheck", "structural_absent", "human_image_confirmed"}
 VALID_CODE = {"textual_box", "structural_absent", "ocr_anomaly", "parse_artifact"}
 
@@ -110,7 +116,7 @@ def main():
             failures.append(("A4", f'#{e["slip_no"]} layer_class 異常', e.get("layer_class")))
         if e.get("transcription_confidence") not in VALID_CONF:
             failures.append(("A4", f'#{e["slip_no"]} confidence 異常', e.get("transcription_confidence")))
-        if e.get("source_observation_status") not in VALID_OBS:
+        if e.get("source_observation_status") not in VALID_OBS_ALL:
             failures.append(("A4", f'#{e["slip_no"]} observation status 異常', e.get("source_observation_status")))
         if e.get("transcription_status") != e.get("transcription_confidence"):
             failures.append(("A4", f'#{e["slip_no"]} transcription_status 與 confidence 不一致', e.get("transcription_status")))
@@ -120,22 +126,37 @@ def main():
         if has_mojibake(e["verbatim_text"]) or has_mojibake(e["variants_or_notes"] or ""):
             failures.append(("A5", f'#{e["slip_no"]} mojibake', repr(e["verbatim_text"][:20])))
 
-    # A6 evidence coherence
+    # A6 evidence coherence（evidence-driven confidence，福第二輪）
     for e in entries:
-        if e.get("manual_image_confirmation") is True and e.get("source_observation_status") != "human_image_confirmed":
-            failures.append(("A6", f'#{e["slip_no"]} manual confirmation 與 observation status 矛盾', e.get("source_observation_status")))
-        if e.get("manual_image_confirmation") is False and e.get("source_observation_status") == "human_image_confirmed":
-            failures.append(("A6", f'#{e["slip_no"]} 標 human 但 manual_image_confirmation=false', e.get("source_observation_status")))
+        obs = e.get("source_observation_status")
         conf = e.get("transcription_confidence")
         code = e.get("unresolved_reason_code")
-        if conf == "UNRESOLVED":
+        ag = e.get("agreement") or {}
+        ev = e.get("evidence_sources") or []
+        if obs not in VALID_OBS_ALL:
+            failures.append(("A6", f'#{e["slip_no"]} observation status 異常', str(obs)))
+            continue
+        # manual confirmation 一致性
+        mic = e.get("manual_image_confirmation")
+        if (mic is True) != (obs == "human_image_confirmed"):
+            failures.append(("A6", f'#{e["slip_no"]} manual_image_confirmation 與 obs 矛盾', f'mic={mic} obs={obs}'))
+        # PROBABLE 門檻：必須雙 pass exact agreement
+        if conf == "PROBABLE":
+            if obs != "ocr_double_exact_agree" or ag.get("mode") != "exact" or len(ev) < 2:
+                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 缺可驗證 evidence basis',
+                                 f'obs={obs} mode={ag.get("mode")} ev={ev}'))
+            if code is not None:
+                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 卻有 reason code', str(code)))
+        elif conf == "CANDIDATE":
+            if obs not in {"ocr_single_pass", "ocr_recheck_single"}:
+                failures.append(("A6", f'#{e["slip_no"]} CANDIDATE 的 obs 不合法', str(obs)))
+            if code is not None:
+                failures.append(("A6", f'#{e["slip_no"]} CANDIDATE 卻有 reason code', str(code)))
+        else:  # UNRESOLVED
             if code not in VALID_CODE:
                 failures.append(("A6", f'#{e["slip_no"]} UNRESOLVED 缺/錯 reason code', str(code)))
             if code == "textual_box" and "□" not in e["verbatim_text"]:
                 failures.append(("A6", f'#{e["slip_no"]} textual_box 但 verbatim 無 □', e["verbatim_text"][:20]))
-        else:  # PROBABLE
-            if code is not None:
-                failures.append(("A6", f'#{e["slip_no"]} PROBABLE 卻有 reason code', str(code)))
 
     # A7 anomaly gate
     for sn, ftypes in OCR_ANOMALY.items():
@@ -175,19 +196,11 @@ def main():
                             failures.append(("A2", f'#{n} 片段疑來自他籤 {others}', seg))
 
     # 統計
-    pro = [e for e in entries if e["transcription_confidence"] == "PROBABLE"]
-    unr = [e for e in entries if e["transcription_confidence"] == "UNRESOLVED"]
-    by_field = {}
-    for e in entries:
-        by_field.setdefault(e["field_type"], [0, 0])
-        if e["transcription_confidence"] == "PROBABLE":
-            by_field[e["field_type"]][0] += 1
-        else:
-            by_field[e["field_type"]][1] += 1
-    print(f"總 entries {len(entries)}：PROBABLE {len(pro)} / UNRESOLVED {len(unr)}")
+    from collections import Counter
+    print(f"總 entries {len(entries)}：confidence 分布", dict(Counter(e['transcription_confidence'] for e in entries)))
     for f in EXPECTED_FIELDS:
-        p, u = by_field.get(f, (0, 0))
-        print(f"  {f}: PROBABLE {p} / UNRESOLVED {u}")
+        cc = Counter(e["transcription_confidence"] for e in entries if e["field_type"] == f)
+        print(f"  {f}: {dict(cc)}")
 
     if failures:
         print(f"\n❌ GATE FAIL — {len(failures)} 違規：")
