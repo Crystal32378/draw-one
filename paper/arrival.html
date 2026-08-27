@@ -1411,6 +1411,17 @@ window.ARRIVAL_SOUND = (function () {
     s.connect(bp); bp.connect(g); g.connect(n.hand);
     s.start(t0); s.stop(t0 + 0.4);
   }
+  function nudge() { // 轉身中點擊的回饋：比 pull 還輕一顆——「聽見了，在動」
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.005;
+    const s = ctx.createBufferSource();
+    s.buffer = n.tickBuf; s.playbackRate.value = rand(0.7, 0.9);
+    const bp = biquad("bandpass", rand(800, 1200), 3.5);
+    const g = gainNode(LEVELS.handPull * 0.35); // 比 pull 輕一截——背景，不是事件
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.08);
+  }
 
   /* ---- 狀態套用 ---- */
   function applyState(dur = XFADE) { // 空間變換：對「任何室外」做同一件事
@@ -2311,7 +2322,10 @@ window.ARRIVAL_SOUND = (function () {
     store.set(BOOK_KEY, book);
     const d = new Date();
     store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
-    $("question").value = "";
+    // 問題留在案上（v2f, 2026-08-26）：收籤＝句點，但問過的事不必被抹掉。
+    // 清空會讓下一輪變成「非本人意圖的空手」，在簿裡留下 question:"" 的幽靈條目
+    // （2026-08-26 評估複測重現：帶題抽→keep→空手再抽＝空條目）。同題再抽由
+    // 一事一籤直接回看同一支；要新的一支就寫新問題；真想空手，自己清空即是。
     // 收籤＝句點：紙收起、一拍靜，然後世界回來。無旁白——沒有人留你。
     stage.classList.add("slip-away");
     setTimeout(() => {

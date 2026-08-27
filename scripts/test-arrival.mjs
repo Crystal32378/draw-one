@@ -127,5 +127,39 @@ const other = P.resolveDraw({ question: "另一個問題", corpusId: "guanyin", 
 check("resolveDraw unaffected for new questions", other.repeated === false && other.entryId === "g1");
 check("peek on unbound question still null after other activity", P.peekBinding({ question: "從未問過" }) === null);
 
+console.log("R7 keepBtn does not clear #question (v2g, 2026-08-26)");
+// 2026-08-26 評估複測重現：keepBtn 收簿後清空問題欄→下一輪空手抽→簿子產生 question:"" 的幽靈條目。
+// 修法：問題留在案上——同題再抽由一事一籤直接回看、要新的一支就寫新問題、刻意空手由使用者自己清空。
+// 契約：keepBtn handler 內不得把 #question.value 指派為空字串（或任何值）。
+// 從「keepBtn 點擊事件註冊」開始切，到下一個獨立的「addEventListener 區塊」或「function (」之前。
+// 這確保我們看到的是 click handler 內部，不是 HTML 標籤。
+const handlerStart = script.search(/\$\("keepBtn"\)\.addEventListener/);
+const keepHandler = handlerStart > 0
+  ? script.slice(handlerStart, script.length)
+  : "";
+check("keepBtn handler exists in source", handlerStart > 0);
+// 從 handler 開頭切割到下一個未縮排的 top-level 結構（function 宣告 / IIFE 結尾 / 區塊註解頭），
+// 避免抓進後續無關程式。
+function sliceHandler(src) {
+  const start = src.indexOf("=> {");
+  if (start < 0) return src;
+  // 配對箭頭函式的大括號；用括號深度。
+  let depth = 0, i = start;
+  for (; i < src.length; i++) {
+    if (src[i] === "{") depth++;
+    else if (src[i] === "}") { depth--; if (depth === 0) { i++; break; } }
+  }
+  return src.slice(0, i);
+}
+const keepBody = sliceHandler(keepHandler);
+check(
+  "keepBtn handler does not assign to #question.value (no silent clear)",
+  !/\$\("question"\)\.value\s*=/.test(keepBody) && !/getElementById\("question"\)\.value\s*=/.test(keepBody)
+);
+check(
+  "keepBtn does store LASTHALL_KEY (回埕時仍記得上次到訪)",
+  /LASTHALL_KEY/.test(keepBody)
+);
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);
