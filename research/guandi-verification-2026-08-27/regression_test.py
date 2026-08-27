@@ -48,6 +48,16 @@ def main():
     can_confirm = bool(seg3["regions"].get(4, ""))
     check("missing marker ⇒ 該籤不得從此頁取得 match", not can_confirm)
 
+    print("== Test 3b: 福第三輪 hostile — duplicate marker → 該籤 region invalid ==")
+    dup_page = "第四\n甲段內容專屬第四籤\n第四\n乙段內容重複第四標記\n第五\n第五籤自己的內容在此"
+    seg_dup = segment_page(dup_page)
+    check("duplicate #4 → #4 region invalid（不得出現在 regions）", (4 not in seg_dup["regions"]))
+    check("duplicate #4 被記為 conflict/invalid", (4 in seg_dup["conflicts"]) and (4 in seg_dup.get("invalid_slips", [])))
+    check("#5 不受影響（region 完整保留）", ("第五籤自己的內容在此" in seg_dup["regions"].get(5, "")))
+    # #4 的任一段文字都不得成為 #4 的 evidence（regions 已 drop → matching 無從取得）
+    can_use = bool(seg_dup["regions"].get(4, ""))
+    check("conflicted slip 不得被 verifier/variant 使用", not can_use)
+
     print("== Test 4: real data — p15 (#4/#5 共存，pdf-ocr 漏讀 #4 marker) ==")
     content = open('ocr/daozang_ocr_b1_combined.txt', encoding='utf-8').read()
     pages = split_pdf_ocr_pages(content)

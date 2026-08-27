@@ -2,8 +2,8 @@
 
 - 未確認句總數：113
 - 分類統計：
-  - **no_reliable_fragment**: 78
-  - **candidate_variant**: 27
+  - **no_reliable_fragment**: 80
+  - **candidate_variant**: 25
   - **partial_fragment**: 8
 
 ## 逐句明細
@@ -66,8 +66,8 @@
 | 54 | 第五十四 | 爭奈乘流風未便，青燈黃卷且勤勞。 | OCR-B(slip-region) | 0.0 | no_reliable_fragment | OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句 |
 | 55 | 第五十五 | 勤耕力作莫蹉跎，衣食隨時安分過。 | OCR-B(slip-region) | 0.0 | no_reliable_fragment | OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句 |
 | 55 | 第五十五 | 縱使經商收倍利，不如逐歲凜禾多。 | OCR-B(slip-region) | 0.0 | no_reliable_fragment | OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句 |
-| 56 | 第五十六 | 心頭理曲強詞遮，直欲欺官行路斜。 | OCR-C(slip-region) | 0.846 | candidate_variant | OCR-C(slip-region) rate=0.85；候選差異：強→强 |
-| 56 | 第五十六 | 一旦醜形臨月鏡，身投憲網莫咨嗟。 | OCR-C(slip-region) | 0.846 | candidate_variant | OCR-C(slip-region) rate=0.85；候選差異： |
+| 56 | 第五十六 | 心頭理曲強詞遮，直欲欺官行路斜。 | OCR-B(slip-region) | 0.0 | no_reliable_fragment | OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句 |
+| 56 | 第五十六 | 一旦醜形臨月鏡，身投憲網莫咨嗟。 | OCR-B(slip-region) | 0.0 | no_reliable_fragment | OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句 |
 | 57 | 第五十七 | 一著先機君記取，紛紛鬧裹更思量。 | OCR-C(slip-region) | 0.846 | candidate_variant | OCR-C(slip-region) rate=0.85；候選差異：裹→裏 |
 | 58 | 第五十八 | 蘇秦三寸足平生，富貴功名在此行。 | OCR-C(slip-region) | 0.846 | partial_fragment | OCR-C(slip-region) rate=0.85；fragment 部分 |
 | 58 | 第五十八 | 更好修為陰隱事，前程萬里自通亨。 | OCR-C(slip-region) | 0.846 | candidate_variant | OCR-C(slip-region) rate=0.85；候選差異：隐→隲 |

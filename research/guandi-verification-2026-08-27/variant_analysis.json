@@ -1,8 +1,8 @@
 {
  "total_lines": 113,
  "by_class": {
-  "candidate_variant": 27,
-  "no_reliable_fragment": 78,
+  "candidate_variant": 25,
+  "no_reliable_fragment": 80,
   "partial_fragment": 8
  },
  "items": [
@@ -1426,38 +1426,24 @@
    "original_slip_label": "第五十六",
    "line": "心頭理曲強詞遮，直欲欺官行路斜。",
    "norm_line": "心头理曲強词遮直欲欺官行路斜",
-   "best_witness": "OCR-C(slip-region)",
-   "best_rate": 0.846,
-   "ocr_fragment": "心头理曲强词遮直欲欺官行路斜",
-   "diffs": [
-    [
-     "強",
-     "强"
-    ]
-   ],
-   "class": "candidate_variant",
-   "detail": "OCR-C(slip-region) rate=0.85；候選差異：強→强"
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
   },
   {
    "slip_number": 56,
    "original_slip_label": "第五十六",
    "line": "一旦醜形臨月鏡，身投憲網莫咨嗟。",
    "norm_line": "一旦丑形临月镜身投憲网莫咨嗟",
-   "best_witness": "OCR-C(slip-region)",
-   "best_rate": 0.846,
-   "ocr_fragment": "一旦丑形临月镜身投憲网莫",
-   "diffs": [
-    [
-     "咨",
-     "∅"
-    ],
-    [
-     "嗟",
-     "∅"
-    ]
-   ],
-   "class": "candidate_variant",
-   "detail": "OCR-C(slip-region) rate=0.85；候選差異："
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
   },
   {
    "slip_number": 57,

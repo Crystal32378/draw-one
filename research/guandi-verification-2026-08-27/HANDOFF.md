@@ -47,3 +47,11 @@ candidate_variant 28（含「裹/里」7 處高頻候選 #24/35/54/57/62/90/91�
 ## 5. 檔案（research/guandi-verification-2026-08-27/）
 
 verification_report_v4.json/.md｜slip_texts.verified_v4.json（DRAFT）｜variant_analysis｜QA_SUMMARY.md｜EVIDENCE_MANIFEST.md｜slip_page_map.json｜ocr/（OCR 輸出）｜verify_guandi_daozang.py / analyze_guandi_variants.py
+
+
+## 福 re-review III 追加（duplicate marker fail-closed）
+
+- 根因：衝突偵測條件錯誤（`num in seen.values()` 恆 False），duplicate 從未被偵測
+- 修正：`num in seen` ＋ duplicate 時**該籤既有 region 一併 drop**（invalid_slips 記錄）；verifier/variant analyzer 均使用 dropped regions（無 fallback）
+- hostile regression Test 3b：同頁注入 duplicate #4 → #4 invalid、#5 不受影響 → 全 PASS
+- 重算：C path conflict=1（該頁籤本為 LOW）；grade A0/B27/LOW73、variant candidate27/partial8/no_reliable78 維持

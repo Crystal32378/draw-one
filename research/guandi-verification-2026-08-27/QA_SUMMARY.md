@@ -41,6 +41,13 @@ B 籤號：3,6,7,11,12,14,22,26,28,29,31,38,41,43,44,51,52,61,63,66,68,69,72,73,
 
 「裹/里」7 處保留 source literal、不 canonicalize，仍是人工核對優先項。
 
+## 福 re-review III 修正：duplicate marker 真 fail-closed
+
+- 修復根因：衝突偵測條件誤寫（`num in seen.values()` 恆 False）——duplicate 從未被偵測
+- 現行：duplicate marker → 該籤**既有 region 一併 invalid/drop**＋記 conflict/invalid；verifier 與 variant analyzer 均不得使用；無整頁 fallback
+- 重算：C path 偵得 conflict=1（該頁籤本為 LOW，grade 分布不變：A0/B27/LOW73）
+- regression 新增 Test 3b（同頁注入 duplicate #4 → #4 invalid、#5 不受影響）——全 PASS
+
 ## Hostile Regression
 
 `regression_test.py`：10 項檢查全 PASS（synthetic 同頁雙籤分割、雙向 cross-contamination 拒絕、fail-closed 缺 marker、真實 p15 案例）。

@@ -75,6 +75,7 @@ def segment_page(text):
     lines = text.split('\n')
     regions = {}
     conflicts = []
+    invalid = set()
     cur_num = None
     buf = []
     unassigned = []
@@ -95,9 +96,12 @@ def segment_page(text):
         num = _is_marker_line(ln)
         if num is not None:
             flush()
-            if num in seen.values():
+            if num in seen:
+                # 福第三輪：duplicate marker → 該籤既有 region 一併 invalid/drop
                 conflicts.append(num)
-                cur_num = None  # 衝突：放棄後續歸屬（fail closed）
+                regions.pop(num, None)  # 已累積內容也丟棄（不得被 verifier/variant 使用）
+                invalid.add(num)
+                cur_num = None  # 後續歸屬同樣放棄
                 continue
             seen[num] = True
             cur_num = num
@@ -108,15 +112,19 @@ def segment_page(text):
             else:
                 unassigned.append(ln)
 
-    flush()  # ← 修：最後一個 bucket 收尾
+    flush()  # 最後一個 bucket 收尾
+    # invalid（衝突）籤的最終內容一併丟棄
+    for bad in list(invalid):
+        regions.pop(bad, None)
 
-    out = {k: ('\n'.join(v)).strip() for k, v in regions.items()}
+    out = {k: ('\n'.join(v)).strip() for k, v in regions.items() if k not in invalid}
     unassigned_text = '\n'.join(x for x in unassigned if x.strip())
     return {
         "regions": out,
         "unassigned_chars": sum(len(s) for s in unassigned),
         "unassigned_text": unassigned_text,
         "conflicts": sorted(set(conflicts)),
+        "invalid_slips": sorted(invalid),
         "markers": markers_seen,
     }
 
@@ -137,12 +145,15 @@ def split_pdf_ocr_pages(content):
 def load_path_regions_b(pages_raw):
     """OCR-B path：{page_no: {slip_no: region_raw}}"""
     out = {}
-    stats = {"pages": 0, "conflict_pages": [], "empty_region_pages": 0}
+    stats = {"pages": 0, "conflict_pages": [], "empty_region_pages": 0,
+             "invalid_slips_by_page": {}}
     for pg, txt in pages_raw.items():
         seg = segment_page(txt)
         stats["pages"] += 1
         if seg["conflicts"]:
             stats["conflict_pages"].append(pg)
+        if seg.get("invalid_slips"):
+            stats["invalid_slips_by_page"].setdefault(pg, []).extend(seg["invalid_slips"])
         d = {}
         for k, v in seg["regions"].items():
             if v:
