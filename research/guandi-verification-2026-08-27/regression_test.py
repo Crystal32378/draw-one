@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-regression_test.py — hostile regression for slip-region matching
-
-場景：同一頁 #4/#5 共存時，neighboring slip text 不能 satisfy current slip evidence。
-"""
+"""hostile regression for slip-region matching（v0.5）"""
 import json
+import os
 import sys
 
-sys.path.insert(0, '.')
+PKG = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.abspath(os.path.join(PKG, "..", ".."))
+sys.path.insert(0, PKG)
 from slip_regions import segment_page, split_pdf_ocr_pages
 from verify_guandi_daozang import normalize, strip_punct, ngram_hit_rate
+
+
 
 PASS_ALL = True
 
