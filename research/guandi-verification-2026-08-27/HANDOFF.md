@@ -1,56 +1,49 @@
-# 關帝百籤 VERIFIED 升級 — 交付說明 v2（2026-08-27 最終）
+# 關帝百籤 transcription verification — 交付說明 v4（2026-08-27 福 re-gate 修正版）
 
-**corpus:** guandi｜**witness:** NLC 道藏第 4379 冊 PDF（Wikimedia Commons）｜**狀態:** DRAFT，待福 review（與六十甲子 Task 1 一起）
+**corpus:** guandi｜**witness:** NLC 道藏第 4379 冊 PDF（Wikimedia Commons）｜**狀態:** DRAFT，待福 re-review（與六十甲子 Task 1 一起）
 
 ---
 
-## 1. 本輪做了什麼
+## 1. 本輪修正了什麼（narrow re-gate，不重跑研究）
 
-依 Phase Handoff Task 2：「關帝 100 首 verification（升 VERIFIED）——逐籤對 source image」。
+福 re-gate 意見逐項落實：
 
-1. **production witness**：Wikimedia Commons `NLC892-411999005947-9653 道藏 第4379冊.pdf`（中國國圖藏《道藏》，94 頁，free access）＝《護國嘉濟江東王靈籤》全本（宋濂碑文＋傅燁序＋100 籤）
-2. **全量 OCR**：pdf-ocr 83 頁（OCR-B）＋ autoglm 頁面 OCR 兩輪 70 頁（OCR-C：第一輪 52 頁針對首輪 UNRESOLVED、第二輪補跑 23 頁針對 VERIFIED 籤頁）
-3. **三方比對**：wikisource transcription × OCR-B × OCR-C（2-gram 命中率 ≥0.9／句）
-4. **witness 驗證**：對 VERIFIED 籤的「未雙命中句」分析另一 OCR 讀到什麼 → 17 句 OCR 間分歧全部為形近/異體誤讀，無實質 variant
-5. **variant 分類**：55 PROBABLE 的 69 未確認句 → candidate_variant 28 / partial 18 / no_reliable 23
+| 福的意見 | 修正 |
+|---|---|
+| OCR-B/OCR-C 是同一影像的兩條 transcription path，非獨立 textual witnesses | 拆 `transcription_grade`（A/B/LOW）與 `textual_witness_confidence`（全 `single_witness_not_verified`）；加 `witness_independence` 結構 |
+| wikisource 底本獨立性未證明 | `witness_independence.wikisource_independence = unproven`；textual witness count = 1 |
+| 不再稱 textual authenticity 的 VERIFIED | 移除 VERIFIED 語義；A/B 保留為 transcription grade |
+| matching 限定同一 slip/對應 page | page-scoped：句子只在 cand_pages 內比對；驗證 page 外命中 = 0 |
+| 考慮順序與位置 | cand_pages 來自 numbering 定位（100/100）；報告含 per-line 命中頁 |
+| 不 normalize 掉 □ | strip_punct keep_box 保留 □；verbatim 不變 |
+| 不併 裡/裏/里 | FAN2JIAN 移除 裡/裏→里 映射 |
+| #70 未確認句 line-level UNRESOLVED | line_status=unresolved 記錄於 notes；slip 維持 PROBABLE（低信心 candidate） |
+| 「裹/里」7 處 | 保留 source literal「裹」，不 canonicalize，繼續標 candidate_variant |
+| reproducibility | EVIDENCE_MANIFEST.md：PDF 來源/下載/重跑方式；repo 只含 OCR 輸出與工具 |
 
-## 2. Final Result
+## 2. Final Result（v4）
 
-| 等級 | 數量 | 判準 |
+| transcription_grade | 數量 | 籤號 |
 |---|---|---|
-| VERIFIED-A（三源一致） | 16 | 四句全雙 OCR（wikisource×B×C） |
-| VERIFIED-B（雙源一致） | 29 | 四句至少一 OCR（wikisource×B 或 C） |
-| PROBABLE | 55 | 有未確認句（含 28 candidate_variant 需人工核對） |
-| UNRESOLVED | 0 | — |
+| A（雙 OCR path 一致） | 16 | 2,3,6,9,12,14,17,19,22,28,38,43,46,61,63,76 |
+| B（單 OCR path） | 29 | 1,7,11,16,18,23,26,27,29,31,34,39,41,44,51,52,66,68,69,72,73,77,79,83,84,92,93,96,97 |
+| LOW（有句無 OCR path） | 55 | 其餘 |
 
-- **#70 維持 PROBABLE**（按 evidence：未確認句「與君定約為霖日，正是蘊隆中伏時。」兩 OCR 皆未可靠命中）
-- **numbering 100/100 定位**（94 籤序標記 + 6 補定位）
-- **locator 100/100 更新**（NLC PDF 頁碼）
+- transcription_status：100/100 PROBABLE（wikisource 原狀）
+- textual_witness_confidence：100/100 single_witness_not_verified
+- #70：LOW／PROBABLE／line-level UNRESOLVED 明確
 
-## 3. 重要發現：candidate_variant 28 句
+## 3. 未確認句分類（55 籤 69 句）
 
-**「裹/里」高頻候選（7 句）**：#24 夏裹、#35 門裹、#54 叢裹、#57 鬧裹、#62 城裹、#90 城裹、#91 妙裹——wikisource「裹」vs OCR「里」，疑 wikisource 形近誤植「裏/裡」，**需核對道藏影像後決定 verbatim 修正或標 UNRESOLVED**。
+candidate_variant 28（含「裹/里」7 處高頻候選 #24/35/54/57/62/90/91）／partial 18／no_reliable 23——明細 `variant_analysis.md`
 
-其餘 21 句為單字差異（異體繁簡 11 + 形近/真異文 10），明細見 `guandi_variant_analysis.md`。
+## 4. 四項清單
 
-> 分類語義：candidate_variant ≠ wikisource 錯誤；是「需人工核對影像的差異候選」。
+- **What I know**：v4 語義修正完成（grade/textual 分離）；page-scoped matching 生效（外命中 0）；#70 line-level 正確；「裹/里」7 處保留 literal 未改；clean checkout 可重跑（manifest 提供外部證據來源）
+- **What I assume**：wikisource 底本與 NLC 影像同屬道藏系統但獨立性未證明（unproven 誠實標記）；2-gram 0.9 門檻保守
+- **What I did not test**：candidate_variant 28 句人工核圖；「裹/里」7 處的影像判讀；wikisource 底本溯源
+- **What the next reviewer must verify**：grade A/B 的抽樣覆核；candidate_variant 清單合理性；「transcription path 一致 ≠ textual VERIFIED」的語義是否接受；clean checkout 重跑結果
 
-## 4. 方法論誠實聲明
+## 5. 檔案（research/guandi-verification-2026-08-27/）
 
-- VERIFIED = 籤詩四句在影像 OCR（2-gram ≥0.9）命中；A/B 分級反映 witness 強度
-- **VERIFIED 45 的第二 witness 成立**：每句有 wikisource 之外的獨立 OCR 支持；17 句分歧為 OCR 引擎字形差異（玉→王、辯→辨、鹽→塩等），已記錄
-- **未逐字人工對原圖**：VERIFIED 45 是「兩獨立 OCR × wikisource 交叉」結果，非人類目視
-- PROBABLE 55 未升、未為維持舊數字調整 gate、#70 按 evidence 判斷
-
-## 5. 四項清單
-
-- **What I know**：NLC PDF 即關帝籤全本（免費可重現）；VERIFIED 45（A16/B29）皆有 OCR witness 支持且無實質分歧；55 PROBABLE 有 69 未確認句（28 候選 variant 含 7 處「裹/里」）；100/100 numbering/locator 完成
-- **What I assume**：2-gram 0.9 門檻保守（單字誤讀即 fail）；NLC 本與 ctext 本同版（PROBABLE，未機械比對）；「裹/里」7 處疑 wikisource 誤植（需影像確認）
-- **What I did not test**：逐字人工對原圖（45 VERIFIED 抽樣覆核 + 55 PROBABLE 69 句）；candidate_variant 28 句的影像核對
-- **What the next reviewer must verify**：candidate_variant 28 句（尤其「裹/里」7 處）；VERIFIED 抽樣對原圖；A/B 分級是否採納；「OCR 交叉一致」作為 VERIFIED 判準是否接受
-
-## 6. 下一步（backlog）
-
-1. **人工核對 candidate_variant 28 句**（`daozang_pages/` PNG，優先「裹/里」7 處）→ 決定 verbatim 修正或 UNRESOLVED
-2. partial/no_reliable 41 句逐句人工核對（或第三輪更高解析度 OCR）
-3. 福 review PASS 後 merge（與六十甲子 Task 1 一起驗收）
+verification_report_v4.json/.md｜slip_texts.verified_v4.json（DRAFT）｜variant_analysis｜QA_SUMMARY.md｜EVIDENCE_MANIFEST.md｜slip_page_map.json｜ocr/（OCR 輸出）｜verify_guandi_daozang.py / analyze_guandi_variants.py

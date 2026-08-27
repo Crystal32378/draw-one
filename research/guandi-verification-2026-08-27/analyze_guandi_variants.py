@@ -17,19 +17,23 @@ import re
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-WORK = sys.argv[1] if len(sys.argv) > 1 else HERE
+WORK = sys.argv[1] if len(sys.argv) > 1 else os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+PKG = os.path.join(WORK, "research", "guandi-verification-2026-08-27")
+OCR_DIR = os.path.join(PKG, "ocr")
 
-B1 = os.path.join(WORK, "daozang_ocr_b1_combined.txt")
-B2 = os.path.join(WORK, "daozang_ocr_b2_combined.txt")
-AUTOGLM = os.path.join(WORK, "daozang_pages_autoglm.jsonl")
-AUTOGLM2 = os.path.join(WORK, "daozang_pages_autoglm2.jsonl")
-SLIPS = os.path.join(WORK, "repo-delivery", "data", "corpora", "guandi", "slip_texts.json")
-REPORT = os.path.join(WORK, "guandi_verification_report_v3.json")
-OUT = os.path.join(WORK, "guandi_variant_analysis.json")
-OUT_MD = os.path.join(WORK, "guandi_variant_analysis.md")
+B1 = os.path.join(OCR_DIR, "daozang_ocr_b1_combined.txt")
+B2 = os.path.join(OCR_DIR, "daozang_ocr_b2_combined.txt")
+AUTOGLM = os.path.join(OCR_DIR, "daozang_pages_autoglm.jsonl")
+AUTOGLM2 = os.path.join(OCR_DIR, "daozang_pages_autoglm2.jsonl")
+SLIPS = os.path.join(WORK, "data", "corpora", "guandi", "slip_texts.json")
+REPORT = os.path.join(PKG, "verification_report_v4.json")
+OUT = os.path.join(PKG, "variant_analysis.json")
+OUT_MD = os.path.join(PKG, "variant_analysis.md")
 
 sys.path.insert(0, HERE)
-from verify_guandi_daozang2 import normalize, strip_punct, ngram_hit_rate
+import sys as _sys
+_sys.path.insert(0, PKG)
+from verify_guandi_daozang import normalize, strip_punct, ngram_hit_rate
 
 # 已知形近誤讀對（OCR 讀法 → 正確讀法）——從實際差異中歸納，僅供分類參考
 KNOWN_SHAPE = {
@@ -169,8 +173,6 @@ def main():
 
     results = []
     for r in rep["results"]:
-        if r["transcription_status"] != "PROBABLE":
-            continue
         n = r["slip_number"]
         slip = slips.get(n, {})
         for line in r["lines"]:

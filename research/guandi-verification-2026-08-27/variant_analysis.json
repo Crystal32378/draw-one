@@ -490,15 +490,15 @@
    "norm_line": "一春万事苦憂煎夏裹營求始貼然",
    "best_witness": "OCR-B",
    "best_rate": 0.846,
-   "ocr_fragment": "一春万事苦憂煎夏里營求始貼然",
+   "ocr_fragment": "一春万事苦憂煎夏裏營求始貼然",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-B rate=0.85；候選差異：裹→里"
+   "detail": "OCR-B rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 25,
@@ -683,15 +683,15 @@
    "norm_line": "一山如画对清江门裹团圆事事雙",
    "best_witness": "OCR-C",
    "best_rate": 0.846,
-   "ocr_fragment": "一山如画对清江门里团圆事事雙",
+   "ocr_fragment": "一山如画对清江门裏团圆事事雙",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-C rate=0.85；候選差異：裹→里"
+   "detail": "OCR-C rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 35,
@@ -803,7 +803,7 @@
    "norm_line": "屏卻昧公心裹事出门无礙是通时",
    "best_witness": "OCR-C",
    "best_rate": 0.692,
-   "ocr_fragment": "昧公心里事出门无礙是通时",
+   "ocr_fragment": "昧公心裏事出门无礙是通时",
    "diffs": [
     [
      "屏",
@@ -819,7 +819,7 @@
     ],
     [
      "公",
-     "里"
+     "裏"
     ],
     [
      "心",
@@ -1272,15 +1272,15 @@
    "norm_line": "万人叢裹逞英豪便欲飞騰霄汉高",
    "best_witness": "OCR-B",
    "best_rate": 0.846,
-   "ocr_fragment": "万人叢里逞英豪便欲飞騰霄汉高",
+   "ocr_fragment": "万人叢裏逞英豪便欲飞騰霄汉高",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-B rate=0.85；候選差異：裹→里"
+   "detail": "OCR-B rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 55,
@@ -1375,15 +1375,15 @@
    "norm_line": "一着先机君记取纷纷鬧裹更思量",
    "best_witness": "OCR-C",
    "best_rate": 0.846,
-   "ocr_fragment": "一着先机君记取纷纷鬧里更思量",
+   "ocr_fragment": "一着先机君记取纷纷鬧裏更思量",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-C rate=0.85；候選差異：裹→里"
+   "detail": "OCR-C rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 58,
@@ -1594,15 +1594,15 @@
    "norm_line": "得胜回时秋渐老虎头城裹喜相寻",
    "best_witness": "OCR-C",
    "best_rate": 0.846,
-   "ocr_fragment": "得胜回时秋渐老虎头城里喜相寻",
+   "ocr_fragment": "得胜回时秋渐老虎头城裏喜相寻",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-C rate=0.85；候選差異：裹→里"
+   "detail": "OCR-C rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 64,
@@ -1628,7 +1628,7 @@
    "norm_line": "更入新春人事后裹言方得信先容",
    "best_witness": "OCR-C",
    "best_rate": 0.692,
-   "ocr_fragment": "春人事后里言方得信先容重重新春",
+   "ocr_fragment": "春人事后裏言方得信先容重重新春",
    "diffs": [
     [
      "更",
@@ -1648,7 +1648,7 @@
     ],
     [
      "人",
-     "里"
+     "裏"
     ],
     [
      "事",
@@ -1994,7 +1994,7 @@
    "norm_line": "家道丰腴自飽溫也须肚裹立乾坤",
    "best_witness": "OCR-B",
    "best_rate": 0.692,
-   "ocr_fragment": "家道丰腴自飽温也须肚里立乾坤",
+   "ocr_fragment": "家道丰腴自飽温也须肚裏立乾坤",
    "diffs": [
     [
      "溫",
@@ -2002,7 +2002,7 @@
     ],
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "no_reliable_fragment",
@@ -2466,7 +2466,7 @@
    "norm_line": "白马渡江虽日暮虎头城裹看巍峨",
    "best_witness": "OCR-B",
    "best_rate": 0.385,
-   "ocr_fragment": "江虽曰暮虎头城里看巍",
+   "ocr_fragment": "江虽曰暮虎头城裏看巍",
    "diffs": [
     [
      "白",
@@ -2498,7 +2498,7 @@
     ],
     [
      "虎",
-     "里"
+     "裏"
     ],
     [
      "头",
@@ -2535,15 +2535,15 @@
    "norm_line": "崆峒城裹事如麻无事如君有幾家",
    "best_witness": "OCR-B",
    "best_rate": 0.846,
-   "ocr_fragment": "崆峒城里事如麻无事如君有幾家",
+   "ocr_fragment": "崆峒城裏事如麻无事如君有幾家",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-B rate=0.85；候選差異：裹→里"
+   "detail": "OCR-B rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 90,
@@ -2621,15 +2621,15 @@
    "norm_line": "荣华总得诗书效妙裹工夫仔细寻",
    "best_witness": "OCR-C",
    "best_rate": 0.846,
-   "ocr_fragment": "荣华总得诗书效妙里工夫仔细寻",
+   "ocr_fragment": "荣华总得诗书效妙裏工夫仔细寻",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ]
    ],
    "class": "candidate_variant",
-   "detail": "OCR-C rate=0.85；候選差異：裹→里"
+   "detail": "OCR-C rate=0.85；候選差異：裹→裏"
   },
   {
    "slip_number": 94,
@@ -2672,11 +2672,11 @@
    "norm_line": "知君袖裹有驪珠生不逢辰亦強图",
    "best_witness": "OCR-B",
    "best_rate": 0.692,
-   "ocr_fragment": "知君袖里有驪珠生不逢辰亦",
+   "ocr_fragment": "知君袖裏有驪珠生不逢辰亦",
    "diffs": [
     [
      "裹",
-     "里"
+     "裏"
     ],
     [
      "強",

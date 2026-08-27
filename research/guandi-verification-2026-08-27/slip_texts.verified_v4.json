@@ -1,7 +1,7 @@
 {
- "schema_version": "0.1",
- "purpose": "Slip text identity — 每一段籤詩文字的身分證（關帝百籤 100/100）（VERIFIED 升級草案 v3，待福 review）",
- "note": "transcription_status 升級依據：NLC 道藏影像（OCR-B pdf-ocr + OCR-C autoglm）× 維基文庫轉錄三方交叉；每句 2-gram 命中率≥0.9。未命中句維持 UNRESOLVED，記錄於 notes。",
+ "schema_version": "0.2",
+ "purpose": "Slip text identity — 每一段籤詩文字的身分證（關帝百籤 100/100）（v4 transcription verification 草案，待福 review）",
+ "note": "transcription_grade A/B/LOW（transcription path 層級）；textual_witness_confidence 全部 single_witness_not_verified；line-level UNRESOLVED 記錄於 notes。",
  "corpus_id": "guandi",
  "slips": [
   {
@@ -14,8 +14,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 12）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「巍巍獨步向雲間，玉殿千官第一…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -27,8 +30,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 13）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -40,8 +46,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 14）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -54,7 +63,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 15）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：好把瓣香告神彿，莫教福謝悔無追。"
+   "notes": "line-level UNRESOLVED：好把瓣香告神彿，莫教福謝悔無追。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -67,7 +79,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 15）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：若逢牛鼠交承巳，萬事迴春不用憂。"
+   "notes": "line-level UNRESOLVED：若逢牛鼠交承巳，萬事迴春不用憂。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -79,8 +94,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 16）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -92,8 +110,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 17）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「指日丹成謝巖谷，一朝引領向天…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -106,7 +127,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 18）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：況遇太平無事日，士農工賈百無憂。"
+   "notes": "line-level UNRESOLVED：況遇太平無事日，士農工賈百無憂。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -118,8 +142,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 19）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -132,7 +159,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 19）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：直教重見一陽復，始可求安仗佛持。"
+   "notes": "line-level UNRESOLVED：直教重見一陽復，始可求安仗佛持。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -144,8 +174,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 20）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「今年好事一番新，冨貴榮華萃一…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -157,8 +190,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 21）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -171,7 +207,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 22）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：玉兔重生應發積，萬人頭上逞英雄。"
+   "notes": "line-level UNRESOLVED：玉兔重生應發積，萬人頭上逞英雄。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -183,8 +222,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 23）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -197,7 +239,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 23）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：直待春風好消息，卻調琴瑟向蘭房。"
+   "notes": "line-level UNRESOLVED：直待春風好消息，卻調琴瑟向蘭房。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -209,8 +254,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 24）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「官事悠悠難辯明，不如息了且歸…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -222,8 +270,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 25）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -235,8 +286,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 26）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「知君指擬似空華，底事茫茫未有…」僅 OCR-B 命中（rate_c=0.077）；「牢把腳根踏實地，善為善應永無…」僅 OCR-B 命中（rate_c=0.154）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -248,8 +302,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 27）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -262,7 +319,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 27）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：世事盡從流水去，功名富貴等浮雲。"
+   "notes": "line-level UNRESOLVED：世事盡從流水去，功名富貴等浮雲。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -275,7 +335,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：與君夙昔結成寃，今日相逢那得緣。；好把經文多諷誦，祈求戶口保嬋娟。"
+   "notes": "line-level UNRESOLVED：與君夙昔結成寃，今日相逢那得緣。；好把經文多諷誦，祈求戶口保嬋娟。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -287,8 +350,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 29）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -300,8 +366,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 30）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「花開花落任春風，貴賤窮通百歲…」僅 OCR-B 命中（rate_c=0.154）；「似子榮華今已矣，到頭萬事總歸…」僅 OCR-B 命中（rate_c=0.154）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -314,7 +383,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 31）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：一春萬事苦憂煎，夏裹營求始貼然。"
+   "notes": "line-level UNRESOLVED：一春萬事苦憂煎，夏裹營求始貼然。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -327,7 +399,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 31）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：更逢玉兔金鷄會，枯木逢春自放花。"
+   "notes": "line-level UNRESOLVED：更逢玉兔金鷄會，枯木逢春自放花。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -339,8 +414,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 32）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「與子定期三日內，田疇沾足雨滂…」僅 OCR-C 命中（rate_b=0.692）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -352,8 +430,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 33）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「世間萬物皆有主，一粒一毫君莫…」僅 OCR-B 命中（rate_c=0.077）；「英雄豪傑自天生，也須步步循規…」僅 OCR-B 命中（rate_c=0.231）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -365,8 +446,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 34）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -378,8 +462,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 35）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「祖宗積德幾多年，源遠流長慶自…」僅 OCR-C 命中（rate_b=0.846）；「更若操修無倦意，天須還汝舊青…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -392,7 +479,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 35）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：目下營求且休矣，秋期與子定佳音。"
+   "notes": "line-level UNRESOLVED：目下營求且休矣，秋期與子定佳音。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -404,8 +494,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 36）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「千里信音符遠望，萱堂快樂未渠…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -418,7 +511,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 37）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：勞生汩汩竟何歸，疾病兼多是與非。"
+   "notes": "line-level UNRESOLVED：勞生汩汩竟何歸，疾病兼多是與非。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -431,7 +527,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 38）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：不分南北與西東，眼底昏昏耳似聾。"
+   "notes": "line-level UNRESOLVED：不分南北與西東，眼底昏昏耳似聾。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -443,8 +542,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 39）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「春夏纔過秋又冬，紛紛謀慮攪心…」僅 OCR-B 命中（rate_c=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -457,7 +559,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：一山如畫對清江，門裹團圓事事雙。；誰料半途分拆去，空帷無語對銀缸。"
+   "notes": "line-level UNRESOLVED：一山如畫對清江，門裹團圓事事雙。；誰料半途分拆去，空帷無語對銀缸。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -470,7 +575,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：功名冨貴自能為，偶著仙鞭莫問伊。；萬里鵬程君有分，昊山嶺上好鑽龜。"
+   "notes": "line-level UNRESOLVED：功名冨貴自能為，偶著仙鞭莫問伊。；萬里鵬程君有分，昊山嶺上好鑽龜。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -483,7 +591,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 41）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：屏卻昧公心裹事，出門無礙是通時。"
+   "notes": "line-level UNRESOLVED：屏卻昧公心裹事，出門無礙是通時。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -495,8 +606,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 42）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -508,8 +622,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 43）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「北山門下好安居，若問終時慎厥…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -522,7 +639,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 43）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：即聽耳邊消息到，崎嶇歷過見亨衢。"
+   "notes": "line-level UNRESOLVED：即聽耳邊消息到，崎嶇歷過見亨衢。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -534,8 +654,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 44）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「遇鼠逢牛三弄笛，好將名姓榜頭…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -548,7 +671,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 45）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：但改新圖莫依舊，營謀應得稱心懷。"
+   "notes": "line-level UNRESOLVED：但改新圖莫依舊，營謀應得稱心懷。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -560,8 +686,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 46）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -573,8 +702,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 47）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「堅牢一念酬香願，冨貴榮華在汝…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -587,7 +719,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 47）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：陰地不如心地好，修為到底卻輸君。"
+   "notes": "line-level UNRESOLVED：陰地不如心地好，修為到底卻輸君。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -599,8 +734,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 48）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -613,7 +751,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 49）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：與君萬語復千言，衹欲平和雪爾冤。"
+   "notes": "line-level UNRESOLVED：與君萬語復千言，衹欲平和雪爾冤。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -626,7 +767,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 50）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：不遇虎頭人一喚，全家誰保汝重懼。"
+   "notes": "line-level UNRESOLVED：不遇虎頭人一喚，全家誰保汝重懼。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -639,7 +783,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 51）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：彼此家居只一山，如何似膈鬼門關。"
+   "notes": "line-level UNRESOLVED：彼此家居只一山，如何似膈鬼門關。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -652,7 +799,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 51）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：一家和氣多生福，萋菲讒言莫聽偏。"
+   "notes": "line-level UNRESOLVED：一家和氣多生福，萋菲讒言莫聽偏。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -664,8 +814,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 52）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「君今百事且隨緣，水到渠成聽自…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -677,8 +830,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 53）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「兀坐幽居歎寂寥，孤燈隱映度清…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -691,7 +847,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 54）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：艱難險阻路蹊蹺，南烏孤飛依北巢。"
+   "notes": "line-level UNRESOLVED：艱難險阻路蹊蹺，南烏孤飛依北巢。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -704,7 +863,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 55）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：萬人叢裹逞英豪，便欲飛騰霄漢高。"
+   "notes": "line-level UNRESOLVED：萬人叢裹逞英豪，便欲飛騰霄漢高。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -717,7 +879,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 55）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：縱使經商收倍利，不如逐歲凜禾多。"
+   "notes": "line-level UNRESOLVED：縱使經商收倍利，不如逐歲凜禾多。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -730,7 +895,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 56）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：心頭理曲強詞遮，直欲欺官行路斜。"
+   "notes": "line-level UNRESOLVED：心頭理曲強詞遮，直欲欺官行路斜。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -743,7 +911,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 57）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：一著先機君記取，紛紛鬧裹更思量。"
+   "notes": "line-level UNRESOLVED：一著先機君記取，紛紛鬧裹更思量。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -756,7 +927,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：蘇秦三寸足平生，富貴功名在此行。；更好修為陰隱事，前程萬里自通亨。"
+   "notes": "line-level UNRESOLVED：蘇秦三寸足平生，富貴功名在此行。；更好修為陰隱事，前程萬里自通亨。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -769,7 +943,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 59）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：幸有祖宗陰隱在，香煙未斷續螟蛉。"
+   "notes": "line-level UNRESOLVED：幸有祖宗陰隱在，香煙未斷續螟蛉。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -782,7 +959,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：羨君兄弟好名聲，只管謙偽莫自矜。；丹詔槐黃相逼近，巍巍科甲兩同登。"
+   "notes": "line-level UNRESOLVED：羨君兄弟好名聲，只管謙偽莫自矜。；丹詔槐黃相逼近，巍巍科甲兩同登。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -794,8 +974,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 60）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -808,7 +991,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：百十八面虎狼心，賴汝干戈用力深。；得勝回時秋漸老，虎頭城裹喜相尋。"
+   "notes": "line-level UNRESOLVED：百十八面虎狼心，賴汝干戈用力深。；得勝回時秋漸老，虎頭城裹喜相尋。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -820,8 +1006,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 62）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -834,7 +1023,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 63）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：人力不勞公論協，事成功倍笑談中。"
+   "notes": "line-level UNRESOLVED：人力不勞公論協，事成功倍笑談中。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -847,7 +1039,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 63）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：更入新春人事後，裹言方得信先容。"
+   "notes": "line-level UNRESOLVED：更入新春人事後，裹言方得信先容。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -859,8 +1054,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 64）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「見說今年新運好，門闌喜炁事雙…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -873,7 +1071,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 65）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：願子改圖從孝悌，不愁家室不相宜。"
+   "notes": "line-level UNRESOLVED：願子改圖從孝悌，不愁家室不相宜。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -885,8 +1086,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 66）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「南販珍珠北販鹽，年來幾倍貨財…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -898,8 +1102,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 67）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「捨舟遵路總相宜，慎勿嬉遊逐貴…」僅 OCR-C 命中（rate_b=0.692）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -912,7 +1119,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 67）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：與君定約為霖日，正是蘊隆中伏時。"
+   "notes": "line-level UNRESOLVED：與君定約為霖日，正是蘊隆中伏時。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -925,7 +1135,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 68）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：繡幃重結鴛鴦帶，葉落霜飛寒色侵。"
+   "notes": "line-level UNRESOLVED：繡幃重結鴛鴦帶，葉落霜飛寒色侵。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -937,8 +1150,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 69）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「河渠傍路有高低，可嘆長途日已…」僅 OCR-C 命中（rate_b=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -950,8 +1166,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 70）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「癡心猶望成連理，到底誰知事不…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -964,7 +1183,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 71）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：崔鬼崔鬼復崔鬼，履險如夷去復來。"
+   "notes": "line-level UNRESOLVED：崔鬼崔鬼復崔鬼，履險如夷去復來。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -977,7 +1199,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 71）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：相當人物無高下，得意休論富與貧。"
+   "notes": "line-level UNRESOLVED：相當人物無高下，得意休論富與貧。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -989,8 +1214,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 72）",
-   "transcription_status": "VERIFIED",
-   "notes": ""
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "A",
+   "transcription_confidence": "HIGH",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1002,8 +1230,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 73）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「木有根荄水有源，君當自此究其…」僅 OCR-B 命中（rate_c=0.846）；「莫隨道路人閑語，訟到終四是至…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1016,7 +1247,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：家道豐腴自飽溫，也須肚裹立乾坤。；財多害己君當省，福有胚胎禍有門。"
+   "notes": "line-level UNRESOLVED：家道豐腴自飽溫，也須肚裹立乾坤。；財多害己君當省，福有胚胎禍有門。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1028,8 +1262,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 75）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「若移丑艮陰陽逆，門戶凋零家道…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1042,7 +1279,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 75）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：改換陰陽移禍福，勸君莫作等閑看。"
+   "notes": "line-level UNRESOLVED：改換陰陽移禍福，勸君莫作等閑看。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1055,7 +1295,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 76）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：假君財物自當還，謀賴心欺他自奸。"
+   "notes": "line-level UNRESOLVED：假君財物自當還，謀賴心欺他自奸。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1068,7 +1311,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：彼亦儔中一輩賢，勸君特達與周全。；此時賓主歡相遇，他日王侯卻並肩。"
+   "notes": "line-level UNRESOLVED：彼亦儔中一輩賢，勸君特達與周全。；此時賓主歡相遇，他日王侯卻並肩。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1080,8 +1326,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 78）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「主張門戶成難事，百歲寬閑得幾…」僅 OCR-C 命中（rate_b=0.615）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1093,8 +1342,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 79）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「箇中事緒更紛然，當局須知一著…」僅 OCR-B 命中（rate_c=0.154）；「長舌婦人休酷聽，力行禮義要心…」僅 OCR-B 命中（rate_c=0.077）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1107,7 +1359,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 79）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：移寡就多君得計，如何歸路轉無聊。"
+   "notes": "line-level UNRESOLVED：移寡就多君得計，如何歸路轉無聊。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1120,7 +1375,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 80）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：長把他人比自己，管須自後勝今朝。"
+   "notes": "line-level UNRESOLVED：長把他人比自己，管須自後勝今朝。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1133,7 +1391,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 81）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：陰裹詳稱怪爾曹，舟中敵國笑中刀。"
+   "notes": "line-level UNRESOLVED：陰裹詳稱怪爾曹，舟中敵國笑中刀。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1146,7 +1407,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：從前作事總徒勞，纔是新春時漸遭。；百事營求都得意，更須守己莫心高。"
+   "notes": "line-level UNRESOLVED：從前作事總徒勞，纔是新春時漸遭。；百事營求都得意，更須守己莫心高。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1159,7 +1423,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：樽前無事且高歌，時未來時奈若何。；白馬渡江雖日暮，虎頭城裹看巍峨。"
+   "notes": "line-level UNRESOLVED：樽前無事且高歌，時未來時奈若何。；白馬渡江雖日暮，虎頭城裹看巍峨。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1172,7 +1439,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：崆峒城裹事如麻，無事如君有幾家。；勸汝不須勤致禱，徒勞生事苦咨嗟。"
+   "notes": "line-level UNRESOLVED：崆峒城裹事如麻，無事如君有幾家。；勸汝不須勤致禱，徒勞生事苦咨嗟。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1185,7 +1455,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 84）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：榮華總得詩書效，妙裹工夫仔細尋。"
+   "notes": "line-level UNRESOLVED：榮華總得詩書效，妙裹工夫仔細尋。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1197,8 +1470,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 85）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「今年禾穀不如前，物價喧騰倍百…」僅 OCR-B 命中（rate_c=0.154）；「災數流行多疫癘，一陽來復始安…」僅 OCR-B 命中（rate_c=0.154）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1210,8 +1486,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 86）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「春來雨水大連綿，入夏晴乾雨又…」僅 OCR-C 命中（rate_b=0.846）；「節氣直交三伏始，喜逢滂沛足田…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1224,7 +1503,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：一般器用與人同，巧斷輸輿梓亦二。；凡事有綠且隨分，秋行冬遇主人翁。"
+   "notes": "line-level UNRESOLVED：一般器用與人同，巧斷輸輿梓亦二。；凡事有綠且隨分，秋行冬遇主人翁。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1237,7 +1519,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：知君袖裹有驪珠，生不逢辰亦強圖。；可嘆頭顱已如許，而今方得貴人扶。"
+   "notes": "line-level UNRESOLVED：知君袖裹有驪珠，生不逢辰亦強圖。；可嘆頭顱已如許，而今方得貴人扶。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1249,8 +1534,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 88）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「四十年前須報應，功圓行滿育馨…」僅 OCR-C 命中（rate_b=0.769）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1262,8 +1550,11 @@
    "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 89）",
-   "transcription_status": "VERIFIED",
-   "notes": "witness_grade=B；單 witness 句：「五十功名心已灰，那知富貴逼人…」僅 OCR-B 命中（rate_c=0.846）"
+   "transcription_status": "PROBABLE",
+   "notes": "",
+   "transcription_grade": "B",
+   "transcription_confidence": "MEDIUM",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1276,7 +1567,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 90）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：玉兔交時當得意，恰如枯木再逢春。"
+   "notes": "line-level UNRESOLVED：玉兔交時當得意，恰如枯木再逢春。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1289,7 +1583,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 未定位）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：貴人相遇水雲鄉，冷淡交情滋味長。；黃閣開時延故客，驛餾應得驟康強。"
+   "notes": "line-level UNRESOLVED：貴人相遇水雲鄉，冷淡交情滋味長。；黃閣開時延故客，驛餾應得驟康強。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   },
   {
    "deity_tradition": "關帝（living-tradition mapping）",
@@ -1302,7 +1599,10 @@
    "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
    "source_locator": "Wikimedia Commons NLC892-411999005947-9653 道藏 第4379冊.pdf（頁 91）",
    "transcription_status": "PROBABLE",
-   "notes": "未命中句（OCR-B 與 OCR-C 皆無）：至誠禱祝皆靈應，抽得終籤百事宜。"
+   "notes": "line-level UNRESOLVED：至誠禱祝皆靈應，抽得終籤百事宜。",
+   "transcription_grade": "LOW",
+   "transcription_confidence": "LOW",
+   "textual_witness_confidence": "single_witness_not_verified"
   }
  ]
 }
