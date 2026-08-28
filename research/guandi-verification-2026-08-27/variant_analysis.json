@@ -1,0 +1,3030 @@
+{
+ "total_lines": 113,
+ "by_class": {
+  "candidate_variant": 25,
+  "no_reliable_fragment": 80,
+  "partial_fragment": 8
+ },
+ "items": [
+  {
+   "slip_number": 1,
+   "original_slip_label": "第一",
+   "line": "巍巍獨步向雲間，玉殿千官第一班。",
+   "norm_line": "巍巍独步向云间玉殿千官第一班",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "巍巍独步向云间王殿千官第一班",
+   "diffs": [
+    [
+     "玉",
+     "王"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：玉→王"
+  },
+  {
+   "slip_number": 2,
+   "original_slip_label": "第二",
+   "line": "盈虛消息總天時，自此君當百事宜。",
+   "norm_line": "盈虚消息总天时自此君当百事宜",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 2,
+   "original_slip_label": "第二",
+   "line": "若問前程歸縮地，更須方寸好修為。",
+   "norm_line": "若问前程归縮地更须方寸好修为",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 4,
+   "original_slip_label": "第四",
+   "line": "好把瓣香告神彿，莫教福謝悔無追。",
+   "norm_line": "好把瓣香告神彿莫教福谢悔无追",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "好把辦香告神佛莫教福谢悔无追",
+   "diffs": [
+    [
+     "瓣",
+     "辦"
+    ],
+    [
+     "彿",
+     "佛"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 5,
+   "original_slip_label": "第五",
+   "line": "若逢牛鼠交承巳，萬事迴春不用憂。",
+   "norm_line": "若逢牛鼠交承已万事回春不用憂",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "冷如秋若逢牛",
+   "diffs": [
+    [
+     "若",
+     "冷"
+    ],
+    [
+     "逢",
+     "如"
+    ],
+    [
+     "牛",
+     "秋"
+    ],
+    [
+     "鼠",
+     "若"
+    ],
+    [
+     "交",
+     "逢"
+    ],
+    [
+     "承",
+     "牛"
+    ],
+    [
+     "已",
+     "∅"
+    ],
+    [
+     "万",
+     "∅"
+    ],
+    [
+     "事",
+     "∅"
+    ],
+    [
+     "回",
+     "∅"
+    ],
+    [
+     "春",
+     "∅"
+    ],
+    [
+     "不",
+     "∅"
+    ],
+    [
+     "用",
+     "∅"
+    ],
+    [
+     "憂",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 8,
+   "original_slip_label": "第八",
+   "line": "年來耕稼苦無收，今歲田疇定有秋。",
+   "norm_line": "年来耕稼苦无收今歲田疇定有秋",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 8,
+   "original_slip_label": "第八",
+   "line": "況遇太平無事日，士農工賈百無憂。",
+   "norm_line": "况遇太平无事日士农工賈百无憂",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 9,
+   "original_slip_label": "第九",
+   "line": "望渠消息向長安，常把菱花仔細看。",
+   "norm_line": "望渠消息向长安常把菱花仔细看",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 9,
+   "original_slip_label": "第九",
+   "line": "見說文書將入境，今朝喜色上眉端。",
+   "norm_line": "见说文书将入境今朝喜色上眉端",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 10,
+   "original_slip_label": "第十",
+   "line": "病患時時命蹇衰，何須打瓦更鑽龜。",
+   "norm_line": "病患时时命蹇衰何须打瓦更鑽龟",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 10,
+   "original_slip_label": "第十",
+   "line": "直教重見一陽復，始可求安仗佛持。",
+   "norm_line": "直教重见一阳复始可求安仗佛持",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.077,
+   "ocr_fragment": "男婚可求行人",
+   "diffs": [
+    [
+     "直",
+     "男"
+    ],
+    [
+     "教",
+     "婚"
+    ],
+    [
+     "重",
+     "可"
+    ],
+    [
+     "见",
+     "求"
+    ],
+    [
+     "一",
+     "行"
+    ],
+    [
+     "阳",
+     "人"
+    ],
+    [
+     "复",
+     "∅"
+    ],
+    [
+     "始",
+     "∅"
+    ],
+    [
+     "可",
+     "∅"
+    ],
+    [
+     "求",
+     "∅"
+    ],
+    [
+     "安",
+     "∅"
+    ],
+    [
+     "仗",
+     "∅"
+    ],
+    [
+     "佛",
+     "∅"
+    ],
+    [
+     "持",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.08；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 13,
+   "original_slip_label": "第十三",
+   "line": "玉兔重生應發積，萬人頭上逞英雄。",
+   "norm_line": "玉兔重生应发積万人头上逞英雄",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "重生应发積万人头上逞英雄",
+   "diffs": [
+    [
+     "玉",
+     "重"
+    ],
+    [
+     "兔",
+     "生"
+    ],
+    [
+     "重",
+     "应"
+    ],
+    [
+     "生",
+     "发"
+    ],
+    [
+     "应",
+     "積"
+    ],
+    [
+     "发",
+     "万"
+    ],
+    [
+     "積",
+     "人"
+    ],
+    [
+     "万",
+     "头"
+    ],
+    [
+     "人",
+     "上"
+    ],
+    [
+     "头",
+     "逞"
+    ],
+    [
+     "上",
+     "英"
+    ],
+    [
+     "逞",
+     "雄"
+    ],
+    [
+     "英",
+     "∅"
+    ],
+    [
+     "雄",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.85；fragment 部分可信，差異僅參考：玉→重；兔→生；重→应；生→发；应→積；发→万"
+  },
+  {
+   "slip_number": 15,
+   "original_slip_label": "第十五",
+   "line": "直待春風好消息，卻調琴瑟向蘭房。",
+   "norm_line": "直待春风好消息卻調琴瑟向兰房",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "莫較量直待春",
+   "diffs": [
+    [
+     "直",
+     "莫"
+    ],
+    [
+     "待",
+     "較"
+    ],
+    [
+     "春",
+     "量"
+    ],
+    [
+     "风",
+     "直"
+    ],
+    [
+     "好",
+     "待"
+    ],
+    [
+     "消",
+     "春"
+    ],
+    [
+     "息",
+     "∅"
+    ],
+    [
+     "卻",
+     "∅"
+    ],
+    [
+     "調",
+     "∅"
+    ],
+    [
+     "琴",
+     "∅"
+    ],
+    [
+     "瑟",
+     "∅"
+    ],
+    [
+     "向",
+     "∅"
+    ],
+    [
+     "兰",
+     "∅"
+    ],
+    [
+     "房",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 16,
+   "original_slip_label": "第十六",
+   "line": "官事悠悠難辯明，不如息了且歸耕。",
+   "norm_line": "官事悠悠难辯明不如息了且归耕",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "官事悠悠难辨明不如息了且归耕",
+   "diffs": [
+    [
+     "辯",
+     "辨"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：辯→辨"
+  },
+  {
+   "slip_number": 17,
+   "original_slip_label": "第十七",
+   "line": "田園價貫好商量，事到公庭彼此傷。",
+   "norm_line": "田園價贯好商量事到公庭彼此傷",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 17,
+   "original_slip_label": "第十七",
+   "line": "縱是機關圖得勝，定為後世子孫殃。",
+   "norm_line": "縱是机关图得胜定为后世子孙殃",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 18,
+   "original_slip_label": "第十八",
+   "line": "知君指擬似空華，底事茫茫未有涯。",
+   "norm_line": "知君指擬似空华底事茫茫未有涯",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 18,
+   "original_slip_label": "第十八",
+   "line": "牢把腳根踏實地，善為善應永無差。",
+   "norm_line": "牢把脚根踏实地善为善应永无差",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 19,
+   "original_slip_label": "第十九",
+   "line": "嗟子從來未得時，今年星運頗相宜。",
+   "norm_line": "嗟子从来未得时今年星運頗相宜",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 19,
+   "original_slip_label": "第十九",
+   "line": "營求動作都如意，和合婚姻誕貴兒。",
+   "norm_line": "營求动作都如意和合婚姻誕贵兒",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 20,
+   "original_slip_label": "第二十",
+   "line": "一生心事向誰論，十八灘頭說與君。",
+   "norm_line": "一生心事向谁论十八灘头说与君",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 20,
+   "original_slip_label": "第二十",
+   "line": "世事盡從流水去，功名富貴等浮雲。",
+   "norm_line": "世事尽从流水去功名富贵等浮云",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 21,
+   "original_slip_label": "第二十一",
+   "line": "與君夙昔結成寃，今日相逢那得緣。",
+   "norm_line": "与君夙昔结成寃今日相逢那得緣",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "与君夙昔结成冤今日相逢那得緣",
+   "diffs": [
+    [
+     "寃",
+     "冤"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：寃→冤"
+  },
+  {
+   "slip_number": 21,
+   "original_slip_label": "第二十一",
+   "line": "好把經文多諷誦，祈求戶口保嬋娟。",
+   "norm_line": "好把经文多諷誦祈求户口保嬋娟",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "好把经文多諷誦析求户口保",
+   "diffs": [
+    [
+     "祈",
+     "析"
+    ],
+    [
+     "嬋",
+     "∅"
+    ],
+    [
+     "娟",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 23,
+   "original_slip_label": "第二十三",
+   "line": "花開花落任春風，貴賤窮通百歲中。",
+   "norm_line": "花开花落任春风贵賤窮通百歲中",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 23,
+   "original_slip_label": "第二十三",
+   "line": "似子榮華今已矣，到頭萬事總歸空。",
+   "norm_line": "似子荣华今已矣到头万事总归空",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 24,
+   "original_slip_label": "第二十四",
+   "line": "一春萬事苦憂煎，夏裹營求始貼然。",
+   "norm_line": "一春万事苦憂煎夏裹營求始貼然",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "一春万事苦憂煎夏重裘營求始貼然",
+   "diffs": [
+    [
+     "裹",
+     "重"
+    ],
+    [
+     "∅",
+     "裘"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：裹→重"
+  },
+  {
+   "slip_number": 25,
+   "original_slip_label": "第二十五",
+   "line": "更逢玉兔金鷄會，枯木逢春自放花。",
+   "norm_line": "更逢玉兔金鷄会枯木逢春自放花",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.077,
+   "ocr_fragment": "月渐亨嘉更逢",
+   "diffs": [
+    [
+     "更",
+     "月"
+    ],
+    [
+     "逢",
+     "渐"
+    ],
+    [
+     "玉",
+     "亨"
+    ],
+    [
+     "兔",
+     "嘉"
+    ],
+    [
+     "金",
+     "更"
+    ],
+    [
+     "鷄",
+     "逢"
+    ],
+    [
+     "会",
+     "∅"
+    ],
+    [
+     "枯",
+     "∅"
+    ],
+    [
+     "木",
+     "∅"
+    ],
+    [
+     "逢",
+     "∅"
+    ],
+    [
+     "春",
+     "∅"
+    ],
+    [
+     "自",
+     "∅"
+    ],
+    [
+     "放",
+     "∅"
+    ],
+    [
+     "花",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.08；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 27,
+   "original_slip_label": "第二十七",
+   "line": "世間萬物皆有主，一粒一毫君莫取。",
+   "norm_line": "世间万物皆有主一粒一毫君莫取",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 27,
+   "original_slip_label": "第二十七",
+   "line": "英雄豪傑自天生，也須步步循規矩。",
+   "norm_line": "英雄豪傑自天生也须步步循规矩",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 30,
+   "original_slip_label": "第三十",
+   "line": "目下營求且休矣，秋期與子定佳音。",
+   "norm_line": "目下營求且休矣秋期与子定佳音",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "吉利临目下營",
+   "diffs": [
+    [
+     "目",
+     "吉"
+    ],
+    [
+     "下",
+     "利"
+    ],
+    [
+     "營",
+     "临"
+    ],
+    [
+     "求",
+     "目"
+    ],
+    [
+     "且",
+     "下"
+    ],
+    [
+     "休",
+     "營"
+    ],
+    [
+     "矣",
+     "∅"
+    ],
+    [
+     "秋",
+     "∅"
+    ],
+    [
+     "期",
+     "∅"
+    ],
+    [
+     "与",
+     "∅"
+    ],
+    [
+     "子",
+     "∅"
+    ],
+    [
+     "定",
+     "∅"
+    ],
+    [
+     "佳",
+     "∅"
+    ],
+    [
+     "音",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 32,
+   "original_slip_label": "第三十二",
+   "line": "勞生汩汩竟何歸，疾病兼多是與非。",
+   "norm_line": "勞生汩汩竟何归疾病兼多是与非",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.769,
+   "ocr_fragment": "勞生汨汨竟何归疾病兼多是与非",
+   "diffs": [
+    [
+     "汩",
+     "汨"
+    ],
+    [
+     "汩",
+     "汨"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.77；fragment 部分可信，差異僅參考：汩→汨；汩→汨"
+  },
+  {
+   "slip_number": 33,
+   "original_slip_label": "第三十三",
+   "line": "不分南北與西東，眼底昏昏耳似聾。",
+   "norm_line": "不分南北与西东眼底昏昏耳似聾",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "不分南北与西东眼心昏昏耳似聾",
+   "diffs": [
+    [
+     "底",
+     "心"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：底→心"
+  },
+  {
+   "slip_number": 34,
+   "original_slip_label": "第三十四",
+   "line": "春夏纔過秋又冬，紛紛謀慮攪心胸。",
+   "norm_line": "春夏纔过秋又冬纷纷谋慮攪心胸",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.769,
+   "ocr_fragment": "春夏纔过秋冬纷纷谋慮攪心",
+   "diffs": [
+    [
+     "又",
+     "∅"
+    ],
+    [
+     "胸",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.77；fragment 部分可信，差異僅參考："
+  },
+  {
+   "slip_number": 35,
+   "original_slip_label": "第三十五",
+   "line": "一山如畫對清江，門裹團圓事事雙。",
+   "norm_line": "一山如画对清江门裹团圆事事雙",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "一山如画对清江门裏团圆事事雙",
+   "diffs": [
+    [
+     "裹",
+     "裏"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：裹→裏"
+  },
+  {
+   "slip_number": 35,
+   "original_slip_label": "第三十五",
+   "line": "誰料半途分拆去，空帷無語對銀缸。",
+   "norm_line": "谁料半途分拆去空帷无语对銀缸",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "事事雙谁料半",
+   "diffs": [
+    [
+     "谁",
+     "事"
+    ],
+    [
+     "料",
+     "事"
+    ],
+    [
+     "半",
+     "雙"
+    ],
+    [
+     "途",
+     "谁"
+    ],
+    [
+     "分",
+     "料"
+    ],
+    [
+     "拆",
+     "半"
+    ],
+    [
+     "去",
+     "∅"
+    ],
+    [
+     "空",
+     "∅"
+    ],
+    [
+     "帷",
+     "∅"
+    ],
+    [
+     "无",
+     "∅"
+    ],
+    [
+     "语",
+     "∅"
+    ],
+    [
+     "对",
+     "∅"
+    ],
+    [
+     "銀",
+     "∅"
+    ],
+    [
+     "缸",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 36,
+   "original_slip_label": "第三十六",
+   "line": "功名冨貴自能為，偶著仙鞭莫問伊。",
+   "norm_line": "功名富贵自能为偶着仙鞭莫问伊",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "功名富贵自能为偶看仙鞭莫问伊",
+   "diffs": [
+    [
+     "着",
+     "看"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：着→看"
+  },
+  {
+   "slip_number": 36,
+   "original_slip_label": "第三十六",
+   "line": "萬里鵬程君有分，昊山嶺上好鑽龜。",
+   "norm_line": "万里鹏程君有分昊山嶺上好鑽龟",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "万里鹏程君有分吳山嶺上好鑽龟",
+   "diffs": [
+    [
+     "昊",
+     "吳"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：昊→吳"
+  },
+  {
+   "slip_number": 37,
+   "original_slip_label": "第三十七",
+   "line": "屏卻昧公心裹事，出門無礙是通時。",
+   "norm_line": "屏卻昧公心裹事出门无礙是通时",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "昧公心裏事出门无礙是通时",
+   "diffs": [
+    [
+     "屏",
+     "昧"
+    ],
+    [
+     "卻",
+     "公"
+    ],
+    [
+     "昧",
+     "心"
+    ],
+    [
+     "公",
+     "裏"
+    ],
+    [
+     "心",
+     "事"
+    ],
+    [
+     "裹",
+     "出"
+    ],
+    [
+     "事",
+     "门"
+    ],
+    [
+     "出",
+     "无"
+    ],
+    [
+     "门",
+     "礙"
+    ],
+    [
+     "无",
+     "是"
+    ],
+    [
+     "礙",
+     "通"
+    ],
+    [
+     "是",
+     "时"
+    ],
+    [
+     "通",
+     "∅"
+    ],
+    [
+     "时",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 39,
+   "original_slip_label": "第三十九",
+   "line": "北山門下好安居，若問終時慎厥初。",
+   "norm_line": "北山门下好安居若问终时慎厥初",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "北山门下好安居若问终时慎",
+   "diffs": [
+    [
+     "厥",
+     "∅"
+    ],
+    [
+     "初",
+     "∅"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異："
+  },
+  {
+   "slip_number": 40,
+   "original_slip_label": "第四十",
+   "line": "即聽耳邊消息到，崎嶇歷過見亨衢。",
+   "norm_line": "即听耳边消息到崎嶇歷过见亨衢",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.077,
+   "ocr_fragment": "步与趋卽听耳",
+   "diffs": [
+    [
+     "即",
+     "步"
+    ],
+    [
+     "听",
+     "与"
+    ],
+    [
+     "耳",
+     "趋"
+    ],
+    [
+     "边",
+     "卽"
+    ],
+    [
+     "消",
+     "听"
+    ],
+    [
+     "息",
+     "耳"
+    ],
+    [
+     "到",
+     "∅"
+    ],
+    [
+     "崎",
+     "∅"
+    ],
+    [
+     "嶇",
+     "∅"
+    ],
+    [
+     "歷",
+     "∅"
+    ],
+    [
+     "过",
+     "∅"
+    ],
+    [
+     "见",
+     "∅"
+    ],
+    [
+     "亨",
+     "∅"
+    ],
+    [
+     "衢",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.08；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 42,
+   "original_slip_label": "第四十二",
+   "line": "我曾許汝事和諧，誰料修為汝自乖。",
+   "norm_line": "我曾许汝事和諧谁料修为汝自乖",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 42,
+   "original_slip_label": "第四十二",
+   "line": "但改新圖莫依舊，營謀應得稱心懷。",
+   "norm_line": "但改新图莫依旧營谋应得稱心怀",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 45,
+   "original_slip_label": "第四十五",
+   "line": "陰地不如心地好，修為到底卻輸君。",
+   "norm_line": "阴地不如心地好修为到底卻輸君",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.231,
+   "ocr_fragment": "心地力耕耘彼此山头总是坟阴地不",
+   "diffs": [
+    [
+     "阴",
+     "心"
+    ],
+    [
+     "不",
+     "力"
+    ],
+    [
+     "如",
+     "耕"
+    ],
+    [
+     "心",
+     "耘"
+    ],
+    [
+     "地",
+     "彼"
+    ],
+    [
+     "好",
+     "此"
+    ],
+    [
+     "修",
+     "山"
+    ],
+    [
+     "为",
+     "头"
+    ],
+    [
+     "到",
+     "总"
+    ],
+    [
+     "底",
+     "是"
+    ],
+    [
+     "卻",
+     "坟"
+    ],
+    [
+     "輸",
+     "阴"
+    ],
+    [
+     "君",
+     "地"
+    ],
+    [
+     "∅",
+     "不"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.23；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 46,
+   "original_slip_label": "第四十六",
+   "line": "君是山中萬戶侯，信知騎馬勝騎牛。",
+   "norm_line": "君是山中万户侯信知騎马胜騎牛",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 46,
+   "original_slip_label": "第四十六",
+   "line": "今朝馬上看山色，爭似騎牛得自由。",
+   "norm_line": "今朝马上看山色争似騎牛得自由",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 47,
+   "original_slip_label": "第四十七",
+   "line": "與君萬語復千言，衹欲平和雪爾冤。",
+   "norm_line": "与君万语复千言衹欲平和雪尔冤",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.769,
+   "ocr_fragment": "与君万语复千言祗欲平和雪尔",
+   "diffs": [
+    [
+     "衹",
+     "祗"
+    ],
+    [
+     "冤",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.77；fragment 部分可信，差異僅參考：衹→祗"
+  },
+  {
+   "slip_number": 48,
+   "original_slip_label": "第四十八",
+   "line": "登山涉水正天寒，兄弟親姻那得安。",
+   "norm_line": "登山涉水正天寒兄弟亲姻那得安",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 48,
+   "original_slip_label": "第四十八",
+   "line": "不遇虎頭人一喚，全家誰保汝重懼。",
+   "norm_line": "不遇虎头人一喚全家谁保汝重懼",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 49,
+   "original_slip_label": "第四十九",
+   "line": "彼此家居只一山，如何似膈鬼門關。",
+   "norm_line": "彼此家居只一山如何似膈鬼门关",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "彼此家居只一山如何似隔鬼门关",
+   "diffs": [
+    [
+     "膈",
+     "隔"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：膈→隔"
+  },
+  {
+   "slip_number": 50,
+   "original_slip_label": "第五十",
+   "line": "一家和氣多生福，萋菲讒言莫聽偏。",
+   "norm_line": "一家和气多生福萋菲讒言莫听偏",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "要周旋一家和",
+   "diffs": [
+    [
+     "一",
+     "要"
+    ],
+    [
+     "家",
+     "周"
+    ],
+    [
+     "和",
+     "旋"
+    ],
+    [
+     "气",
+     "一"
+    ],
+    [
+     "多",
+     "家"
+    ],
+    [
+     "生",
+     "和"
+    ],
+    [
+     "福",
+     "∅"
+    ],
+    [
+     "萋",
+     "∅"
+    ],
+    [
+     "菲",
+     "∅"
+    ],
+    [
+     "讒",
+     "∅"
+    ],
+    [
+     "言",
+     "∅"
+    ],
+    [
+     "莫",
+     "∅"
+    ],
+    [
+     "听",
+     "∅"
+    ],
+    [
+     "偏",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 53,
+   "original_slip_label": "第五十三",
+   "line": "艱難險阻路蹊蹺，南烏孤飛依北巢。",
+   "norm_line": "艱难險阻路蹊蹺南烏孤飞依北巢",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "艱难除阻路蹊蹺南鸟孤飞依北巢",
+   "diffs": [
+    [
+     "險",
+     "除"
+    ],
+    [
+     "烏",
+     "鸟"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 54,
+   "original_slip_label": "第五十四",
+   "line": "萬人叢裹逞英豪，便欲飛騰霄漢高。",
+   "norm_line": "万人叢裹逞英豪便欲飞騰霄汉高",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 54,
+   "original_slip_label": "第五十四",
+   "line": "爭奈乘流風未便，青燈黃卷且勤勞。",
+   "norm_line": "争奈乘流风未便青灯黄卷且勤勞",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 55,
+   "original_slip_label": "第五十五",
+   "line": "勤耕力作莫蹉跎，衣食隨時安分過。",
+   "norm_line": "勤耕力作莫蹉跎衣食随时安分过",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 55,
+   "original_slip_label": "第五十五",
+   "line": "縱使經商收倍利，不如逐歲凜禾多。",
+   "norm_line": "縱使经商收倍利不如逐歲凜禾多",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 56,
+   "original_slip_label": "第五十六",
+   "line": "心頭理曲強詞遮，直欲欺官行路斜。",
+   "norm_line": "心头理曲強词遮直欲欺官行路斜",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 56,
+   "original_slip_label": "第五十六",
+   "line": "一旦醜形臨月鏡，身投憲網莫咨嗟。",
+   "norm_line": "一旦丑形临月镜身投憲网莫咨嗟",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 57,
+   "original_slip_label": "第五十七",
+   "line": "一著先機君記取，紛紛鬧裹更思量。",
+   "norm_line": "一着先机君记取纷纷鬧裹更思量",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "一着先机君记取纷纷鬧裏更思量",
+   "diffs": [
+    [
+     "裹",
+     "裏"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：裹→裏"
+  },
+  {
+   "slip_number": 58,
+   "original_slip_label": "第五十八",
+   "line": "蘇秦三寸足平生，富貴功名在此行。",
+   "norm_line": "苏秦三寸足平生富贵功名在此行",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "三寸足平生富贵功名在此行",
+   "diffs": [
+    [
+     "苏",
+     "三"
+    ],
+    [
+     "秦",
+     "寸"
+    ],
+    [
+     "三",
+     "足"
+    ],
+    [
+     "寸",
+     "平"
+    ],
+    [
+     "足",
+     "生"
+    ],
+    [
+     "平",
+     "富"
+    ],
+    [
+     "生",
+     "贵"
+    ],
+    [
+     "富",
+     "功"
+    ],
+    [
+     "贵",
+     "名"
+    ],
+    [
+     "功",
+     "在"
+    ],
+    [
+     "名",
+     "此"
+    ],
+    [
+     "在",
+     "行"
+    ],
+    [
+     "此",
+     "∅"
+    ],
+    [
+     "行",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.85；fragment 部分可信，差異僅參考：苏→三；秦→寸；三→足；寸→平；足→生；平→富"
+  },
+  {
+   "slip_number": 58,
+   "original_slip_label": "第五十八",
+   "line": "更好修為陰隱事，前程萬里自通亨。",
+   "norm_line": "更好修为阴隐事前程万里自通亨",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "更好修为阴隲事前程万里自通亨",
+   "diffs": [
+    [
+     "隐",
+     "隲"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：隐→隲"
+  },
+  {
+   "slip_number": 59,
+   "original_slip_label": "第五十九",
+   "line": "幸有祖宗陰隱在，香煙未斷續螟蛉。",
+   "norm_line": "幸有祖宗阴隐在香烟未断续螟蛉",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.538,
+   "ocr_fragment": "幸有祖宗阴隲在香烟末断续",
+   "diffs": [
+    [
+     "隐",
+     "隲"
+    ],
+    [
+     "未",
+     "末"
+    ],
+    [
+     "螟",
+     "∅"
+    ],
+    [
+     "蛉",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.54；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 60,
+   "original_slip_label": "第六十",
+   "line": "羨君兄弟好名聲，只管謙偽莫自矜。",
+   "norm_line": "羨君兄弟好名声只管謙偽莫自矜",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "羨君兄弟好名声只管謙撝莫自矜",
+   "diffs": [
+    [
+     "偽",
+     "撝"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：偽→撝"
+  },
+  {
+   "slip_number": 60,
+   "original_slip_label": "第六十",
+   "line": "丹詔槐黃相逼近，巍巍科甲兩同登。",
+   "norm_line": "丹诏槐黄相逼近巍巍科甲兩同登",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "莫自矜丹诏槐",
+   "diffs": [
+    [
+     "丹",
+     "莫"
+    ],
+    [
+     "诏",
+     "自"
+    ],
+    [
+     "槐",
+     "矜"
+    ],
+    [
+     "黄",
+     "丹"
+    ],
+    [
+     "相",
+     "诏"
+    ],
+    [
+     "逼",
+     "槐"
+    ],
+    [
+     "近",
+     "∅"
+    ],
+    [
+     "巍",
+     "∅"
+    ],
+    [
+     "巍",
+     "∅"
+    ],
+    [
+     "科",
+     "∅"
+    ],
+    [
+     "甲",
+     "∅"
+    ],
+    [
+     "兩",
+     "∅"
+    ],
+    [
+     "同",
+     "∅"
+    ],
+    [
+     "登",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 62,
+   "original_slip_label": "第六十二",
+   "line": "百十八面虎狼心，賴汝干戈用力深。",
+   "norm_line": "百十八面虎狼心赖汝干戈用力深",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 62,
+   "original_slip_label": "第六十二",
+   "line": "得勝回時秋漸老，虎頭城裹喜相尋。",
+   "norm_line": "得胜回时秋渐老虎头城裹喜相寻",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 64,
+   "original_slip_label": "第六十四",
+   "line": "人力不勞公論協，事成功倍笑談中。",
+   "norm_line": "人力不勞公论协事成功倍笑談中",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "人力不勞公论恊事成功倍笑談中",
+   "diffs": [
+    [
+     "协",
+     "恊"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：协→恊"
+  },
+  {
+   "slip_number": 65,
+   "original_slip_label": "第六十五",
+   "line": "更入新春人事後，裹言方得信先容。",
+   "norm_line": "更入新春人事后裹言方得信先容",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "喜气濃更入新",
+   "diffs": [
+    [
+     "更",
+     "喜"
+    ],
+    [
+     "入",
+     "气"
+    ],
+    [
+     "新",
+     "濃"
+    ],
+    [
+     "春",
+     "更"
+    ],
+    [
+     "人",
+     "入"
+    ],
+    [
+     "事",
+     "新"
+    ],
+    [
+     "后",
+     "∅"
+    ],
+    [
+     "裹",
+     "∅"
+    ],
+    [
+     "言",
+     "∅"
+    ],
+    [
+     "方",
+     "∅"
+    ],
+    [
+     "得",
+     "∅"
+    ],
+    [
+     "信",
+     "∅"
+    ],
+    [
+     "先",
+     "∅"
+    ],
+    [
+     "容",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 67,
+   "original_slip_label": "第六十七",
+   "line": "纔發君心天已知，何須問我決狐疑，",
+   "norm_line": "纔发君心天已知何须问我决狐疑",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 67,
+   "original_slip_label": "第六十七",
+   "line": "願子改圖從孝悌，不愁家室不相宜。",
+   "norm_line": "愿子改图从孝悌不愁家室不相宜",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 70,
+   "original_slip_label": "第七十",
+   "line": "與君定約為霖日，正是蘊隆中伏時。",
+   "norm_line": "与君定约为霖日正是蘊隆中伏时",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "莫生疑与君定",
+   "diffs": [
+    [
+     "与",
+     "莫"
+    ],
+    [
+     "君",
+     "生"
+    ],
+    [
+     "定",
+     "疑"
+    ],
+    [
+     "约",
+     "与"
+    ],
+    [
+     "为",
+     "君"
+    ],
+    [
+     "霖",
+     "定"
+    ],
+    [
+     "日",
+     "∅"
+    ],
+    [
+     "正",
+     "∅"
+    ],
+    [
+     "是",
+     "∅"
+    ],
+    [
+     "蘊",
+     "∅"
+    ],
+    [
+     "隆",
+     "∅"
+    ],
+    [
+     "中",
+     "∅"
+    ],
+    [
+     "伏",
+     "∅"
+    ],
+    [
+     "时",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 71,
+   "original_slip_label": "第七十一",
+   "line": "喜鵲簷前報好音，知君千里欲歸心。",
+   "norm_line": "喜鵲檐前报好音知君千里欲归心",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 71,
+   "original_slip_label": "第七十一",
+   "line": "繡幃重結鴛鴦帶，葉落霜飛寒色侵。",
+   "norm_line": "绣幃重结鴛鴦带叶落霜飞寒色侵",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 74,
+   "original_slip_label": "第七十四",
+   "line": "崔鬼崔鬼復崔鬼，履險如夷去復來。",
+   "norm_line": "崔鬼崔鬼复崔鬼履險如夷去复来",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.538,
+   "ocr_fragment": "复崔嵬履險如夷去复来",
+   "diffs": [
+    [
+     "∅",
+     "复"
+    ],
+    [
+     "鬼",
+     "嵬"
+    ],
+    [
+     "崔",
+     "履"
+    ],
+    [
+     "鬼",
+     "險"
+    ],
+    [
+     "复",
+     "如"
+    ],
+    [
+     "崔",
+     "夷"
+    ],
+    [
+     "鬼",
+     "去"
+    ],
+    [
+     "履",
+     "复"
+    ],
+    [
+     "險",
+     "来"
+    ],
+    [
+     "如",
+     "∅"
+    ],
+    [
+     "夷",
+     "∅"
+    ],
+    [
+     "去",
+     "∅"
+    ],
+    [
+     "复",
+     "∅"
+    ],
+    [
+     "来",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.54；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 75,
+   "original_slip_label": "第七十五",
+   "line": "相當人物無高下，得意休論富與貧。",
+   "norm_line": "相当人物无高下得意休论富与貧",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "情自亲相当人",
+   "diffs": [
+    [
+     "相",
+     "情"
+    ],
+    [
+     "当",
+     "自"
+    ],
+    [
+     "人",
+     "亲"
+    ],
+    [
+     "物",
+     "相"
+    ],
+    [
+     "无",
+     "当"
+    ],
+    [
+     "高",
+     "人"
+    ],
+    [
+     "下",
+     "∅"
+    ],
+    [
+     "得",
+     "∅"
+    ],
+    [
+     "意",
+     "∅"
+    ],
+    [
+     "休",
+     "∅"
+    ],
+    [
+     "论",
+     "∅"
+    ],
+    [
+     "富",
+     "∅"
+    ],
+    [
+     "与",
+     "∅"
+    ],
+    [
+     "貧",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 77,
+   "original_slip_label": "第七十七",
+   "line": "木有根荄水有源，君當自此究其元。",
+   "norm_line": "木有根荄水有源君当自此究其元",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "木有根茭水有源君当自此究其元",
+   "diffs": [
+    [
+     "荄",
+     "茭"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：荄→茭"
+  },
+  {
+   "slip_number": 77,
+   "original_slip_label": "第七十七",
+   "line": "莫隨道路人閑語，訟到終四是至言。",
+   "norm_line": "莫随道路人閑语讼到终四是至言",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "莫随道路人闲语讼到终四是至言",
+   "diffs": [
+    [
+     "閑",
+     "闲"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：閑→闲"
+  },
+  {
+   "slip_number": 78,
+   "original_slip_label": "第七十八",
+   "line": "家道豐腴自飽溫，也須肚裹立乾坤。",
+   "norm_line": "家道丰腴自飽溫也须肚裹立乾坤",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "家道丰腴自飽温也须肚裏立乾坤",
+   "diffs": [
+    [
+     "溫",
+     "温"
+    ],
+    [
+     "裹",
+     "裏"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 78,
+   "original_slip_label": "第七十八",
+   "line": "財多害己君當省，福有胚胎禍有門。",
+   "norm_line": "财多害己君当省福有胚胎祸有门",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.538,
+   "ocr_fragment": "省福有胚胎祸有门",
+   "diffs": [
+    [
+     "财",
+     "省"
+    ],
+    [
+     "多",
+     "福"
+    ],
+    [
+     "害",
+     "有"
+    ],
+    [
+     "己",
+     "胚"
+    ],
+    [
+     "君",
+     "胎"
+    ],
+    [
+     "当",
+     "祸"
+    ],
+    [
+     "省",
+     "有"
+    ],
+    [
+     "福",
+     "门"
+    ],
+    [
+     "有",
+     "∅"
+    ],
+    [
+     "胚",
+     "∅"
+    ],
+    [
+     "胎",
+     "∅"
+    ],
+    [
+     "祸",
+     "∅"
+    ],
+    [
+     "有",
+     "∅"
+    ],
+    [
+     "门",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.54；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 80,
+   "original_slip_label": "第八十",
+   "line": "改換陰陽移禍福，勸君莫作等閑看。",
+   "norm_line": "改換阴阳移祸福勸君莫作等閑看",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.077,
+   "ocr_fragment": "坟未安攺換阴",
+   "diffs": [
+    [
+     "改",
+     "坟"
+    ],
+    [
+     "換",
+     "未"
+    ],
+    [
+     "阴",
+     "安"
+    ],
+    [
+     "阳",
+     "攺"
+    ],
+    [
+     "移",
+     "換"
+    ],
+    [
+     "祸",
+     "阴"
+    ],
+    [
+     "福",
+     "∅"
+    ],
+    [
+     "勸",
+     "∅"
+    ],
+    [
+     "君",
+     "∅"
+    ],
+    [
+     "莫",
+     "∅"
+    ],
+    [
+     "作",
+     "∅"
+    ],
+    [
+     "等",
+     "∅"
+    ],
+    [
+     "閑",
+     "∅"
+    ],
+    [
+     "看",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.08；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 81,
+   "original_slip_label": "第八十一",
+   "line": "假君財物自當還，謀賴心欺他自奸。",
+   "norm_line": "假君财物自当还谋赖心欺他自奸",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "假君财物自当还谋頼心欺他自奸",
+   "diffs": [
+    [
+     "赖",
+     "頼"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：赖→頼"
+  },
+  {
+   "slip_number": 81,
+   "original_slip_label": "第八十一",
+   "line": "幸有當臺明月鏡，請來對照破機關。",
+   "norm_line": "幸有当臺明月镜请来对照破机关",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.462,
+   "ocr_fragment": "臺明日镜请求对照破机关",
+   "diffs": [
+    [
+     "幸",
+     "臺"
+    ],
+    [
+     "有",
+     "明"
+    ],
+    [
+     "当",
+     "日"
+    ],
+    [
+     "臺",
+     "镜"
+    ],
+    [
+     "明",
+     "请"
+    ],
+    [
+     "月",
+     "求"
+    ],
+    [
+     "镜",
+     "对"
+    ],
+    [
+     "请",
+     "照"
+    ],
+    [
+     "来",
+     "破"
+    ],
+    [
+     "对",
+     "机"
+    ],
+    [
+     "照",
+     "关"
+    ],
+    [
+     "破",
+     "∅"
+    ],
+    [
+     "机",
+     "∅"
+    ],
+    [
+     "关",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.46；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 82,
+   "original_slip_label": "第八十二",
+   "line": "彼亦儔中一輩賢，勸君特達與周全。",
+   "norm_line": "彼亦儔中一辈贤勸君特達与周全",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 82,
+   "original_slip_label": "第八十二",
+   "line": "此時賓主歡相遇，他日王侯卻並肩。",
+   "norm_line": "此时賓主歡相遇他日王侯卻并肩",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 83,
+   "original_slip_label": "第八十三",
+   "line": "隨分堂前赴粥饘，何須妄想苦憂煎。",
+   "norm_line": "随分堂前赴粥饘何须妄想苦憂煎",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 83,
+   "original_slip_label": "第八十三",
+   "line": "主張門戶成難事，百歲寬閑得幾年。",
+   "norm_line": "主張门户成难事百歲宽閑得幾年",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 84,
+   "original_slip_label": "第八十四",
+   "line": "箇中事緒更紛然，當局須知一著先。",
+   "norm_line": "个中事緒更纷然当局须知一着先",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 84,
+   "original_slip_label": "第八十四",
+   "line": "長舌婦人休酷聽，力行禮義要心堅。",
+   "norm_line": "长舌婦人休酷听力行礼义要心堅",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 85,
+   "original_slip_label": "第八十五",
+   "line": "一春風雨正蕭蕭，千里行人去路遙。",
+   "norm_line": "一春风雨正蕭蕭千里行人去路遙",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 85,
+   "original_slip_label": "第八十五",
+   "line": "移寡就多君得計，如何歸路轉無聊。",
+   "norm_line": "移寡就多君得计如何归路转无聊",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 86,
+   "original_slip_label": "第八十六",
+   "line": "一般行貨好招邀，積少成多自富饒。",
+   "norm_line": "一般行貨好招邀積少成多自富饒",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 86,
+   "original_slip_label": "第八十六",
+   "line": "長把他人比自己，管須自後勝今朝。",
+   "norm_line": "长把他人比自己管须自后胜今朝",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 87,
+   "original_slip_label": "第八十七",
+   "line": "陰裹詳稱怪爾曹，舟中敵國笑中刀。",
+   "norm_line": "阴裹详稱怪尔曹舟中敌国笑中刀",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "详稱惟尔曹舟中敌国笑中刀",
+   "diffs": [
+    [
+     "阴",
+     "详"
+    ],
+    [
+     "裹",
+     "稱"
+    ],
+    [
+     "详",
+     "惟"
+    ],
+    [
+     "稱",
+     "尔"
+    ],
+    [
+     "怪",
+     "曹"
+    ],
+    [
+     "尔",
+     "舟"
+    ],
+    [
+     "曹",
+     "中"
+    ],
+    [
+     "舟",
+     "敌"
+    ],
+    [
+     "中",
+     "国"
+    ],
+    [
+     "敌",
+     "笑"
+    ],
+    [
+     "国",
+     "中"
+    ],
+    [
+     "笑",
+     "刀"
+    ],
+    [
+     "中",
+     "∅"
+    ],
+    [
+     "刀",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 88,
+   "original_slip_label": "第八十八",
+   "line": "從前作事總徒勞，纔是新春時漸遭。",
+   "norm_line": "从前作事总徒勞纔是新春时渐遭",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "从前作事总徒勞纔见新春时渐遭",
+   "diffs": [
+    [
+     "是",
+     "见"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：是→见"
+  },
+  {
+   "slip_number": 88,
+   "original_slip_label": "第八十八",
+   "line": "百事營求都得意，更須守己莫心高。",
+   "norm_line": "百事營求都得意更须守己莫心高",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "百事營求都得意更须守已莫心高",
+   "diffs": [
+    [
+     "己",
+     "已"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：己→已"
+  },
+  {
+   "slip_number": 89,
+   "original_slip_label": "第八十九",
+   "line": "樽前無事且高歌，時未來時奈若何。",
+   "norm_line": "樽前无事且高歌时未来时奈若何",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 89,
+   "original_slip_label": "第八十九",
+   "line": "白馬渡江雖日暮，虎頭城裹看巍峨。",
+   "norm_line": "白马渡江虽日暮虎头城裹看巍峨",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 90,
+   "original_slip_label": "第九十",
+   "line": "崆峒城裹事如麻，無事如君有幾家。",
+   "norm_line": "崆峒城裹事如麻无事如君有幾家",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.077,
+   "ocr_fragment": "巍峩樽前无事",
+   "diffs": [
+    [
+     "崆",
+     "巍"
+    ],
+    [
+     "峒",
+     "峩"
+    ],
+    [
+     "城",
+     "樽"
+    ],
+    [
+     "裹",
+     "前"
+    ],
+    [
+     "∅",
+     "无"
+    ],
+    [
+     "如",
+     "∅"
+    ],
+    [
+     "麻",
+     "∅"
+    ],
+    [
+     "无",
+     "∅"
+    ],
+    [
+     "事",
+     "∅"
+    ],
+    [
+     "如",
+     "∅"
+    ],
+    [
+     "君",
+     "∅"
+    ],
+    [
+     "有",
+     "∅"
+    ],
+    [
+     "幾",
+     "∅"
+    ],
+    [
+     "家",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.08；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 90,
+   "original_slip_label": "第九十",
+   "line": "勸汝不須勤致禱，徒勞生事苦咨嗟。",
+   "norm_line": "勸汝不须勤致祷徒勞生事苦咨嗟",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.769,
+   "ocr_fragment": "须勤致祷徒勞生事苦咨嗟",
+   "diffs": [
+    [
+     "勸",
+     "须"
+    ],
+    [
+     "汝",
+     "勤"
+    ],
+    [
+     "不",
+     "致"
+    ],
+    [
+     "须",
+     "祷"
+    ],
+    [
+     "勤",
+     "徒"
+    ],
+    [
+     "致",
+     "勞"
+    ],
+    [
+     "祷",
+     "生"
+    ],
+    [
+     "徒",
+     "事"
+    ],
+    [
+     "勞",
+     "苦"
+    ],
+    [
+     "生",
+     "咨"
+    ],
+    [
+     "事",
+     "嗟"
+    ],
+    [
+     "苦",
+     "∅"
+    ],
+    [
+     "咨",
+     "∅"
+    ],
+    [
+     "嗟",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-B(slip-region) rate=0.77；fragment 部分可信，差異僅參考：勸→须；汝→勤；不→致；须→祷；勤→徒；致→勞"
+  },
+  {
+   "slip_number": 91,
+   "original_slip_label": "第九十一",
+   "line": "榮華總得詩書效，妙裹工夫仔細尋。",
+   "norm_line": "荣华总得诗书效妙裹工夫仔细寻",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "荣华总得诗书效妙裏工夫仔细寻",
+   "diffs": [
+    [
+     "裹",
+     "裏"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：裹→裏"
+  },
+  {
+   "slip_number": 92,
+   "original_slip_label": "第九十二",
+   "line": "今年禾穀不如前，物價喧騰倍百千。",
+   "norm_line": "今年禾穀不如前物價喧騰倍百千",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 92,
+   "original_slip_label": "第九十二",
+   "line": "災數流行多疫癘，一陽來復始安全。",
+   "norm_line": "災数流行多疫癘一阳来复始安全",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 93,
+   "original_slip_label": "第九十三",
+   "line": "節氣直交三伏始，喜逢滂沛足田園。",
+   "norm_line": "節气直交三伏始喜逢滂沛足田園",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "節气直交三伏始喜逢澇沛足田園",
+   "diffs": [
+    [
+     "滂",
+     "澇"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：滂→澇"
+  },
+  {
+   "slip_number": 94,
+   "original_slip_label": "第九十四",
+   "line": "一般器用與人同，巧斷輸輿梓亦二。",
+   "norm_line": "一般器用与人同巧断輸輿梓亦二",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "一般器用与人同巧断轮輿梓亦二",
+   "diffs": [
+    [
+     "輸",
+     "轮"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：輸→轮"
+  },
+  {
+   "slip_number": 94,
+   "original_slip_label": "第九十四",
+   "line": "凡事有綠且隨分，秋行冬遇主人翁。",
+   "norm_line": "凡事有绿且随分秋行冬遇主人翁",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "凡事有緣且随分秋行冬遇主人翁",
+   "diffs": [
+    [
+     "绿",
+     "緣"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：绿→緣"
+  },
+  {
+   "slip_number": 95,
+   "original_slip_label": "第九十五",
+   "line": "知君袖裹有驪珠，生不逢辰亦強圖。",
+   "norm_line": "知君袖裹有驪珠生不逢辰亦強图",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.692,
+   "ocr_fragment": "知君袖裏有驪珠生不逢辰亦",
+   "diffs": [
+    [
+     "裹",
+     "裏"
+    ],
+    [
+     "強",
+     "∅"
+    ],
+    [
+     "图",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.69；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 95,
+   "original_slip_label": "第九十五",
+   "line": "可嘆頭顱已如許，而今方得貴人扶。",
+   "norm_line": "可嘆头顱已如许而今方得贵人扶",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.154,
+   "ocr_fragment": "亦强图可嘆头",
+   "diffs": [
+    [
+     "可",
+     "亦"
+    ],
+    [
+     "嘆",
+     "强"
+    ],
+    [
+     "头",
+     "图"
+    ],
+    [
+     "顱",
+     "可"
+    ],
+    [
+     "已",
+     "嘆"
+    ],
+    [
+     "如",
+     "头"
+    ],
+    [
+     "许",
+     "∅"
+    ],
+    [
+     "而",
+     "∅"
+    ],
+    [
+     "今",
+     "∅"
+    ],
+    [
+     "方",
+     "∅"
+    ],
+    [
+     "得",
+     "∅"
+    ],
+    [
+     "贵",
+     "∅"
+    ],
+    [
+     "人",
+     "∅"
+    ],
+    [
+     "扶",
+     "∅"
+    ]
+   ],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-C(slip-region) rate=0.15；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 97,
+   "original_slip_label": "第九十七",
+   "line": "五十功名心已灰，那知富貴逼人來。",
+   "norm_line": "五十功名心已灰那知富贵逼人来",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "五十功名心已厌那知富贵逼人来",
+   "diffs": [
+    [
+     "灰",
+     "厌"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：灰→厌"
+  },
+  {
+   "slip_number": 98,
+   "original_slip_label": "第九十八",
+   "line": "玉兔交時當得意，恰如枯木再逢春。",
+   "norm_line": "玉兔交时当得意恰如枯木再逢春",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "交时当得意恰如枯木再逢春",
+   "diffs": [
+    [
+     "玉",
+     "交"
+    ],
+    [
+     "兔",
+     "时"
+    ],
+    [
+     "交",
+     "当"
+    ],
+    [
+     "时",
+     "得"
+    ],
+    [
+     "当",
+     "意"
+    ],
+    [
+     "得",
+     "恰"
+    ],
+    [
+     "意",
+     "如"
+    ],
+    [
+     "恰",
+     "枯"
+    ],
+    [
+     "如",
+     "木"
+    ],
+    [
+     "枯",
+     "再"
+    ],
+    [
+     "木",
+     "逢"
+    ],
+    [
+     "再",
+     "春"
+    ],
+    [
+     "逢",
+     "∅"
+    ],
+    [
+     "春",
+     "∅"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.85；fragment 部分可信，差異僅參考：玉→交；兔→时；交→当；时→得；当→意；得→恰"
+  },
+  {
+   "slip_number": 99,
+   "original_slip_label": "第九十九",
+   "line": "貴人相遇水雲鄉，冷淡交情滋味長。",
+   "norm_line": "贵人相遇水云乡冷淡交情滋味长",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.846,
+   "ocr_fragment": "贵人相遇水云乡嶺淡交情滋味长",
+   "diffs": [
+    [
+     "冷",
+     "嶺"
+    ]
+   ],
+   "class": "candidate_variant",
+   "detail": "OCR-C(slip-region) rate=0.85；候選差異：冷→嶺"
+  },
+  {
+   "slip_number": 99,
+   "original_slip_label": "第九十九",
+   "line": "黃閣開時延故客，驛餾應得驟康強。",
+   "norm_line": "黄阁开时延故客驛餾应得驟康強",
+   "best_witness": "OCR-C(slip-region)",
+   "best_rate": 0.769,
+   "ocr_fragment": "黄阁开时延故客騑騮应得驟康強",
+   "diffs": [
+    [
+     "驛",
+     "騑"
+    ],
+    [
+     "餾",
+     "騮"
+    ]
+   ],
+   "class": "partial_fragment",
+   "detail": "OCR-C(slip-region) rate=0.77；fragment 部分可信，差異僅參考：驛→騑；餾→騮"
+  },
+  {
+   "slip_number": 100,
+   "original_slip_label": "第一百",
+   "line": "我本天仙雷雨師，吉凶禍福我先知。",
+   "norm_line": "我本天仙雷雨师吉凶祸福我先知",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  },
+  {
+   "slip_number": 100,
+   "original_slip_label": "第一百",
+   "line": "至誠禱祝皆靈應，抽得終籤百事宜。",
+   "norm_line": "至诚祷祝皆灵应抽得终籤百事宜",
+   "best_witness": "OCR-B(slip-region)",
+   "best_rate": 0.0,
+   "ocr_fragment": "",
+   "diffs": [],
+   "class": "no_reliable_fragment",
+   "detail": "OCR-B(slip-region) rate=0.00；OCR 未可靠讀到該句（直排打散/漏讀），需人工核對影像"
+  }
+ ]
+}
