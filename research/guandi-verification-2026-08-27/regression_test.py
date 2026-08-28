@@ -59,7 +59,7 @@ def main():
     check("conflicted slip 不得被 verifier/variant 使用", not can_use)
 
     print("== Test 4: real data — p15 (#4/#5 共存，pdf-ocr 漏讀 #4 marker) ==")
-    content = open('ocr/daozang_ocr_b1_combined.txt', encoding='utf-8').read()
+    content = open(os.path.join(PKG, 'ocr', 'daozang_ocr_b1_combined.txt'), encoding='utf-8').read()
     pages = split_pdf_ocr_pages(content)
     seg4 = segment_page(pages[15])
     check("p15 pdf-ocr 漏『第四』marker → #4 fail-closed（無 region）", (4 not in seg4["regions"]))

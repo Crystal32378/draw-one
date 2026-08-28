@@ -58,4 +58,4 @@ verification_report_v4.json/.md｜slip_texts.verified_v4.json（DRAFT）｜varia
 - 根因：衝突偵測條件錯誤（`num in seen.values()` 恆 False），duplicate 從未被偵測
 - 修正：`num in seen` ＋ duplicate 時**該籤既有 region 一併 drop**（invalid_slips 記錄）；verifier/variant analyzer 均使用 dropped regions（無 fallback）
 - hostile regression Test 3b：同頁注入 duplicate #4 → #4 invalid、#5 不受影響 → 全 PASS
-- 重算：C path conflict=1（該頁籤本為 LOW）；grade A0/B27/LOW73、variant candidate27/partial8/no_reliable78 維持
+- 重算：C path conflict=1（該頁籤本為 LOW）；grade A0/B27/LOW73、variant candidate25/partial8/no_reliable80（artifact 現值）維持

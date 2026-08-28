@@ -14,7 +14,7 @@
 3. 同編號同頁重複 → 衝突 drop；某籤缺自身 marker → 該頁不提供 evidence
 4. **neighboring slip text cannot satisfy current slip evidence**（hostile regression 全 PASS，含真實 p15 案例）
 
-segmentation stats：B path conflict=0、empty_region_pages=13；C path empty=11。
+segmentation stats：B path conflict=0、empty_region_pages=13；C path conflict=1（duplicate fail-closed）、empty=12。
 
 ## Final Confidence Table（slip-region 重算結果）
 
@@ -50,7 +50,7 @@ B 籤號：3,6,7,11,12,14,22,26,28,29,31,38,41,43,44,51,52,61,63,66,68,69,72,73,
 
 ## Hostile Regression
 
-`regression_test.py`：10 項檢查全 PASS（synthetic 同頁雙籤分割、雙向 cross-contamination 拒絕、fail-closed 缺 marker、真實 p15 案例）。
+`regression_test.py`：**15 項檢查全 PASS**（synthetic 同頁雙籤分割、雙向 cross-contamination 拒絕、fail-closed 缺 marker、duplicate marker fail-closed [Test 3b]、真實 p15 案例）。
 
 ## Reproducibility
 
