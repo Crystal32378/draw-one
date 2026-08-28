@@ -87,6 +87,28 @@ def main():
     code, out = run_validator(h2)
     check("竄改 verbatim → 重算 non_exact → FAIL", code == 1)
 
+    print("== Hostile B2: second_source 偽造（福第四輪）==")
+    h_b2 = json.loads(json.dumps(entries))
+    # 1) CANDIDATE 手改 PROBABLE，second_source 指向假引擎
+    tA = next(e for e in h_b2 if e["slip_no"] == 1 and e["field_type"] == "卦名")
+    tA["transcription_confidence"] = "PROBABLE"
+    tA["transcription_status"] = "PROBABLE"
+    tA["source_observation_status"] = "ocr_double_exact_agree"
+    tA["evidence_sources"] = ["ocr_a", "study03_legacy"]
+    tA["agreement"] = {"mode": "exact", "second_source": "fake_ocr_b"}
+    code, out = run_validator(h_b2)
+    check("second_source=fake_ocr_b → FAIL（值非法）", code == 1)
+    # 2) second_source 填合法值但該欄位無真實 legacy observation
+    tB = next(e for e in h_b2 if e["slip_no"] == 1 and e["field_type"] == "卦名")
+    tB["agreement"] = {"mode": "exact", "second_source": "study03_legacy_ocr"}
+    code, out = run_validator(h_b2)
+    check("second_source=study03_legacy_ocr 但卦名無 legacy observation → FAIL", code == 1)
+    # 3) 真 PROBABLE 自報 second_source 竄改成假值
+    tC = next(e for e in h_b2 if e["slip_no"] == 8 and e["field_type"] == "五行方位")
+    tC["agreement"] = {"mode": "exact", "second_source": "fake_second"}
+    code, out = run_validator(h_b2)
+    check("真 PROBABLE 竄改 second_source → FAIL（與導出不符）", code == 1)
+
     print("== Hostile C: duplicate evidence IDs ==")
     h3 = json.loads(json.dumps(entries))
     t3 = next(e for e in h3 if e["slip_no"] == 8 and e["field_type"] == "五行方位")

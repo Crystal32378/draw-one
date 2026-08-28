@@ -118,19 +118,20 @@ def load_real_evidence():
 
 
 def recompute_agreement(e, real):
-    """validator 自己重算 agreement（與 build 同一定義：normalize+whitespace-strip 後 exact 相等）。
-    second source 必須真實存在；不存在 → None（mode 非 exact）。"""
+    """validator 自己重算 agreement，並導出 second_source（綁真實 observation）。
+    回傳 dict {mode, second_source}：
+      second_source = "study03_legacy_ocr" 僅當該 (slip, field) 的 legacy layer 真實存在於 attestations；
+      legacy 缺 → second_source=None（任何自報 second_source 都視為假）。"""
     sn, ft = e["slip_no"], e["field_type"]
     legacy = real["legacy"].get((sn, ft))
     if legacy is None:
-        return None
+        return {"mode": None, "second_source": None}
     import difflib as _d
     va = re.sub(r"\s+", "", e["verbatim_text"] or "")
     vb = re.sub(r"\s+", "", re.sub(r"[|:*#]", "", legacy))
-    if va and va == vb:
-        return "exact"
+    mode = "exact" if (va and va == vb) else "non_exact"
     _ = _d.SequenceMatcher(None, va, vb).ratio()  # similarity 僅供 audit（不作為升級依據）
-    return "non_exact"
+    return {"mode": mode, "second_source": "study03_legacy_ocr"}
 
 
 def recompute_second(e, real):
@@ -204,9 +205,25 @@ def main():
                 failures.append(("A6", f'#{e["slip_no"]} 聲稱 study03_legacy 但實際無此欄位 legacy layer', e["field_type"]))
         if "recheck" in ev and e["slip_no"] not in real["recheck_allowed"]:
             failures.append(("A6", f'#{e["slip_no"]} 聲稱 recheck 但 recheck 僅存在於限定籤', f'#{e["slip_no"]} {e["field_type"]}'))
-        # agreement 重算（validator 自己算，不信 entry 自報）
-        recomputed_mode = recompute_agreement(e, real)
+        # agreement 重算 + second_source 由 validator 導出（不信自報）
+        recomputed = recompute_agreement(e, real)
+        recomputed_mode = recomputed["mode"]
+        recomputed_second = recomputed["second_source"]
         self_reported = ag.get("mode")
+        self_second = ag.get("second_source")
+        # second_source 綁真實 observation：
+        #   自報存在但實際無 second observation → fake
+        #   自報值 ≠ validator 導出值 → fake
+        if self_second is not None and recomputed_second is None:
+            failures.append(("A6", f'#{e["slip_no"]} second_source 無真實 observation 支撐',
+                             f'self={self_second} recomputed={recomputed_second}'))
+        elif self_second is not None and self_second != recomputed_second:
+            failures.append(("A6", f'#{e["slip_no"]} second_source 與 validator 導出不符',
+                             f'self={self_second} derived={recomputed_second}'))
+        if self_second is None and conf == "PROBABLE":
+            failures.append(("A6", f'#{e["slip_no"]} PROBABLE 缺 second_source', "second_source=None"))
+        if self_second is not None and self_second not in {"study03_legacy_ocr"}:
+            failures.append(("A6", f'#{e["slip_no"]} 未知 second_source 值', self_second))
         if conf == "PROBABLE":
             if recomputed_mode != "exact":
                 failures.append(("A6", f'#{e["slip_no"]} PROBABLE 但重算 agreement 非 exact',
