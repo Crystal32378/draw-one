@@ -21,21 +21,25 @@
 | 「裹/里」7 處 | 保留 source literal「裹」，不 canonicalize，繼續標 candidate_variant |
 | reproducibility | EVIDENCE_MANIFEST.md：PDF 來源/下載/重跑方式；repo 只含 OCR 輸出與工具 |
 
-## 2. Final Result（v4）
+## 2. Final Result（v0.5 slip-region artifact 現值）
 
 | transcription_grade | 數量 | 籤號 |
 |---|---|---|
-| A（雙 OCR path 一致） | 16 | 2,3,6,9,12,14,17,19,22,28,38,43,46,61,63,76 |
-| B（單 OCR path） | 29 | 1,7,11,16,18,23,26,27,29,31,34,39,41,44,51,52,66,68,69,72,73,77,79,83,84,92,93,96,97 |
-| LOW（有句無 OCR path） | 55 | 其餘 |
+| A（雙 OCR path 各自 region 全命中） | 0 | —（region 化後：相鄰籤互借匹配已移除，無任何籤能三源一致四句全中） |
+| B（單 OCR path region 支撐全部四句） | 27 | 3,6,7,11,12,14,22,26,28,29,31,38,41,43,44,51,52,61,63,66,68,69,72,73,76,79,96 |
+| LOW（有 line-level UNRESOLVED） | 73 | 其餘 |
+
+> 此表為 slip-region matching（福第二輪）＋duplicate fail-closed（福第三輪）後的 artifact 現值；
+> 先前 A16/B29/LOW55 為 page-scoped interim，已作廢（相鄰籤文字可能互借匹配）。
 
 - transcription_status：100/100 PROBABLE（wikisource 原狀）
 - textual_witness_confidence：100/100 single_witness_not_verified
 - #70：LOW／PROBABLE／line-level UNRESOLVED 明確
 
-## 3. 未確認句分類（55 籤 69 句）
+## 3. 未確認句分類（slip-region boundary 重算）
 
-candidate_variant 28（含「裹/里」7 處高頻候選 #24/35/54/57/62/90/91）／partial 18／no_reliable 23——明細 `variant_analysis.md`
+candidate_variant 25／partial_fragment 8／no_reliable_fragment 80（涉及 73 籤）——明細 `variant_analysis.md`。
+「裹/里」7 處（#24/35/54/57/62/90/91）保留 source literal、不 canonicalize，仍為人工核對優先項。
 
 ## 4. 四項清單
 

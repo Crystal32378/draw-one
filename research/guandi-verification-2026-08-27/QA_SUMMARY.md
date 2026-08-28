@@ -35,9 +35,9 @@ B 籤號：3,6,7,11,12,14,22,26,28,29,31,38,41,43,44,51,52,61,63,66,68,69,72,73,
 
 | 分類 | 句數 |
 |---|---|
-| candidate_variant | 27 |
+| candidate_variant | 25 |
 | partial_fragment | 8 |
-| no_reliable_fragment | 78 |
+| no_reliable_fragment | 80 |
 
 「裹/里」7 處保留 source literal、不 canonicalize，仍是人工核對優先項。
 
