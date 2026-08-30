@@ -1,0 +1,22 @@
+name: guanyin-validator
+
+on:
+  push:
+    paths:
+      - 'data/corpora/guanyin/**'
+      - '.github/workflows/guanyin-validator.yml'
+  pull_request:
+    paths:
+      - 'data/corpora/guanyin/**'
+      - '.github/workflows/guanyin-validator.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run guanyin interpretation layer validator
+        run: python3 data/corpora/guanyin/validate_interpretation_layer.py .
