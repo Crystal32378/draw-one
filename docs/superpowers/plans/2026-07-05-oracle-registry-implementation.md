@@ -1,5 +1,7 @@
 # Oracle Registry & Draw-Pool Implementation Plan
 
+> **Status (recovery, 2026-08-30): Historical planning artifact.** This plan was never executed to merge. The current production content pipeline is built by `scripts/build-draw-pool.mjs` from `data/corpora/` with gates evaluated in `data/production/draw-pool.report.json`. Preserved as a record of the cleanup decision process, not as the current implementation guide.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Custody note:** Preserved by 福 through the GitHub connector from ZCode's local branch `spec/oracle-registry-design` after final review fixes. This is a planning artifact only. It does **not** authorize production code changes, `index.html` edits, or a merge to `main`.

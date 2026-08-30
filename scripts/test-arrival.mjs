@@ -127,5 +127,22 @@ const other = P.resolveDraw({ question: "另一個問題", corpusId: "guanyin", 
 check("resolveDraw unaffected for new questions", other.repeated === false && other.entryId === "g1");
 check("peek on unbound question still null after other activity", P.peekBinding({ question: "從未問過" }) === null);
 
+console.log("R7 keepBtn keeps the question on the desk（recovery 2026-08-30）");
+const keepBlock = script.slice(script.indexOf('$("keepBtn").addEventListener'), script.indexOf("/* ---------- 帶走這支籤"));
+check("keepBtn handler exists", keepBlock.length > 0);
+check("keepBtn does not assign #question.value（問過的事不被抹掉）", !/\$\("question"\)\.value\s*=/.test(keepBlock));
+check("book entry still records the question（question 進籤簿）", /question: q,/.test(keepBlock));
+
+console.log("R8 settle/turning pointer guard（recovery 2026-08-30）— 動畫中的點觸只有輕叩");
+const pdBlock = script.slice(script.indexOf('view.addEventListener("pointerdown"'), script.indexOf('view.addEventListener("pointermove"'));
+check("pointerdown guard exists and fires nudge on settle/turning", /if \(courtAnimating\(\)\) \{[\s\S]{0,160}nudge\(\);[\s\S]{0,80}return;/.test(pdBlock));
+check("pointerdown guard precedes any interaction-state write", pdBlock.indexOf("courtAnimating()") > -1 && pdBlock.indexOf("courtAnimating()") < pdBlock.indexOf("dragging = true"));
+const pcBlock = script.slice(script.indexOf('view.addEventListener("pointercancel"'));
+check("pointercancel with no active drag does not re-anchor", /pointercancel", \(\) => \{\s*if \(!dragging\) return;/.test(pcBlock));
+check("courtAnimating shares animate() convergence threshold（0.4px）", /function courtAnimating\(\) \{[^\n]*\n\s*return !dragging && Math\.abs\(targetScroll - scroll\) > 0\.4;/.test(script));
+check("bound-strip click refuses hall entry mid-animation", /strip\.addEventListener\("click", \(\) => \{\s*if \(courtAnimating\(\)\) \{[\s\S]{0,80}nudge\(\);\s*return;/.test(script));
+const releaseBlockR8 = script.slice(script.indexOf("const release ="), script.indexOf('view.addEventListener("pointerup"'));
+check("release grammar untouched（facedNow gate 仍是唯一進殿判準）", /facedNow[\s\S]{0,80}enterHall/.test(releaseBlockR8));
+
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);
