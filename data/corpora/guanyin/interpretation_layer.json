@@ -24,7 +24,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -92,10 +93,11 @@
    "layer_class": "living_tradition",
    "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：目視＝現 verbatim 前段（確認）；後段「破鏡重圓之象凡事成就則吉」重讀＋raw 雙源支持——擴充；修正前 verbatim：五五念五。□龍跨虎。事雖勞心。於中有補。；重讀（slip_pages 第三 pass）：籤詩菱花鏡破復重圓女再求夫男再婚自此門間童改換更添福祿與兒孫解曰解破鏡重圓之象凡事成就則吉長樂老歷相五代聖意求財易婚姻成自身秋秋外財冬成家宅尤田人六畜冬旺大利見",
    "verbatim_text_old": "五五念五。□龍跨虎。事雖勞心。於中有補。",
-   "source_observation_status": "human_image_confirmed",
-   "manual_image_confirmation": true,
+   "source_observation_status": "mixed_manual_ocr",
+   "manual_image_confirmation": false,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "前段『五五念五。時龍跨虎。事難勞心。於中有補。』＝manual（Crystal 目視）；後段『此哉破鏡重圓之象。凡事成就則吉。』＝ocr_raw＋ocr_recheck（雙源，非人工目視）"
   },
   {
    "corpus": "guanyin",
@@ -122,7 +124,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -171,7 +174,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -220,7 +224,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -247,7 +252,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -296,7 +302,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "UNRESOLVED",
-   "unresolved_reason_code": "dual_path_divergence"
+   "unresolved_reason_code": "dual_path_divergence",
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -323,7 +330,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -350,7 +358,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -377,7 +386,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -401,10 +411,11 @@
    "layer_class": "living_tradition",
    "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：前段三源三讀（無偽/焦渴/應無憂；有益/有道/有益或凶；順逆/煩惱/或凶）——真 variant，manual confirmation 為準；後段「如玉在泥之象凡非過者則吉」雙源——升級；修正前 verbatim：得處□□。損中有□。□□□凶。君子得吉。；重讀（slip_pages 第三 pass）：籤詩撥開思慮暫時閃咫尺雲開見日來宛似污泥中片玉良工一舉出塵埃解曰解得應無憂損中有益或凶得吉凶君求得吉此籤如玉在泥之象凡非過者則吉聖意項目判詞項目判詞望家宅不安交",
    "verbatim_text_old": "得處□□。損中有□。□□□凶。君子得吉。",
-   "source_observation_status": "human_image_confirmed",
-   "manual_image_confirmation": true,
+   "source_observation_status": "mixed_manual_ocr",
+   "manual_image_confirmation": false,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "前段『得處無偽。損中有益。順逆吉凶。君子得吉。』＝manual（Crystal 目視，三源三讀真 variant）；後段『此籤如玉在泥之象。凡非過者則吉。』＝ocr_raw＋ocr_recheck（雙源）"
   },
   {
    "corpus": "guanyin",
@@ -431,7 +442,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -499,10 +511,11 @@
    "layer_class": "living_tradition",
    "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：「到底勝初」（目視）；「此幾/此後」「皆過/皆通」二讀保留 □；「久雨初晴之象」raw＋重讀雙源；修正前 verbatim：佛神護佑。百事無虛。想平生事。到□勝初。；重讀（slip_pages 第三 pass）：籤詩當春久雨喜初晴舊事已成新事遂玉兔金烏漸漸明看看一跳入蓬瀛解曰解佛神護佑百事無虛想平生事到處勝利此後久雨初晴之象凡事皆通聖意項目判詞求財未婚姻待自身隨時家宅意",
    "verbatim_text_old": "佛神護佑。百事無虛。想平生事。到□勝初。",
-   "source_observation_status": "human_image_confirmed",
-   "manual_image_confirmation": true,
+   "source_observation_status": "mixed_manual_ocr",
+   "manual_image_confirmation": false,
    "transcription_confidence": "UNRESOLVED",
-   "unresolved_reason_code": "dual_path_divergence"
+   "unresolved_reason_code": "dual_path_divergence",
+   "segment_basis_note": "前段『佛神護佑。百事無虛。想平生事。到底勝初。』＝manual（Crystal 目視）；中段『此□久雨初晴之象。』＝ocr_raw＋ocr_recheck（二讀 □）；尾段『凡事皆□。』＝ocr_raw＋ocr_recheck（二讀 □）"
   },
   {
    "corpus": "guanyin",
@@ -529,7 +542,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -754,7 +768,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -847,7 +862,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "UNRESOLVED",
-   "unresolved_reason_code": "dual_path_divergence"
+   "unresolved_reason_code": "dual_path_divergence",
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -1043,14 +1059,15 @@
    "field_type": "解曰",
    "verbatim_text": "欲求心事。恰如著棋。要知勝負。先著莫疑。此擬挑進敵手之象。凡事先吉。",
    "source_locator": "薛皓文2008附錄二 p158（籤 #44）",
-   "transcription_status": "PROBABLE",
+   "transcription_status": "CANDIDATE",
    "layer_class": "living_tradition",
-   "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：目視＝現 verbatim（確認）——升級；raw 後段「此擬挑進敵手之象凡事先吉」單源記 notes CANDIDATE；修正前 verbatim：□求心事。如同□。要知勝負。先□□□。；重讀（slip_pages 第三 pass）：籤詩棋逢敵手要藏機到底欲知誰勝負黑白盤中未決時須教先著相機宜解曰周郎赤壁敗曹兵解聖意交易未利婚姻未合求財迷惑自身平家宅吉六畜損田蚕中寻人阻公訟宜移徙守失物祈疾病",
+   "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：目視＝現 verbatim（確認）——升級；raw 後段「此擬挑進敵手之象凡事先吉」單源記 notes CANDIDATE；修正前 verbatim：□求心事。如同□。要知勝負。先□□□。；重讀（slip_pages 第三 pass）：籤詩棋逢敵手要藏機到底欲知誰勝負黑白盤中未決時須教先著相機宜解曰周郎赤壁敗曹兵解聖意交易未利婚姻未合求財迷惑自身平家宅吉六畜損田蚕中寻人阻公訟宜移徙守失物祈疾病；後段「此擬挑進敵手之象。凡事先吉。」為 ocr_raw 單源（非人工目視）→ 整筆降 CANDIDATE",
    "verbatim_text_old": "□求心事。如同□。要知勝負。先□□□。",
-   "source_observation_status": "human_image_confirmed",
-   "manual_image_confirmation": true,
-   "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "source_observation_status": "mixed_manual_ocr",
+   "manual_image_confirmation": false,
+   "transcription_confidence": "CANDIDATE",
+   "unresolved_reason_code": null,
+   "segment_basis_note": "前段『欲求心事。恰如著棋。要知勝負。先著莫疑。』＝manual（Crystal 目視）；後段『此擬挑進敵手之象。凡事先吉。』＝ocr_raw（單源，非人工目視）"
   },
   {
    "corpus": "guanyin",
@@ -1143,7 +1160,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -1522,7 +1540,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "UNRESOLVED",
-   "unresolved_reason_code": "dual_path_divergence"
+   "unresolved_reason_code": "dual_path_divergence",
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",
@@ -1788,10 +1807,11 @@
    "layer_class": "living_tradition",
    "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：「得財之象」（目視＋重讀雙源；raw「得時之象」variants）；「貴人接引」（目視）vs「指引」（raw/重讀）——目視為準＋variants；首字「筆/得」差異（現 verbatim 本為 □ 維持）；修正前 verbatim：□夢說夢。聲名虛望。只好待時。□人□引。；重讀（slip_pages 第三 pass）：籤詩范睢相秦夢中說夢獲多財水遙山遙難信定貴人一指笑顏開解曰夢說夢得名虛望只待時青人指引此截夢中得財之象凡事空虛無力聖意聖意家宅凶六畜少田蚕祈本人福求財無自身阻交",
    "verbatim_text_old": "□夢說夢。聲名虛望。只好待時。□人□引。",
-   "source_observation_status": "human_image_confirmed",
-   "manual_image_confirmation": true,
+   "source_observation_status": "mixed_manual_ocr",
+   "manual_image_confirmation": false,
    "transcription_confidence": "UNRESOLVED",
-   "unresolved_reason_code": "dual_path_divergence"
+   "unresolved_reason_code": "dual_path_divergence",
+   "segment_basis_note": "『聲名虛望。只好待時。貴人接引。此截夢中得財之象。凡事空虛無力。』＝manual（Crystal 目視）；首字『□』＝ocr_raw＋ocr_recheck 二讀（筆/得，非人工）"
   },
   {
    "corpus": "guanyin",
@@ -2214,7 +2234,8 @@
    "source_observation_status": "human_image_confirmed",
    "manual_image_confirmation": true,
    "transcription_confidence": "PROBABLE",
-   "unresolved_reason_code": null
+   "unresolved_reason_code": null,
+   "segment_basis_note": "全部 segments 為 Crystal 目視確認（manual）"
   },
   {
    "corpus": "guanyin",

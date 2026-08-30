@@ -40,7 +40,7 @@
 
 ## 檔案
 
-- `guanyin_layer_v2.json`（修正後 interpretation_layer，21 筆 verbatim 變更＋schema v0.2 欄位）
+- `data/corpora/guanyin/interpretation_layer.json`（修正後 interpretation_layer，21 筆 verbatim 變更＋schema v0.2 欄位）
 - `Guanyin-17-65-Pilot-Report-2026-08-28.md`（#17/#65 pilot 詳細報告）
 - `guanyin_19_evidence_pack.json`（19 籤四源完整對照）
 - `guanyin_21_worksheet.xlsx`（Crystal 目視判定原始記錄）
