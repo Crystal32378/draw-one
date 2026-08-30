@@ -53,7 +53,7 @@ check("no periodic scheduler (setInterval) — 陣風沒有節拍器",
   !/setInterval/.test(sound));
 check("main script uses only the public sound API",
   (main.match(/ARRIVAL_SOUND\??\.(\w+)/g) ?? [])
-    .every((m) => /\.(start|space|slip|weather|tree|pull|stickOut|paperOut|setEnabled|enabled|getParams)\b/.test(m)));
+    .every((m) => /\.(start|space|slip|weather|tree|pull|stickOut|paperOut|nudge|setEnabled|enabled|getParams)\b/.test(m)));
 
 console.log("S2 three-hall equality — 一份 hall 參數表，API 不收身分");
 const spacesM = sound.match(/const SPACES = \{[\s\S]*?\n  \};/);
@@ -197,6 +197,17 @@ check("paperOut 只在取籤詩（takeBtn）——籤簿重看不再取紙",
 check("手感層音量是字面常數（handPull/handStick/handPaper）",
   /handPull: 0\.0\d+/.test(sound) && /handStick: 0\.0\d+/.test(sound) && /handPaper: 0\.0\d+/.test(sound));
 check("拖籤粒子有節制（進度門檻，不是馬達）", /pullAcc < 0\.07/.test(sound));
+
+console.log("S8 nudge（recovery 2026-08-30）— 轉身中點擊的單飛輕叩");
+check("nudge exists in the hand layer", /function nudge\(\)/.test(sound));
+check("nudge is exported from the sound layer API", /paperOut,\s*nudge,/.test(sound));
+check("nudge stays background-quiet（比 pull 輕一截：handPull × 0.35）", /LEVELS\.handPull \* 0\.35/.test(sound));
+check("nudge single-active gate（上一顆未落地不起第二顆）",
+  /const t0 = ctx\.currentTime \+ 0\.005;\s*if \(t0 < nudgeGate\) return;/.test(sound));
+check("nudge gate window covers the sound body（0.08s 單飛窗口）", /nudgeGate = t0 \+ 0\.08;/.test(sound));
+const nudgeBody = sound.slice(sound.indexOf("function nudge()"), sound.indexOf("/* ---- 狀態套用 ---- */"));
+check("nudge body is audio-only（不碰 mechanics／不 kick／不改狀態）",
+  nudgeBody.length > 0 && !/kick|dragging|targetScroll/.test(nudgeBody));
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);

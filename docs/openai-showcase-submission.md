@@ -68,7 +68,7 @@ https://github.com/Crystal32378/draw-one
 
 ### Hosted URL
 
-https://crystal32378.github.io/draw-one/
+https://draw-one-crystals-projects-0006cdef.vercel.app/
 
 ### Setup steps
 

@@ -8,7 +8,7 @@ Created by [Crystal Chang](https://www.linkedin.com/in/crystal-c-2b028410/) and 
 
 This project won first place at a hackathon demo day selected from 32 finalist teams, with 150 original applicants. The prize was USD $10,000 in OpenAI API credits.
 
-Public demo: [https://crystal32378.github.io/draw-one/](https://crystal32378.github.io/draw-one/)
+Public demo: [https://draw-one-crystals-projects-0006cdef.vercel.app/](https://draw-one-crystals-projects-0006cdef.vercel.app/)
 
 Open `index.html` in a browser to run it locally. No backend is required for the current public demo.
 
@@ -86,11 +86,9 @@ The prototype is small, but the design question is larger:
 
 ## Project Status
 
-This repository contains the archived React MVP, the current static browser prototype, public-facing documentation, provenance cleanup notes, and oracle registry planning artifacts.
+This repository contains the archived React MVP, the current static browser prototype (The Arrival), public-facing documentation, and provenance cleanup notes.
 
-Draw One is still a prototype. The product direction has been validated at demo level; the production content system is still under review.
-
-No production registry implementation has been merged yet.
+Draw One is still a prototype. The product direction has been validated at demo level; the production content system is still under review. The current public build draws from 260 oracle entries across three corpora (觀音 100, 關帝 100, 六十甲子 60) under a fail-closed content gate — see `data/production/draw-pool.report.json` for the build report. The oracle registry spec at `docs/superpowers/specs/2026-07-04-oracle-registry-design.md` is a planning artifact for an earlier design direction and is preserved as historical record; it does not describe the current production content pipeline.
 
 ## Running Locally
 

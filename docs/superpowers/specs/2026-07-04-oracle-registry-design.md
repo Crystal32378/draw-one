@@ -1,5 +1,7 @@
 # Oracle Registry & Draw-Pool Design (Phase 2)
 
+> **Status (recovery, 2026-08-30): Historical planning artifact.** The current production content pipeline is described by `data/production/draw-pool.report.json` and built by `scripts/build-draw-pool.mjs` from `data/corpora/`. This spec captured an earlier design direction (9-entry closed seed allowlist, `registry.csv`, `audit-oracles.mjs`); that design was superseded before merge. Preserved here for provenance of the cleanup decision, not as the current architecture.
+
 **Status:** Draft v2, pending user approval  
 **Date:** 2026-07-04, revised 2026-07-05 after seed-pool direction  
 **Scope:** Establish a provenance-governed oracle registry and a single audit/gate script that produces a static draw-pool data file consumed by the frontend. No batch/resume/dry-run pipeline. No backend. No external services.

@@ -1411,6 +1411,20 @@ window.ARRIVAL_SOUND = (function () {
     s.connect(bp); bp.connect(g); g.connect(n.hand);
     s.start(t0); s.stop(t0 + 0.4);
   }
+  let nudgeGate = 0;
+  function nudge() { // 轉身中點擊的回饋：比 pull 還輕一顆——「聽見了，在動」
+    if (!running()) return;
+    ensureHand();
+    const t0 = ctx.currentTime + 0.005;
+    if (t0 < nudgeGate) return; // 單一活躍源：上一顆還沒落地就不起第二顆——高速連點不疊音
+    nudgeGate = t0 + 0.08;      // 窗口＝聲音本體的長度；過窗才允許下一顆
+    const s = ctx.createBufferSource();
+    s.buffer = n.tickBuf; s.playbackRate.value = rand(0.7, 0.9);
+    const bp = biquad("bandpass", rand(800, 1200), 3.5);
+    const g = gainNode(LEVELS.handPull * 0.35); // 比 pull 輕一截——背景，不是事件
+    s.connect(bp); bp.connect(g); g.connect(n.hand);
+    s.start(t0); s.stop(t0 + 0.08);
+  }
 
   /* ---- 狀態套用 ---- */
   function applyState(dur = XFADE) { // 空間變換：對「任何室外」做同一件事
@@ -1566,7 +1580,7 @@ window.ARRIVAL_SOUND = (function () {
     else if (ctx.state === "running") ctx.suspend().catch(() => {});
   });
 
-  return { start, space: setSpace, slip: setSlip, weather: setWeather, tree, pull, stickOut, paperOut, setEnabled, enabled: () => enabled, getParams };
+  return { start, space: setSpace, slip: setSlip, weather: setWeather, tree, pull, stickOut, paperOut, nudge, setEnabled, enabled: () => enabled, getParams };
 })();
 /* ==================== sound-layer:end ==================== */
 </script>
@@ -2008,6 +2022,10 @@ window.ARRIVAL_SOUND = (function () {
   }
   function kick() { if (!raf) raf = requestAnimationFrame(animate); }
 
+  function courtAnimating() { // settle／turning 進行中（與 animate() 收斂門檻同源：0.4px）
+    return !dragging && Math.abs(targetScroll - scroll) > 0.4;
+  }
+
   function settleToNearest() {
     let i = nearestStation();
     // 慣性：依釋放速度多轉半站
@@ -2019,6 +2037,10 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   view.addEventListener("pointerdown", (ev) => {
+    if (courtAnimating()) { // 護欄：settle／turning 中的點觸只回一聲輕叩——
+      window.ARRIVAL_SOUND?.nudge(); // 不 retarget、不改互動狀態、不 kick、不進殿
+      return;
+    }
     downTarget = ev.target;
     dragging = true;
     dragStartX = lastX = ev.clientX;
@@ -2061,7 +2083,11 @@ window.ARRIVAL_SOUND = (function () {
     }
   };
   view.addEventListener("pointerup", release);
-  view.addEventListener("pointercancel", () => { dragging = false; settleToNearest(); });
+  view.addEventListener("pointercancel", () => {
+    if (!dragging) return; // 沒在拖＝沒有可取消的拖曳：不得把 cancel 變成重新定錨
+    dragging = false;
+    settleToNearest();
+  });
 
   function updateFacingUI() {
     const s = STATIONS[nearestStation()];
@@ -2100,6 +2126,10 @@ window.ARRIVAL_SOUND = (function () {
       strip.className = "bound-strip";
       strip.textContent = "這個問題已有一支籤——案上放著，點看。";
       strip.addEventListener("click", () => {
+        if (courtAnimating()) { // 轉身中點「案上的籤」也只輕叩：不因此進殿
+          window.ARRIVAL_SOUND?.nudge();
+          return;
+        }
         const entry = POOL.entries.find((e) => e.id === bound.entryId);
         const hall = HALLS.find((h) => h.corpusId === entry.corpus_id) ?? HALLS[0];
         enterHall(hall, { boundEntry: entry });
@@ -2311,7 +2341,9 @@ window.ARRIVAL_SOUND = (function () {
     store.set(BOOK_KEY, book);
     const d = new Date();
     store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
-    $("question").value = "";
+    // 問題留在案上（recovery, 2026-08-30）：收籤＝句點，但問過的事不必被抹掉。
+    // 清空會讓下一輪變成「非本人意圖的空手」，在簿裡留下 question:"" 的幽靈條目。
+    // 同題再抽由一事一籤直接回看同一支；要新的一支就寫新問題；真想空手，自己清空即是。
     // 收籤＝句點：紙收起、一拍靜，然後世界回來。無旁白——沒有人留你。
     stage.classList.add("slip-away");
     setTimeout(() => {
