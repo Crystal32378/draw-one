@@ -10,9 +10,10 @@
 | `manual_image_confirmation` | 眼睛看見的 | 人類目視 witness 影像逐字確認 |
 | `human_textual_inference` | 文本學推回來的 | 音韻／語境／全句結構推出最合理讀法（非字形觀察） |
 
-**#17/#65 現行標記**：`human_textual_inference`（Crystal preferred reading based on rhyme/semantic coherence）——
-`manual_image_confirmation` 維持 false；若人工於放大影像上目視確認成功，可升級為 `manual_image_confirmation`。
-解曰區域放大版已備妥（`slip_017_lower_rotated.png`／`slip_065_lower_rotated.png`，直排轉橫排＋1.5x）供 Crystal 再試一次。
+> ⚠️ **SUPERSEDED（2026-08-29）**：下方「#17/#65 現行標記 `human_textual_inference`」為目視確認前的舊狀態。
+> **Current status 見下方定案段**：#17 已升級 `manual_image_confirmation`（Crystal＋福雙人目視）；
+> #65 句 3–6 Crystal 目視確認＋句 2 保留 □（真 textual variant）。
+> 解曰區域放大版留存於 `slip_017_lower_rotated.png`／`slip_065_lower_rotated.png`。
 
 **日期：2026-08-28**｜**呈：** 福（gate）｜**目標：** 驗證「雙 OCR path 支持 raw_jie 讀法」能否作為 verbatim 修正依據——pilot 過 gate 再決定擴 19 籤
 **witness：** slip_pages/slip_017.png、slip_065.png（附錄二逐籤裁切影像）；raw_jie（附錄二整頁 OCR，source_three_way.json）；兩次獨立 autoglm 轉錄（pass1/pass2）
@@ -123,8 +124,11 @@
 | #17 | 心中不定。枉費思量。只求餅充飢之象。凡事虛少實。 | **manual_image_confirmation（Crystal＋福雙人目視確認）**；後續句 CANDIDATE 註記 |
 | #65 | 得止且止。知足則自安。內病本一投。此籤內成緣之象。凡事守舊待時。 | 人工定案（語義＋目視流程進行中）；「內病本一投」notes 標語義待考 |
 
-- #17/#65 定案為 `human_textual_inference`（音韻/語義推斷），非 `manual_image_confirmation`（非字形觀察）——若 Crystal 於放大影像目視確認成功，可升級並標記
-- 正式 verbatim 修正待福 gate 後以 PR 提交（觀音 PR #24 線）
+> ⚠️ **SUPERSEDED（2026-08-29）**：「#17/#65 定案為 `human_textual_inference`」為目視確認前的舊狀態。
+> **唯一 current status**：
+> - **#17**：`manual_image_confirmation`（Crystal＋福雙人目視確認「之象」）——verbatim 定案「心中不定。枉費思量。只求餅充飢之象。凡事虛少實。」
+> - **#65**：句 1/3/4/5/6 Crystal 目視確認（manual）；句 2 保留 □（真 textual variant，三源三讀）——verbatim「得止且止。知□□□。割自己肉。疾痛一般。此籤肉成瘡之象。凡事守舊待時。」
+> - verbatim 修正**已提交**：PR #24 commit `5d4d0b7`（修正案）→ `92037bc`（ledger＋validator v2）→ `a4d8e69`（CI）——非「待提交」
 
 ## Pilot 結論（待福 gate）
 

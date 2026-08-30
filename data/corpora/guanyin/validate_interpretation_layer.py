@@ -187,7 +187,8 @@ def main():
     jie = [e for e in entries if e['field_type'] == '解曰']
     jie_un = [e for e in jie if e['transcription_status'] == 'UNRESOLVED']
     jie_pro = [e for e in jie if e['transcription_status'] == 'PROBABLE']
-    print(f'解曰 PROBABLE {len(jie_pro)} / UNRESOLVED {len(jie_un)}')
+    jie_cand = [e for e in jie if e['transcription_status'] == 'CANDIDATE']
+    print(f'解曰 PROBABLE {len(jie_pro)} / CANDIDATE {len(jie_cand)} / UNRESOLVED {len(jie_un)}')
 
     if failures:
         print(f'\n❌ GATE FAIL — {len(failures)} 違規：')

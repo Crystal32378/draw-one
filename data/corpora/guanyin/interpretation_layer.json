@@ -1061,7 +1061,7 @@
    "source_locator": "薛皓文2008附錄二 p158（籤 #44）",
    "transcription_status": "CANDIDATE",
    "layer_class": "living_tradition",
-   "variants_or_notes": "2026-08-29 Crystal 目視核圖修正（manual_image_confirmation）：目視＝現 verbatim（確認）——升級；raw 後段「此擬挑進敵手之象凡事先吉」單源記 notes CANDIDATE；修正前 verbatim：□求心事。如同□。要知勝負。先□□□。；重讀（slip_pages 第三 pass）：籤詩棋逢敵手要藏機到底欲知誰勝負黑白盤中未決時須教先著相機宜解曰周郎赤壁敗曹兵解聖意交易未利婚姻未合求財迷惑自身平家宅吉六畜損田蚕中寻人阻公訟宜移徙守失物祈疾病；後段「此擬挑進敵手之象。凡事先吉。」為 ocr_raw 單源（非人工目視）→ 整筆降 CANDIDATE",
+   "variants_or_notes": "2026-08-29 Crystal 目視核圖修正：**前段 manual、後段 OCR raw 單源**（segment basis 見 manual_confirmation_ledger.json）；修正前 verbatim：□求心事。如同□。要知勝負。先□□□。；raw 後段「此擬挑進敵手之象。凡事先吉。」為 ocr_raw 單源（非人工目視）→ 整筆 CANDIDATE；重讀（slip_pages 第三 pass）：僅讀出卦頭「周郎赤壁敗曹兵」",
    "verbatim_text_old": "□求心事。如同□。要知勝負。先□□□。",
    "source_observation_status": "mixed_manual_ocr",
    "manual_image_confirmation": false,
