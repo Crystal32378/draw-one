@@ -107,7 +107,7 @@
 > **Current status**：#17＝`manual_image_confirmation`（雙人目視）；#65＝句 1/3/4/5/6 Crystal 目視確認＋句 2 □（真 textual variant）；修正已提交 PR #24（`5d4d0b7`→`92037bc`→`a4d8e69`）。
 > 詳細比對內容保留如下（歷史）：
 
-### verbatim 修正方案（謹慎版，待福 gate）
+### verbatim 修正方案（謹慎版）〔SUPERSEDED HISTORICAL RECORD——gate 前方案，已由 92037bc 執行〕
 
 **verbatim 修正為**：「得止且止。知□□□。割自己肉。疾痛一般。此籤肉成瘡之象。凡事守舊待時。」
 - 句 2「知歡？」三源三讀且 Crystal 自評不通順 → **保留 □（兩字）**，三種讀法全記 variants_or_notes
