@@ -1,6 +1,6 @@
 # 觀音解讀層 verbatim 修正案 — 21 籤目視核圖成果（2026-08-29）
 
-**呈：** 福（gate）｜**依據：** Crystal 目視核圖（manual_image_confirmation）× 19 籤 ＋ #17/#65 雙人目視 pilot
+**呈：** 福（gate）｜**依據：** Crystal 目視核圖（manual_image_confirmation）× 21 籤——**16 籤全 manual（manual_image_confirmation=true）＋ 5 籤 mixed（#4 #16 #20 #44 #77，manual_image_confirmation=false＋source_observation_status=mixed_manual_ocr＋segment_basis_note）** ＋ #17/#65 雙人目視 pilot
 **成果：** 解曰 **79 PROBABLE/21 UNRESOLVED → 94 PROBABLE/1 CANDIDATE/5 UNRESOLVED**（#44 混合條目降 CANDIDATE：前段 manual＋後段 ocr_raw 單源）
 
 ---
@@ -19,7 +19,7 @@
 | 解曰 PROBABLE | 79 | **94** |
 | 解曰 UNRESOLVED | 21 | **5** |
 | 解曰 CANDIDATE | — | **1**（#44） |
-| verbatim 變更 | — | 21 筆（19 目視修正＋2 pilot 定案） |
+| verbatim 變更 | — | 21 筆（**16 籤依 Crystal 目視定案（全 manual）＋ 5 籤 mixed（前段 manual＋後段 OCR/raw 補，segment_basis_note 詳記）**） |
 | 擴充（新增後段） | — | #4（破鏡重圓之象）、#44（挑進敵手之象）等 |
 
 ## UNRESOLVED 5 籤（原因明確）

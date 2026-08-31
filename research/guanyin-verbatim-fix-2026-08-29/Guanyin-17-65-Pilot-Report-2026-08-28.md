@@ -102,6 +102,11 @@
 2. **解曰對偶**：「知止則止／知寬自寬」＋「割自身肉／疾痛一般」四字句兩兩對偶工整 ✓
 3. **版本品質判斷**：龍成宮版格律/對偶完整 vs 附錄二（Crystal 目視）「知歡割自己肉痛本一般」不通順不對偶——兩種可能：①附錄二為劣化轉錄（格律句轉錄錯置流傳）②附錄二為在地改寫版本。**內部證據（格律）傾向：附錄二影像上的文字即為龍山寺現行版原樣（劣化或改寫皆為歷史事實，verbatim 照收）**
 
+> ⚠️ **SUPERSEDED HISTORICAL RECORD（福 gate 前的修正方案，已由 92037bc/a4d8e69 執行）**
+> 此段記錄 gate 前的處理方案與 #65 版本差異發現過程——內容為歷史紀錄，非 current status。
+> **Current status**：#17＝`manual_image_confirmation`（雙人目視）；#65＝句 1/3/4/5/6 Crystal 目視確認＋句 2 □（真 textual variant）；修正已提交 PR #24（`5d4d0b7`→`92037bc`→`a4d8e69`）。
+> 詳細比對內容保留如下（歷史）：
+
 ### verbatim 修正方案（謹慎版，待福 gate）
 
 **verbatim 修正為**：「得止且止。知□□□。割自己肉。疾痛一般。此籤肉成瘡之象。凡事守舊待時。」
@@ -117,12 +122,12 @@
 
 ---
 
-## 定案後狀態
+## Current Status（#17／#65）
 
 | 籤 | verbatim 定案 | 狀態 |
 |---|---|---|
-| #17 | 心中不定。枉費思量。只求餅充飢之象。凡事虛少實。 | **manual_image_confirmation（Crystal＋福雙人目視確認）**；後續句 CANDIDATE 註記 |
-| #65 | 得止且止。知足則自安。內病本一投。此籤內成緣之象。凡事守舊待時。 | 人工定案（語義＋目視流程進行中）；「內病本一投」notes 標語義待考 |
+| #17 | 心中不定。枉費思量。只求餅充飢之象。凡事虛少實。 | **current**：`manual_image_confirmation`（Crystal＋福雙人目視確認「之象」）；後續句「晨昏只好念阿彌。畫餅如何療得飢。」CANDIDATE 註記 |
+| #65 | 得止且止。知□□□。割自己肉。疾痛一般。此籤肉成瘡之象。凡事守舊待時。 | **current**：句 1/3/4/5/6 Crystal 目視確認（manual）；句 2 保留 □（真 textual variant：龍山寺版 vs 五甲龍成宮版三源三讀）；「內病本一投」為舊判讀殘留，current verbatim 以 ledger 為準 |
 
 > ⚠️ **SUPERSEDED（2026-08-29）**：「#17/#65 定案為 `human_textual_inference`」為目視確認前的舊狀態。
 > **唯一 current status**：
@@ -130,15 +135,17 @@
 > - **#65**：句 1/3/4/5/6 Crystal 目視確認（manual）；句 2 保留 □（真 textual variant，三源三讀）——verbatim「得止且止。知□□□。割自己肉。疾痛一般。此籤肉成瘡之象。凡事守舊待時。」
 > - verbatim 修正**已提交**：PR #24 commit `5d4d0b7`（修正案）→ `92037bc`（ledger＋validator v2）→ `a4d8e69`（CI）——非「待提交」
 
-## Pilot 結論（待福 gate）
+## Pilot 結論（~~待福 gate~~ → 已 gate：2026-08-29 福確認「1,2 都過」）
 
-1. **兩例均成立**：現 verbatim 的 UNRESOLVED 主要來自「批次 OCR 句序錯位＋截斷」，raw_jie ＋ slip_pages 重讀雙 path 可重建更完整讀法
-2. **修正原則建議**：
+> ⚠️ 本段為 gate 前歷史紀錄（「待福 gate」「建議人工核圖」「福 gate 後再提交」均已過期——**gate 已過、修正已提交 PR #24 並 merge 流程中**）。
+
+1. **兩例均成立**：現 verbatim 的 UNRESOLVED 主要來自「批次 OCR 句序錯位＋截斷」，raw_jie ＋ slip_pages 重讀雙 path 可重建更完整讀法 → **已由福 gate 確認並執行**
+2. **修正原則（已 gate 過並執行）**：
    - raw_jie ＋ 重讀 exact/高相似 → 以 raw_jie 為準修正 verbatim（如 #65 句 1/3/4）
    - 兩 path 讀法分歧的字 → 保留 □ 標記待人工核圖（如 #17 句 3 事/象、#65 句 2）
    - 修正後 transcription_status：達雙 path exact → PROBABLE；分歧段 → UNRESOLVED（reason code: dual_path_divergence）
-3. **擴 19 籤的風險評估**：同類問題（句序錯位/截斷）可能存在於其他 UNRESOLVED 籤——擴大前建議先跑 19 籤的 raw_jie vs verbatim 相似度普查，量化「批次誤讀」比例
-4. **人工核圖項**：#17「事/象」、#65「知機到自昌 vs 知足則自安」——建議由 Crystal 目視 slip_017/065.png 確認（影像已在本機）
+3. **擴 19 籤風險評估**：普查已執行（16/19 疑似截斷）→ 已擴大並完成
+4. **人工核圖項（已完成）**：#17「事/象」Crystal 定案「之象」＋福目視確認；#65 句 2 Crystal 語義定案「知足則自安」（見 Current Status）
 
 ## 19 籤相似度普查（2026-08-29 已執行——gate 輔助數據）
 
@@ -153,7 +160,7 @@ verbatim（去□）vs raw_jie 相似度分布（19 籤，排除 pilot 兩例）
 
 **結論：19 籤的 verbatim 幾乎全面相對 raw_jie 截斷/誤讀**——擴大方案形狀＝逐籤以 raw_jie＋slip_pages 重讀重建（同 #17/#65 pilot 流程），預期多數可從 UNRESOLVED 升級。普查明細存 `guanyin_21census.json`。
 
-## 下一步（福 gate 後）
+## 下一步（已完成）
 
-1. Crystal 目視核圖 2 處分歧字（#17 事/象、#65 句 2——已由 Crystal 音韻/語義定案，待福確認）
-2. verbatim 修正 PR（依 gate 結論，19 籤逐籤以 raw_jie＋重讀重建）
+1. ~~Crystal 目視核圖 2 處分歧字~~ → **已完成**（#17「之象」雙人目視確認；#65 句 2 保留 □ 為真 variant）
+2. ~~verbatim 修正 PR~~ → **已提交**：PR #24（`5d4d0b7` 修正案→`92037bc` ledger＋validator v2→`a4d8e69` CI＋gitignore）→ 福已 gate「1,2 都過，直接跑 19 籤」→ 19 籤重建完成並 push（`90229eb` docs-sync）
