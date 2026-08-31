@@ -145,7 +145,7 @@
    - 兩 path 讀法分歧的字 → 保留 □ 標記待人工核圖（如 #17 句 3 事/象、#65 句 2）
    - 修正後 transcription_status：達雙 path exact → PROBABLE；分歧段 → UNRESOLVED（reason code: dual_path_divergence）
 3. **擴 19 籤風險評估**：普查已執行（16/19 疑似截斷）→ 已擴大並完成
-4. **人工核圖項（已完成）**：#17「事/象」Crystal 定案「之象」＋福目視確認；#65 句 2 Crystal 語義定案「知足則自安」（見 Current Status）
+4. **人工核圖項（已完成）**：#17「事/象」定案「之象」並完成雙人目視；#65 句 2 經核對後保留 □，記為跨版本 textual variant（見 Current Status）。
 
 ## 19 籤相似度普查（2026-08-29 已執行——gate 輔助數據）
 
