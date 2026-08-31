@@ -1,0 +1,218 @@
+{
+ "items": [
+  {
+   "slip_no": 1,
+   "current_verbatim": "□□非□。□□時□。□音降□。報與君知。",
+   "raw_jie": "為述非遙信求時慎親音降畢報與君知此箴 天開地闢之象凡事大吉利也",
+   "page_jie": "",
+   "chance_jie": "急速兆速。年未值時。觀音降筆。先報君知。",
+   "recheck_jieyu": "宋太祖黃袍加身解為述非這信來時值觀音降臨報與君知先號天問地問之象凡事大吉利也",
+   "sim_raw_vs_recheck": 0.618,
+   "note": "",
+   "tier": "B_partial(0.6-0.8)"
+  },
+  {
+   "slip_no": 4,
+   "current_verbatim": "五五念五。□龍跨虎。事雖勞心。於中有補。",
+   "raw_jie": "五五念五時龍跨虎事難勞心於中有補此哉破鏡重圓之象凡事成就則吉",
+   "page_jie": "",
+   "chance_jie": "淘沙成金。騎龍踏虎。雖是勞心。于中有補。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 5,
+   "current_verbatim": "望中心事。令可方求。百事營謀。正堪截□。",
+   "raw_jie": "望中心事令可方求百事營謀正堪截昭王爲鄢隗築黃金臺",
+   "page_jie": "",
+   "chance_jie": "欲望心事。西方可求。不如莫動。立地可謀。",
+   "recheck_jieyu": "解望中心事令可方求百事營謀正堪求北據土求來必象凡非勞心成虧",
+   "sim_raw_vs_recheck": 0.528,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 7,
+   "current_verbatim": "退身可得。進步難為。只宜守□。切莫高扳。",
+   "raw_jie": "廉將軍思用趙人奔波役役童童險帶水拖泥又渡山更慮他方求別用千山萬水未能還這身可得此步難為只宜守因勿妄想此般浪水拖泥之象凡事正直則吉",
+   "page_jie": "",
+   "chance_jie": "退身可得。進步為難。只宜守舊。莫望高扳。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 9,
+   "current_verbatim": "心中正直。原法寬□。天無私極。□空虛□。",
+   "raw_jie": "心中正直原法寬天無私極與空虛若北箕皎月皆空之象凡事正直則吉",
+   "page_jie": "",
+   "chance_jie": "心中正直。理順法寬。聖無私語。終有分明。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 10,
+   "current_verbatim": "機緣若遇。何事不成。春無限□。□似真□。",
+   "raw_jie": "機緣若遇何事不成春無限請似真此戰將燈寵火之象凡事自就",
+   "page_jie": "",
+   "chance_jie": "姻緣會遇。何事不成。須無限意。眼前是真。",
+   "recheck_jieyu": "解曰機緣若遇何事不成猶如燈火之象凡事自就",
+   "sim_raw_vs_recheck": 0.696,
+   "note": "",
+   "tier": "B_partial(0.6-0.8)"
+  },
+  {
+   "slip_no": 12,
+   "current_verbatim": "□換得絲。是笑□哭。要見分明。是見為福。",
+   "raw_jie": "萬換得絲是笑誰哭要見分明是見為福此最禍去福來凡事先凶後吉",
+   "page_jie": "",
+   "chance_jie": "換麻得絲。擊人雙足。要見分明。因災得福。（擊有作繫）",
+   "recheck_jieyu": "解草換得綠是笑睢哭要見分明是見為福兆截禍去福來凡事先凶後吉",
+   "sim_raw_vs_recheck": 0.807,
+   "note": "",
+   "tier": "A_high_sim(≥0.8)"
+  },
+  {
+   "slip_no": 13,
+   "current_verbatim": "因□得赦。病遇良醫。龍門得□。名顯□□。",
+   "raw_jie": "信陵君存趙簡封 解 因徒得赦病遇良醫龍門得遇名顯揚光榮 凡事變化則吉",
+   "page_jie": "",
+   "chance_jie": "囚人逢赦。病即安然。龍門得遇。名遍名都。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 14,
+   "current_verbatim": "從心無慮。遠達亨衢。道心自在。任□所如。",
+   "raw_jie": "此籤自鶴沖霄之象凡事先難後吉任悉所如",
+   "page_jie": "",
+   "chance_jie": "任意無虞。路有亨通。隨心自在。逍遙如人(神)。",
+   "recheck_jieyu": "此籤自鴉冲霄之象凡事先難後易任君所如",
+   "sim_raw_vs_recheck": 0.778,
+   "note": "",
+   "tier": "B_partial(0.6-0.8)"
+  },
+  {
+   "slip_no": 15,
+   "current_verbatim": "若得人怨。何事可伸。如言不信。到□勞心。",
+   "raw_jie": "若得人怨何事可伸如言不信到頭勞心此籤卵破巢空之象凡事守舊則吉",
+   "page_jie": "",
+   "chance_jie": "若人得怨。何時可伸。好言不信。守舊待時。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 16,
+   "current_verbatim": "得處□□。損中有□。□□□凶。君子得吉。",
+   "raw_jie": "得處焦渴損中有道煩惱皆凶君子得吉此籤如玉在泥之象凡非過者則吉",
+   "page_jie": "",
+   "chance_jie": "得處無失。損中有益。小人逢凶。君子順吉。",
+   "recheck_jieyu": "解得應無憂損中有益或凶得吉凶君求得吉此籤如玉在泥之象凡非過者則吉",
+   "sim_raw_vs_recheck": 0.71,
+   "note": "",
+   "tier": "B_partial(0.6-0.8)"
+  },
+  {
+   "slip_no": 20,
+   "current_verbatim": "佛神護佑。百事無虛。想平生事。到□勝初。",
+   "raw_jie": "佛神護佑百事無虛想平生事到成勝初此幾久雨初晴之象凡事皆過",
+   "page_jie": "",
+   "chance_jie": "神佛護持。有災無危。途生平安。到底榮歸。",
+   "recheck_jieyu": "解佛神護佑百事無虛想平生事到處勝利此後久雨初晴之象凡事皆通",
+   "sim_raw_vs_recheck": 0.842,
+   "note": "",
+   "tier": "A_high_sim(≥0.8)"
+  },
+  {
+   "slip_no": 21,
+   "current_verbatim": "陰陽道合總由天。女嫁男婚豈偶然。但看龍蛇堪運動。熊羆葉夢喜團圓。",
+   "raw_jie": "陰陽道合總由天 女嫁男婚豈偶然 但看龍蛇堪運動 熊羆葉夢喜團圓 此籤皆送婚姻畢竟男求財橫發更吉田蠶尤盛 陰陽道合之象凡非和合大吉",
+   "page_jie": "",
+   "chance_jie": "謀望從心。婚姻孕男。資財進益。更利田蠶。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 31,
+   "current_verbatim": "守己安靜。即是待他。時至必定。□全。",
+   "raw_jie": "達摩面壁解 守己安撫即是持色時至必定遇全此我守己 安靜之象凡事宜守舊",
+   "page_jie": "",
+   "chance_jie": "守舊安然。叩問神仙。直待時來。事亦偶然。",
+   "recheck_jieyu": "解守己安靜即是持色時至必定遇全此我守己安靜之象凡事宜守待時至必定遇全此我守己",
+   "sim_raw_vs_recheck": 0.743,
+   "note": "",
+   "tier": "B_partial(0.6-0.8)"
+  },
+  {
+   "slip_no": 35,
+   "current_verbatim": "不須憂疑。自有□期。□前程。更換可宜。",
+   "raw_jie": "不須憂疑自有期問前程更換可宜此箋重签之象凡事改變大吉",
+   "page_jie": "",
+   "chance_jie": "不用憂疑。自有佳期。若問前程。前路可宜。",
+   "recheck_jieyu": "不煩憂疑自有期問前程更換可宜此籤聖筌之象凡事改變大吉",
+   "sim_raw_vs_recheck": 0.846,
+   "note": "",
+   "tier": "A_high_sim(≥0.8)"
+  },
+  {
+   "slip_no": 44,
+   "current_verbatim": "□求心事。如同□。要知勝負。先□□□。",
+   "raw_jie": "批求心事如同棋要知勝負先落其紙此擬挑進敵手之象凡事先吉",
+   "page_jie": "",
+   "chance_jie": "欲求心事。恰如圍棋。到底勝利。宜用心機。",
+   "recheck_jieyu": "周郎赤壁敗曹兵解",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 48,
+   "current_verbatim": "□□化□。諸禽不能。騰化時節。□□□□。",
+   "raw_jie": "鵑鵑化鵑諸禽不能騰化時節時來成北飛此爲化鵬之象凡求與陰大吉",
+   "page_jie": "",
+   "chance_jie": "昆化為鵬。萬禽不能。桂香一折。福祿自增。",
+   "recheck_jieyu": "鵑鳥化鵬諸禽不能擬此時節時來成此機",
+   "sim_raw_vs_recheck": 0.522,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  },
+  {
+   "slip_no": 77,
+   "current_verbatim": "□夢說夢。聲名虛望。只好待時。□人□引。",
+   "raw_jie": "夢說夢筆名虛望只招徒時貴人指引此截夢中得時之象凡事空虛無力",
+   "page_jie": "",
+   "chance_jie": "如夢說夢。聲名莫望。只待好時。貴人指示。",
+   "recheck_jieyu": "夢說夢得名虛望只待時青人指引此截夢中得財之象凡事空虛無力",
+   "sim_raw_vs_recheck": 0.842,
+   "note": "",
+   "tier": "A_high_sim(≥0.8)"
+  },
+  {
+   "slip_no": 96,
+   "current_verbatim": "這此福□。諸人皆現。可用誠心。福德即到。",
+   "raw_jie": "此福甲諸人皆現可用誠心福德即到此處福德願見之眾見非謬謀吉利",
+   "page_jie": "",
+   "chance_jie": "這些福份。眾人皆有。不用心忙。福德前定。",
+   "recheck_jieyu": "",
+   "sim_raw_vs_recheck": 0.0,
+   "note": "",
+   "tier": "C_divergent(<0.6)"
+  }
+ ],
+ "by_tier": {
+  "B_partial(0.6-0.8)": 5,
+  "C_divergent(<0.6)": 10,
+  "A_high_sim(≥0.8)": 4
+ }
+}
