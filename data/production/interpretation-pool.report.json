@@ -1,0 +1,13 @@
+{
+  "built_at_note": "content-derived; no wallclock in artifact",
+  "source_file": "data/corpora/guanyin/interpretation_layer.json",
+  "source_sha256": "6900f76595729b50c0b6ec21d10b8c450b0303b1f8a4705b3c1e2f02933c9e17",
+  "field": "解曰",
+  "excluded_field": "聖意 (predictive fortune grid — out of product scope)",
+  "candidates": 100,
+  "emitted": 94,
+  "confirmed": 13,
+  "probable": 81,
+  "dropped": 6,
+  "content_version": "cdeda0650ec6469aedda35dd46af4c21e54d98d10bcc3676dbccc5d286862189"
+}
