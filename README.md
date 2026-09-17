@@ -10,7 +10,7 @@ This project won first place at a hackathon demo day selected from 32 finalist t
 
 Public demo: [https://draw-one-crystals-projects-0006cdef.vercel.app/](https://draw-one-crystals-projects-0006cdef.vercel.app/)
 
-Open `index.html` in a browser to run it locally. No backend is required for the current public demo.
+Open `paper/arrival.html` in a browser to run it locally (the Vercel root routes there). No backend is required for the current public demo. The earlier `index.html` prototype is kept in the repo for the content-truth test suite but is no longer served.
 
 ## What It Does
 
@@ -95,5 +95,5 @@ Draw One is still a prototype. The product direction has been validated at demo 
 No backend is required.
 
 ```bash
-open index.html
+open paper/arrival.html
 ```

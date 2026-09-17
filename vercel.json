@@ -1,10 +1,9 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
-    {
-      "src": "/",
-      "dest": "/paper/arrival.html"
-    },
+    { "src": "/", "dest": "/paper/arrival.html" },
+    { "src": "^/index\\.html$", "status": 301, "headers": { "Location": "/" } },
+    { "src": "^/research/?(index\\.html)?$", "status": 301, "headers": { "Location": "/" } },
     { "handle": "filesystem" }
   ]
 }
