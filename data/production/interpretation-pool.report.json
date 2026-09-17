@@ -2,12 +2,14 @@
   "built_at_note": "content-derived; no wallclock in artifact",
   "source_file": "data/corpora/guanyin/interpretation_layer.json",
   "source_sha256": "6900f76595729b50c0b6ec21d10b8c450b0303b1f8a4705b3c1e2f02933c9e17",
+  "edition_id": "ed-guanyin-xue2008-appendix2-image",
   "field": "解曰",
   "excluded_field": "聖意 (predictive fortune grid — out of product scope)",
+  "source_distribution": "100 解曰: 94 PROBABLE, 5 UNRESOLVED (12,20,35,65,77), 1 CANDIDATE (44)",
   "candidates": 100,
   "emitted": 94,
   "confirmed": 13,
   "probable": 81,
   "dropped": 6,
-  "content_version": "cdeda0650ec6469aedda35dd46af4c21e54d98d10bcc3676dbccc5d286862189"
+  "content_version": "e34cea042c1748a4bcc7e1a51d1ee21e843e3b5942606715ff94688c056a0b22"
 }

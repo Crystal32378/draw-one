@@ -1074,6 +1074,7 @@
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
 <script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
+<script src="../assets/jieyue-guard.js?v=1"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -2367,15 +2368,14 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   // 解曰 摺頁：歷史解，收合呈現，換一張紙就重新收起。
-  // 資料層 fail-closed——只認 edition／status 對得上的那筆；對不上就整個不顯示。
+  // 顯不顯示的唯一判準在 jieyue-guard.js（頁面與測試共用同一把鎖）：
+  // 精確版本比對（edition_id／slip edition_title／content_version 全 exact）＋
+  // 逐籤 custody（id↔slip_no）；任一對不上就整層不顯示（fail-closed）。
   function renderJieyue(entry) {
     const box = $("jieyue");
     const pool = window.INTERPRETATION_POOL;
-    const rec = pool && pool.corpus_id === entry.corpus_id ? pool.entries[entry.id] : null;
-    // 版本必須吻合紙的 edition（與 slip-render colophon 同一把鎖），否則不掛解曰
-    const editionMatches = pool && entry.provenance?.edition_title
-      && (entry.provenance.edition_title.includes("艋舺龍山寺") && pool.edition.includes("艋舺龍山寺"));
-    if (!rec || !editionMatches || !pool.status_word[rec.status]) { box.hidden = true; return; }
+    const rec = window.JIEYUE_GUARD ? window.JIEYUE_GUARD.resolve(pool, entry) : null;
+    if (!rec) { box.hidden = true; return; }
     box.hidden = false;
     $("jieyueToggle").setAttribute("aria-expanded", "false");
     $("jieyueBody").hidden = true;

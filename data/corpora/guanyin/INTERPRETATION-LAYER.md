@@ -27,7 +27,11 @@
 
 每筆 entry 含：`corpus` / `slip_no` / `edition` / `field_type`（解曰｜聖意）/ `verbatim_text` / `source_locator` / `transcription_status` / `layer_class`（=living_tradition）/ `variants_or_notes`
 
-**transcription_status 分布：解曰 79 PROBABLE ＋ 21 UNRESOLVED；聖意 100 PROBABLE（verbatim 為附錄二 raw）**
+**transcription_status 分布（現行來源真實狀態，2026-09-17 核對）：解曰 100 首＝94 PROBABLE ＋ 5 UNRESOLVED（#12、#20、#35、#65、#77）＋ 1 CANDIDATE（#44）；聖意 100 PROBABLE（verbatim 為附錄二 raw）。**
+
+> 歷史快照：本檔早期段落記為「解曰 79 PROBABLE ＋ 21 UNRESOLVED」「80 PROBABLE ＋ 20 UNRESOLVED」，以及下方〈UNRESOLVED 清單（解曰 20 籤）〉，皆為 2026-08 窄修當時的狀態，之後來源逐籤核對持續收斂至上列數字。舊清單保留作歷史記錄，不代表現況；現況以本行與 `interpretation_layer.json` 為準。
+>
+> **解曰摺頁 artifact（PR #34）收錄 94 首**（＝VERIFIED+PROBABLE 且無 □／壞字；排除 6 首＝5 UNRESOLVED＋1 CANDIDATE），其中 **13 首為可收錄且人工核圖**（manual_image_confirmation=true；另 3 首核圖籤 #12/#35/#65 因狀態 UNRESOLVED 不收錄）。聖意（吉凶格）不入 artifact——反思工具不做預言。
 
 ## Authority Hierarchy 窄修記錄（2026-08 Gate FIX REQUIRED 後）
 
@@ -55,7 +59,9 @@
 
 輸入：`interpretation_layer.json` + `source_three_way.json`（raw_jie／page_ocr／chance_jie 三方）＋ `per_slip_page_jie.json`（每籤自己的 page 解曰片段，由 `build_per_slip_page_jie.py` 從 page_ocr 提取、與 verbatim 匹配生成）。A1b 不直接使用 whole-page page_ocr（同頁另一籤會造成 cross-slip false pass），改用 per-slip page 片段；無可靠 page 片段（如 #21 七言詩）則只用 raw_jie。繁簡／異體經正規化（為↔爲、換↔换、虛↔虚、蟄↔蛰、晩↔晚 等）。A1 是 character-set coverage（只證字曾出現），A1b 才是詞序層的 substring traceability，兩者分工不宣稱 full traceability。
 
-## UNRESOLVED 清單（解曰 20 籤）
+## UNRESOLVED 清單（解曰）— 歷史快照（2026-08），非現況
+
+> 現行解曰 UNRESOLVED 僅 5 首（#12、#20、#35、#65、#77）＋ CANDIDATE 1 首（#44）；下表為 2026-08 窄修當時的 20 籤清單，保留作歷史記錄。以 `interpretation_layer.json` 為現況真相。
 
 | # | verbatim（缺字以□標記） |
 |---|---|
@@ -92,7 +98,7 @@
 ## Provenance / Reproducibility
 
 - **source_locator**：`薛皓文2008附錄二 p{130–179}（籤 #N）`，每筆可回查原始掃描（appendix2_png 與逐籤 slip_pages/slip_XXX.png）
-- **transcription_status**：解曰 80 PROBABLE（整頁 OCR + raw 兩獨立 OCR 一致或語義通順）＋ 20 UNRESOLVED（三方分歧或字不通，留「□」不猜字）；聖意 100 筆 verbatim 為附錄二 raw，直排順序亂，原始順序待逐籤 source image 還原
+- **transcription_status**：解曰現行＝94 PROBABLE ＋ 5 UNRESOLVED ＋ 1 CANDIDATE（留「□」不猜字）；聖意 100 筆 verbatim 為附錄二 raw，直排順序亂，原始順序待逐籤 source image 還原（舊文記「80 PROBABLE ＋ 20 UNRESOLVED」為 2026-08 歷史快照）
 - **異體字**（如「𫝹」「冨」）原樣保存，不 canonicalize、不簡繁轉換（繁簡正規化僅用於 gate 判等，不改變 verbatim 文字）
 - **chance substantive-variant**：逐條記錄 chance 與附錄二的實質差異於 `variants_or_notes`（chance 是艋舺版另一轉錄，非 production witness）
 
