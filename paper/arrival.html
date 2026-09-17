@@ -2319,13 +2319,29 @@ window.ARRIVAL_SOUND = (function () {
       return;
     }
     const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
-    const book = store.get(BOOK_KEY, []);
-    const existing = book.find((b) => b.entryId === entry.id && b.question === q);
-    $("noteInput").value = existing?.note ?? "";
-    // 帶走＝籤簿中每張紙的能力：已收的籤才帶得走（在籤簿裡 ⟺ 是你的了）
-    $("takeawayZone").hidden = !existing;
-    currentTakeawayTs = existing?.ts ?? null;
+    // 紙落定即入簿（2026-09-14 審查 P0）：一支籤的身份只有一本帳。
+    // 綁定在抽出瞬間就寫入 bindings；若入簿要等人按「收進」，回埕／關頁的人
+    // 會得到「還沒有籤」，卻在再問同題時看到案上那張紙——兩本帳分家，籤簿說謊。
+    // 現在：紙在眼前＝已是你的（在籤簿裡 ⟺ 是你的了）。「收進」只負責筆記與句點。
+    const existing = ensureBookEntry(entry, q);
+    $("noteInput").value = existing.note ?? "";
+    $("takeawayZone").hidden = false;
+    currentTakeawayTs = existing.ts;
     currentResolved = { entryId: entry.id, repeated };
+  }
+
+  // 找到或建立這支籤在簿裡的那一筆；同時記下「上次到訪」。永不重複建立。
+  function ensureBookEntry(entry, q) {
+    const book = store.get(BOOK_KEY, []);
+    let rec = book.find((b) => b.entryId === entry.id && b.question === q);
+    if (!rec) {
+      rec = { ts: new Date().toISOString(), question: q, entryId: entry.id, corpusId: entry.corpus_id, note: "" };
+      book.unshift(rec);
+      store.set(BOOK_KEY, book);
+    }
+    const d = new Date();
+    store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
+    return rec;
   }
 
   $("keepBtn").addEventListener("click", () => {
@@ -2334,13 +2350,10 @@ window.ARRIVAL_SOUND = (function () {
     const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
     const q = window.DRAW_POLICY.normalizeQuestion($("question").value);
     const note = $("noteInput").value.trim();
+    // 紙早在落定時就入簿（ensureBookEntry）；這裡只補筆記。
     const book = store.get(BOOK_KEY, []);
     const existing = book.find((b) => b.entryId === entry.id && b.question === q);
-    if (existing) existing.note = note;
-    else book.unshift({ ts: new Date().toISOString(), question: q, entryId: entry.id, corpusId: entry.corpus_id, note });
-    store.set(BOOK_KEY, book);
-    const d = new Date();
-    store.set(LASTHALL_KEY, { id: currentHall.id, date: `${cnNum(d.getMonth() + 1)}月${cnNum(d.getDate())}日` });
+    if (existing) { existing.note = note; store.set(BOOK_KEY, book); }
     // 問題留在案上（recovery, 2026-08-30）：收籤＝句點，但問過的事不必被抹掉。
     // 清空會讓下一輪變成「非本人意圖的空手」，在簿裡留下 question:"" 的幽靈條目。
     // 同題再抽由一事一籤直接回看同一支；要新的一支就寫新問題；真想空手，自己清空即是。
