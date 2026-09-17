@@ -131,7 +131,12 @@ console.log("R7 keepBtn keeps the question on the desk（recovery 2026-08-30）"
 const keepBlock = script.slice(script.indexOf('$("keepBtn").addEventListener'), script.indexOf("/* ---------- 帶走這支籤"));
 check("keepBtn handler exists", keepBlock.length > 0);
 check("keepBtn does not assign #question.value（問過的事不被抹掉）", !/\$\("question"\)\.value\s*=/.test(keepBlock));
-check("book entry still records the question（question 進籤簿）", /question: q,/.test(keepBlock));
+// 2026-09-14 P0：入簿移到紙落定（ensureBookEntry），keepBtn 只補筆記。契約不變：question 進籤簿、只此一處建立。
+const ensureBlock = script.slice(script.indexOf("function ensureBookEntry"), script.indexOf('$("keepBtn").addEventListener'));
+check("book entry still records the question（question 進籤簿）", /question: q,/.test(ensureBlock));
+check("入簿只在 ensureBookEntry 一處（單一帳本）", (script.match(/book\.unshift\(/g) || []).length === 1 && /book\.unshift\(/.test(ensureBlock));
+check("showSlip 落定即入簿（回埕／關頁不丟籤）", /ensureBookEntry\(entry, q\)/.test(script.slice(script.indexOf("function showSlip"), script.indexOf("function ensureBookEntry"))));
+check("keepBtn 不再建立條目，只補筆記", !/book\.unshift/.test(keepBlock) && /existing\.note = note/.test(keepBlock));
 
 console.log("R8 settle/turning pointer guard（recovery 2026-08-30）— 動畫中的點觸只有輕叩");
 const pdBlock = script.slice(script.indexOf('view.addEventListener("pointerdown"'), script.indexOf('view.addEventListener("pointermove"'));

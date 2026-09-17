@@ -171,8 +171,8 @@ check("刻字回聲：票寫進今天的石頭；常日不刻（wChar undefined 
   /wChar\) heart\.textContent \+=/.test(main) && /sunny: "晴", cloudy: "陰", rain: "雨", wind: "風"/.test(main));
 check("收籤＝句點：紙收起一拍（slip-away beat），無「籤已收」旁白",
   /slip-away/.test(main) && /\.slip-stage\.slip-away/.test(html) && !/籤已收/.test(html));
-check("帶走＝籤簿中每張紙的能力（existing 才顯示，不在 ending 跳 CTA）",
-  /takeawayZone"\)\.hidden = !existing/.test(main));
+check("帶走＝籤簿中每張紙的能力（紙落定即入簿，故紙在即可帶走；仍不在 ending 跳 CTA）",
+  /ensureBookEntry\(entry, q\);[\s\S]{0,200}takeawayZone"\)\.hidden = false/.test(main) && !/takeawayZone"\)\.hidden = false[\s\S]{0,400}slip-away/.test(main.slice(main.indexOf('$("keepBtn")'))));
 const shareBlock = main.slice(main.indexOf("帶走這支籤（share artifact"), main.indexOf("沿革 / 籤簿 overlays"));
 check("share 不含使用者問題／筆記／visit 紀錄",
   shareBlock.length > 0 && !/question|noteInput|LASTHALL|BOOK_KEY/.test(shareBlock));
