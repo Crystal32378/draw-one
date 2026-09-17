@@ -876,6 +876,20 @@
     font-family: "Noto Serif TC", serif; font-size: 13px;
     letter-spacing: 0.3em; text-indent: 0.3em; color: #57503f;
   }
+  /* 解曰摺頁：off-paper 的安靜一行，明確不是紙的一部分（紙 frozen）。
+     歷史解，收合，預設關；展開才見文，仍標版本與狀態。 */
+  .jieyue { width: 100%; max-width: 340px; margin-top: 30px;
+    border-top: 1px solid rgba(74, 66, 52, 0.22); }
+  .jieyue-toggle { width: 100%; display: flex; align-items: baseline; gap: 10px;
+    background: none; border: 0; padding: 14px 2px 0; cursor: pointer; font: inherit; text-align: left; }
+  .jieyue-word { font-family: "Noto Serif TC", serif; font-size: 14px; letter-spacing: 0.14em; color: var(--ink); }
+  .jieyue-prov { flex: 1; font-size: 10.5px; letter-spacing: 0.12em; color: var(--ink-soft); }
+  .jieyue-caret { font-size: 10px; color: var(--ink-soft); }
+  .jieyue-body { padding: 12px 2px 2px; }
+  .jieyue-text { font-family: "Noto Serif TC", serif; font-size: 15px; line-height: 2.05; color: var(--ink);
+    margin: 0; letter-spacing: 0.04em; }
+  .jieyue-src { margin: 12px 0 0; font-size: 10px; line-height: 1.7; letter-spacing: 0.06em; color: var(--ink-soft); }
+
   .note-zone { width: 100%; max-width: 340px; margin-top: 22px; display: grid; gap: 8px; }
   .note-zone textarea {
     width: 100%; min-height: 60px;
@@ -1009,6 +1023,19 @@
 
       <div class="slip-stage" id="slipStage">
         <div id="slipMount" style="width:100%;display:flex;justify-content:center;"></div>
+        <!-- 解曰＝歷史解，不是紙的一部分，不是 Draw One 的話。摺在紙下，預設收合。
+             聖意（吉凶格）不上——反思工具不做預言。 -->
+        <div class="jieyue" id="jieyue" hidden>
+          <button class="jieyue-toggle" id="jieyueToggle" aria-expanded="false">
+            <span class="jieyue-word">解曰</span>
+            <span class="jieyue-prov" id="jieyueProv"></span>
+            <span class="jieyue-caret" aria-hidden="true">▸</span>
+          </button>
+          <div class="jieyue-body" id="jieyueBody" hidden>
+            <p class="jieyue-text" id="jieyueText"></p>
+            <p class="jieyue-src" id="jieyueSrc"></p>
+          </div>
+        </div>
         <div class="note-zone">
           <div class="present-label">想記下什麼嗎（可以不寫）</div>
           <textarea id="noteInput" placeholder="幾個字就好。"></textarea>
@@ -1046,6 +1073,8 @@
 <script src="../assets/oracles.draw-pool.js?v=3"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
+<script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
+<script src="../assets/jieyue-guard.js?v=1"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -2295,6 +2324,15 @@ window.ARRIVAL_SOUND = (function () {
     $("stickStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
   }
 
+  $("jieyueToggle").addEventListener("click", () => {
+    const body = $("jieyueBody");
+    const open = body.hidden;
+    body.hidden = !open;
+    $("jieyueToggle").setAttribute("aria-expanded", String(open));
+    $("jieyue").querySelector(".jieyue-caret").textContent = open ? "▾" : "▸";
+    if (open) $("jieyueBody").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "nearest" });
+  });
+
   $("takeBtn").addEventListener("click", () => {
     window.ARRIVAL_SOUND?.paperOut(); // 取籤詩的紙聲——僅此一處：籤簿重看不再取紙
     const entry = POOL.entries.find((e) => e.id === currentResolved.entryId);
@@ -2326,6 +2364,26 @@ window.ARRIVAL_SOUND = (function () {
     $("takeawayZone").hidden = !existing;
     currentTakeawayTs = existing?.ts ?? null;
     currentResolved = { entryId: entry.id, repeated };
+    renderJieyue(entry);
+  }
+
+  // 解曰 摺頁：歷史解，收合呈現，換一張紙就重新收起。
+  // 顯不顯示的唯一判準在 jieyue-guard.js（頁面與測試共用同一把鎖）：
+  // 精確版本比對（edition_id／slip edition_title／content_version 全 exact）＋
+  // 逐籤 custody（id↔slip_no）；任一對不上就整層不顯示（fail-closed）。
+  function renderJieyue(entry) {
+    const box = $("jieyue");
+    const pool = window.INTERPRETATION_POOL;
+    const rec = window.JIEYUE_GUARD ? window.JIEYUE_GUARD.resolve(pool, entry) : null;
+    if (!rec) { box.hidden = true; return; }
+    box.hidden = false;
+    $("jieyueToggle").setAttribute("aria-expanded", "false");
+    $("jieyueBody").hidden = true;
+    $("jieyue").querySelector(".jieyue-caret").textContent = "▸";
+    const statusWord = pool.status_word[rec.status];
+    $("jieyueProv").textContent = `${pool.edition.split("《")[0]}版・${rec.confirmed ? "已核圖" : statusWord}`;
+    $("jieyueText").textContent = rec.text;
+    $("jieyueSrc").textContent = `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`;
   }
 
   $("keepBtn").addEventListener("click", () => {
