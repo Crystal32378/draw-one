@@ -160,7 +160,12 @@ buildMustFail("lone surrogate code unit in poem", (d) => (d.slips[13].poem_text 
 buildMustFail("U+FFFD in edition_title", (d) => (d.slips[14].edition_title += "�"));
 
 // ---------------------------------------------------------------------------
-console.log("T5 public page truth rules");
+// T5 — legacy index.html truth rules. Since #33 the live public page is
+// paper/arrival.html (Vercel root rewrite) and index.html is a retired route
+// (permanent redirect to /). The file is kept on disk, not deleted, so these
+// content guarantees still apply to it (no banned oracle text, no inline arrays).
+// Routing truth itself is asserted in scripts/test-routing.mjs.
+console.log("T5 legacy index.html truth rules (retired route, file retained)");
 const html = readFileSync(join(ROOT, "index.html"), "utf8");
 const BANNED_PAGE_STRINGS = [
   "神明正在回應中",
