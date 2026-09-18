@@ -1,9 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "routes": [
-    { "src": "/", "dest": "/paper/arrival.html" },
-    { "src": "^/index\\.html$", "status": 301, "headers": { "Location": "/" } },
-    { "src": "^/research/?(index\\.html)?$", "status": 301, "headers": { "Location": "/" } },
-    { "handle": "filesystem" }
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/research", "destination": "/", "permanent": true },
+    { "source": "/research/", "destination": "/", "permanent": true },
+    { "source": "/research/index.html", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/paper/arrival.html" }
   ]
 }
