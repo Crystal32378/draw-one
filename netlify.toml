@@ -1,0 +1,18 @@
+[build]
+  base = "seasonal/mid-autumn-2026"
+  publish = "dist/netlify"
+  command = "npm run build:netlify"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# The current approval covers Preview only. Production builds intentionally stop.
+[context.production]
+  command = "node -e \"console.error('Preview-only approval: production build is disabled.'); process.exit(1)\""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'"

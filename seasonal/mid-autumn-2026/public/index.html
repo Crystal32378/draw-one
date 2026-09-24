@@ -14,7 +14,7 @@
   <link rel="preload" href="/assets/moon-2026.jpg" as="image">
   <link rel="stylesheet" href="/styles.css?v=3">
   <link rel="stylesheet" href="/moonlight.css?v=3">
-  <script src="/app.js?v=3" type="module"></script>
+  <script src="/app.js?v=4" type="module"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">跳到主要內容</a>
@@ -61,7 +61,9 @@
           <div id="survey-content">
             <div class="survey-top"><span class="survey-count" id="survey-count" aria-live="polite">一 / 三</span></div>
             <div class="survey-progress" aria-hidden="true"><span class="is-current"></span><span></span><span></span></div>
-            <form id="feedback-form" novalidate>
+            <form id="feedback-form" name="draw-one-midautumn-2026" method="POST" action="/" novalidate>
+              <input type="hidden" name="form-name" value="draw-one-midautumn-2026">
+              <input name="bot-field" type="text" hidden tabindex="-1" autocomplete="off">
               <fieldset data-step="0"><legend tabindex="-1">如果你今天真的有一件拿不定主意的事，你會想用 <span class="keep-together">Draw One</span> 再問一次嗎？</legend><div class="option-list compact-options"><label class="option"><input type="radio" name="q1" value="會" required><span class="radio-mark" aria-hidden="true"></span><span>會</span></label><label class="option"><input type="radio" name="q1" value="也許"><span class="radio-mark" aria-hidden="true"></span><span>也許</span></label><label class="option"><input type="radio" name="q1" value="不會"><span class="radio-mark" aria-hidden="true"></span><span>不會</span></label></div></fieldset>
               <fieldset data-step="1" hidden><legend tabindex="-1">哪一部分讓你最想留下來？</legend><p class="question-hint">選一個最接近你感受的答案。</p><div class="option-list"><label class="option"><input type="radio" name="q2" value="抽籤本身" required><span class="radio-mark" aria-hidden="true"></span><span>抽籤本身</span></label><label class="option"><input type="radio" name="q2" value="看籤詩與依據"><span class="radio-mark" aria-hidden="true"></span><span>看籤詩與依據</span></label><label class="option"><input type="radio" name="q2" value="和 AI 繼續聊"><span class="radio-mark" aria-hidden="true"></span><span>和 AI 繼續聊</span></label><label class="option"><input type="radio" name="q2" value="收藏到籤簿"><span class="radio-mark" aria-hidden="true"></span><span>收藏到籤簿</span></label><label class="option"><input type="radio" name="q2" value="都還好"><span class="radio-mark" aria-hidden="true"></span><span>都還好</span></label></div></fieldset>
               <fieldset data-step="2" hidden><legend tabindex="-1" id="q3-label">如果下次打開 <span class="keep-together">Draw One</span>，<br>你最希望它記得什麼？</legend><p class="question-hint" id="q3-hint">幾個字就好，也可以留白。</p><textarea name="q3" id="q3" rows="4" aria-labelledby="q3-label" aria-describedby="q3-hint q3-count" placeholder="例如：上次問的事，和我後來的想法。"></textarea><div class="textarea-meta"><span>請別填入姓名、電話等個人資料。</span><span id="q3-count">0 / 200</span></div></fieldset>
@@ -82,5 +84,14 @@
   <dialog class="notes-dialog preview-dialog" id="preview-notes" aria-labelledby="preview-title"><div class="dialog-inner"><button class="dialog-close" type="button" data-close aria-label="關閉新體驗預告">×</button><p class="section-kicker">新體驗預告</p><h2 id="preview-title">讓解讀，<br>成為對話的開始。</h2><p>讀完籤詩，可以和 AI 繼續討論問題與解讀。</p><p>原文、歷史解釋與 AI 回應會分開標示；判斷仍由你決定。</p><p class="preview-status">這是本次原型展示的方向。你目前連到的正式站，尚未提供這個對話入口。</p><button class="button button-ink" type="button" id="preview-feedback">留個想法 <span aria-hidden="true">↓</span></button></div></dialog>
   <dialog class="share-dialog" id="share-fallback" aria-labelledby="share-title"><div class="dialog-inner"><button class="dialog-close" type="button" data-close aria-label="關閉分享">×</button><h2 id="share-title">把月光，帶給朋友。</h2><p id="share-explanation">複製這個連結，傳給想一起看月亮的人。</p><label for="share-url">分享連結</label><input id="share-url" readonly><button class="button button-ink" id="copy-share" type="button">複製連結</button><p id="copy-status" role="status"></p></div></dialog>
   <div class="toast" role="status" id="toast"></div>
+  <!-- Static registration only; this form never changes the visible questionnaire. -->
+  <form name="draw-one-midautumn-2026" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="draw-one-midautumn-2026">
+    <input type="text" name="submission-id">
+    <input type="text" name="q1">
+    <input type="text" name="q2">
+    <textarea name="q3"></textarea>
+    <input type="text" name="bot-field">
+  </form>
 </body>
 </html>

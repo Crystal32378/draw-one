@@ -1,4 +1,5 @@
 import { initSky } from './sky.js?v=3';
+import { submitFeedback } from './feedback-client.js?v=1';
 initSky();
 
 const $ = (selector) => document.querySelector(selector);
@@ -85,9 +86,7 @@ form.addEventListener('submit', async event => {
   all('#feedback-form button, #feedback-form input, #feedback-form textarea').forEach(control => {control.disabled=true;});
   form.setAttribute('aria-busy','true');
   try {
-    const response = await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),signal:AbortSignal.timeout(12000)});
-    const result = await response.json();
-    if(!response.ok || result.ok !== true) throw new Error(result.error || '暫時無法送出，請稍後再試。');
+    await submitFeedback(payload, { honeypot: String(values.get('bot-field') || '') });
     $('#survey-content').hidden = true;
     $('.feedback-intro').hidden = true;
     $('.feedback-layout').classList.add('is-complete');
