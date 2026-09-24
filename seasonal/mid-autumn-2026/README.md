@@ -2,7 +2,7 @@
 
 一個有作者、有日期、有資料來源，也有一輪月亮的 Draw One 季節入口。
 
-深綠夜空、真實月面，逐漸走進紙與籤的世界。視覺與互動創作：Astra。本套件可在本機執行，也提供 Netlify Preview 接線；不修改既有抽籤程式或 Draw One 的 Vercel 正式站。
+深綠夜空、真實月面，逐漸走進紙與籤的世界。視覺與互動創作：Astra。本套件可在本機執行，也提供 Netlify 公開版接線；不修改既有抽籤程式或 Draw One 的 Vercel 正式站。
 
 ## 打開作品
 
@@ -41,9 +41,9 @@ FEEDBACK_DIR=/absolute/private/path npm run admin
 
 管理服務是本機只讀工具，驗證 loopback Host、Origin 與 Fetch Metadata，不接受其他來源讀取，不提供刪除操作。CSV 對公式開頭做跳脫。
 
-## Netlify Preview 與私有 Forms 後台
+## Netlify 公開版與私有 Forms 後台
 
-本次僅建立 draft Preview，不 merge PR、不執行 Production Publish。部署專案為 `draw-one-midautumn-2026`（Decode team）；Netlify Forms 自動偵測已啟用。Preview URL 與讀回／刪除測試證據交付在 Draw One PR #35。
+Preview 已通過驗收，Crystal 已授權將 PR #35 轉 Ready、合併並正式發布。既有 Netlify 專案為 `draw-one-midautumn-2026`（Decode team），Forms 自動偵測已啟用。正式網址為 https://draw-one-midautumn-2026.netlify.app/；merge commit、production deploy 與正式收件驗證交付在 PR #35。
 
 公開版資料流：
 
@@ -54,7 +54,7 @@ FEEDBACK_DIR=/absolute/private/path npm run admin
   → Netlify 私有 Forms 後台（登入後查看／匯出 CSV）
 ```
 
-[開啟 Netlify Forms 後台](https://app.netlify.com/projects/draw-one-midautumn-2026/forms)。Preview 的回答不會寫入本機 JSONL，也不會出現在本機 admin；本機工具仍獨立保留。
+[開啟 Netlify Forms 後台](https://app.netlify.com/projects/draw-one-midautumn-2026/forms)。公開版的回答不會寫入本機 JSONL，也不會出現在本機 admin；本機工具仍獨立保留。
 
 - 頁面內有不可見的 static form，供 Netlify 在部署時偵測。名稱為 `draw-one-midautumn-2026`，含 `q1`、`q2`、`q3`、`submission-id` 與 honeypot `bot-field`。
 - 真正的問卷有 hidden `form-name`，AJAX 用 `URLSearchParams` 編碼。三題文字、選項、視覺及成功狀態不變。
@@ -73,11 +73,18 @@ netlify deploy --context deploy-preview \
   --alias pr-35
 ```
 
-這是 CLI draft Preview；不加 `--prod`、`--prod-if-unlocked`，也不從 Netlify UI 按 Publish。repo 根目錄的 `netlify.toml` 以 `npm --prefix seasonal/mid-autumn-2026` 建置，publish 明確設為 `seasonal/mid-autumn-2026/dist/netlify`；production context 的 build command 故意失敗，以避免誤觸正式建置。這個 build guard 不是平台層的發布權限鎖，操作者仍須遵守 Preview-only 範圍。
+上面的指令建立 CLI draft Preview。經發布授權後，從合併後的乾淨 checkout 執行正式部署：
+
+```sh
+netlify deploy --prod --context production \
+  --site 17b9efec-4782-474c-9a18-7aa384d09a7e
+```
+
+repo 根目錄的 `netlify.toml` 以 `npm --prefix seasonal/mid-autumn-2026` 建置，publish 明確設為 `seasonal/mid-autumn-2026/dist/netlify`。Preview 與 production 使用相同建置指令及檔案 allowlist；production build guard 已依本次發布授權移除。
 
 `build-netlify.mjs` 以固定 allowlist 複製前端檔案及圖片／字體／授權，重建乾淨輸出。公開產物不包含 `admin/`、server、測試、`.env`、`.git`、CSV、JSONL 或任何既有回覆；沒有 SPA catch-all 或公開讀取回答的 API。`.netlify/` 與 `dist/` 均排除 Git。
 
-本機工具仍照前述指令使用；兩種資料儲存互相獨立。若需公開正式發布，另經審定後處理，這一回合不做。
+本機工具仍照前述指令使用；兩種資料儲存互相獨立。正式發布後，用可識別的 submission-id 追蹤驗收回答，讀回三題再刪除，並檢查 Verified／Spam 都無驗收資料殘留。
 
 ## 驗證與來源
 
