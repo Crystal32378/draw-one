@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'Noto Serif TC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/assets/noto-serif-tc-400.ttf?v=3) format('truetype');
+}
+
+@font-face {
+  font-family: 'Noto Serif TC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/assets/noto-serif-tc-500.ttf?v=3) format('truetype');
+}
+
+@font-face {
+  font-family: 'Noto Serif TC';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(/assets/noto-serif-tc-600.ttf?v=3) format('truetype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(/assets/noto-sans-tc-400.ttf?v=3) format('truetype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(/assets/noto-sans-tc-500.ttf?v=3) format('truetype');
+}

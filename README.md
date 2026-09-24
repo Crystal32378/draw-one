@@ -97,3 +97,7 @@ No backend is required.
 ```bash
 open index.html
 ```
+
+## 中秋季節作品 · 2026
+
+[月圓了｜中秋季節入口](seasonal/mid-autumn-2026/README.md) 延續 Draw One 的紙墨世界，收錄 NASA 月面與觀月來源、三題回饋，以及獨立的本機回覆管理工具。視覺與互動創作：Astra。套件可自行啟動，尚未接入正式站路由。
