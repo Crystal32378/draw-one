@@ -68,10 +68,8 @@ FEEDBACK_DIR=/absolute/private/path npm run admin
 從 Draw One repo 根目錄執行：
 
 ```sh
-npm --prefix seasonal/mid-autumn-2026 run build:netlify
-netlify deploy --context deploy-preview --no-build \
+netlify deploy --context deploy-preview \
   --site 17b9efec-4782-474c-9a18-7aa384d09a7e \
-  --dir seasonal/mid-autumn-2026/dist/netlify \
   --alias pr-35
 ```
 
