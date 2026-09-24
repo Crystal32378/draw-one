@@ -73,7 +73,7 @@ netlify deploy --context deploy-preview \
   --alias pr-35
 ```
 
-這是 CLI draft Preview；不加 `--prod`、`--prod-if-unlocked`，也不從 Netlify UI 按 Publish。repo 根目錄的 `netlify.toml` 將 base 設為本套件、publish 設為 `dist/netlify`；production context 的 build command 故意失敗，以避免誤觸正式建置。這個 build guard 不是平台層的發布權限鎖，操作者仍須遵守 Preview-only 範圍。
+這是 CLI draft Preview；不加 `--prod`、`--prod-if-unlocked`，也不從 Netlify UI 按 Publish。repo 根目錄的 `netlify.toml` 以 `npm --prefix seasonal/mid-autumn-2026` 建置，publish 明確設為 `seasonal/mid-autumn-2026/dist/netlify`；production context 的 build command 故意失敗，以避免誤觸正式建置。這個 build guard 不是平台層的發布權限鎖，操作者仍須遵守 Preview-only 範圍。
 
 `build-netlify.mjs` 以固定 allowlist 複製前端檔案及圖片／字體／授權，重建乾淨輸出。公開產物不包含 `admin/`、server、測試、`.env`、`.git`、CSV、JSONL 或任何既有回覆；沒有 SPA catch-all 或公開讀取回答的 API。`.netlify/` 與 `dist/` 均排除 Git。
 

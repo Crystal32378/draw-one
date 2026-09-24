@@ -43,3 +43,13 @@ test('static publish output registers the matching hidden form and excludes all 
  for(const name of files)assert.doesNotMatch(name,/(^|\/)(admin|data|tests|scripts|node_modules|\.env|\.git)(\/|$)|\.jsonl$|\.csv$|server\.mjs$/);
  for(const name of ['styles.css','moonlight.css','sky.js','assets/moon-2026.jpg'])assert.deepEqual(await readFile(join(out,name)),await readFile(new URL('../public/'+name,import.meta.url)));
 });
+test('the repository-root publish path resolves to the directory the build actually writes',async()=>{
+ const configUrl=new URL('../../../netlify.toml',import.meta.url);
+ const config=await readFile(configUrl,'utf8');
+ const publish=config.match(/^\s*publish\s*=\s*"([^"]+)"/m)?.[1];
+ assert.ok(publish);
+ const {outDir}=await buildNetlify();
+ const {fileURLToPath}=await import('node:url');
+ assert.equal(fileURLToPath(new URL(publish+'/',configUrl)).replace(/\/$/,''),outDir);
+ assert.match(await readFile(join(outDir,'feedback-config.js'),'utf8'),/mode: 'netlify'/);
+});

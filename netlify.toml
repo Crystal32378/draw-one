@@ -1,7 +1,6 @@
 [build]
-  base = "seasonal/mid-autumn-2026"
-  publish = "dist/netlify"
-  command = "npm run build:netlify"
+  publish = "seasonal/mid-autumn-2026/dist/netlify"
+  command = "npm --prefix seasonal/mid-autumn-2026 run build:netlify"
 
 [build.environment]
   NODE_VERSION = "22"
