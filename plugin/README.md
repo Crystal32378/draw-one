@@ -13,15 +13,15 @@ npm test
 npm start
 ```
 
-本機 MCP：`http://127.0.0.1:8787/mcp`。`npm run build` 先跑原有 fail-closed 建置，再複製正式籤池、報告及抽籤規則；啟動時再次核對籤池 SHA-256。資料改動後必須重新建置。
+本機 MCP：`http://127.0.0.1:8787/mcp`。`npm run build` 先跑原有 fail-closed 建置，再以固定欄位白名單產生公開籤池與最小報告，並複製抽籤規則；啟動時再次核對籤池 SHA-256。資料改動後必須重新建置。
 
 ## 資料與隱私
 
-問題留在 widget 的 browser localStorage（空白問題使用 sessionStorage），沿用產品 `draw-policy.js` 的一事一籤與跨籤系不重抽規則。問題不送往 MCP；伺服器不保存使用者資料。ChatGPT 中使用者自己輸入的對話仍由 ChatGPT 處理。MCP 工具結果會提供籤詩原文、版本與来源給 ChatGPT。
+問題留在 widget 的 browser localStorage（空白問題使用 sessionStorage），沿用產品 `draw-policy.js` 的一事一籤與跨籤系不重抽規則。問題不送往 MCP；伺服器不保存使用者資料。ChatGPT 中使用者自己輸入的對話仍由 ChatGPT 處理。MCP 工具結果會提供籤詩原文、版本名稱與核對狀態給 ChatGPT；不提供 source_locator、edition_id、source_file、source_sha256、研究定位與校勘帳本。
 
 此版本沒有帳號或跨装置同步；不同裝置、儲存分區或清除資料後不共享綁定。若宿主禁用瀏覽器儲存，只能保留當次 widget 的記憶體綁定，介面會提示。抽籤工具 `draw_one_slip` 與取回工具 `get_draw_one_slip` 設為 app-only；模型使用 `open_draw_one` 開啟介面，使用者自行按抽籤。
 
-`VERIFIED`、`PROBABLE` 原樣顯示，不把抄錄狀態轉成神明或預言的可信度。`interpretation` 保持 null，Astra 未審核的反思文字不接入。
+工具保留 `VERIFIED`、`PROBABLE`，介面顯示「已對勘／待複核」，不把抄錄狀態轉成神明或預言的可信度。`interpretation` 保持 null，Astra 未審核的反思文字不接入。
 
 ## 部署與 ChatGPT 接入
 

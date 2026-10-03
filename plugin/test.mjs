@@ -16,7 +16,7 @@ test('real MCP HTTP discovery, three corpora, source truth and app-only draw',as
  const opened=await client.callTool({name:'open_draw_one',arguments:{}});assert.equal(opened.structuredContent.corpora.length,3);
  for(const corpus_id of ['guanyin','guandi','liushijiazi']){
  const r=await client.callTool({name:'draw_one_slip',arguments:{corpus_id}});const e=r.structuredContent.entry;
- assert.equal(e.corpus_id,corpus_id);assert.equal(e.interpretation,null);assert.ok(e.provenance.source_locator);
+ assert.equal(e.corpus_id,corpus_id);assert.equal(e.interpretation,null);assert.ok(e.provenance.edition_title);assert.deepEqual(Object.keys(e.provenance).sort(),['edition_title','transcription_status']);assert.ok(!JSON.stringify(r).includes('source_locator'));
  const again=await client.callTool({name:'get_draw_one_slip',arguments:{entry_id:e.id}});assert.deepEqual(again.structuredContent.entry,e);
  }
  const bad=await client.callTool({name:'draw_one_slip',arguments:{corpus_id:'yuelao'}});assert.equal(bad.isError,true);
