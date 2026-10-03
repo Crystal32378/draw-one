@@ -36,3 +36,7 @@ npm start
 ## 驗證邊界
 
 MCP HTTP 測試可在本機完成。真正 ChatGPT iframe、host bridge、儲存分區及工具 app-only 限制必須在 ChatGPT 測一次後才能宣稱完成接入。公開目錄提交、隱私政策與正式發布另行審閱。
+
+## 已部署的測試端點（2026-10-03）
+
+`https://draw-one-plugin-mvp.vercel.app/mcp` 已以外部 SDK 完成三籤系的工具探索與抽籤測試。獨立 Vercel 專案為 `draw-one-plugin-mvp`，首次部署由 Vercel 指派為該專案的 production；它不是原 Draw One 網站，也不是公開目錄發布。公開提交仍需身份、政策頁、支援頁、圖示、5+3測試案例、影片與域名驗證。
