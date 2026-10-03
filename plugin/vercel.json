@@ -1,1 +1,16 @@
-{"rewrites":[{"source":"/mcp","destination":"/api/mcp"}],"functions":{"api/mcp.mjs":{"includeFiles":"{data/**,public/widget.html}"}}}
+{
+  "rewrites": [
+    {
+      "source": "/mcp",
+      "destination": "/api/mcp"
+    }
+  ],
+  "functions": {
+    "api/mcp.mjs": {
+      "includeFiles": "{data/**,public/widget.html}"
+    }
+  },
+  "framework": null,
+  "buildCommand": "",
+  "installCommand": "npm ci --ignore-scripts"
+}
