@@ -11,7 +11,7 @@
     "com.openai": {
       "interface": {
         "displayName": "Draw One",
-        "shortDescription": "A pause through cultural poetry",
+        "shortDescription": "A pause with cultural poetry",
         "developerName": "Crystal Chang",
         "category": "Lifestyle",
         "defaultPrompt": [
