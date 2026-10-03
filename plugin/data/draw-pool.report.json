@@ -1,0 +1,53 @@
+{
+  "content_version": "66068302782a9e690bd1d16c208678ac5022036d36a64b62d9a9d296249e9125",
+  "status": "PASSED",
+  "total_entries": 260,
+  "corpora": [
+    {
+      "corpus_id": "guanyin",
+      "deity_tradition": "觀音（living-tradition mapping）",
+      "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
+      "slip_count": 100,
+      "source_file": "data/corpora/guanyin/slip_texts.json",
+      "source_sha256": "d39a84013bc00d2c14285316e1e4430d087d527e2891bd2c82cf9eab45a019f7",
+      "data_quality": {
+        "decoded_char_refs": 0
+      },
+      "status_summary": {
+        "VERIFIED": 100
+      }
+    },
+    {
+      "corpus_id": "guandi",
+      "deity_tradition": "關帝（living-tradition mapping）",
+      "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+      "slip_count": 100,
+      "source_file": "data/corpora/guandi/slip_texts.json",
+      "source_sha256": "903bb98c96b487642136fb929ad6996425a0504e975c48f50cf58a399ab5f6ae",
+      "data_quality": {
+        "decoded_char_refs": 0
+      },
+      "status_summary": {
+        "PROBABLE": 100
+      }
+    },
+    {
+      "corpus_id": "liushijiazi",
+      "deity_tradition": "媽祖（北港朝天宮，living-tradition mapping）",
+      "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
+      "slip_count": 60,
+      "source_file": "data/corpora/liushijiazi/slip_texts.json",
+      "source_sha256": "aa54acd813a1d22cca63388ca2a60ff31801de137887b2756fd75dbcdbbc6014",
+      "data_quality": {
+        "decoded_char_refs": 0
+      },
+      "status_summary": {
+        "PROBABLE": 58,
+        "VERIFIED": 2
+      }
+    }
+  ],
+  "gates_evaluated": 12,
+  "gate_failures": 0,
+  "pool_sha256": "fc06b19d37fb957543b959c1da7d85e628e885401c48b235fb9655a56fc38fe5"
+}
