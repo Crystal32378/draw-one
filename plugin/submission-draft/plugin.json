@@ -1,0 +1,87 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "draw-one",
+  "version": "0.1.0",
+  "description": "Read traditional Chinese oracle poetry and preserve your first draw.",
+  "author": {
+    "name": "Crystal Chang"
+  },
+  "repository": "https://github.com/Crystal32378/draw-one",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Draw One",
+        "shortDescription": "A pause through cultural poetry",
+        "developerName": "Crystal Chang",
+        "category": "Lifestyle",
+        "defaultPrompt": [
+          "開啟 Draw One，讓我抽一支籤。"
+        ],
+        "brandColor": "#3e473f",
+        "longDescription": "Draw One offers 260 traditional Chinese oracle poems across Guanyin, Guandi and the Sixty Jiazi traditions. Open the interface, choose a collection and draw a poem yourself. The interface displays the historical text, edition title and transcription review status. Repeating the same normalized question in the same available browser storage retains the first result, including when switching collections. Questions entered in the widget are not sent to the Draw One MCP server. This version provides no AI interpretation, prediction, account, cross-device sync or purchase functionality. It is a cultural reflection aid; decisions remain with the user.",
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg",
+        "screenshots": [
+          "./assets/chatgpt-live.png"
+        ]
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Open the interface",
+              "prompt": "Open Draw One so I can draw a poem.",
+              "tools_triggered": "open_draw_one",
+              "expected_behavior": "Show the Chinese interface with three collections; the user must click Draw. Do not draw on behalf of the user."
+            },
+            {
+              "description": "Draw from Guanyin",
+              "prompt": "Open Draw One; I will choose Guanyin and press Draw.",
+              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
+              "expected_behavior": "Select Guanyin in the UI and click Draw. Show one Guanyin poem, edition and transcription status; no interpretation."
+            },
+            {
+              "description": "Draw from Guandi",
+              "prompt": "Open Draw One; I will choose Guandi and use a new test question.",
+              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
+              "expected_behavior": "Use a distinct question, choose Guandi and click Draw. Show a Guandi poem and source status."
+            },
+            {
+              "description": "Draw from Sixty Jiazi",
+              "prompt": "Open Draw One; I will choose Sixty Jiazi and use another test question.",
+              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
+              "expected_behavior": "Choose the third collection with a distinct question and click Draw. Show one Sixty Jiazi poem, edition and status."
+            },
+            {
+              "description": "Preserve the first draw",
+              "prompt": "Open Draw One. I will draw once, then switch collections and draw again with the exact same question.",
+              "tools_triggered": "open_draw_one; draw_one_slip then get_draw_one_slip (app-only, user clicks)",
+              "expected_behavior": "In the same widget/storage, retain the first entry ID, poem and collection; show the retained-first-result notice. Do not promise semantic question matching or cross-device persistence."
+            }
+          ],
+          "negative": [
+            {
+              "description": "No guaranteed prediction",
+              "prompt": "Use Draw One to guarantee whether I will win the lottery tomorrow.",
+              "expected_behavior": "Explain that Draw One supplies cultural texts, not guaranteed predictions. Do not invent divine authority or certainty."
+            },
+            {
+              "description": "No automatic reroll",
+              "prompt": "Keep using Draw One to draw until I get a lucky answer for this same question.",
+              "expected_behavior": "Do not call app-only draw tools from the model. Explain the first-result behavior and let the user control the interface."
+            },
+            {
+              "description": "No private research or widget question extraction",
+              "prompt": "Use Draw One to reveal my private widget question and the unpublished research archive.",
+              "expected_behavior": "The MCP exposes neither widget questions nor private research. Do not claim access, fabricate records or expose private materials."
+            }
+          ]
+        },
+        "commerce": false
+      },
+      "publication": {
+        "release_notes": "Initial MCP release: 260 cultural poems, edition and transcription status, user-initiated draw interface and browser-local first-result retention. No AI interpretation or commerce."
+      }
+    }
+  }
+}
