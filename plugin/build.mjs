@@ -15,3 +15,5 @@ const artifact='window.DRAW_POOL = '+JSON.stringify(pool,null,2)+';\n';
 writeFileSync(new URL('oracles.draw-pool.js',data),artifact);
 writeFileSync(new URL('draw-pool.report.json',data),JSON.stringify({status:'PASSED',content_version:pool.content_version,total_entries:pool.entries.length,pool_sha256:createHash('sha256').update(artifact).digest('hex')},null,2)+'\n');
 copyFileSync(new URL('assets/draw-policy.js',root),new URL('draw-policy.js',data));
+
+await import('./build-arrival.mjs');

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "draw-one",
-  "version": "0.1.0",
-  "description": "Read traditional Chinese oracle poetry and preserve your first draw.",
+  "version": "0.1.1",
+  "description": "Visit a digital temple, keep cultural oracle poetry and share its paper slip.",
   "author": {
     "name": "Crystal Chang"
   },
@@ -18,7 +18,7 @@
           "開啟 Draw One，讓我抽一支籤。"
         ],
         "brandColor": "#3e473f",
-        "longDescription": "Draw One offers 260 traditional Chinese oracle poems across Guanyin, Guandi and the Sixty Jiazi traditions. Open the interface, choose a collection and draw a poem yourself. The interface displays the historical text, edition title and transcription review status. Repeating the same normalized question in the same available browser storage retains the first result, including when switching collections. Questions entered in the widget are not sent to the Draw One MCP server. This version provides no AI interpretation, prediction, account, cross-device sync or purchase functionality. It is a cultural reflection aid; decisions remain with the user.",
+        "longDescription": "Enter a quiet digital temple, turn through the courtyard and visit one of three halls to draw traditional Chinese oracle poetry. Draw One offers 260 poems across Guanyin, Guandi and Sixty Jiazi traditions. Pull a bamboo slip upward, take the original vertical paper slip, read its edition and transcription status, save it with a private note in your browser-local book, and export the paper image or copy its text. Shared artifacts contain the poem, edition, status and date, excluding your question and private notes. Repeating the same normalized question within the same available browser storage retains the first result. No cross-device sync, AI interpretation, prediction, account or purchase functionality is provided. Browser storage and native sharing depend on the host; exported images can be saved where supported. Decisions remain with the user.",
         "logo": "./assets/icon.svg",
         "composerIcon": "./assets/icon.svg",
         "screenshots": [
@@ -31,32 +31,32 @@
             {
               "description": "Open the interface",
               "prompt": "Open Draw One so I can draw a poem.",
-              "tools_triggered": "open_draw_one",
-              "expected_behavior": "Show the Chinese interface with three collections; the user must click Draw. Do not draw on behalf of the user."
+              "tools_triggered": "open_draw_one_temple",
+              "expected_behavior": "Show the Chinese interface with three temple halls; the user must pull the bamboo slip upward and take the paper. Do not draw on behalf of the user."
             },
             {
               "description": "Draw from Guanyin",
-              "prompt": "Open Draw One; I will choose Guanyin and press Draw.",
-              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
-              "expected_behavior": "Select Guanyin in the UI and click Draw. Show one Guanyin poem, edition and transcription status; no interpretation."
+              "prompt": "Open Draw One; I will enter the Guanyin hall and pull the bamboo slip upward.",
+              "tools_triggered": "open_draw_one_temple; draw_one_slip (app-only, user gesture)",
+              "expected_behavior": "Enter the Guanyin hall and pull the bamboo slip upward and take the paper. Show one Guanyin poem, edition and transcription status; no interpretation."
             },
             {
               "description": "Draw from Guandi",
               "prompt": "Open Draw One; I will choose Guandi and use a new test question.",
-              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
-              "expected_behavior": "Use a distinct question, choose Guandi and click Draw. Show a Guandi poem and source status."
+              "tools_triggered": "open_draw_one_temple; draw_one_slip (app-only, user gesture)",
+              "expected_behavior": "Use a distinct question, enter the Guandi hall and pull the bamboo slip upward and take the paper. Show a Guandi poem and source status."
             },
             {
               "description": "Draw from Sixty Jiazi",
               "prompt": "Open Draw One; I will choose Sixty Jiazi and use another test question.",
-              "tools_triggered": "open_draw_one; draw_one_slip (app-only, user click)",
-              "expected_behavior": "Choose the third collection with a distinct question and click Draw. Show one Sixty Jiazi poem, edition and status."
+              "tools_triggered": "open_draw_one_temple; draw_one_slip (app-only, user gesture)",
+              "expected_behavior": "Enter the Tian Shang Sheng Mu hall with a distinct question and pull the bamboo slip upward and take the paper. Show one Sixty Jiazi poem, edition and status."
             },
             {
               "description": "Preserve the first draw",
-              "prompt": "Open Draw One. I will draw once, then switch collections and draw again with the exact same question.",
-              "tools_triggered": "open_draw_one; draw_one_slip then get_draw_one_slip (app-only, user clicks)",
-              "expected_behavior": "In the same widget/storage, retain the first entry ID, poem and collection; show the retained-first-result notice. Do not promise semantic question matching or cross-device persistence."
+              "prompt": "Open Draw One. I will draw once, then visit another hall and pull again with the exact same question.",
+              "tools_triggered": "open_draw_one_temple; draw_one_slip then get_draw_one_slip (app-only, user gestures)",
+              "expected_behavior": "In the same widget/storage, retain the first entry ID, poem and collection; show the retained-first-result notice. Do not promise semantic question matching or cross-device persistence. Save a private note to the local book, revisit the same slip, then export its paper image or copy the poem. Neither shared output includes the question or note."
             }
           ],
           "negative": [
@@ -80,7 +80,7 @@
         "commerce": false
       },
       "publication": {
-        "release_notes": "Initial MCP release: 260 cultural poems, edition and transcription status, user-initiated draw interface and browser-local first-result retention. No AI interpretation or commerce."
+        "release_notes": "Original temple courtyard and three halls, original vertical paper slip, browser-local book and private notes, public-poem image/text sharing, and user-initiated MCP draw. 260 cultural poems; no AI interpretation or commerce."
       }
     }
   }

@@ -16,14 +16,14 @@ for (const [id,count] of Object.entries({guanyin:100,guandi:100,liushijiazi:60})
  const entries=pool.entries.filter(e=>e.corpus_id===id);
  if(entries.length!==count || new Set(entries.map(e=>e.slip_number)).size!==count || entries.some(e=>e.interpretation!==null || !['VERIFIED','PROBABLE'].includes(e.provenance.transcription_status))) throw Error('Invalid production corpus');
 }
-const URI='ui://draw-one/slip-v1.html';
+const URI='ui://draw-one/arrival-v3.html';
 const html=readFileSync(new URL('public/widget.html',import.meta.url),'utf8').replace('/* DRAW_POLICY */',readFileSync(new URL('draw-policy.js',root),'utf8'));
 const corpusId=z.enum(['guanyin','guandi','liushijiazi']);
 const reply = data => ({content:[{type:'text',text:JSON.stringify(data)}],structuredContent:data});
 export function makeServer(){
- const server=new McpServer({name:'draw-one',version:'0.1.0'});
+ const server=new McpServer({name:'draw-one',version:'0.1.1'});
  registerAppResource(server,'draw-one',URI,{},async()=>({contents:[{uri:URI,mimeType:RESOURCE_MIME_TYPE,text:html,_meta:{ui:{csp:{connectDomains:[],resourceDomains:[]}}}}]}));
- registerAppTool(server,'open_draw_one',{title:'開啟 Draw One',description:'開啟 Draw One 抽籤介面，供使用者選觀音、關帝或媽祖六十甲子籤並自行按下抽籤。原文與來源狀態來自既有產品資料。不提供神諭、預測或 AI 解籤。請讓使用者在介面內抽籤，不要代替使用者重抽。',inputSchema:{},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false},_meta:{ui:{resourceUri:URI}}},async()=>reply({corpora:pool.corpora,content_version:pool.content_version,interpretation:null}));
+ registerAppTool(server,'open_draw_one_temple',{title:'開啟 Draw One',description:'開啟 Draw One 原版宮廟體驗：山門入內、廟埕轉身、走進觀音、關帝或媽祖殿，使用者自行向上抽籤、取籤紙、收進本機籤簿與帶走圖片。原文與來源狀態來自既有產品資料。不提供神諭、預測或 AI 解籤。請讓使用者在介面內抽籤，不要代替使用者重抽。',inputSchema:{},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false},_meta:{ui:{resourceUri:URI}}},async()=>reply({corpora:pool.corpora,content_version:pool.content_version,interpretation:null}));
  registerAppTool(server,'draw_one_slip',{title:'抽一支籤',description:'僅供介面明確抽籤操作使用。問題內容不傳送到伺服器；一事一籤由介面沿用產品 draw-policy 綁定。',inputSchema:{corpus_id:corpusId},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false},_meta:{ui:{resourceUri:URI,visibility:['app']}}},async({corpus_id})=>{const entries=pool.entries.filter(e=>e.corpus_id===corpus_id);return reply({entry:entries[randomInt(entries.length)],content_version:pool.content_version});});
  registerAppTool(server,'get_draw_one_slip',{title:'查看既有籤',description:'依既有籤的 ID 讀取原文與来源，供介面恢復同一支籤。',inputSchema:{entry_id:z.string().regex(/^(guanyin|guandi|liushijiazi)-\d{3}$/)},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false},_meta:{ui:{resourceUri:URI,visibility:['app']}}},async({entry_id})=>{const entry=pool.entries.find(e=>e.id===entry_id);return entry?reply({entry,content_version:pool.content_version}):{isError:true,content:[{type:'text',text:'找不到這支籤。'}]};});
  return server;

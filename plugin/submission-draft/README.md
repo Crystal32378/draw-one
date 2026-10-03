@@ -24,3 +24,12 @@ https://platform.openai.com/plugins → Upload new or existing plugin → verifi
 
 此服务 No authentication，因此不需測試帳號；不要捏造 reviewer credentials。
 官方流程：https://developers.openai.com/plugins/deploy/submission
+
+## 宮廟體驗修正
+
+已改回原版宮廟、直排籤紙、籤簿、私人筆記與分享；先前簡化表單截圖已過期，正式送審影片與截圖須使用更新後版本。SDK 全 260 籤排版通過；本機宮廟、保留、筆記及 PNG 下載通過。ChatGPT 完整版本驗收另記於最新狀態檔，不提前宣稱 5+3 全過。
+
+
+## 宮廟接入最新驗收
+
+截圖已換為 v0.1.1 真正 ChatGPT 的原版籤紙。關帝第八十九籤、籤簿回看與私人筆記已通過；圖片預覽已通過，一鍵下載仍受 ChatGPT 沙盒與未提供 downloadFile 能力限制。CSP on 及正式 5+3 案例尚待驗收，不可提交為全部通過。
