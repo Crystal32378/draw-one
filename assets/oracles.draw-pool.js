@@ -17,11 +17,6 @@ window.DRAW_POOL = {
       "deity_tradition": "觀音（living-tradition mapping）",
       "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
       "slip_count": 100,
-      "source_file": "data/corpora/guanyin/slip_texts.json",
-      "source_sha256": "d39a84013bc00d2c14285316e1e4430d087d527e2891bd2c82cf9eab45a019f7",
-      "data_quality": {
-        "decoded_char_refs": 0
-      },
       "status_summary": {
         "VERIFIED": 100
       }
@@ -31,11 +26,6 @@ window.DRAW_POOL = {
       "deity_tradition": "關帝（living-tradition mapping）",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "slip_count": 100,
-      "source_file": "data/corpora/guandi/slip_texts.json",
-      "source_sha256": "903bb98c96b487642136fb929ad6996425a0504e975c48f50cf58a399ab5f6ae",
-      "data_quality": {
-        "decoded_char_refs": 0
-      },
       "status_summary": {
         "PROBABLE": 100
       }
@@ -45,11 +35,6 @@ window.DRAW_POOL = {
       "deity_tradition": "媽祖（北港朝天宮，living-tradition mapping）",
       "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
       "slip_count": 60,
-      "source_file": "data/corpora/liushijiazi/slip_texts.json",
-      "source_sha256": "aa54acd813a1d22cca63388ca2a60ff31801de137887b2756fd75dbcdbbc6014",
-      "data_quality": {
-        "decoded_char_refs": 0
-      },
       "status_summary": {
         "PROBABLE": 58,
         "VERIFIED": 2
@@ -67,10 +52,7 @@ window.DRAW_POOL = {
         "poem_text": "天開地闢結良緣 日吉時良萬事全 若得此籤非小可 人行中正帝王宣"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p179（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -85,10 +67,7 @@ window.DRAW_POOL = {
         "poem_text": "鯨魚未化守江湖 未許升騰離碧波 異日崢嶸身變態 從教一躍禹門過"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p179（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -103,10 +82,7 @@ window.DRAW_POOL = {
         "poem_text": "衝風冒雨去還歸 役役勞身似燕兒 啣得泥來成疊後 到頭疊壞復成泥"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p178（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -121,10 +97,7 @@ window.DRAW_POOL = {
         "poem_text": "菱花鏡破復重圓 女再求夫男再婚 自此門閭重改換 更添福祿與兒孫"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p178（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -139,10 +112,7 @@ window.DRAW_POOL = {
         "poem_text": "一鋤掘地要求泉 努力求之得最先 無意俄然遇知己 相逢攜手上青天"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p177（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -157,10 +127,7 @@ window.DRAW_POOL = {
         "poem_text": "投身巖下飼於菟 須是還他大丈夫 捨己也應難再得 通行天下此人無"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p177（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -175,10 +142,7 @@ window.DRAW_POOL = {
         "poem_text": "奔波役役重重險 帶水拖泥又渡山 更慮他方求別用 千山萬水未能還"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p176（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -193,10 +157,7 @@ window.DRAW_POOL = {
         "poem_text": "歲寒松柏古栽培 雨雪風霜總不摧 異日必當成大用 功名作個棟樑材"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p176（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -211,10 +172,7 @@ window.DRAW_POOL = {
         "poem_text": "勞君問我心中事 此意偏宜說向公 一片靈臺明似鏡 恰如明月正當空"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p175（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -229,10 +187,7 @@ window.DRAW_POOL = {
         "poem_text": "櫝藏無價寶和珍 只管他鄉外處尋 好似將燈來覔火 不如安靜莫勞心"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p175（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -247,10 +202,7 @@ window.DRAW_POOL = {
         "poem_text": "欲求好事喜非常 爭奈姻親只暫忙 畢竟到頭成好事 貴人接引貴人鄉"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p174（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -265,10 +217,7 @@ window.DRAW_POOL = {
         "poem_text": "時臨否極泰當來 抖擻從君出暗埃 若遇卯寅佳信至 管教立志事和諧"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p174（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -283,10 +232,7 @@ window.DRAW_POOL = {
         "poem_text": "自小生身富貴家 眼前萬事總奢華 要君賜受金魚袋 四海傳名足可誇"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p173（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -301,10 +247,7 @@ window.DRAW_POOL = {
         "poem_text": "宛如仙鶴出樊籠 脫却羈縻處處通 南北東西無障碍 任君直上九霄中"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p173（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -319,10 +262,7 @@ window.DRAW_POOL = {
         "poem_text": "觸人口氣最難吞 忽有災危禍到門 卵破巢空無宿處 深為穩便把心存"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p172（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -337,10 +277,7 @@ window.DRAW_POOL = {
         "poem_text": "攢眉思慮暫時開 咫尺雲開見日來 宛似汙泥中片玉 良工一舉出塵埃"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p172（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -355,10 +292,7 @@ window.DRAW_POOL = {
         "poem_text": "莫聽閑言與是非 晨昏只好念阿彌 若將妄語為真實 畫餅如何療得飢"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p171（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -373,10 +307,7 @@ window.DRAW_POOL = {
         "poem_text": "金烏西墜兔東臨 日夜循環亘古今 僧道得之無不利 工商農士各開心"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p171（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -391,10 +322,7 @@ window.DRAW_POOL = {
         "poem_text": "急水灘頭放艇時 狂風作浪欲何為 待他浪靜風停後 穩載船歸過不危"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p170（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -409,10 +337,7 @@ window.DRAW_POOL = {
         "poem_text": "當春久雨喜初晴 玉兔金烏漸漸明 舊事已成新事遂 看看一跳入蓬瀛"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p170（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -427,10 +352,7 @@ window.DRAW_POOL = {
         "poem_text": "陰陽道合總由天 女嫁男婚豈偶然 但看龍蛇堪運動 熊羆叶夢喜團圓"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p169（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -445,10 +367,7 @@ window.DRAW_POOL = {
         "poem_text": "四郊田畝皆枯竭 久旱俄然三日霖 花菓草芽俱潤澤 始知一雨值千金"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p169（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -463,10 +382,7 @@ window.DRAW_POOL = {
         "poem_text": "欲攀仙桂蟾宮去 豈慮天門不放開 謀望一般音信好 高人自送嶺頭來"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p168（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -481,10 +397,7 @@ window.DRAW_POOL = {
         "poem_text": "不成鄰里不成家 水泡痴人似落花 若問君恩難得力 到頭畢竟事如蔴"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p168（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -499,10 +412,7 @@ window.DRAW_POOL = {
         "poem_text": "過了憂危第幾重 從今再歷永無凶 寬心自有寬心計 得遇高人護聖功"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p167（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -517,10 +427,7 @@ window.DRAW_POOL = {
         "poem_text": "上下傳來事總虛 天邊接得一封書 書中許我功名事 直待終時亦是無"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p167（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -535,10 +442,7 @@ window.DRAW_POOL = {
         "poem_text": "一謀一用一番機 慮後疑前不敢為 時至自然逢貴助 銀牆鐵壁好安居"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p166（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -553,10 +457,7 @@ window.DRAW_POOL = {
         "poem_text": "東方月上正嬋娟 頃刻雲遮月半邊 莫道圓時還又缺 須教缺處復重圓"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p166（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -571,10 +472,7 @@ window.DRAW_POOL = {
         "poem_text": "寶劍光芒出匣時 匣中應不被塵欺 貴人親手提攜起 儘可防身更無疑"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p165（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -589,10 +487,7 @@ window.DRAW_POOL = {
         "poem_text": "勸君切莫向他求 似鶴飛來暗箭投 若去採薪蛇伏草 恐遭毒手也堪憂"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p165（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -607,10 +502,7 @@ window.DRAW_POOL = {
         "poem_text": "清閑無事靜處坐 飢時吃飯困時臥 放下身心不用忙 必定不遭殃與禍"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p164（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -625,10 +517,7 @@ window.DRAW_POOL = {
         "poem_text": "渺渺前途事可疑 石中藏玉有誰知 一朝良臣分明剖 始覺其中碧玉奇"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p164（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -643,10 +532,7 @@ window.DRAW_POOL = {
         "poem_text": "石藏美玉在中心 得指何須向外尋 直待高人來剖析 恰如靈雨滌煩襟"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p163（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -661,10 +547,7 @@ window.DRAW_POOL = {
         "poem_text": "出入行藏禮義恭 言必忠良聽必聰 心下了然俱洞徹 光明如日正當空"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p163（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -679,10 +562,7 @@ window.DRAW_POOL = {
         "poem_text": "衣冠重整就宿風 道是無功卻有功 掃卻當途荊棘碍 三人共議事相同"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p162（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -697,10 +577,7 @@ window.DRAW_POOL = {
         "poem_text": "目前病訟不須憂 實地資財儘可求 恰好繫猿今脫鎖 得歸仙洞去來遊"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p162（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -715,10 +592,7 @@ window.DRAW_POOL = {
         "poem_text": "欲問身安運泰時 風中燈燭不相宜 爭如收拾深堂坐 庶免光搖近處期"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p161（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -733,10 +607,7 @@ window.DRAW_POOL = {
         "poem_text": "鏡月當空出匣時 剎那雲霧暗迷離 寬心守待浮雲散 更改相宜可望為"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p161（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -751,10 +622,7 @@ window.DRAW_POOL = {
         "poem_text": "天邊消息應難問 切莫私心強望求 若把石頭磨作鏡 精神枉費一時休"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p160（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -769,10 +637,7 @@ window.DRAW_POOL = {
         "poem_text": "紅輪西墜兔東升 陰長陽消是兩形 若是女人占此卦 增添福祿稱心情"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p160（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -787,10 +652,7 @@ window.DRAW_POOL = {
         "poem_text": "無限好事君須記 恰如認賊作為子 莫貪眼下有些甜 可慮他時還受苦"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p159（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -805,10 +667,7 @@ window.DRAW_POOL = {
         "poem_text": "君垂恩澤潤無邊 覆禱祈禳沒黨偏 一切有情皆受用 均沾樂利得週全"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p159（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -823,10 +682,7 @@ window.DRAW_POOL = {
         "poem_text": "天地交泰萬物新 自形自色自怡神 森羅萬象皆精彩 事事和諧得稱人"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p158（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -841,10 +697,7 @@ window.DRAW_POOL = {
         "poem_text": "棋逢對手要藏機 黑白盤中未決時 到底欲知誰勝負 須教先著相機宜"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p158（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -859,10 +712,7 @@ window.DRAW_POOL = {
         "poem_text": "溫柔自是勝強剛 積善于門太吉昌 若是有人占此卦 宛如止渴遇瓊漿"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p157（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -877,10 +727,7 @@ window.DRAW_POOL = {
         "poem_text": "勸君耐守舊生涯 把定身心莫聽邪 直待有人輕著力 滿園枯木再開花"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p157（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -895,10 +742,7 @@ window.DRAW_POOL = {
         "poem_text": "錦上添花色更鮮 運來祿馬喜雙全 時人莫訝功名晚 一舉登科四海傳"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p156（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -913,10 +757,7 @@ window.DRAW_POOL = {
         "poem_text": "鵾鳥秋光化作鵬 遨翔得意盡飛騰 直沖萬里雲霄外 任是諸禽總不能"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p156（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -931,10 +772,7 @@ window.DRAW_POOL = {
         "poem_text": "營圖萬事若冰澌 何必慳貪苦所為 只好靜心閑處坐 待他興變復奚疑"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p155（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -949,10 +787,7 @@ window.DRAW_POOL = {
         "poem_text": "五湖四海盡行船 高掛風帆把舵堅 幸得順風隨所至 滿船寶貝稱心田"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p155（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -967,10 +802,7 @@ window.DRAW_POOL = {
         "poem_text": "夏日初臨日正長 人皆愁惱熱非常 天公也解諸人意 故遣薰風特送涼"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p154（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -985,10 +817,7 @@ window.DRAW_POOL = {
         "poem_text": "水中捉月費工夫 費盡功夫卻又無 莫信閑言併浪論 枉拋心力也難圖"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p154（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1003,10 +832,7 @@ window.DRAW_POOL = {
         "poem_text": "失意翻成得意時 龍吟虎嘯兩相宜 青雲有路終須到 許我功名必可期"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p153（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1021,10 +847,7 @@ window.DRAW_POOL = {
         "poem_text": "夢中得寶醒來無 應說巫山只是虛 苦問婚姻幷病訟 別尋生路得相宜"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p153（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1039,10 +862,7 @@ window.DRAW_POOL = {
         "poem_text": "相傳罔替子孫贊 衣祿豐盈富在天 金馬玉堂人快樂 飢時吃飯困時眠"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p152（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1057,10 +877,7 @@ window.DRAW_POOL = {
         "poem_text": "澗小石粗流水響 力勞撐駕恐損傷 路須指出前江去 風靜潮平儘不妨"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p152（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1075,10 +892,7 @@ window.DRAW_POOL = {
         "poem_text": "聞是聞非風過耳 好衣好祿日當空 君須記取他年事 汝意還同我意同"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p151（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1093,10 +907,7 @@ window.DRAW_POOL = {
         "poem_text": "忠言善語君須記 莫向他方求別藝 勸君安守舊生涯 除卻有餘都不是"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p151（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1111,10 +922,7 @@ window.DRAW_POOL = {
         "poem_text": "直上高樓去避身 四邊繞處是荊榛 誰知造物安排定 得意番成失意人"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p150（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1129,10 +937,7 @@ window.DRAW_POOL = {
         "poem_text": "抱薪救火火增烟 燒卻三千及大千 若問營謀併出入 不如收拾莫憂燃"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p150（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1147,10 +952,7 @@ window.DRAW_POOL = {
         "poem_text": "日上吟詩月下歌 逢場作戲笑呵呵 相逢會處難藏隱 喝啋齊聲嗹哩囉"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p149（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1165,10 +967,7 @@ window.DRAW_POOL = {
         "poem_text": "晨昏全賴佛扶持 雖是逢危不見危 若得貴人來接引 此時福祿自相隨"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p149（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1183,10 +982,7 @@ window.DRAW_POOL = {
         "poem_text": "昔日行船失了針 今朝依舊海中尋 若還尋得原針在 也費工夫也費心"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p148（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1201,10 +997,7 @@ window.DRAW_POOL = {
         "poem_text": "譬若金鱗放碧漪 暗遭羅網四邊圍 思量無計翻身出 命到泉關苦獨悲"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p148（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1219,10 +1012,7 @@ window.DRAW_POOL = {
         "poem_text": "眼前歡喜未為歡 危不危兮安不安 割肉成瘡因甚事 不如守舊得安全"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p147（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1237,10 +1027,7 @@ window.DRAW_POOL = {
         "poem_text": "路險馬行人去遠 失群羊困虎相當 危灘船過風翻浪 春暮花殘天降霜"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p147（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1255,10 +1042,7 @@ window.DRAW_POOL = {
         "poem_text": "一條金秤等君情 無減無增無重輕 為是平生心正直 文章不識義皆明"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p146（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1273,10 +1057,7 @@ window.DRAW_POOL = {
         "poem_text": "門庭清吉夢禎祥 積善于門大吉昌 訟理婚成蠶又熟 病逢良藥得安康"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p146（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1291,10 +1072,7 @@ window.DRAW_POOL = {
         "poem_text": "冬來嶺上一枝梅 葉落枯枝總不摧 探得陽春消息近 依然還我做花魁"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p145（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1309,10 +1087,7 @@ window.DRAW_POOL = {
         "poem_text": "朝朝役役恰如蜂 飛來飛去西復東 春暮花殘無覔處 此身不戀舊叢中"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p145（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1327,10 +1102,7 @@ window.DRAW_POOL = {
         "poem_text": "誰知愛寵遇強徒 女子當年嫁二夫 自是一弓施兩箭 騎龍跨馬上安居"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p144（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1345,10 +1117,7 @@ window.DRAW_POOL = {
         "poem_text": "弄蜂須要求他蜜 只怕遭他尾上針 雖是眼前有異路 暗裏深藏荊棘林"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p144（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1363,10 +1132,7 @@ window.DRAW_POOL = {
         "poem_text": "春雷震起蟄中蟲 脫卻塵凡出舊墉 忽遇風雲交際處 自然變化得成龍"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p143（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1381,10 +1147,7 @@ window.DRAW_POOL = {
         "poem_text": "慵飛野鶴自投籠 欲舉鵬霄落陷中 南北東西混障碍 此身憔悴恨無窮"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p143（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1399,10 +1162,7 @@ window.DRAW_POOL = {
         "poem_text": "宛如抱虎過山前 戰戰兢兢膽碎寒 幸得山前逢妙手 方能保得一身安"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p142（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1417,10 +1177,7 @@ window.DRAW_POOL = {
         "poem_text": "魚龍混雜意和同 耐守寒潭未濟中 不覺一朝頭角聳 禹門一跳到天宮"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p142（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1435,10 +1192,7 @@ window.DRAW_POOL = {
         "poem_text": "夢中說夢獲多財 身外浮名總莫猜 永遠山遙難信定 貴人一指笑顏開"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p141（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1453,10 +1207,7 @@ window.DRAW_POOL = {
         "poem_text": "冷水來澆白雪洋 不寒不熱自溫涼 要行天下無他事 惟有中藏一藝強"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p141（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1471,10 +1222,7 @@ window.DRAW_POOL = {
         "poem_text": "虛空結愿結人緣 保得人安愿未還 得兔忘蹄真絕跡 敢將初誓謾輕瞞"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p140（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1489,10 +1237,7 @@ window.DRAW_POOL = {
         "poem_text": "直上高山去學仙 豈知一旦帝王宣 青天白日常明照 志在聲名四海傳"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p140（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1507,10 +1252,7 @@ window.DRAW_POOL = {
         "poem_text": "庭前葉落暮秋時 行客奔程勢若飛 謝得天公輕着力 順風相送寶船歸"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p139（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1525,10 +1267,7 @@ window.DRAW_POOL = {
         "poem_text": "炎炎烈火焰燒天 焰裡還生一朵蓮 到底永成根不壞 依然枝葉色新鮮"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p139（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1543,10 +1282,7 @@ window.DRAW_POOL = {
         "poem_text": "譬若初三四五蟾 半無半有未完全 須教十五良宵夜 到處清光到處圓"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p138（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1561,10 +1297,7 @@ window.DRAW_POOL = {
         "poem_text": "因名喪德不和同 切忌忙中變作凶 醉後不知何處去 青松影裡睡矇矓"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p138（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1579,10 +1312,7 @@ window.DRAW_POOL = {
         "poem_text": "重開山後藏前事 萬寶園中可再團 醉詠新詩添逸興 貴人引接上雲衢"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p137（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1597,10 +1327,7 @@ window.DRAW_POOL = {
         "poem_text": "春來花發映陽臺 萬里舟行進寶來 躍過禹門三級浪 恰如平地一聲雷"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p137（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1615,10 +1342,7 @@ window.DRAW_POOL = {
         "poem_text": "人行半嶺日啣山 峻險巉巖未可攀 仰望上天垂護佑 此身猶在太虛間"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p136（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1633,10 +1357,7 @@ window.DRAW_POOL = {
         "poem_text": "木雕一虎在山林 遠望威容意不禁 縱說不妨終可謂 此身如入大江心"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p136（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1651,10 +1372,7 @@ window.DRAW_POOL = {
         "poem_text": "出入營謀大吉昌 無瑕玉在石中藏 如今幸得高人指 獲寶從心喜不常"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p135（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1669,10 +1387,7 @@ window.DRAW_POOL = {
         "poem_text": "忽朝一信天下墀 寶貝船裝滿載歸 若問前程成底事 始終應得貴人提"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p135（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1687,10 +1402,7 @@ window.DRAW_POOL = {
         "poem_text": "好把愁眉須展開 大才大用薦將來 一條大路平如掌 凡有施為總稱懷"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p134（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1705,10 +1417,7 @@ window.DRAW_POOL = {
         "poem_text": "經商得利稱心懷 福祿榮華倍獲財 若問進身謀望事 秀才一舉狀元回"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p134（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1723,10 +1432,7 @@ window.DRAW_POOL = {
         "poem_text": "鸞鳳翎毛雨壓垂 此時應被雀輕欺 忽朝一日雲霄霽 依舊還教振羽衣"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p133（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1741,10 +1447,7 @@ window.DRAW_POOL = {
         "poem_text": "小人君子別賢愚 事有差訛合是非 琴遇知音當鼓操 爭如定靜得便宜"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p133（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1759,10 +1462,7 @@ window.DRAW_POOL = {
         "poem_text": "事業功勳暮與朝 榮華物態不勝饒 報君記取金雞鬪 福祿聲名價自超"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p132（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1777,10 +1477,7 @@ window.DRAW_POOL = {
         "poem_text": "巍巍寶塔不尋常 八面玲瓏盡放光 勸汝志心勤頂禮 天龍擁護降千祥"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p132（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1795,10 +1492,7 @@ window.DRAW_POOL = {
         "poem_text": "園林月色搖疎影 恍若鋪成滿地瓊 幾度兒童來收拾 豈知收拾總無成"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p131（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1813,10 +1507,7 @@ window.DRAW_POOL = {
         "poem_text": "經商出入事遲疑 恐惹閒愁與是非 如鳥飛投羅網陷 相看能有幾人知"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p131（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1831,10 +1522,7 @@ window.DRAW_POOL = {
         "poem_text": "等閑騎馬着鞭來 半有憂危半有財 似火方燒頭上屋 天教一雨蕩殃災"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p130（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1849,10 +1537,7 @@ window.DRAW_POOL = {
         "poem_text": "欲就東兮欲就西 逢人說事轉痴迷 登山不見神仙面 莫若歸休更勿提"
       },
       "provenance": {
-        "edition_id": "ed-guanyin-mengjia-longshan-modern",
         "edition_title": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
-        "edition_date_period": "現代（living tradition；薛皓文 2008 附錄二記錄）",
-        "source_locator": "薛皓文 2008《臺灣艋舺龍山寺籤詩及其文學性研究》附錄二 p130（倒序百首籤）",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -1867,10 +1552,7 @@ window.DRAW_POOL = {
         "poem_text": "巍巍獨步向雲間，玉殿千官第一班。\n冨貴榮華天付汝，福如東海壽如山。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/1 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1885,10 +1567,7 @@ window.DRAW_POOL = {
         "poem_text": "盈虛消息總天時，自此君當百事宜。\n若問前程歸縮地，更須方寸好修為。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/2 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1903,10 +1582,7 @@ window.DRAW_POOL = {
         "poem_text": "衣食自然生處有，勸君不用苦勞心。\n但能孝悌兼忠信，福祿來成禍不侵。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/3 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1921,10 +1597,7 @@ window.DRAW_POOL = {
         "poem_text": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神彿，莫教福謝悔無追。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/4 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1939,10 +1612,7 @@ window.DRAW_POOL = {
         "poem_text": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承巳，萬事迴春不用憂。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/5 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1957,10 +1627,7 @@ window.DRAW_POOL = {
         "poem_text": "何勞鼓瑟更吹笙，寸步如登萬里程。\n彼此懷疑不相信，休將私意托濃情。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/6 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1975,10 +1642,7 @@ window.DRAW_POOL = {
         "poem_text": "仙風道骨本天成，又遇仙宗為主盟。\n指日丹成謝巖谷，一朝引領向天行。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/7 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -1993,10 +1657,7 @@ window.DRAW_POOL = {
         "poem_text": "年來耕稼苦無收，今歲田疇定有秋。\n況遇太平無事日，士農工賈百無憂。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/8 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2011,10 +1672,7 @@ window.DRAW_POOL = {
         "poem_text": "望渠消息向長安，常把菱花仔細看。\n見說文書將入境，今朝喜色上眉端。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/9 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2029,10 +1687,7 @@ window.DRAW_POOL = {
         "poem_text": "病患時時命蹇衰，何須打瓦更鑽龜。\n直教重見一陽復，始可求安仗佛持。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/10 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2047,10 +1702,7 @@ window.DRAW_POOL = {
         "poem_text": "今年好事一番新，冨貴榮華萃一身。\n誰道機關難料處，到頭獨立轉傷神。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/11 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2065,10 +1717,7 @@ window.DRAW_POOL = {
         "poem_text": "營為期望向春前，誰料秋來又不然。\n直遇清江貴公子，一生活計始安全。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/12 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2083,10 +1732,7 @@ window.DRAW_POOL = {
         "poem_text": "君今庚甲未亨通，且向江頭作釣前。\n玉兔重生應發積，萬人頭上逞英雄。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/13 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2101,10 +1747,7 @@ window.DRAW_POOL = {
         "poem_text": "一見佳人便喜歡，誰知向後有多般。\n人情冷暖君休訝，歷涉應知行路難。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/14 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2119,10 +1762,7 @@ window.DRAW_POOL = {
         "poem_text": "兩家門戶各相當，不是因緣莫較量。\n直待春風好消息，卻調琴瑟向蘭房。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/15 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2137,10 +1777,7 @@ window.DRAW_POOL = {
         "poem_text": "官事悠悠難辯明，不如息了且歸耕。\n傍人扇惑君休信，此事當謀親弟兄。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/16 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2155,10 +1792,7 @@ window.DRAW_POOL = {
         "poem_text": "田園價貫好商量，事到公庭彼此傷。\n縱是機關圖得勝，定為後世子孫殃。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/17 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2173,10 +1807,7 @@ window.DRAW_POOL = {
         "poem_text": "知君指擬似空華，底事茫茫未有涯。\n牢把腳根踏實地，善為善應永無差。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/18 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2191,10 +1822,7 @@ window.DRAW_POOL = {
         "poem_text": "嗟子從來未得時，今年星運頗相宜。\n營求動作都如意，和合婚姻誕貴兒。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/19 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2209,10 +1837,7 @@ window.DRAW_POOL = {
         "poem_text": "一生心事向誰論，十八灘頭說與君。\n世事盡從流水去，功名富貴等浮雲。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/20 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2227,10 +1852,7 @@ window.DRAW_POOL = {
         "poem_text": "與君夙昔結成寃，今日相逢那得緣。\n好把經文多諷誦，祈求戶口保嬋娟。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/21 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2245,10 +1867,7 @@ window.DRAW_POOL = {
         "poem_text": "碧玉池中開白蓮，裝嚴色相自天然。\n生來骨格超凡俗，正是人間第一仙。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/22 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2263,10 +1882,7 @@ window.DRAW_POOL = {
         "poem_text": "花開花落任春風，貴賤窮通百歲中。\n似子榮華今已矣，到頭萬事總歸空。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/23 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2281,10 +1897,7 @@ window.DRAW_POOL = {
         "poem_text": "一春萬事苦憂煎，夏裹營求始貼然。\n更遇秋成冬至後，恰如騎鶴與腰纏。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/24 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2299,10 +1912,7 @@ window.DRAW_POOL = {
         "poem_text": "寅午戌年多阻滯，亥子五月漸亨嘉。\n更逢玉兔金鷄會，枯木逢春自放花。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/25 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2317,10 +1927,7 @@ window.DRAW_POOL = {
         "poem_text": "年來豐歉皆天數，自是今年旱較多。\n與子定期三日內，田疇沾足雨滂沱。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/26 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2335,10 +1942,7 @@ window.DRAW_POOL = {
         "poem_text": "世間萬物皆有主，一粒一毫君莫取。\n英雄豪傑自天生，也須步步循規矩。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/27 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2353,10 +1957,7 @@ window.DRAW_POOL = {
         "poem_text": "公侯將相本無種，好把勤勞契上天。\n人事盡時天理見，材高豈得困林泉。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/28 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2371,10 +1972,7 @@ window.DRAW_POOL = {
         "poem_text": "祖宗積德幾多年，源遠流長慶自然。\n更若操修無倦意，天須還汝舊青氈。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/29 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2389,10 +1987,7 @@ window.DRAW_POOL = {
         "poem_text": "奉公謹守莫欺心，自有亨通吉利臨。\n目下營求且休矣，秋期與子定佳音。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/30 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2407,10 +2002,7 @@ window.DRAW_POOL = {
         "poem_text": "秋冬作事只尋常，春到門庭漸吉昌。\n千里信音符遠望，萱堂快樂未渠央。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/31 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2425,10 +2017,7 @@ window.DRAW_POOL = {
         "poem_text": "勞生汩汩竟何歸，疾病兼多是與非。\n事到頭時渾似夢，何如休要用心機。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/32 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2443,10 +2032,7 @@ window.DRAW_POOL = {
         "poem_text": "不分南北與西東，眼底昏昏耳似聾。\n熟讀黃庭經一卷，不論貴賤與窮通。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/33 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2461,10 +2047,7 @@ window.DRAW_POOL = {
         "poem_text": "春夏纔過秋又冬，紛紛謀慮攪心胸。\n貴人垂手來相援，休把私心情意濃。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/34 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2479,10 +2062,7 @@ window.DRAW_POOL = {
         "poem_text": "一山如畫對清江，門裹團圓事事雙。\n誰料半途分拆去，空帷無語對銀缸。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/35 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2497,10 +2077,7 @@ window.DRAW_POOL = {
         "poem_text": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，昊山嶺上好鑽龜。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/36 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2515,10 +2092,7 @@ window.DRAW_POOL = {
         "poem_text": "焚香來告復何辭，善惡平分汝自知。\n屏卻昧公心裹事，出門無礙是通時。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/37 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2533,10 +2107,7 @@ window.DRAW_POOL = {
         "poem_text": "蛩吟唧唧守孤幃，千里懸懸望信歸。\n等得榮華公子到，秋冬括括雨霏霏。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/38 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2551,10 +2122,7 @@ window.DRAW_POOL = {
         "poem_text": "北山門下好安居，若問終時慎厥初。\n堪笑包藏許多事，鴻鱗難便好修書。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/39 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2569,10 +2137,7 @@ window.DRAW_POOL = {
         "poem_text": "新來換得好規模，何用隨它步與趨。\n即聽耳邊消息到，崎嶇歷過見亨衢。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/40 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2587,10 +2152,7 @@ window.DRAW_POOL = {
         "poem_text": "自南自北自東西，欲到天涯誰作梯。\n遇鼠逢牛三弄笛，好將名姓榜頭題。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/41 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2605,10 +2167,7 @@ window.DRAW_POOL = {
         "poem_text": "我曾許汝事和諧，誰料修為汝自乖。\n但改新圖莫依舊，營謀應得稱心懷。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/42 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2623,10 +2182,7 @@ window.DRAW_POOL = {
         "poem_text": "一紙官書火急催，扁舟速下浪如雷。\n雖然目下多驚懼，保汝平安去復回。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/43 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2641,10 +2197,7 @@ window.DRAW_POOL = {
         "poem_text": "汝是人中最吉人，誤為誤作損精神。\n堅牢一念酬香願，冨貴榮華在汝身。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/44 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2659,10 +2212,7 @@ window.DRAW_POOL = {
         "poem_text": "好將心地力耕耘，彼此山頭總是墳。\n陰地不如心地好，修為到底卻輸君。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/45 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2677,10 +2227,7 @@ window.DRAW_POOL = {
         "poem_text": "君是山中萬戶侯，信知騎馬勝騎牛。\n今朝馬上看山色，爭似騎牛得自由。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/46 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2695,10 +2242,7 @@ window.DRAW_POOL = {
         "poem_text": "與君萬語復千言，衹欲平和雪爾冤。\n訟則終凶君記取，試於清夜把心捫。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/47 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2713,10 +2257,7 @@ window.DRAW_POOL = {
         "poem_text": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懼。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/48 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2731,10 +2272,7 @@ window.DRAW_POOL = {
         "poem_text": "彼此家居只一山，如何似膈鬼門關。\n日月如梭人易老，許多勞碌不如閑。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/49 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2749,10 +2287,7 @@ window.DRAW_POOL = {
         "poem_text": "人說今年勝去年，也須步步要周旋。\n一家和氣多生福，萋菲讒言莫聽偏。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/50 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2767,10 +2302,7 @@ window.DRAW_POOL = {
         "poem_text": "君今百事且隨緣，水到渠成聽自然。\n莫嘆年來不如意，喜逢新運稱心田。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/51 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2785,10 +2317,7 @@ window.DRAW_POOL = {
         "poem_text": "兀坐幽居歎寂寥，孤燈隱映度清宵。\n萬金忽報秋光好，活計扁舟渡北潮。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/52 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2803,10 +2332,7 @@ window.DRAW_POOL = {
         "poem_text": "艱難險阻路蹊蹺，南烏孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/53 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2821,10 +2347,7 @@ window.DRAW_POOL = {
         "poem_text": "萬人叢裹逞英豪，便欲飛騰霄漢高。\n爭奈乘流風未便，青燈黃卷且勤勞。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/54 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2839,10 +2362,7 @@ window.DRAW_POOL = {
         "poem_text": "勤耕力作莫蹉跎，衣食隨時安分過。\n縱使經商收倍利，不如逐歲凜禾多。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/55 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2857,10 +2377,7 @@ window.DRAW_POOL = {
         "poem_text": "心頭理曲強詞遮，直欲欺官行路斜。\n一旦醜形臨月鏡，身投憲網莫咨嗟。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/56 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2875,10 +2392,7 @@ window.DRAW_POOL = {
         "poem_text": "事端百出慮雖長，莫聽人言自主張。\n一著先機君記取，紛紛鬧裹更思量。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/57 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2893,10 +2407,7 @@ window.DRAW_POOL = {
         "poem_text": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隱事，前程萬里自通亨。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/58 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2911,10 +2422,7 @@ window.DRAW_POOL = {
         "poem_text": "門衰戶冷苦伶仃，自嘆祈求不一靈。\n幸有祖宗陰隱在，香煙未斷續螟蛉。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/59 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2929,10 +2437,7 @@ window.DRAW_POOL = {
         "poem_text": "羨君兄弟好名聲，只管謙偽莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/60 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2947,10 +2452,7 @@ window.DRAW_POOL = {
         "poem_text": "嘯聚山林凶惡儔，善良無事苦煎憂。\n主人大笑出門去，不用干戈盜賊休。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/61 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2965,10 +2467,7 @@ window.DRAW_POOL = {
         "poem_text": "百十八面虎狼心，賴汝干戈用力深。\n得勝回時秋漸老，虎頭城裹喜相尋。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/62 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -2983,10 +2482,7 @@ window.DRAW_POOL = {
         "poem_text": "曩時敗北且圖南，筋力雖衰尚一堪。\n欲識前生君大數，前三三與後三三。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/63 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3001,10 +2497,7 @@ window.DRAW_POOL = {
         "poem_text": "吉人相遇本和同，況有持謀天水翁。\n人力不勞公論協，事成功倍笑談中。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/64 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3019,10 +2512,7 @@ window.DRAW_POOL = {
         "poem_text": "朔風凜凜正窮冬，多羨門庭喜氣濃。\n更入新春人事後，裹言方得信先容。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/65 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3037,10 +2527,7 @@ window.DRAW_POOL = {
         "poem_text": "耕耘只可在鄉邦，何用求謀過外方。\n見說今年新運好，門闌喜炁事雙雙。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/66 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3055,10 +2542,7 @@ window.DRAW_POOL = {
         "poem_text": "纔發君心天已知，何須問我決狐疑，\n願子改圖從孝悌，不愁家室不相宜。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/67 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3073,10 +2557,7 @@ window.DRAW_POOL = {
         "poem_text": "南販珍珠北販鹽，年來幾倍貨財添。\n勸君止此求田舍，心欲多時何日厭。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/68 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3091,10 +2572,7 @@ window.DRAW_POOL = {
         "poem_text": "捨舟遵路總相宜，慎勿嬉遊逐貴兒。\n一夜樽前兄與弟，明朝仇敵又相隨。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/69 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3109,10 +2587,7 @@ window.DRAW_POOL = {
         "poem_text": "雷雨風雲各有司，至誠禱告莫生疑。\n與君定約為霖日，正是蘊隆中伏時。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/70 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3127,10 +2602,7 @@ window.DRAW_POOL = {
         "poem_text": "喜鵲簷前報好音，知君千里欲歸心。\n繡幃重結鴛鴦帶，葉落霜飛寒色侵。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/71 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3145,10 +2617,7 @@ window.DRAW_POOL = {
         "poem_text": "河渠傍路有高低，可嘆長途日已西。\n縱有榮華好時節，直須猴大換金鷄。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/72 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3163,10 +2632,7 @@ window.DRAW_POOL = {
         "poem_text": "憶昔蘭堂分半釵，而今忽把信期乖。\n癡心猶望成連理，到底誰知事不諧。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/73 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3181,10 +2647,7 @@ window.DRAW_POOL = {
         "poem_text": "崔鬼崔鬼復崔鬼，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/74 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3199,10 +2662,7 @@ window.DRAW_POOL = {
         "poem_text": "生前結得好婚姻，一笑相逢情自親。\n相當人物無高下，得意休論富與貧。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/75 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3217,10 +2677,7 @@ window.DRAW_POOL = {
         "poem_text": "三千法律八千文，此事如何說與君。\n善惡兩途君自作，一生禍福事由分。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/76 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3235,10 +2692,7 @@ window.DRAW_POOL = {
         "poem_text": "木有根荄水有源，君當自此究其元。\n莫隨道路人閑語，訟到終四是至言。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/77 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3253,10 +2707,7 @@ window.DRAW_POOL = {
         "poem_text": "家道豐腴自飽溫，也須肚裹立乾坤。\n財多害己君當省，福有胚胎禍有門。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/78 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3271,10 +2722,7 @@ window.DRAW_POOL = {
         "poem_text": "乾亥來龍仔細看，坎居午向自當安。\n若移丑艮陰陽逆，門戶凋零家道難。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/79 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3289,10 +2737,7 @@ window.DRAW_POOL = {
         "poem_text": "一朝無事忽遭官，也是門衰墳未安。\n改換陰陽移禍福，勸君莫作等閑看。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/80 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3307,10 +2752,7 @@ window.DRAW_POOL = {
         "poem_text": "假君財物自當還，謀賴心欺他自奸。\n幸有當臺明月鏡，請來對照破機關。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/81 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3325,10 +2767,7 @@ window.DRAW_POOL = {
         "poem_text": "彼亦儔中一輩賢，勸君特達與周全。\n此時賓主歡相遇，他日王侯卻並肩。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/82 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3343,10 +2782,7 @@ window.DRAW_POOL = {
         "poem_text": "隨分堂前赴粥饘，何須妄想苦憂煎。\n主張門戶成難事，百歲寬閑得幾年。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/83 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3361,10 +2797,7 @@ window.DRAW_POOL = {
         "poem_text": "箇中事緒更紛然，當局須知一著先。\n長舌婦人休酷聽，力行禮義要心堅。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/84 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3379,10 +2812,7 @@ window.DRAW_POOL = {
         "poem_text": "一春風雨正蕭蕭，千里行人去路遙。\n移寡就多君得計，如何歸路轉無聊。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/85 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3397,10 +2827,7 @@ window.DRAW_POOL = {
         "poem_text": "一般行貨好招邀，積少成多自富饒。\n長把他人比自己，管須自後勝今朝。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/86 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3415,10 +2842,7 @@ window.DRAW_POOL = {
         "poem_text": "陰裹詳稱怪爾曹，舟中敵國笑中刀。\n藩籬剖破渾無事，一種天生惜羽毛。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/87 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3433,10 +2857,7 @@ window.DRAW_POOL = {
         "poem_text": "從前作事總徒勞，纔是新春時漸遭。\n百事營求都得意，更須守己莫心高。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/88 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3451,10 +2872,7 @@ window.DRAW_POOL = {
         "poem_text": "樽前無事且高歌，時未來時奈若何。\n白馬渡江雖日暮，虎頭城裹看巍峨。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/89 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3469,10 +2887,7 @@ window.DRAW_POOL = {
         "poem_text": "崆峒城裹事如麻，無事如君有幾家。\n勸汝不須勤致禱，徒勞生事苦咨嗟。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/90 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3487,10 +2902,7 @@ window.DRAW_POOL = {
         "poem_text": "古說淘沙始見金，只緣君子不勞心。\n榮華總得詩書效，妙裹工夫仔細尋。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/91 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3505,10 +2917,7 @@ window.DRAW_POOL = {
         "poem_text": "今年禾穀不如前，物價喧騰倍百千。\n災數流行多疫癘，一陽來復始安全。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/92 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3523,10 +2932,7 @@ window.DRAW_POOL = {
         "poem_text": "春來雨水大連綿，入夏晴乾雨又愆。\n節氣直交三伏始，喜逢滂沛足田園。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/93 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3541,10 +2947,7 @@ window.DRAW_POOL = {
         "poem_text": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/94 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3559,10 +2962,7 @@ window.DRAW_POOL = {
         "poem_text": "知君袖裹有驪珠，生不逢辰亦強圖。\n可嘆頭顱已如許，而今方得貴人扶。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/95 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3577,10 +2977,7 @@ window.DRAW_POOL = {
         "poem_text": "婚姻子息莫嫌遲，但把精神仗佛持。\n四十年前須報應，功圓行滿育馨兒。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/96 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3595,10 +2992,7 @@ window.DRAW_POOL = {
         "poem_text": "五十功名心已灰，那知富貴逼人來。\n更行好事存方寸，壽比岡陵位鼎台。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/97 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3613,10 +3007,7 @@ window.DRAW_POOL = {
         "poem_text": "經商百出費精神，南北奔馳運未新。\n玉兔交時當得意，恰如枯木再逢春。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/98 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3631,10 +3022,7 @@ window.DRAW_POOL = {
         "poem_text": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驛餾應得驟康強。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/99 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3649,10 +3037,7 @@ window.DRAW_POOL = {
         "poem_text": "我本天仙雷雨師，吉凶禍福我先知。\n至誠禱祝皆靈應，抽得終籤百事宜。"
       },
       "provenance": {
-        "edition_id": "ed-guandi-daozang-fuye-1225",
         "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-        "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
-        "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/100 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3667,10 +3052,7 @@ window.DRAW_POOL = {
         "poem_text": "日出便見風雲散\n光明清靜照世間\n一向前途通大道\n萬事清吉保平安"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-001",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-001",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3685,10 +3067,7 @@ window.DRAW_POOL = {
         "poem_text": "於今此景正當時\n看看欲吐百花魁\n若能遇得春色到\n一洒清吉脫塵埃"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-002",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-002",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3703,10 +3082,7 @@ window.DRAW_POOL = {
         "poem_text": "勸君把定心莫虛\n天註衣祿自有餘\n和合重重常吉慶\n時來終遇得明珠"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-003",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-003",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3721,10 +3097,7 @@ window.DRAW_POOL = {
         "poem_text": "風恬浪靜可行舟\n恰是中秋月一輪\n凡事不須多憂慮\n福祿自有慶家門"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-004",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-004",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3739,10 +3112,7 @@ window.DRAW_POOL = {
         "poem_text": "只恐前途命有變\n勸君作急可宜先\n且守長江無大事\n命逢太白守身邊"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-005",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-005",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3757,10 +3127,7 @@ window.DRAW_POOL = {
         "poem_text": "風雲致雨落洋洋\n天災時氣必有傷\n命內此事難和合\n更逢一足出外鄉"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-006",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-006",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3775,10 +3142,7 @@ window.DRAW_POOL = {
         "poem_text": "雲開月出見分明\n不須進退問前途\n婚姻皆由天註定\n和合清吉萬事成"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-007",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-007",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3793,10 +3157,7 @@ window.DRAW_POOL = {
         "poem_text": "禾稻看看結成完\n此事必定兩相全\n回到家中寬心坐\n妻兒鼓舞樂團圓"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-008",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-008",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3811,10 +3172,7 @@ window.DRAW_POOL = {
         "poem_text": "龍虎相隨在深山\n君爾何須背後看\n不知此去相愛悞\n他日與我卻無干"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-009",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-009",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3829,10 +3187,7 @@ window.DRAW_POOL = {
         "poem_text": "右上角籤首資料\n花開結子一半枯\n可惜今年爾虛度\n漸漸日落西山去"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-010",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-010",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3847,10 +3202,7 @@ window.DRAW_POOL = {
         "poem_text": "靈雞漸漸見分明\n凡事且看子丑寅\n雲開月出照天下\n郎君即便見太平"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-011",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-011",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3865,10 +3217,7 @@ window.DRAW_POOL = {
         "poem_text": "長江風浪漸漸靜\n于今得進可安寧\n必有貴人相扶助\n凶事脫出見太平"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-012",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-012",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3883,10 +3232,7 @@ window.DRAW_POOL = {
         "poem_text": "命內正逢羅孛關\n用盡心機總未休\n作福問神難得過\n恰是行舟上高灘"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-013",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-013",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3901,10 +3247,7 @@ window.DRAW_POOL = {
         "poem_text": "財中漸漸見分明\n花開花謝結子成\n寬心且看月中桂\n郎君即便見太平"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-014",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-014",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3919,10 +3262,7 @@ window.DRAW_POOL = {
         "poem_text": "八十原來是太公\n看看晚景遇文王\n目下緊事休相問\n勸君且守待運通"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-015",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-015",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3937,10 +3277,7 @@ window.DRAW_POOL = {
         "poem_text": "不須作福不須求\n用盡心機總未休\n陽世不知陰世事\n官法如爐不自由"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-016",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-016",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3955,10 +3292,7 @@ window.DRAW_POOL = {
         "poem_text": "舊恨重重未改為\n家中禍患不臨身\n須當謹防宜作福\n龍蛇交會得和合"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-017",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-017",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3973,10 +3307,7 @@ window.DRAW_POOL = {
         "poem_text": "君問中間此言因\n看看祿馬拱前程\n求得貴人多得利\n和合自有兩分明"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-018",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-018",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -3991,10 +3322,7 @@ window.DRAW_POOL = {
         "poem_text": "富貴由命天註定\n心高必然誤君期\n不然且回依舊路\n雲開月出兩分明"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-019",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-019",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
@@ -4009,10 +3337,7 @@ window.DRAW_POOL = {
         "poem_text": "前途功名未得意\n只恐命內有交加\n兩家必定防損失\n勸君且退莫咨嗟"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-020",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-020",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4027,10 +3352,7 @@ window.DRAW_POOL = {
         "poem_text": "十方佛法有靈通\n大難禍患不相同\n紅日當空常照耀\n還有貴人到家堂"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-021",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-021",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4045,10 +3367,7 @@ window.DRAW_POOL = {
         "poem_text": "太公家業八十成\n月出光輝四海明\n命內自然逢大吉\n茅屋中間百事亨"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-022",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-022",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4063,10 +3382,7 @@ window.DRAW_POOL = {
         "poem_text": "欲去長江水闊茫\n前途未遂運未通\n如今絲綸常在手\n只恐魚水不相逢"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-023",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-023",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4081,10 +3397,7 @@ window.DRAW_POOL = {
         "poem_text": "月出光輝四海明\n前途祿位見太平\n浮雲掃退終無事\n可保禍患不臨身"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-024",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-024",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4099,10 +3412,7 @@ window.DRAW_POOL = {
         "poem_text": "總是前途莫心勞\n求神問聖枉是多\n但看雞犬日過後\n不須作福事如何"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-025",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-025",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4117,10 +3427,7 @@ window.DRAW_POOL = {
         "poem_text": "選出牡丹第一枝\n勸君折取莫遲疑\n世間若問相知處\n萬事逢春正及時"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-026",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-026",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4135,10 +3442,7 @@ window.DRAW_POOL = {
         "poem_text": "君爾寬心且自由\n門庭清吉家無憂\n財寶自然終吉利\n凡事無傷不用求"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-027",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-027",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4153,10 +3457,7 @@ window.DRAW_POOL = {
         "poem_text": "右上籤號與卦象\n於今莫作此當時\n虎落平陽被犬欺\n世間凡事何難定"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-028",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-028",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4171,10 +3472,7 @@ window.DRAW_POOL = {
         "poem_text": "枯木可惜未逢春\n如今還在暗中藏\n寬心且守風霜退\n還君依舊作乾坤"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-029",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-029",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4189,10 +3487,7 @@ window.DRAW_POOL = {
         "poem_text": "漸漸看此月中和\n過後須妨未得高\n改變顏色前途去\n凡事必定見重勞"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-030",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-030",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4207,10 +3502,7 @@ window.DRAW_POOL = {
         "poem_text": "綠柳蒼蒼正當時\n任君此去作乾坤\n花葉結實無殘謝\n福祿自有慶家門"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-031",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-031",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4225,10 +3517,7 @@ window.DRAW_POOL = {
         "poem_text": "龍虎相交在門前\n此事必定兩相連\n黃金忽然變成鐵\n何用作福問神仙"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-032",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-032",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4243,10 +3532,7 @@ window.DRAW_POOL = {
         "poem_text": "欲去長江水闊茫\n行舟把定未遭風\n戶內用心再作福\n看看魚水得相逢"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-033",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-033",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4261,10 +3547,7 @@ window.DRAW_POOL = {
         "poem_text": "危險高山行過盡\n莫嫌此路有重重\n若見蘭桂漸漸發\n去蛇反轉變成龍"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-034",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-034",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4279,10 +3562,7 @@ window.DRAW_POOL = {
         "poem_text": "此事何須用心機\n前途變怪自然知\n看看此去得和合\n漸漸脫出見太平"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-035",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-035",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4297,10 +3577,7 @@ window.DRAW_POOL = {
         "poem_text": "福如東海壽如山\n君爾何須嘆苦難\n命內自然逢大吉\n祈保分明得自安"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-036",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-036",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4315,10 +3592,7 @@ window.DRAW_POOL = {
         "poem_text": "運逢得意身顯變\n君爾身中皆有益\n一向前途無難事\n決意之中保清吉"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-037",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-037",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4333,10 +3607,7 @@ window.DRAW_POOL = {
         "poem_text": "名顯有意在中間\n不須祈禱心自安\n看看早晚日過後\n即時得意在中間"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-038",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-038",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4351,10 +3622,7 @@ window.DRAW_POOL = {
         "poem_text": "意中若問神仙路\n勸爾且退望高樓\n寬心且守寬心坐\n必然遇得貴人扶"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-039",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-039",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4369,10 +3637,7 @@ window.DRAW_POOL = {
         "poem_text": "平生富貴成祿位\n君家門戶定光輝\n此中必定無損失\n夫妻百歲喜相隨"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-040",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-040",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4387,10 +3652,7 @@ window.DRAW_POOL = {
         "poem_text": "今行到手寔難推\n歌歌暢飲自徘徊\n雞犬相聞消息近\n婚姻夙世結成雙"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-041",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-041",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4405,10 +3667,7 @@ window.DRAW_POOL = {
         "poem_text": "一重江水一重山\n誰知此去路又難\n任他改求終不過\n是非終久未得安"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-042",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-042",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4423,10 +3682,7 @@ window.DRAW_POOL = {
         "poem_text": "一年作事急如飛\n君爾寬心莫遲疑\n貴人還在千里外\n音信月中漸漸知"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-043",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-043",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4441,10 +3697,7 @@ window.DRAW_POOL = {
         "poem_text": "客到前途多得利\n君爾何故兩相疑\n雖是中間逢進退\n月出光輝得運時"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-044",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-044",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4459,10 +3712,7 @@ window.DRAW_POOL = {
         "poem_text": "花開今已結成果\n富貴榮華終到老\n君子小人結會合\n萬事清吉莫煩惱"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-045",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-045",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4477,10 +3727,7 @@ window.DRAW_POOL = {
         "poem_text": "功名得位與君顯\n前途富貴喜安然\n若遇一輪明月照\n十五團圓照滿天"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-046",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-046",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4495,10 +3742,7 @@ window.DRAW_POOL = {
         "poem_text": "君爾何須問聖跡\n自己心中皆有益\n于今且看月中旬\n凶事脫出化成吉"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-047",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-047",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4513,10 +3757,7 @@ window.DRAW_POOL = {
         "poem_text": "陰世作事未和同\n雲遮月色正朦朧\n心中意欲前途去\n只恐前途運未通"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-048",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-048",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4531,10 +3772,7 @@ window.DRAW_POOL = {
         "poem_text": "言語雖多不可從\n風雲靜處未行龍\n暗中終得明消息\n君屬何須問重重"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-049",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-049",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4549,10 +3787,7 @@ window.DRAW_POOL = {
         "poem_text": "佛前發誓無異心\n且看前途得好音\n此物原來本是鐵\n亦能變化得成金"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-050",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-050",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4567,10 +3802,7 @@ window.DRAW_POOL = {
         "poem_text": "東西南北不堪行\n前途此事正可當\n勸君把定莫煩惱\n家門自有保安康"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-051",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-051",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4585,10 +3817,7 @@ window.DRAW_POOL = {
         "poem_text": "功名事業本由天\n不須介念意懸懸\n若問中間遲與速\n風雲際會在眼前"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-052",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-052",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4603,10 +3832,7 @@ window.DRAW_POOL = {
         "poem_text": "看君來問心中事\n積善之家慶有餘\n運亨財子雙雙至\n指日喜氣溢門閭"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-053",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-053",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4621,10 +3847,7 @@ window.DRAW_POOL = {
         "poem_text": "孤燈寂寂夜沉沉\n萬事清吉萬事成\n若逢陰中有善果\n燒得好香達神明"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-054",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-054",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4639,10 +3862,7 @@ window.DRAW_POOL = {
         "poem_text": "須知進退總虛言\n看看發暗未必全\n珠玉深藏還未變\n心中但得枉徒然"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-055",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-055",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4657,10 +3877,7 @@ window.DRAW_POOL = {
         "poem_text": "病中若得苦心勞\n到底完全總未遭\n去後不須回頭問\n心中事務盡消磨"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-056",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-056",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4675,10 +3892,7 @@ window.DRAW_POOL = {
         "poem_text": "勸君把定心莫虛\n前途富貴喜安然\n到底中間無大事\n又遇神仙守安居"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-057",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-057",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4693,10 +3907,7 @@ window.DRAW_POOL = {
         "poem_text": "蛇身意欲變成龍\n只恐命內運未通\n久病且作寬心坐\n言語雖多不可從"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-058",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-058",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4711,10 +3922,7 @@ window.DRAW_POOL = {
         "poem_text": "有心作福莫遲疑\n求名清吉正當時\n此事必能成會合\n財寶自然喜相隨"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-059",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-059",
         "transcription_status": "PROBABLE"
       },
       "interpretation": null
@@ -4729,10 +3937,7 @@ window.DRAW_POOL = {
         "poem_text": "月出光輝本清吉\n浮雲總是蔽陰色\n內外用心再作福\n當官分理便有益"
       },
       "provenance": {
-        "edition_id": "ref-lsjz-060",
         "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
-        "edition_date_period": "現代（官方網站版；reference edition 由 Study 03 comparison 建立）",
-        "source_locator": "https://www.matsu.org.tw/?act=menuinfo&ml_id=20240116002&cmd=list （北港官方籤詩列表）；attestation: att-bg-060",
         "transcription_status": "VERIFIED"
       },
       "interpretation": null
