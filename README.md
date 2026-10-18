@@ -90,6 +90,8 @@ This repository contains the archived React MVP, the current static browser prot
 
 Draw One is still a prototype. The product direction has been validated at demo level; the production content system is still under review. The current public build draws from 260 oracle entries across three corpora (觀音 100, 關帝 100, 六十甲子 60) under a fail-closed content gate — see `data/production/draw-pool.report.json` for the build report. The oracle registry spec at `docs/superpowers/specs/2026-07-04-oracle-registry-design.md` is a planning artifact for an earlier design direction and is preserved as historical record; it does not describe the current production content pipeline.
 
+The public site retains its approved 94-entry Guanyin 解曰 layer as a separate, collapsed footnote under the original slip. The interpretation-layer package’s source files, producer tooling, and source-validation evidence are maintained in the private `draw-one-research` repository. Public CI verifies the committed release, edition/version guard, and UI wiring without those private inputs. The draw pool still keeps `interpretation: null`; the separate 解曰 display is preserved. See [the custody and release workflow](docs/interpretation-custody.md).
+
 ## Running Locally
 
 No backend is required.

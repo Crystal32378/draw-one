@@ -1,0 +1,10 @@
+{
+  "schema": "interpretation-release/0.1",
+  "corpus": "guanyin",
+  "count": 94,
+  "content_version": "e34cea042c1748a4bcc7e1a51d1ee21e843e3b5942606715ff94688c056a0b22",
+  "files": {
+    "assets/interpretation-pool.guanyin.js": "2b59f1a91848acdbf20b1fe5207e96a9471c68a5c237d6bec1e46d2db85ef5b8",
+    "assets/jieyue-guard.js": "ce2cc6a8bf29262f7f29ef54c9e5069cd9b09b2ff27b26219d1e3919f7fbaa23"
+  }
+}

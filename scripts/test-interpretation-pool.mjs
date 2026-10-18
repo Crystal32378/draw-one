@@ -1,15 +1,12 @@
-// test-interpretation-pool.mjs — 解曰 layer: artifact, exact version lock,
-// per-slip custody, real fail-closed counter-examples, UI wiring.
-import { readFileSync, writeFileSync, copyFileSync, mkdtempSync, existsSync } from "node:fs";
-import { execFileSync } from "node:child_process";
-import { tmpdir } from "node:os";
+// Public release verification: no private research files or rebuild dependencies.
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 let pass = 0, fail = 0;
 const check = (name, ok) => { console.log((ok ? "  ✓ " : "  ✗ ") + name); ok ? pass++ : fail++; };
-
 const loadWin = (relPath) => { const w = {}; new Function("window", readFileSync(join(ROOT, relPath), "utf8"))(w); return w; };
 const P = loadWin("assets/interpretation-pool.guanyin.js").INTERPRETATION_POOL;
 const GUARD = loadWin("assets/jieyue-guard.js").JIEYUE_GUARD;
@@ -44,54 +41,20 @@ const badStatusPool = { ...P, entries: { "guanyin-001": { ...P.entries["guanyin-
 check("unknown/blocked status → hidden", GUARD.resolve(badStatusPool, gEntry(1)) === null);
 check("no 解曰 for a slip that has none (excluded #12) → hidden", GUARD.resolve(P, gEntry(12)) === null);
 
-console.log("D fail-closed counter-examples (real build in an isolated dir)");
-const REAL_SRC = join(ROOT, "data/corpora/guanyin/interpretation_layer.json");
-const CUSTODY = join(ROOT, "data/corpora/guanyin/jieyue_custody.json");
-const jieOf = (obj) => obj.entries.filter((e) => e.field_type === "解曰");
-function buildWith(mutate) {
-  const dir = mkdtempSync(join(tmpdir(), "jieyue-"));
-  const src = join(dir, "src.json");
-  const data = JSON.parse(readFileSync(REAL_SRC, "utf8"));
-  mutate(data);
-  writeFileSync(src, JSON.stringify(data));
-  const env = { ...process.env, INTERP_SRC: src, INTERP_OUT: join(dir, "out.js"), INTERP_REPORT: join(dir, "rep.json"), INTERP_CUSTODY: CUSTODY };
-  try { execFileSync("node", [join(ROOT, "scripts/build-interpretation-pool.mjs")], { env, stdio: "pipe" }); return { ok: true, dir }; }
-  catch (e) { return { ok: false, dir, stderr: (e.stderr || "").toString() }; }
+console.log("D approved public release fingerprint");
+const release = JSON.parse(readFileSync(join(ROOT, "data/production/interpretation-release.manifest.json"), "utf8"));
+const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
+check("release manifest schema and count", release.schema === "interpretation-release/0.1" && release.count === 94 && P.count === release.count);
+check("release version is the UI guard version", release.content_version === P.content_version && release.content_version === GUARD.CONTRACT.content_version);
+for (const path of ["assets/interpretation-pool.guanyin.js", "assets/jieyue-guard.js"]) {
+  const bytes = readFileSync(join(ROOT, path));
+  check(`${path} matches accepted bytes`, sha256(bytes) === release.files[path]);
+  check(`${path} changed bytes fail the release fingerprint`, sha256(Buffer.concat([bytes, Buffer.from("\nchanged")])) !== release.files[path]);
 }
-// D1 swap two includable 解曰 (both texts still exist in source → old check would pass)
-const swap = buildWith((d) => {
-  const j = jieOf(d); const a = j.find((e) => e.slip_no === 1), b = j.find((e) => e.slip_no === 2);
-  const t = a.verbatim_text; a.verbatim_text = b.verbatim_text; b.verbatim_text = t;
-});
-check("swap two 解曰 → build fails on custody", !swap.ok && /custody mismatch/.test(swap.stderr));
-// D2 inject □ into an includable 解曰
-const box = buildWith((d) => { jieOf(d).find((e) => e.slip_no === 1).verbatim_text = "急速非速。言□時值。觀音降事。報與君知。"; });
-check("replacement/box char in includable text → build fails (G3/custody)", !box.ok && /(box\/replacement|custody mismatch)/.test(box.stderr));
-// D3 edition changed on a row
-const ed = buildWith((d) => { jieOf(d)[0].edition = "某其他版本"; });
-check("edition changed → build fails (G5)", !ed.ok && /edition-pin|custody/.test(ed.stderr));
-// D4 build failure must NOT partially rewrite the real artifact/report
-const artBefore = readFileSync(join(ROOT, "assets/interpretation-pool.guanyin.js"));
-const repBefore = readFileSync(join(ROOT, "data/production/interpretation-pool.report.json"));
-const dir = mkdtempSync(join(tmpdir(), "jieyue-atomic-"));
-const badSrc = join(dir, "src.json");
-const d = JSON.parse(readFileSync(REAL_SRC, "utf8"));
-jieOf(d).find((e) => e.slip_no === 1).verbatim_text = "改壞了";
-writeFileSync(badSrc, JSON.stringify(d));
-let threw = false;
-try {
-  execFileSync("node", [join(ROOT, "scripts/build-interpretation-pool.mjs")],
-    { env: { ...process.env, INTERP_SRC: badSrc, INTERP_CUSTODY: CUSTODY }, stdio: "pipe" }); // OUT/REPORT default = REAL paths
-} catch { threw = true; }
-check("build failed while targeting real artifact/report", threw);
-check("failed build left real artifact byte-identical", readFileSync(join(ROOT, "assets/interpretation-pool.guanyin.js")).equals(artBefore));
-check("failed build left real report byte-identical", readFileSync(join(ROOT, "data/production/interpretation-pool.report.json")).equals(repBefore));
-
-console.log("E rebuild is deterministic (byte-identical)");
-const before = readFileSync(join(ROOT, "assets/interpretation-pool.guanyin.js"), "utf8");
-try { execFileSync("node", [join(ROOT, "scripts/build-interpretation-pool.mjs")], { cwd: ROOT, stdio: "pipe" });
-  check("rebuild does not change the artifact", readFileSync(join(ROOT, "assets/interpretation-pool.guanyin.js"), "utf8") === before);
-} catch { check("rebuild runs clean", false); }
+check("all 94 records resolve against the approved draw pool", Object.keys(P.entries).every(id => {
+  const slip = POOL.entries.find(e => e.id === id);
+  return GUARD.resolve(P, slip) === P.entries[id];
+}));
 
 console.log("F UI wiring — off-paper, collapsed, guard-gated, no paraphrase");
 const html = readFileSync(join(ROOT, "paper/arrival.html"), "utf8");

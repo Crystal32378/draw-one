@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   truth-layer:
     runs-on: ubuntu-latest
@@ -22,3 +25,9 @@ jobs:
         run: |
           node scripts/build-draw-pool.mjs
           git diff --exit-code -- assets/oracles.draw-pool.js data/production/draw-pool.report.json
+
+      - name: Verify the approved public Jieyue release without private sources
+        run: node scripts/test-interpretation-pool.mjs
+
+      - name: Verify private research stays outside the public tree
+        run: node scripts/test-interpretation-boundary.mjs
