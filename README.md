@@ -90,7 +90,7 @@ This repository contains the archived React MVP, the current static browser prot
 
 Draw One is still a prototype. The product direction has been validated at demo level; the production content system is still under review. The current public build draws from 260 oracle entries across three corpora (觀音 100, 關帝 100, 六十甲子 60) under a fail-closed content gate — see `data/production/draw-pool.report.json` for the build report. The oracle registry spec at `docs/superpowers/specs/2026-07-04-oracle-registry-design.md` is a planning artifact for an earlier design direction and is preserved as historical record; it does not describe the current production content pipeline.
 
-Interpretation-layer research and its validators are maintained in a private research repository. They are not part of this public repository or the production frontend. Production draw-pool entries keep `interpretation: null` until a separately governed interpretation pipeline is approved.
+The public site retains its approved 94-entry Guanyin 解曰 layer as a separate, collapsed footnote under the original slip. The interpretation-layer package’s source files, producer tooling, and source-validation evidence are maintained in the private `draw-one-research` repository. Public CI verifies the committed release, edition/version guard, and UI wiring without those private inputs. The draw pool still keeps `interpretation: null`; the separate 解曰 display is preserved. See [the custody and release workflow](docs/interpretation-custody.md).
 
 ## Running Locally
 
@@ -99,3 +99,7 @@ No backend is required.
 ```bash
 open index.html
 ```
+
+## 中秋季節作品 · 2026
+
+[月圓了｜中秋季節入口](seasonal/mid-autumn-2026/README.md) 延續 Draw One 的紙墨世界，收錄 NASA 月面與觀月來源、三題回饋，以及獨立的本機回覆管理工具。視覺與互動創作：Astra。套件可自行啟動，尚未接入正式站路由。
