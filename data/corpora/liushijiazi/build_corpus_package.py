@@ -61,6 +61,10 @@ def main():
     corpus_rows = load_jsonl(os.path.join(DATA_SRC, "corpus.jsonl"))
     slips = load_jsonl(os.path.join(DATA_SRC, "slip.jsonl"))
     atts = load_jsonl(os.path.join(DATA_SRC, "attestation.jsonl"))
+    # Refuse stale ingest even if someone bypasses the acquisition pipeline.
+    sys.path.insert(0, SRC)
+    from poem_corrections import validate_corrections
+    validate_corrections(atts)
     items = load_jsonl(os.path.join(DATA_SRC, "concrete_item.jsonl"))
     vgs = load_jsonl(os.path.join(DATA_SRC, "variant_group.jsonl"))
     sources = load_jsonl(os.path.join(DATA_SRC, "source_record.jsonl"))
