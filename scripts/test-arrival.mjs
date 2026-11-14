@@ -159,7 +159,9 @@ check("門扇、門內的光、燈籠各自成層（k-life），由 CSS 驅動",
   && /class="k-life hearth"/.test(hallTpl) && /class="k-life hl/.test(hallTpl) && /\.facade\.opening \.door-l/.test(html));
 const enterBlock = script.slice(script.indexOf("function enterHall"), script.indexOf('$("backBtn")'));
 check("推門以 data-hall 取元素（無身分分支），進殿後復位", /querySelector\(`\[data-hall="\$\{hall\.id\}"\]`\)/.test(enterBlock) && /classList\.add\("opening"\)/.test(enterBlock) && /classList\.remove\("opening"\)/.test(enterBlock));
-check("未落成之殿沿用同一模板，只留虛線放樣", /\.station\.hypothetical \.ink-hall \.k-life \{ display: none; \}/.test(html) && /\.station\.hypothetical \.ink-hall \.k-line \{ stroke-dasharray/.test(html));
+check("未落成之殿沿用同一模板，只留虛線放樣", /\.station\.hypothetical \.ink-hall \.k-life \{ display: none; \}/.test(html) && /\.station\.hypothetical \.ink-hall \.k-plan \{ display: block; \}/.test(html) && /\.ink-hall \.k-plan \{ display: none;[^}]*stroke-dasharray/.test(html));
+check("筆路：結構線是有提按的形（INKPEN），三殿共用同一份字串；飛白是 evenodd 的縫", /const INKPEN = /.test(script) && /fill-rule="evenodd"/.test(script) && (script.match(/HALL_INK_SVG = /g) ?? []).length === 1);
+check("推門有門檻的光，reduced motion 不做", /id="threshold"/.test(html) && /!reduceMotion && facadeEl && !hall\.hypothetical/.test(script));
 const dress = script.slice(script.indexOf("function dressCourt"), script.indexOf("groundJoints.innerHTML"));
 check("小景只錨在站界 B(i) 或牆尾／樹，不以殿的身分擺放", /const B = \(i\) => i \* stationW/.test(dress) && !/guanyin|guandi|mazu|deity/.test(dress));
 check("殿內的骨只有一份（三殿共用）", (html.match(/class="hall-ink"/g) ?? []).length === 1);

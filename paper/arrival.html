@@ -122,6 +122,12 @@
      門洞＋台階落地）；柱在站與站之間、1.55x 近景速，正對時在畫框外。
      左右交替擴建＝Draw One 自己的 geometry hypothesis（非文化依據）。 */
   #s-court { background: var(--xuan-grain), var(--ground); }
+  /* 門檻：推門到進殿之間不露白——門內的光先漫出來，殿是從光裡定下來的 */
+  .threshold { position: absolute; inset: 0; z-index: 25; pointer-events: none; opacity: 0;
+    background: radial-gradient(58% 44% at 50% 44%, rgba(232, 178, 108, 0.94) 0%, rgba(176, 116, 62, 0.92) 46%, rgba(52, 40, 28, 0.95) 100%);
+    transition: opacity 360ms ease-in; }
+  .threshold.on { opacity: 1; }
+  .threshold.leaving { transition: opacity 620ms ease-out; }
   /* 世界回來／跨進來：埕不是切換過來的，是落定的 */
   @keyframes court-arrive { from { opacity: 0; transform: scale(1.045); } to { opacity: 1; transform: none; } }
   #s-court.on .court-view { animation: court-arrive 520ms cubic-bezier(0.2, 0.7, 0.2, 1); }
@@ -179,8 +185,8 @@
       radial-gradient(340px 90px at 30% 104%, rgba(52, 46, 36, 0.10), transparent 70%),
       radial-gradient(520px 130px at 68% -10%, rgba(245, 239, 226, 0.14), transparent 72%),
       radial-gradient(240px 70px at 84% 102%, rgba(52, 46, 36, 0.07), transparent 70%),
-      linear-gradient(0deg, rgba(52, 46, 36, 0.13), transparent 16%),
-      linear-gradient(180deg, rgba(52, 46, 36, 0.10) 0%, rgba(52, 46, 36, 0.06) 70%, rgba(52, 46, 36, 0.11) 100%);
+      linear-gradient(0deg, rgba(52, 46, 36, 0.10), transparent 14%),
+      linear-gradient(180deg, rgba(52, 46, 36, 0.07) 0%, rgba(52, 46, 36, 0.035) 70%, rgba(52, 46, 36, 0.07) 100%);
   }
   /* 牆腳線＝地平線 */
   .stage-strip::after { /* 牆腳線＝地平線 */
@@ -231,8 +237,8 @@
     border: 1px solid rgba(20, 16, 11, 0.9);
     box-shadow: inset 0 0 0 2px rgba(239, 229, 208, 0.34), 0 1px 3px rgba(38, 33, 25, 0.4);
     font-family: "Noto Serif TC", serif; font-weight: 700;
-    font-size: clamp(15px, calc(var(--hall-w, 258px) * 0.07), 21px); letter-spacing: 0.3em; text-indent: 0.3em;
-    padding: 6px 10px 5px; white-space: nowrap;
+    font-size: clamp(11px, calc(var(--hall-w, 258px) * 0.212 / var(--chars, 3)), 21px); letter-spacing: 0.26em; text-indent: 0.26em;
+    padding: 0.32em 0.5em 0.26em; white-space: nowrap; max-width: 78%;
     color: #efe5d0;
   }
   .facade .last-mark2 {
@@ -291,6 +297,7 @@
     33.5% { transform: translate(14px, 0); } 61% { transform: translate(14px, 0); } 62% { transform: translate(8px, -3px) scaleX(-1); }
     63.5% { transform: translate(0, 0) scaleX(-1); } 90% { transform: translate(0, 0) scaleX(-1); } 91% { transform: translate(0, 0); }
   }
+  .lived.leaf { width: 9px; height: 5px; border-radius: 60% 40% 60% 40%; background: rgba(118, 90, 58, 0.78); }
   .lived.burner-smoke {
     width: 3px; height: 46px; bottom: calc(44.6% + 74px);
     background: linear-gradient(180deg, transparent 0%, rgba(90, 84, 72, 0.34) 60%, rgba(90, 84, 72, 0.1) 100%);
@@ -299,11 +306,14 @@
   @media (prefers-reduced-motion: reduce) {
     .lived.tree-shade, .lived.tree .sway, .lived.sparrow, .lived.burner-smoke { animation: none; }
   }
-  /* 未落成（假設性增建）：同一份立面，只剩放樣的虛線——無墨染、無門、無光、無獅 */
+  /* 放樣線：平常不顯示 */
+  .ink-hall .k-plan { display: none; fill: none; stroke: rgba(52, 46, 36, 0.55); stroke-width: 1.3; stroke-dasharray: 6 5; stroke-linecap: round; }
+  /* 未落成（假設性增建）：同一份立面，只剩放樣的虛線——無筆、無墨染、無門、無光、無獅 */
   .station.hypothetical .ink-hall .k-wash,
+  .station.hypothetical .ink-hall .k-brush,
+  .station.hypothetical .ink-hall .k-solid,
   .station.hypothetical .ink-hall .k-life { display: none; }
-  .station.hypothetical .ink-hall .k-line { stroke-dasharray: 6 5; opacity: 0.5; filter: none; }
-  .station.hypothetical .ink-hall .k-solid { fill: none; stroke: rgba(52, 46, 36, 0.5); stroke-width: 1.2; stroke-dasharray: 6 5; filter: none; }
+  .station.hypothetical .ink-hall .k-plan { display: block; }
   /* 月老未落成：暫掛的紙名條，不是聖名匾 */
   .station.hypothetical .plaque2 {
     background: var(--paper); color: var(--ink-soft);
@@ -757,10 +767,14 @@
   <filter id="ink-wash" x="-14%" y="-14%" width="128%" height="128%">
     <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="3" seed="5" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
-    <feGaussianBlur in="d" stdDeviation="1.5" result="b"/>
+    <feGaussianBlur in="d" stdDeviation="1.1" result="b"/>
     <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="t"/>
     <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.62" result="density"/>
     <feComposite in="b" in2="density" operator="in"/>
+  </filter>
+  <filter id="ink-edge" x="-4%" y="-4%" width="108%" height="108%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="tooth"/>
+    <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <filter id="ink-rough" x="-8%" y="-8%" width="116%" height="116%">
     <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="2" result="wob"/>
@@ -771,14 +785,11 @@
   <radialGradient id="lamp-glow"><stop offset="0" stop-color="#eeb468" stop-opacity=".42"/><stop offset="1" stop-color="#eeb468" stop-opacity="0"/></radialGradient>
 </defs></svg>
 <div class="app" id="app">
+  <div class="threshold" id="threshold" aria-hidden="true"></div>
 
   <!-- 山門：初訪＝規矩＋天氣；之後每天第一次來＝薄門檻拿今天的票（D 拍板） -->
   <section class="screen" id="s-gate">
-    <svg class="gate-ink gate-roof" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true">
-      <path filter="url(#ink-wash)" fill="rgba(52,46,36,.24)" d="M0 0 H400 V84 C330 98 264 102 200 102 C136 102 70 98 0 84 Z"/>
-      <path filter="url(#ink-line)" stroke="rgba(30,26,20,.9)" stroke-width="5" fill="none" stroke-linecap="round" d="M-4 86 C70 101 136 105 200 105 C264 105 330 101 404 86"/>
-      <path filter="url(#ink-line)" stroke="rgba(30,26,20,.5)" stroke-width="1.6" fill="none" stroke-linecap="round" d="M40 6 L30 88 M90 6 L84 96 M145 6 L142 100 M200 6 V102 M255 6 L258 100 M310 6 L316 96 M360 6 L370 88"/>
-    </svg>
+    <svg class="gate-ink gate-roof" id="gateRoof" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"></svg>
     <i class="gate-ink gate-post l"></i><i class="gate-ink gate-post r"></i><i class="gate-ink gate-sill"></i>
     <div class="gate-date" id="gateDate"></div>
     <div class="gate-rules" id="gateRules">
@@ -827,19 +838,7 @@
     </div>
     <div class="hall-body">
       <div class="hall-ink" aria-hidden="true">
-        <svg viewBox="0 0 400 600" preserveAspectRatio="xMidYMin slice">
-          <path filter="url(#ink-wash)" fill="rgba(38,33,25,.30)" d="M-10 0 H410 V44 C300 36 100 36 -10 44 Z"/>
-          <g filter="url(#ink-line)" fill="none" stroke-linecap="round" stroke="rgba(30,26,20,.88)">
-            <path stroke-width="11" d="M-10 44 H410"/><path stroke-width="5" d="M-10 78 H410"/>
-            <path stroke-width="3" d="M40 50 V74 M96 50 V74 M304 50 V74 M360 50 V74 M200 50 V74"/>
-            <path stroke-width="2.4" d="M30 84 q14 2 18 16 M370 84 q-14 2 -18 16"/>
-          </g>
-          <g filter="url(#ink-rough)" fill="rgba(165,67,46,.74)"><path d="M6 44 H26 V600 H6 Z"/><path d="M374 44 H394 V600 H374 Z"/></g>
-          <path filter="url(#ink-line)" stroke="rgba(38,33,25,.36)" stroke-width="2" fill="none" stroke-linecap="round"
-            d="M120 92 Q133 110 146 92 Q159 110 172 92 Q185 110 198 92 Q211 110 224 92 Q237 110 250 92 Q263 110 276 92 M120 92 V118 M276 92 V118"/>
-          <circle class="glow" cx="66" cy="150" r="46" fill="url(#lamp-glow)"/><circle class="glow" cx="334" cy="150" r="46" fill="url(#lamp-glow)"/>
-          <g class="hl"><path d="M66 80 V132" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/><ellipse cx="66" cy="147" rx="11" ry="15" fill="rgba(186,66,46,.9)" filter="url(#ink-rough)"/><path d="M66 162 v9" stroke="rgba(150,56,40,.8)" stroke-width="1.4"/></g>
-          <g class="hl b"><path d="M334 80 V132" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/><ellipse cx="334" cy="147" rx="11" ry="15" fill="rgba(186,66,46,.9)" filter="url(#ink-rough)"/><path d="M334 162 v9" stroke="rgba(150,56,40,.8)" stroke-width="1.4"/></g>
+        <svg id="hallBones" viewBox="0 0 400 600" preserveAspectRatio="xMidYMin slice">
         </svg>
       </div>
       <div class="tablet" id="tablet"></div>
@@ -1501,40 +1500,135 @@ window.ARRIVAL_SOUND = (function () {
   const DEVDRAW = new URLSearchParams(location.search).get("devdraw") === "1";
 
   /* ------------------------------------------------------------------
-     墨筆模板（2026-11 ink pass）：整座廟只有一套筆——
-     #ink-line（乾筆、飛白）、#ink-wash（淡墨染、濃淡不勻）、#ink-rough（色塊的毛邊）。
-     殿面三殿同一份 HALL_INK_SVG＝equality；class 語意：
-       k-wash 墨染／k-line 筆線／k-solid 實塊／k-life 有人在用的東西（門、光、燈、獅）。
-     未落成之殿用同一份模板，只留 k-line 與 k-solid 的虛線放樣。
+     墨筆模板（2026-11 ink pass；v2 筆路）：整座廟只有一套筆。
+     v2 的修正來自 Crystal 的一句話：「線條要有力不軟，跟濃淡比較無關」。
+     v1 的線是等寬筆畫＋抖動濾鏡——軟。v2 的每一筆是一個有提按的形：
+       INKPEN.stroke(中鋒線, { w 筆寬, shape 筆勢, dry 飛白, seed })
+       → 起筆、行筆、收筆寬度不同；飛白是沿筆勢的細縫（evenodd 真透明），不是雜點。
+     力道在走勢與收放，不在加粗加黑；染（#ink-wash）退到最薄，只托住結構。
+     殿面三殿同一份 HALL_INK_SVG＝equality（seed 固定，生成一次、三殿共用同一字串）；class 語意：
+       k-brush 筆（結構線）／k-wash 墨染／k-solid 實塊／k-life 有人在用的東西（門、光、燈、獅）
+       k-plan 放樣線（平常不顯示；未落成之殿只顯示這一層的虛線）。
      骨架語彙（燕尾脊、出簷、額枋、四柱三開間、台基、階）讀自王保原手稿的
      立面圖——曲率與比例是 Draw One 的 roof grammar hypothesis，
      不是任何一座歷史建築的量測值，也不代表所有台灣宮廟。
      ------------------------------------------------------------------ */
-  const HALL_INK_SVG = `<svg viewBox="0 0 320 360" aria-hidden="true">
-    <path class="k-wash" filter="url(#ink-rough)" fill="#e6dcc5" d="M26 60 C78 86 120 93 160 93 C200 93 242 86 294 60 L316 148 L290 162 V322 H30 V162 L4 148 Z"/>
-    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(52,46,36,.36)"
-      d="M30 66 C78 88 120 95 160 95 C200 95 242 88 290 66 L314 146 C262 158 210 162 160 162 C110 162 58 158 6 146 Z"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.42)" stroke-width="2.2" fill="none" stroke-linecap="round"
-      d="M52 80 L40 150 M74 88 L66 154 M96 92 L91 157 M118 95 L116 159 M139 96 L138 160 M160 97 V161 M181 96 L182 160 M202 95 L204 159 M224 92 L229 157 M246 88 L254 154 M268 80 L280 150"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(30,26,20,.92)" stroke-width="9" fill="none" stroke-linecap="round"
-      d="M20 52 C64 80 112 90 160 90 C208 90 256 80 300 52"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(30,26,20,.9)" stroke-width="4.5" fill="none" stroke-linecap="round"
-      d="M22 54 C12 44 8 34 12 20 M22 54 C10 50 3 44 0 34 M298 54 C308 44 312 34 308 20 M298 54 C310 50 317 44 320 34"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(30,26,20,.88)" stroke-width="7" fill="none" stroke-linecap="round"
-      d="M4 146 C58 160 110 164 160 164 C210 164 262 160 316 146"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(30,26,20,.85)" stroke-width="3.5" fill="none" stroke-linecap="round"
-      d="M4 146 C-4 142 -7 134 -4 124 M316 146 C324 142 327 134 324 124"/>
-    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(38,33,25,.32)"
-      d="M30 166 H290 V192 C240 185 200 183 160 183 C120 183 80 185 30 192 Z"/>
-    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(52,46,36,.11)" d="M50 190 H270 V318 H50 Z"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.8)" stroke-width="5" fill="none" stroke-linecap="round" d="M36 197 H284"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.55)" stroke-width="2" fill="none" stroke-linecap="round"
-      d="M52 204 q8 1 10 9 M106 204 q-8 1 -10 9 M118 204 q8 1 10 9 M202 204 q-8 1 -10 9 M214 204 q8 1 10 9 M268 204 q-8 1 -10 9"/>
-    <g class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.4)" stroke-width="1.6" fill="none">
-      <path d="M62 224 H100 V270 H62 Z M72 224 V270 M81 224 V270 M90 224 V270 M62 247 H100"/>
-      <path d="M220 224 H258 V270 H220 Z M230 224 V270 M239 224 V270 M248 224 V270 M220 247 H258"/>
+  const INKPEN = (() => {
+    const rng = (seed) => { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; };
+    const SHAPES = {
+      both: (u) => 0.05 + 0.95 * Math.pow(Math.sin(Math.PI * u), 0.62),                       // 兩頭出鋒（脊、簷）
+      press: (u) => (u < 0.07 ? 0.55 + 0.45 * (u / 0.07) : 1 - 0.72 * Math.pow((u - 0.07) / 0.93, 1.7)), // 頓筆起、提筆收
+      post: (u) => (u < 0.05 ? 1.14 - 0.14 * (u / 0.05) : 0.9 + 0.1 * Math.sin(Math.PI * u)),  // 立柱：起筆一頓，中段穩
+      flick: (u) => (u < 0.1 ? 0.7 + 0.3 * (u / 0.1) : 0.04 + 0.96 * Math.pow(1 - (u - 0.1) / 0.9, 0.9)), // 挑
+      even: () => 1,
+    };
+    // segs：[x0,y0,x1,y1]＝直線；[x0,y0,cx1,cy1,cx2,cy2,x3,y3]＝三次曲線；多段首尾相接
+    function sample(segs) {
+      const pts = [];
+      for (const s of segs) {
+        const n = s.length === 4 ? Math.max(2, Math.ceil(Math.hypot(s[2] - s[0], s[3] - s[1]) / 3)) : 26;
+        for (let i = pts.length ? 1 : 0; i <= n; i++) {
+          const t = i / n, m = 1 - t;
+          pts.push(s.length === 4 ? [s[0] + (s[2] - s[0]) * t, s[1] + (s[3] - s[1]) * t]
+            : [m * m * m * s[0] + 3 * m * m * t * s[2] + 3 * m * t * t * s[4] + t * t * t * s[6],
+               m * m * m * s[1] + 3 * m * m * t * s[3] + 3 * m * t * t * s[5] + t * t * t * s[7]]);
+        }
+      }
+      const L = [0];
+      for (let i = 1; i < pts.length; i++) L.push(L[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+      const len = L[L.length - 1] || 1;
+      const at = (u) => { // 依弧長取點與法線
+        const d = Math.min(len, Math.max(0, u * len)); let i = 1; while (i < pts.length - 1 && L[i] < d) i++;
+        const a = pts[i - 1], b = pts[i], f = (d - L[i - 1]) / ((L[i] - L[i - 1]) || 1);
+        const tx = b[0] - a[0], ty = b[1] - a[1], tl = Math.hypot(tx, ty) || 1;
+        return { x: a[0] + tx * f, y: a[1] + ty * f, nx: -ty / tl, ny: tx / tl };
+      };
+      return { len, at };
+    }
+    const f1 = (v) => (Math.round(v * 10) / 10).toString();
+    function stroke(segs, { w = 6, shape = "press", dry = 0.6, seed = 1 } = {}) {
+      const { len, at } = sample(segs), r = rng(seed), prof = SHAPES[shape];
+      const p1 = r() * 6.28, p2 = r() * 6.28;
+      const width = (u) => w * prof(u) * (1 + 0.07 * Math.sin(u * len / 9 + p1) + 0.05 * Math.sin(u * len / 3.7 + p2));
+      const n = Math.max(8, Math.ceil(len / 2.5)), left = [], right = [];
+      for (let i = 0; i <= n; i++) {
+        const u = i / n, p = at(u), h = width(u) / 2;
+        left.push(`${f1(p.x + p.nx * h)} ${f1(p.y + p.ny * h)}`); right.push(`${f1(p.x - p.nx * h)} ${f1(p.y - p.ny * h)}`);
+      }
+      let d = `M${left.join("L")}L${right.reverse().join("L")}Z`;
+      const holes = Math.min(9, Math.floor(dry * (len / 17) * Math.min(1.4, w / 7)));
+      for (let k = 0; k < holes; k++) { // 飛白：沿筆勢的細縫，筆越走越乾（偏後段）
+        const uc = 0.16 + 0.76 * Math.pow(r(), 0.75), lu = (5 + r() * 15) / len, off = (r() - 0.5) * 0.56 * width(uc), th = (0.45 + r() * 0.75) * Math.min(1.5, w / 8);
+        const a = [], b = [];
+        for (let j = 0; j <= 7; j++) {
+          const u = Math.min(0.985, Math.max(0.015, uc - lu / 2 + (lu * j) / 7)), p = at(u), h = th * Math.sin((Math.PI * j) / 7) / 2;
+          a.push(`${f1(p.x + p.nx * (off + h))} ${f1(p.y + p.ny * (off + h))}`); b.push(`${f1(p.x + p.nx * (off - h))} ${f1(p.y + p.ny * (off - h))}`);
+        }
+        d += `M${a.join("L")}L${b.reverse().join("L")}Z`;
+      }
+      return d;
+    }
+    const line = (segs) => segs.map((s, i) => (i ? "" : `M${s[0]} ${s[1]}`) + (s.length === 4 ? `L${s[2]} ${s[3]}` : `C${s[2]} ${s[3]} ${s[4]} ${s[5]} ${s[6]} ${s[7]}`)).join("");
+    // 一組筆：[segs, opts]… → { brush: 合成的 evenodd path d, plan: 中鋒線 d（放樣用） }
+    function set(list, seed0 = 1) {
+      return { brush: list.map(([segs, o], i) => stroke(segs, { ...o, seed: seed0 * 97 + i })).join(""), plan: list.map(([segs]) => line(segs)).join("") };
+    }
+    return { stroke, set, line };
+  })();
+
+  const HALL_INK_SVG = (() => {
+    const INKD = "rgba(26,22,17,.93)", INKM = "rgba(34,29,22,.82)", INKL = "rgba(38,33,25,.6)";
+    // 正脊燕尾：一筆到底，兩頭出鋒上挑；燕尾各補一挑
+    const ridge = INKPEN.set([
+      [[[2, 20, 40, 72, 108, 93, 160, 93], [160, 93, 212, 93, 280, 72, 318, 20]], { w: 11.5, shape: "both", dry: 0.9 }],
+      [[[34, 62, 20, 56, 8, 48, -2, 36]], { w: 5.2, shape: "flick", dry: 0.3 }],
+      [[[286, 62, 300, 56, 312, 48, 322, 36]], { w: 5.2, shape: "flick", dry: 0.3 }],
+    ], 11);
+    // 簷口：一筆，兩端起翹
+    const eave = INKPEN.set([
+      [[[-4, 128, 50, 160, 110, 167, 160, 167], [160, 167, 210, 167, 270, 160, 324, 128]], { w: 8.2, shape: "both", dry: 0.7 }],
+    ], 12);
+    // 瓦壟：由脊往簷，頓起提收
+    const tiles = INKPEN.set([[52, 82, 40, 150], [74, 89, 66, 155], [96, 93, 91, 158], [118, 96, 116, 160], [139, 97, 138, 161], [160, 98, 160, 162],
+      [181, 97, 182, 161], [202, 96, 204, 160], [224, 93, 229, 158], [246, 89, 254, 155], [268, 82, 280, 150]]
+      .map((s) => [[s], { w: 2.6, shape: "press", dry: 0 }]), 13);
+    // 額枋、雀替、山牆邊、台基、階、柱礎
+    const frame = INKPEN.set([
+      [[[34, 197, 286, 197]], { w: 5.6, shape: "press", dry: 0.5 }],
+      [[[30, 170, 30, 320]], { w: 2.8, shape: "press", dry: 0 }], [[[290, 170, 290, 320]], { w: 2.8, shape: "press", dry: 0 }],
+      [[[14, 322, 306, 322]], { w: 4.2, shape: "press", dry: 0.5 }],
+      [[[124, 337, 196, 337]], { w: 2.2, shape: "both", dry: 0 }], [[[119, 344, 201, 344]], { w: 2.2, shape: "both", dry: 0 }], [[[113, 352, 207, 352]], { w: 2.4, shape: "both", dry: 0 }],
+      [[[33, 319, 55, 319]], { w: 5.5, shape: "both", dry: 0 }], [[[101, 319, 123, 319]], { w: 5.5, shape: "both", dry: 0 }],
+      [[[197, 319, 219, 319]], { w: 5.5, shape: "both", dry: 0 }], [[[265, 319, 287, 319]], { w: 5.5, shape: "both", dry: 0 }],
+      ...[[52, 1], [106, -1], [118, 1], [202, -1], [214, 1], [268, -1]].map(([x, s]) => [[[x, 204, x + 6 * s, 204, x + 10 * s, 208, x + 10 * s, 214]], { w: 2.2, shape: "flick", dry: 0 }]),
+    ], 14);
+    // 窗櫺：細而直的幾筆
+    const lattice = INKPEN.set([62, 220].flatMap((x) => [
+      [[[x, 224, x + 38, 224]], { w: 1.8, shape: "press", dry: 0 }], [[[x, 270, x + 38, 270]], { w: 1.8, shape: "press", dry: 0 }],
+      [[[x, 247, x + 38, 247]], { w: 1.4, shape: "press", dry: 0 }],
+      ...[0, 10, 19, 28, 38].map((dx) => [[[x + dx, 224, x + dx, 270]], { w: dx === 0 || dx === 38 ? 1.8 : 1.3, shape: "press", dry: 0 }]),
+    ]), 15);
+    // 四柱：硃砂，一筆直下——色薄，筆實
+    const posts = INKPEN.set([44, 112, 208, 276].map((x) => [[[x, 171, x, 317]], { w: 12.5, shape: "post", dry: 1.1 }]), 16);
+    const doorFrame = INKPEN.set([[[[120, 319, 120, 209]], { w: 2.6, shape: "press", dry: 0 }], [[[119, 209, 201, 209]], { w: 2.8, shape: "press", dry: 0 }], [[[200, 209, 200, 319]], { w: 2.6, shape: "press", dry: 0 }]], 17);
+    // 石獅：蹲坐、面向門——頭、鬃、胸、前腿、座（剪影要認得出是獅）
+    const lion = `<path d="M-17 34 H17 V27 H-17 Z"/><path d="M-14 27 C-16 14 -12 4 -5 0 C-9 -3 -10 -9 -7 -14 C-9 -20 -3 -25 3 -22 C7 -26 14 -23 14 -17 C18 -15 18 -9 15 -7 L18 -4 L14 -1 C13 3 10 5 8 6 C10 12 10 20 9 27 L4 27 L3 14 C1 18 -1 22 -1 27 Z"/><circle cx="9.5" cy="-13" r="1.3" fill="#e6dcc5"/>`;
+    return `<svg viewBox="0 0 320 360" aria-hidden="true">
+    <path class="k-wash" filter="url(#ink-rough)" fill="#e6dcc5" d="M26 62 C78 88 120 95 160 95 C200 95 242 88 294 62 L316 148 L290 162 V322 H30 V162 L4 148 Z"/>
+    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(52,46,36,.2)"
+      d="M30 68 C78 90 120 97 160 97 C200 97 242 90 290 68 L314 146 C262 158 210 162 160 162 C110 162 58 158 6 146 Z"/>
+    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(38,33,25,.2)"
+      d="M30 168 H290 V190 C240 184 200 182 160 182 C120 182 80 184 30 190 Z"/>
+    <g class="k-brush" filter="url(#ink-edge)" fill-rule="evenodd">
+      <path fill="${INKL}" d="${tiles.brush}"/>
+      <path fill="${INKL}" d="${lattice.brush}"/>
+      <path fill="${INKM}" d="${frame.brush}"/>
+      <path fill="${INKD}" d="${eave.brush}"/>
+      <path fill="${INKD}" d="${ridge.brush}"/>
     </g>
-    <path class="k-solid" filter="url(#ink-rough)" fill="rgba(26,22,17,.86)" d="M120 210 H200 V319 H120 Z"/>
+    <path class="k-plan" d="${ridge.plan}${eave.plan}${tiles.plan}${frame.plan}${lattice.plan}${posts.plan}${doorFrame.plan}"/>
+    <path class="k-solid" filter="url(#ink-rough)" fill="rgba(26,22,17,.88)" d="M120 210 H200 V319 H120 Z"/>
     <ellipse class="k-life hearth" cx="160" cy="302" rx="33" ry="48" fill="url(#hearth-glow)"/>
     <g class="k-life door-l" filter="url(#ink-rough)">
       <path fill="rgba(104,48,36,.94)" d="M120 210 H160 V319 H120 Z"/>
@@ -1544,82 +1638,113 @@ window.ARRIVAL_SOUND = (function () {
       <path fill="rgba(104,48,36,.94)" d="M160 210 H200 V319 H160 Z"/>
       <path d="M169 262 v11" stroke="rgba(239,229,208,.55)" stroke-width="2" stroke-linecap="round"/>
     </g>
-    <g class="k-solid" filter="url(#ink-rough)" fill="rgba(165,67,46,.82)">
-      <path d="M38 172 H50 V316 H38 Z"/><path d="M106 172 H118 V316 H106 Z"/>
-      <path d="M202 172 H214 V316 H202 Z"/><path d="M270 172 H282 V316 H270 Z"/>
+    <g class="k-brush" filter="url(#ink-edge)" fill-rule="evenodd">
+      <path fill="rgba(172,60,40,.74)" d="${posts.brush}"/>
+      <path fill="${INKM}" d="${doorFrame.brush}"/>
     </g>
-    <path class="k-life" filter="url(#ink-rough)" stroke="rgba(120,44,30,.5)" stroke-width="3" fill="none"
-      d="M47 176 V312 M115 176 V312 M211 176 V312 M279 176 V312"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.78)" stroke-width="5.5" fill="none" stroke-linecap="round"
-      d="M33 319 H55 M101 319 H123 M197 319 H219 M265 319 H287"/>
-    <path class="k-wash" filter="url(#ink-wash)" fill="rgba(52,46,36,.24)" d="M18 322 H302 V336 H18 Z"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.7)" stroke-width="2.6" fill="none" stroke-linecap="round" d="M16 322 H304"/>
-    <path class="k-line" filter="url(#ink-line)" stroke="rgba(38,33,25,.5)" stroke-width="2" fill="none" stroke-linecap="round"
-      d="M124 336 H196 M119 343 H201 M113 351 H207"/>
-    <g class="k-life" filter="url(#ink-wash)" fill="rgba(38,33,25,.74)">
-      <path d="M72 334 C70 318 74 308 82 306 C78 300 80 292 88 292 C96 292 98 300 94 306 C100 310 102 322 100 334 Z"/>
-      <path d="M248 334 C250 318 246 308 238 306 C242 300 240 292 232 292 C224 292 222 300 226 306 C220 310 218 322 220 334 Z"/>
+    <g class="k-life" filter="url(#ink-edge)" fill="rgba(30,26,20,.86)">
+      <g transform="translate(86 300) scale(.92)">${lion}</g>
+      <g transform="translate(234 300) scale(-.92 .92)">${lion}</g>
     </g>
     <g class="k-life hl"><path d="M84 198 V212" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/>
-      <ellipse cx="84" cy="221" rx="7" ry="9.5" fill="rgba(186,66,46,.9)" filter="url(#ink-rough)"/></g>
+      <ellipse cx="84" cy="221" rx="7" ry="9.5" fill="rgba(186,66,46,.86)" filter="url(#ink-rough)"/></g>
     <g class="k-life hl b"><path d="M236 198 V212" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/>
-      <ellipse cx="236" cy="221" rx="7" ry="9.5" fill="rgba(186,66,46,.9)" filter="url(#ink-rough)"/></g>
+      <ellipse cx="236" cy="221" rx="7" ry="9.5" fill="rgba(186,66,46,.86)" filter="url(#ink-rough)"/></g>
   </svg>`;
+  })();
 
-  /* 埕西端的老樹（早於三殿）：枯筆樹身、一枝橫過天際、葉是墨點——葉會動，樹不動 */
-  const TREE_INK_SVG = `<svg viewBox="0 0 520 400" preserveAspectRatio="xMinYMax meet" aria-hidden="true">
-    <g filter="url(#ink-line)" fill="none" stroke-linecap="round" stroke="rgba(30,26,20,.9)">
-      <path stroke-width="27" d="M78 398 C70 322 88 262 70 196 C63 162 72 122 102 88"/>
-      <path stroke-width="15" d="M102 88 C122 64 150 52 188 54"/>
-      <path stroke-width="10" d="M82 176 C150 114 238 92 330 110 C372 118 412 110 456 90"/>
-      <path stroke-width="4.5" d="M250 99 C270 76 300 64 332 62 M330 110 C352 132 380 140 410 138 M188 54 C216 40 250 36 284 40 M456 90 C474 82 488 70 498 56"/>
-      <path stroke-width="9" d="M70 396 C58 390 44 392 30 400 M86 396 C100 390 112 394 124 400"/>
-    </g>
-    <g class="sway" filter="url(#ink-wash)">
-      <g fill="rgba(38,33,25,.62)">
-        <ellipse cx="150" cy="40" rx="30" ry="19"/><ellipse cx="204" cy="30" rx="26" ry="16"/><ellipse cx="262" cy="26" rx="30" ry="17"/>
-        <ellipse cx="318" cy="48" rx="26" ry="16"/><ellipse cx="352" cy="74" rx="22" ry="14"/><ellipse cx="402" cy="124" rx="26" ry="15"/>
-        <ellipse cx="440" cy="72" rx="24" ry="15"/><ellipse cx="490" cy="42" rx="22" ry="14"/><ellipse cx="118" cy="62" rx="24" ry="16"/>
-        <ellipse cx="236" cy="118" rx="24" ry="13"/><ellipse cx="300" cy="134" rx="20" ry="12"/>
-      </g>
-      <g fill="rgba(52,46,36,.34)">
+  /* 埕西端的老樹（早於三殿）：樹身自根往上一筆（下重上輕）、一枝橫過天際、葉是墨點——葉會動，樹不動 */
+  const TREE_INK_SVG = (() => {
+    const wood = INKPEN.set([
+      [[[80, 400, 70, 322, 90, 262, 70, 196], [70, 196, 63, 162, 72, 122, 104, 86]], { w: 30, shape: "press", dry: 1.3 }],
+      [[[100, 92, 122, 64, 150, 52, 190, 54]], { w: 13, shape: "press", dry: 0.8 }],
+      [[[78, 186, 150, 114, 238, 92, 330, 110], [330, 110, 372, 118, 412, 110, 458, 90]], { w: 12, shape: "press", dry: 1 }],
+      [[[250, 99, 270, 76, 300, 64, 334, 62]], { w: 5, shape: "flick", dry: 0.3 }],
+      [[[330, 110, 352, 132, 380, 140, 412, 138]], { w: 5, shape: "flick", dry: 0.3 }],
+      [[[188, 54, 216, 40, 250, 36, 286, 40]], { w: 5, shape: "flick", dry: 0.3 }],
+      [[[452, 92, 474, 82, 488, 70, 500, 54]], { w: 4.5, shape: "flick", dry: 0 }],
+      [[[74, 394, 60, 388, 46, 390, 28, 400]], { w: 9, shape: "flick", dry: 0.3 }],
+      [[[88, 394, 102, 388, 114, 392, 128, 400]], { w: 9, shape: "flick", dry: 0.3 }],
+    ], 21);
+    return `<svg viewBox="0 0 520 400" preserveAspectRatio="xMaxYMax meet" aria-hidden="true">
+    <path filter="url(#ink-edge)" fill-rule="evenodd" fill="rgba(26,22,17,.92)" d="${wood.brush}"/>
+    <g class="sway">
+      <g filter="url(#ink-wash)" fill="rgba(52,46,36,.22)">
         <ellipse cx="176" cy="66" rx="34" ry="18"/><ellipse cx="288" cy="74" rx="36" ry="18"/><ellipse cx="386" cy="92" rx="30" ry="16"/>
         <ellipse cx="468" cy="100" rx="26" ry="14"/><ellipse cx="96" cy="34" rx="26" ry="15"/><ellipse cx="346" cy="150" rx="24" ry="12"/>
       </g>
-      <g fill="rgba(86,104,66,.62)">
-        <ellipse cx="226" cy="52" rx="13" ry="8"/><ellipse cx="420" cy="50" rx="12" ry="8"/><ellipse cx="270" cy="142" rx="11" ry="7"/>
+      <g filter="url(#ink-rough)" fill="rgba(34,29,22,.7)">
+        <ellipse cx="150" cy="40" rx="22" ry="13" transform="rotate(-14 150 40)"/><ellipse cx="204" cy="30" rx="19" ry="11" transform="rotate(8 204 30)"/>
+        <ellipse cx="262" cy="26" rx="22" ry="12" transform="rotate(-6 262 26)"/><ellipse cx="318" cy="48" rx="19" ry="11" transform="rotate(16 318 48)"/>
+        <ellipse cx="352" cy="74" rx="15" ry="9" transform="rotate(-20 352 74)"/><ellipse cx="402" cy="124" rx="19" ry="10" transform="rotate(10 402 124)"/>
+        <ellipse cx="440" cy="72" rx="17" ry="10" transform="rotate(-12 440 72)"/><ellipse cx="490" cy="42" rx="15" ry="9" transform="rotate(20 490 42)"/>
+        <ellipse cx="118" cy="62" rx="17" ry="10" transform="rotate(-24 118 62)"/><ellipse cx="236" cy="118" rx="17" ry="9" transform="rotate(12 236 118)"/>
+        <ellipse cx="300" cy="134" rx="14" ry="8" transform="rotate(-10 300 134)"/>
+      </g>
+      <g filter="url(#ink-rough)" fill="rgba(86,104,66,.6)">
+        <ellipse cx="226" cy="52" rx="12" ry="7" transform="rotate(-18 226 52)"/><ellipse cx="420" cy="50" rx="11" ry="7" transform="rotate(14 420 50)"/>
+        <ellipse cx="270" cy="142" rx="10" ry="6" transform="rotate(-8 270 142)"/>
       </g>
     </g>
   </svg>`;
+  })();
+
+  /* 山門的簷、殿內的樑與柱：同一支筆（boot 時掛進靜態容器；三殿共用同一份殿內的骨） */
+  const GATE_ROOF_INK = (() => {
+    const eave = INKPEN.set([[[[-6, 82, 70, 102, 136, 106, 200, 106], [200, 106, 264, 106, 330, 102, 406, 82]], { w: 7.5, shape: "both", dry: 0.8 }]], 31);
+    const ribs = INKPEN.set([[40, 4, 30, 88], [90, 4, 84, 96], [145, 4, 142, 100], [200, 4, 200, 102], [255, 4, 258, 100], [310, 4, 316, 96], [360, 4, 370, 88]]
+      .map((s) => [[s], { w: 2.4, shape: "press", dry: 0 }]), 32);
+    return `<path filter="url(#ink-wash)" fill="rgba(52,46,36,.16)" d="M0 0 H400 V84 C330 98 264 102 200 102 C136 102 70 98 0 84 Z"/>
+      <g filter="url(#ink-edge)" fill-rule="evenodd"><path fill="rgba(38,33,25,.5)" d="${ribs.brush}"/><path fill="rgba(26,22,17,.92)" d="${eave.brush}"/></g>`;
+  })();
+  const HALL_BONES_INK = (() => {
+    const beams = INKPEN.set([
+      [[[-12, 44, 412, 44]], { w: 12, shape: "press", dry: 1.2 }],
+      [[[-12, 78, 412, 78]], { w: 5.5, shape: "press", dry: 0.6 }],
+      ...[40, 96, 200, 304, 360].map((x) => [[[x, 50, x, 74]], { w: 3.2, shape: "press", dry: 0 }]),
+      [[[30, 84, 40, 85, 46, 91, 48, 100]], { w: 2.6, shape: "flick", dry: 0 }], [[[370, 84, 360, 85, 354, 91, 352, 100]], { w: 2.6, shape: "flick", dry: 0 }],
+    ], 41);
+    const cols = INKPEN.set([[[[16, 42, 16, 604]], { w: 21, shape: "post", dry: 1.4 }], [[[384, 42, 384, 604]], { w: 21, shape: "post", dry: 1.4 }]], 42);
+    const veil = INKPEN.set([[[[120, 118, 120, 92], ...[0, 1, 2, 3, 4, 5].map((i) => [120 + i * 26, 92, 126 + i * 26, 110, 140 + i * 26, 110, 146 + i * 26, 92]), [276, 92, 276, 118]], { w: 2.2, shape: "even", dry: 0 }]], 43);
+    return `<path filter="url(#ink-wash)" fill="rgba(38,33,25,.16)" d="M-10 0 H410 V44 C300 38 100 38 -10 44 Z"/>
+      <g filter="url(#ink-edge)" fill-rule="evenodd">
+        <path fill="rgba(172,60,40,.7)" d="${cols.brush}"/><path fill="rgba(38,33,25,.42)" d="${veil.brush}"/><path fill="rgba(26,22,17,.9)" d="${beams.brush}"/>
+      </g>
+      <circle class="glow" cx="66" cy="150" r="46" fill="url(#lamp-glow)"/><circle class="glow" cx="334" cy="150" r="46" fill="url(#lamp-glow)"/>
+      <g class="hl"><path d="M66 80 V132" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/><ellipse cx="66" cy="147" rx="11" ry="15" fill="rgba(186,66,46,.86)" filter="url(#ink-rough)"/><path d="M66 162 v9" stroke="rgba(150,56,40,.8)" stroke-width="1.4"/></g>
+      <g class="hl b"><path d="M334 80 V132" stroke="rgba(38,33,25,.6)" stroke-width="1.2"/><ellipse cx="334" cy="147" rx="11" ry="15" fill="rgba(186,66,46,.86)" filter="url(#ink-rough)"/><path d="M334 162 v9" stroke="rgba(150,56,40,.8)" stroke-width="1.4"/></g>`;
+  })();
+
+  document.getElementById("gateRoof").innerHTML = GATE_ROOF_INK;
+  document.getElementById("hallBones").innerHTML = HALL_BONES_INK;
 
   /* 墨筆小景：有人在用的東西。尺寸 [w, h] 為 px；全部 bottom 錨在埕面。 */
   const INK = {
     bench: [104, 34, `<svg viewBox="0 0 104 34" aria-hidden="true">
-      <ellipse cx="52" cy="31" rx="48" ry="3" fill="rgba(52,46,36,.18)" filter="url(#ink-wash)"/>
-      <g filter="url(#ink-line)" stroke="rgba(38,33,25,.86)" fill="none" stroke-linecap="round">
-        <path stroke-width="6" d="M4 9 H100"/><path stroke-width="4" d="M16 12 V30 M88 12 V30"/><path stroke-width="2" d="M16 22 H88"/></g></svg>`],
-    table: [176, 112, `<svg viewBox="0 0 176 112" aria-hidden="true">
-      <ellipse cx="88" cy="108" rx="84" ry="4" fill="rgba(52,46,36,.16)" filter="url(#ink-wash)"/>
-      <g filter="url(#ink-line)" stroke="rgba(38,33,25,.84)" fill="none" stroke-linecap="round">
-        <path stroke-width="5" d="M6 52 H122"/><path stroke-width="3.5" d="M12 55 V106 M116 55 V106"/>
-        <path stroke-width="1.8" d="M12 68 H116 M12 90 H116 M50 55 V68 M60 61 h8"/>
-      </g>
-      <g filter="url(#ink-line)" stroke="rgba(38,33,25,.7)" fill="none" stroke-linecap="round" stroke-width="1.8">
+      <ellipse cx="52" cy="31" rx="48" ry="3" fill="rgba(52,46,36,.15)" filter="url(#ink-wash)"/>
+      <path filter="url(#ink-edge)" fill-rule="evenodd" fill="rgba(30,26,20,.88)" d="${INKPEN.set([
+        [[[3, 9, 101, 9]], { w: 6.4, shape: "press", dry: 0.7 }], [[[16, 11, 15, 30]], { w: 4, shape: "press", dry: 0 }], [[[88, 11, 89, 30]], { w: 4, shape: "press", dry: 0 }],
+        [[[17, 22, 87, 22]], { w: 1.8, shape: "press", dry: 0 }]], 52).brush}"/></svg>`],
+    table: [132, 112, `<svg viewBox="0 0 132 112" aria-hidden="true">
+      <ellipse cx="66" cy="108" rx="62" ry="4" fill="rgba(52,46,36,.14)" filter="url(#ink-wash)"/>
+      <path filter="url(#ink-edge)" fill-rule="evenodd" fill="rgba(30,26,20,.88)" d="${INKPEN.set([
+        [[[4, 52, 126, 52]], { w: 5.4, shape: "press", dry: 0.5 }],
+        [[[12, 54, 12, 106]], { w: 3.6, shape: "press", dry: 0 }], [[[118, 54, 118, 106]], { w: 3.6, shape: "press", dry: 0 }],
+        [[[12, 68, 118, 68]], { w: 1.8, shape: "press", dry: 0 }], [[[52, 55, 52, 68]], { w: 1.6, shape: "even", dry: 0 }], [[[62, 61, 70, 61]], { w: 1.6, shape: "even", dry: 0 }],
+      ], 51).brush}"/>
+      <g filter="url(#ink-line)" stroke="rgba(38,33,25,.74)" fill="none" stroke-linecap="round" stroke-width="1.8">
         <path d="M26 50 C22 44 22 34 26 30 H34 C38 34 38 44 34 50 Z"/>
         <path d="M30 30 C28 20 24 14 18 10 M30 30 C31 18 34 12 40 6 M30 30 C30 20 30 14 28 8"/>
         <path d="M70 50 V38 H82 V50 M72 38 q4 -5 8 0 M82 42 q6 0 5 5"/>
-        <path d="M92 50 V34 H102 V50 M94 34 V30 H100 V34"/>
-        <path d="M30 96 H60 L56 104 H34 Z M32 96 q13 -8 26 0"/>
+        <circle cx="106" cy="34" r="11"/><circle cx="106" cy="34" r="2.2"/>
+        <path d="M106 23 V45 M95 34 H117 M98.2 26.2 L113.8 41.8 M113.8 26.2 L98.2 41.8 M106 45 V50 M99 50 H113"/>
       </g>
       <g filter="url(#ink-rough)"><path d="M44 49 H64" stroke="rgba(38,33,25,.7)" stroke-width="2"/>
-        <circle cx="49" cy="45" r="4.2" fill="rgba(204,116,42,.92)"/><circle cx="57.5" cy="45" r="4.2" fill="rgba(204,116,42,.92)"/><circle cx="53" cy="39.5" r="4.2" fill="rgba(210,126,48,.92)"/>
+        <circle cx="49" cy="45" r="4.2" fill="rgba(204,116,42,.9)"/><circle cx="57.5" cy="45" r="4.2" fill="rgba(204,116,42,.9)"/><circle cx="53" cy="39.5" r="4.2" fill="rgba(210,126,48,.9)"/>
         <circle cx="18" cy="9" r="2.4" fill="rgba(186,66,46,.8)"/><circle cx="41" cy="6" r="2.4" fill="rgba(186,66,46,.8)"/><circle cx="28" cy="7" r="2" fill="rgba(186,66,46,.7)"/></g>
-      <g filter="url(#ink-line)" stroke="rgba(38,33,25,.74)" fill="none" stroke-linecap="round" stroke-width="1.8">
-        <circle cx="150" cy="30" r="15"/><circle cx="150" cy="30" r="3"/>
-        <path d="M150 15 V45 M135 30 H165 M139.5 19.5 L160.5 40.5 M160.5 19.5 L139.5 40.5 M150 45 V52 M140 52 H160"/></g>
-      <g filter="url(#ink-rough)" fill="rgba(170,74,56,.78)">
-        <path d="M128 78 H152 L156 106 H151 L149 88 H131 L129 106 H124 Z"/>
-        <path d="M70 84 H92 L96 108 H91 L89 92 H73 L71 108 H66 Z"/></g></svg>`],
+      <g filter="url(#ink-rough)" fill="rgba(170,74,56,.74)">
+        <path d="M24 82 H46 L50 108 H45 L43 90 H27 L25 108 H20 Z"/>
+        <path d="M78 86 H98 L102 108 H97 L95 93 H81 L79 108 H74 Z"/></g></svg>`],
     bike: [96, 60, `<svg viewBox="0 0 48 30" aria-hidden="true">
       <g filter="url(#ink-line)" stroke="rgba(38,33,25,.82)" stroke-width="1.5" fill="none" stroke-linecap="round">
         <circle cx="10" cy="21" r="8"/><circle cx="38" cy="21" r="8"/>
@@ -1650,6 +1775,14 @@ window.ARRIVAL_SOUND = (function () {
         <path stroke-width="2" d="M12 40 V84 M46 40 V84 M8 84 H50 M8 93 H50"/></g>
       <path filter="url(#ink-rough)" fill="rgba(26,22,17,.84)" d="M21 82 V62 C21 54 37 54 37 62 V82 Z"/>
       <ellipse cx="29" cy="76" rx="6" ry="6" fill="rgba(214,150,84,.5)"/></svg>`],
+    sweep: [120, 46, `<svg viewBox="0 0 120 46" aria-hidden="true">
+      <path fill-rule="evenodd" fill="rgba(52,46,36,.17)" d="${INKPEN.set([
+        [[[6, 30, 30, 14, 62, 10, 96, 18]], { w: 3.4, shape: "flick", dry: 0.6 }], [[[10, 38, 36, 24, 66, 20, 104, 28]], { w: 3, shape: "flick", dry: 0.6 }],
+        [[[4, 22, 26, 8, 54, 4, 84, 8]], { w: 2.6, shape: "flick", dry: 0.4 }]], 53).brush}"/>
+      <g filter="url(#ink-rough)"><ellipse cx="106" cy="30" rx="4.5" ry="2.4" fill="rgba(122,92,58,.8)" transform="rotate(-24 106 30)"/>
+        <ellipse cx="112" cy="35" rx="4" ry="2.2" fill="rgba(96,86,58,.75)" transform="rotate(18 112 35)"/>
+        <ellipse cx="101" cy="37" rx="3.6" ry="2" fill="rgba(134,100,62,.75)" transform="rotate(40 101 37)"/>
+        <ellipse cx="109" cy="41" rx="4.2" ry="2.2" fill="rgba(110,84,56,.7)" transform="rotate(-10 109 41)"/></g></svg>`],
     sparrow: [22, 16, `<svg viewBox="0 0 22 16" aria-hidden="true">
       <g filter="url(#ink-rough)"><path fill="rgba(110,82,58,.92)" d="M3 9 C3 4 9 2 13 4 C17 2 20 5 19 8 L21 9 L18.5 9.6 C17 13 11 14 7 12 L1 13 Z"/>
         <circle cx="16.4" cy="6.4" r="0.9" fill="rgba(20,16,12,.95)"/><path d="M9 13 V15.5 M12 13 V15.5" stroke="rgba(38,33,25,.8)" stroke-width="0.9"/></g></svg>`],
@@ -1766,6 +1899,7 @@ window.ARRIVAL_SOUND = (function () {
         const plq = document.createElement("div");
         plq.className = "plaque2";
         plq.textContent = s.deity;
+        plq.style.setProperty("--chars", String(Math.max(3, s.deity.length))); // 字隨匾：依字數不依身分（同殿內聖號牌的做法）
         hallEl.appendChild(plq);
         f.appendChild(hallEl);
         if (s.hypothetical) {
@@ -1832,11 +1966,17 @@ window.ARRIVAL_SOUND = (function () {
       sprite("pot", B(voidIndex) + 34, { ...NEAR, bottom: "33%" });
       put("sparrow", B(voidIndex) + 8, { bottom: "24%" }).innerHTML = INK.sparrow[2];
       // 茶水桌：柑、花、茶壺、電扇、兩張紅塑膠凳——有人顧的地方
-      sprite("table", B(voidIndex + 1) - 74, NEAR);
+      sprite("table", B(voidIndex + 1) - Math.min(96, 0.3 * stationW), { ...NEAR, transform: "scale(1.02)" }); // 窄螢幕也不進中軸中央
       // 誰的腳踏車、竹掃帚、水桶（停的、掃的）
       sprite("bike", B(voidIndex + 2) - 62, { ...NEAR, transform: "scale(1.16) rotate(-4deg)" });
       sprite("broom", B(voidIndex + 2) + 44, { ...NEAR, bottom: "33.5%", transform: "rotate(9deg)" });
       sprite("bucket", B(voidIndex + 2) + 30, { ...NEAR, bottom: "27.5%" });
+      // 剛掃過：幾道掃痕、一小堆葉（牛牛：少量落葉或掃痕——時間有人在顧）
+      sprite("sweep", B(voidIndex + 2) - 104, { bottom: "22%" });
+      // 樹下落了幾片，還沒掃到（只落在樹這一側；中軸空段中央不落）
+      [[-0.06, "31%", -20], [0.1, "25%", 34], [0.22, "35.5%", 8], [0.3, "21%", -40]].forEach(([fx, bottom, rot], i) => {
+        put("leaf", fx * stationW, { bottom, transform: `rotate(${rot}deg)`, opacity: String(0.85 - i * 0.08) });
+      });
       // 牆尾（最後一殿之外）：金爐，一縷很輕的煙（燒的）；旁邊再一盆
       const endX = STATIONS.length * stationW + 10;
       sprite("burner", endX);
@@ -2079,6 +2219,9 @@ window.ARRIVAL_SOUND = (function () {
     // 以站的 data-hall 取元素，無身分分支——三殿同一個動作）
     const facadeEl = stageStrip.querySelector(`[data-hall="${hall.id}"]`);
     facadeEl?.classList.add("opening");
+    // 有門可推才有門檻的光（未落成之殿沒有門；reduced motion 不做轉場）
+    const veil = (!reduceMotion && facadeEl && !hall.hypothetical) ? $("threshold") : null;
+    if (veil) { veil.classList.remove("leaving"); veil.classList.add("on"); }
     const court = $("s-court");
     court.style.transformOrigin = "50% 44%";
     court.style.transform = "scale(1.5)";
@@ -2088,6 +2231,7 @@ window.ARRIVAL_SOUND = (function () {
       facadeEl?.classList.remove("opening");
       renderHall(hall, { boundEntry });
       show("hall");
+      if (veil) requestAnimationFrame(() => { veil.classList.add("leaving"); veil.classList.remove("on"); });
     }, reduceMotion ? 0 : 400);
   }
 
