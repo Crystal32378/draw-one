@@ -117,7 +117,9 @@ const copyBlock = html.slice(html.indexOf("const JIEYUE_COPY"), html.indexOf("fu
 const VERDICT = ["大吉", "上上", "下下", "凶", "必成", "必得", "保證", "一定會", "注定"];
 check("Draw One's own fold copy carries no verdict / guarantee words", VERDICT.every((w) => !copyBlock.includes(w)));
 check("copy says what it is and is not（不是預測）", copyBlock.includes("不是抽一的話") && copyBlock.includes("預測"));
-check("PROBABLE is never worded as confirmed（待複核 ≠ 已核圖）", /rec\.confirmed \? "已核圖" : statusWord/.test(rj) && /rec\.confirmed \? copy\.confirmed : copy\.pending/.test(rj));
+check("PROBABLE is never worded as confirmed（待複核 ≠ 已核圖）", /rec\.confirmed \? "已核圖" : statusWord/.test(rj) && (copyBlock.match(/rec\.confirmed \? "，人工核圖確認" : "，待複核"/g) || []).length === 2);
+check("觀音文案維持 PR #34 原版：不加說明句", /guanyin: \{[\s\S]*?about: null,/.test(copyBlock)
+  && copyBlock.includes('short: (pool) => `${pool.edition.split("《")[0]}版`') && copyBlock.includes('src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`'));
 
 console.log("G 關帝 pool — same gates, same guard");
 const PD = loadWin("assets/interpretation-pool.guandi.js").INTERPRETATION_POOL_GUANDI;

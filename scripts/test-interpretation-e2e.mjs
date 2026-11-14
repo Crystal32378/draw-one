@@ -61,7 +61,7 @@ const fold = () => page.evaluate(() => {
     word: $("jieyueWord").textContent, prov: $("jieyueProv").textContent,
     text: $("jieyueText").textContent, textHidden: $("jieyueText").hidden,
     src: $("jieyueSrc").hidden ? "" : $("jieyueSrc").textContent,
-    about: $("jieyueAbout").textContent,
+    about: $("jieyueAbout").hidden ? "" : $("jieyueAbout").textContent, aboutHidden: $("jieyueAbout").hidden,
     link: $("jieyueLink").hidden ? null : { href: $("jieyueLink").getAttribute("href"), text: $("jieyueLink").textContent, rel: $("jieyueLink").rel },
     expanded: $("jieyueToggle").getAttribute("aria-expanded"),
     stageText: $("slipStage").innerText,
@@ -134,10 +134,10 @@ await view("guanyin-001"); f = await fold();
 check("#1 摺頁出現、收合、標「艋舺龍山寺版・已核圖」", !f.hidden && !f.open && f.word === "解曰" && f.prov === "艋舺龍山寺版・已核圖");
 await openFold(); f = await fold();
 check("#1 展開＝原文逐字", f.open && f.text === await poolText("INTERPRETATION_POOL", "guanyin-001"));
-check("#1 來源＋人工核圖；說明它不是抽一的話、不是預測", f.src.includes("薛皓文 2008") && f.src.includes("人工核圖確認") && f.about.includes("不是抽一的話") && f.about.includes("預測") && f.about.includes("已核圖＝"));
+check("#1 來源＋人工核圖；文案同 PR #34 原版（無說明句）", f.src === "據艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像），人工核圖確認" && f.aboutHidden);
 await shot("guanyin-confirmed");
 await view(pickPending); await openFold(); f = await fold();
-check(`${pickPending} 標「待複核」，不寫成已核圖`, f.prov === "艋舺龍山寺版・待複核" && f.src.endsWith("，待複核") && f.about.includes("待複核＝") && !f.about.includes("已核圖＝")
+check(`${pickPending} 標「待複核」，不寫成已核圖`, f.prov === "艋舺龍山寺版・待複核" && f.src.endsWith("，待複核") && !f.src.includes("核圖") && f.aboutHidden
   && f.text === await poolText("INTERPRETATION_POOL", pickPending));
 await shot("guanyin-pending");
 await view("guanyin-012"); f = await fold();
@@ -151,7 +151,8 @@ await view("guandi-001"); f = await fold();
 check("#1 標「道藏本・待複核」", !f.hidden && f.word === "解曰" && f.prov === "道藏本・待複核");
 await openFold(); f = await fold();
 check("#1 展開＝原文逐字；來源寫明維基文庫轉錄、未核道藏影像", f.text === await poolText("INTERPRETATION_POOL_GUANDI", "guandi-001")
-  && f.src.includes("道藏本") && f.src.includes("維基文庫轉錄") && f.src.endsWith("待複核") && f.about.includes("還沒有逐籤對過道藏影像"));
+  && f.src.includes("道藏本") && f.src.includes("維基文庫轉錄") && f.src.endsWith("待複核") && f.about.includes("還沒有逐籤對過道藏影像")
+  && f.about.includes("不是抽一的話") && f.about.includes("預測"));
 await shot("guandi-pending");
 await view("guandi-058"); await openFold(); f = await fold();
 check("#58 暫未上紙：說「疑似認錯的字」", f.prov === "此籤暫未上紙" && f.text === "" && f.about.includes("疑似認錯的字"));

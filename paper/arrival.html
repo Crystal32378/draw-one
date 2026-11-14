@@ -891,7 +891,7 @@
   .jieyue-src { margin: 12px 0 0; font-size: 10px; line-height: 1.7; letter-spacing: 0.06em; color: var(--ink-soft); }
   /* 三殿歷史解讀（2026-11）：說明這段字是什麼、可信到哪裡；暫未上紙的，說原因、不補字。 */
   .jieyue-about { margin: 10px 0 0; padding-top: 10px; border-top: 1px dotted rgba(74, 66, 52, 0.22);
-    font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); white-space: pre-line; }
+    font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); }
   .jieyue-about.is-lead { margin-top: 0; padding-top: 0; border-top: 0; font-size: 12.5px; color: var(--ink); }
   .jieyue-link { display: inline-block; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
     color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
@@ -2389,23 +2389,23 @@ window.ARRIVAL_SOUND = (function () {
   //
   // 三殿（2026-11）：觀音、關帝各有一份 pool；六十甲子沒有 pool（整套暫緩）。
   // 暫緩的籤不沉默——guard.holdFor 准許時，說「暫未上紙」和原因；永遠不補字、不代寫。
-  // 這裡的字只有三種：來源原文（rec.text）、來源與狀態標示、抽一自己的說明（JIEYUE_COPY）。
+  // 這裡的字只有三種：來源原文（rec.text）、來源與狀態標示、抽一自己的標示語（JIEYUE_COPY）。
   const JIEYUE_POOLS = { guanyin: window.INTERPRETATION_POOL, guandi: window.INTERPRETATION_POOL_GUANDI };
   const JIEYUE_COPY = {
-    // 這段字是什麼——三殿同一句。不是解讀，是標籤。
-    what: "解曰是這個版本原有的判語，照原文收錄，一字未改。它是前人對這首籤的讀法——不是抽一的話，也不是對你這件事的預測。",
     corpus: {
+      // 觀音：文案維持 PR #34 福 re-review 拍板的原版——不加任何說明句（about: null）。
       guanyin: {
         short: (pool) => `${pool.edition.split("《")[0]}版`,
         src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
-        confirmed: "已核圖＝有人對著籤紙影像，逐字看過這一首。",
-        pending: "待複核＝轉錄與來源比對過，還沒有人對著籤紙影像逐字核過，可能有錯字。",
+        about: null,
       },
+      // 關帝：道藏本的解曰多是「求財必豐」「夫妻離散」這種斷語口吻，和觀音的勸解不同。
+      // 所以這一殿多一句定位——這是版本原有的字，不是抽一替你下的判斷——並寫明轉錄未核影像。
+      // （是否保留這一句是文案決策，見 docs/interpretation-three-halls.md〈需要 Crystal 決定的事〉。）
       guandi: {
         short: () => "道藏本",
         src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
-        confirmed: "已核圖＝有人對著道藏影像，逐字看過這一首。",
-        pending: "待複核＝取自維基文庫的道藏本轉錄，還沒有逐籤對過道藏影像，可能有錯字。",
+        about: "這是道藏本原有的判語，照原文收錄——是前人的讀法，不是抽一的話，也不是對你這件事的預測。還沒有逐籤對過道藏影像，可能有錯字。",
       },
     },
     holdSlip: {
@@ -2437,6 +2437,7 @@ window.ARRIVAL_SOUND = (function () {
     const text = $("jieyueText"), src = $("jieyueSrc"), about = $("jieyueAbout"), link = $("jieyueLink");
     link.hidden = true; link.removeAttribute("href"); link.textContent = "";
     about.classList.toggle("is-lead", !rec);
+    about.hidden = false;
     text.hidden = !rec;
     if (rec) {
       // 上紙：原文＋來源＋狀態。狀態詞 1:1，不升級。
@@ -2447,7 +2448,8 @@ window.ARRIVAL_SOUND = (function () {
       $("jieyueText").textContent = rec.text;
       src.hidden = false;
       src.textContent = copy.src(pool, rec);
-      about.textContent = `${JIEYUE_COPY.what}\n${rec.confirmed ? copy.confirmed : copy.pending}`;
+      about.textContent = copy.about ?? "";
+      about.hidden = !copy.about;
       return;
     }
     // 暫未上紙：只說原因。沒有任何被暫緩的文字會到這一頁。
