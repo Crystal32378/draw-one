@@ -101,7 +101,8 @@ await page.click("#takeBtn");
 await sleep(300);
 p = await params();
 check("展籤：世界閉嘴 (world duck 0.0001)", p.slip === true && p.targets.world === 0.0001);
-check("新抽的籤沒有帶走列（先收，才是你的）", await page.$eval("#takeawayZone", (el) => el.hidden));
+// 2026-09-14 P0（PR #32）：紙落定即入簿，紙在＝已是你的 → 帶走列隨紙出現（舊契約「先收才帶走」已改）。
+check("新抽的籤紙落定即可帶走（在籤簿裡 ⟺ 是你的了）", await page.$eval("#takeawayZone", (el) => !el.hidden));
 await page.click("#keepBtn");
 await sleep(500);
 check("收籤句點：紙收起一拍（slip-away beat 進行中）",

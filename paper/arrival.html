@@ -889,6 +889,14 @@
   .jieyue-text { font-family: "Noto Serif TC", serif; font-size: 15px; line-height: 2.05; color: var(--ink);
     margin: 0; letter-spacing: 0.04em; }
   .jieyue-src { margin: 12px 0 0; font-size: 10px; line-height: 1.7; letter-spacing: 0.06em; color: var(--ink-soft); }
+  /* 三殿歷史解讀（2026-11）：說明這段字是什麼、可信到哪裡；暫未上紙的，說原因、不補字。 */
+  .jieyue-about { margin: 10px 0 0; padding-top: 10px; border-top: 1px dotted rgba(74, 66, 52, 0.22);
+    font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); white-space: pre-line; }
+  .jieyue-about.is-lead { margin-top: 0; padding-top: 0; border-top: 0; font-size: 12.5px; color: var(--ink); }
+  .jieyue-link { display: inline-block; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
+    color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-color: rgba(74, 66, 52, 0.45); }
+  .jieyue-link:focus-visible, .jieyue-toggle:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
 
   .note-zone { width: 100%; max-width: 340px; margin-top: 22px; display: grid; gap: 8px; }
   .note-zone textarea {
@@ -1024,16 +1032,19 @@
       <div class="slip-stage" id="slipStage">
         <div id="slipMount" style="width:100%;display:flex;justify-content:center;"></div>
         <!-- 解曰＝歷史解，不是紙的一部分，不是 Draw One 的話。摺在紙下，預設收合。
-             聖意（吉凶格）不上——反思工具不做預言。 -->
+             聖意（吉凶格）不上——反思工具不做預言。
+             三殿同一格：有、且過得了 guard 的，照原文上；暫緩的，只說原因，不補字、不代寫。 -->
         <div class="jieyue" id="jieyue" hidden>
-          <button class="jieyue-toggle" id="jieyueToggle" aria-expanded="false">
-            <span class="jieyue-word">解曰</span>
+          <button class="jieyue-toggle" id="jieyueToggle" aria-expanded="false" aria-controls="jieyueBody">
+            <span class="jieyue-word" id="jieyueWord">解曰</span>
             <span class="jieyue-prov" id="jieyueProv"></span>
             <span class="jieyue-caret" aria-hidden="true">▸</span>
           </button>
           <div class="jieyue-body" id="jieyueBody" hidden>
             <p class="jieyue-text" id="jieyueText"></p>
             <p class="jieyue-src" id="jieyueSrc"></p>
+            <p class="jieyue-about" id="jieyueAbout"></p>
+            <a class="jieyue-link" id="jieyueLink" target="_blank" rel="noopener noreferrer" hidden></a>
           </div>
         </div>
         <div class="note-zone">
@@ -1074,7 +1085,9 @@
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
 <script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
-<script src="../assets/jieyue-guard.js?v=1"></script>
+<script src="../assets/interpretation-pool.guandi.js?v=1"></script>
+<script src="../assets/interpretation-holds.js?v=1"></script>
+<script src="../assets/jieyue-guard.js?v=2"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -2373,19 +2386,88 @@ window.ARRIVAL_SOUND = (function () {
   // 顯不顯示的唯一判準在 jieyue-guard.js（頁面與測試共用同一把鎖）：
   // 精確版本比對（edition_id／slip edition_title／content_version 全 exact）＋
   // 逐籤 custody（id↔slip_no）；任一對不上就整層不顯示（fail-closed）。
+  //
+  // 三殿（2026-11）：觀音、關帝各有一份 pool；六十甲子沒有 pool（整套暫緩）。
+  // 暫緩的籤不沉默——guard.holdFor 准許時，說「暫未上紙」和原因；永遠不補字、不代寫。
+  // 這裡的字只有三種：來源原文（rec.text）、來源與狀態標示、抽一自己的說明（JIEYUE_COPY）。
+  const JIEYUE_POOLS = { guanyin: window.INTERPRETATION_POOL, guandi: window.INTERPRETATION_POOL_GUANDI };
+  const JIEYUE_COPY = {
+    // 這段字是什麼——三殿同一句。不是解讀，是標籤。
+    what: "解曰是這個版本原有的判語，照原文收錄，一字未改。它是前人對這首籤的讀法——不是抽一的話，也不是對你這件事的預測。",
+    corpus: {
+      guanyin: {
+        short: (pool) => `${pool.edition.split("《")[0]}版`,
+        src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        confirmed: "已核圖＝有人對著籤紙影像，逐字看過這一首。",
+        pending: "待複核＝轉錄與來源比對過，還沒有人對著籤紙影像逐字核過，可能有錯字。",
+      },
+      guandi: {
+        short: () => "道藏本",
+        src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        confirmed: "已核圖＝有人對著道藏影像，逐字看過這一首。",
+        pending: "待複核＝取自維基文庫的道藏本轉錄，還沒有逐籤對過道藏影像，可能有錯字。",
+      },
+    },
+    holdSlip: {
+      unsettled_transcription: "這支籤的解曰，轉錄裡有缺字或還讀不定的字。",
+      suspect_reading: "這支籤的解曰，轉錄裡有疑似認錯的字。",
+      irregular_form: "這支籤的解曰，轉錄的斷句與體例有疑。",
+      tail: "對過原件以前先不放上來，也不替它補字。",
+    },
+    holdCorpus: {
+      lead: (name) => `${name}的官方籤詩圖檔上，另有廟方的解說。`,
+      license_unresolved: "它的轉載授權還沒有確認",
+      single_pass_ocr: "手上的轉錄只經過一次機器辨識、還沒有人逐字核對",
+      tail: "所以這裡不轉載、不摘要，也不另寫一段來代替。",
+      link: (name) => `到${name}官方網站讀 ↗`,
+    },
+  };
+
   function renderJieyue(entry) {
     const box = $("jieyue");
-    const pool = window.INTERPRETATION_POOL;
-    const rec = window.JIEYUE_GUARD ? window.JIEYUE_GUARD.resolve(pool, entry) : null;
-    if (!rec) { box.hidden = true; return; }
+    const G = window.JIEYUE_GUARD;
+    const pool = Object.hasOwn(JIEYUE_POOLS, entry.corpus_id) ? JIEYUE_POOLS[entry.corpus_id] : null;
+    const rec = G ? G.resolve(pool, entry) : null;
+    const hold = (G && !rec) ? G.holdFor(window.INTERPRETATION_HOLDS, JIEYUE_POOLS, entry) : null;
+    if (!rec && !hold) { box.hidden = true; return; }
     box.hidden = false;
     $("jieyueToggle").setAttribute("aria-expanded", "false");
     $("jieyueBody").hidden = true;
     $("jieyue").querySelector(".jieyue-caret").textContent = "▸";
-    const statusWord = pool.status_word[rec.status];
-    $("jieyueProv").textContent = `${pool.edition.split("《")[0]}版・${rec.confirmed ? "已核圖" : statusWord}`;
-    $("jieyueText").textContent = rec.text;
-    $("jieyueSrc").textContent = `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`;
+    const text = $("jieyueText"), src = $("jieyueSrc"), about = $("jieyueAbout"), link = $("jieyueLink");
+    link.hidden = true; link.removeAttribute("href"); link.textContent = "";
+    about.classList.toggle("is-lead", !rec);
+    text.hidden = !rec;
+    if (rec) {
+      // 上紙：原文＋來源＋狀態。狀態詞 1:1，不升級。
+      const copy = JIEYUE_COPY.corpus[entry.corpus_id];
+      const statusWord = pool.status_word[rec.status];
+      $("jieyueWord").textContent = "解曰";
+      $("jieyueProv").textContent = `${copy.short(pool)}・${rec.confirmed ? "已核圖" : statusWord}`;
+      $("jieyueText").textContent = rec.text;
+      src.hidden = false;
+      src.textContent = copy.src(pool, rec);
+      about.textContent = `${JIEYUE_COPY.what}\n${rec.confirmed ? copy.confirmed : copy.pending}`;
+      return;
+    }
+    // 暫未上紙：只說原因。沒有任何被暫緩的文字會到這一頁。
+    text.textContent = "";
+    if (hold.scope === "slip") {
+      const copy = JIEYUE_COPY.corpus[entry.corpus_id];
+      $("jieyueWord").textContent = "解曰";
+      $("jieyueProv").textContent = "此籤暫未上紙";
+      about.textContent = `${JIEYUE_COPY.holdSlip[hold.reason]}${JIEYUE_COPY.holdSlip.tail}`;
+      src.hidden = false;
+      src.textContent = `${copy.short(pool)}・待核對原件`;
+      return;
+    }
+    const HC = JIEYUE_COPY.holdCorpus;
+    const name = hold.official_name || "廟方";
+    $("jieyueWord").textContent = "廟方解說";
+    $("jieyueProv").textContent = "暫未上紙";
+    about.textContent = `${HC.lead(name)}${hold.reasons.map((r) => HC[r]).join("，")}，${HC.tail}`;
+    src.hidden = true; src.textContent = "";
+    if (hold.official_url) { link.href = hold.official_url; link.textContent = HC.link(name); link.hidden = false; }
   }
 
   // 找到或建立這支籤在簿裡的那一筆；同時記下「上次到訪」。永不重複建立。
