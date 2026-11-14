@@ -67,7 +67,7 @@ Kimi 的定位（「與不確定性相處的介面」「一本會呼吸的冊子
 | 套件 | 結果 |
 |---|---|
 | `test-arrival.mjs`（含新增 R9 ink 契約 11 條） | 50/50 |
-| `test-arrival-ink-e2e.mjs`（新；五種視窗：390×844、360×640、844×390、1024×768、1440×900；月老；reduced motion） | 117/117 |
+| `test-arrival-ink-e2e.mjs`（新；五種視窗：390×844、360×640、844×390、1024×768、1440×900；月老；reduced motion） | 全過（115 條上下，依轉身次數而定） |
 | `test-interpretation-e2e.mjs`（解讀層＋入簿，跑在新畫面上） | 32/32 |
 | `test-interpretation-pool.mjs`／`test-sound.mjs`／`test-slip-render.mjs`／`test-draw-pool.mjs` | 76／68／14／60 |
 | `test-sound-e2e.mjs` | 49 過、2 未過——都是沙箱連不到 Google Fonts（產圖要抓字型），main 上同樣這 2 條 |
