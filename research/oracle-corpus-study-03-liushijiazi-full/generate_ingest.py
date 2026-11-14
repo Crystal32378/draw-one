@@ -5,6 +5,7 @@ Carriers: 北港官方圖檔(OCR) + 新港奉天宮官方圖檔(subset OCR) + �
 Output: data/*.jsonl + eligibility_report.json  (self-contained package)
 """
 import json, re, os, hashlib, glob, sys
+from poem_corrections import apply_corrections
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 # 依賴注入：STUDY03_TMP 指向 OCR/acquisition 產物目錄（北港 ocr/NN.txt、新港 ocr/hsk_NN.txt、fs60_full.json 等）。
@@ -512,6 +513,7 @@ for n in range(1, 61):
         "supersedes": None})
 
 # ---------- write ----------
+apply_corrections(attestation)
 files = {"corpus": corpus, "edition_family": edition_family, "source_record": source_record,
          "independence_group": independence_group, "concrete_item": concrete_item, "slip": slip,
          "attestation": attestation, "variant_group": variant_group, "temple_adoption": temple_adoption,

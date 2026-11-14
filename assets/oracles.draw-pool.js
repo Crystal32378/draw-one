@@ -2,7 +2,7 @@
 // Every entry passed the fail-closed production gates. Regenerate via: node scripts/build-draw-pool.mjs
 window.DRAW_POOL = {
   "schema": "draw-pool/1.0",
-  "content_version": "66068302782a9e690bd1d16c208678ac5022036d36a64b62d9a9d296249e9125",
+  "content_version": "9433062177a366ccd13b3708955704c73d035929e65a0eca3f9a8798d3f03527",
   "policy": {
     "allowed_transcription_status": [
       "VERIFIED",
@@ -46,7 +46,7 @@ window.DRAW_POOL = {
       "edition_title": "北港朝天宮官方六十甲子籤（modern reference edition）",
       "slip_count": 60,
       "source_file": "data/corpora/liushijiazi/slip_texts.json",
-      "source_sha256": "aa54acd813a1d22cca63388ca2a60ff31801de137887b2756fd75dbcdbbc6014",
+      "source_sha256": "b85e704ea80288b60103a554326461ec3233ab38c21876ce0c941e1bceddbd9c",
       "data_quality": {
         "decoded_char_refs": 0
       },
@@ -3826,7 +3826,7 @@ window.DRAW_POOL = {
       "slip_number": 10,
       "original_slip_label": "乙未",
       "historical_text": {
-        "poem_text": "右上角籤首資料\n花開結子一半枯\n可惜今年爾虛度\n漸漸日落西山去"
+        "poem_text": "花開結子一半枯\n可惜今年爾虛度\n漸漸日落西山去\n勸君不用向前途"
       },
       "provenance": {
         "edition_id": "ref-lsjz-010",
@@ -4150,7 +4150,7 @@ window.DRAW_POOL = {
       "slip_number": 28,
       "original_slip_label": "戊午",
       "historical_text": {
-        "poem_text": "右上籤號與卦象\n於今莫作此當時\n虎落平陽被犬欺\n世間凡事何難定"
+        "poem_text": "於今莫作此當時\n虎落平陽被犬欺\n世間凡事何難定\n千山萬水也遲疑"
       },
       "provenance": {
         "edition_id": "ref-lsjz-028",

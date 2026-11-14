@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 乙未／戊午相容性測試要讀修正前的 commit（7ae87f6）作對照；淺層 checkout 抓不到
 
       - uses: actions/setup-node@v4
         with:
@@ -22,3 +24,17 @@ jobs:
         run: |
           node scripts/build-draw-pool.mjs
           git diff --exit-code -- assets/oracles.draw-pool.js data/production/draw-pool.report.json
+
+      - name: Run 解曰 layer regression suite (three halls, holds, fail-closed counter-examples)
+        run: node scripts/test-interpretation-pool.mjs
+
+      - name: Committed 解曰 pools + holds must match a rebuild from corpus sources
+        run: |
+          node scripts/build-interpretation-pool.mjs
+          git diff --exit-code -- assets/interpretation-pool.guanyin.js assets/interpretation-pool.guandi.js assets/interpretation-holds.js data/production/interpretation-pool.report.json data/production/interpretation-pool.guandi.report.json
+
+      - name: Arrival mechanics contracts (incl. 紙落定即入簿)
+        run: node scripts/test-arrival.mjs
+
+      - name: 乙未／戊午 repair — old books, notes and bindings still restore
+        run: node scripts/test-liushijiazi-book-compat.mjs

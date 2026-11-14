@@ -36,7 +36,29 @@ node scripts/test-slip-render.mjs   # The Slip
 node scripts/test-arrival.mjs       # mechanics 契約
 node scripts/test-sound.mjs         # 聲音層 source contracts
 node scripts/test-sound-e2e.mjs     # runtime E2E（需 playwright-core＋本機 Chromium，無則 SKIP）
+node scripts/test-interpretation-pool.mjs  # 解曰層：三殿 pool、暫緩名單、fail-closed 反例（CI 跑這套）
+node scripts/test-interpretation-e2e.mjs   # 解曰層＋紙落定即入簿 runtime E2E（同上，無瀏覽器則 SKIP；SHOTS=目錄 可出截圖）
+node scripts/test-arrival-ink-e2e.mjs      # 入廟 ink pass：五種視窗裁切、三殿相等、推門、可動層、月老、reduced motion（SHOTS=目錄 可出截圖）
 ```
 
 E2E 環境變數：`PW_CORE=` 指 playwright-core 路徑、`CHROMIUM=` 指瀏覽器執行檔
 （預設找 `~/Library/Caches/ms-playwright/chromium-1228`）。
+
+## 解曰摺頁（三殿）怎麼手動看
+
+一事一籤下抽到哪支是隨機的。要看指定的籤，在 devtools console 把它放進自己的籤簿再從籤簿點開
+（只動你自己這台瀏覽器的 `drawone.book.v1`）：
+
+```js
+const add = (entryId, corpusId) => { const k = "drawone.book.v1"; const b = JSON.parse(localStorage.getItem(k) || "[]");
+  b.unshift({ ts: new Date().toISOString(), question: "看 " + entryId, entryId, corpusId, note: "" }); localStorage.setItem(k, JSON.stringify(b)); };
+add("guanyin-001", "guanyin");         // 已核圖
+add("guanyin-002", "guanyin");         // 待複核
+add("guanyin-012", "guanyin");         // 暫未上紙（缺字）
+add("guandi-001", "guandi");           // 待複核（道藏本・維基文庫轉錄）
+add("guandi-058", "guandi");           // 暫未上紙（存疑字）
+add("liushijiazi-001", "liushijiazi"); // 廟方解說・整套暫緩
+location.reload();
+```
+
+哪些上、哪些暫緩、為什麼：`docs/interpretation-three-halls.md`。

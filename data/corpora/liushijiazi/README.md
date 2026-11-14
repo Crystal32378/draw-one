@@ -62,6 +62,31 @@ python3 data/corpora/liushijiazi/validate_corpus_package.py # 預期 517 PASS / 
 
 ## 修改指南
 
+### 2026-11-14 詩文 OCR 窄修（#10／#28）
+
+依同版北港官方影像的 agent 目視核圖修復兩筆詩文；不是 human approval，
+未升級 authenticity、license、human_verified 或 production eligibility。
+原 OCR 錯文、逐句修復、來源 URL／SHA-256 保存在 Study 03 的
+`poem-corrections.json`；原始 OCR evidence 不覆寫。詳見
+`docs/LIUSHIJIAZI-OCR-REPAIR-2026-11-14.md`。
+
+重建順序（repo root；Python 需 openpyxl，既有 validators 另需 jsonschema）：
+
+```bash
+python3 research/oracle-corpus-study-03-liushijiazi-full/poem_corrections.py
+python3 data/corpora/liushijiazi/build_corpus_package.py
+python3 scripts/build-liushijiazi-texts.py
+python3 data/corpora/liushijiazi/build_liushijiazi_layer.py
+node scripts/build-draw-pool.mjs
+python3 scripts/test-liushijiazi-poem-repair.py
+node scripts/test-liushijiazi-book-compat.mjs
+```
+
+完整 acquisition 重跑時，`generate_ingest.py` 寫出 attestation 前也套用同一修正；
+若遇到既有錯文／已核正讀法以外的新讀法會中止，要求重新核圖，不默默覆蓋。
+corpus builder 另拒絕兩筆 stale ingest；production builder 拒絕兩個已知 OCR 標題。
+這些都是窄範圍回歸防護，不是其餘籤文正確性的證明。
+
 | 想改什麼 | 改哪裡 |
 |---|---|
 | 新增/修正研究結論 | 改 Study 03 frozen package（research/oracle-corpus-study-03-liushijiazi-full/data/*.jsonl），重跑 `build_corpus_package.py`——本目錄 6 檔為 derived artifact，不要手改 |

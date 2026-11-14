@@ -131,7 +131,12 @@ console.log("R7 keepBtn keeps the question on the desk（recovery 2026-08-30）"
 const keepBlock = script.slice(script.indexOf('$("keepBtn").addEventListener'), script.indexOf("/* ---------- 帶走這支籤"));
 check("keepBtn handler exists", keepBlock.length > 0);
 check("keepBtn does not assign #question.value（問過的事不被抹掉）", !/\$\("question"\)\.value\s*=/.test(keepBlock));
-check("book entry still records the question（question 進籤簿）", /question: q,/.test(keepBlock));
+// 2026-09-14 P0：入簿移到紙落定（ensureBookEntry），keepBtn 只補筆記。契約不變：question 進籤簿、只此一處建立。
+const ensureBlock = script.slice(script.indexOf("function ensureBookEntry"), script.indexOf('$("keepBtn").addEventListener'));
+check("book entry still records the question（question 進籤簿）", /question: q,/.test(ensureBlock));
+check("入簿只在 ensureBookEntry 一處（單一帳本）", (script.match(/book\.unshift\(/g) || []).length === 1 && /book\.unshift\(/.test(ensureBlock));
+check("showSlip 落定即入簿（回埕／關頁不丟籤）", /ensureBookEntry\(entry, q\)/.test(script.slice(script.indexOf("function showSlip"), script.indexOf("function ensureBookEntry"))));
+check("keepBtn 不再建立條目，只補筆記", !/book\.unshift/.test(keepBlock) && /existing\.note = note/.test(keepBlock));
 
 console.log("R8 settle/turning pointer guard（recovery 2026-08-30）— 動畫中的點觸只有輕叩");
 const pdBlock = script.slice(script.indexOf('view.addEventListener("pointerdown"'), script.indexOf('view.addEventListener("pointermove"'));
@@ -143,6 +148,27 @@ check("courtAnimating shares animate() convergence threshold（0.4px）", /funct
 check("bound-strip click refuses hall entry mid-animation", /strip\.addEventListener\("click", \(\) => \{\s*if \(courtAnimating\(\)\) \{[\s\S]{0,80}nudge\(\);\s*return;/.test(script));
 const releaseBlockR8 = script.slice(script.indexOf("const release ="), script.indexOf('view.addEventListener("pointerup"'));
 check("release grammar untouched（facedNow gate 仍是唯一進殿判準）", /facedNow[\s\S]{0,80}enterHall/.test(releaseBlockR8));
+
+console.log("R9 ink pass（2026-11）— 一套筆、三殿同一份立面、活物不焊死、紙不動");
+const hallTpl = script.slice(script.indexOf("const HALL_INK_SVG"), script.indexOf("const TREE_INK_SVG"));
+check("殿面只有一份模板、只在一處掛上", hallTpl.length > 0 && (script.match(/innerHTML = HALL_INK_SVG/g) ?? []).length === 1);
+check("殿面固定長寬比（模板不帶 preserveAspectRatio=none）", !/preserveAspectRatio="none"/.test(hallTpl));
+check("殿面尺寸一組數字給三殿（--hall-w/h 設在 stageStrip，不在個別站）", (script.match(/setProperty\("--hall-[wh]"/g) ?? []).length === 2
+  && /stageStrip\.style\.setProperty\("--hall-h"/.test(script) && !/st\.style\.setProperty|f\.style\.setProperty/.test(script));
+check("門扇、門內的光、燈籠各自成層（k-life），由 CSS 驅動", /class="k-life door-l"/.test(hallTpl) && /class="k-life door-r"/.test(hallTpl)
+  && /class="k-life hearth"/.test(hallTpl) && /class="k-life hl/.test(hallTpl) && /\.facade\.opening \.door-l/.test(html));
+const enterBlock = script.slice(script.indexOf("function enterHall"), script.indexOf('$("backBtn")'));
+check("推門以 data-hall 取元素（無身分分支），進殿後復位", /querySelector\(`\[data-hall="\$\{hall\.id\}"\]`\)/.test(enterBlock) && /classList\.add\("opening"\)/.test(enterBlock) && /classList\.remove\("opening"\)/.test(enterBlock));
+check("未落成之殿沿用同一模板，只留虛線放樣", /\.station\.hypothetical \.ink-hall \.k-life \{ display: none; \}/.test(html) && /\.station\.hypothetical \.ink-hall \.k-plan \{ display: block; \}/.test(html) && /\.ink-hall \.k-plan \{ display: none;[^}]*stroke-dasharray/.test(html));
+check("筆路：結構線是有提按的形（INKPEN），三殿共用同一份字串；飛白是 evenodd 的縫", /const INKPEN = /.test(script) && /fill-rule="evenodd"/.test(script) && (script.match(/HALL_INK_SVG = /g) ?? []).length === 1);
+check("推門有門檻的光，reduced motion 不做", /id="threshold"/.test(html) && /!reduceMotion && facadeEl && !hall\.hypothetical/.test(script));
+const dress = script.slice(script.indexOf("function dressCourt"), script.indexOf("groundJoints.innerHTML"));
+check("小景只錨在站界 B(i) 或牆尾／樹，不以殿的身分擺放", /const B = \(i\) => i \* stationW/.test(dress) && !/guanyin|guandi|mazu|deity/.test(dress));
+check("殿內的骨只有一份（三殿共用）", (html.match(/class="hall-ink"/g) ?? []).length === 1);
+check("新增的動畫都有 reduced-motion 出口", ["lantern-sway", "hearth", "canopy-sway", "sparrow-hop", "shade-drift", "court-arrive", "hall-arrive", "flame", "rattle"]
+  .every((k) => html.includes(`@keyframes ${k}`)) && (html.match(/prefers-reduced-motion: reduce/g) ?? []).length >= 9);
+check("學術限制寫在模板旁：不是任何真廟的量測、不代表所有台灣宮廟", /不是任何一座歷史建築的量測值/.test(script) && /不代表所有台灣宮廟/.test(script));
+check("籤紙沒有被這一輪碰到（slip.css／slip-render.js 無 ink 相依）", !/#ink-|xuan-grain/.test(readFileSync(join(ROOT, "assets", "slip.css"), "utf8") + readFileSync(join(ROOT, "assets", "slip-render.js"), "utf8")));
 
 console.log(`\n${passed} passed, ${failed} failed`);
 process.exit(failed === 0 ? 0 : 1);
