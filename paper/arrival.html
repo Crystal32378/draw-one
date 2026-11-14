@@ -913,6 +913,14 @@
     margin-top: 40px; max-width: 300px;
     font-size: 13.5px; line-height: 2; color: var(--ink-soft); text-align: center;
   }
+  /* 這個問題的籤在別殿：這裡不放那張紙（紙屬於它的殿、它的版本），只說在哪、帶你過去 */
+  .elsewhere { margin-top: 34px; max-width: 300px; text-align: center; display: grid; gap: 18px; justify-items: center; }
+  .elsewhere[hidden] { display: none; }
+  .elsewhere p { margin: 0; font-size: 13.5px; line-height: 2; color: var(--ink-soft); }
+  .elsewhere button {
+    background: none; border: 1px solid var(--ink); color: var(--ink); font: inherit;
+    font-size: 13.5px; letter-spacing: 0.24em; text-indent: 0.24em; padding: 10px 20px; cursor: pointer;
+  }
 
   /* ============ 沿革 / 籤簿 overlay ============ */
   .overlay {
@@ -1062,6 +1070,7 @@
       </div>
 
       <div class="unbuilt" id="unbuilt" hidden></div>
+      <div class="elsewhere" id="elsewhere" hidden><p id="elsewhereText"></p><button type="button" id="elsewhereBtn"></button></div>
     </div>
   </section>
 
@@ -2231,6 +2240,16 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   /* ---------- 殿 ---------- */
+  let elsewhereHome = null;
+  $("elsewhereBtn").addEventListener("click", () => {
+    if (!elsewhereHome) return;
+    const home = elsewhereHome; elsewhereHome = null;
+    currentHall = home;
+    sessionFacing = home.id; // 回埕時面向你剛去的那一殿（session 內；不持久化）
+    renderHall(home);        // 無 boundEntry＝走綁定：同問原籤，附「同一件事不重抽」
+    $("s-hall").scrollTo?.({ top: 0 });
+  });
+
   function renderHall(hall, { boundEntry } = {}) {
     $("tablet").textContent = hall.deity;
     // 匾同規格，字隨匾：聖號字數多則字級收斂，匾高（＝儀式的位置）不因誰而沉。
@@ -2242,6 +2261,7 @@ window.ARRIVAL_SOUND = (function () {
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "none";
     $("unbuilt").hidden = true;
+    $("elsewhere").hidden = true;
     $("hallDesk").style.display = "";
     // 香爐是使用痕跡：未落成的殿還沒有人來拜（presentation only）
     $("censer").style.display = (hall.hypothetical || !hall.corpusId) ? "none" : "";
@@ -2269,6 +2289,19 @@ window.ARRIVAL_SOUND = (function () {
       const b = window.DRAW_POLICY.peekBinding({ question: $("question").value });
       return b ? POOL.entries.find((e) => e.id === b.entryId) : null;
     })();
+    if (bound && bound.corpus_id !== hall.corpusId) {
+      // 一事一籤跨殿：這個問題的籤是在別殿抽的。原籤保留、不重抽——但那張紙不能掛在這一殿的
+      // 聖號與版本底下（殿名、來源、解曰都會對不上）。這裡只說它在哪，並帶人過去。
+      // 以籤的 corpus 找殿（資料關係，非身分分支）；找不到就什麼都不放（fail-closed）。
+      const home = HALLS.find((h) => h.corpusId === bound.corpus_id);
+      if (home) {
+        elsewhereHome = home;
+        $("elsewhereText").textContent = `這個問題已經有一支籤了——是在${home.deity}殿抽的。同一件事不重抽；那支籤還在那裡。`;
+        $("elsewhereBtn").textContent = `去${home.deity}殿看那支籤`;
+        $("elsewhere").hidden = false;
+      }
+      return;
+    }
     if (bound) {
       showSlip(bound, { repeated: !boundEntry });
       return;

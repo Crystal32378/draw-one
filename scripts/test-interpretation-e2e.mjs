@@ -178,6 +178,45 @@ check("關帝 #58：連「暫未上紙」也不說（不替壞掉的資料背書
 await view("guanyin-001"); f = await fold();
 check("觀音不受影響", f.hidden === false && f.prov.endsWith("已核圖"));
 
+console.log("X8 一事一籤跨殿 — 原籤保留，但不掛在別殿的聖號底下（Astra 2026-11-14 回報）");
+{
+  const c2 = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true });
+  const p2 = await c2.newPage();
+  const Q = "跨殿之問 同一件事";
+  await p2.goto(pageURL(""));
+  // 以真實資料結構備妥「這個問題已在關帝殿抽過」：籤簿＋綁定都由頁面自己的 policy 寫入
+  const seeded = await p2.evaluate((Q) => {
+    const P = window.DRAW_POOL, e = P.entries.find((x) => x.id === "guandi-001");
+    const drawn = window.DRAW_POLICY.resolveDraw({ question: Q, corpusId: "guandi", drawFn: () => e });
+    localStorage.setItem("drawone.book.v1", JSON.stringify([{ ts: new Date().toISOString(), question: window.DRAW_POLICY.normalizeQuestion(Q), entryId: "guandi-001", corpusId: "guandi", note: "" }]));
+    return drawn.entryId;
+  }, Q);
+  check("備妥：這個問題綁在關帝第一籤", seeded === "guandi-001");
+  await p2.reload(); await sleep(300);
+  if (await p2.$eval("#s-gate", (el) => el.classList.contains("on"))) { await p2.click("#enterBtn"); await sleep(400); }
+  await p2.fill("#question", Q);
+  // 進觀音殿（由 DOM 找位置，不寫死座標）
+  const pos = async (id) => p2.evaluate((id) => { const f = document.querySelector(`[data-hall="${id}"]`).getBoundingClientRect(), v = document.getElementById("courtView").getBoundingClientRect();
+    return { x: (Math.max(f.left, v.left) + Math.min(f.right, v.right)) / 2, y: v.top + v.height * 0.36, centered: Math.abs((f.left + f.right) / 2 - (v.left + v.right) / 2) < 3 }; }, id);
+  for (let i = 0; i < 4 && !(await pos("guanyin")).centered; i++) { const q = await pos("guanyin"); await p2.mouse.click(q.x, q.y); await sleep(1500); }
+  { const q = await pos("guanyin"); await p2.mouse.click(q.x, q.y); await sleep(1500); }
+  const st = () => p2.evaluate(() => { const $ = (i) => document.getElementById(i); return { hall: $("s-hall").classList.contains("on"), tablet: $("tablet").textContent,
+    slip: getComputedStyle($("slipStage")).display !== "none", tube: getComputedStyle($("tubeStage")).display !== "none",
+    elsewhere: !$("elsewhere").hidden, text: $("elsewhereText").textContent, btn: $("elsewhereBtn").textContent, sub: $("hallSub").textContent,
+    slipText: $("slipMount").innerText, fold: $("jieyue").hidden ? null : $("jieyueProv").textContent }; });
+  let a = await st();
+  check("在觀音殿：聖號是觀世音，沒有把關帝的籤掛出來，也不能重抽", a.hall && a.tablet === "觀世音" && !a.slip && !a.tube);
+  check("只說那支籤在哪一殿", a.elsewhere && a.text.includes("關帝殿") && a.text.includes("不重抽") && a.btn.includes("關帝殿"));
+  await p2.click("#elsewhereBtn"); await sleep(600);
+  a = await st();
+  check("過去之後：聖號、版本、籤、解曰來源全部是關帝", a.tablet === "關帝" && a.sub.includes("道藏本") && a.slip && a.slipText.includes("第一籤") && a.fold === "道藏本・待複核" && !a.elsewhere);
+  const after = await p2.evaluate(() => ({ book: JSON.parse(localStorage.getItem("drawone.book.v1")), binds: Object.values(JSON.parse(localStorage.getItem(Object.keys(localStorage).find((k) => k.startsWith("drawone.bindings"))))).flat() }));
+  check("原籤與綁定原封不動（沒有重抽、沒有新增）", after.book.length === 1 && after.book[0].entryId === "guandi-001" && after.binds.length === 1 && after.binds[0].entry_id === "guandi-001");
+  await p2.click("#backBtn"); await sleep(600);
+  check("回埕：面向關帝殿（你剛去的那一殿）", (await pos("guandi")).centered);
+  await c2.close();
+}
+
 console.log("X6 私人資料 — 問題與筆記不離開這台裝置");
 const allowed = (u) => u.startsWith("file:") || /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u) || u.startsWith("data:") || u.startsWith("blob:");
 const stray = requests.filter((r) => !allowed(r.url));
