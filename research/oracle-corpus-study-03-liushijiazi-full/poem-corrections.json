@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "corrections": [
+    {
+      "attestation_id": "att-bg-010",
+      "slip_number": 10,
+      "ganzhi": "乙未",
+      "source_url": "https://www.matsu.org.tw/upload_files/web/uploadfile/2024080515/original/240805152108670080.jpg",
+      "source_sha256": "000fc7f956b242f456b68bd220c8e3c646cd3544d7d5b80e64d877555e28acfc",
+      "source_edition": "北港朝天宮官方圖檔；2024-08-05 URL 批次；本次下載與 2026-08-15 concrete_item SHA-256 相同",
+      "observed_at": "2026-11-14",
+      "observation_method": "agent_visual_image_review",
+      "human_confirmation": false,
+      "scope": "僅右上詩文四句；未重核其他註解、其他 carrier 或其餘 58 籤",
+      "before": "右上角籤首資料\n花開結子一半枯\n可惜今年爾虛度\n漸漸日落西山去",
+      "after": "花開結子一半枯\n可惜今年爾虛度\n漸漸日落西山去\n勸君不用向前途",
+      "reason": "七字 OCR 欄位標題誤納為詩句，原詩前三句保留、第四句遭截斷；依原圖直書右至左逐句修復，非異文替換",
+      "legacy_notes": "OCR 逐字轉錄官方圖檔，未改字；詩文層跨 carrier 交叉一致為佐證；五行/卦頭/聖意層個別欄位疑 OCR 誤讀待人工複核——不因不通順而猜改"
+    },
+    {
+      "attestation_id": "att-bg-028",
+      "slip_number": 28,
+      "ganzhi": "戊午",
+      "source_url": "https://www.matsu.org.tw/upload_files/web/uploadfile/2024080515/original/240805152118799412.jpg",
+      "source_sha256": "65f2c11da401006caea1168cb987e85ccaf94d23c4ba41abe8657eaf977f0a0f",
+      "source_edition": "北港朝天宮官方圖檔；2024-08-05 URL 批次；本次下載與 2026-08-15 concrete_item SHA-256 相同",
+      "observed_at": "2026-11-14",
+      "observation_method": "agent_visual_image_review",
+      "human_confirmation": false,
+      "scope": "僅右上詩文四句；未重核其他註解、其他 carrier 或其餘 58 籤",
+      "before": "右上籤號與卦象\n於今莫作此當時\n虎落平陽被犬欺\n世間凡事何難定",
+      "after": "於今莫作此當時\n虎落平陽被犬欺\n世間凡事何難定\n千山萬水也遲疑",
+      "reason": "七字 OCR 欄位標題誤納為詩句，原詩前三句保留、第四句遭截斷；依原圖直書右至左逐句修復，非異文替換",
+      "legacy_notes": "OCR 逐字轉錄官方圖檔，未改字；詩文層跨 carrier 交叉一致為佐證；五行/卦頭/聖意層個別欄位疑 OCR 誤讀待人工複核——不因不通順而猜改"
+    }
+  ]
+}

@@ -154,6 +154,9 @@ for (const spec of MANIFEST) {
   for (const s of slips) {
     const id = `${spec.corpus_id}#${s.slip_number}`;
     s.poem_text = decodeCharRefs(s.poem_text ?? "", decoded);
+    if (/右上角籤首資料|右上籤號與卦象/.test(s.poem_text)) {
+      gate(`${id}/no-ocr-heading`, false, "known OCR annotation in poem_text; repair source transcription first");
+    }
     s.original_slip_label = decodeCharRefs(s.original_slip_label ?? "", decoded);
     if (RESIDUAL_ENTITY.test(s.poem_text) || RESIDUAL_ENTITY.test(s.original_slip_label)) {
       gate(`${id}/no-residual-entities`, false, `undecodable entity remains in text`);
