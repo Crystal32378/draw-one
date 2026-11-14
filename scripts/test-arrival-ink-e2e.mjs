@@ -119,6 +119,39 @@ for (const [label, w, h, touch] of VIEWPORTS) {
   await ctx.close();
 }
 
+console.log("▍短視窗進殿：聖號認得出、回埕找得到、籤筒能操作（Astra／牛牛 2026-11-14 重現的裁切）");
+for (const [w, h, id, touch] of [[360, 601, "mazu", true], [390, 601, "mazu", true], [1024, 601, "mazu", false], [1024, 768, "guanyin", false], [844, 390, "mazu", true], [390, 844, "guandi", true]]) {
+  const ctx = await browser.newContext({ viewport: { width: w, height: h }, hasTouch: touch });
+  const page = await ctx.newPage();
+  await page.goto(pageURL()); await page.click("#enterBtn"); await page.waitForTimeout(700);
+  for (let i = 0; i < 4; i++) {
+    const s = await station(page, id);
+    if (Math.abs((s.box.l + s.box.r) / 2 - (s.view.l + s.view.r) / 2) < 3) break;
+    if (s.visible) await page.mouse.click(s.x, s.y);
+    else { const dir = s.box.l > s.view.r ? 1 : -1; const v = s.view; await page.mouse.move((v.l + v.r) / 2, v.t + 60); await page.mouse.down();
+      await page.mouse.move((v.l + v.r) / 2 - dir * v.w * 0.5, v.t + 60, { steps: 6 }); await page.mouse.up(); }
+    await settled(page);
+  }
+  const g = await station(page, id); await page.mouse.click(g.x, g.y); await page.waitForTimeout(2800);
+  const m = await page.evaluate(() => {
+    const inView = (r) => r.top >= -0.5 && r.bottom <= innerHeight + 0.5 && r.height > 0;
+    const sh = document.getElementById("s-hall"), t = document.getElementById("tablet").getBoundingClientRect(), n = document.getElementById("hallName");
+    const bar = document.querySelector(".hall-top").getBoundingClientRect();
+    const tabletWhole = t.top >= bar.bottom - 10 && t.bottom <= innerHeight;
+    const named = inView(n.getBoundingClientRect()) && Number(getComputedStyle(n).opacity) > 0.9 && n.textContent === document.getElementById("tablet").textContent;
+    return { on: sh.classList.contains("on"), scrollTop: Math.round(sh.scrollTop), tabletWhole, named, back: inView(document.getElementById("backBtn").getBoundingClientRect()),
+      tube: inView(document.getElementById("tubeWrap").getBoundingClientRect()), hint: inView(document.querySelector(".tube-hint").getBoundingClientRect()),
+      tubeH: Math.round(document.getElementById("tubeWrap").getBoundingClientRect().height) };
+  });
+  if (SHOTS) await page.screenshot({ path: join(SHOTS, `tablet-${w}x${h}.png`) });
+  check(`${w}×${h} ${id}：進殿落定`, m.on, JSON.stringify(m));
+  check(`${w}×${h} ${id}：完整聖號認得出（牌整塊在畫面內，或頂列帶完整聖號）`, m.tabletWhole || m.named, JSON.stringify(m));
+  check(`${w}×${h} ${id}：回埕在畫面內`, m.back, JSON.stringify(m));
+  check(`${w}×${h} ${id}：籤筒整支在畫面內、提示看得到`, m.tube && m.hint, JSON.stringify(m));
+  if (h <= 720) check(`${w}×${h}：短高規則真的生效（筒 246px）`, m.tubeH === 246, String(m.tubeH));
+  await ctx.close();
+}
+
 console.log("▍增建殿（?halls=4）與 reduced motion");
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, hasTouch: true, reducedMotion: "reduce" });

@@ -458,7 +458,17 @@
   .hall-top {
     display: flex; justify-content: space-between; align-items: flex-start;
     padding: calc(10px + env(safe-area-inset-top)) 14px 0;
+    position: sticky; top: 0; z-index: 6; /* 回埕永遠找得到 */
   }
+  /* 聖號被捲出畫面時（短視窗走向籤筒、讀籤往下捲），頂上留一行小字：你仍知道自己在誰的殿裡。
+     三殿同一條規則；聖號牌本身不縮、不搬。 */
+  .hall-top::before { content: ""; position: absolute; inset: 0 0 -10px 0; z-index: -1; opacity: 0; transition: opacity 240ms ease;
+    background: linear-gradient(180deg, rgba(222, 211, 186, 0.97) 0%, rgba(222, 211, 186, 0.92) 68%, rgba(222, 211, 186, 0) 100%); pointer-events: none; }
+  .hall-name { align-self: center; font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 15px; letter-spacing: 0.32em; text-indent: 0.32em;
+    color: var(--ink); opacity: 0; transform: translateY(-3px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
+  .hall-top.named::before { opacity: 1; }
+  .hall-top.named .hall-name { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .hall-top::before, .hall-name { transition: none; } }
   .hall-back {
     background: none; border: 0; font: inherit; font-size: 13px;
     letter-spacing: 0.2em; color: var(--ink-soft); cursor: pointer; padding: 8px;
@@ -570,19 +580,6 @@
     padding-top: 14px;
     display: grid; gap: 8px;
   }
-  /* 儀式不得沉到摺線下（Crystal iPhone 實測：天上聖母籤筒整支在畫面外）——
-     小視窗收斂殿內節奏，讓籤筒上緣進畫面；聖號仍是殿內最大的字 */
-  @media (max-height: 720px) {
-    .hall-top { padding-top: calc(6px + env(safe-area-inset-top)); }
-    .tablet { --tablet-fs: clamp(42px, 13vw, 52px); padding: 10px 10px 12px; }
-    .hall-sub { margin-top: 6px; }
-    .censer { margin-top: 8px; }
-    .hall-desk { margin-top: 12px; padding-top: 10px; }
-    .tube-stage { margin-top: 8px; }
-    .tube-wrap { height: 246px; } /* 削籤枝上升的留白 headroom，筒身圖形要進畫面 */
-    .tube-hint { order: -1; margin: 0 0 10px; } /* 提示上移：筒半沉摺線下時，規則不能跟著沉 */
-    .stick { bottom: 32px; } /* 底緣維持 214px（246−32）＝拉的視覺幾何不變；PULL_DIST 不動 */
-  }
   .present-label { font-size: 11px; letter-spacing: 0.26em; color: var(--ink-soft); }
   .present-q { font-size: 15px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
   .present-q.empty { color: var(--ink-soft); font-family: "Noto Sans TC", sans-serif; font-size: 13px; }
@@ -627,6 +624,20 @@
     color: rgba(38, 33, 25, 0.7);
   }
   .tube-hint { margin-top: 20px; font-size: 12.5px; letter-spacing: 0.14em; color: var(--ink-soft); }
+  /* （這一段必須排在 .tube-* 與 .stick 的基礎規則之後——同權重，後者勝；先前排在前面，短高規則其實沒有生效）
+     儀式不得沉到摺線下（Crystal iPhone 實測：天上聖母籤筒整支在畫面外）——
+     小視窗收斂殿內節奏，讓籤筒上緣進畫面；聖號仍是殿內最大的字 */
+  @media (max-height: 720px) {
+    .hall-top { padding-top: calc(6px + env(safe-area-inset-top)); }
+    .tablet { --tablet-fs: clamp(42px, 13vw, 52px); padding: 10px 10px 12px; }
+    .hall-sub { margin-top: 6px; }
+    .censer { margin-top: 8px; }
+    .hall-desk { margin-top: 12px; padding-top: 10px; }
+    .tube-stage { margin-top: 8px; }
+    .tube-wrap { height: 246px; } /* 削籤枝上升的留白 headroom，筒身圖形要進畫面 */
+    .tube-hint { order: -1; margin: 0 0 10px; } /* 提示上移：筒半沉摺線下時，規則不能跟著沉 */
+    .stick { bottom: 32px; } /* 底緣維持 214px（246−32）＝拉的視覺幾何不變；PULL_DIST 不動 */
+  }
 
   .stick-stage { margin-top: 34px; display: none; flex-direction: column; align-items: center; gap: 30px;
     user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
@@ -834,6 +845,7 @@
   <section class="screen" id="s-hall">
     <div class="hall-top">
       <button class="hall-back" id="backBtn">↩ 回埕</button>
+      <span class="hall-name" id="hallName" aria-hidden="true"></span>
       <button class="sound-toggle" id="soundToggleHall" aria-label="聲音" aria-pressed="true">聲</button>
     </div>
     <div class="hall-body">
@@ -1610,7 +1622,7 @@ window.ARRIVAL_SOUND = (function () {
       ...[0, 10, 19, 28, 38].map((dx) => [[[x + dx, 224, x + dx, 270]], { w: dx === 0 || dx === 38 ? 1.8 : 1.3, shape: "press", dry: 0 }]),
     ]), 15);
     // 四柱：硃砂，一筆直下——色薄，筆實
-    const posts = INKPEN.set([44, 112, 208, 276].map((x) => [[[x, 171, x, 317]], { w: 12.5, shape: "post", dry: 1.1 }]), 16);
+    const posts = INKPEN.set([44, 112, 208, 276].map((x) => [[[x, 171, x, 317]], { w: 12.5, shape: "post", dry: 0.6 }]), 16);
     const doorFrame = INKPEN.set([[[[120, 319, 120, 209]], { w: 2.6, shape: "press", dry: 0 }], [[[119, 209, 201, 209]], { w: 2.8, shape: "press", dry: 0 }], [[[200, 209, 200, 319]], { w: 2.6, shape: "press", dry: 0 }]], 17);
     // 石獅：蹲坐、面向門——頭、鬃、胸、前腿、座（剪影要認得出是獅）
     const lion = `<path d="M-17 34 H17 V27 H-17 Z"/><path d="M-14 27 C-16 14 -12 4 -5 0 C-9 -3 -10 -9 -7 -14 C-9 -20 -3 -25 3 -22 C7 -26 14 -23 14 -17 C18 -15 18 -9 15 -7 L18 -4 L14 -1 C13 3 10 5 8 6 C10 12 10 20 9 27 L4 27 L3 14 C1 18 -1 22 -1 27 Z"/><circle cx="9.5" cy="-13" r="1.3" fill="#e6dcc5"/>`;
@@ -1639,7 +1651,7 @@ window.ARRIVAL_SOUND = (function () {
       <path d="M169 262 v11" stroke="rgba(239,229,208,.55)" stroke-width="2" stroke-linecap="round"/>
     </g>
     <g class="k-brush" filter="url(#ink-edge)" fill-rule="evenodd">
-      <path fill="rgba(172,60,40,.74)" d="${posts.brush}"/>
+      <path fill="rgba(160,62,44,.64)" d="${posts.brush}"/>
       <path fill="${INKM}" d="${doorFrame.brush}"/>
     </g>
     <g class="k-life" filter="url(#ink-edge)" fill="rgba(30,26,20,.86)">
@@ -2272,6 +2284,8 @@ window.ARRIVAL_SOUND = (function () {
   function renderHall(hall, { boundEntry } = {}) {
     $("s-hall").classList.remove("reading");
     $("tablet").textContent = hall.deity;
+    $("hallName").textContent = hall.deity; // 聖號捲出畫面時頂上那行小字（同一個字串，不另寫）
+    nameBar();
     // 匾同規格，字隨匾：聖號字數多則字級收斂，匾高（＝儀式的位置）不因誰而沉。
     // 依字數不依身分（typography, not identity）——四字匾曾把籤筒推出手機畫面。
     $("tablet").style.fontSize = hall.deity.length > 3
@@ -2337,6 +2351,14 @@ window.ARRIVAL_SOUND = (function () {
         $("tubeStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "end" });
     }, reduceMotion ? 0 : 650);
   }
+
+  /* 聖號是否還看得見：看不見（被頂列蓋到或捲出）就讓頂列帶名 */
+  function nameBar() {
+    const top = document.querySelector(".hall-top"), t = $("tablet").getBoundingClientRect();
+    top.classList.toggle("named", t.height > 0 && t.top < top.getBoundingClientRect().bottom - 10);
+  }
+  $("s-hall").addEventListener("scroll", nameBar, { passive: true });
+  window.addEventListener("resize", nameBar);
 
   /* ---------- 拖抽 ---------- */
   const PULL_DIST = 130;

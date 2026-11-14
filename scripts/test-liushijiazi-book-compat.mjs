@@ -28,6 +28,10 @@ for (const old of before.entries) {
 const html = read('paper/arrival.html');
 const showSlip = html.slice(html.indexOf('  function showSlip('), html.indexOf('  // 解曰 摺頁'));
 assert.ok(showSlip.startsWith('  function showSlip('));
+// 入廟 ink／PR #32 整合後：showSlip 會呼叫 ensureBookEntry（紙落定即入簿）。舊紀錄已在簿中時它不得新增或改寫
+// 籤簿與 bindings；唯一允許的寫入是「上次走進哪一殿」的標記（LASTHALL）。主線（無此函式）則維持零寫入。
+const eb0 = html.indexOf('  function ensureBookEntry(');
+const ensureBookEntry = eb0 < 0 ? '' : html.slice(eb0, html.indexOf('\n  }\n', eb0) + 5);
 for (const number of [10, 28]) {
   const id = `liushijiazi-${String(number).padStart(3, '0')}`;
   const question = `虛構相容性測試 ${number}`;
@@ -45,13 +49,14 @@ for (const number of [10, 28]) {
   assert.equal(binding.boundCorpusId, 'liushijiazi');
   assert.equal(binding.repeated, true);
   const nodes = {};
-  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, appendChild(){}};
+  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, appendChild(){}, classList:{add(){}, remove(){}, toggle(){}, contains(){return false;}}}; // classList：入廟 ink 分支的 showSlip 會切殿內 reading 狀態（僅樣式）
   $('question').value = question;
   let mounted;
   window.SLIP_RENDER = {mountSlip:(_, entry) => {mounted = entry.historical_text.poem_text;}};
-  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback}, BOOK_KEY:'drawone.book.v1', reduceMotion:true, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
+  const writes = [];
+  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback, set:(key) => { writes.push(key); }}, BOOK_KEY:'drawone.book.v1', LASTHALL_KEY:'__lasthall__', currentHall:{id:'mazu'}, cnNum:String, Date, reduceMotion:true, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
   vm.createContext(context);
-  vm.runInContext(showSlip + '\nthis.showSlip = showSlip;', context);
+  vm.runInContext(ensureBookEntry + '\n' + showSlip + '\nthis.showSlip = showSlip;', context);
   context.showSlip(after.entries.find(e => e.id === id), {repeated:true});
   assert.equal($('noteInput').value, record.note);
   assert.equal(context.currentTakeawayTs, record.ts);
@@ -59,5 +64,6 @@ for (const number of [10, 28]) {
   assert.equal($('takeawayZone').hidden, false);
   assert.equal(mounted, after.entries.find(e => e.id === id).historical_text.poem_text);
   assert.equal(JSON.stringify([...storage]), frozen);
+  assert.ok(writes.every(k => k === '__lasthall__'), 'only the last-hall marker may be written: ' + writes.join());
 }
 console.log('PASS: all 260 ids stable; only two poem payloads changed; old fictional books/notes/bindings restore, cross-hall repeat never redraws, zero storage writes (offline VM scope)');

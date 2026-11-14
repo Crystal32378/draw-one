@@ -33,3 +33,6 @@ jobs:
 
       - name: Arrival mechanics contracts (incl. 紙落定即入簿)
         run: node scripts/test-arrival.mjs
+
+      - name: 乙未／戊午 repair — old books, notes and bindings still restore
+        run: node scripts/test-liushijiazi-book-compat.mjs
