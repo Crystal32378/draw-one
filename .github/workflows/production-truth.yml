@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # 乙未／戊午相容性測試要讀修正前的 commit（7ae87f6）作對照；淺層 checkout 抓不到
 
       - uses: actions/setup-node@v4
         with:
