@@ -42,7 +42,7 @@ const settled = (page) => page.waitForFunction(() => {
   return (window.__n = (window.__n || 0) + 1) > 12; }, null, { polling: 50, timeout: 8000 });
 const on = (page, id) => page.$eval("#" + id, (el) => el.classList.contains("on"));
 
-const VIEWPORTS = [["手機直 390×844", 390, 844, true], ["小手機 360×640", 360, 640, true], ["手機橫 844×390", 844, 390, true],
+const VIEWPORTS = [["短桌機 800×700", 800, 700, false], ["短手機 390×601", 390, 601, true], ["手機直 390×844", 390, 844, true], ["小手機 360×640", 360, 640, true], ["手機橫 844×390", 844, 390, true],
   ["平板 1024×768", 1024, 768, false], ["桌機 1440×900", 1440, 900, false]];
 const HALLS = ["guanyin", "mazu", "guandi"];
 
@@ -67,6 +67,12 @@ for (const [label, w, h, touch] of VIEWPORTS) {
   check("中軸空段中央不放東西", voidClear);
   if (SHOTS) await page.screenshot({ path: join(SHOTS, `${w}x${h}-void.png`) });
 
+  const birds = await page.evaluate(() => [...document.querySelectorAll(".sparrow")].map(el => ({
+    duration: getComputedStyle(el.querySelector("svg")).animationDuration,
+    delay: getComputedStyle(el.querySelector("svg")).animationDelay,
+    pointer: getComputedStyle(el).pointerEvents
+  })));
+  check("#41 三隻麻雀不同節奏、不攔截手勢", birds.length === 3 && new Set(birds.map(b => b.duration + b.delay)).size === 3 && birds.every(b => b.pointer === "none"));
   const boxes = {};
   for (const id of HALLS) {
     // 轉到正對：非正對的點擊只轉身（可能要兩次：先轉到鄰站）
@@ -91,6 +97,9 @@ for (const [label, w, h, touch] of VIEWPORTS) {
   const same = await page.evaluate(() => { const strip = (el) => el.querySelector("svg").outerHTML; const a = [...document.querySelectorAll(".station:not(.hypothetical) .ink-hall")].map(strip); return a.length === 3 && a.every((x) => x === a[0]); });
   check("三殿是同一份墨筆模板（逐字相同）", same);
 
+  check("#41 轉身經過會飛，落定停止飛行", await page.evaluate(() => document.querySelectorAll(".sparrow.fled").length > 0));
+  await page.waitForTimeout(750);
+  check("#41 飛行不循環", await page.evaluate(() => document.querySelectorAll(".sparrow.flying").length === 0));
   // 推門 → 進殿 → 走近籤筒
   const g = await station(page, "guandi");
   await page.mouse.click(g.x, g.y);
@@ -104,9 +113,22 @@ for (const [label, w, h, touch] of VIEWPORTS) {
   const moving = await page.evaluate(() => ({ stick: !!document.getElementById("tubeStick"), candles: document.querySelectorAll(".censer .candle").length, lamps: document.querySelectorAll(".hall-ink .hl").length,
     anims: document.getAnimations().length }));
   check("殿內活物各自成層（籤枝、一對燭、一對燈；有在動）", moving.stick && moving.candles === 2 && moving.lamps === 2 && moving.anims > 0);
-  await page.click("#tubeWrap"); await page.waitForTimeout(250); await page.click("#takeBtn"); await page.waitForTimeout(500);
+  await page.click("#tubeWrap"); await page.waitForTimeout(800);
+  if (h >= 601) check("#42 抽枝時整塊匾在頂列以下", await page.evaluate(() => {
+    const r = document.getElementById("tablet").getBoundingClientRect(), bar = document.querySelector(".hall-top").getBoundingClientRect();
+    return r.top >= bar.bottom && r.bottom < innerHeight;
+  }));
+  await page.click("#takeBtn"); await page.waitForTimeout(500);
   const slip = await page.evaluate(() => ({ paper: !!document.querySelector("#slipMount .slip"), book: JSON.parse(localStorage.getItem("drawone.book.v1") || "[]").length }));
   check("抽籤照舊：原籤紙元件、紙落定入簿", slip.paper && slip.book === 1);
+  check("#42 讀詩時完整聖號在頂列、原匾不被切半", await page.evaluate(() => {
+    const name = document.getElementById("hallName"), r = name.getBoundingClientRect();
+    return name.textContent.length > 0 && getComputedStyle(name).opacity === "1" && r.top >= 0 && r.bottom < innerHeight && getComputedStyle(document.getElementById("tablet")).display === "none";
+  }));
+  check("#43 收進籤簿在首屏內且可點", await page.evaluate(() => {
+    const el = document.getElementById("keepBtn"), r = el.getBoundingClientRect();
+    return r.top > 0 && r.bottom <= innerHeight && document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === el;
+  }));
   if (SHOTS) await page.screenshot({ path: join(SHOTS, `${w}x${h}-slip.png`) });
   await page.click("#backBtn"); await page.waitForTimeout(700);
   check("回埕：門已掩上、朝向留在剛才那殿（session 內）", (await on(page, "s-court")) && (await page.evaluate(() => document.querySelectorAll(".facade.opening").length === 0)));

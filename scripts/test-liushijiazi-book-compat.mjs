@@ -65,12 +65,12 @@ for (const [corpus, number] of [['liushijiazi', 10], ['liushijiazi', 28], ['guan
   assert.equal(binding.boundCorpusId, corpus);
   assert.equal(binding.repeated, true);
   const nodes = {};
-  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, appendChild(){}, classList:{add(){}, remove(){}, toggle(){}, contains(){return false;}}}; // classList：入廟 ink 分支的 showSlip 會切殿內 reading 狀態（僅樣式）
+  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, scrollTo(){}, appendChild(){}, classList:{add(){}, remove(){}, toggle(){}, contains(){return false;}}}; // classList：入廟 ink 分支的 showSlip 會切殿內 reading 狀態（僅樣式）
   $('question').value = question;
   let mounted;
   window.SLIP_RENDER = {mountSlip:(_, entry) => {mounted = entry.historical_text.poem_text;}};
   const writes = [];
-  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback, set:(key) => { writes.push(key); }}, BOOK_KEY:'drawone.book.v1', LASTHALL_KEY:'__lasthall__', currentHall:{id:'mazu'}, cnNum:String, Date, reduceMotion:true, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
+  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback, set:(key) => { writes.push(key); }}, BOOK_KEY:'drawone.book.v1', LASTHALL_KEY:'__lasthall__', currentHall:{id:'mazu'}, cnNum:String, Date, reduceMotion:true, nameBar(){}, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
   vm.createContext(context);
   vm.runInContext(ensureBookEntry + '\n' + showSlip + '\nthis.showSlip = showSlip;', context);
   context.showSlip(after.entries.find(e => e.id === id), {repeated:true});

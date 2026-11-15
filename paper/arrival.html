@@ -290,8 +290,21 @@
     border-radius: 46% 46% 44% 44% / 54% 54% 46% 46%;
   }
   .lived.lantern::before { content: ""; position: absolute; top: -5px; left: 50%; width: 1px; height: 5px; background: rgba(52, 46, 36, 0.5); }
-  /* 麻雀：埕上唯一會自己動的——偶爾跳兩步，不表演 */
-  .lived.sparrow { bottom: 41.5%; width: 22px; height: 16px; animation: sparrow-hop 13s steps(1, end) infinite; }
+  /* 麻雀：各有節奏。有人轉身經過才躲一次，落定不循環表演。 */
+  .lived.sparrow { bottom: 41.5%; width: 22px; height: 16px; pointer-events: none; }
+  .sparrow svg { overflow: visible; animation: sparrow-hop 13s steps(1, end) infinite; }
+  .sparrow.bird-0 { bottom: 24%; --fly-x: -38px; --fly-y: -58px; }
+  .sparrow.bird-1 { bottom: 33%; --fly-x: 32px; --fly-y: -42px; }
+  .sparrow.bird-2 { bottom: 27%; --fly-x: -30px; --fly-y: -52px; }
+  .sparrow.bird-1 svg { animation-duration: 17s; animation-delay: -7s; }
+  .sparrow.bird-2 svg { animation-duration: 19s; animation-delay: -11s; }
+  .sparrow.fled { transform: translate(var(--fly-x), var(--fly-y)); }
+  .sparrow.flying { animation: sparrow-flight 650ms ease-out both; }
+  .sparrow.flying svg { animation: none; }
+  .sparrow .wing { transform-origin: 10px 8px; }
+  .sparrow.flying .wing { animation: sparrow-wing 210ms ease-in-out 3; }
+  @keyframes sparrow-flight { from { transform: translate(0, 0); } 45% { transform: translate(calc(var(--fly-x) * .5), calc(var(--fly-y) - 12px)); } to { transform: translate(var(--fly-x), var(--fly-y)); } }
+  @keyframes sparrow-wing { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(-1.8); } }
   @keyframes sparrow-hop {
     0%, 100% { transform: translate(0, 0); } 31% { transform: translate(0, 0); } 32% { transform: translate(7px, -3px); }
     33.5% { transform: translate(14px, 0); } 61% { transform: translate(14px, 0); } 62% { transform: translate(8px, -3px) scaleX(-1); }
@@ -304,7 +317,8 @@
     filter: blur(2.5px); transform-origin: 50% 100%; animation: smoke-sway 10s ease-in-out infinite;
   }
   @media (prefers-reduced-motion: reduce) {
-    .lived.tree-shade, .lived.tree .sway, .lived.sparrow, .lived.burner-smoke { animation: none; }
+    .lived.tree-shade, .lived.tree .sway, .lived.sparrow, .sparrow svg, .sparrow.flying .wing, .lived.burner-smoke { animation: none; }
+    .sparrow.fled, .sparrow.flying { transform: none; }
   }
   /* 放樣線：平常不顯示 */
   .ink-hall .k-plan { display: none; fill: none; stroke: rgba(52, 46, 36, 0.55); stroke-width: 1.3; stroke-dasharray: 6 5; stroke-linecap: round; }
@@ -713,6 +727,20 @@
   }
   .note-zone textarea:focus { outline: none; border-bottom-color: var(--ink); }
   .slip-actions { width: 100%; max-width: 340px; margin-top: 24px; display: flex; justify-content: flex-end; }
+
+
+  /* #42：抽枝仍見匾；讀詩時聖號完整移至頂列，不能切半個字。紙元件不改。 */
+  #s-hall.presenting-stick .censer, #s-hall.presenting-stick .hall-desk { display: none; }
+  #s-hall.presenting-stick .stick-stage { margin-top: 16px; gap: 14px; }
+  #s-hall.presenting-stick .stick-large { height: clamp(100px, 24vh, 220px); }
+  #s-hall.reading .tablet, #s-hall.reading .hall-sub,
+  #s-hall.reading .censer, #s-hall.reading .hall-desk { display: none; }
+  #s-hall.reading .hall-top { flex-shrink: 0; }
+  #s-hall.reading .hall-body { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  /* #43：原本那顆收籤按鈕，不新增第二個 handler。筆記、解曰仍可往下讀。 */
+  #s-hall.on.reading .slip-actions { position: fixed; z-index: 7; bottom: 0; left: 0; right: 0;
+    width: 100%; max-width: none; margin: 0; padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+    background: var(--ground); border-top: 1px solid rgba(74,66,52,.16); justify-content: center; }
 
   /* 未落成之殿（hypothetical stress test） */
   .unbuilt {
@@ -1809,7 +1837,7 @@ window.ARRIVAL_SOUND = (function () {
         <ellipse cx="109" cy="41" rx="4.2" ry="2.2" fill="rgba(110,84,56,.7)" transform="rotate(-10 109 41)"/></g></svg>`],
     sparrow: [22, 16, `<svg viewBox="0 0 22 16" aria-hidden="true">
       <g filter="url(#ink-rough)"><path fill="rgba(110,82,58,.92)" d="M3 9 C3 4 9 2 13 4 C17 2 20 5 19 8 L21 9 L18.5 9.6 C17 13 11 14 7 12 L1 13 Z"/>
-        <circle cx="16.4" cy="6.4" r="0.9" fill="rgba(20,16,12,.95)"/><path d="M9 13 V15.5 M12 13 V15.5" stroke="rgba(38,33,25,.8)" stroke-width="0.9"/></g></svg>`],
+        <path class="wing" d="M6 9 Q9 3 14 8 L9 11 Z" fill="rgba(58,45,34,.8)"/><circle cx="16.4" cy="6.4" r="0.9" fill="rgba(20,16,12,.95)"/><path d="M9 13 V15.5 M12 13 V15.5" stroke="rgba(38,33,25,.8)" stroke-width="0.9"/></g></svg>`],
   };
 
   /* ---------- 節氣（2026 近似表；prototype 用） ---------- */
@@ -1988,7 +2016,11 @@ window.ARRIVAL_SOUND = (function () {
       // 樹下：一條長凳、一盆萬年青、一隻麻雀（坐的地方）
       sprite("bench", B(voidIndex) - 58, NEAR);
       sprite("pot", B(voidIndex) + 34, { ...NEAR, bottom: "33%" });
-      put("sparrow", B(voidIndex) + 8, { bottom: "24%" }).innerHTML = INK.sparrow[2];
+      [B(voidIndex) + 8, B(voidIndex + 1) - 108, B(voidIndex + 2) + 18].forEach((x, i) => {
+        const bird = put("sparrow bird-" + i, x);
+        bird.dataset.x = x; bird.innerHTML = INK.sparrow[2];
+        bird.addEventListener("animationend", (ev) => { if (ev.animationName === "sparrow-flight") bird.classList.remove("flying"); });
+      });
       // 茶水桌：柑、花、茶壺、電扇、兩張紅塑膠凳——有人顧的地方
       sprite("table", B(voidIndex + 1) - Math.min(96, 0.3 * stationW), { ...NEAR, transform: "scale(1.02)" }); // 窄螢幕也不進中軸中央
       // 誰的腳踏車、竹掃帚、水桶（停的、掃的）
@@ -2059,6 +2091,17 @@ window.ARRIVAL_SOUND = (function () {
     stageStrip.style.setProperty("--hall-w", Math.round(hallH / 1.125) + "px");
   }
 
+  let birdFrameScroll = null;
+  function scatterNearbyBirds(vw) {
+    const moved = birdFrameScroll !== null && Math.abs(scroll - birdFrameScroll) > 0.4;
+    birdFrameScroll = scroll;
+    if (!moved || reduceMotion || !$("s-court").classList.contains("on")) return;
+    for (const bird of stageStrip.querySelectorAll(".sparrow:not(.fled)")) {
+      const x = Number(bird.dataset.x) + pad0 - scroll;
+      if (Math.abs(x - vw / 2) < vw * 0.32) bird.classList.add("fled", "flying");
+    }
+  }
+
   function applyFrame() {
     sizeHalls();
     // overflow:hidden 容器仍可能被瀏覽器 focus/click 自動捲動——每幀歸零
@@ -2066,6 +2109,7 @@ window.ARRIVAL_SOUND = (function () {
     const app = document.getElementById("app");
     if (app.scrollLeft) app.scrollLeft = 0;
     const vw = view.clientWidth || Math.min(1040, innerWidth);
+    scatterNearbyBirds(vw);
     stageStrip.style.transform = `translateX(${pad0 - scroll}px)`;
     farStrip.style.transform = `translateX(${-scroll * 0.35}px)`;
     groundJoints.style.transform = `translateX(${(pad0 - scroll) * 0.9}px)`;
@@ -2193,6 +2237,7 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   function renderCourt() {
+    birdFrameScroll = null; // 重返埕不是走近，不驚動剛重建的鳥。
     buildCourt();
     const facing = sessionFacing;
     faceStation(facing, { instant: true });
@@ -2294,7 +2339,7 @@ window.ARRIVAL_SOUND = (function () {
   });
 
   function renderHall(hall, { boundEntry } = {}) {
-    $("s-hall").classList.remove("reading");
+    $("s-hall").classList.remove("reading", "presenting-stick");
     $("tablet").textContent = hall.deity;
     $("hallName").textContent = hall.deity; // 聖號捲出畫面時頂上那行小字（同一個字串，不另寫）
     nameBar();
@@ -2367,7 +2412,8 @@ window.ARRIVAL_SOUND = (function () {
   /* 聖號是否還看得見：看不見（被頂列蓋到或捲出）就讓頂列帶名 */
   function nameBar() {
     const top = document.querySelector(".hall-top"), t = $("tablet").getBoundingClientRect();
-    top.classList.toggle("named", t.height > 0 && t.top < top.getBoundingClientRect().bottom - 10);
+    top.classList.toggle("named", $("s-hall").classList.contains("reading") || (t.height > 0 && t.top < top.getBoundingClientRect().bottom - 10));
+    $("hallName").setAttribute("aria-hidden", String(!$("s-hall").classList.contains("reading")));
   }
   $("s-hall").addEventListener("scroll", nameBar, { passive: true });
   window.addEventListener("resize", nameBar);
@@ -2420,8 +2466,10 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickLabel").textContent = window.SLIP_RENDER.tabText(entry);
     $("stickStage").style.display = "flex";
+    $("s-hall").classList.add("presenting-stick");
     // 你抽動了世界，世界把籤端到你面前——手機上換幕的新主角常在摺線下
-    $("stickStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    $("s-hall").scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    nameBar();
   }
 
   $("jieyueToggle").addEventListener("click", () => {
@@ -2444,8 +2492,10 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "flex";
+    $("s-hall").classList.remove("presenting-stick");
     $("s-hall").classList.add("reading"); // 紙是主角：殿內的柱與樑退到紙的上方，不壓在紙邊
-    $("slipStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); // 紙登場＝紙在眼前
+    $("s-hall").scrollTo({ top: 0, behavior: "auto" }); // 頂列帶聖號，整張紙從起點讀，不切半塊匾
+    nameBar();
     const mount = $("slipMount");
     mount.innerHTML = "";
     try {
