@@ -300,7 +300,7 @@
   .sparrow.bird-2 svg { animation-duration: 19s; animation-delay: -11s; }
   .sparrow.fled { transform: translate(var(--fly-x), var(--fly-y)); }
   .sparrow.flying { animation: sparrow-flight 650ms ease-out both; }
-  .sparrow.flying svg { animation: none; }
+  .sparrow.fled svg { animation: none; } /* 窄手把／座面上停穩，不繼續跳離落腳點。 */
   .sparrow .wing { transform-origin: 10px 8px; }
   .sparrow.flying .wing { animation: sparrow-wing 210ms ease-in-out 3; }
   @keyframes sparrow-flight { from { transform: translate(0, 0); } 45% { transform: translate(calc(var(--fly-x) * .5), calc(var(--fly-y) - 12px)); } to { transform: translate(var(--fly-x), var(--fly-y)); } }
@@ -1259,8 +1259,8 @@ window.ARRIVAL_SOUND = (function () {
     const t0 = ctx.currentTime + 0.05;
     const f0 = rand(2500, 3400);
     const syll = 2 + Math.floor(Math.random() * 3);
+    let at = t0; // 累加間隔：不得把第 4 音排到第 3 音前，也不疊成一聲嗝。
     for (let i = 0; i < syll; i++) {
-      const at = t0 + i * rand(0.12, 0.26);
       const s = ctx.createBufferSource(); s.buffer = n.v.chirpBuf;
       const bp = biquad("bandpass", f0 * rand(0.95, 1.05), 16);
       bp.frequency.setValueAtTime(bp.frequency.value, at);
@@ -1271,6 +1271,7 @@ window.ARRIVAL_SOUND = (function () {
       g.gain.setTargetAtTime(0, at + 0.07, 0.03);
       s.connect(bp); bp.connect(g); g.connect(n.exBus);
       s.start(at); s.stop(at + 0.25);
+      at += rand(0.16, 0.24);
     }
   }
   function bikePass() { // 遠方腳踏車：偶爾一台，經過就沒有了
@@ -2109,6 +2110,14 @@ window.ARRIVAL_SOUND = (function () {
     const app = document.getElementById("app");
     if (app.scrollLeft) app.scrollLeft = 0;
     const vw = view.clientWidth || Math.min(1040, innerWidth);
+    // Perch targets derive from the existing sprite geometry, not arbitrary flight height.
+    // bench seat: (70,9) in 104×34, scale(1.16), origin(52,34).
+    // bike handlebar: (36,4.5) in 48×30 → 96×60, scale(1.16) rotate(-4deg), origin(48,60).
+    const courtH = view.clientHeight;
+    for (const [cls, x, y] of [["bird-0", -4.12, -(courtH * .065 + 28.5)], ["bird-2", -18.86, -(courtH * .035 + 60.46)]]) {
+      const bird = stageStrip.querySelector("." + cls);
+      if (bird) { bird.style.setProperty("--fly-x", x + "px"); bird.style.setProperty("--fly-y", y + "px"); }
+    }
     scatterNearbyBirds(vw);
     stageStrip.style.transform = `translateX(${pad0 - scroll}px)`;
     farStrip.style.transform = `translateX(${-scroll * 0.35}px)`;
