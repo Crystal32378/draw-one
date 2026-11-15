@@ -936,13 +936,13 @@
 
 </div>
 
-<script src="../assets/oracles.draw-pool.js?v=3"></script>
+<script src="../assets/oracles.draw-pool.js?v=4"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
 <script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
-<script src="../assets/interpretation-pool.guandi.js?v=1"></script>
-<script src="../assets/interpretation-holds.js?v=1"></script>
-<script src="../assets/jieyue-guard.js?v=2"></script>
+<script src="../assets/interpretation-pool.guandi.js?v=2"></script>
+<script src="../assets/interpretation-holds.js?v=2"></script>
+<script src="../assets/jieyue-guard.js?v=3"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -955,7 +955,7 @@
    - 增建殿 fail-closed 在呼叫端（enterHall guard）：增建中無殿內聲態。
    - 全合成（噪音整形）：零音檔、零下載、零振盪器——
      無音高源；一切事件隨機排程＝無週期 LFO。合成即誠實。
-     （鳥聲＝高 Q 共振噪音、蟬＝窄帶噪音潮——仍是噪音家族，做假即殺。）
+     （鳥聲＝高 Q 共振噪音、蟬＝窄帶噪音潮——仍是噪音家族。蟬做假即殺；鳥聲做假即留，見 birdChirp。）
    - 天氣票（Crystal 拍板 2026-08-21）：同一座廟、同一副骨架
      （空氣×樹×牆外世界），天氣只增減聲部。visit 內固定。
      目前掛 ?weather= dev flag 試聽；入口 ritual 等回訪門檻拍板。
@@ -999,7 +999,7 @@ window.ARRIVAL_SOUND = (function () {
     rainStone: 0.007,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
     rainCanopy: 0.013, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
     rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
-    voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
+    voiceCicada: 0.004, voiceBird: 0.04, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）。鳥（#40）：0.006 → 0.04，配完整的噪音粒，到喇叭的峰值約 −48 dBFS——與埕上空氣的峰值同一階，短而窄：遠，但聽得見的遠
     handPull: 0.020,  // 手感層：筒內竹籤的細碎摩擦（拖籤時，跟手）
     handStick: 0.030, // 手感層：籤枝離筒的一下輕竹響
     handPaper: 0.022, // 手感層：取籤詩的紙聲（纖維，不是 whoosh）
@@ -1184,7 +1184,16 @@ window.ARRIVAL_SOUND = (function () {
   function ensureVoices() {
     if (n.v) return;
     const v = n.v = {};
-    v.chirpBuf = grainBuffer(0.09, 12, 60, 90);
+    // 鳥聲的原料＝一顆完整的軟起音噪音粒（#40）。原本借 grainBuffer(0.09, 12, 60, 90)：只有一顆、位置隨機（常被緩衝尾端截掉半顆）、
+    // 振幅隨機到 1/16，而且一次造訪只造一次——離線實測到喇叭的峰值中位數約 −78 dBFS，倒楣的那一次造訪整場接近無聲。
+    // 只調 LEVELS 救不回來（0.02 仍在 −67 dBFS、低於同頻段的環境底）。頻寬、掃頻、包絡都沒動——不是把鳥拉近，是讓牠每次都真的出聲。
+    v.chirpBuf = (() => {
+      const len = Math.floor(ctx.sampleRate * 0.09);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / len);
+      return buf;
+    })();
     // 蟬：合適季節才有（5–9 月，裝置時鐘＝void 刻字先例）。遠處蟬潮，不是一隻。
     v.cicadaOn = new Date().getMonth() + 1 >= 5 && new Date().getMonth() + 1 <= 9;
     if (v.cicadaOn) {
@@ -1214,8 +1223,11 @@ window.ARRIVAL_SOUND = (function () {
   function cicadaPulse() { // 蟬的顆粒感：快而不規則的振幅抖動
     if (running() && W().voices && n.v?.cicadaOn) n.v.cicPulse.gain.setTargetAtTime(rand(0.35, 1), ctx.currentTime, 0.05);
   }
-  function birdChirp() { // 遠處鳥聲：高 Q 共振噪音掃頻——像不像由 Crystal 判，做假即殺
-    if (!running() || !W().voices || Math.random() < 0.4) return;
+  let birdSang = false; // 上一輪有沒有叫：叫過才可能歇一輪——進埕的第一聲不歇，也不連歇兩輪
+  function birdChirp() { // 遠處鳥聲：高 Q 共振噪音掃頻——做假即留：埕上的小禮物（Crystal 特赦 2026-11-15，#40；不得以「不夠像真的」移除）
+    if (!running() || !W().voices) return;
+    if (birdSang && Math.random() < 0.15) { birdSang = false; return; } // 翹班率 0.4 → 0.15
+    birdSang = true;
     const t0 = ctx.currentTime + 0.05;
     const f0 = rand(2500, 3400);
     const syll = 2 + Math.floor(Math.random() * 3);
@@ -1362,7 +1374,7 @@ window.ARRIVAL_SOUND = (function () {
       ensureVoices();
       loopTimer("cicadaWave", cicadaWave, 15, 50, 0.2); // 蟬早點在（3–10s 起第一潮）
       loopTimer("cicadaPulse", cicadaPulse, 0.06, 0.14);
-      loopTimer("bird", birdChirp, 25, 75, 0.35);
+      loopTimer("bird", birdChirp, 15, 40, 0.35); // #40：25–75s → 15–40s（首聲 5–14s）
       loopTimer("bike", bikePass, 150, 420, 0.4);
     } else if (n.v) {
       if (n.v.cicadaOn) n.v.cicGain.gain.setTargetAtTime(0, t, 1);
