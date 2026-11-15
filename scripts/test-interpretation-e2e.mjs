@@ -134,16 +134,19 @@ await view("guanyin-001"); f = await fold();
 check("#1 摺頁出現、收合、標「艋舺龍山寺版・已核圖」", !f.hidden && !f.open && f.word === "解曰" && f.prov === "艋舺龍山寺版・已核圖");
 await openFold(); f = await fold();
 check("#1 展開＝原文逐字", f.open && f.text === await poolText("INTERPRETATION_POOL", "guanyin-001"));
-check("#1 來源＋人工核圖；文案同 PR #34 原版（無說明句）", f.src === "據艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像），人工核圖確認" && f.aboutHidden);
+check("#1 來源＋人工核圖；文案同 PR #34 原版（無說明句）", f.src === "據艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像），附錄二 p179，人工核圖確認" && f.aboutHidden
+  && /corpus-review-guanyin\.html\?q=1$/.test(f.link?.href ?? ""));
 await shot("guanyin-confirmed");
 await view(pickPending); await openFold(); f = await fold();
 check(`${pickPending} 標「待複核」，不寫成已核圖`, f.prov === "艋舺龍山寺版・待複核" && f.src.endsWith("，待複核") && !f.src.includes("核圖") && f.aboutHidden
   && f.text === await poolText("INTERPRETATION_POOL", pickPending));
 await shot("guanyin-pending");
 await view("guanyin-012"); f = await fold();
-check("#12 暫未上紙：有一行、收合", !f.hidden && !f.open && f.prov === "此籤暫未上紙");
+// 2026-11-15 待複核不等於隱藏：有缺字的也上紙，標明、不補字。
+check("#12 有缺字也上紙：有一行、收合、標「有缺字・待核對」", !f.hidden && !f.open && f.prov === "艋舺龍山寺版・有缺字・待核對");
 await openFold(); f = await fold();
-check("#12 只說原因，沒有解曰文字、沒有連結", f.text === "" && f.textHidden && f.about.includes("缺字") && f.about.includes("不替它補字") && f.link === null);
+check("#12 原文逐字（缺字留 □，沒補）＋一句說明＋通往校對館這一籤", f.text === await poolText("INTERPRETATION_POOL", "guanyin-012") && f.text.includes("□") && !f.textHidden
+  && f.about.includes("留著 □") && f.about.includes("沒有補") && f.src.endsWith("，待核對") && !f.src.includes("核圖確認") && /corpus-review-guanyin\.html\?q=12$/.test(f.link?.href ?? ""));
 await shot("guanyin-withheld");
 
 console.log("X3 關帝殿 — 待複核／暫未上紙");
@@ -155,8 +158,10 @@ check("#1 展開＝原文逐字；來源寫明維基文庫轉錄、未核道藏�
   && f.about.includes("不是抽一的話") && f.about.includes("預測"));
 await shot("guandi-pending");
 await view("guandi-058"); await openFold(); f = await fold();
-check("#58 暫未上紙：說「疑似認錯的字」", f.prov === "此籤暫未上紙" && f.text === "" && f.about.includes("疑似認錯的字"));
-check("#58 被暫緩的字不在頁面上", !(await page.content()).includes("求名爻得"));
+check("#58 有疑字也上紙：標「有疑字・待核對」，說「疑似認錯的字」「沒有改」", f.prov === "道藏本・有疑字・待核對" && f.about.includes("疑似認錯的字") && f.about.includes("沒有改")
+  && f.about.includes("不是抽一的話"));
+check("#58 原文逐字照轉錄（疑字沒被偷改）＋通往校對館這一籤", f.text === await poolText("INTERPRETATION_POOL_GUANDI", "guandi-058") && f.text.includes("求名爻得")
+  && /corpus-review-guandi\.html\?q=58$/.test(f.link?.href ?? ""));
 await shot("guandi-withheld");
 
 console.log("X4 天上聖母殿（六十甲子）— 整套暫緩");

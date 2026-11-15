@@ -15,12 +15,18 @@
 //   G1 field: ONLY 解曰 (the reflective verse gloss). 聖意 — the per-category
 //      fortune grid (求財/婚姻/疾病…) — is a PREDICTIVE register that fights the
 //      product's "reflection, not prophecy" line. It is excluded at the source.
-//   G2 status: only VERIFIED / PROBABLE enter. UNRESOLVED / CANDIDATE are dropped.
-//   G3 encoding: any U+FFFD, □ (textual box), control char, or lone surrogate in
-//      an included entry FAILS the build. No strip-and-ship.
-//   G4 honesty: status word is a 1:1 translation, never an upgrade
-//      (VERIFIED=已對勘, PROBABLE=待複核). manual_image_confirmation is carried
-//      verbatim so the UI can mark the human-checked slips without upgrading the rest.
+//   DISPLAY POLICY 2026-11-15 (Crystal): 待複核不等於隱藏. Every 解曰 of 觀音/關帝 is shown
+//   as the source has it — old glyphs kept, lacunae kept as □ — with its real status and
+//   its doubt. Nothing is corrected, completed or upgraded to make it presentable; the
+//   detailed doubts live on the proofreading pages (paper/corpus-review-*.html).
+//   G2 status: all four source statuses enter, each under its own honest word. An
+//      UNRESOLVED / CANDIDATE row is emitted with doubt="unsettled_transcription".
+//   G3 encoding: U+FFFD, a control char or a lone surrogate FAILS the build. □ (textual
+//      box = a character the transcription could not read) may appear ONLY in a row whose
+//      status is UNRESOLVED/CANDIDATE; a □ in a "settled" row still fails. No strip-and-ship.
+//   G4 honesty: status word is a 1:1 translation, never an upgrade (VERIFIED=已對勘,
+//      PROBABLE=待複核, CANDIDATE=候選讀法, UNRESOLVED=有缺字). manual_image_confirmation is
+//      carried verbatim so the UI can mark the human-checked slips without upgrading the rest.
 //   G5 edition pin: every SOURCE row's edition must equal the corpus's pinned
 //      source edition (exact). The artifact also pins expected_slip_edition_title —
 //      the exact DRAW_POOL edition the gloss accompanies — which the UI matches exactly.
@@ -28,10 +34,12 @@
 //   G7 per-slip custody: each 解曰 is bound slip_no → verbatim_text → edition_id
 //      via a committed custody manifest. Swapping two glosses, editing a text, or
 //      pointing at a different edition breaks the token and FAILS the build.
-//   G8 flagged-reading hold (corpora with `notes_require_hold`): a 解曰 whose
+//   G8 flagged-reading ledger (corpora with `notes_require_hold`): a 解曰 whose
 //      source row carries a variants/anomaly note may NOT ship silently. It must be
-//      on the committed hold list (→ withheld, reason shown) or the build FAILS.
-//      A hold that points at a missing slip also fails.
+//      on the committed ledger (jieyue_holds.json → emitted WITH doubt=<reason_code>, so
+//      the page marks it) or the build FAILS. A ledger row pointing at a missing slip also
+//      fails. (The file keeps its name; since 2026-11-15 a row means "shown, marked as
+//      doubtful", no longer "withheld".)
 //   G9 corpus hold is evidence-bound: 六十甲子 is withheld because (a) the temple
 //      source's reuse licence is unresolved and (b) the transcription is single-pass
 //      OCR with no human image check. The build recomputes both from the corpus
@@ -57,8 +65,9 @@ const rel = (p) => p.replace(ROOT + "/", "");
 const WRITE_CUSTODY = process.argv.includes("--write-custody");
 
 const FIELD = "解曰";
-const ALLOWED_STATUS = new Set(["VERIFIED", "PROBABLE"]);
-const STATUS_WORD = { VERIFIED: "已對勘", PROBABLE: "待複核" };
+const SETTLED_STATUS = new Set(["VERIFIED", "PROBABLE"]);
+const STATUS_WORD = { VERIFIED: "已對勘", PROBABLE: "待複核", CANDIDATE: "候選讀法", UNRESOLVED: "有缺字" };
+const POOL_SCHEMA = "interpretation-pool/0.2"; // 0.2: every status shown; entries may carry `doubt` + `locator`
 
 const MANIFEST = {
   guanyin: {
@@ -76,7 +85,8 @@ const MANIFEST = {
     // The DRAW_POOL edition this gloss accompanies (the poem edition on the paper).
     slip_edition_title: "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
     source_distribution: "100 解曰: 94 PROBABLE, 5 UNRESOLVED (12,20,35,65,77), 1 CANDIDATE (44)",
-    emit_locator: false,
+    // 頁碼只取來源欄裡的 pNNN（論文附錄二的頁）；取不到就失敗，不猜。
+    emit_locator: (e) => { const m = String(e.source_locator).match(/\bp(\d{2,3})\b/); if (!m) throw new Error(`guanyin #${e.slip_no}: no page in source_locator`); return `附錄二 p${m[1]}`; },
   },
   guandi: {
     global: "INTERPRETATION_POOL_GUANDI",
@@ -93,7 +103,7 @@ const MANIFEST = {
     source_edition: "護國嘉濟江東王靈籤（傅燁撰，道藏本／維基文庫 transcription）",
     slip_edition_title: "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
     source_distribution: "100 解曰: 99 PROBABLE, 1 UNRESOLVED (100)",
-    emit_locator: false, // per-slip Wikisource subpage URLs not re-verified → not surfaced,
+    emit_locator: null, // per-slip Wikisource subpage URLs not re-verified → not surfaced
   },
 };
 
@@ -108,7 +118,8 @@ const CORPUS_HOLD = {
 const HOLDS_OUT_DEFAULT = "assets/interpretation-holds.js";
 
 const sha256 = (s) => createHash("sha256").update(s).digest("hex");
-const badChars = (t) => /�|□|[\u0000-\u001F]|[\uD800-\uDFFF]/.test(t);
+const badChars = (t) => /�|[\u0000-\u001F]|[\uD800-\uDFFF]/.test(t);
+const hasBox = (t) => /□/.test(t);
 const norm = (t) => String(t).normalize("NFC");
 
 const errors = [];
@@ -194,26 +205,25 @@ function buildCorpus(cid) {
 
   // --- emitted set + withheld ledger -----------------------------------------
   const entries = {};
-  const withheld = {}; // slip_no → reason_code (what the page may say out loud)
+  const withheld = {}; // slip_no → reason_code. Empty since 2026-11-15: nothing is withheld at slip level.
+  const doubted = {};  // slip_no → reason_code: shown, and marked as doubtful
   let confirmed = 0;
   const sourceTexts = new Set(all.map((e) => e.verbatim_text));
   for (const e of all) {
-    if (!ALLOWED_STATUS.has(e.transcription_status)) {                        // G2
-      withheld[String(e.slip_no)] = "unsettled_transcription";
+    if (!Object.hasOwn(STATUS_WORD, e.transcription_status)) {                // G2/G4
+      G(`G4/${e.slip_no}`, false, `status "${e.transcription_status}" has no honest word`);
       continue;
     }
-    if (held.has(e.slip_no)) { withheld[String(e.slip_no)] = held.get(e.slip_no); continue; } // G8 (held)
-    if (M.notes_require_hold && String(e.variants_or_notes || "").trim() !== "") {              // G8 (unheld note)
+    const settled = SETTLED_STATUS.has(e.transcription_status);
+    // doubt: the stronger reason wins (an unread character outranks a flagged reading).
+    const doubt = !settled ? "unsettled_transcription" : held.has(e.slip_no) ? held.get(e.slip_no) : null;
+    if (settled && !doubt && M.notes_require_hold && String(e.variants_or_notes || "").trim() !== "") { // G8 (unledgered note)
       G(`G8/unheld-note/${e.slip_no}`, false,
         `${FIELD} #${e.slip_no} carries a variants/anomaly note but is not on the hold list — decide consciously (hold it, or clear the note upstream)`);
       continue;
     }
-    if (badChars(e.verbatim_text)) {                                          // G3
+    if (badChars(e.verbatim_text) || (settled && hasBox(e.verbatim_text))) {  // G3
       G(`G3/${e.slip_no}`, false, `included ${FIELD} #${e.slip_no} carries a box/replacement/control char`);
-      continue;
-    }
-    if (!Object.hasOwn(STATUS_WORD, e.transcription_status)) {                // G4
-      G(`G4/${e.slip_no}`, false, `status "${e.transcription_status}" has no honest word`);
       continue;
     }
     if (!sourceTexts.has(e.verbatim_text)) {                                  // G6 (defensive)
@@ -227,8 +237,10 @@ function buildCorpus(cid) {
       status: e.transcription_status,
       confirmed: e.manual_image_confirmation === true,
       custody: liveCustody[String(e.slip_no)],
-      ...(M.emit_locator ? { locator: e.source_locator } : {}),
+      ...(doubt ? { doubt } : {}),
+      ...(M.emit_locator ? { locator: M.emit_locator(e) } : {}),
     };
+    if (doubt) doubted[String(e.slip_no)] = doubt;
     if (e.manual_image_confirmation === true) confirmed++;
   }
   // A held slip that is ALSO dropped by status keeps the status reason (the stronger one).
@@ -236,11 +248,11 @@ function buildCorpus(cid) {
 
   const ids = Object.keys(entries).sort();
   const content_version = sha256(
-    [M.edition_id, M.slip_edition_title, ...ids.map((id) => `${id}:${entries[id].custody}:${entries[id].status}:${entries[id].confirmed}`)].join("\n")
+    [M.edition_id, M.slip_edition_title, ...ids.map((id) => `${id}:${entries[id].custody}:${entries[id].status}:${entries[id].confirmed}:${entries[id].doubt ?? ""}:${entries[id].locator ?? ""}`)].join("\n")
   );
 
   const artifact = {
-    schema: "interpretation-pool/0.1",
+    schema: POOL_SCHEMA,
     layer: "historical_interpretation",
     field: FIELD,
     corpus_id: cid,
@@ -267,6 +279,7 @@ function buildCorpus(cid) {
     confirmed,
     probable: ids.length - confirmed,
     dropped: all.length - ids.length,
+    shown_with_doubt: doubted,
     ...(M.holds ? { withheld } : {}),
     content_version,
   };
@@ -275,7 +288,7 @@ function buildCorpus(cid) {
     cid, artifact, report, withheld,
     outPath: pathOf(cid, "out", "INTERP_OUT"),
     reportPath: pathOf(cid, "report", "INTERP_REPORT"),
-    line: `interpretation pool [${cid}]: ${ids.length}/${all.length} 解曰 emitted (${confirmed} 已核圖, ${ids.length - confirmed} 待複核), ${all.length - ids.length} dropped. custody ${Object.keys(liveCustody).length}/${M.expected_total} verified. content_version ${content_version.slice(0, 12)}`,
+    line: `interpretation pool [${cid}]: ${ids.length}/${all.length} 解曰 emitted (${confirmed} 已核圖, ${ids.length - confirmed} 未核圖；其中 ${Object.keys(doubted).length} 首標示疑字／缺字), ${all.length - ids.length} dropped. custody ${Object.keys(liveCustody).length}/${M.expected_total} verified. content_version ${content_version.slice(0, 12)}`,
   };
 }
 
@@ -343,7 +356,7 @@ if (HOLDS_OUT) {
   corpora[CORPUS_HOLD.corpus_id] = corpusHold;
   holdsArtifact = {
     schema: "interpretation-holds/0.1",
-    note: "What the 解曰 layer deliberately does NOT show, and why. Reason codes only — no withheld text ever enters this file. The page may state the reason; it may not fill the gap.",
+    note: "What the 解曰 layer deliberately does NOT show, and why. Reason codes only — no withheld text ever enters this file. Since 2026-11-15 nothing is withheld at slip level in 觀音/關帝 (doubtful rows are shown and marked inside the pools); only the 六十甲子 temple commentary remains held at corpus level.",
     reason_codes: {
       unsettled_transcription: "source status UNRESOLVED/CANDIDATE (missing or undecided characters)",
       suspect_reading: "a character in the transcription is flagged as a likely misreading; not yet checked against the original image",

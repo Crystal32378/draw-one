@@ -353,6 +353,7 @@
   }
   .void-chron {
     position: absolute; left: 50%; top: 37%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
   }
   .void-chron button {
     background: var(--paper);
@@ -713,7 +714,8 @@
   .jieyue-about { margin: 10px 0 0; padding-top: 10px; border-top: 1px dotted rgba(74, 66, 52, 0.22);
     font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); }
   .jieyue-about.is-lead { margin-top: 0; padding-top: 0; border-top: 0; font-size: 12.5px; color: var(--ink); }
-  .jieyue-link { display: inline-block; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
+  .jieyue-about { white-space: pre-line; }
+  .jieyue-link { display: block; width: fit-content; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
     color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
     text-decoration-color: rgba(74, 66, 52, 0.45); }
   .jieyue-link:focus-visible, .jieyue-toggle:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
@@ -774,6 +776,9 @@
     font-size: 17px; letter-spacing: 0.3em;
     margin-bottom: 6px;
   }
+  .notice-go { display: inline-block; margin-top: 18px; padding: 9px 16px; border: 1px solid rgba(74, 66, 52, 0.55);
+    font-family: "Noto Serif TC", serif; font-size: 13px; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; background: var(--paper); }
+  .notice-go:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
   .sheet .sheet-sub { font-size: 12px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 14px; }
   .chron-list { display: grid; gap: 10px; }
   .chron-list p { font-size: 13.5px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
@@ -927,6 +932,7 @@
             <p class="jieyue-src" id="jieyueSrc"></p>
             <p class="jieyue-about" id="jieyueAbout"></p>
             <a class="jieyue-link" id="jieyueLink" target="_blank" rel="noopener noreferrer" hidden></a>
+            <a class="jieyue-link" id="jieyueReview" target="_blank" rel="noopener noreferrer" hidden></a>
           </div>
         </div>
         <div class="note-zone">
@@ -949,6 +955,18 @@
   </section>
 
   <!-- overlays -->
+  <!-- 廟埕公告：徵求校對。這裡的字是抽一自己的話，不是籤文；不寫保證、不寫斷語。 -->
+  <div class="overlay" id="noticeOverlay"><div class="sheet">
+    <h2>公告・徵求校對</h2>
+    <p class="sheet-sub">已做第一輪整理，邀請您一起複核。</p>
+    <div class="chron-list notice-list">
+      <p>三殿的籤詩與解曰，是從舊本一個字一個字轉錄下來的。古字照舊，不換成現代用字；讀不出的字留著空格，不替它補。</p>
+      <p>轉錄難免有錯。每一首都寫了來源，也寫了現在核對到哪裡——還沒有人對過原件的，就老實寫「待複核」。</p>
+      <p>如果你願意對一首、認一個字，請進校對館。三組籤本各有一頁，可以用籤號或詩句找；看到疑點，到專案的 Issues 留下殿名、籤號和你的讀法就好。</p>
+      <p class="d">這裡不收個人資料，也沒有自動送出的表單。</p>
+    </div>
+    <a class="notice-go" href="corpus-review.html">進校對館　→</a>
+  </div></div>
   <div class="overlay" id="chronOverlay"><div class="sheet">
     <h2>本廟沿革</h2>
     <p class="sheet-sub">本廟無主祀，諸神同尊；殿序依落成，落成依籤本考證完成之日。</p>
@@ -964,13 +982,13 @@
 
 </div>
 
-<script src="../assets/oracles.draw-pool.js?v=4"></script>
+<script src="../assets/oracles.draw-pool.js?v=5"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
-<script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
-<script src="../assets/interpretation-pool.guandi.js?v=2"></script>
-<script src="../assets/interpretation-holds.js?v=2"></script>
-<script src="../assets/jieyue-guard.js?v=3"></script>
+<script src="../assets/interpretation-pool.guanyin.js?v=2"></script>
+<script src="../assets/interpretation-pool.guandi.js?v=3"></script>
+<script src="../assets/interpretation-holds.js?v=3"></script>
+<script src="../assets/jieyue-guard.js?v=4"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -1939,6 +1957,12 @@ window.ARRIVAL_SOUND = (function () {
         b.textContent = "本廟沿革";
         b.dataset.chron = "1";
         chron.appendChild(b);
+        // 廟埕公告（2026-11-15）：徵求校對。和沿革同一塊告示的規格——貼在牆上，不招手。
+        // 走埕的 release 判定（data-notice），不另掛 click：setPointerCapture 會吞掉它。
+        const n = document.createElement("button");
+        n.textContent = "徵求校對";
+        n.dataset.notice = "1";
+        chron.appendChild(n);
         st.append(heart, chron);
       } else {
         const f = document.createElement("div");
@@ -2206,6 +2230,7 @@ window.ARRIVAL_SOUND = (function () {
     settleToNearest();
     if (!moved) {
       if (downTarget?.closest("[data-chron]")) { openChron(); return; }
+      if (downTarget?.closest("[data-notice]")) { $("noticeOverlay").classList.add("on"); return; }
       const facade = downTarget?.closest("[data-hall]");
       if (facade) {
         const idx = STATIONS.findIndex((s) => s.id === facade.dataset.hall);
@@ -2543,7 +2568,7 @@ window.ARRIVAL_SOUND = (function () {
       // 觀音：文案維持 PR #34 福 re-review 拍板的原版——不加任何說明句（about: null）。
       guanyin: {
         short: (pool) => `${pool.edition.split("《")[0]}版`,
-        src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        src: (pool, rec) => `據${pool.edition}${rec.locator ? `，${rec.locator}` : ""}${rec.doubt ? "，待核對" : rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
         about: null,
       },
       // 關帝：道藏本的解曰多是「求財必豐」「夫妻離散」這種斷語口吻，和觀音的勸解不同。
@@ -2551,9 +2576,20 @@ window.ARRIVAL_SOUND = (function () {
       // （是否保留這一句是文案決策，見 docs/interpretation-three-halls.md〈需要 Crystal 決定的事〉。）
       guandi: {
         short: () => "道藏本",
-        src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.doubt ? "，待核對" : rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
         about: "這是道藏本原有的判語，照原文收錄——是前人的讀法，不是抽一的話，也不是對你這件事的預測。還沒有逐籤對過道藏影像，可能有錯字。",
       },
+    },
+    // 有疑的也上紙：一句話說清楚疑在哪一類。原字照舊，不替它補、不替它改。
+    doubt: {
+      unsettled_transcription: { word: "有缺字・待核對", line: "這一首的轉錄有讀不出或讀不定的字，缺的地方留著 □，沒有補。" },
+      suspect_reading: { word: "有疑字・待核對", line: "這一首的轉錄裡有疑似認錯的字，照轉錄原樣列出，沒有改。" },
+      irregular_form: { word: "斷句有疑・待核對", line: "這一首轉錄的斷句與體例有疑，照轉錄原樣列出。" },
+    },
+    review: {
+      page: (cid) => `corpus-review-${cid}.html`,
+      plain: "到校對館看這一籤 ↗",
+      doubt: "疑在哪裡？到校對館看這一籤 ↗",
     },
     holdSlip: {
       unsettled_transcription: "這支籤的解曰，轉錄裡有缺字或還讀不定的字。",
@@ -2567,6 +2603,7 @@ window.ARRIVAL_SOUND = (function () {
       single_pass_ocr: "手上的轉錄只經過一次機器辨識、還沒有人逐字核對",
       tail: "所以這裡不轉載、不摘要，也不另寫一段來代替。",
       link: (name) => `到${name}官方網站讀 ↗`,
+      review: "到校對館看這一籤已整理的欄位 ↗",
     },
   };
 
@@ -2583,20 +2620,28 @@ window.ARRIVAL_SOUND = (function () {
     $("jieyue").querySelector(".jieyue-caret").textContent = "▸";
     const text = $("jieyueText"), src = $("jieyueSrc"), about = $("jieyueAbout"), link = $("jieyueLink");
     link.hidden = true; link.removeAttribute("href"); link.textContent = "";
+    const more0 = $("jieyueReview"); more0.hidden = true; more0.removeAttribute("href"); more0.textContent = "";
     about.classList.toggle("is-lead", !rec);
     about.hidden = false;
     text.hidden = !rec;
     if (rec) {
       // 上紙：原文＋來源＋狀態。狀態詞 1:1，不升級。
+      // 待複核不等於隱藏（2026-11-15）：有缺字、疑字的也照原樣上紙——古字不換、缺字留 □、不補不改；
+      // 這裡只用一句話標出「這一首有疑」，細節在校對館。
       const copy = JIEYUE_COPY.corpus[entry.corpus_id];
       const statusWord = pool.status_word[rec.status];
+      const doubt = rec.doubt ? JIEYUE_COPY.doubt[rec.doubt] : null;
       $("jieyueWord").textContent = "解曰";
-      $("jieyueProv").textContent = `${copy.short(pool)}・${rec.confirmed ? "已核圖" : statusWord}`;
+      $("jieyueProv").textContent = `${copy.short(pool)}・${doubt ? doubt.word : rec.confirmed ? "已核圖" : statusWord}`;
       $("jieyueText").textContent = rec.text;
       src.hidden = false;
       src.textContent = copy.src(pool, rec);
-      about.textContent = copy.about ?? "";
-      about.hidden = !copy.about;
+      const aboutText = [doubt ? doubt.line : "", copy.about ?? ""].filter(Boolean).join("\n");
+      about.textContent = aboutText;
+      about.hidden = !aboutText;
+      link.href = `${JIEYUE_COPY.review.page(entry.corpus_id)}?q=${entry.slip_number}`;
+      link.textContent = doubt ? JIEYUE_COPY.review.doubt : JIEYUE_COPY.review.plain;
+      link.hidden = false;
       return;
     }
     // 暫未上紙：只說原因。沒有任何被暫緩的文字會到這一頁。
@@ -2617,6 +2662,11 @@ window.ARRIVAL_SOUND = (function () {
     about.textContent = `${HC.lead(name)}${hold.reasons.map((r) => HC[r]).join("，")}，${HC.tail}`;
     src.hidden = true; src.textContent = "";
     if (hold.official_url) { link.href = hold.official_url; link.textContent = HC.link(name); link.hidden = false; }
+    // 第二條路：校對館。那裡列了這一籤的卦名／五行方位候選，和其餘欄位的來源位置。
+    const more = $("jieyueReview");
+    more.href = `${JIEYUE_COPY.review.page(entry.corpus_id)}?q=${entry.slip_number}`;
+    more.textContent = HC.review;
+    more.hidden = false;
   }
 
   // 找到或建立這支籤在簿裡的那一筆；同時記下「上次到訪」。永不重複建立。
@@ -2845,7 +2895,7 @@ window.ARRIVAL_SOUND = (function () {
     $("bookOverlay").classList.add("on");
   });
 
-  for (const id of ["chronOverlay", "bookOverlay"]) {
+  for (const id of ["chronOverlay", "bookOverlay", "noticeOverlay"]) {
     $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
   }
 

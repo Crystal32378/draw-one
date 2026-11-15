@@ -4,6 +4,10 @@
 // any mismatch returns null (UI shows nothing) — a wrong edition, a tampered or
 // stale artifact, or an id whose custody does not bind to this slip stays hidden.
 //
+// 2026-11-15 display policy (Crystal): 待複核不等於隱藏. The pools now carry every 解曰 of
+// 觀音/關帝, including rows with unread (□) or flagged characters; such a row has
+// rec.doubt = one of SLIP_REASONS and the page marks it. Nothing here corrects text.
+//
 // CONTRACTS is the exact, stable identity the UI expects, one row per corpus that
 // HAS a pool. Version lock is EXACT equality (not substring): a different edition,
 // edition_id, or content_version makes that corpus's layer disappear rather than
@@ -13,21 +17,21 @@
 
   var CONTRACTS = {
     guanyin: {
-      schema: "interpretation-pool/0.1",
+      schema: "interpretation-pool/0.2",
       corpus_id: "guanyin",
       edition_id: "ed-guanyin-xue2008-appendix2-image",
       // The poem edition printed on the paper (DRAW_POOL provenance.edition_title).
       slip_edition_title: "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
       // The artifact this build ships with. A swapped-in artifact with any other
       // content_version is rejected — the version is bound, not just present.
-      content_version: "e34cea042c1748a4bcc7e1a51d1ee21e843e3b5942606715ff94688c056a0b22",
+      content_version: "77114f75319dc6bc33963f04736a4169a74e6bd7b390fffc18e41888283bc0c2",
     },
     guandi: {
-      schema: "interpretation-pool/0.1",
+      schema: "interpretation-pool/0.2",
       corpus_id: "guandi",
       edition_id: "ed-guandi-daozang-fuye-1225",
       slip_edition_title: "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-      content_version: "ab625dab6335fe61db2e09e48762954c9f3673edbf00363d0421533cfa4d3cf4",
+      content_version: "318b7069162752d900fd35753d45c9145cca4dc33ddd277ceb9c48615217459f",
     },
   };
   // Back-compat: the original single-corpus contract (guanyin).
@@ -61,6 +65,9 @@
     // Per-slip custody must bind THIS id's slip_number to THIS record. Guards a
     // swap that somehow reached the artifact: id guanyin-017 must carry slip_no 17.
     if (rec.slip_no !== entry.slip_number) return null;
+    // 0.2: a doubtful row is SHOWN, marked. An unknown doubt code is not something the
+    // page knows how to say honestly → hidden rather than shown unmarked.
+    if (own(rec, "doubt") && !own(SLIP_REASONS, rec.doubt)) return null;
     return rec;
   }
 

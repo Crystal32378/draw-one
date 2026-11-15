@@ -19,12 +19,12 @@ const POOL = loadWin("assets/oracles.draw-pool.js").DRAW_POOL;
 const gEntry = (n) => POOL.entries.find((e) => e.corpus_id === "guanyin" && e.slip_number === n);
 
 console.log("A 解曰 layer artifact");
-check("schema + corpus + edition_id", P.schema === "interpretation-pool/0.1" && P.corpus_id === "guanyin" && P.edition_id === "ed-guanyin-xue2008-appendix2-image");
+check("schema + corpus + edition_id", P.schema === "interpretation-pool/0.2" && P.corpus_id === "guanyin" && P.edition_id === "ed-guanyin-xue2008-appendix2-image");
 check("field is 解曰 only", P.field === "解曰");
 check("count matches entries", P.count === Object.keys(P.entries).length);
 check("every entry: verbatim text, honest status, slip_no, custody", Object.values(P.entries).every((e) =>
-  typeof e.text === "string" && e.text.length > 0 && ["VERIFIED", "PROBABLE"].includes(e.status)
-  && typeof e.confirmed === "boolean" && Number.isInteger(e.slip_no) && /^[0-9a-f]{32}$/.test(e.custody)));
+  typeof e.text === "string" && e.text.length > 0 && ["VERIFIED", "PROBABLE", "CANDIDATE", "UNRESOLVED"].includes(e.status)
+  && Object.hasOwn(P.status_word, e.status) && typeof e.confirmed === "boolean" && /^附錄二 p\d{2,3}$/.test(e.locator) && Number.isInteger(e.slip_no) && /^[0-9a-f]{32}$/.test(e.custody)));
 check("id encodes slip_no (guanyin-0NN ⟺ slip_no)", Object.entries(P.entries).every(([id, e]) => id === `guanyin-${String(e.slip_no).padStart(3, "0")}`));
 
 console.log("B 聖意 (fortune grid) excluded at source — the ethical line");
@@ -42,9 +42,17 @@ check("wrong content_version → hidden", GUARD.resolve({ ...P, content_version:
 check("corpus mismatch → hidden", GUARD.resolve({ ...P, corpus_id: "guandi" }, gEntry(1)) === null);
 check("slip whose edition_title differs → hidden", GUARD.resolve(P, { ...gEntry(1), provenance: { edition_title: "別版" } }) === null);
 check("id↔slip_no custody mismatch → hidden", GUARD.resolve(P, { ...gEntry(1), slip_number: 2 }) === null);
-const badStatusPool = { ...P, entries: { "guanyin-001": { ...P.entries["guanyin-001"], status: "UNRESOLVED" } } };
-check("unknown/blocked status → hidden", GUARD.resolve(badStatusPool, gEntry(1)) === null);
-check("no 解曰 for a slip that has none (excluded #12) → hidden", GUARD.resolve(P, gEntry(12)) === null);
+const badStatusPool = { ...P, entries: { "guanyin-001": { ...P.entries["guanyin-001"], status: "CERTAIN" } } };
+check("unknown status (no honest word) → hidden", GUARD.resolve(badStatusPool, gEntry(1)) === null);
+// 2026-11-15 待複核不等於隱藏：#12 有缺字，現在照原樣上紙、帶 doubt 標記——不再因為有疑就消失。
+const g12 = GUARD.resolve(P, gEntry(12));
+check("doubtful slip (#12, lacuna) is SHOWN, marked, text untouched (□ kept)", !!g12 && g12.doubt === "unsettled_transcription" && g12.status === "UNRESOLVED" && g12.text.includes("□"));
+check("unknown doubt code → hidden (never shown unmarked)", GUARD.resolve({ ...P, entries: { ...P.entries, "guanyin-012": { ...g12, doubt: "vibes" } } }, gEntry(12)) === null);
+check("□ appears only in rows marked unsettled; every unsettled row carries the doubt", Object.values(P.entries).every((e) =>
+  (!e.text.includes("□") || e.doubt === "unsettled_transcription") && (["VERIFIED", "PROBABLE"].includes(e.status) === (e.doubt !== "unsettled_transcription"))));
+check("all 100 觀音 解曰 are present; the 6 unsettled are exactly 12,20,35,44,65,77", P.count === 100
+  && Object.values(P.entries).filter((e) => e.doubt).map((e) => e.slip_no).join(",") === "12,20,35,44,65,77");
+check("status word never upgrades (UNRESOLVED/CANDIDATE keep their own words)", P.status_word.UNRESOLVED === "有缺字" && P.status_word.CANDIDATE === "候選讀法" && P.status_word.PROBABLE === "待複核");
 
 console.log("D fail-closed counter-examples (real build in an isolated dir)");
 const REAL_SRC = join(ROOT, "data/corpora/guanyin/interpretation_layer.json");
@@ -117,9 +125,11 @@ const copyBlock = html.slice(html.indexOf("const JIEYUE_COPY"), html.indexOf("fu
 const VERDICT = ["大吉", "上上", "下下", "凶", "必成", "必得", "保證", "一定會", "注定"];
 check("Draw One's own fold copy carries no verdict / guarantee words", VERDICT.every((w) => !copyBlock.includes(w)));
 check("copy says what it is and is not（不是預測）", copyBlock.includes("不是抽一的話") && copyBlock.includes("預測"));
-check("PROBABLE is never worded as confirmed（待複核 ≠ 已核圖）", /rec\.confirmed \? "已核圖" : statusWord/.test(rj) && (copyBlock.match(/rec\.confirmed \? "，人工核圖確認" : "，待複核"/g) || []).length === 2);
+check("PROBABLE is never worded as confirmed（待複核 ≠ 已核圖）", /doubt \? doubt\.word : rec\.confirmed \? "已核圖" : statusWord/.test(rj) && (copyBlock.match(/rec\.doubt \? "，待核對" : rec\.confirmed \? "，人工核圖確認" : "，待複核"/g) || []).length === 2);
 check("觀音文案維持 PR #34 原版：不加說明句", /guanyin: \{[\s\S]*?about: null,/.test(copyBlock)
-  && copyBlock.includes('short: (pool) => `${pool.edition.split("《")[0]}版`') && copyBlock.includes('src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`'));
+  && copyBlock.includes('short: (pool) => `${pool.edition.split("《")[0]}版`') && copyBlock.includes('src: (pool, rec) => `據${pool.edition}${rec.locator ? `，${rec.locator}` : ""}${rec.doubt ? "，待核對" : rec.confirmed ? "，人工核圖確認" : "，待複核"}`'));
+check("doubt copy states the doubt and promises no fix（不補、不改）", /unsettled_transcription: \{ word: "有缺字・待核對"/.test(copyBlock) && copyBlock.includes("沒有補") && copyBlock.includes("沒有改"));
+check("shown slips link to the proofreading page for that corpus + slip", /JIEYUE_COPY\.review\.page\(entry\.corpus_id\)\}\?q=\$\{entry\.slip_number\}/.test(rj));
 
 console.log("G 關帝 pool — same gates, same guard");
 const PD = loadWin("assets/interpretation-pool.guandi.js").INTERPRETATION_POOL_GUANDI;
@@ -131,13 +141,15 @@ const GD_SRC = join(ROOT, "data/corpora/guandi/interpretation_layer.json");
 const gdSrc = JSON.parse(readFileSync(GD_SRC, "utf8"));
 const gdJie = gdSrc.entries.filter((e) => e.field_type === "解曰");
 const gdSheng = new Set(gdSrc.entries.filter((e) => e.field_type === "聖意").map((e) => e.verbatim_text));
-check("schema + corpus + edition_id (same edition as the paper)", PD.schema === "interpretation-pool/0.1" && PD.corpus_id === "guandi"
+check("schema + corpus + edition_id (same edition as the paper)", PD.schema === "interpretation-pool/0.2" && PD.corpus_id === "guandi"
   && PD.edition_id === "ed-guandi-daozang-fuye-1225" && PD.expected_slip_edition_title === dEntry(1).provenance.edition_title);
 check("count matches entries; every text is a verbatim source 解曰 for THAT slip", PD.count === Object.keys(PD.entries).length
   && Object.values(PD.entries).every((e) => gdJie.find((s) => s.slip_no === e.slip_no).verbatim_text === e.text));
 check("no 聖意 text entered the pool", Object.values(PD.entries).every((e) => !gdSheng.has(e.text)));
-check("nothing is marked 已核圖 (no human image check exists for 關帝)", Object.values(PD.entries).every((e) => e.confirmed === false && e.status === "PROBABLE"));
-check("no box/replacement char shipped", Object.values(PD.entries).every((e) => !/\uFFFD|\u25A1/.test(e.text)));
+check("nothing is marked 已核圖 (no human image check exists for 關帝)", Object.values(PD.entries).every((e) => e.confirmed === false));
+check("only #100 is not PROBABLE; its lacuna (□□) is kept and marked", Object.values(PD.entries).filter((e) => e.status !== "PROBABLE").map((e) => e.slip_no).join(",") === "100"
+  && PD.entries["guandi-100"].doubt === "unsettled_transcription" && PD.entries["guandi-100"].text.includes("□□"));
+check("no replacement char shipped; □ only in the row marked unsettled", Object.values(PD.entries).every((e) => !/\uFFFD/.test(e.text) && (!/\u25A1/.test(e.text) || e.doubt === "unsettled_transcription")));
 check("guard pinned guandi content_version === artifact (no drift)", GUARD.CONTRACTS.guandi.content_version === PD.content_version);
 check("happy path: resolveFrom picks the slip's own corpus", GUARD.resolveFrom(POOLS, dEntry(1)) === PD.entries["guandi-001"] && GUARD.resolveFrom(POOLS, gEntry(1)) === P.entries["guanyin-001"]);
 check("guandi pool offered for a guanyin slip → hidden", GUARD.resolve(PD, gEntry(1)) === null);
@@ -145,18 +157,24 @@ check("guanyin pool relabelled as guandi → hidden", GUARD.resolve({ ...P, corp
 check("六十甲子 slip can never resolve a 解曰", GUARD.resolveFrom(POOLS, lEntry(1)) === null && GUARD.resolveFrom({ ...POOLS, liushijiazi: PD }, lEntry(1)) === null);
 check("prototype-named corpus → hidden", GUARD.resolveFrom(POOLS, { ...gEntry(1), corpus_id: "constructor" }) === null);
 
-console.log("H withheld ledger — the page may say why, never what");
+console.log("H doubt ledger — shown, marked; nothing silently withheld, nothing silently clean");
 const hold = (e) => GUARD.holdFor(HOLDS, POOLS, e);
-check("every withheld 關帝 slip is absent from the pool, every other is present", gdJie.every((s) =>
-  (String(s.slip_no) in HOLDS.corpora.guandi.slips) !== (`guandi-${String(s.slip_no).padStart(3, "0")}` in PD.entries)));
-check("upstream-flagged readings (#58 #68) and the lacuna (#100) are withheld", ["58", "68", "100"].every((k) => k in HOLDS.corpora.guandi.slips));
-check("every 關帝 解曰 with an upstream variants note is withheld (none ships silently)", gdJie.filter((s) => String(s.variants_or_notes || "").trim()).every((s) => String(s.slip_no) in HOLDS.corpora.guandi.slips));
-check("guanyin withheld = exactly the 6 non-PROBABLE", Object.keys(HOLDS.corpora.guanyin.slips).join(",") === "12,20,35,44,65,77");
+const gdLedger = JSON.parse(readFileSync(join(ROOT, "data/corpora/guandi/jieyue_holds.json"), "utf8")).holds;
+const gdRec = (n) => PD.entries[`guandi-${String(n).padStart(3, "0")}`];
+check("all 100 關帝 解曰 are present (待複核不等於隱藏)", PD.count === 100 && gdJie.every((s) => !!gdRec(s.slip_no)));
+check("every ledger row is shown WITH its reason; rows off the ledger carry no doubt (except the lacuna)", gdJie.every((s) => {
+  const row = gdLedger.find((h) => h.slip_no === s.slip_no), d = gdRec(s.slip_no).doubt;
+  return s.transcription_status !== "PROBABLE" ? d === "unsettled_transcription" : row ? d === row.reason_code : d === undefined; }));
+check("upstream-flagged readings (#58 #68), the poem-adjudication flag (#53) and the lacuna (#100) are marked", gdRec(58).doubt === "suspect_reading" && gdRec(68).doubt === "suspect_reading"
+  && gdRec(53).doubt === "suspect_reading" && gdRec(100).doubt === "unsettled_transcription");
+check("every 關帝 解曰 with an upstream variants note is marked (none ships as if clean)", gdJie.filter((s) => String(s.variants_or_notes || "").trim()).every((s) => !!gdRec(s.slip_no).doubt));
+check("31 關帝 rows marked; marked text is byte-identical to the source (not corrected to look presentable)", Object.values(PD.entries).filter((e) => e.doubt).length === 31
+  && gdJie.every((s) => gdRec(s.slip_no).text === s.verbatim_text));
+check("no slip-level withholding remains in the holds artifact", Object.keys(HOLDS.corpora.guanyin.slips).length === 0 && Object.keys(HOLDS.corpora.guandi.slips).length === 0);
 const holdsRaw = readFileSync(join(ROOT, "assets/interpretation-holds.js"), "utf8");
 const gyJieAll = JSON.parse(readFileSync(join(ROOT, "data/corpora/guanyin/interpretation_layer.json"), "utf8")).entries.filter((e) => e.field_type === "解曰");
 check("holds artifact carries NO withheld gloss text", [...gdJie, ...gyJieAll].every((s) => s.verbatim_text.split(/[，。]/).filter((x) => x.length >= 4).every((seg) => !holdsRaw.includes(seg))));
-check("slip hold voiced with its reason code", hold(dEntry(58))?.scope === "slip" && hold(dEntry(58)).reason === "suspect_reading"
-  && hold(dEntry(100)).reason === "unsettled_transcription" && hold(gEntry(12)).reason === "unsettled_transcription");
+check("a shown slip is never also voiced as withheld", hold(dEntry(58)) === null && hold(dEntry(100)) === null && hold(gEntry(12)) === null);
 check("shown and withheld are mutually exclusive", hold(dEntry(1)) === null && hold(gEntry(1)) === null);
 check("hold beside a different pool version → silent", GUARD.holdFor({ ...HOLDS, corpora: { ...HOLDS.corpora, guandi: { ...HOLDS.corpora.guandi, content_version: "0".repeat(64) } } }, POOLS, dEntry(58)) === null);
 check("hold with the real pool missing/tampered → silent", GUARD.holdFor(HOLDS, { guanyin: P }, dEntry(58)) === null
