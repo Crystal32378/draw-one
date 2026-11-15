@@ -2,7 +2,7 @@
 // Every entry passed the fail-closed production gates. Regenerate via: node scripts/build-draw-pool.mjs
 window.DRAW_POOL = {
   "schema": "draw-pool/1.0",
-  "content_version": "9433062177a366ccd13b3708955704c73d035929e65a0eca3f9a8798d3f03527",
+  "content_version": "ec000d9cc1491e43ba92697a8d668e62d3015d26b561cfbe0f80c3eafcda6b38",
   "policy": {
     "allowed_transcription_status": [
       "VERIFIED",
@@ -32,7 +32,7 @@ window.DRAW_POOL = {
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "slip_count": 100,
       "source_file": "data/corpora/guandi/slip_texts.json",
-      "source_sha256": "903bb98c96b487642136fb929ad6996425a0504e975c48f50cf58a399ab5f6ae",
+      "source_sha256": "7f3448818e341ec532786794f737c4121d252500a6af2e635875ac4fe9d531aa",
       "data_quality": {
         "decoded_char_refs": 0
       },
@@ -1918,7 +1918,7 @@ window.DRAW_POOL = {
       "slip_number": 4,
       "original_slip_label": "第四",
       "historical_text": {
-        "poem_text": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神彿，莫教福謝悔無追。"
+        "poem_text": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神佛，莫教福謝悔無追。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -1936,7 +1936,7 @@ window.DRAW_POOL = {
       "slip_number": 5,
       "original_slip_label": "第五",
       "historical_text": {
-        "poem_text": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承巳，萬事迴春不用憂。"
+        "poem_text": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承日，萬事迴春不用憂。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2080,7 +2080,7 @@ window.DRAW_POOL = {
       "slip_number": 13,
       "original_slip_label": "第十三",
       "historical_text": {
-        "poem_text": "君今庚甲未亨通，且向江頭作釣前。\n玉兔重生應發積，萬人頭上逞英雄。"
+        "poem_text": "君今庚甲未亨通，且向江頭作釣翁。\n玉兔重生應發積，萬人頭上逞英雄。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2494,7 +2494,7 @@ window.DRAW_POOL = {
       "slip_number": 36,
       "original_slip_label": "第三十六",
       "historical_text": {
-        "poem_text": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，昊山嶺上好鑽龜。"
+        "poem_text": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，吳山嶺上好鑽龜。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2728,7 +2728,7 @@ window.DRAW_POOL = {
       "slip_number": 49,
       "original_slip_label": "第四十九",
       "historical_text": {
-        "poem_text": "彼此家居只一山，如何似膈鬼門關。\n日月如梭人易老，許多勞碌不如閑。"
+        "poem_text": "彼此家居只一山，如何似隔鬼門關。\n日月如梭人易老，許多勞碌不如閑。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2800,7 +2800,7 @@ window.DRAW_POOL = {
       "slip_number": 53,
       "original_slip_label": "第五十三",
       "historical_text": {
-        "poem_text": "艱難險阻路蹊蹺，南烏孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。"
+        "poem_text": "艱難險阻路蹊蹺，南鳥孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2926,7 +2926,7 @@ window.DRAW_POOL = {
       "slip_number": 60,
       "original_slip_label": "第六十",
       "historical_text": {
-        "poem_text": "羨君兄弟好名聲，只管謙偽莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。"
+        "poem_text": "羨君兄弟好名聲，只管謙撝莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -3178,7 +3178,7 @@ window.DRAW_POOL = {
       "slip_number": 74,
       "original_slip_label": "第七十四",
       "historical_text": {
-        "poem_text": "崔鬼崔鬼復崔鬼，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。"
+        "poem_text": "崔嵬崔嵬復崔嵬，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -3538,7 +3538,7 @@ window.DRAW_POOL = {
       "slip_number": 94,
       "original_slip_label": "第九十四",
       "historical_text": {
-        "poem_text": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+        "poem_text": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -3628,7 +3628,7 @@ window.DRAW_POOL = {
       "slip_number": 99,
       "original_slip_label": "第九十九",
       "historical_text": {
-        "poem_text": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驛餾應得驟康強。"
+        "poem_text": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驊騮應得驟康強。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",

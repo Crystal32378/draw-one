@@ -27,7 +27,7 @@ window.INTERPRETATION_HOLDS = {
     "guandi": {
       "scope": "slip",
       "edition_id": "ed-guandi-daozang-fuye-1225",
-      "content_version": "b69098e9cc77e40d306899f12931e12f389c423277efacb000768c358d2fe90d",
+      "content_version": "ab625dab6335fe61db2e09e48762954c9f3673edbf00363d0421533cfa4d3cf4",
       "slips": {
         "5": "suspect_reading",
         "6": "suspect_reading",
@@ -42,6 +42,7 @@ window.INTERPRETATION_HOLDS = {
         "46": "suspect_reading",
         "47": "suspect_reading",
         "52": "suspect_reading",
+        "53": "suspect_reading",
         "56": "suspect_reading",
         "58": "suspect_reading",
         "66": "suspect_reading",

@@ -13,8 +13,8 @@ window.INTERPRETATION_POOL_GUANDI = {
     "PROBABLE": "待複核"
   },
   "note": "解曰 verbatim from the edition. NOT Draw One's voice; NOT prophecy; 聖意 (fortune grid) excluded at source. Shown as a collapsed footnote under the slip, default closed. Version-locked to expected_slip_edition_title (exact) + edition_id + content_version; per-slip custody in each entry.",
-  "content_version": "b69098e9cc77e40d306899f12931e12f389c423277efacb000768c358d2fe90d",
-  "count": 70,
+  "content_version": "ab625dab6335fe61db2e09e48762954c9f3673edbf00363d0421533cfa4d3cf4",
+  "count": 69,
   "entries": {
     "guandi-001": {
       "slip_no": 1,
@@ -288,13 +288,6 @@ window.INTERPRETATION_POOL_GUANDI = {
       "status": "PROBABLE",
       "confirmed": false,
       "custody": "3eb63f69cab896c3a888b83f1410973d"
-    },
-    "guandi-053": {
-      "slip_no": 53,
-      "text": "艱難歷遍，作事皆非。南烏北巢，失其所依。夏秋之交，貴人相提。方稱謀望，榮達可期。",
-      "status": "PROBABLE",
-      "confirmed": false,
-      "custody": "ac1ba248c68a0406ccdae1c581131270"
     },
     "guandi-054": {
       "slip_no": 54,

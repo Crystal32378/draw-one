@@ -27,7 +27,7 @@
       corpus_id: "guandi",
       edition_id: "ed-guandi-daozang-fuye-1225",
       slip_edition_title: "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
-      content_version: "b69098e9cc77e40d306899f12931e12f389c423277efacb000768c358d2fe90d",
+      content_version: "ab625dab6335fe61db2e09e48762954c9f3673edbf00363d0421533cfa4d3cf4",
     },
   };
   // Back-compat: the original single-corpus contract (guanyin).

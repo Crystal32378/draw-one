@@ -7,10 +7,10 @@
   "excluded_field": "聖意 (predictive fortune grid — out of product scope)",
   "source_distribution": "100 解曰: 99 PROBABLE, 1 UNRESOLVED (100)",
   "candidates": 100,
-  "emitted": 70,
+  "emitted": 69,
   "confirmed": 0,
-  "probable": 70,
-  "dropped": 30,
+  "probable": 69,
+  "dropped": 31,
   "withheld": {
     "5": "suspect_reading",
     "6": "suspect_reading",
@@ -25,6 +25,7 @@
     "46": "suspect_reading",
     "47": "suspect_reading",
     "52": "suspect_reading",
+    "53": "suspect_reading",
     "56": "suspect_reading",
     "58": "suspect_reading",
     "66": "suspect_reading",
@@ -43,5 +44,5 @@
     "94": "suspect_reading",
     "100": "unsettled_transcription"
   },
-  "content_version": "b69098e9cc77e40d306899f12931e12f389c423277efacb000768c358d2fe90d"
+  "content_version": "ab625dab6335fe61db2e09e48762954c9f3673edbf00363d0421533cfa4d3cf4"
 }
