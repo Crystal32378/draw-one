@@ -2016,7 +2016,7 @@ window.ARRIVAL_SOUND = (function () {
       // 樹下：一條長凳、一盆萬年青、一隻麻雀（坐的地方）
       sprite("bench", B(voidIndex) - 58, NEAR);
       sprite("pot", B(voidIndex) + 34, { ...NEAR, bottom: "33%" });
-      [B(voidIndex) + 8, B(voidIndex + 1) - 108, B(voidIndex + 2) + 18].forEach((x, i) => {
+      [B(voidIndex) + 8, B(voidIndex + 1) - Math.min(108, stationW * 0.24), B(voidIndex + 2) + 18].forEach((x, i) => {
         const bird = put("sparrow bird-" + i, x);
         bird.dataset.x = x; bird.innerHTML = INK.sparrow[2];
         bird.addEventListener("animationend", (ev) => { if (ev.animationName === "sparrow-flight") bird.classList.remove("flying"); });
