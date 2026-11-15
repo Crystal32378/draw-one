@@ -89,6 +89,29 @@
       "poem_after": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，吳山嶺上好鑽龜。"
     },
     {
+      "slip_number": 48,
+      "before": "懼",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        50
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "懽",
+      "resolved_question": "裁定為識典對（scan 印「懽」，歡之異體）。未決的是寫法：照 scan 字形收「懽」，或 normalize 成「歡」——提案 §4.2 請福明示，尚無裁示紀錄。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懼。",
+      "poem_after": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懽。"
+    },
+    {
       "slip_number": 49,
       "before": "膈",
       "after": "隔",
@@ -119,6 +142,29 @@
       "assisted_by": "Luna（協看圖像）",
       "poem_before": "艱難險阻路蹊蹺，南烏孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。",
       "poem_after": "艱難險阻路蹊蹺，南鳥孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。"
+    },
+    {
+      "slip_number": 58,
+      "before": "隱",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        58
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "隲",
+      "resolved_question": "裁定為識典對（詞＝陰騭；scan 印異構「隲」）。未決的是寫法：照 scan 收「隲」或 normalize 成「騭」——提案 §4.2。旁證：main 上同一首的解曰已作「以助陰隲」。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隱事，前程萬里自通亨。",
+      "poem_after": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隲事，前程萬里自通亨。"
     },
     {
       "slip_number": 60,
@@ -166,7 +212,36 @@
       "adjudicated_on": "2026-09-08",
       "assisted_by": "Luna（協看圖像）",
       "poem_before": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。",
-      "poem_after": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+      "poem_after": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。",
+      "accepted_previous_poems": [
+        "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+      ]
+    },
+    {
+      "slip_number": 94,
+      "before": "綠",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        87
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "縁",
+      "resolved_question": "裁定為識典對（scan 印「縁」，緣之異體）。未決的是寫法：照 scan 收「縁」或 normalize 成「緣」——提案 §4.2。同籤「斷輸→斲輪」無此問題，已套用。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。",
+      "poem_after": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。",
+      "accepted_previous_poems": [
+        "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+      ]
     },
     {
       "slip_number": 99,
@@ -186,36 +261,6 @@
     }
   ],
   "pending": [
-    {
-      "slip_number": 48,
-      "before": "懼",
-      "occurrences": 1,
-      "category": "實質",
-      "scan_pages": [
-        50
-      ],
-      "adjudication": "識典對",
-      "adjudicated_by": "Crystal",
-      "adjudicated_on": "2026-09-08",
-      "assisted_by": "Luna（協看圖像）",
-      "open_question": "裁定為識典對（scan 印「懽」，歡之異體）。未決的是寫法：照 scan 字形收「懽」，或 normalize 成「歡」——提案 §4.2 請福明示，尚無裁示紀錄。",
-      "proposed": "懽"
-    },
-    {
-      "slip_number": 58,
-      "before": "隱",
-      "occurrences": 1,
-      "category": "實質",
-      "scan_pages": [
-        58
-      ],
-      "adjudication": "識典對",
-      "adjudicated_by": "Crystal",
-      "adjudicated_on": "2026-09-08",
-      "assisted_by": "Luna（協看圖像）",
-      "open_question": "裁定為識典對（詞＝陰騭；scan 印異構「隲」）。未決的是寫法：照 scan 收「隲」或 normalize 成「騭」——提案 §4.2。旁證：main 上同一首的解曰已作「以助陰隲」。",
-      "proposed": "隲"
-    },
     {
       "slip_number": 59,
       "before": "隱",
@@ -290,21 +335,6 @@
       "assisted_by": "Luna（協看圖像）",
       "open_question": "同 #62（裹/裏 異質，待最終確認）；另：本籤頁碼未預定位，裁定時以 slip_page_map 候補頁目視定位。",
       "proposed": "裏"
-    },
-    {
-      "slip_number": 94,
-      "before": "綠",
-      "occurrences": 1,
-      "category": "勘誤候選",
-      "scan_pages": [
-        87
-      ],
-      "adjudication": "識典對",
-      "adjudicated_by": "Crystal",
-      "adjudicated_on": "2026-09-08",
-      "assisted_by": "Luna（協看圖像）",
-      "open_question": "裁定為識典對（scan 印「縁」，緣之異體）。未決的是寫法：照 scan 收「縁」或 normalize 成「緣」——提案 §4.2。同籤「斷輸→斲輪」無此問題，已套用。",
-      "proposed": "縁"
     }
   ],
   "kept_current": {

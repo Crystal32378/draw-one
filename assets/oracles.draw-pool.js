@@ -2,7 +2,7 @@
 // Every entry passed the fail-closed production gates. Regenerate via: node scripts/build-draw-pool.mjs
 window.DRAW_POOL = {
   "schema": "draw-pool/1.0",
-  "content_version": "ec000d9cc1491e43ba92697a8d668e62d3015d26b561cfbe0f80c3eafcda6b38",
+  "content_version": "fb4a869ec5c9d3fbcad1eafc4eef5548e8b47cfb568eb9663868b26bc1b0a326",
   "policy": {
     "allowed_transcription_status": [
       "VERIFIED",
@@ -32,7 +32,7 @@ window.DRAW_POOL = {
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "slip_count": 100,
       "source_file": "data/corpora/guandi/slip_texts.json",
-      "source_sha256": "7f3448818e341ec532786794f737c4121d252500a6af2e635875ac4fe9d531aa",
+      "source_sha256": "abd91b8ae0106b2d69d3ca6378f42676737903d6403e9e5f3c495a9ec62eec41",
       "data_quality": {
         "decoded_char_refs": 0
       },
@@ -2710,7 +2710,7 @@ window.DRAW_POOL = {
       "slip_number": 48,
       "original_slip_label": "第四十八",
       "historical_text": {
-        "poem_text": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懼。"
+        "poem_text": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懽。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -2890,7 +2890,7 @@ window.DRAW_POOL = {
       "slip_number": 58,
       "original_slip_label": "第五十八",
       "historical_text": {
-        "poem_text": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隱事，前程萬里自通亨。"
+        "poem_text": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隲事，前程萬里自通亨。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",
@@ -3538,7 +3538,7 @@ window.DRAW_POOL = {
       "slip_number": 94,
       "original_slip_label": "第九十四",
       "historical_text": {
-        "poem_text": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+        "poem_text": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。"
       },
       "provenance": {
         "edition_id": "ed-guandi-daozang-fuye-1225",

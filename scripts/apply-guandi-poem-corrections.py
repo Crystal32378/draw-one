@@ -31,8 +31,9 @@ NOTE_PREFIX = "字級修正"
 def note_for(rows):
     pairs = "、".join(f"{r['before']}→{r['after']}" for r in rows)
     pages = "、".join(f"p.{p}" for p in sorted({p for r in rows for p in r["scan_pages"]}))
+    decision = "Crystal 2026-11-15 指定保留掃描異體字形；" if any(r.get("orthography_decision") for r in rows) else ""
     return (f"{NOTE_PREFIX}：{pairs}（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 {pages}；"
-            f"見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。")
+            f"見 poem_corrections.json）。{decision}只核了差異字，全詩未逐字對影像——維持 PROBABLE。")
 
 
 def main():
@@ -64,7 +65,7 @@ def main():
             raise SystemExit(f"#{number}: ledger poem_after does not follow from its own edits")
         if slip["poem_text"] == after:
             pass  # already applied
-        elif slip["poem_text"] == before:
+        elif slip["poem_text"] == before or slip["poem_text"] in rows[0].get("accepted_previous_poems", []):
             slip["poem_text"] = after
             changed += 1
         else:

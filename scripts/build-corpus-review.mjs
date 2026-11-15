@@ -1,0 +1,74 @@
+// Public-review candidate, prepared locally only. Modern Jiazi verbatim is not exported.
+import {writeFileSync,readFileSync} from 'node:fs';
+import {reviewRows} from './serve-corpus-review.mjs';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const names={guanyin:'觀音',guandi:'關帝',liushijiazi:'六十甲子'};
+const labels={VERIFIED:'已對勘',PROBABLE:'待複核',UNRESOLVED:'有疑字，待核對',CANDIDATE:'候選讀法，待核對'};
+export function compactLocator(r){
+ const raw=String(r.source_locator||'');
+ if(r.corpus==='guanyin'){const page=raw.match(/\bp\s*\d+(?:[-–]\d+)?/i);if(page)return esc(page[0]);}
+ const url=raw.match(/https:\/\/[^<>\s]+/)?.[0] || (raw.startsWith('zh.wikisource.org/')?'https://'+raw:null);
+ if(url)return `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${r.corpus==='liushijiazi'?'此籤原圖':'此籤來源'} ↗</a>`;
+ return esc(raw);
+}
+export const reviewStage=r=>r.manual_image_confirmation===true?'1校（有人工核圖紀錄）':'待初校';
+export function parseLotQuery(value){
+ const text=String(value).trim().replace(/\s+/g,'');
+ const match=text.match(/^(?:第)?([0-9０-９]+|[零〇一二兩三四五六七八九十百]+)(?:籤|号|號)?$/);
+ if(!match)return null;
+ const raw=match[1].replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248));
+ if(/^\d+$/.test(raw))return Number(raw);
+ const digits={零:0,〇:0,一:1,二:2,兩:2,三:3,四:4,五:5,六:6,七:7,八:8,九:9};
+ let total=0,current=0;
+ for(const c of raw){if(c==='十'||c==='百'){total+=(current||1)*(c==='十'?10:100);current=0;}else current=digits[c];}
+ return total+current;
+}
+export function matchesReview(record,query,stage){
+ if(stage&&record.stage!==stage)return false;
+ const q=String(query).trim();if(!q)return true;
+ const lot=parseLotQuery(q);if(lot!==null)return Number(record.slip)===lot;
+ return String(record.text).replace(/\s+/g,'').includes(q.replace(/\s+/g,''));
+}
+export function buildPublicReview(rows=reviewRows(), corpus=null){
+const editions=[...new Set(rows.map(r=>r.edition))];
+const commonSources=editions.map(e=>`<p class="source">來源：${esc(e)}</p>`).join('');
+const renderField=r=>{
+ const shortCandidate=r.corpus==='liushijiazi'&&['卦名','五行方位'].includes(r.field_type);
+ const id=`${r.corpus}-${r.slip_no}-${r.field_type}`,modern=r.corpus==='liushijiazi'&&!shortCandidate,absent=r.source_observation_status==='structural_absent';
+ let audit='';
+ if(shortCandidate){
+  if(r.field_type==='卦名'&&[11,21,28,34,37,38,39,46,47,53,54].includes(r.slip_no))audit='欄位疑錯置：此值看似鄰欄詩句，待核對版面。';
+  else if(r.field_type==='卦名'&&[44,49,56].includes(r.slip_no))audit='欄位疑錯置：此值看似典故題名，待核對版面。';
+  else if(r.slip_no===30)audit='欄位疑合併：卦名欄混入五行；五行的「（見上）」是整理指示，不當作來源正文。';
+  else if(r.field_type==='五行方位'&&[11,34,37,38,44,46,47,53,54,56].includes(r.slip_no))audit='欄位混入卦名；原字保留，待核對分欄。';
+  else if(r.field_type==='五行方位'&&[9,13,18,41,44,48,49,59].includes(r.slip_no))audit='欄位混入日期、符號或其他註記；待核對。';
+  else if(r.field_type==='卦名'&&[3,5,15,20,25,27,32,40].includes(r.slip_no))audit='OCR 疑讀；未自動改字，請核對影像。';
+ }
+ const title=r.field_type;
+
+ return `<article id="${esc(id)}" data-source-edition="${esc(r.edition)}" data-source-locator="${esc(r.source_locator)}" data-transcription-status="${esc(r.transcription_status)}" data-review-stage="${r.manual_image_confirmation===true?'second':'first'}" data-corpus="${r.corpus}" data-slip="${r.slip_no}"><h2>${esc(title)}</h2><p class="status">${shortCandidate?'原圖欄位轉錄候選 · ':''}${esc(labels[r.transcription_status]||'待核對')}${r.manual_image_confirmation===true?' · 此欄有人工核圖紀錄':''}</p>${absent?'<p>來源記錄為結構性缺欄（第 59 籤此欄未出現），不是隱藏已存在的解說，也不補寫。</p>':modern?'<p>此欄已有轉錄，暫不在公開校對頁重刊。傳統短語與現代長篇解說須分開確認來源及權利；不是宣稱整套禁止使用。</p>':`<p class="verse">${esc(r.verbatim_text)||'（原欄空白，未補寫）'}</p>`}<p class="source">${editions.length>1?esc(r.edition)+' · ':''}${compactLocator(r)}</p>${shortCandidate?'<p class="source">原欄名可能混入鄰欄詩句、日期或 OCR 說明；保留原字供校對，不把它當作已核定卦名或據以作判斷。</p>':''}${r.metadata_audit_note?`<p>${esc(r.metadata_audit_note)}</p>`:''}<details><summary>校對註記 · ${reviewStage(r)}</summary><p>${shortCandidate?esc(audit||'待核對轉錄；尚未逐字確認。'):modern?'本頁僅提供欄位及來源位置，不輸出原始轉錄、異讀或可能引述全文的診斷。':esc(r.review_hold?.note||r.variants_or_notes||'目前沒有另記疑字；不代表已逐字核定。')}</p></details></article>`;
+};
+const groups=new Map();for(const r of rows){const key=r.corpus+'-'+r.slip_no;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r);}
+const poems=Object.fromEntries(Object.keys(names).map(c=>[c,JSON.parse(readFileSync(new URL('../data/corpora/'+c+'/slip_texts.json',import.meta.url),'utf8')).slips]));
+const attestations=JSON.parse(readFileSync(new URL('../data/corpora/liushijiazi/attestations.json',import.meta.url),'utf8'));
+const articles=[...groups.values()].map(fields=>{const r=fields[0],p=poems[r.corpus].find(p=>p.slip_number===r.slip_no);const witness=r.corpus==='liushijiazi'?attestations.find(a=>a.source_id==='src-beigang-official'&&a.slip_number===r.slip_no):null;
+const source=witness?.item_url;
+const fieldViews=fields.map(f=>{const html=renderField(f),note=html.match(/<details>[\s\S]*?<\/details>/)?.[0]||'';return {id:f.corpus+'-'+f.slip_no+'-'+f.field_type,name:f.field_type,text:html.replace(note,''),note};});
+return `<section class="slip-group" data-poem="${esc(p?.poem_text||'')}"><div class="comparison"><div class="lot-label"><h2>第 ${r.slip_no} 籤</h2></div><aside class="witness"><h3>原圖</h3>${source?`<p>已對應官方原圖；嵌圖待確認。</p><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">開啟此籤原圖 ↗</a>`:`<p>原圖尚未接入；不以其他籤圖代替。</p><p class="source">${compactLocator(r)}</p>`}</aside><div class="poem-panel"><h3>籤詩</h3><p class="verse">${esc(p?.poem_text||'未取得對應詩文，待核對。')}</p><small>${esc(p?.transcription_status||'未記錄')}</small><details><summary>籤詩來源</summary><p class="source">${esc(p?.edition_title||'未記錄版本')}<br>${esc(p?.source_locator||'未記錄位置')}</p></details></div><div class="fields-panel"><h3>解曰／聖意${r.corpus==='liushijiazi'?'及其他欄位':''}</h3>${fieldViews.map(f=>f.text).join('')}</div><div class="notes-panel"><h3>校對註記</h3>${fieldViews.map(f=>`<div class="field-note" data-for="${esc(f.id)}"><h4>${esc(f.name)}</h4>${f.note}</div>`).join('')}</div></div></section>`;}).join('');
+return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>抽一 · 籤本校對</title><style>body{max-width:1440px;margin:auto;padding:24px 18px;background:#faf7f0;color:#302b26;font:18px/1.7 system-ui}a{color:#73502c}.comparison,.table-header{display:grid;grid-template-columns:var(--review-cols,64px minmax(0,.9fr) minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr));gap:20px}.table-header{font-weight:600;padding:16px 0;border-bottom:2px solid #a99b88}.field-note{margin-bottom:20px}.field-note h4{font-size:1em;margin-bottom:8px}.lot-label h2{font-size:1em}.comparison>*{min-width:0;overflow-wrap:anywhere}.slip-group{border-top:1px solid #c7bba8;padding:24px 0}.slip-group h2{margin-top:0}h3{font-size:1em}.witness img{width:100%;height:auto}@media(max-width:1100px){.comparison{grid-template-columns:1fr}.table-header{display:none}.comparison>div>h3,.comparison>aside>h3{display:block}.slip-group{border:1px solid #c7bba8;padding:16px;margin:20px 0}}article{border-top:1px solid #c7bba8;padding:24px 0}.verse{white-space:pre-wrap;font-size:1.15em}.source,article{overflow-wrap:anywhere}.source,.status{font-size:.85em;color:#615a52}h1{font-size:1.7em}h2{font-size:1.2em}select,input,button{font:inherit;max-width:100%}label{display:inline-block;margin:4px}summary{cursor:pointer}a:focus-visible,summary:focus-visible{outline:3px solid #995c24;outline-offset:4px}[hidden]{display:none!important}</style></head><body><header><a href="arrival.html">回到抽一</a><a href="corpus-review.html">選擇其他籤組</a><h1>${corpus?names[corpus]+'籤本校對':'徵求校對助手'}</h1><p>已做第一輪整理，邀請您一起複核。</p>${commonSources}${corpus==='liushijiazi'?'<p class="source">短欄保留轉錄候選；其他解說先列原圖位置。各欄疑義請見校對註記。</p>':''}<p><a href="corpus-review.html#participate">如何參與校對</a></p></header><form id="filters">${corpus?'<input id="corpus" type="hidden" value="'+corpus+'">':'<label>籤組 <select id="corpus"><option value="">全部</option>'+Object.entries(names).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')+'</select></label>'}<label for="query">找籤號或文字</label><input id="query" type="search" placeholder="第5籤、第五籤、門庭" aria-describedby="searchHelp"><p id="searchHelp" class="source">輸入籤號或原文片段。待初校：未記錄人工核圖；需第二人複核：已有人工核圖紀錄，邀請再核對。</p><label for="stage">校對進度</label><select id="stage"><option value="">全部</option><option value="first">待初校</option><option value="second">需第二人複核</option></select><button type="submit">搜尋</button><button type="reset">清除</button><p id="count" role="status">共 ${rows.length} 欄</p></form><fieldset id="columns"><legend>顯示欄位（只改畫面，不改資料）</legend><label><input type="checkbox" data-column="witness" checked>原圖</label><label><input type="checkbox" data-column="poem-panel" checked>籤詩</label><label><input type="checkbox" data-column="fields-panel" checked>解曰／聖意</label><label><input type="checkbox" data-column="notes-panel" checked>校對註記</label></fieldset><p id="layoutStatus" class="source" role="status"></p><p id="empty" hidden>沒有找到符合的籤。試試較短的文字，或清除校對進度篩選。</p><main><div class="table-header" aria-hidden="true"><span>籤號</span><span data-column-header="witness">原圖</span><span data-column-header="poem-panel">籤詩</span><span data-column-header="fields-panel">解曰／聖意</span><span data-column-header="notes-panel">校對註記</span></div>${articles}</main><script>${parseLotQuery.toString()}
+${matchesReview.toString()}
+const form=document.getElementById('filters'),query=document.getElementById('query'),stage=document.getElementById('stage');
+const records=Array.from(document.querySelectorAll('article'),a=>({element:a,slip:a.dataset.slip,stage:a.dataset.reviewStage,corpus:a.dataset.corpus,text:a.textContent+' '+(a.closest('.slip-group')?.dataset.poem||'')}));
+function filterReviews(){let n=0;const corpus=document.getElementById('corpus').value;for(const r of records){r.element.hidden=Boolean((corpus&&r.corpus!==corpus)||!matchesReview(r,query.value,stage.value));if(!r.element.hidden)n++;}document.querySelectorAll('.field-note').forEach(n=>{n.hidden=document.getElementById(n.dataset.for)?.hidden??true});document.querySelectorAll('.slip-group').forEach(g=>{g.hidden=!Array.from(g.querySelectorAll('article')).some(a=>!a.hidden)});document.getElementById('count').textContent='顯示 '+n+' 欄';document.getElementById('empty').hidden=n!==0;}
+const columnNames={'witness':'原圖','poem-panel':'籤詩','fields-panel':'解曰／聖意','notes-panel':'校對註記'},columnWidths={'witness':'minmax(0,.9fr)','poem-panel':'minmax(0,1fr)','fields-panel':'minmax(0,1.4fr)','notes-panel':'minmax(0,1fr)'};
+function applyColumns(){const widths=['64px'],shown=[];document.querySelectorAll('#columns input').forEach(c=>{const key=c.dataset.column;document.querySelectorAll('.'+key+', [data-column-header="'+key+'"]').forEach(el=>{el.hidden=!c.checked});if(c.checked){widths.push(columnWidths[key]);shown.push(columnNames[key]);}});document.documentElement.style.setProperty('--review-cols',widths.join(' '));document.getElementById('layoutStatus').textContent=shown.length?'顯示：籤號、'+shown.join('、'):'只顯示籤號；可重新勾選欄位。';}
+document.getElementById('columns').addEventListener('change',applyColumns);applyColumns();
+form.addEventListener('submit',e=>{e.preventDefault();filterReviews()});form.addEventListener('input',filterReviews);form.addEventListener('change',filterReviews);form.addEventListener('reset',()=>setTimeout(filterReviews,0));
+</script></body></html>`;
+}
+export function buildReviewLanding(){return `<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>抽一 · 一起校對籤本</title><style>body{max-width:720px;margin:auto;padding:32px 20px;background:#faf7f0;color:#302b26;font:18px/1.7 system-ui}a{color:#73502c;overflow-wrap:anywhere}nav a{display:block;border:1px solid #c7bba8;margin:16px 0;padding:20px;text-decoration:none}a:focus-visible{outline:3px solid #995c24;outline-offset:4px}h1{font-size:1.7em}</style></head><body><a href="arrival.html">回到抽一</a><h1>徵求校對助手</h1><p>已做第一輪整理，邀請您一起複核。請選擇一組籤，對照來源與校對註記。</p><nav aria-label="選擇籤組"><a href="corpus-review-guanyin.html">觀音 · 100 籤</a><a href="corpus-review-guandi.html">關帝 · 100 籤</a><a href="corpus-review-liushijiazi.html">六十甲子 · 60 籤</a></nav><section id="participate"><h2>一起參與</h2><p>在專案的 Issues 提出建議，請寫明殿名、籤號、欄位、疑字、建議讀法及來源頁碼。需自行登入 GitHub 並送出；這裡不會自動提交或儲存。公開留言請勿附私人資料或權利未明的整段現代解說。</p><a href="https://github.com/Crystal32378/draw-one" target="_blank" rel="noopener noreferrer">到 GitHub 專案參與校對 ↗</a></section></body></html>`;}
+if(process.argv[1]?.endsWith('/build-corpus-review.mjs')){
+ const rows=reviewRows();writeFileSync(new URL('../paper/corpus-review.html',import.meta.url),buildReviewLanding());
+ for(const corpus of Object.keys(names))writeFileSync(new URL('../paper/corpus-review-'+corpus+'.html',import.meta.url),buildPublicReview(rows.filter(r=>r.corpus===corpus),corpus));
+ console.log('Prepared landing + three separate corpus pages locally; not published.');
+}

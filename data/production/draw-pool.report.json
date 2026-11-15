@@ -1,5 +1,5 @@
 {
-  "content_version": "ec000d9cc1491e43ba92697a8d668e62d3015d26b561cfbe0f80c3eafcda6b38",
+  "content_version": "fb4a869ec5c9d3fbcad1eafc4eef5548e8b47cfb568eb9663868b26bc1b0a326",
   "status": "PASSED",
   "total_entries": 260,
   "corpora": [
@@ -23,7 +23,7 @@
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "slip_count": 100,
       "source_file": "data/corpora/guandi/slip_texts.json",
-      "source_sha256": "7f3448818e341ec532786794f737c4121d252500a6af2e635875ac4fe9d531aa",
+      "source_sha256": "abd91b8ae0106b2d69d3ca6378f42676737903d6403e9e5f3c495a9ec62eec41",
       "data_quality": {
         "decoded_char_refs": 0
       },
@@ -49,5 +49,5 @@
   ],
   "gates_evaluated": 12,
   "gate_failures": 0,
-  "pool_sha256": "cb48cc43f5f0cfeac21b8513cf1f2e1c204392608c482af8fc6dd09e1d794594"
+  "pool_sha256": "705d25148b6d1244cb94d878140a754ffe6693cc921ec0dcee2a4f327e842345"
 }

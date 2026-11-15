@@ -70,6 +70,20 @@ def main():
             for i in range(2, sheet.max_row + 1)}
     assert book == poems, "review workbook out of step"
 
+    # Crystal's 2026-11-15 choice is only three scan-form spellings, not another review batch.
+    prior = json.loads(subprocess.check_output(
+        ["git", "show", "4d4acf2:data/corpora/guandi/slip_texts.json"], cwd=ROOT, encoding="utf-8"))
+    chosen = {48: ("懼", "懽"), 58: ("隱", "隲"), 94: ("綠", "縁")}
+    for was, row in zip(prior["slips"], now["slips"]):
+        n = row["slip_number"]
+        if n in chosen:
+            before, after = chosen[n]
+            assert row["poem_text"] == was["poem_text"].replace(before, after)
+            assert {k: v for k,v in was.items() if k not in ("poem_text", "notes")} == {k: v for k,v in row.items() if k not in ("poem_text", "notes")}
+        else:
+            assert row == was, f"#{n} changed outside the three scan-form decisions"
+    assert set(pending) == {59, 62, 65, 87, 89}
+
     # Idempotence + fail-closed, on an isolated copy.
     script = ROOT / "scripts/apply-guandi-poem-corrections.py"
     with tempfile.TemporaryDirectory() as tmp:
@@ -90,7 +104,7 @@ def main():
 
     places = sum(r["occurrences"] for r in ledger["applied"])
     print(f"PASS: {len(applied)} slips / {places} character places corrected from human image adjudication; "
-          f"{len(pending)} pending character edits left exactly as on main; 90 other poems byte-identical to {BASE}; all 100 still PROBABLE; "
+          f"{len(pending)} pending character edits left exactly as on main; {100 - len(applied)} other poems byte-identical to {BASE}; all 100 still PROBABLE; "
           f"JSON/CSV/XLSX agree; apply script idempotent and fails closed on an unknown reading")
 
 
