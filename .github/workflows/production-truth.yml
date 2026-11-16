@@ -33,6 +33,13 @@ jobs:
           node scripts/build-interpretation-pool.mjs
           git diff --exit-code -- assets/interpretation-pool.guanyin.js assets/interpretation-pool.guandi.js assets/interpretation-holds.js data/production/interpretation-pool.report.json data/production/interpretation-pool.guandi.report.json
 
+      - name: Exact source-bound 聖意 candidates and root review routes
+        run: |
+          node scripts/test-shengyi-pool.mjs
+          node scripts/test-review-root-routes.mjs
+          node scripts/build-shengyi-pool.mjs
+          git diff --exit-code -- assets/shengyi-pool.js
+
       - name: Arrival mechanics contracts (incl. 紙落定即入簿)
         run: node scripts/test-arrival.mjs
 

@@ -12,9 +12,10 @@
 //     deliberately NOT shown, and why — so the page can say so instead of going silent.
 //
 // TRUTH RULES (mirror the slip/pool gates, deliberately conservative):
-//   G1 field: ONLY 解曰 (the reflective verse gloss). 聖意 — the per-category
-//      fortune grid (求財/婚姻/疾病…) — is a PREDICTIVE register that fights the
-//      product's "reflection, not prophecy" line. It is excluded at the source.
+//   G1 field: this artifact remains 解曰-only. Crystal subsequently requested
+//      historical 聖意 too: scripts/build-shengyi-pool.mjs now preserves those
+//      exact candidates in a separately labelled, collapsed reading section.
+//      Its source pins do not imply manual verification or personalized advice.
 //   DISPLAY POLICY 2026-11-15 (Crystal): 待複核不等於隱藏. Every 解曰 of 觀音/關帝 is shown
 //   as the source has it — old glyphs kept, lacunae kept as □ — with its real status and
 //   its doubt. Nothing is corrected, completed or upgraded to make it presentable; the

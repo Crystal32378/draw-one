@@ -738,6 +738,8 @@
   #s-hall.reading .tablet, #s-hall.reading .hall-sub,
   #s-hall.reading .censer, #s-hall.reading .hall-desk { display: none; }
   #s-hall.reading .hall-top { flex-shrink: 0; }
+  #s-hall.reading { scroll-padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  #s-hall.reading .jieyue-link { scroll-margin-bottom: 12px; }
   #s-hall.reading .hall-body { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
   /* #43：原本那顆收籤按鈕，不新增第二個 handler。筆記、解曰仍可往下讀。 */
   #s-hall.on.reading .slip-actions { position: fixed; z-index: 7; bottom: 0; left: 0; right: 0;
@@ -931,6 +933,7 @@
             <p class="jieyue-text" id="jieyueText"></p>
             <p class="jieyue-src" id="jieyueSrc"></p>
             <p class="jieyue-about" id="jieyueAbout"></p>
+            <section id="shengyi" aria-label="歷史聖意" hidden></section>
             <a class="jieyue-link" id="jieyueLink" target="_blank" rel="noopener noreferrer" hidden></a>
             <a class="jieyue-link" id="jieyueReview" target="_blank" rel="noopener noreferrer" hidden></a>
           </div>
@@ -965,7 +968,7 @@
       <p>如果你願意對一首、認一個字，請進校對館。三組籤本各有一頁，可以用籤號或詩句找；看到疑點，到專案的 Issues 留下殿名、籤號和你的讀法就好。</p>
       <p class="d">這裡不收個人資料，也沒有自動送出的表單。</p>
     </div>
-    <a class="notice-go" href="corpus-review.html">進校對館　→</a>
+    <a class="notice-go" href="/paper/corpus-review.html">進校對館　→</a>
   </div></div>
   <div class="overlay" id="chronOverlay"><div class="sheet">
     <h2>本廟沿革</h2>
@@ -989,6 +992,8 @@
 <script src="../assets/interpretation-pool.guandi.js?v=3"></script>
 <script src="../assets/interpretation-holds.js?v=3"></script>
 <script src="../assets/jieyue-guard.js?v=4"></script>
+<script src="/assets/shengyi-pool.js?v=1"></script>
+<script src="/assets/shengyi-view.js?v=1"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -2587,7 +2592,7 @@ window.ARRIVAL_SOUND = (function () {
       irregular_form: { word: "斷句有疑・待核對", line: "這一首轉錄的斷句與體例有疑，照轉錄原樣列出。" },
     },
     review: {
-      page: (cid) => `corpus-review-${cid}.html`,
+      page: (cid) => `/paper/corpus-review-${cid}.html`,
       plain: "到校對館看這一籤 ↗",
       doubt: "疑在哪裡？到校對館看這一籤 ↗",
     },
@@ -2608,6 +2613,7 @@ window.ARRIVAL_SOUND = (function () {
   };
 
   function renderJieyue(entry) {
+    window.SHENGYI_VIEW.render(window.SHENGYI_POOL, entry, $("shengyi"));
     const box = $("jieyue");
     const G = window.JIEYUE_GUARD;
     const pool = Object.hasOwn(JIEYUE_POOLS, entry.corpus_id) ? JIEYUE_POOLS[entry.corpus_id] : null;
@@ -2636,7 +2642,7 @@ window.ARRIVAL_SOUND = (function () {
       $("jieyueText").textContent = rec.text;
       src.hidden = false;
       src.textContent = copy.src(pool, rec);
-      const aboutText = [doubt ? doubt.line : "", copy.about ?? ""].filter(Boolean).join("\n");
+      const aboutText = ""; // Detailed textual doubts belong in the linked proofreading library.
       about.textContent = aboutText;
       about.hidden = !aboutText;
       link.href = `${JIEYUE_COPY.review.page(entry.corpus_id)}?q=${entry.slip_number}`;
@@ -2657,9 +2663,9 @@ window.ARRIVAL_SOUND = (function () {
     }
     const HC = JIEYUE_COPY.holdCorpus;
     const name = hold.official_name || "廟方";
-    $("jieyueWord").textContent = "廟方解說";
-    $("jieyueProv").textContent = "暫未上紙";
-    about.textContent = `${HC.lead(name)}${hold.reasons.map((r) => HC[r]).join("，")}，${HC.tail}`;
+    $("jieyueWord").textContent = "聖意與來源";
+    $("jieyueProv").textContent = "候選轉錄・待核對";
+    about.textContent = "其他解說請見廟方原圖。";
     src.hidden = true; src.textContent = "";
     if (hold.official_url) { link.href = hold.official_url; link.textContent = HC.link(name); link.hidden = false; }
     // 第二條路：校對館。那裡列了這一籤的卦名／五行方位候選，和其餘欄位的來源位置。

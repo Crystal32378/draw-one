@@ -1,0 +1,39 @@
+{
+  "guanyin": {
+    "source_digest": "f0570fb346263159ff5052730f17de430f8a895261d2a19a67f323fc7883abf6",
+    "source_edition": "艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像）",
+    "slip_edition": "艋舺龍山寺《觀世音靈籤》百首（Taiwan production / reference edition，living tradition）",
+    "purpose": "Exact candidate source snapshot; not human verification or copyright clearance."
+  },
+  "guandi": {
+    "source_digest": "06fb3fa4d69281443602a1c8f4155b97c6ae2f1d02a62880bdd692fd2b9ef33e",
+    "source_edition": "護國嘉濟江東王靈籤（傅燁撰，道藏本／維基文庫 transcription）",
+    "slip_edition": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
+    "purpose": "Exact candidate source snapshot; not human verification or copyright clearance."
+  },
+  "liushijiazi": {
+    "source_digest": "bc2e4f6387de8a4dd0339d36d808362e9f00aac13de388fcfe0bb04567f5ab13",
+    "source_edition": "北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主、第59籤 2025-06-21 批次）",
+    "slip_edition": "北港朝天宮官方六十甲子籤（modern reference edition）",
+    "purpose": "Short traditional verdict-form candidates; OCR uncertainty preserved, not human-verification or blanket legal conclusion. All60raw reviewed,4original scans checked for field boundaries.",
+    "segments": {
+      "31": {
+        "before": "\n關公的話\n",
+        "note": "原圖此後是旁欄廟公的話，不屬聖意格；只顯示前段候選，raw不改。"
+      },
+      "33": {
+        "before": "\n好先後\n後圖門庭",
+        "note": "取至功名望後料；此後混入籤圖與廟公的話，raw不改。"
+      },
+      "39": {
+        "unresolved": true,
+        "note": "現有轉錄誤取旁欄長文；原圖有聖意格，待重新轉錄，不是缺欄。"
+      },
+      "41": {
+        "before": "\n（註：來雨有欄位旁小字附註：",
+        "note": "原圖籤圖解說誤入；只顯示前段事項判詞，raw不改。"
+      }
+    },
+    "audit_date": "2026-11-15"
+  }
+}
