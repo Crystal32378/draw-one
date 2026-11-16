@@ -1933,10 +1933,25 @@ window.ARRIVAL_SOUND = (function () {
     const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 600 }) : setTimeout(fn, 40));
     // 使用者正在操作（按住、拖、點）時不烘：最後一次輸入後靜 700ms、且瀏覽器空閒才烘下一張
     let lastInput = 0;
+    const activePointers = new Set();
+    const inputOptions = { capture: true, passive: true };
     for (const t of ["pointerdown", "pointermove", "pointerup", "touchstart", "wheel", "keydown"])
-      addEventListener(t, () => { lastInput = performance.now(); }, { capture: true, passive: true });
-    const quiet = () => new Promise((r) => { const tick = () => { const gap = performance.now() - lastInput;
-      if (gap < 700) setTimeout(tick, 720 - gap); else idle(r); }; tick(); });
+      addEventListener(t, () => { lastInput = performance.now(); }, inputOptions);
+    addEventListener("pointerdown", (ev) => activePointers.add(ev.pointerId), inputOptions);
+    for (const t of ["pointerup", "pointercancel", "lostpointercapture"])
+      addEventListener(t, (ev) => { activePointers.delete(ev.pointerId); lastInput = performance.now(); }, inputOptions);
+    addEventListener("blur", () => { activePointers.clear(); lastInput = performance.now(); });
+    const canBake = () => document.getElementById("s-court")?.classList.contains("on") &&
+      !document.hidden && activePointers.size === 0 && !dragging && !courtAnimating() &&
+      !document.getElementById("s-court").style.transform && performance.now() - lastInput >= 700;
+    const quiet = () => new Promise((r) => {
+      const tick = () => {
+        if (stats.disabled) { r(); return; }
+        if (!canBake()) { setTimeout(tick, 200); return; }
+        idle(() => { if (canBake()) r(); else tick(); });
+      };
+      tick();
+    });
     let queue = Promise.resolve();
     const queued = (...args) => (queue = queue.then(quiet).then(() => render(...args)));
     // 清理：已完成、這一輪沒被要用、畫面上也沒有 <image> 引用的圖 → revoke 並移出快取（轉螢幕、改尺寸後不會越積越多）
@@ -2683,33 +2698,49 @@ window.ARRIVAL_SOUND = (function () {
 
   /* ---------- 拖抽 ---------- */
   const PULL_DIST = 130;
-  let pulling = false, startY = 0, ticked = false;
+  let pulling = false, pullPointerId = null, startY = 0, ticked = false;
   const stickEl = $("tubeStick");
   const REST = 140, TOP = -34;
   function setStick(p) { stickEl.style.transform = `translateX(-50%) translateY(${REST + (TOP - REST) * p}px)`; }
   function resetStick() { stickEl.style.transition = "none"; setStick(0); }
-  $("tubeWrap").addEventListener("pointerdown", (ev) => {
-    if (!POOL || pulling) return;
-    ev.preventDefault();
-    pulling = true; ticked = false; startY = ev.clientY;
-    stickEl.style.transition = "none";
-  });
-  window.addEventListener("pointermove", (ev) => {
-    if (!pulling) return;
+  const tubeWrap = $("tubeWrap");
+  function releasePullCapture() {
+    const id = pullPointerId; pullPointerId = null;
+    if (id !== null && tubeWrap.hasPointerCapture?.(id)) tubeWrap.releasePointerCapture(id);
+  }
+  function updatePull(ev) {
     const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
     const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
     setStick(p);
-    window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
+    window.ARRIVAL_SOUND?.pull(p);
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
-    if (p >= 1) { pulling = false; completeDraw(); }
+    if (p >= 1) { pulling = false; releasePullCapture(); completeDraw(); }
+  }
+  tubeWrap.addEventListener("pointerdown", (ev) => {
+    if (!POOL || pulling || ev.isPrimary === false || (ev.button != null && ev.button !== 0)) return;
+    ev.preventDefault();
+    pulling = true; pullPointerId = ev.pointerId; ticked = false; startY = ev.clientY;
+    stickEl.style.transition = "none";
+    tubeWrap.setPointerCapture?.(ev.pointerId);
+  });
+  window.addEventListener("pointermove", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    updatePull(ev);
   });
   const endPull = () => {
     if (!pulling) return;
-    pulling = false;
+    pulling = false; releasePullCapture();
     stickEl.style.transition = "transform 240ms ease"; setStick(0);
   };
-  window.addEventListener("pointerup", endPull);
-  window.addEventListener("pointercancel", endPull);
+  window.addEventListener("pointerup", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    // The final pointer position may not have arrived in a pointermove (e.g. a busy mobile frame).
+    updatePull(ev);
+    endPull();
+  });
+  window.addEventListener("pointercancel", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  tubeWrap.addEventListener("lostpointercapture", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  window.addEventListener("blur", endPull);
   if (DEVDRAW) $("tubeWrap").addEventListener("click", () => { if (!pulling) completeDraw(); });
 
   function uniformDraw(corpusId) {
