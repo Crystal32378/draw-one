@@ -130,13 +130,20 @@ for (const [label, w, h, touch] of VIEWPORTS) {
     return r.top > 0 && r.bottom <= innerHeight && document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2) === el;
   }));
   if (SHOTS) await page.screenshot({ path: join(SHOTS, `${w}x${h}-slip.png`) });
+  const slipText0 = await page.evaluate(() => document.getElementById("slipMount").textContent.trim());
   await page.click("#backBtn"); await page.waitForTimeout(700);
   check("回埕：門已掩上、朝向留在剛才那殿（session 內）", (await on(page, "s-court")) && (await page.evaluate(() => document.querySelectorAll(".facade.opening").length === 0)));
+  // #44 空白問題也是合法的綁定鍵：沒寫問題抽到的籤，回埕再進同一殿，看到的是同一支、不重抽、不重複入簿
+  const g2 = await station(page, "guandi"); await page.mouse.click(g2.x, g2.y); await page.waitForTimeout(1700);
+  const again = await page.evaluate(() => ({ hall: document.getElementById("s-hall").classList.contains("on"), text: document.getElementById("slipMount").textContent.trim(),
+    book: JSON.parse(localStorage.getItem("drawone.book.v1") || "[]").length }));
+  check("#44 未寫問題：再進同殿仍是同一支籤、簿內不重複", again.hall && again.text.length > 0 && again.text === slipText0 && again.book === 1, JSON.stringify({ ...again, text: again.text.slice(0, 30), was: slipText0.slice(0, 30) }));
+  await page.click("#backBtn"); await page.waitForTimeout(700);
   await page.reload(); await page.waitForTimeout(600);
   const backToVoid = await page.evaluate(() => { const v = document.querySelector(".void-station").getBoundingClientRect(), c = document.getElementById("courtView").getBoundingClientRect();
     return Math.abs((v.left + v.right) / 2 - (c.left + c.right) / 2) < 3; });
   check("reload：回到中軸空段（朝向不持久化）", (await on(page, "s-court")) && backToVoid);
-  check("沒有對外請求（字型除外）", reqs.every((u) => u.startsWith("file:") || /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u) || u.startsWith("data:")), reqs.filter((u) => !u.startsWith("file:") && !u.startsWith("data:") && !/fonts\./.test(u)).join(" "));
+  check("沒有對外請求（字型除外；blob: 是本機記憶體裡的墨筆定稿）", reqs.every((u) => u.startsWith("file:") || /^https:\/\/fonts\.(googleapis|gstatic)\.com\//.test(u) || u.startsWith("data:") || u.startsWith("blob:")), reqs.filter((u) => !u.startsWith("file:") && !u.startsWith("blob:") && !u.startsWith("data:") && !/fonts\./.test(u)).join(" "));
   check("console 乾淨", errs.length === 0, errs.join(" | "));
   await ctx.close();
 }

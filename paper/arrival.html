@@ -226,6 +226,8 @@
   @keyframes lantern-sway { 0%, 100% { transform: rotate(-2.2deg); } 50% { transform: rotate(2.6deg); } }
   .ink-hall .hl { transform-box: fill-box; transform-origin: 50% 0%; animation: lantern-sway 7.5s ease-in-out infinite; }
   .ink-hall .hl.b { animation-duration: 9.2s; animation-delay: -3s; }
+  /* 不在眼前的殿／樹先停（畫面不變，只是不動；轉回來接著動）——手機少算兩殿的燭光與燈籠 */
+  .station.far .ink-hall .hearth, .station.far .ink-hall .hl, .lived.tree.far .sway { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
     .ink-hall .hearth, .ink-hall .hl { animation: none; }
     .ink-hall .door-l, .ink-hall .door-r { transition: none; }
@@ -1812,6 +1814,114 @@ window.ARRIVAL_SOUND = (function () {
 
   document.getElementById("gateRoof").innerHTML = GATE_ROOF_INK;
   document.getElementById("hallBones").innerHTML = HALL_BONES_INK;
+  /* ---------- 墨筆定稿（ink bake，2026-11-16 手機效能） ----------
+     水墨筆觸（#ink-edge／#ink-rough／#ink-wash／#ink-line）是 SVG 濾鏡：每次重畫都要重算擾動與位移。
+     殿裡的燭光、燈籠、樹葉、麻雀是常駐動畫，它們一動，同一張圖裡套了濾鏡的筆觸就得跟著重算——
+     手機（尤其 iOS／LINE 的 WebKit）就卡在這裡；進殿時整座埕放大 1.5 倍，也是每幀重算。
+     做法：同一支筆、同一個濾鏡，由瀏覽器自己先畫一次，存成點陣圖，之後只貼圖。畫風不改、不刪。
+       ・以元素自己的座標系畫（濾鏡雜訊在使用者座標裡生成），解析度＝螢幕像素密度，所以紋理一致。
+       ・動的東西不畫死：元素本身的 class／transform 搬到外包的 <g>，燈籠照擺、門照開、樹照搖；
+         子孫裡還有 class 的（例如麻雀的翅膀）一律跳過，維持即時濾鏡。
+       ・三殿同一份模板＝同一張圖，只畫一次（以內容＋解析度為鍵快取）。
+       ・任何一步失敗（瀏覽器不准把 SVG 畫進 canvas、解碼失敗、逾時）→ 那一筆維持原本的即時濾鏡，畫面不變。
+       ・?inkbake=0 關閉，便於對照。 */
+  const INK_BAKE = (() => {
+    const off = /[?&]inkbake=0\b/.test(location.search);
+    const cache = new Map();            // key → Promise<string|null>（blob URL）
+    const stats = { baked: 0, kept: 0, failed: 0, pending: 0, pixels: 0, byFilter: {} };
+    let defsMarkup = null; const boxes = {};
+    const NS = "http://www.w3.org/2000/svg", XL = "http://www.w3.org/1999/xlink";
+    const MAX_PIXELS = 1.6e6;           // 單張上限（約 1260×1260）；超過就降解析度，不放棄
+    const INHERIT = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-rule", "fill-opacity", "stroke-opacity"];
+    function defs() {
+      if (defsMarkup !== null) return defsMarkup;
+      const d = document.getElementById("ink-edge")?.closest("defs");
+      if (!d) return (defsMarkup = "");
+      for (const f of d.querySelectorAll("filter")) {
+        const n = (a, v) => { const t = f.getAttribute(a); return t == null ? v : (t.endsWith("%") ? parseFloat(t) / 100 : parseFloat(t)); };
+        boxes[f.id] = [n("x", -0.1), n("y", -0.1), n("width", 1.2), n("height", 1.2)];
+      }
+      return (defsMarkup = d.outerHTML);
+    }
+    function render(markup, vb, W, H) {
+      const src = `<svg xmlns="${NS}" xmlns:xlink="${XL}" width="${W}" height="${H}" viewBox="${vb}" preserveAspectRatio="none">${defs()}${markup}</svg>`;
+      return new Promise((resolve) => {
+        const img = new Image();
+        const done = (v) => { img.onload = img.onerror = null; resolve(v); };
+        img.onerror = () => done(null);
+        img.onload = () => {
+          try {
+            const c = document.createElement("canvas"); c.width = W; c.height = H;
+            const g = c.getContext("2d"); g.drawImage(img, 0, 0, W, H);
+            c.toBlob((blob) => { c.width = c.height = 0; done(blob ? URL.createObjectURL(blob) : null); }, "image/png");
+          } catch { done(null); }        // tainted canvas 等：保留即時濾鏡
+        };
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(src);
+      });
+    }
+    function bakeOne(el, dpr) {
+      const id = /url\(#([\w-]+)\)/.exec(el.getAttribute("filter") || "")?.[1];
+      if (!id || !boxes[id]) return;
+      if (el.hasAttribute("data-ink-queued")) return;    // 已在排隊（show 與 renderCourt 可能各排一次）
+      if (el.querySelector("[class]") || el.closest("[data-ink-baked],[data-ink-live]")) return; // 子孫會動 → 不畫死
+      let bb; try { bb = el.getBBox(); } catch { return; }
+      if (!bb || bb.width <= 0 || bb.height <= 0) return; // 沒顯示的（如未落成之殿的墨染）不碰
+      const ctm = el.getCTM(); if (!ctm) return;
+      const [fx, fy, fw, fh] = boxes[id];
+      const rx = bb.x + fx * bb.width, ry = bb.y + fy * bb.height, rw = fw * bb.width, rh = fh * bb.height;
+      let sx = Math.hypot(ctm.a, ctm.b) * dpr, sy = Math.hypot(ctm.c, ctm.d) * dpr;
+      const k = Math.min(1, Math.sqrt(MAX_PIXELS / Math.max(1, rw * sx * rh * sy))); sx *= k; sy *= k;
+      const W = Math.max(1, Math.ceil(rw * sx)), H = Math.max(1, Math.ceil(rh * sy));
+      const clone = el.cloneNode(true);
+      for (const a of ["transform", "class", "style", "id"]) clone.removeAttribute(a);
+      const cs = getComputedStyle(el);
+      const inh = INHERIT.map((a) => { const v = cs.getPropertyValue(a); return v ? `${a}="${v.replace(/"/g, "&quot;")}"` : ""; }).join(" ");
+      const markup = `<g ${inh}>${clone.outerHTML}</g>`;
+      const vb = `${rx} ${ry} ${rw} ${rh}`;
+      const key = `${vb}|${W}x${H}|${markup}`;
+      if (!cache.has(key)) { cache.set(key, queued(markup, vb, W, H)); stats.pixels += W * H; stats.byFilter[id] = (stats.byFilter[id] || 0) + W * H; }
+      stats.pending++; el.setAttribute("data-ink-queued", "");
+      cache.get(key).then((url) => {
+        stats.pending--;
+        if (!url || !el.isConnected) { el.removeAttribute("data-ink-queued"); if (!url) stats.failed++; return; }
+        // 外包 <g> 接手原元素的 class／transform／style：動畫、門扇、未落成的隱藏規則照舊作用
+        const wrap = document.createElementNS(NS, "g");
+        for (const a of ["class", "transform", "style", "opacity"]) { const v = el.getAttribute(a); if (v != null) wrap.setAttribute(a, v); }
+        wrap.setAttribute("data-ink-baked", id);
+        const im = document.createElementNS(NS, "image");
+        im.setAttribute("x", rx); im.setAttribute("y", ry); im.setAttribute("width", rw); im.setAttribute("height", rh);
+        im.setAttribute("preserveAspectRatio", "none");
+        im.setAttribute("href", url); im.setAttributeNS(XL, "xlink:href", url);
+        wrap.style.visibility = "hidden";    // 圖還沒解碼完之前，先讓原本的筆觸撐著（不疊兩層、不閃白）
+        el.after(wrap);
+        let settled = false;
+        const swap = (ok) => {
+          if (settled) return; settled = true;
+          if (ok && el.isConnected) { wrap.style.visibility = ""; el.remove(); stats.baked++; }
+          else { wrap.remove(); el.removeAttribute("data-ink-queued"); stats.failed++; }
+        };
+        im.addEventListener("load", () => swap(true), { once: true });
+        im.addEventListener("error", () => swap(false), { once: true });
+        setTimeout(() => swap(false), 4000);
+        wrap.appendChild(im);
+      });
+    }
+    // 一次只烘一張、張與張之間讓出主執行緒：首次進埕時轉身／點門的手勢不會被烘圖卡住
+    const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 600 }) : setTimeout(fn, 40));
+    let queue = Promise.resolve();
+    const queued = (...args) => (queue = queue.then(() => new Promise((r) => idle(r))).then(() => render(...args)));
+    function bake(root) {
+      if (off || !root || !window.HTMLCanvasElement || !URL.createObjectURL) return;
+      if (!defs()) return;
+      const dpr = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
+      for (const el of root.querySelectorAll("[filter]")) bakeOne(el, dpr);
+    }
+    // 畫面顯示後才量得到幾何：排到下一幀
+    const soon = (root) => requestAnimationFrame(() => idle(() => bake(typeof root === "function" ? root() : root)));
+    return { bake, soon, stats, off };
+  })();
+  window.INK_BAKE = INK_BAKE;
+
 
   /* 墨筆小景：有人在用的東西。尺寸 [w, h] 為 px；全部 bottom 錨在埕面。 */
   const INK = {
@@ -1913,7 +2023,10 @@ window.ARRIVAL_SOUND = (function () {
 
   function show(name) {
     for (const s of ["gate", "court", "hall"]) $("s-" + s).classList.toggle("on", s === name);
-    if (name === "court") requestAnimationFrame(applyFrame);
+    if (name === "court") { courtMeasured = false; requestAnimationFrame(applyFrame); }
+    // 墨筆定稿只做廟埕：埕上有常駐動畫、拖曳縮放、進殿放大，濾鏡會被一再重算。
+    // 山門的簷與殿內的樑是靜止的——濾鏡本來就只算一次，定稿反而多一次編碼，所以不碰。
+    if (name === "court") INK_BAKE.soon(stageStrip);
   }
 
   /* ---------- 埕 v2：轉身全景引擎 ---------- */
@@ -1937,6 +2050,11 @@ window.ARRIVAL_SOUND = (function () {
   const farStrip = $("farStrip");
   const groundJoints = $("groundJoints");
   const nearStrip = $("nearStrip");
+  const groundPath = $("groundPath");
+  // overflow:hidden 的容器仍可能被瀏覽器 focus/click 自動捲動：以事件歸零（原本每幀讀 scrollLeft，會逼出同步排版）
+  const resetCourtScroll = (e) => { if (e.currentTarget.scrollLeft) e.currentTarget.scrollLeft = 0; };
+  view.addEventListener("scroll", resetCourtScroll, { passive: true });
+  document.getElementById("app").addEventListener("scroll", resetCourtScroll, { passive: true });
 
   let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
   let treeSoundX = 0; // 老樹（葉聲源＝樹冠質心）的 strip 座標——dressCourt 寫入，applyFrame 推播給聲音層
@@ -2094,7 +2212,9 @@ window.ARRIVAL_SOUND = (function () {
       // 樹高＝畫面的六成（老樹比殿高）；樹冠最遠只伸到第一站的簷角邊（+0.06W）：
       // 不替任何一殿遮蔭——樹是埕的，不是誰的。
       const treeW = Math.round((view.clientHeight || Math.max(140, innerHeight - 136)) * 0.62 * 1.3);
-      put("tree", 0.06 * stationW - treeW, { width: treeW + "px" }).innerHTML = TREE_INK_SVG;
+      courtTree = put("tree", 0.06 * stationW - treeW, { width: treeW + "px" });
+      courtTree.innerHTML = TREE_INK_SVG;
+      courtTreeSpan = [0.06 * stationW - treeW, treeW];
       // 燈籠列：頭頂一條、小而疏；位置永遠落在半站點——中軸正上方必為空檔
       const vw2 = view.clientWidth || Math.min(1040, innerWidth);
       const rope = document.createElement("div");
@@ -2128,10 +2248,19 @@ window.ARRIVAL_SOUND = (function () {
     applyFrame();
   }
 
+  // 廟埕的寬高：只在重建、改尺寸、顯示時量（每幀讀 clientWidth/clientHeight 會逼瀏覽器先排完版面）
+  let courtVW = 0, courtVH = 0, courtMeasured = false, birdPerchH = -1;
+  let courtTree = null, courtTreeSpan = [0, 0];
+  const lastStationStyle = new WeakMap();
+  function measureCourt() {
+    courtVW = view.clientWidth || Math.min(1040, innerWidth);
+    courtVH = view.clientHeight;
+    courtMeasured = courtVH > 0;
+  }
   let hallSizedFor = "";
   function sizeHalls() {
     // 埕隱藏時量不到高度：先以「視窗高−案」估，顯示後 applyFrame 會以實測值校正一次。
-    const vh = view.clientHeight || Math.max(140, innerHeight - 136);
+    const vh = courtVH || Math.max(140, innerHeight - 136);
     const key = vh + "x" + stationW;
     if (key === hallSizedFor) return;
     hallSizedFor = key;
@@ -2152,19 +2281,21 @@ window.ARRIVAL_SOUND = (function () {
   }
 
   function applyFrame() {
+    if (!courtMeasured) measureCourt();
     sizeHalls();
-    // overflow:hidden 容器仍可能被瀏覽器 focus/click 自動捲動——每幀歸零
-    if (view.scrollLeft) view.scrollLeft = 0;
-    const app = document.getElementById("app");
-    if (app.scrollLeft) app.scrollLeft = 0;
-    const vw = view.clientWidth || Math.min(1040, innerWidth);
+    // （overflow:hidden 容器被 focus/click 自動捲動的防護改由 scroll 事件做，見下方 resetCourtScroll——不再每幀讀 scrollLeft）
+    const vw = courtVW || Math.min(1040, innerWidth);
     // Perch targets derive from the existing sprite geometry, not arbitrary flight height.
     // bench seat: (70,9) in 104×34, scale(1.16), origin(52,34).
     // bike handlebar: (36,4.5) in 48×30 → 96×60, scale(1.16) rotate(-4deg), origin(48,60).
-    const courtH = view.clientHeight;
-    for (const [cls, x, y] of [["bird-0", -4.12, -(courtH * .065 + 28.5)], ["bird-2", -18.86, -(courtH * .035 + 60.46)]]) {
-      const bird = stageStrip.querySelector("." + cls);
-      if (bird) { bird.style.setProperty("--fly-x", x + "px"); bird.style.setProperty("--fly-y", y + "px"); }
+    // 落腳點只跟埕高有關：埕高變了才重寫（每幀改 CSS 變數會讓麻雀每幀重算樣式）
+    const courtH = courtVH;
+    if (courtH !== birdPerchH) {
+      birdPerchH = courtH;
+      for (const [cls, x, y] of [["bird-0", -4.12, -(courtH * .065 + 28.5)], ["bird-2", -18.86, -(courtH * .035 + 60.46)]]) {
+        const bird = stageStrip.querySelector("." + cls);
+        if (bird) { bird.style.setProperty("--fly-x", x + "px"); bird.style.setProperty("--fly-y", y + "px"); }
+      }
     }
     scatterNearbyBirds(vw);
     stageStrip.style.transform = `translateX(${pad0 - scroll}px)`;
@@ -2180,13 +2311,22 @@ window.ARRIVAL_SOUND = (function () {
       if (!el) return;
       const d = Math.min(1.4, Math.abs(stationCenter(i) - scroll) / stationW);
       const sc = 1 - 0.13 * Math.min(1, d);
-      el.style.transform = `scale(${sc.toFixed(3)})`;
-      el.style.opacity = (1 - 0.14 * Math.min(1, d)).toFixed(3);
+      const tf = `scale(${sc.toFixed(3)})`, op = (1 - 0.14 * Math.min(1, d)).toFixed(3);
+      const last = lastStationStyle.get(el);
+      if (!last || last[0] !== tf || last[1] !== op) { el.style.transform = tf; el.style.opacity = op; lastStationStyle.set(el, [tf, op]); }
+      // 不在眼前的殿：燭光與燈籠先停（畫面不變，只是不動）；轉回來就接著呼吸
+      el.classList.toggle("far", d >= 1.05);
     });
+    // 老樹轉出畫面時，枝葉也先停
+    if (courtTree) {
+      const tl = courtTreeSpan[0] + pad0 - scroll;
+      courtTree.classList.toggle("far", tl + courtTreeSpan[1] < -40 || tl > vw + 40);
+    }
     const ni = nearestStation();
     const settledOnHall = !STATIONS[ni].void && !STATIONS[ni].hypothetical &&
       Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
-    $("groundPath").style.opacity = settledOnHall ? "1" : "0";
+    const gp = settledOnHall ? "1" : "0";
+    if (groundPath.style.opacity !== gp) groundPath.style.opacity = gp;
     // 樹在視野中的位置餵給聲音層（幾何由這裡推播；聲音層不讀 mechanics）
     window.ARRIVAL_SOUND?.tree(treeSoundX + pad0 - scroll - vw / 2, vw);
   }
@@ -2298,6 +2438,7 @@ window.ARRIVAL_SOUND = (function () {
   let resizeRaf = 0;
   function renderCourt() {
     courtWidth = view.clientWidth || Math.min(1040, innerWidth);
+    courtMeasured = false; birdPerchH = -1;
     birdFrameScroll = null; // 重返埕不是走近，不驚動剛重建的鳥。
     buildCourt();
     const facing = sessionFacing;
@@ -2305,6 +2446,7 @@ window.ARRIVAL_SOUND = (function () {
     const book = store.get(BOOK_KEY, []);
     $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
     updateWalkHint();
+    INK_BAKE.soon(stageStrip); // 重建後的新元素（resize 也走這裡）
   }
   addEventListener("resize", () => {
     if (!$("s-court").classList.contains("on") || resizeRaf) return;
@@ -2312,6 +2454,7 @@ window.ARRIVAL_SOUND = (function () {
       resizeRaf = 0;
       if (!$("s-court").classList.contains("on")) return;
       const width = view.clientWidth || Math.min(1040, innerWidth);
+      courtMeasured = false; // 高度可能變了（網址列收合）：下一幀重量
       if (width !== courtWidth) {
         dragging = false; downTarget = null; velocity = 0;
         if (raf) { cancelAnimationFrame(raf); raf = 0; }
@@ -2344,9 +2487,9 @@ window.ARRIVAL_SOUND = (function () {
       return;
     }
     const s = STATIONS[nearestStation()];
-    if (!s || s.void) $("walkHint").textContent = "左右轉身，走向一殿。";
-    else if (s.hypothetical) $("walkHint").textContent = "月老殿增建中——籤本仍在考證。";
-    else $("walkHint").textContent = `正對　${s.deity}殿——點門內，進殿。`;
+    const hint = !s || s.void ? "左右轉身，走向一殿。" : s.hypothetical ? "月老殿增建中——籤本仍在考證。" : `正對　${s.deity}殿——點門內，進殿。`;
+    const wh = $("walkHint"); // 字一樣就不重寫（每次停步都重寫會換掉文字節點、多一次排版）
+    if (wh.firstElementChild || wh.textContent !== hint) wh.textContent = hint;
   }
   $("question").addEventListener("input", updateWalkHint);
 
@@ -2365,11 +2508,13 @@ window.ARRIVAL_SOUND = (function () {
     const veil = (!reduceMotion && facadeEl && !hall.hypothetical) ? $("threshold") : null;
     if (veil) { veil.classList.remove("leaving"); veil.classList.add("on"); }
     const court = $("s-court");
+    // 進殿的放大＝整塊廟埕當一張圖縮放（合成層），不在 400ms 內逐幀重畫墨筆
+    court.style.willChange = "transform, opacity";
     court.style.transformOrigin = "50% 44%";
     court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
     setTimeout(() => {
-      court.style.transform = ""; court.style.opacity = "";
+      court.style.transform = ""; court.style.opacity = ""; court.style.willChange = "";
       facadeEl?.classList.remove("opening");
       renderHall(hall, { boundEntry });
       show("hall");
