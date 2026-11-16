@@ -11,7 +11,9 @@ for(const c of ['guanyin','guandi'])for(const row of sourceRows(c)){
 }
 const changed={guanyin:sourceRows('guanyin'),guandi:sourceRows('guandi'),liushijiazi:sourceRows('liushijiazi')};[changed.guanyin[0].verbatim_text,changed.guanyin[1].verbatim_text]=[changed.guanyin[1].verbatim_text,changed.guanyin[0].verbatim_text];assert.throws(()=>buildShengyi(changed),/source identity changed/);
 assert.equal(sandbox.window.SHENGYI_VIEW.resolve(pool,{corpus_id:'liushijiazi'}),null);
-const html=readFileSync('paper/arrival.html','utf8');assert.ok(html.includes('window.SHENGYI_VIEW.render(window.SHENGYI_POOL'));assert.ok(html.includes('src="/assets/shengyi-pool.js'));
+const html=readFileSync('paper/arrival.html','utf8');assert.ok(html.includes('window.SHENGYI_VIEW.render(window.SHENGYI_POOL'));assert.ok(html.includes('src="../assets/shengyi-pool.js'));assert.ok(html.includes('src="../assets/shengyi-view.js'));
+// 飛寶 2026-11-16：聖意腳本缺席或出錯，只能讓聖意那一格空著，不能拖垮解曰與收籤。
+assert.ok(/try \{\s*if \(!window\.SHENGYI_VIEW \|\| !window\.SHENGYI_VIEW\.render\(window\.SHENGYI_POOL, entry, sy\)\) \{ sy\.replaceChildren\(\); sy\.hidden = true; \}\s*\} catch \{/.test(html));
 console.log('PASS:200 exact聖意 candidates, source/status preserved; swapped source fails build, wrong corpus/slip/edition fails runtime; real app integration present.');
 // DOM-safe rendering and stale-record cleanup, without HTML interpolation.
 function node(tag){return {tag,children:[],hidden:false,textContent:'',style:{},append(...children){this.children.push(...children);},replaceChildren(...children){this.children=children;}};}

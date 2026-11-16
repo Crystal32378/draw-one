@@ -715,6 +715,24 @@
     font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); }
   .jieyue-about.is-lead { margin-top: 0; padding-top: 0; border-top: 0; font-size: 12.5px; color: var(--ink); }
   .jieyue-about { white-space: pre-line; }
+  /* 聖意：解曰底下另收的一格（原生 details，預設收合）。同一種紙、同一種字，但低一階——
+     小一號、內縮一條細線；看得出是另一層，不搶解曰。校對館的路在摺頁底只留一條，這一格裡的那條收起。 */
+  #shengyi { margin-top: 14px; border-top: 1px dotted rgba(74, 66, 52, 0.22); }
+  #shengyi summary { list-style: none; display: flex; align-items: baseline; gap: 2px; padding: 11px 2px 9px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; }
+  #shengyi summary::-webkit-details-marker { display: none; }
+  #shengyi .sy-word { font-family: "Noto Serif TC", serif; font-size: 13px; letter-spacing: 0.14em; color: var(--ink); }
+  #shengyi .sy-prov { flex: 1; font-size: 10.5px; letter-spacing: 0.12em; color: var(--ink-soft); }
+  #shengyi summary::after { content: "▸"; font-size: 10px; color: var(--ink-soft); }
+  #shengyi details[open] > summary::after { content: "▾"; }
+  #shengyi summary:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+  #shengyi details > :not(summary) { margin-left: 4px; padding-left: 12px; border-left: 1px solid rgba(74, 66, 52, 0.18); }
+  #shengyi .jieyue-text { margin: 0 0 0 4px; font-size: 13.5px; line-height: 1.95; }
+  #shengyi .jieyue-src { margin-top: 0; padding-top: 8px; }
+  #shengyi .jieyue-about { margin-top: 0; padding-top: 6px; border-top: 0; }
+  #shengyi .jieyue-link { margin-top: 0; padding-top: 8px; margin-left: 16px; padding-left: 0; border-left: 0; }
+  #shengyi .jieyue-link[href*="corpus-review"] { display: none; }
+  #shengyi + .jieyue-about { margin-top: 12px; }
   .jieyue-link { display: block; width: fit-content; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
     color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
     text-decoration-color: rgba(74, 66, 52, 0.45); }
@@ -932,8 +950,8 @@
           <div class="jieyue-body" id="jieyueBody" hidden>
             <p class="jieyue-text" id="jieyueText"></p>
             <p class="jieyue-src" id="jieyueSrc"></p>
-            <p class="jieyue-about" id="jieyueAbout"></p>
             <section id="shengyi" aria-label="歷史聖意" hidden></section>
+            <p class="jieyue-about" id="jieyueAbout"></p>
             <a class="jieyue-link" id="jieyueLink" target="_blank" rel="noopener noreferrer" hidden></a>
             <a class="jieyue-link" id="jieyueReview" target="_blank" rel="noopener noreferrer" hidden></a>
           </div>
@@ -992,8 +1010,9 @@
 <script src="../assets/interpretation-pool.guandi.js?v=3"></script>
 <script src="../assets/interpretation-holds.js?v=3"></script>
 <script src="../assets/jieyue-guard.js?v=4"></script>
-<script src="/assets/shengyi-pool.js?v=1"></script>
-<script src="/assets/shengyi-view.js?v=1"></script>
+<!-- 與其他資產同一種相對路徑：從 / 改寫進來或直接開 /paper/arrival.html 都解析到 /assets/。 -->
+<script src="../assets/shengyi-pool.js?v=1"></script>
+<script src="../assets/shengyi-view.js?v=2"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -2613,7 +2632,11 @@ window.ARRIVAL_SOUND = (function () {
   };
 
   function renderJieyue(entry) {
-    window.SHENGYI_VIEW.render(window.SHENGYI_POOL, entry, $("shengyi"));
+    // 聖意是獨立的一層：它的腳本沒載到、或自己出錯，都只讓聖意那一格空著——不能連解曰、籤紙、收籤一起拖垮。
+    const sy = $("shengyi");
+    try {
+      if (!window.SHENGYI_VIEW || !window.SHENGYI_VIEW.render(window.SHENGYI_POOL, entry, sy)) { sy.replaceChildren(); sy.hidden = true; }
+    } catch { sy.replaceChildren(); sy.hidden = true; }
     const box = $("jieyue");
     const G = window.JIEYUE_GUARD;
     const pool = Object.hasOwn(JIEYUE_POOLS, entry.corpus_id) ? JIEYUE_POOLS[entry.corpus_id] : null;
