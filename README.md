@@ -1,5 +1,7 @@
 # Draw One
 
+> **最新進度入口（2026-11-16）**：[版本、交接、已完成與待辦](docs/PROJECT-STATUS.md)。正式站已更新至 `a98991a`；`main` 尚未同步，請先讀進度頁再接手。
+
 Digital Eastern oracle interface.
 
 Draw One is a single-page prototype for a ritual-style oracle reading experience: choose a symbolic guide, write your question, draw one.
