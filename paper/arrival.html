@@ -479,8 +479,9 @@
   }
   /* 聖號被捲出畫面時（短視窗走向籤筒、讀籤往下捲），頂上留一行小字：你仍知道自己在誰的殿裡。
      三殿同一條規則；聖號牌本身不縮、不搬。 */
-  .hall-top::before { content: ""; position: absolute; inset: 0 0 -10px 0; z-index: -1; opacity: 0; transition: opacity 240ms ease;
-    background: linear-gradient(180deg, rgba(222, 211, 186, 0.97) 0%, rgba(222, 211, 186, 0.92) 68%, rgba(222, 211, 186, 0) 100%); pointer-events: none; }
+  .hall-top::before { content: ""; position: absolute; inset: 0 0 -38px 0; z-index: -1; opacity: 0; transition: opacity 240ms ease;
+    /* #42(b)：下緣拉長成淡墨暈開——被頂列蓋住的匾不留硬切口，像紙上墨色漸淡 */
+    background: linear-gradient(180deg, rgba(222, 211, 186, 0.97) 0%, rgba(222, 211, 186, 0.94) 52%, rgba(214, 202, 176, 0.72) 70%, rgba(214, 202, 176, 0.34) 85%, rgba(214, 202, 176, 0) 100%); pointer-events: none; }
   .hall-name { align-self: center; font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 15px; letter-spacing: 0.32em; text-indent: 0.32em;
     color: var(--ink); opacity: 0; transform: translateY(-3px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
   .hall-top.named::before { opacity: 1; }
@@ -1827,8 +1828,12 @@ window.ARRIVAL_SOUND = (function () {
        ・?inkbake=0 關閉，便於對照。 */
   const INK_BAKE = (() => {
     const off = /[?&]inkbake=0\b/.test(location.search);
-    const cache = new Map();            // key → Promise<string|null>（blob URL）
-    const stats = { baked: 0, kept: 0, failed: 0, pending: 0, pixels: 0, byFilter: {} };
+    // key → { p: Promise<url|null>, url, px, pass, settled }。同一張圖三殿共用；不再被畫面引用的會被收掉並 revoke
+    const cache = new Map();
+    const stats = { disabled: false, attempts: 0, baked: 0, kept: 0, failed: 0, timedOut: 0, pending: 0, pixels: 0, revoked: 0, entries: 0, byFilter: {} };
+    const MAX_TOTAL = 12e6;             // 快取總上限約 12MP（解碼約 48MB）；超過就留即時濾鏡，不再加
+    const TIMEOUT = 5000;               // 單張「SVG→canvas→PNG」超過 5 秒就放棄，留即時濾鏡
+    let pass = 0, streak = 0;           // 連續失敗 3 次（或逾時 2 次）＝這台裝置烘不動：本次造訪停止烘圖，全留即時濾鏡
     let defsMarkup = null; const boxes = {};
     const NS = "http://www.w3.org/2000/svg", XL = "http://www.w3.org/1999/xlink";
     const MAX_PIXELS = 1.6e6;           // 單張上限（約 1260×1260）；超過就降解析度，不放棄
@@ -1845,15 +1850,21 @@ window.ARRIVAL_SOUND = (function () {
     }
     function render(markup, vb, W, H) {
       const src = `<svg xmlns="${NS}" xmlns:xlink="${XL}" width="${W}" height="${H}" viewBox="${vb}" preserveAspectRatio="none">${defs()}${markup}</svg>`;
+      if (stats.disabled) return Promise.resolve(null);
+      stats.attempts++;
       return new Promise((resolve) => {
         const img = new Image();
-        const done = (v) => { img.onload = img.onerror = null; resolve(v); };
+        let over = false;
+        const done = (v) => { if (over) return; over = true; clearTimeout(timer); img.onload = img.onerror = null;
+          streak = v ? 0 : streak + 1; if (streak >= 3 || stats.timedOut >= 2) stats.disabled = true; resolve(v); };
+        const timer = setTimeout(() => { stats.timedOut++; done(null); img.src = ""; }, TIMEOUT);
         img.onerror = () => done(null);
         img.onload = () => {
+          if (over) return;
           try {
             const c = document.createElement("canvas"); c.width = W; c.height = H;
             const g = c.getContext("2d"); g.drawImage(img, 0, 0, W, H);
-            c.toBlob((blob) => { c.width = c.height = 0; done(blob ? URL.createObjectURL(blob) : null); }, "image/png");
+            c.toBlob((blob) => { c.width = c.height = 0; if (over) return; done(blob ? URL.createObjectURL(blob) : null); }, "image/png");
           } catch { done(null); }        // tainted canvas 等：保留即時濾鏡
         };
         img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(src);
@@ -1879,11 +1890,23 @@ window.ARRIVAL_SOUND = (function () {
       const markup = `<g ${inh}>${clone.outerHTML}</g>`;
       const vb = `${rx} ${ry} ${rw} ${rh}`;
       const key = `${vb}|${W}x${H}|${markup}`;
-      if (!cache.has(key)) { cache.set(key, queued(markup, vb, W, H)); stats.pixels += W * H; stats.byFilter[id] = (stats.byFilter[id] || 0) + W * H; }
+      let entry = cache.get(key);
+      if (!entry) {
+        if (stats.pixels + W * H > MAX_TOTAL) { prune(); if (stats.pixels + W * H > MAX_TOTAL) { stats.kept++; return; } } // 到上限：這筆留即時濾鏡
+        entry = { url: null, px: W * H, pass, settled: false };
+        entry.p = queued(markup, vb, W, H).then((url) => {
+          entry.settled = true; entry.url = url;
+          if (!url) { cache.delete(key); stats.pixels -= entry.px; stats.entries = cache.size; } // 失敗不佔額度，下次可重試
+          return url;
+        });
+        cache.set(key, entry); stats.pixels += W * H; stats.entries = cache.size;
+        stats.byFilter[id] = (stats.byFilter[id] || 0) + W * H;
+      }
+      entry.pass = pass;
       stats.pending++; el.setAttribute("data-ink-queued", "");
-      cache.get(key).then((url) => {
+      entry.p.then((url) => {
         stats.pending--;
-        if (!url || !el.isConnected) { el.removeAttribute("data-ink-queued"); if (!url) stats.failed++; return; }
+        if (!url || !el.isConnected) { el.removeAttribute("data-ink-queued"); if (!url) stats.failed++; else schedulePrune(); return; }
         // 外包 <g> 接手原元素的 class／transform／style：動畫、門扇、未落成的隱藏規則照舊作用
         const wrap = document.createElementNS(NS, "g");
         for (const a of ["class", "transform", "style", "opacity"]) { const v = el.getAttribute(a); if (v != null) wrap.setAttribute(a, v); }
@@ -1898,7 +1921,7 @@ window.ARRIVAL_SOUND = (function () {
         const swap = (ok) => {
           if (settled) return; settled = true;
           if (ok && el.isConnected) { wrap.style.visibility = ""; el.remove(); stats.baked++; }
-          else { wrap.remove(); el.removeAttribute("data-ink-queued"); stats.failed++; }
+          else { wrap.remove(); el.removeAttribute("data-ink-queued"); stats.failed++; schedulePrune(); }
         };
         im.addEventListener("load", () => swap(true), { once: true });
         im.addEventListener("error", () => swap(false), { once: true });
@@ -1908,17 +1931,39 @@ window.ARRIVAL_SOUND = (function () {
     }
     // 一次只烘一張、張與張之間讓出主執行緒：首次進埕時轉身／點門的手勢不會被烘圖卡住
     const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 600 }) : setTimeout(fn, 40));
+    // 使用者正在操作（按住、拖、點）時不烘：最後一次輸入後靜 700ms、且瀏覽器空閒才烘下一張
+    let lastInput = 0;
+    for (const t of ["pointerdown", "pointermove", "pointerup", "touchstart", "wheel", "keydown"])
+      addEventListener(t, () => { lastInput = performance.now(); }, { capture: true, passive: true });
+    const quiet = () => new Promise((r) => { const tick = () => { const gap = performance.now() - lastInput;
+      if (gap < 700) setTimeout(tick, 720 - gap); else idle(r); }; tick(); });
     let queue = Promise.resolve();
-    const queued = (...args) => (queue = queue.then(() => new Promise((r) => idle(r))).then(() => render(...args)));
+    const queued = (...args) => (queue = queue.then(quiet).then(() => render(...args)));
+    // 清理：已完成、這一輪沒被要用、畫面上也沒有 <image> 引用的圖 → revoke 並移出快取（轉螢幕、改尺寸後不會越積越多）
+    function prune() {
+      const inUse = new Set([...document.querySelectorAll("[data-ink-baked] image")].map((im) => im.getAttribute("href")));
+      for (const [key, e] of cache) {
+        if (!e.settled || e.pass === pass || inUse.has(e.url)) continue;
+        if (e.url) { URL.revokeObjectURL(e.url); stats.revoked++; }
+        cache.delete(key); stats.pixels -= e.px;
+      }
+      stats.entries = cache.size;
+    }
+    let pruneTimer = 0;
+    const schedulePrune = () => { clearTimeout(pruneTimer); pruneTimer = setTimeout(prune, 200); };
     function bake(root) {
       if (off || !root || !window.HTMLCanvasElement || !URL.createObjectURL) return;
       if (!defs()) return;
+      pass++;
       const dpr = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
       for (const el of root.querySelectorAll("[filter]")) bakeOne(el, dpr);
+      schedulePrune();
     }
     // 畫面顯示後才量得到幾何：排到下一幀
-    const soon = (root) => requestAnimationFrame(() => idle(() => bake(typeof root === "function" ? root() : root)));
-    return { bake, soon, stats, off };
+    // 畫面顯示後才量得到幾何；實際烘圖另由 quiet() 讓給使用者的操作
+    let soonTimer = 0;
+    const soon = (root) => { clearTimeout(soonTimer); soonTimer = setTimeout(() => requestAnimationFrame(() => idle(() => bake(typeof root === "function" ? root() : root))), 300); };
+    return { bake, soon, stats, off, prune, cacheSize: () => cache.size };
   })();
   window.INK_BAKE = INK_BAKE;
 
