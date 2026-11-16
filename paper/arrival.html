@@ -164,7 +164,7 @@
       radial-gradient(48px 26px at 318px 86%, rgba(52, 46, 36, 0.13), transparent 70%),
       radial-gradient(60px 30px at 452px 80%, rgba(52, 46, 36, 0.15), transparent 70%);
     background-size: 560px 100%; background-repeat: repeat-x;
-    filter: blur(1.2px);
+    /* Gradient edges already soften the distant trees; avoid a second blur pass. */
   }
   .far-eaveshadow { /* 你站在簷下：畫面頂端一道濃墨的簷影 */
     position: absolute; left: -200%; right: -200%; top: 0; height: 7%;
@@ -822,26 +822,26 @@
 <!-- 整座廟的三支筆（ink pass）：乾筆線、淡墨染、色塊毛邊。全部畫面共用，不另立風格。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <filter id="ink-line" x="-12%" y="-12%" width="124%" height="124%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.055" numOctaves="2" seed="11" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.055" numOctaves="1" seed="11" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="4.6" xChannelSelector="R" yChannelSelector="G" result="d"/>
-    <feTurbulence type="fractalNoise" baseFrequency="0.16 0.22" numOctaves="3" seed="3" result="g"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.16 0.22" numOctaves="1" seed="3" result="g"/>
     <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.9 1.9" result="hole"/>
     <feComposite in="d" in2="hole" operator="in"/>
   </filter>
   <filter id="ink-wash" x="-14%" y="-14%" width="128%" height="128%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="3" seed="5" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="1" seed="5" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
     <feGaussianBlur in="d" stdDeviation="1.1" result="b"/>
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="t"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="1" seed="8" result="t"/>
     <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.62" result="density"/>
     <feComposite in="b" in2="density" operator="in"/>
   </filter>
   <filter id="ink-edge" x="-4%" y="-4%" width="108%" height="108%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="tooth"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="7" result="tooth"/>
     <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <filter id="ink-rough" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="2" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="1" seed="2" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
     <feGaussianBlur in="d" stdDeviation="0.35"/>
   </filter>
@@ -2245,7 +2245,7 @@ window.ARRIVAL_SOUND = (function () {
       hasTurned = true;
       $("turnHint").style.opacity = "0";
     }
-    applyFrame();
+    kick();
   });
   const release = (ev) => {
     if (!dragging) return;
@@ -2294,7 +2294,10 @@ window.ARRIVAL_SOUND = (function () {
     else kick();
   }
 
+  let courtWidth = 0;
+  let resizeRaf = 0;
   function renderCourt() {
+    courtWidth = view.clientWidth || Math.min(1040, innerWidth);
     birdFrameScroll = null; // 重返埕不是走近，不驚動剛重建的鳥。
     buildCourt();
     const facing = sessionFacing;
@@ -2303,7 +2306,19 @@ window.ARRIVAL_SOUND = (function () {
     $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
     updateWalkHint();
   }
-  addEventListener("resize", () => { if ($("s-court").classList.contains("on")) renderCourt(); });
+  addEventListener("resize", () => {
+    if (!$("s-court").classList.contains("on") || resizeRaf) return;
+    resizeRaf = requestAnimationFrame(() => {
+      resizeRaf = 0;
+      if (!$("s-court").classList.contains("on")) return;
+      const width = view.clientWidth || Math.min(1040, innerWidth);
+      if (width !== courtWidth) {
+        dragging = false; downTarget = null; velocity = 0;
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        renderCourt();
+      } else { kick(); }
+    });
+  });
 
   function updateWalkHint() {
     const bound = POOL && window.DRAW_POLICY.peekBinding({ question: $("question").value });
