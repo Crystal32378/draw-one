@@ -18,11 +18,21 @@ assert.ok(!html.includes('/issues/new'));
 assert.ok(!html.match(/<article[\s\S]*?href="https:\/\/github.com/));
 assert.ok(html.includes('role="status"'));
 assert.ok(!buildPublicReview([{...rows[0],verbatim_text:'<img onerror=alert(1)>'}]).includes('<img onerror'));
-console.log('PASS: deterministic760-field public-review candidate; Jiazi240 other raw/diagnostic fields excluded,120 short candidates visible; one general project contribution link; text escaping.');
+console.log('PASS: deterministic760-field public-review candidate; Jiazi180 long/diagnostic fields excluded,180 short candidates visible; one general project contribution link; text escaping.');
 
 assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===59&&r.field_type==='籤閣聖意')).includes('結構性缺欄'));
 
-assert.equal((html.match(/原圖欄位轉錄候選 · /g)||[]).length,120);assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===54&&r.field_type==='卦名')).includes('孤燈寂寂夜沉沉'));
+assert.equal((html.match(/原圖欄位轉錄候選 · /g)||[]).length,180); // 卦名＋五行方位 120 ＋ 短聖意 60（與求籤頁同步）
+{ const {buildShengyi}=await import('./build-shengyi-pool.mjs'); const sy=buildShengyi().entries;
+  for(const n of [1,31,33,41]){ const page=buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===n&&r.field_type==='聖意'));
+    const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    assert.ok(page.includes(esc(sy['liushijiazi-'+String(n).padStart(3,'0')].text)),'校對館短聖意 = 求籤頁短聖意 #'+n); }
+  for(const n of [31,33,41]) assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===n&&r.field_type==='聖意')).includes('求籤頁只顯示前段事項判詞'));
+  const p39=buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===39&&r.field_type==='聖意'));
+  if(!sy['liushijiazi-039'].text) assert.ok(p39.includes('待依原圖重新轉錄')&&!p39.includes('若想求神仙之路'));
+  else assert.ok(p39.includes(esc(sy['liushijiazi-039'].text)));
+  for(const f of ['籤解','卦運勢','籤閣聖意']) assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===2&&r.field_type===f)).includes('暫不在公開校對頁重刊'),'長篇欄位仍不重刊：'+f);
+  console.log('PASS: 六十甲子短聖意校對館與求籤頁同一份；切段說明；第 39 籤不顯示誤取長文；長篇欄位仍不重刊。'); }assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===54&&r.field_type==='卦名')).includes('孤燈寂寂夜沉沉'));
 const {compactLocator,reviewStage}=await import('./build-corpus-review.mjs');
 const q2=rows.find(r=>r.corpus==='guanyin'&&r.slip_no===2&&r.field_type==='解曰');
 assert.equal(compactLocator(q2),'p179');

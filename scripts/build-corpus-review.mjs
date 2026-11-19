@@ -1,6 +1,9 @@
 // Public-review candidate, prepared locally only. Modern Jiazi verbatim is not exported.
 import {writeFileSync,readFileSync} from 'node:fs';
 import {reviewRows} from './serve-corpus-review.mjs';
+import {buildShengyi} from './build-shengyi-pool.mjs';
+// 校對館與求籤頁同一份六十甲子短聖意（同一套切段規則）；長篇欄位仍不重刊
+let shengyi=null;const shengyiFor=r=>{shengyi??=buildShengyi().entries;return shengyi['liushijiazi-'+String(r.slip_no).padStart(3,'0')];};
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const names={guanyin:'觀音',guandi:'關帝',liushijiazi:'六十甲子'};
 const labels={VERIFIED:'已對勘',PROBABLE:'待複核',UNRESOLVED:'有疑字，待核對',CANDIDATE:'候選讀法，待核對'};
@@ -33,7 +36,9 @@ export function buildPublicReview(rows=reviewRows(), corpus=null){
 const editions=[...new Set(rows.map(r=>r.edition))];
 const commonSources=editions.map(e=>`<p class="source">來源：${esc(e)}</p>`).join('');
 const renderField=r=>{
- const shortCandidate=r.corpus==='liushijiazi'&&['卦名','五行方位'].includes(r.field_type);
+ const shortCandidate=r.corpus==='liushijiazi'&&['卦名','五行方位','聖意'].includes(r.field_type);
+ const sy=r.corpus==='liushijiazi'&&r.field_type==='聖意'?shengyiFor(r):null;
+ if(sy){const sel=sy.display_selection;r={...r,verbatim_text:sy.text,_syNote:sel?.unresolved?'待重新轉錄：'+sel.note:sel?'求籤頁只顯示前段事項判詞：'+sel.note:''};}
  const id=`${r.corpus}-${r.slip_no}-${r.field_type}`,modern=r.corpus==='liushijiazi'&&!shortCandidate,absent=r.source_observation_status==='structural_absent';
  let audit='';
  if(shortCandidate){
@@ -44,9 +49,10 @@ const renderField=r=>{
   else if(r.field_type==='五行方位'&&[9,13,18,41,44,48,49,59].includes(r.slip_no))audit='欄位混入日期、符號或其他註記；待核對。';
   else if(r.field_type==='卦名'&&[3,5,15,20,25,27,32,40].includes(r.slip_no))audit='OCR 疑讀；未自動改字，請核對影像。';
  }
+ if(r._syNote)audit=r._syNote;
  const title=r.field_type;
 
- return `<article id="${esc(id)}" data-source-edition="${esc(r.edition)}" data-source-locator="${esc(r.source_locator)}" data-transcription-status="${esc(r.transcription_status)}" data-review-stage="${r.manual_image_confirmation===true?'second':'first'}" data-corpus="${r.corpus}" data-slip="${r.slip_no}"><h2>${esc(title)}</h2><p class="status">${shortCandidate?'原圖欄位轉錄候選 · ':''}${esc(labels[r.transcription_status]||'待核對')}${r.manual_image_confirmation===true?' · 此欄有人工核圖紀錄':''}</p>${absent?'<p>來源記錄為結構性缺欄（第 59 籤此欄未出現），不是隱藏已存在的解說，也不補寫。</p>':modern?'<p>此欄已有轉錄，暫不在公開校對頁重刊。傳統短語與現代長篇解說須分開確認來源及權利；不是宣稱整套禁止使用。</p>':`<p class="verse">${esc(r.verbatim_text)||'（原欄空白，未補寫）'}</p>`}<p class="source">${editions.length>1?esc(r.edition)+' · ':''}${compactLocator(r)}</p>${shortCandidate?'<p class="source">原欄名可能混入鄰欄詩句、日期或 OCR 說明；保留原字供校對，不把它當作已核定卦名或據以作判斷。</p>':''}${r.metadata_audit_note?`<p>${esc(r.metadata_audit_note)}</p>`:''}<details><summary>校對註記 · ${reviewStage(r)}</summary><p>${shortCandidate?esc(audit||'待核對轉錄；尚未逐字確認。'):modern?'本頁僅提供欄位及來源位置，不輸出原始轉錄、異讀或可能引述全文的診斷。':esc(r.review_hold?.note||r.variants_or_notes||'目前沒有另記疑字；不代表已逐字核定。')}</p></details></article>`;
+ return `<article id="${esc(id)}" data-source-edition="${esc(r.edition)}" data-source-locator="${esc(r.source_locator)}" data-transcription-status="${esc(r.transcription_status)}" data-review-stage="${r.manual_image_confirmation===true?'second':'first'}" data-corpus="${r.corpus}" data-slip="${r.slip_no}"><h2>${esc(title)}</h2><p class="status">${shortCandidate?'原圖欄位轉錄候選 · ':''}${esc(labels[r.transcription_status]||'待核對')}${r.manual_image_confirmation===true?' · 此欄有人工核圖紀錄':''}</p>${absent?'<p>來源記錄為結構性缺欄（第 59 籤此欄未出現），不是隱藏已存在的解說，也不補寫。</p>':modern?'<p>此欄已有轉錄，暫不在公開校對頁重刊。傳統短語與現代長篇解說須分開確認來源及權利；不是宣稱整套禁止使用。</p>':`<p class="verse">${esc(r.verbatim_text)||(r._syNote?'（此籤聖意待依原圖重新轉錄，暫不顯示）':'（原欄空白，未補寫）')}</p>`}<p class="source">${editions.length>1?esc(r.edition)+' · ':''}${compactLocator(r)}</p>${shortCandidate&&r.field_type!=='聖意'?'<p class="source">原欄名可能混入鄰欄詩句、日期或 OCR 說明；保留原字供校對，不把它當作已核定卦名或據以作判斷。</p>':''}${r.metadata_audit_note?`<p>${esc(r.metadata_audit_note)}</p>`:''}<details><summary>校對註記 · ${reviewStage(r)}</summary><p>${shortCandidate?esc(audit||'待核對轉錄；尚未逐字確認。'):modern?'本頁僅提供欄位及來源位置，不輸出原始轉錄、異讀或可能引述全文的診斷。':esc(r.review_hold?.note||r.variants_or_notes||'目前沒有另記疑字；不代表已逐字核定。')}</p></details></article>`;
 };
 const groups=new Map();for(const r of rows){const key=r.corpus+'-'+r.slip_no;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(r);}
 const poems=Object.fromEntries(Object.keys(names).map(c=>[c,JSON.parse(readFileSync(new URL('../data/corpora/'+c+'/slip_texts.json',import.meta.url),'utf8')).slips]));
