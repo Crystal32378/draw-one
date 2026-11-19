@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "corpus_id": "guandi",
+  "edition_id": "ed-guandi-daozang-fuye-1225",
+  "purpose": "關帝籤詩本文的字級修正帳：只收「已有人眼核圖裁定、且沒有未決寫法問題」的差異字。不是全詩核對，也不是 VERIFIED 升級。",
+  "status_rule": "套用修正的籤仍是 PROBABLE。本輪核圖只裁定差異字，整首四句未逐字對影像（福 gate 2026-09-08：修正與 VERIFIED 拆開審；不得因差異字正確就宣稱全詩 VERIFIED）。",
+  "evidence": {
+    "witness": "NLC《道藏》第 4379 冊掃描（Wikimedia Commons，Public domain）；渲染用 PDF SHA-256 eae7a953023254b739f5d1d26bd3bf6cf4bc54db7d29c25e4423c38ea459c7cb",
+    "adjudication_form": {
+      "path": "Claw Deck/Draw One/Guandi-Evidence-Ledger-2026-09-07/s1-image-adjudication/ADJUDICATION-FORM.md",
+      "sha256": "27b1f2ee7848a41deba8469e9d48dc21f82bebce0137d6f8b1468bfcba29fc13",
+      "result": "29 籤實質差異 29/29 裁定：current 對 11／識典對 14／混合 3／免裁定 1"
+    },
+    "edit_list": {
+      "path": "Claw Deck/Draw One/Guandi-Evidence-Ledger-2026-09-07/s1-image-adjudication/derived/stabilization_edits.json",
+      "sha256": "599e298faad0b036a844839defda42f82b9abeb98b72e6c795bc825426e495ce"
+    },
+    "proposal": {
+      "path": "Claw Deck/Draw One/Guandi-Evidence-Ledger-2026-09-07/STABILIZATION-PROPOSAL-v0.1.md",
+      "status_at_source": "PROPOSAL / NOT GATED（20 處修正、跨 17 籤；福 review → Crystal 核可後才施工）"
+    },
+    "custody_note": "證據檔留在 Claw Deck，沒有搬進這個 repo（研究資料公開／私有的歸屬另有未決議題，見 PR #31）。此處只記路徑與 SHA-256；兩個 SHA-256 於 2026-11-15 對 MANIFEST.sha256 核對相符。"
+  },
+  "applied_on": "2026-11-15",
+  "applied_scope": "預覽分支（未合併 main、未部署正式站）。提案原訂的福 review → Crystal 核可 gate 尚未走完，這份帳就是送審內容。",
+  "applied": [
+    {
+      "slip_number": 4,
+      "before": "彿",
+      "after": "佛",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        15
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神彿，莫教福謝悔無追。",
+      "poem_after": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神佛，莫教福謝悔無追。"
+    },
+    {
+      "slip_number": 5,
+      "before": "巳",
+      "after": "日",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        15
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承巳，萬事迴春不用憂。",
+      "poem_after": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承日，萬事迴春不用憂。"
+    },
+    {
+      "slip_number": 13,
+      "before": "前",
+      "after": "翁",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        22
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "君今庚甲未亨通，且向江頭作釣前。\n玉兔重生應發積，萬人頭上逞英雄。",
+      "poem_after": "君今庚甲未亨通，且向江頭作釣翁。\n玉兔重生應發積，萬人頭上逞英雄。"
+    },
+    {
+      "slip_number": 36,
+      "before": "昊",
+      "after": "吳",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        40
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，昊山嶺上好鑽龜。",
+      "poem_after": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，吳山嶺上好鑽龜。"
+    },
+    {
+      "slip_number": 48,
+      "before": "懼",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        50
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "懽",
+      "resolved_question": "裁定為識典對（scan 印「懽」，歡之異體）。未決的是寫法：照 scan 字形收「懽」，或 normalize 成「歡」——提案 §4.2 請福明示，尚無裁示紀錄。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懼。",
+      "poem_after": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懽。"
+    },
+    {
+      "slip_number": 49,
+      "before": "膈",
+      "after": "隔",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        51
+      ],
+      "adjudication": "兩者皆非（混合）——此字識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "彼此家居只一山，如何似膈鬼門關。\n日月如梭人易老，許多勞碌不如閑。",
+      "poem_after": "彼此家居只一山，如何似隔鬼門關。\n日月如梭人易老，許多勞碌不如閑。"
+    },
+    {
+      "slip_number": 53,
+      "before": "烏",
+      "after": "鳥",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        54
+      ],
+      "adjudication": "兩者皆非（混合）——此字識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "艱難險阻路蹊蹺，南烏孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。",
+      "poem_after": "艱難險阻路蹊蹺，南鳥孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。"
+    },
+    {
+      "slip_number": 58,
+      "before": "隱",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        58
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "隲",
+      "resolved_question": "裁定為識典對（詞＝陰騭；scan 印異構「隲」）。未決的是寫法：照 scan 收「隲」或 normalize 成「騭」——提案 §4.2。旁證：main 上同一首的解曰已作「以助陰隲」。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隱事，前程萬里自通亨。",
+      "poem_after": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隲事，前程萬里自通亨。"
+    },
+    {
+      "slip_number": 60,
+      "before": "偽",
+      "after": "撝",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        59
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "羨君兄弟好名聲，只管謙偽莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。",
+      "poem_after": "羨君兄弟好名聲，只管謙撝莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。"
+    },
+    {
+      "slip_number": 74,
+      "before": "鬼",
+      "after": "嵬",
+      "occurrences": 3,
+      "category": "實質",
+      "scan_pages": [
+        71
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "崔鬼崔鬼復崔鬼，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。",
+      "poem_after": "崔嵬崔嵬復崔嵬，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。"
+    },
+    {
+      "slip_number": 94,
+      "before": "斷輸",
+      "after": "斲輪",
+      "occurrences": 1,
+      "category": "多字",
+      "scan_pages": [
+        87
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。",
+      "poem_after": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。",
+      "accepted_previous_poems": [
+        "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+      ]
+    },
+    {
+      "slip_number": 94,
+      "before": "綠",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        87
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "after": "縁",
+      "resolved_question": "裁定為識典對（scan 印「縁」，緣之異體）。未決的是寫法：照 scan 收「縁」或 normalize 成「緣」——提案 §4.2。同籤「斷輸→斲輪」無此問題，已套用。",
+      "orthography_decision": {
+        "by": "Crystal",
+        "on": "2026-11-15",
+        "instruction": "關帝 #48 懽、#58 隲、#94 縁 照掃描字形收",
+        "scope": "只決定這三處寫法；不代表重新核圖或全詩 VERIFIED"
+      },
+      "poem_before": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。",
+      "poem_after": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。",
+      "accepted_previous_poems": [
+        "一般器用與人同，巧斲輪輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。"
+      ]
+    },
+    {
+      "slip_number": 99,
+      "before": "驛餾",
+      "after": "驊騮",
+      "occurrences": 1,
+      "category": "多字",
+      "scan_pages": [
+        91
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "poem_before": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驛餾應得驟康強。",
+      "poem_after": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驊騮應得驟康強。"
+    }
+  ],
+  "pending": [
+    {
+      "slip_number": 59,
+      "before": "隱",
+      "occurrences": 1,
+      "category": "實質",
+      "scan_pages": [
+        59
+      ],
+      "adjudication": "兩者皆非（混合）——此字識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "open_question": "混合裁定：此字識典對，但 scan 字形為未定性的古形（Crystal 判「隲」類）。提案 §4.3 待福明示；STATUS 缺口 B4 另列古形字定性（識典「底本原字」測試）。",
+      "proposed": "隲"
+    },
+    {
+      "slip_number": 62,
+      "before": "裹",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        61
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "open_question": "裹/裏 異質：scan 字形經人眼判為「裏」（裡之異體），但頁面／字形定位待補，STATUS 記「暫維持 PROBABLE／UNCERTAIN」；提案 §4.1 與缺口 C7 待 Crystal 最終確認（9 籤留裹、4 籤改裏，或統一）。",
+      "proposed": "裏"
+    },
+    {
+      "slip_number": 65,
+      "before": "裹",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        63
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "open_question": "同 #62（裹/裏 異質，待最終確認）。",
+      "proposed": "裏"
+    },
+    {
+      "slip_number": 87,
+      "before": "裹",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        81
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "open_question": "同 #62（裹/裏 異質，待最終確認）。",
+      "proposed": "裏"
+    },
+    {
+      "slip_number": 89,
+      "before": "裹",
+      "occurrences": 1,
+      "category": "勘誤候選",
+      "scan_pages": [
+        83
+      ],
+      "adjudication": "識典對",
+      "adjudicated_by": "Crystal",
+      "adjudicated_on": "2026-09-08",
+      "assisted_by": "Luna（協看圖像）",
+      "open_question": "同 #62（裹/裏 異質，待最終確認）；另：本籤頁碼未預定位，裁定時以 slip_page_map 候補頁目視定位。",
+      "proposed": "裏"
+    }
+  ],
+  "kept_current": {
+    "slips": [
+      24,
+      32,
+      35,
+      37,
+      47,
+      54,
+      55,
+      57,
+      78,
+      90,
+      91,
+      95
+    ],
+    "note": "人眼核圖裁定 current 對（scan 與現行文字一致）11 籤，另 #47 判為僅異體字形差。現行文字不動；含裹/裏 組中 scan 印「裹」的 9 籤。識典側的「曰」（#49 #53）為形近誤讀，不採用。"
+  }
+}

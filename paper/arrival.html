@@ -164,7 +164,7 @@
       radial-gradient(48px 26px at 318px 86%, rgba(52, 46, 36, 0.13), transparent 70%),
       radial-gradient(60px 30px at 452px 80%, rgba(52, 46, 36, 0.15), transparent 70%);
     background-size: 560px 100%; background-repeat: repeat-x;
-    filter: blur(1.2px);
+    /* Gradient edges already soften the distant trees; avoid a second blur pass. */
   }
   .far-eaveshadow { /* 你站在簷下：畫面頂端一道濃墨的簷影 */
     position: absolute; left: -200%; right: -200%; top: 0; height: 7%;
@@ -226,6 +226,8 @@
   @keyframes lantern-sway { 0%, 100% { transform: rotate(-2.2deg); } 50% { transform: rotate(2.6deg); } }
   .ink-hall .hl { transform-box: fill-box; transform-origin: 50% 0%; animation: lantern-sway 7.5s ease-in-out infinite; }
   .ink-hall .hl.b { animation-duration: 9.2s; animation-delay: -3s; }
+  /* 不在眼前的殿／樹先停（畫面不變，只是不動；轉回來接著動）——手機少算兩殿的燭光與燈籠 */
+  .station.far .ink-hall .hearth, .station.far .ink-hall .hl, .lived.tree.far .sway { animation-play-state: paused; }
   @media (prefers-reduced-motion: reduce) {
     .ink-hall .hearth, .ink-hall .hl { animation: none; }
     .ink-hall .door-l, .ink-hall .door-r { transition: none; }
@@ -290,8 +292,21 @@
     border-radius: 46% 46% 44% 44% / 54% 54% 46% 46%;
   }
   .lived.lantern::before { content: ""; position: absolute; top: -5px; left: 50%; width: 1px; height: 5px; background: rgba(52, 46, 36, 0.5); }
-  /* 麻雀：埕上唯一會自己動的——偶爾跳兩步，不表演 */
-  .lived.sparrow { bottom: 41.5%; width: 22px; height: 16px; animation: sparrow-hop 13s steps(1, end) infinite; }
+  /* 麻雀：各有節奏。有人轉身經過才躲一次，落定不循環表演。 */
+  .lived.sparrow { bottom: 41.5%; width: 22px; height: 16px; pointer-events: none; }
+  .sparrow svg { overflow: visible; animation: sparrow-hop 13s steps(1, end) infinite; }
+  .sparrow.bird-0 { bottom: 24%; --fly-x: -38px; --fly-y: -58px; }
+  .sparrow.bird-1 { bottom: 33%; --fly-x: 32px; --fly-y: -42px; }
+  .sparrow.bird-2 { bottom: 27%; --fly-x: -30px; --fly-y: -52px; }
+  .sparrow.bird-1 svg { animation-duration: 17s; animation-delay: -7s; }
+  .sparrow.bird-2 svg { animation-duration: 19s; animation-delay: -11s; }
+  .sparrow.fled { transform: translate(var(--fly-x), var(--fly-y)); }
+  .sparrow.flying { animation: sparrow-flight 650ms ease-out both; }
+  .sparrow.fled svg { animation: none; } /* 窄手把／座面上停穩，不繼續跳離落腳點。 */
+  .sparrow .wing { transform-origin: 10px 8px; }
+  .sparrow.flying .wing { animation: sparrow-wing 210ms ease-in-out 3; }
+  @keyframes sparrow-flight { from { transform: translate(0, 0); } 45% { transform: translate(calc(var(--fly-x) * .5), calc(var(--fly-y) - 12px)); } to { transform: translate(var(--fly-x), var(--fly-y)); } }
+  @keyframes sparrow-wing { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(-1.8); } }
   @keyframes sparrow-hop {
     0%, 100% { transform: translate(0, 0); } 31% { transform: translate(0, 0); } 32% { transform: translate(7px, -3px); }
     33.5% { transform: translate(14px, 0); } 61% { transform: translate(14px, 0); } 62% { transform: translate(8px, -3px) scaleX(-1); }
@@ -304,7 +319,8 @@
     filter: blur(2.5px); transform-origin: 50% 100%; animation: smoke-sway 10s ease-in-out infinite;
   }
   @media (prefers-reduced-motion: reduce) {
-    .lived.tree-shade, .lived.tree .sway, .lived.sparrow, .lived.burner-smoke { animation: none; }
+    .lived.tree-shade, .lived.tree .sway, .lived.sparrow, .sparrow svg, .sparrow.flying .wing, .lived.burner-smoke { animation: none; }
+    .sparrow.fled, .sparrow.flying { transform: none; }
   }
   /* 放樣線：平常不顯示 */
   .ink-hall .k-plan { display: none; fill: none; stroke: rgba(52, 46, 36, 0.55); stroke-width: 1.3; stroke-dasharray: 6 5; stroke-linecap: round; }
@@ -339,6 +355,7 @@
   }
   .void-chron {
     position: absolute; left: 50%; top: 37%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 9px;
   }
   .void-chron button {
     background: var(--paper);
@@ -462,8 +479,9 @@
   }
   /* 聖號被捲出畫面時（短視窗走向籤筒、讀籤往下捲），頂上留一行小字：你仍知道自己在誰的殿裡。
      三殿同一條規則；聖號牌本身不縮、不搬。 */
-  .hall-top::before { content: ""; position: absolute; inset: 0 0 -10px 0; z-index: -1; opacity: 0; transition: opacity 240ms ease;
-    background: linear-gradient(180deg, rgba(222, 211, 186, 0.97) 0%, rgba(222, 211, 186, 0.92) 68%, rgba(222, 211, 186, 0) 100%); pointer-events: none; }
+  .hall-top::before { content: ""; position: absolute; inset: 0 0 -38px 0; z-index: -1; opacity: 0; transition: opacity 240ms ease;
+    /* #42(b)：下緣拉長成淡墨暈開——被頂列蓋住的匾不留硬切口，像紙上墨色漸淡 */
+    background: linear-gradient(180deg, rgba(222, 211, 186, 0.97) 0%, rgba(222, 211, 186, 0.94) 52%, rgba(214, 202, 176, 0.72) 70%, rgba(214, 202, 176, 0.34) 85%, rgba(214, 202, 176, 0) 100%); pointer-events: none; }
   .hall-name { align-self: center; font-family: "Noto Serif TC", serif; font-weight: 700; font-size: 15px; letter-spacing: 0.32em; text-indent: 0.32em;
     color: var(--ink); opacity: 0; transform: translateY(-3px); transition: opacity 240ms ease, transform 240ms ease; pointer-events: none; }
   .hall-top.named::before { opacity: 1; }
@@ -699,7 +717,26 @@
   .jieyue-about { margin: 10px 0 0; padding-top: 10px; border-top: 1px dotted rgba(74, 66, 52, 0.22);
     font-size: 11.5px; line-height: 1.85; letter-spacing: 0.04em; color: var(--ink-soft); }
   .jieyue-about.is-lead { margin-top: 0; padding-top: 0; border-top: 0; font-size: 12.5px; color: var(--ink); }
-  .jieyue-link { display: inline-block; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
+  .jieyue-about { white-space: pre-line; }
+  /* 聖意：解曰底下另收的一格（原生 details，預設收合）。同一種紙、同一種字，但低一階——
+     小一號、內縮一條細線；看得出是另一層，不搶解曰。校對館的路在摺頁底只留一條，這一格裡的那條收起。 */
+  #shengyi { margin-top: 14px; border-top: 1px dotted rgba(74, 66, 52, 0.22); }
+  #shengyi summary { list-style: none; display: flex; align-items: baseline; gap: 2px; padding: 11px 2px 9px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; }
+  #shengyi summary::-webkit-details-marker { display: none; }
+  #shengyi .sy-word { font-family: "Noto Serif TC", serif; font-size: 13px; letter-spacing: 0.14em; color: var(--ink); }
+  #shengyi .sy-prov { flex: 1; font-size: 10.5px; letter-spacing: 0.12em; color: var(--ink-soft); }
+  #shengyi summary::after { content: "▸"; font-size: 10px; color: var(--ink-soft); }
+  #shengyi details[open] > summary::after { content: "▾"; }
+  #shengyi summary:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+  #shengyi details > :not(summary) { margin-left: 4px; padding-left: 12px; border-left: 1px solid rgba(74, 66, 52, 0.18); }
+  #shengyi .jieyue-text { margin: 0 0 0 4px; font-size: 13.5px; line-height: 1.95; }
+  #shengyi .jieyue-src { margin-top: 0; padding-top: 8px; }
+  #shengyi .jieyue-about { margin-top: 0; padding-top: 6px; border-top: 0; }
+  #shengyi .jieyue-link { margin-top: 0; padding-top: 8px; margin-left: 16px; padding-left: 0; border-left: 0; }
+  #shengyi .jieyue-link[href*="corpus-review"] { display: none; }
+  #shengyi + .jieyue-about { margin-top: 12px; }
+  .jieyue-link { display: block; width: fit-content; margin-top: 10px; font-size: 11.5px; letter-spacing: 0.08em;
     color: var(--ink); text-decoration: underline; text-underline-offset: 3px;
     text-decoration-color: rgba(74, 66, 52, 0.45); }
   .jieyue-link:focus-visible, .jieyue-toggle:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
@@ -713,6 +750,22 @@
   }
   .note-zone textarea:focus { outline: none; border-bottom-color: var(--ink); }
   .slip-actions { width: 100%; max-width: 340px; margin-top: 24px; display: flex; justify-content: flex-end; }
+
+
+  /* #42：抽枝仍見匾；讀詩時聖號完整移至頂列，不能切半個字。紙元件不改。 */
+  #s-hall.presenting-stick .censer, #s-hall.presenting-stick .hall-desk { display: none; }
+  #s-hall.presenting-stick .stick-stage { margin-top: 16px; gap: 14px; }
+  #s-hall.presenting-stick .stick-large { height: clamp(100px, 24vh, 220px); }
+  #s-hall.reading .tablet, #s-hall.reading .hall-sub,
+  #s-hall.reading .censer, #s-hall.reading .hall-desk { display: none; }
+  #s-hall.reading .hall-top { flex-shrink: 0; }
+  #s-hall.reading { scroll-padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  #s-hall.reading .jieyue-link { scroll-margin-bottom: 12px; }
+  #s-hall.reading .hall-body { padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  /* #43：原本那顆收籤按鈕，不新增第二個 handler。筆記、解曰仍可往下讀。 */
+  #s-hall.on.reading .slip-actions { position: fixed; z-index: 7; bottom: 0; left: 0; right: 0;
+    width: 100%; max-width: none; margin: 0; padding: 10px 20px calc(10px + env(safe-area-inset-bottom));
+    background: var(--ground); border-top: 1px solid rgba(74,66,52,.16); justify-content: center; }
 
   /* 未落成之殿（hypothetical stress test） */
   .unbuilt {
@@ -746,6 +799,9 @@
     font-size: 17px; letter-spacing: 0.3em;
     margin-bottom: 6px;
   }
+  .notice-go { display: inline-block; margin-top: 18px; padding: 9px 16px; border: 1px solid rgba(74, 66, 52, 0.55);
+    font-family: "Noto Serif TC", serif; font-size: 13px; letter-spacing: 0.2em; color: var(--ink); text-decoration: none; background: var(--paper); }
+  .notice-go:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
   .sheet .sheet-sub { font-size: 12px; color: var(--ink-soft); line-height: 1.8; margin-bottom: 14px; }
   .chron-list { display: grid; gap: 10px; }
   .chron-list p { font-size: 13.5px; line-height: 1.8; font-family: "Noto Serif TC", serif; }
@@ -769,26 +825,26 @@
 <!-- 整座廟的三支筆（ink pass）：乾筆線、淡墨染、色塊毛邊。全部畫面共用，不另立風格。 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
   <filter id="ink-line" x="-12%" y="-12%" width="124%" height="124%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.055" numOctaves="2" seed="11" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.055" numOctaves="1" seed="11" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="4.6" xChannelSelector="R" yChannelSelector="G" result="d"/>
-    <feTurbulence type="fractalNoise" baseFrequency="0.16 0.22" numOctaves="3" seed="3" result="g"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.16 0.22" numOctaves="1" seed="3" result="g"/>
     <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.9 1.9" result="hole"/>
     <feComposite in="d" in2="hole" operator="in"/>
   </filter>
   <filter id="ink-wash" x="-14%" y="-14%" width="128%" height="128%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="3" seed="5" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.016 0.022" numOctaves="1" seed="5" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="13" xChannelSelector="R" yChannelSelector="G" result="d"/>
     <feGaussianBlur in="d" stdDeviation="1.1" result="b"/>
-    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="8" result="t"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="1" seed="8" result="t"/>
     <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.5 1.62" result="density"/>
     <feComposite in="b" in2="density" operator="in"/>
   </filter>
   <filter id="ink-edge" x="-4%" y="-4%" width="108%" height="108%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="2" seed="7" result="tooth"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.55" numOctaves="1" seed="7" result="tooth"/>
     <feDisplacementMap in="SourceGraphic" in2="tooth" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
   </filter>
   <filter id="ink-rough" x="-8%" y="-8%" width="116%" height="116%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="2" seed="2" result="wob"/>
+    <feTurbulence type="fractalNoise" baseFrequency="0.07" numOctaves="1" seed="2" result="wob"/>
     <feDisplacementMap in="SourceGraphic" in2="wob" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
     <feGaussianBlur in="d" stdDeviation="0.35"/>
   </filter>
@@ -897,8 +953,10 @@
           <div class="jieyue-body" id="jieyueBody" hidden>
             <p class="jieyue-text" id="jieyueText"></p>
             <p class="jieyue-src" id="jieyueSrc"></p>
+            <section id="shengyi" aria-label="歷史聖意" hidden></section>
             <p class="jieyue-about" id="jieyueAbout"></p>
             <a class="jieyue-link" id="jieyueLink" target="_blank" rel="noopener noreferrer" hidden></a>
+            <a class="jieyue-link" id="jieyueReview" target="_blank" rel="noopener noreferrer" hidden></a>
           </div>
         </div>
         <div class="note-zone">
@@ -921,6 +979,18 @@
   </section>
 
   <!-- overlays -->
+  <!-- 廟埕公告：徵求校對。這裡的字是抽一自己的話，不是籤文；不寫保證、不寫斷語。 -->
+  <div class="overlay" id="noticeOverlay"><div class="sheet">
+    <h2>公告・徵求校對</h2>
+    <p class="sheet-sub">已做第一輪整理，邀請您一起複核。</p>
+    <div class="chron-list notice-list">
+      <p>三殿的籤詩與解曰，是從舊本一個字一個字轉錄下來的。古字照舊，不換成現代用字；讀不出的字留著空格，不替它補。</p>
+      <p>轉錄難免有錯。每一首都寫了來源，也寫了現在核對到哪裡——還沒有人對過原件的，就老實寫「待複核」。</p>
+      <p>如果你願意對一首、認一個字，請進校對館。三組籤本各有一頁，可以用籤號或詩句找；看到疑點，到專案的 Issues 留下殿名、籤號和你的讀法就好。</p>
+      <p class="d">這裡不收個人資料，也沒有自動送出的表單。</p>
+    </div>
+    <a class="notice-go" href="/paper/corpus-review.html">進校對館　→</a>
+  </div></div>
   <div class="overlay" id="chronOverlay"><div class="sheet">
     <h2>本廟沿革</h2>
     <p class="sheet-sub">本廟無主祀，諸神同尊；殿序依落成，落成依籤本考證完成之日。</p>
@@ -936,13 +1006,16 @@
 
 </div>
 
-<script src="../assets/oracles.draw-pool.js?v=3"></script>
+<script src="../assets/oracles.draw-pool.js?v=5"></script>
 <script src="../assets/draw-policy.js?v=3"></script>
 <script src="../assets/slip-render.js?v=3"></script>
-<script src="../assets/interpretation-pool.guanyin.js?v=1"></script>
-<script src="../assets/interpretation-pool.guandi.js?v=1"></script>
-<script src="../assets/interpretation-holds.js?v=1"></script>
-<script src="../assets/jieyue-guard.js?v=2"></script>
+<script src="../assets/interpretation-pool.guanyin.js?v=2"></script>
+<script src="../assets/interpretation-pool.guandi.js?v=3"></script>
+<script src="../assets/interpretation-holds.js?v=3"></script>
+<script src="../assets/jieyue-guard.js?v=4"></script>
+<!-- 與其他資產同一種相對路徑：從 / 改寫進來或直接開 /paper/arrival.html 都解析到 /assets/。 -->
+<script src="../assets/shengyi-pool.js?v=1"></script>
+<script src="../assets/shengyi-view.js?v=2"></script>
 <script>
 /* ==================== sound-layer:begin ====================
    ARRIVAL_SOUND — 空間的空氣，不是音效（V2C：weather ticket 拍板版）。
@@ -955,7 +1028,7 @@
    - 增建殿 fail-closed 在呼叫端（enterHall guard）：增建中無殿內聲態。
    - 全合成（噪音整形）：零音檔、零下載、零振盪器——
      無音高源；一切事件隨機排程＝無週期 LFO。合成即誠實。
-     （鳥聲＝高 Q 共振噪音、蟬＝窄帶噪音潮——仍是噪音家族，做假即殺。）
+     （鳥聲＝高 Q 共振噪音、蟬＝窄帶噪音潮——仍是噪音家族。蟬做假即殺；鳥聲做假即留，見 birdChirp。）
    - 天氣票（Crystal 拍板 2026-08-21）：同一座廟、同一副骨架
      （空氣×樹×牆外世界），天氣只增減聲部。visit 內固定。
      目前掛 ?weather= dev flag 試聽；入口 ritual 等回訪門檻拍板。
@@ -999,7 +1072,7 @@ window.ARRIVAL_SOUND = (function () {
     rainStone: 0.007,  // 雨落石地：退進雨體的細 patter，不是散落的顆粒
     rainCanopy: 0.013, // 雨落樹冠：走葉鏈＝跟樹 pan、跟收窄
     rainDrip: 0.014,   // 簷滴：水的聲音在這裡——共振「啵」＋上滑，比雨慢半拍
-    voiceCicada: 0.004, voiceBird: 0.006, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）
+    voiceCicada: 0.004, voiceBird: 0.04, voiceBike: 0.005, // 晴的 lived voices（各自可單殺）。鳥（#40）：0.006 → 0.04，配完整的噪音粒，到喇叭的峰值約 −48 dBFS——與埕上空氣的峰值同一階，短而窄：遠，但聽得見的遠
     handPull: 0.020,  // 手感層：筒內竹籤的細碎摩擦（拖籤時，跟手）
     handStick: 0.030, // 手感層：籤枝離筒的一下輕竹響
     handPaper: 0.022, // 手感層：取籤詩的紙聲（纖維，不是 whoosh）
@@ -1184,7 +1257,16 @@ window.ARRIVAL_SOUND = (function () {
   function ensureVoices() {
     if (n.v) return;
     const v = n.v = {};
-    v.chirpBuf = grainBuffer(0.09, 12, 60, 90);
+    // 鳥聲的原料＝一顆完整的軟起音噪音粒（#40）。原本借 grainBuffer(0.09, 12, 60, 90)：只有一顆、位置隨機（常被緩衝尾端截掉半顆）、
+    // 振幅隨機到 1/16，而且一次造訪只造一次——離線實測到喇叭的峰值中位數約 −78 dBFS，倒楣的那一次造訪整場接近無聲。
+    // 只調 LEVELS 救不回來（0.02 仍在 −67 dBFS、低於同頻段的環境底）。頻寬、掃頻、包絡都沒動——不是把鳥拉近，是讓牠每次都真的出聲。
+    v.chirpBuf = (() => {
+      const len = Math.floor(ctx.sampleRate * 0.09);
+      const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / len);
+      return buf;
+    })();
     // 蟬：合適季節才有（5–9 月，裝置時鐘＝void 刻字先例）。遠處蟬潮，不是一隻。
     v.cicadaOn = new Date().getMonth() + 1 >= 5 && new Date().getMonth() + 1 <= 9;
     if (v.cicadaOn) {
@@ -1214,13 +1296,16 @@ window.ARRIVAL_SOUND = (function () {
   function cicadaPulse() { // 蟬的顆粒感：快而不規則的振幅抖動
     if (running() && W().voices && n.v?.cicadaOn) n.v.cicPulse.gain.setTargetAtTime(rand(0.35, 1), ctx.currentTime, 0.05);
   }
-  function birdChirp() { // 遠處鳥聲：高 Q 共振噪音掃頻——像不像由 Crystal 判，做假即殺
-    if (!running() || !W().voices || Math.random() < 0.4) return;
+  let birdSang = false; // 上一輪有沒有叫：叫過才可能歇一輪——進埕的第一聲不歇，也不連歇兩輪
+  function birdChirp() { // 遠處鳥聲：高 Q 共振噪音掃頻——做假即留：埕上的小禮物（Crystal 特赦 2026-11-15，#40；不得以「不夠像真的」移除）
+    if (!running() || !W().voices) return;
+    if (birdSang && Math.random() < 0.15) { birdSang = false; return; } // 翹班率 0.4 → 0.15
+    birdSang = true;
     const t0 = ctx.currentTime + 0.05;
     const f0 = rand(2500, 3400);
     const syll = 2 + Math.floor(Math.random() * 3);
+    let at = t0; // 累加間隔：不得把第 4 音排到第 3 音前，也不疊成一聲嗝。
     for (let i = 0; i < syll; i++) {
-      const at = t0 + i * rand(0.12, 0.26);
       const s = ctx.createBufferSource(); s.buffer = n.v.chirpBuf;
       const bp = biquad("bandpass", f0 * rand(0.95, 1.05), 16);
       bp.frequency.setValueAtTime(bp.frequency.value, at);
@@ -1231,6 +1316,7 @@ window.ARRIVAL_SOUND = (function () {
       g.gain.setTargetAtTime(0, at + 0.07, 0.03);
       s.connect(bp); bp.connect(g); g.connect(n.exBus);
       s.start(at); s.stop(at + 0.25);
+      at += rand(0.16, 0.24);
     }
   }
   function bikePass() { // 遠方腳踏車：偶爾一台，經過就沒有了
@@ -1362,7 +1448,7 @@ window.ARRIVAL_SOUND = (function () {
       ensureVoices();
       loopTimer("cicadaWave", cicadaWave, 15, 50, 0.2); // 蟬早點在（3–10s 起第一潮）
       loopTimer("cicadaPulse", cicadaPulse, 0.06, 0.14);
-      loopTimer("bird", birdChirp, 25, 75, 0.35);
+      loopTimer("bird", birdChirp, 15, 40, 0.35); // #40：25–75s → 15–40s（首聲 5–14s）
       loopTimer("bike", bikePass, 150, 420, 0.4);
     } else if (n.v) {
       if (n.v.cicadaOn) n.v.cicGain.gain.setTargetAtTime(0, t, 1);
@@ -1729,6 +1815,173 @@ window.ARRIVAL_SOUND = (function () {
 
   document.getElementById("gateRoof").innerHTML = GATE_ROOF_INK;
   document.getElementById("hallBones").innerHTML = HALL_BONES_INK;
+  /* ---------- 墨筆定稿（ink bake，2026-11-16 手機效能） ----------
+     水墨筆觸（#ink-edge／#ink-rough／#ink-wash／#ink-line）是 SVG 濾鏡：每次重畫都要重算擾動與位移。
+     殿裡的燭光、燈籠、樹葉、麻雀是常駐動畫，它們一動，同一張圖裡套了濾鏡的筆觸就得跟著重算——
+     手機（尤其 iOS／LINE 的 WebKit）就卡在這裡；進殿時整座埕放大 1.5 倍，也是每幀重算。
+     做法：同一支筆、同一個濾鏡，由瀏覽器自己先畫一次，存成點陣圖，之後只貼圖。畫風不改、不刪。
+       ・以元素自己的座標系畫（濾鏡雜訊在使用者座標裡生成），解析度＝螢幕像素密度，所以紋理一致。
+       ・動的東西不畫死：元素本身的 class／transform 搬到外包的 <g>，燈籠照擺、門照開、樹照搖；
+         子孫裡還有 class 的（例如麻雀的翅膀）一律跳過，維持即時濾鏡。
+       ・三殿同一份模板＝同一張圖，只畫一次（以內容＋解析度為鍵快取）。
+       ・任何一步失敗（瀏覽器不准把 SVG 畫進 canvas、解碼失敗、逾時）→ 那一筆維持原本的即時濾鏡，畫面不變。
+       ・?inkbake=0 關閉，便於對照。 */
+  const INK_BAKE = (() => {
+    const off = /[?&]inkbake=0\b/.test(location.search);
+    // key → { p: Promise<url|null>, url, px, pass, settled }。同一張圖三殿共用；不再被畫面引用的會被收掉並 revoke
+    const cache = new Map();
+    const stats = { disabled: false, attempts: 0, baked: 0, kept: 0, failed: 0, timedOut: 0, pending: 0, pixels: 0, revoked: 0, entries: 0, byFilter: {} };
+    const MAX_TOTAL = 12e6;             // 快取總上限約 12MP（解碼約 48MB）；超過就留即時濾鏡，不再加
+    const TIMEOUT = 5000;               // 單張「SVG→canvas→PNG」超過 5 秒就放棄，留即時濾鏡
+    let pass = 0, streak = 0;           // 連續失敗 3 次（或逾時 2 次）＝這台裝置烘不動：本次造訪停止烘圖，全留即時濾鏡
+    let defsMarkup = null; const boxes = {};
+    const NS = "http://www.w3.org/2000/svg", XL = "http://www.w3.org/1999/xlink";
+    const MAX_PIXELS = 1.6e6;           // 單張上限（約 1260×1260）；超過就降解析度，不放棄
+    const INHERIT = ["fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "fill-rule", "fill-opacity", "stroke-opacity"];
+    function defs() {
+      if (defsMarkup !== null) return defsMarkup;
+      const d = document.getElementById("ink-edge")?.closest("defs");
+      if (!d) return (defsMarkup = "");
+      for (const f of d.querySelectorAll("filter")) {
+        const n = (a, v) => { const t = f.getAttribute(a); return t == null ? v : (t.endsWith("%") ? parseFloat(t) / 100 : parseFloat(t)); };
+        boxes[f.id] = [n("x", -0.1), n("y", -0.1), n("width", 1.2), n("height", 1.2)];
+      }
+      return (defsMarkup = d.outerHTML);
+    }
+    function render(markup, vb, W, H) {
+      const src = `<svg xmlns="${NS}" xmlns:xlink="${XL}" width="${W}" height="${H}" viewBox="${vb}" preserveAspectRatio="none">${defs()}${markup}</svg>`;
+      if (stats.disabled) return Promise.resolve(null);
+      stats.attempts++;
+      return new Promise((resolve) => {
+        const img = new Image();
+        let over = false;
+        const done = (v) => { if (over) return; over = true; clearTimeout(timer); img.onload = img.onerror = null;
+          streak = v ? 0 : streak + 1; if (streak >= 3 || stats.timedOut >= 2) stats.disabled = true; resolve(v); };
+        const timer = setTimeout(() => { stats.timedOut++; done(null); img.src = ""; }, TIMEOUT);
+        img.onerror = () => done(null);
+        img.onload = () => {
+          if (over) return;
+          try {
+            const c = document.createElement("canvas"); c.width = W; c.height = H;
+            const g = c.getContext("2d"); g.drawImage(img, 0, 0, W, H);
+            c.toBlob((blob) => { c.width = c.height = 0; if (over) return; done(blob ? URL.createObjectURL(blob) : null); }, "image/png");
+          } catch { done(null); }        // tainted canvas 等：保留即時濾鏡
+        };
+        img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(src);
+      });
+    }
+    function bakeOne(el, dpr) {
+      const id = /url\(#([\w-]+)\)/.exec(el.getAttribute("filter") || "")?.[1];
+      if (!id || !boxes[id]) return;
+      if (el.hasAttribute("data-ink-queued")) return;    // 已在排隊（show 與 renderCourt 可能各排一次）
+      if (el.querySelector("[class]") || el.closest("[data-ink-baked],[data-ink-live]")) return; // 子孫會動 → 不畫死
+      let bb; try { bb = el.getBBox(); } catch { return; }
+      if (!bb || bb.width <= 0 || bb.height <= 0) return; // 沒顯示的（如未落成之殿的墨染）不碰
+      const ctm = el.getCTM(); if (!ctm) return;
+      const [fx, fy, fw, fh] = boxes[id];
+      const rx = bb.x + fx * bb.width, ry = bb.y + fy * bb.height, rw = fw * bb.width, rh = fh * bb.height;
+      let sx = Math.hypot(ctm.a, ctm.b) * dpr, sy = Math.hypot(ctm.c, ctm.d) * dpr;
+      const k = Math.min(1, Math.sqrt(MAX_PIXELS / Math.max(1, rw * sx * rh * sy))); sx *= k; sy *= k;
+      const W = Math.max(1, Math.ceil(rw * sx)), H = Math.max(1, Math.ceil(rh * sy));
+      const clone = el.cloneNode(true);
+      for (const a of ["transform", "class", "style", "id"]) clone.removeAttribute(a);
+      const cs = getComputedStyle(el);
+      const inh = INHERIT.map((a) => { const v = cs.getPropertyValue(a); return v ? `${a}="${v.replace(/"/g, "&quot;")}"` : ""; }).join(" ");
+      const markup = `<g ${inh}>${clone.outerHTML}</g>`;
+      const vb = `${rx} ${ry} ${rw} ${rh}`;
+      const key = `${vb}|${W}x${H}|${markup}`;
+      let entry = cache.get(key);
+      if (!entry) {
+        if (stats.pixels + W * H > MAX_TOTAL) { prune(); if (stats.pixels + W * H > MAX_TOTAL) { stats.kept++; return; } } // 到上限：這筆留即時濾鏡
+        entry = { url: null, px: W * H, pass, settled: false };
+        entry.p = queued(markup, vb, W, H).then((url) => {
+          entry.settled = true; entry.url = url;
+          if (!url) { cache.delete(key); stats.pixels -= entry.px; stats.entries = cache.size; } // 失敗不佔額度，下次可重試
+          return url;
+        });
+        cache.set(key, entry); stats.pixels += W * H; stats.entries = cache.size;
+        stats.byFilter[id] = (stats.byFilter[id] || 0) + W * H;
+      }
+      entry.pass = pass;
+      stats.pending++; el.setAttribute("data-ink-queued", "");
+      entry.p.then((url) => {
+        stats.pending--;
+        if (!url || !el.isConnected) { el.removeAttribute("data-ink-queued"); if (!url) stats.failed++; else schedulePrune(); return; }
+        // 外包 <g> 接手原元素的 class／transform／style：動畫、門扇、未落成的隱藏規則照舊作用
+        const wrap = document.createElementNS(NS, "g");
+        for (const a of ["class", "transform", "style", "opacity"]) { const v = el.getAttribute(a); if (v != null) wrap.setAttribute(a, v); }
+        wrap.setAttribute("data-ink-baked", id);
+        const im = document.createElementNS(NS, "image");
+        im.setAttribute("x", rx); im.setAttribute("y", ry); im.setAttribute("width", rw); im.setAttribute("height", rh);
+        im.setAttribute("preserveAspectRatio", "none");
+        im.setAttribute("href", url); im.setAttributeNS(XL, "xlink:href", url);
+        wrap.style.visibility = "hidden";    // 圖還沒解碼完之前，先讓原本的筆觸撐著（不疊兩層、不閃白）
+        el.after(wrap);
+        let settled = false;
+        const swap = (ok) => {
+          if (settled) return; settled = true;
+          if (ok && el.isConnected) { wrap.style.visibility = ""; el.remove(); stats.baked++; }
+          else { wrap.remove(); el.removeAttribute("data-ink-queued"); stats.failed++; schedulePrune(); }
+        };
+        im.addEventListener("load", () => swap(true), { once: true });
+        im.addEventListener("error", () => swap(false), { once: true });
+        setTimeout(() => swap(false), 4000);
+        wrap.appendChild(im);
+      });
+    }
+    // 一次只烘一張、張與張之間讓出主執行緒：首次進埕時轉身／點門的手勢不會被烘圖卡住
+    const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 600 }) : setTimeout(fn, 40));
+    // 使用者正在操作（按住、拖、點）時不烘：最後一次輸入後靜 700ms、且瀏覽器空閒才烘下一張
+    let lastInput = 0;
+    const activePointers = new Set();
+    const inputOptions = { capture: true, passive: true };
+    for (const t of ["pointerdown", "pointermove", "pointerup", "touchstart", "wheel", "keydown"])
+      addEventListener(t, () => { lastInput = performance.now(); }, inputOptions);
+    addEventListener("pointerdown", (ev) => activePointers.add(ev.pointerId), inputOptions);
+    for (const t of ["pointerup", "pointercancel", "lostpointercapture"])
+      addEventListener(t, (ev) => { activePointers.delete(ev.pointerId); lastInput = performance.now(); }, inputOptions);
+    addEventListener("blur", () => { activePointers.clear(); lastInput = performance.now(); });
+    const canBake = () => document.getElementById("s-court")?.classList.contains("on") &&
+      !document.hidden && activePointers.size === 0 && !dragging && !courtAnimating() &&
+      !document.getElementById("s-court").style.transform && performance.now() - lastInput >= 700;
+    const quiet = () => new Promise((r) => {
+      const tick = () => {
+        if (stats.disabled) { r(); return; }
+        if (!canBake()) { setTimeout(tick, 200); return; }
+        idle(() => { if (canBake()) r(); else tick(); });
+      };
+      tick();
+    });
+    let queue = Promise.resolve();
+    const queued = (...args) => (queue = queue.then(quiet).then(() => render(...args)));
+    // 清理：已完成、這一輪沒被要用、畫面上也沒有 <image> 引用的圖 → revoke 並移出快取（轉螢幕、改尺寸後不會越積越多）
+    function prune() {
+      const inUse = new Set([...document.querySelectorAll("[data-ink-baked] image")].map((im) => im.getAttribute("href")));
+      for (const [key, e] of cache) {
+        if (!e.settled || e.pass === pass || inUse.has(e.url)) continue;
+        if (e.url) { URL.revokeObjectURL(e.url); stats.revoked++; }
+        cache.delete(key); stats.pixels -= e.px;
+      }
+      stats.entries = cache.size;
+    }
+    let pruneTimer = 0;
+    const schedulePrune = () => { clearTimeout(pruneTimer); pruneTimer = setTimeout(prune, 200); };
+    function bake(root) {
+      if (off || !root || !window.HTMLCanvasElement || !URL.createObjectURL) return;
+      if (!defs()) return;
+      pass++;
+      const dpr = Math.min(3, Math.max(1, window.devicePixelRatio || 1));
+      for (const el of root.querySelectorAll("[filter]")) bakeOne(el, dpr);
+      schedulePrune();
+    }
+    // 畫面顯示後才量得到幾何：排到下一幀
+    // 畫面顯示後才量得到幾何；實際烘圖另由 quiet() 讓給使用者的操作
+    let soonTimer = 0;
+    const soon = (root) => { clearTimeout(soonTimer); soonTimer = setTimeout(() => requestAnimationFrame(() => idle(() => bake(typeof root === "function" ? root() : root))), 300); };
+    return { bake, soon, stats, off, prune, cacheSize: () => cache.size };
+  })();
+  window.INK_BAKE = INK_BAKE;
+
 
   /* 墨筆小景：有人在用的東西。尺寸 [w, h] 為 px；全部 bottom 錨在埕面。 */
   const INK = {
@@ -1797,7 +2050,7 @@ window.ARRIVAL_SOUND = (function () {
         <ellipse cx="109" cy="41" rx="4.2" ry="2.2" fill="rgba(110,84,56,.7)" transform="rotate(-10 109 41)"/></g></svg>`],
     sparrow: [22, 16, `<svg viewBox="0 0 22 16" aria-hidden="true">
       <g filter="url(#ink-rough)"><path fill="rgba(110,82,58,.92)" d="M3 9 C3 4 9 2 13 4 C17 2 20 5 19 8 L21 9 L18.5 9.6 C17 13 11 14 7 12 L1 13 Z"/>
-        <circle cx="16.4" cy="6.4" r="0.9" fill="rgba(20,16,12,.95)"/><path d="M9 13 V15.5 M12 13 V15.5" stroke="rgba(38,33,25,.8)" stroke-width="0.9"/></g></svg>`],
+        <path class="wing" d="M6 9 Q9 3 14 8 L9 11 Z" fill="rgba(58,45,34,.8)"/><circle cx="16.4" cy="6.4" r="0.9" fill="rgba(20,16,12,.95)"/><path d="M9 13 V15.5 M12 13 V15.5" stroke="rgba(38,33,25,.8)" stroke-width="0.9"/></g></svg>`],
   };
 
   /* ---------- 節氣（2026 近似表；prototype 用） ---------- */
@@ -1830,7 +2083,10 @@ window.ARRIVAL_SOUND = (function () {
 
   function show(name) {
     for (const s of ["gate", "court", "hall"]) $("s-" + s).classList.toggle("on", s === name);
-    if (name === "court") requestAnimationFrame(applyFrame);
+    if (name === "court") { courtMeasured = false; requestAnimationFrame(applyFrame); }
+    // 墨筆定稿只做廟埕：埕上有常駐動畫、拖曳縮放、進殿放大，濾鏡會被一再重算。
+    // 山門的簷與殿內的樑是靜止的——濾鏡本來就只算一次，定稿反而多一次編碼，所以不碰。
+    if (name === "court") INK_BAKE.soon(stageStrip);
   }
 
   /* ---------- 埕 v2：轉身全景引擎 ---------- */
@@ -1854,6 +2110,11 @@ window.ARRIVAL_SOUND = (function () {
   const farStrip = $("farStrip");
   const groundJoints = $("groundJoints");
   const nearStrip = $("nearStrip");
+  const groundPath = $("groundPath");
+  // overflow:hidden 的容器仍可能被瀏覽器 focus/click 自動捲動：以事件歸零（原本每幀讀 scrollLeft，會逼出同步排版）
+  const resetCourtScroll = (e) => { if (e.currentTarget.scrollLeft) e.currentTarget.scrollLeft = 0; };
+  view.addEventListener("scroll", resetCourtScroll, { passive: true });
+  document.getElementById("app").addEventListener("scroll", resetCourtScroll, { passive: true });
 
   let stationW = 300, pad0 = 0, scroll = 0, targetScroll = 0;
   let treeSoundX = 0; // 老樹（葉聲源＝樹冠質心）的 strip 座標——dressCourt 寫入，applyFrame 推播給聲音層
@@ -1898,6 +2159,12 @@ window.ARRIVAL_SOUND = (function () {
         b.textContent = "本廟沿革";
         b.dataset.chron = "1";
         chron.appendChild(b);
+        // 廟埕公告（2026-11-15）：徵求校對。和沿革同一塊告示的規格——貼在牆上，不招手。
+        // 走埕的 release 判定（data-notice），不另掛 click：setPointerCapture 會吞掉它。
+        const n = document.createElement("button");
+        n.textContent = "徵求校對";
+        n.dataset.notice = "1";
+        chron.appendChild(n);
         st.append(heart, chron);
       } else {
         const f = document.createElement("div");
@@ -1976,7 +2243,11 @@ window.ARRIVAL_SOUND = (function () {
       // 樹下：一條長凳、一盆萬年青、一隻麻雀（坐的地方）
       sprite("bench", B(voidIndex) - 58, NEAR);
       sprite("pot", B(voidIndex) + 34, { ...NEAR, bottom: "33%" });
-      put("sparrow", B(voidIndex) + 8, { bottom: "24%" }).innerHTML = INK.sparrow[2];
+      [B(voidIndex) + 8, B(voidIndex + 1) - Math.min(108, stationW * 0.24), B(voidIndex + 2) + 18].forEach((x, i) => {
+        const bird = put("sparrow bird-" + i, x);
+        bird.dataset.x = x; bird.innerHTML = INK.sparrow[2];
+        bird.addEventListener("animationend", (ev) => { if (ev.animationName === "sparrow-flight") bird.classList.remove("flying"); });
+      });
       // 茶水桌：柑、花、茶壺、電扇、兩張紅塑膠凳——有人顧的地方
       sprite("table", B(voidIndex + 1) - Math.min(96, 0.3 * stationW), { ...NEAR, transform: "scale(1.02)" }); // 窄螢幕也不進中軸中央
       // 誰的腳踏車、竹掃帚、水桶（停的、掃的）
@@ -2001,7 +2272,9 @@ window.ARRIVAL_SOUND = (function () {
       // 樹高＝畫面的六成（老樹比殿高）；樹冠最遠只伸到第一站的簷角邊（+0.06W）：
       // 不替任何一殿遮蔭——樹是埕的，不是誰的。
       const treeW = Math.round((view.clientHeight || Math.max(140, innerHeight - 136)) * 0.62 * 1.3);
-      put("tree", 0.06 * stationW - treeW, { width: treeW + "px" }).innerHTML = TREE_INK_SVG;
+      courtTree = put("tree", 0.06 * stationW - treeW, { width: treeW + "px" });
+      courtTree.innerHTML = TREE_INK_SVG;
+      courtTreeSpan = [0.06 * stationW - treeW, treeW];
       // 燈籠列：頭頂一條、小而疏；位置永遠落在半站點——中軸正上方必為空檔
       const vw2 = view.clientWidth || Math.min(1040, innerWidth);
       const rope = document.createElement("div");
@@ -2035,10 +2308,19 @@ window.ARRIVAL_SOUND = (function () {
     applyFrame();
   }
 
+  // 廟埕的寬高：只在重建、改尺寸、顯示時量（每幀讀 clientWidth/clientHeight 會逼瀏覽器先排完版面）
+  let courtVW = 0, courtVH = 0, courtMeasured = false, birdPerchH = -1;
+  let courtTree = null, courtTreeSpan = [0, 0];
+  const lastStationStyle = new WeakMap();
+  function measureCourt() {
+    courtVW = view.clientWidth || Math.min(1040, innerWidth);
+    courtVH = view.clientHeight;
+    courtMeasured = courtVH > 0;
+  }
   let hallSizedFor = "";
   function sizeHalls() {
     // 埕隱藏時量不到高度：先以「視窗高−案」估，顯示後 applyFrame 會以實測值校正一次。
-    const vh = view.clientHeight || Math.max(140, innerHeight - 136);
+    const vh = courtVH || Math.max(140, innerHeight - 136);
     const key = vh + "x" + stationW;
     if (key === hallSizedFor) return;
     hallSizedFor = key;
@@ -2047,13 +2329,35 @@ window.ARRIVAL_SOUND = (function () {
     stageStrip.style.setProperty("--hall-w", Math.round(hallH / 1.125) + "px");
   }
 
+  let birdFrameScroll = null;
+  function scatterNearbyBirds(vw) {
+    const moved = birdFrameScroll !== null && Math.abs(scroll - birdFrameScroll) > 0.4;
+    birdFrameScroll = scroll;
+    if (!moved || reduceMotion || !$("s-court").classList.contains("on")) return;
+    for (const bird of stageStrip.querySelectorAll(".sparrow:not(.fled)")) {
+      const x = Number(bird.dataset.x) + pad0 - scroll;
+      if (Math.abs(x - vw / 2) < vw * 0.32) bird.classList.add("fled", "flying");
+    }
+  }
+
   function applyFrame() {
+    if (!courtMeasured) measureCourt();
     sizeHalls();
-    // overflow:hidden 容器仍可能被瀏覽器 focus/click 自動捲動——每幀歸零
-    if (view.scrollLeft) view.scrollLeft = 0;
-    const app = document.getElementById("app");
-    if (app.scrollLeft) app.scrollLeft = 0;
-    const vw = view.clientWidth || Math.min(1040, innerWidth);
+    // （overflow:hidden 容器被 focus/click 自動捲動的防護改由 scroll 事件做，見下方 resetCourtScroll——不再每幀讀 scrollLeft）
+    const vw = courtVW || Math.min(1040, innerWidth);
+    // Perch targets derive from the existing sprite geometry, not arbitrary flight height.
+    // bench seat: (70,9) in 104×34, scale(1.16), origin(52,34).
+    // bike handlebar: (36,4.5) in 48×30 → 96×60, scale(1.16) rotate(-4deg), origin(48,60).
+    // 落腳點只跟埕高有關：埕高變了才重寫（每幀改 CSS 變數會讓麻雀每幀重算樣式）
+    const courtH = courtVH;
+    if (courtH !== birdPerchH) {
+      birdPerchH = courtH;
+      for (const [cls, x, y] of [["bird-0", -4.12, -(courtH * .065 + 28.5)], ["bird-2", -18.86, -(courtH * .035 + 60.46)]]) {
+        const bird = stageStrip.querySelector("." + cls);
+        if (bird) { bird.style.setProperty("--fly-x", x + "px"); bird.style.setProperty("--fly-y", y + "px"); }
+      }
+    }
+    scatterNearbyBirds(vw);
     stageStrip.style.transform = `translateX(${pad0 - scroll}px)`;
     farStrip.style.transform = `translateX(${-scroll * 0.35}px)`;
     groundJoints.style.transform = `translateX(${(pad0 - scroll) * 0.9}px)`;
@@ -2067,30 +2371,45 @@ window.ARRIVAL_SOUND = (function () {
       if (!el) return;
       const d = Math.min(1.4, Math.abs(stationCenter(i) - scroll) / stationW);
       const sc = 1 - 0.13 * Math.min(1, d);
-      el.style.transform = `scale(${sc.toFixed(3)})`;
-      el.style.opacity = (1 - 0.14 * Math.min(1, d)).toFixed(3);
+      const tf = `scale(${sc.toFixed(3)})`, op = (1 - 0.14 * Math.min(1, d)).toFixed(3);
+      const last = lastStationStyle.get(el);
+      if (!last || last[0] !== tf || last[1] !== op) { el.style.transform = tf; el.style.opacity = op; lastStationStyle.set(el, [tf, op]); }
+      // 不在眼前的殿：燭光與燈籠先停（畫面不變，只是不動）；轉回來就接著呼吸
+      el.classList.toggle("far", d >= 1.05);
     });
+    // 老樹轉出畫面時，枝葉也先停
+    if (courtTree) {
+      const tl = courtTreeSpan[0] + pad0 - scroll;
+      courtTree.classList.toggle("far", tl + courtTreeSpan[1] < -40 || tl > vw + 40);
+    }
     const ni = nearestStation();
     const settledOnHall = !STATIONS[ni].void && !STATIONS[ni].hypothetical &&
       Math.abs(stationCenter(ni) - scroll) < stationW * 0.12;
-    $("groundPath").style.opacity = settledOnHall ? "1" : "0";
+    const gp = settledOnHall ? "1" : "0";
+    if (groundPath.style.opacity !== gp) groundPath.style.opacity = gp;
     // 樹在視野中的位置餵給聲音層（幾何由這裡推播；聲音層不讀 mechanics）
     window.ARRIVAL_SOUND?.tree(treeSoundX + pad0 - scroll - vw / 2, vw);
   }
 
+  // 轉身收斂以「時間」計，不以幀數計：手機忙時掉幀也不會轉得更慢（τ≈80ms，約 0.4 秒到位）
+  let lastAnimT = 0;
+  const SETTLE_TAU = 80;
   function animate() {
     raf = 0;
+    const nowT = performance.now();
+    const dt = lastAnimT ? Math.min(64, nowT - lastAnimT) : 16;
+    lastAnimT = nowT;
     if (!dragging) {
       const diff = targetScroll - scroll;
       if (Math.abs(diff) > 0.4) {
-        scroll += reduceMotion ? diff : diff * 0.11;
+        scroll += reduceMotion ? diff : diff * (1 - Math.exp(-dt / SETTLE_TAU));
       } else {
         scroll = targetScroll;
       }
     }
     applyFrame();
     if (!dragging && scroll !== targetScroll) raf = requestAnimationFrame(animate);
-    else updateFacingUI();
+    else { lastAnimT = 0; updateFacingUI(); }
   }
   function kick() { if (!raf) raf = requestAnimationFrame(animate); }
 
@@ -2100,10 +2419,12 @@ window.ARRIVAL_SOUND = (function () {
 
   function settleToNearest() {
     let i = nearestStation();
-    // 慣性：依釋放速度多轉半站
-    if (!reduceMotion && Math.abs(velocity) > 0.55) {
-      i = Math.max(0, Math.min(STATIONS.length - 1, i + (velocity < 0 ? 1 : -1)));
-    }
+    // 輕轉即轉：從起點那站往同方向拖過 18% 站寬、或輕甩（> 0.3px/ms），就轉到下一站
+    const from = Math.max(0, Math.min(STATIONS.length - 1, Math.round(dragStartScroll / stationW)));
+    const delta = scroll - dragStartScroll;
+    if (Math.abs(delta) > stationW * 0.18 && i === from) i = from + Math.sign(delta);
+    if (!reduceMotion && Math.abs(velocity) > 0.3 && i === from) i = from + (velocity < 0 ? 1 : -1);
+    i = Math.max(0, Math.min(STATIONS.length - 1, i));
     targetScroll = stationCenter(i);
     kick();
   }
@@ -2132,7 +2453,7 @@ window.ARRIVAL_SOUND = (function () {
       hasTurned = true;
       $("turnHint").style.opacity = "0";
     }
-    applyFrame();
+    kick();
   });
   const release = (ev) => {
     if (!dragging) return;
@@ -2141,6 +2462,7 @@ window.ARRIVAL_SOUND = (function () {
     settleToNearest();
     if (!moved) {
       if (downTarget?.closest("[data-chron]")) { openChron(); return; }
+      if (downTarget?.closest("[data-notice]")) { $("noticeOverlay").classList.add("on"); return; }
       const facade = downTarget?.closest("[data-hall]");
       if (facade) {
         const idx = STATIONS.findIndex((s) => s.id === facade.dataset.hall);
@@ -2180,15 +2502,34 @@ window.ARRIVAL_SOUND = (function () {
     else kick();
   }
 
+  let courtWidth = 0;
+  let resizeRaf = 0;
   function renderCourt() {
+    courtWidth = view.clientWidth || Math.min(1040, innerWidth);
+    courtMeasured = false; birdPerchH = -1;
+    birdFrameScroll = null; // 重返埕不是走近，不驚動剛重建的鳥。
     buildCourt();
     const facing = sessionFacing;
     faceStation(facing, { instant: true });
     const book = store.get(BOOK_KEY, []);
     $("bookCount").textContent = book.length ? `${book.length} 籤` : "";
     updateWalkHint();
+    INK_BAKE.soon(stageStrip); // 重建後的新元素（resize 也走這裡）
   }
-  addEventListener("resize", () => { if ($("s-court").classList.contains("on")) renderCourt(); });
+  addEventListener("resize", () => {
+    if (!$("s-court").classList.contains("on") || resizeRaf) return;
+    resizeRaf = requestAnimationFrame(() => {
+      resizeRaf = 0;
+      if (!$("s-court").classList.contains("on")) return;
+      const width = view.clientWidth || Math.min(1040, innerWidth);
+      courtMeasured = false; // 高度可能變了（網址列收合）：下一幀重量
+      if (width !== courtWidth) {
+        dragging = false; downTarget = null; velocity = 0;
+        if (raf) { cancelAnimationFrame(raf); raf = 0; }
+        renderCourt();
+      } else { kick(); }
+    });
+  });
 
   function updateWalkHint() {
     const bound = POOL && window.DRAW_POLICY.peekBinding({ question: $("question").value });
@@ -2214,9 +2555,9 @@ window.ARRIVAL_SOUND = (function () {
       return;
     }
     const s = STATIONS[nearestStation()];
-    if (!s || s.void) $("walkHint").textContent = "左右轉身，走向一殿。";
-    else if (s.hypothetical) $("walkHint").textContent = "月老殿增建中——籤本仍在考證。";
-    else $("walkHint").textContent = `正對　${s.deity}殿——點門內，進殿。`;
+    const hint = !s || s.void ? "左右轉身，走向一殿。" : s.hypothetical ? "月老殿增建中——籤本仍在考證。" : `正對　${s.deity}殿——點門內，進殿。`;
+    const wh = $("walkHint"); // 字一樣就不重寫（每次停步都重寫會換掉文字節點、多一次排版）
+    if (wh.firstElementChild || wh.textContent !== hint) wh.textContent = hint;
   }
   $("question").addEventListener("input", updateWalkHint);
 
@@ -2235,11 +2576,13 @@ window.ARRIVAL_SOUND = (function () {
     const veil = (!reduceMotion && facadeEl && !hall.hypothetical) ? $("threshold") : null;
     if (veil) { veil.classList.remove("leaving"); veil.classList.add("on"); }
     const court = $("s-court");
+    // 進殿的放大＝整塊廟埕當一張圖縮放（合成層），不在 400ms 內逐幀重畫墨筆
+    court.style.willChange = "transform, opacity";
     court.style.transformOrigin = "50% 44%";
     court.style.transform = "scale(1.5)";
     court.style.opacity = "0";
     setTimeout(() => {
-      court.style.transform = ""; court.style.opacity = "";
+      court.style.transform = ""; court.style.opacity = ""; court.style.willChange = "";
       facadeEl?.classList.remove("opening");
       renderHall(hall, { boundEntry });
       show("hall");
@@ -2282,7 +2625,7 @@ window.ARRIVAL_SOUND = (function () {
   });
 
   function renderHall(hall, { boundEntry } = {}) {
-    $("s-hall").classList.remove("reading");
+    $("s-hall").classList.remove("reading", "presenting-stick");
     $("tablet").textContent = hall.deity;
     $("hallName").textContent = hall.deity; // 聖號捲出畫面時頂上那行小字（同一個字串，不另寫）
     nameBar();
@@ -2355,40 +2698,67 @@ window.ARRIVAL_SOUND = (function () {
   /* 聖號是否還看得見：看不見（被頂列蓋到或捲出）就讓頂列帶名 */
   function nameBar() {
     const top = document.querySelector(".hall-top"), t = $("tablet").getBoundingClientRect();
-    top.classList.toggle("named", t.height > 0 && t.top < top.getBoundingClientRect().bottom - 10);
+    top.classList.toggle("named", $("s-hall").classList.contains("reading") || (t.height > 0 && t.top < top.getBoundingClientRect().bottom - 10));
+    $("hallName").setAttribute("aria-hidden", String(!$("s-hall").classList.contains("reading")));
   }
   $("s-hall").addEventListener("scroll", nameBar, { passive: true });
   window.addEventListener("resize", nameBar);
 
   /* ---------- 拖抽 ---------- */
-  const PULL_DIST = 130;
-  let pulling = false, startY = 0, ticked = false;
+  // 拔籤：輕拉即出——距離 130→88px、拿掉尾段阻尼；拉過四成後往上一甩就出籤；放手時保留大部分進度不歸零
+  // （Murphy 6dcbc65：只認按下的那隻手指、指標捕捉、放開那一刻的最終位置也算、取消／失焦不出籤）
+  const PULL_DIST = 88;
+  let pulling = false, pullPointerId = null, startY = 0, ticked = false;
+  let pullP = 0, lastPY = 0, lastPT = 0, pullV = 0, carry = 0;
   const stickEl = $("tubeStick");
   const REST = 140, TOP = -34;
   function setStick(p) { stickEl.style.transform = `translateX(-50%) translateY(${REST + (TOP - REST) * p}px)`; }
-  function resetStick() { stickEl.style.transition = "none"; setStick(0); }
-  $("tubeWrap").addEventListener("pointerdown", (ev) => {
-    if (!POOL || pulling) return;
-    ev.preventDefault();
-    pulling = true; ticked = false; startY = ev.clientY;
-    stickEl.style.transition = "none";
-  });
-  window.addEventListener("pointermove", (ev) => {
-    if (!pulling) return;
-    const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
-    const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
+  function resetStick() { carry = pullP = 0; stickEl.style.transition = "none"; setStick(0); }
+  const tubeWrap = $("tubeWrap");
+  function releasePullCapture() {
+    const id = pullPointerId; pullPointerId = null;
+    if (id !== null && tubeWrap.hasPointerCapture?.(id)) tubeWrap.releasePointerCapture(id);
+  }
+  function updatePull(ev) {
+    const now = performance.now();
+    if (ev.clientY !== lastPY) { pullV = (lastPY - ev.clientY) / Math.max(1, now - lastPT); lastPY = ev.clientY; lastPT = now; }
+    const p = Math.min(1, Math.max(0, startY - ev.clientY) / PULL_DIST);
+    pullP = p;
     setStick(p);
     window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
-    if (p >= 1) { pulling = false; completeDraw(); }
+    if (p >= 1) { pulling = false; pullP = carry = 0; releasePullCapture(); completeDraw(); }
+  }
+  tubeWrap.addEventListener("pointerdown", (ev) => {
+    if (!POOL || pulling || ev.isPrimary === false || (ev.button != null && ev.button !== 0)) return;
+    ev.preventDefault();
+    pulling = true; pullPointerId = ev.pointerId; ticked = false; startY = ev.clientY + carry * PULL_DIST;
+    lastPY = ev.clientY; lastPT = performance.now(); pullV = 0;
+    stickEl.style.transition = "none";
+    tubeWrap.setPointerCapture?.(ev.pointerId);
   });
-  const endPull = () => {
+  window.addEventListener("pointermove", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    updatePull(ev);
+  });
+  const endPull = (released = false) => {
     if (!pulling) return;
-    pulling = false;
-    stickEl.style.transition = "transform 240ms ease"; setStick(0);
+    pulling = false; releasePullCapture();
+    // 往上甩著放手：拉過四成、放手前仍在往上（> 0.35px/ms）＝出籤。取消／失焦（released=false）永遠不出籤
+    if (released && pullP >= 0.4 && pullV > 0.35 && performance.now() - lastPT < 120) { pullP = carry = 0; completeDraw(); return; }
+    // 沒出籤：籤枝滑回較低處，下一次從那裡接著拉（不必每次從頭用力）
+    carry = Math.min(0.5, pullP * 0.8); pullP = 0;
+    stickEl.style.transition = "transform 240ms ease"; setStick(carry);
   };
-  window.addEventListener("pointerup", endPull);
-  window.addEventListener("pointercancel", endPull);
+  window.addEventListener("pointerup", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    // The final pointer position may not have arrived in a pointermove (e.g. a busy mobile frame).
+    updatePull(ev);
+    endPull(true);
+  });
+  window.addEventListener("pointercancel", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  tubeWrap.addEventListener("lostpointercapture", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  window.addEventListener("blur", () => endPull());
   if (DEVDRAW) $("tubeWrap").addEventListener("click", () => { if (!pulling) completeDraw(); });
 
   function uniformDraw(corpusId) {
@@ -2408,8 +2778,10 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickLabel").textContent = window.SLIP_RENDER.tabText(entry);
     $("stickStage").style.display = "flex";
+    $("s-hall").classList.add("presenting-stick");
     // 你抽動了世界，世界把籤端到你面前——手機上換幕的新主角常在摺線下
-    $("stickStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "center" });
+    $("s-hall").scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    nameBar();
   }
 
   $("jieyueToggle").addEventListener("click", () => {
@@ -2432,8 +2804,10 @@ window.ARRIVAL_SOUND = (function () {
     $("tubeStage").style.display = "none";
     $("stickStage").style.display = "none";
     $("slipStage").style.display = "flex";
+    $("s-hall").classList.remove("presenting-stick");
     $("s-hall").classList.add("reading"); // 紙是主角：殿內的柱與樑退到紙的上方，不壓在紙邊
-    $("slipStage").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" }); // 紙登場＝紙在眼前
+    $("s-hall").scrollTo({ top: 0, behavior: "auto" }); // 頂列帶聖號，整張紙從起點讀，不切半塊匾
+    nameBar();
     const mount = $("slipMount");
     mount.innerHTML = "";
     try {
@@ -2472,7 +2846,7 @@ window.ARRIVAL_SOUND = (function () {
       // 觀音：文案維持 PR #34 福 re-review 拍板的原版——不加任何說明句（about: null）。
       guanyin: {
         short: (pool) => `${pool.edition.split("《")[0]}版`,
-        src: (pool, rec) => `據${pool.edition}${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        src: (pool, rec) => `據${pool.edition}${rec.locator ? `，${rec.locator}` : ""}${rec.doubt ? "，待核對" : rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
         about: null,
       },
       // 關帝：道藏本的解曰多是「求財必豐」「夫妻離散」這種斷語口吻，和觀音的勸解不同。
@@ -2480,9 +2854,20 @@ window.ARRIVAL_SOUND = (function () {
       // （是否保留這一句是文案決策，見 docs/interpretation-three-halls.md〈需要 Crystal 決定的事〉。）
       guandi: {
         short: () => "道藏本",
-        src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
+        src: (pool, rec) => `據《護國嘉濟江東王靈籤》（傅燁撰，道藏本），維基文庫轉錄${rec.doubt ? "，待核對" : rec.confirmed ? "，人工核圖確認" : "，待複核"}`,
         about: "這是道藏本原有的判語，照原文收錄——是前人的讀法，不是抽一的話，也不是對你這件事的預測。還沒有逐籤對過道藏影像，可能有錯字。",
       },
+    },
+    // 有疑的也上紙：一句話說清楚疑在哪一類。原字照舊，不替它補、不替它改。
+    doubt: {
+      unsettled_transcription: { word: "有缺字・待核對", line: "這一首的轉錄有讀不出或讀不定的字，缺的地方留著 □，沒有補。" },
+      suspect_reading: { word: "有疑字・待核對", line: "這一首的轉錄裡有疑似認錯的字，照轉錄原樣列出，沒有改。" },
+      irregular_form: { word: "斷句有疑・待核對", line: "這一首轉錄的斷句與體例有疑，照轉錄原樣列出。" },
+    },
+    review: {
+      page: (cid) => `/paper/corpus-review-${cid}.html`,
+      plain: "到校對館看這一籤 ↗",
+      doubt: "疑在哪裡？到校對館看這一籤 ↗",
     },
     holdSlip: {
       unsettled_transcription: "這支籤的解曰，轉錄裡有缺字或還讀不定的字。",
@@ -2496,10 +2881,16 @@ window.ARRIVAL_SOUND = (function () {
       single_pass_ocr: "手上的轉錄只經過一次機器辨識、還沒有人逐字核對",
       tail: "所以這裡不轉載、不摘要，也不另寫一段來代替。",
       link: (name) => `到${name}官方網站讀 ↗`,
+      review: "到校對館看這一籤已整理的欄位 ↗",
     },
   };
 
   function renderJieyue(entry) {
+    // 聖意是獨立的一層：它的腳本沒載到、或自己出錯，都只讓聖意那一格空著——不能連解曰、籤紙、收籤一起拖垮。
+    const sy = $("shengyi");
+    try {
+      if (!window.SHENGYI_VIEW || !window.SHENGYI_VIEW.render(window.SHENGYI_POOL, entry, sy)) { sy.replaceChildren(); sy.hidden = true; }
+    } catch { sy.replaceChildren(); sy.hidden = true; }
     const box = $("jieyue");
     const G = window.JIEYUE_GUARD;
     const pool = Object.hasOwn(JIEYUE_POOLS, entry.corpus_id) ? JIEYUE_POOLS[entry.corpus_id] : null;
@@ -2512,20 +2903,28 @@ window.ARRIVAL_SOUND = (function () {
     $("jieyue").querySelector(".jieyue-caret").textContent = "▸";
     const text = $("jieyueText"), src = $("jieyueSrc"), about = $("jieyueAbout"), link = $("jieyueLink");
     link.hidden = true; link.removeAttribute("href"); link.textContent = "";
+    const more0 = $("jieyueReview"); more0.hidden = true; more0.removeAttribute("href"); more0.textContent = "";
     about.classList.toggle("is-lead", !rec);
     about.hidden = false;
     text.hidden = !rec;
     if (rec) {
       // 上紙：原文＋來源＋狀態。狀態詞 1:1，不升級。
+      // 待複核不等於隱藏（2026-11-15）：有缺字、疑字的也照原樣上紙——古字不換、缺字留 □、不補不改；
+      // 這裡只用一句話標出「這一首有疑」，細節在校對館。
       const copy = JIEYUE_COPY.corpus[entry.corpus_id];
       const statusWord = pool.status_word[rec.status];
+      const doubt = rec.doubt ? JIEYUE_COPY.doubt[rec.doubt] : null;
       $("jieyueWord").textContent = "解曰";
-      $("jieyueProv").textContent = `${copy.short(pool)}・${rec.confirmed ? "已核圖" : statusWord}`;
+      $("jieyueProv").textContent = `${copy.short(pool)}・${doubt ? doubt.word : rec.confirmed ? "已核圖" : statusWord}`;
       $("jieyueText").textContent = rec.text;
       src.hidden = false;
       src.textContent = copy.src(pool, rec);
-      about.textContent = copy.about ?? "";
-      about.hidden = !copy.about;
+      const aboutText = ""; // Detailed textual doubts belong in the linked proofreading library.
+      about.textContent = aboutText;
+      about.hidden = !aboutText;
+      link.href = `${JIEYUE_COPY.review.page(entry.corpus_id)}?q=${entry.slip_number}`;
+      link.textContent = doubt ? JIEYUE_COPY.review.doubt : JIEYUE_COPY.review.plain;
+      link.hidden = false;
       return;
     }
     // 暫未上紙：只說原因。沒有任何被暫緩的文字會到這一頁。
@@ -2541,11 +2940,16 @@ window.ARRIVAL_SOUND = (function () {
     }
     const HC = JIEYUE_COPY.holdCorpus;
     const name = hold.official_name || "廟方";
-    $("jieyueWord").textContent = "廟方解說";
-    $("jieyueProv").textContent = "暫未上紙";
-    about.textContent = `${HC.lead(name)}${hold.reasons.map((r) => HC[r]).join("，")}，${HC.tail}`;
+    $("jieyueWord").textContent = "聖意與來源";
+    $("jieyueProv").textContent = "候選轉錄・待核對";
+    about.textContent = "其他解說請見廟方原圖。";
     src.hidden = true; src.textContent = "";
     if (hold.official_url) { link.href = hold.official_url; link.textContent = HC.link(name); link.hidden = false; }
+    // 第二條路：校對館。那裡列了這一籤的卦名／五行方位候選，和其餘欄位的來源位置。
+    const more = $("jieyueReview");
+    more.href = `${JIEYUE_COPY.review.page(entry.corpus_id)}?q=${entry.slip_number}`;
+    more.textContent = HC.review;
+    more.hidden = false;
   }
 
   // 找到或建立這支籤在簿裡的那一筆；同時記下「上次到訪」。永不重複建立。
@@ -2774,7 +3178,7 @@ window.ARRIVAL_SOUND = (function () {
     $("bookOverlay").classList.add("on");
   });
 
-  for (const id of ["chronOverlay", "bookOverlay"]) {
+  for (const id of ["chronOverlay", "bookOverlay", "noticeOverlay"]) {
     $(id).addEventListener("click", (ev) => { if (ev.target === $(id)) $(id).classList.remove("on"); });
   }
 

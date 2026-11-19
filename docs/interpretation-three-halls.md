@@ -1,3 +1,5 @@
+> **2026-11-15 更新**：顯示政策已改為「待複核不等於隱藏」——觀音、關帝的解曰 200 首全部上紙並標示狀態與疑點。本文件以下內容是改動前的敘述，現況請看 `docs/handoffs/2026-11-15-fable-takeover-handoff.md`。
+
 # 三殿歷史解讀層 — 盤點與上紙規則
 
 **日期：** 2026-11-14　**分支：** `fable/interp-three-halls`　**範圍：** 網頁版（`paper/arrival.html`）。ChatGPT plugin、正式站部署不在此輪。

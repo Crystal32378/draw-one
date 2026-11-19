@@ -67,6 +67,12 @@ const fold = () => page.evaluate(() => {
     stageText: $("slipStage").innerText,
   };
 });
+// 聖意：解曰摺頁裡獨立的一層（原生 details）。
+const shengyi = () => page.evaluate(() => {
+  const h = document.getElementById("shengyi"), d = h.querySelector("details");
+  return { hidden: h.hidden, has: !!d, open: !!d?.open, summary: d?.querySelector("summary")?.textContent ?? "",
+    text: d?.querySelector(".jieyue-text")?.textContent ?? "", links: [...h.querySelectorAll("a")].map((a) => a.getAttribute("href")) };
+});
 const openFold = async () => { await page.click("#jieyueToggle"); await sleep(120); };
 
 console.log("X1 真抽一次 — 紙落定即入簿、同問原籤、筆記、摺頁＝guard 的決定");
@@ -112,7 +118,7 @@ check("一事一籤綁定仍在", binds.length === 1);
 const pickPending = await page.evaluate(() => Object.entries(window.INTERPRETATION_POOL.entries).find(([, e]) => !e.confirmed)[0]);
 const SEED = [
   ["guanyin-001", "guanyin"], [pickPending, "guanyin"], ["guanyin-012", "guanyin"],
-  ["guandi-001", "guandi"], ["guandi-058", "guandi"], ["liushijiazi-001", "liushijiazi"],
+  ["guandi-001", "guandi"], ["guandi-058", "guandi"], ["liushijiazi-001", "liushijiazi"], ["liushijiazi-039", "liushijiazi"], ["liushijiazi-040", "liushijiazi"],
 ];
 await page.evaluate(({ SEED }) => {
   const cur = JSON.parse(localStorage.getItem("drawone.book.v1") || "[]");
@@ -134,16 +140,19 @@ await view("guanyin-001"); f = await fold();
 check("#1 摺頁出現、收合、標「艋舺龍山寺版・已核圖」", !f.hidden && !f.open && f.word === "解曰" && f.prov === "艋舺龍山寺版・已核圖");
 await openFold(); f = await fold();
 check("#1 展開＝原文逐字", f.open && f.text === await poolText("INTERPRETATION_POOL", "guanyin-001"));
-check("#1 來源＋人工核圖；文案同 PR #34 原版（無說明句）", f.src === "據艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像），人工核圖確認" && f.aboutHidden);
+check("#1 來源＋人工核圖；文案同 PR #34 原版（無說明句）", f.src === "據艋舺龍山寺《觀世音靈籤》（薛皓文 2008 附錄二所收錄之籤紙影像），附錄二 p179，人工核圖確認" && f.aboutHidden
+  && /corpus-review-guanyin\.html\?q=1$/.test(f.link?.href ?? ""));
 await shot("guanyin-confirmed");
 await view(pickPending); await openFold(); f = await fold();
 check(`${pickPending} 標「待複核」，不寫成已核圖`, f.prov === "艋舺龍山寺版・待複核" && f.src.endsWith("，待複核") && !f.src.includes("核圖") && f.aboutHidden
   && f.text === await poolText("INTERPRETATION_POOL", pickPending));
 await shot("guanyin-pending");
 await view("guanyin-012"); f = await fold();
-check("#12 暫未上紙：有一行、收合", !f.hidden && !f.open && f.prov === "此籤暫未上紙");
+// 2026-11-15 待複核不等於隱藏：有缺字的也上紙，標明、不補字。
+check("#12 有缺字也上紙：有一行、收合、標「有缺字・待核對」", !f.hidden && !f.open && f.prov === "艋舺龍山寺版・有缺字・待核對");
 await openFold(); f = await fold();
-check("#12 只說原因，沒有解曰文字、沒有連結", f.text === "" && f.textHidden && f.about.includes("缺字") && f.about.includes("不替它補字") && f.link === null);
+check("#12 原文逐字（缺字留 □，沒補）；求籤頁不放長說明，疑點在校對館這一籤", f.text === await poolText("INTERPRETATION_POOL", "guanyin-012") && f.text.includes("□") && !f.textHidden
+  && f.aboutHidden && f.src.endsWith("，待核對") && !f.src.includes("核圖確認") && /corpus-review-guanyin\.html\?q=12$/.test(f.link?.href ?? ""));
 await shot("guanyin-withheld");
 
 console.log("X3 關帝殿 — 待複核／暫未上紙");
@@ -151,23 +160,44 @@ await view("guandi-001"); f = await fold();
 check("#1 標「道藏本・待複核」", !f.hidden && f.word === "解曰" && f.prov === "道藏本・待複核");
 await openFold(); f = await fold();
 check("#1 展開＝原文逐字；來源寫明維基文庫轉錄、未核道藏影像", f.text === await poolText("INTERPRETATION_POOL_GUANDI", "guandi-001")
-  && f.src.includes("道藏本") && f.src.includes("維基文庫轉錄") && f.src.endsWith("待複核") && f.about.includes("還沒有逐籤對過道藏影像")
-  && f.about.includes("不是抽一的話") && f.about.includes("預測"));
+  && f.src.includes("道藏本") && f.src.includes("維基文庫轉錄") && f.src.endsWith("待複核") && f.aboutHidden);
 await shot("guandi-pending");
 await view("guandi-058"); await openFold(); f = await fold();
-check("#58 暫未上紙：說「疑似認錯的字」", f.prov === "此籤暫未上紙" && f.text === "" && f.about.includes("疑似認錯的字"));
-check("#58 被暫緩的字不在頁面上", !(await page.content()).includes("求名爻得"));
+check("#58 有疑字也上紙：標「有疑字・待核對」；求籤頁不放長說明", f.prov === "道藏本・有疑字・待核對" && f.aboutHidden && f.src.endsWith("，待核對"));
+check("#58 原文逐字照轉錄（疑字沒被偷改）＋通往校對館這一籤", f.text === await poolText("INTERPRETATION_POOL_GUANDI", "guandi-058") && f.text.includes("求名爻得")
+  && /corpus-review-guandi\.html\?q=58$/.test(f.link?.href ?? ""));
 await shot("guandi-withheld");
 
-console.log("X4 天上聖母殿（六十甲子）— 整套暫緩");
+console.log("X4 天上聖母殿（六十甲子）— 聖意候選上紙；長篇解說仍只指向廟方原圖");
 await view("liushijiazi-001"); f = await fold();
-check("一行「廟方解說・暫未上紙」，收合", !f.hidden && !f.open && f.word === "廟方解說" && f.prov === "暫未上紙");
+check("一行「聖意與來源・候選轉錄・待核對」，收合", !f.hidden && !f.open && f.word === "聖意與來源" && f.prov === "候選轉錄・待核對");
 await openFold(); f = await fold();
-check("說明兩個原因：授權未確認、僅一次機器辨識", f.about.includes("授權還沒有確認") && f.about.includes("一次機器辨識") && f.about.includes("不轉載、不摘要"));
+check("長篇解說不轉載：只說去看廟方原圖", f.about === "其他解說請見廟方原圖。");
+let sy = await shengyi();
+check("聖母殿 #1：聖意候選在摺頁裡、預設收合、標狀態", !sy.hidden && sy.has && !sy.open && sy.summary.startsWith("聖意・") && sy.text.length > 0
+  && sy.links.some((h) => /^https:\/\/www\.matsu\.org\.tw\//.test(h)) && sy.links.some((h) => /corpus-review-liushijiazi\.html\?q=1$/.test(h)));
+await view("liushijiazi-039"); await openFold(); sy = await shengyi();
+check("聖母殿 #39：依原圖重抄的聖意格上紙（27 項、不含舊誤取長文），給原圖與校對館", sy.has && sy.text.startsWith("討海：先不利後小利") && sy.text.includes("求雨：未有") && !sy.text.includes("若想求神仙") && !sy.text.includes("待重新轉錄") && sy.links.some((h) => /matsu\.org\.tw/.test(h)) && sy.links.some((h) => /corpus-review-liushijiazi\.html\?q=39$/.test(h)));
+await view("liushijiazi-040"); await openFold(); sy = await shengyi();
+check("換籤後不殘留上一籤的聖意（#39 的內容不跟到 #40）", sy.has && !sy.text.includes("待重新轉錄") && !sy.text.startsWith("討海：先不利後小利"));
+await view("guanyin-001"); await openFold(); sy = await shengyi();
+check("觀音 #1：聖意與解曰是兩層（解曰在上，聖意另收一格）", sy.has && !sy.open && sy.summary.startsWith("聖意・") && sy.text !== (await fold()).text);
+await view("guandi-058"); await openFold(); sy = await shengyi();
+check("關帝 #58：聖意同樣上紙", sy.has && sy.summary.startsWith("聖意・") && sy.links.some((h) => /corpus-review-guandi\.html\?q=58$/.test(h)));
+await view("liushijiazi-001"); f = await fold(); await openFold(); f = await fold();
 check("沒有任何廟方解說文字；只給官方連結（https、noopener）", f.text === "" && f.textHidden && f.src === ""
   && f.link && /^https:\/\/www\.matsu\.org\.tw\//.test(f.link.href) && f.link.rel.includes("noopener") && f.link.text.includes("北港朝天宮"));
 check("紙本身照常（籤詩仍在）", f.stageText.includes("日") && (await page.$("#slipMount .slip, #slipMount > *")) !== null);
 await shot("mazu-held");
+
+console.log("X4b 聖意層壞掉——只空那一格，解曰與收籤照常");
+await page.evaluate(() => { window.__SV = window.SHENGYI_VIEW; window.SHENGYI_VIEW = { render() { throw new Error("boom"); } }; });
+await view("guanyin-001"); await openFold(); f = await fold(); sy = await shengyi();
+check("聖意丟例外：聖意格隱藏，解曰原文仍在", sy.hidden && !sy.has && !f.hidden && f.text === await poolText("INTERPRETATION_POOL", "guanyin-001"));
+await page.evaluate(() => { delete window.SHENGYI_VIEW; });
+await view("guandi-001"); await openFold(); f = await fold(); sy = await shengyi();
+check("聖意腳本沒載到：聖意格隱藏，解曰原文仍在、收籤鈕可用", sy.hidden && !f.hidden && f.text.length > 0 && await page.isEnabled("#keepBtn"));
+await page.evaluate(() => { window.SHENGYI_VIEW = window.__SV; });
 
 console.log("X5 fail-closed — pool 被換版，整層消失");
 await page.evaluate(() => { window.INTERPRETATION_POOL_GUANDI.content_version = "0".repeat(64); });

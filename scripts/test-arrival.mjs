@@ -165,7 +165,7 @@ check("推門有門檻的光，reduced motion 不做", /id="threshold"/.test(htm
 const dress = script.slice(script.indexOf("function dressCourt"), script.indexOf("groundJoints.innerHTML"));
 check("小景只錨在站界 B(i) 或牆尾／樹，不以殿的身分擺放", /const B = \(i\) => i \* stationW/.test(dress) && !/guanyin|guandi|mazu|deity/.test(dress));
 check("殿內的骨只有一份（三殿共用）", (html.match(/class="hall-ink"/g) ?? []).length === 1);
-check("新增的動畫都有 reduced-motion 出口", ["lantern-sway", "hearth", "canopy-sway", "sparrow-hop", "shade-drift", "court-arrive", "hall-arrive", "flame", "rattle"]
+check("新增的動畫都有 reduced-motion 出口", ["lantern-sway", "hearth", "canopy-sway", "sparrow-hop", "sparrow-flight", "sparrow-wing", "shade-drift", "court-arrive", "hall-arrive", "flame", "rattle"]
   .every((k) => html.includes(`@keyframes ${k}`)) && (html.match(/prefers-reduced-motion: reduce/g) ?? []).length >= 9);
 check("學術限制寫在模板旁：不是任何真廟的量測、不代表所有台灣宮廟", /不是任何一座歷史建築的量測值/.test(script) && /不代表所有台灣宮廟/.test(script));
 check("籤紙沒有被這一輪碰到（slip.css／slip-render.js 無 ink 相依）", !/#ink-|xuan-grain/.test(readFileSync(join(ROOT, "assets", "slip.css"), "utf8") + readFileSync(join(ROOT, "assets", "slip-render.js"), "utf8")));

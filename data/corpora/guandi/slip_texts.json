@@ -48,26 +48,26 @@
       "corpus_id": "guandi",
       "slip_number": 4,
       "original_slip_label": "第四",
-      "poem_text": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神彿，莫教福謝悔無追。",
+      "poem_text": "去年百事頗相宜，若較今年時漸衰。\n好把瓣香告神佛，莫教福謝悔無追。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/4 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：彿→佛（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.15；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
       "corpus_id": "guandi",
       "slip_number": 5,
       "original_slip_label": "第五",
-      "poem_text": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承巳，萬事迴春不用憂。",
+      "poem_text": "子有三般不自由，門庭蕭索冷如秋。\n若逢牛鼠交承日，萬事迴春不用憂。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/5 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：巳→日（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.15；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -165,13 +165,13 @@
       "corpus_id": "guandi",
       "slip_number": 13,
       "original_slip_label": "第十三",
-      "poem_text": "君今庚甲未亨通，且向江頭作釣前。\n玉兔重生應發積，萬人頭上逞英雄。",
+      "poem_text": "君今庚甲未亨通，且向江頭作釣翁。\n玉兔重生應發積，萬人頭上逞英雄。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/13 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：前→翁（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.22；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -464,13 +464,13 @@
       "corpus_id": "guandi",
       "slip_number": 36,
       "original_slip_label": "第三十六",
-      "poem_text": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，昊山嶺上好鑽龜。",
+      "poem_text": "功名冨貴自能為，偶著仙鞭莫問伊。\n萬里鵬程君有分，吳山嶺上好鑽龜。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/36 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：昊→吳（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.40；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -620,26 +620,26 @@
       "corpus_id": "guandi",
       "slip_number": 48,
       "original_slip_label": "第四十八",
-      "poem_text": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懼。",
+      "poem_text": "登山涉水正天寒，兄弟親姻那得安。\n不遇虎頭人一喚，全家誰保汝重懽。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/48 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：懼→懽（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.50；見 poem_corrections.json）。Crystal 2026-11-15 指定保留掃描異體字形；只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
       "corpus_id": "guandi",
       "slip_number": 49,
       "original_slip_label": "第四十九",
-      "poem_text": "彼此家居只一山，如何似膈鬼門關。\n日月如梭人易老，許多勞碌不如閑。",
+      "poem_text": "彼此家居只一山，如何似隔鬼門關。\n日月如梭人易老，許多勞碌不如閑。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/49 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：膈→隔（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.51；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -685,13 +685,13 @@
       "corpus_id": "guandi",
       "slip_number": 53,
       "original_slip_label": "第五十三",
-      "poem_text": "艱難險阻路蹊蹺，南烏孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。",
+      "poem_text": "艱難險阻路蹊蹺，南鳥孤飛依北巢。\n今日貴人曾識面，相逢恰似夏秋交。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/53 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：烏→鳥（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.54；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -750,13 +750,13 @@
       "corpus_id": "guandi",
       "slip_number": 58,
       "original_slip_label": "第五十八",
-      "poem_text": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隱事，前程萬里自通亨。",
+      "poem_text": "蘇秦三寸足平生，富貴功名在此行。\n更好修為陰隲事，前程萬里自通亨。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/58 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：隱→隲（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.58；見 poem_corrections.json）。Crystal 2026-11-15 指定保留掃描異體字形；只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -776,13 +776,13 @@
       "corpus_id": "guandi",
       "slip_number": 60,
       "original_slip_label": "第六十",
-      "poem_text": "羨君兄弟好名聲，只管謙偽莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。",
+      "poem_text": "羨君兄弟好名聲，只管謙撝莫自矜。\n丹詔槐黃相逼近，巍巍科甲兩同登。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/60 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：偽→撝（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.59；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -958,13 +958,13 @@
       "corpus_id": "guandi",
       "slip_number": 74,
       "original_slip_label": "第七十四",
-      "poem_text": "崔鬼崔鬼復崔鬼，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。",
+      "poem_text": "崔嵬崔嵬復崔嵬，履險如夷去復來。\n身似菩提心似鏡，長安一道放春回。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/74 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：鬼→嵬（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.71；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -1218,13 +1218,13 @@
       "corpus_id": "guandi",
       "slip_number": 94,
       "original_slip_label": "第九十四",
-      "poem_text": "一般器用與人同，巧斷輸輿梓亦二。\n凡事有綠且隨分，秋行冬遇主人翁。",
+      "poem_text": "一般器用與人同，巧斲輪輿梓亦二。\n凡事有縁且隨分，秋行冬遇主人翁。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/94 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：斷輸→斲輪、綠→縁（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.87；見 poem_corrections.json）。Crystal 2026-11-15 指定保留掃描異體字形；只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",
@@ -1283,13 +1283,13 @@
       "corpus_id": "guandi",
       "slip_number": 99,
       "original_slip_label": "第九十九",
-      "poem_text": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驛餾應得驟康強。",
+      "poem_text": "貴人相遇水雲鄉，冷淡交情滋味長。\n黃閣開時延故客，驊騮應得驟康強。",
       "edition_id": "ed-guandi-daozang-fuye-1225",
       "edition_title": "《護國嘉濟江東王靈籤》（傅燁撰，道藏本）",
       "edition_date_period": "南宋寶慶 1225–1227（傅燁撰）；《正統道藏》1445 收錄（正一部）",
       "source_locator": "https://zh.wikisource.org/wiki/護國嘉濟江東王靈籤/99 （維基文庫轉錄，2026-08-15/17 一手抓取）；道藏影像：ctext res=84978（正一部 1012–1013 冊）待核",
       "transcription_status": "PROBABLE",
-      "notes": ""
+      "notes": "字級修正：驛餾→驊騮（Crystal 2026-09-08 人眼核圖裁定，NLC《道藏》第 4379 冊 p.91；見 poem_corrections.json）。只核了差異字，全詩未逐字對影像——維持 PROBABLE。"
     },
     {
       "deity_tradition": "關帝（living-tradition mapping）",

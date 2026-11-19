@@ -2,7 +2,7 @@
 // What the 解曰 layer withholds, and why (reason codes only). Regenerate with the pools.
 window.INTERPRETATION_HOLDS = {
   "schema": "interpretation-holds/0.1",
-  "note": "What the 解曰 layer deliberately does NOT show, and why. Reason codes only — no withheld text ever enters this file. The page may state the reason; it may not fill the gap.",
+  "note": "What the 解曰 layer deliberately does NOT show, and why. Reason codes only — no withheld text ever enters this file. Since 2026-11-15 nothing is withheld at slip level in 觀音/關帝 (doubtful rows are shown and marked inside the pools); only the 六十甲子 temple commentary remains held at corpus level.",
   "reason_codes": {
     "unsettled_transcription": "source status UNRESOLVED/CANDIDATE (missing or undecided characters)",
     "suspect_reading": "a character in the transcription is flagged as a likely misreading; not yet checked against the original image",
@@ -14,52 +14,14 @@ window.INTERPRETATION_HOLDS = {
     "guanyin": {
       "scope": "slip",
       "edition_id": "ed-guanyin-xue2008-appendix2-image",
-      "content_version": "e34cea042c1748a4bcc7e1a51d1ee21e843e3b5942606715ff94688c056a0b22",
-      "slips": {
-        "12": "unsettled_transcription",
-        "20": "unsettled_transcription",
-        "35": "unsettled_transcription",
-        "44": "unsettled_transcription",
-        "65": "unsettled_transcription",
-        "77": "unsettled_transcription"
-      }
+      "content_version": "77114f75319dc6bc33963f04736a4169a74e6bd7b390fffc18e41888283bc0c2",
+      "slips": {}
     },
     "guandi": {
       "scope": "slip",
       "edition_id": "ed-guandi-daozang-fuye-1225",
-      "content_version": "b69098e9cc77e40d306899f12931e12f389c423277efacb000768c358d2fe90d",
-      "slips": {
-        "5": "suspect_reading",
-        "6": "suspect_reading",
-        "10": "suspect_reading",
-        "11": "suspect_reading",
-        "12": "suspect_reading",
-        "25": "suspect_reading",
-        "31": "suspect_reading",
-        "33": "suspect_reading",
-        "36": "suspect_reading",
-        "38": "suspect_reading",
-        "46": "suspect_reading",
-        "47": "suspect_reading",
-        "52": "suspect_reading",
-        "56": "suspect_reading",
-        "58": "suspect_reading",
-        "66": "suspect_reading",
-        "67": "suspect_reading",
-        "68": "suspect_reading",
-        "69": "suspect_reading",
-        "71": "suspect_reading",
-        "73": "irregular_form",
-        "75": "suspect_reading",
-        "80": "suspect_reading",
-        "83": "suspect_reading",
-        "85": "suspect_reading",
-        "87": "suspect_reading",
-        "88": "suspect_reading",
-        "91": "irregular_form",
-        "94": "suspect_reading",
-        "100": "unsettled_transcription"
-      }
+      "content_version": "318b7069162752d900fd35753d45c9145cca4dc33ddd277ceb9c48615217459f",
+      "slips": {}
     },
     "liushijiazi": {
       "scope": "corpus",

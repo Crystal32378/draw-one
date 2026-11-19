@@ -1,3 +1,5 @@
+> **2026-11-15 更新**：顯示政策已改為「待複核不等於隱藏」——觀音、關帝的解曰 200 首全部上紙並標示狀態與疑點。本文件以下內容是改動前的敘述，現況請看 `docs/handoffs/2026-11-15-fable-takeover-handoff.md`。
+
 # Draw One — Research Status Board
 
 **Last updated:** 2026-08-17 (Asia/Taipei)

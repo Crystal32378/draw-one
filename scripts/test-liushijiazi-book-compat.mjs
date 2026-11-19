@@ -16,10 +16,26 @@ const after = poolFrom(read('assets/oracles.draw-pool.js'));
 assert.equal(before.schema, after.schema);
 assert.notEqual(before.content_version, after.content_version);
 assert.deepEqual(Array.from(before.entries, e => e.id), Array.from(after.entries, e => e.id));
+// 2026-11-15：關帝籤詩另有一批「人眼核圖裁定」的字級修正（data/corpora/guandi/poem_corrections.json 的 applied）。
+// 允許變動的 id 只有：乙未／戊午兩支＋這份帳上 applied 的籤；pending 的籤一個字都不准動。
+const guandiLedger = JSON.parse(read('data/corpora/guandi/poem_corrections.json'));
+const guandiId = n => `guandi-${String(n).padStart(3, '0')}`;
+const guandiAfter = new Map(guandiLedger.applied.map(r => [guandiId(r.slip_number), r]));
+const guandiPending = new Set(guandiLedger.pending.map(r => guandiId(r.slip_number)).filter(id => !guandiAfter.has(id)));
+const mayChange = new Set(['liushijiazi-010', 'liushijiazi-028', ...guandiAfter.keys()]);
 for (const old of before.entries) {
   const entry = after.entries.find(e => e.id === old.id);
   const changes = Object.keys(old).filter(key => JSON.stringify(old[key]) !== JSON.stringify(entry[key]));
-  assert.deepEqual(changes, ['liushijiazi-010', 'liushijiazi-028'].includes(old.id) ? ['historical_text'] : []);
+  assert.deepEqual(changes, mayChange.has(old.id) ? ['historical_text'] : [], old.id);
+  if (guandiAfter.has(old.id)) {
+    const row = guandiAfter.get(old.id);
+    assert.equal(old.historical_text.poem_text, row.poem_before, old.id + ' before');
+    assert.equal(entry.historical_text.poem_text, row.poem_after, old.id + ' after');
+    const inner = Object.keys(old.historical_text).filter(k => JSON.stringify(old.historical_text[k]) !== JSON.stringify(entry.historical_text[k]));
+    assert.deepEqual(inner, ['poem_text'], old.id + ': only the poem text may differ');
+    assert.equal(JSON.stringify(old.provenance), JSON.stringify(entry.provenance), old.id + ': status/provenance untouched');
+  }
+  if (guandiPending.has(old.id)) assert.equal(JSON.stringify(old), JSON.stringify(entry), old.id + ' is pending and must be untouched');
 }
 
 // Seed old-version fictional book + bindings. Resolve a repeated normalized
@@ -32,29 +48,29 @@ assert.ok(showSlip.startsWith('  function showSlip('));
 // 籤簿與 bindings；唯一允許的寫入是「上次走進哪一殿」的標記（LASTHALL）。主線（無此函式）則維持零寫入。
 const eb0 = html.indexOf('  function ensureBookEntry(');
 const ensureBookEntry = eb0 < 0 ? '' : html.slice(eb0, html.indexOf('\n  }\n', eb0) + 5);
-for (const number of [10, 28]) {
-  const id = `liushijiazi-${String(number).padStart(3, '0')}`;
+for (const [corpus, number] of [['liushijiazi', 10], ['liushijiazi', 28], ['guandi', 74]]) {
+  const id = `${corpus}-${String(number).padStart(3, '0')}`;
   const question = `虛構相容性測試 ${number}`;
-  const record = {entryId:id, corpusId:'liushijiazi', question, note:`虛構私人筆記 ${number}`, ts:'2026-08-20T00:00:00.000Z'};
+  const record = {entryId:id, corpusId:corpus, question, note:`虛構私人筆記 ${number}`, ts:'2026-08-20T00:00:00.000Z'};
   const book = JSON.stringify([record]);
   const storage = new Map([['drawone.book.v1', book]]);
   const storageAPI = {getItem:key => storage.get(key) ?? null, setItem:() => {throw Error('Unexpected storage write');}};
   const window = {localStorage:storageAPI, sessionStorage:storageAPI};
   vm.runInNewContext(read('assets/draw-policy.js'), {window});
   const key = window.DRAW_POLICY.questionKey(question);
-  storage.set('drawone.bindings.v2', JSON.stringify({[key]:[{entry_id:id, corpus_id:'liushijiazi', question_normalized:question, bound_at:record.ts}]}));
+  storage.set('drawone.bindings.v2', JSON.stringify({[key]:[{entry_id:id, corpus_id:corpus, question_normalized:question, bound_at:record.ts}]}));
   const frozen = JSON.stringify([...storage]);
-  const binding = window.DRAW_POLICY.resolveDraw({question:`  ${question}　`, corpusId:'guandi', drawFn:() => {throw Error('Must not redraw');}});
+  const binding = window.DRAW_POLICY.resolveDraw({question:`  ${question}　`, corpusId:corpus === 'guandi' ? 'guanyin' : 'guandi', drawFn:() => {throw Error('Must not redraw');}});
   assert.equal(binding.entryId, id);
-  assert.equal(binding.boundCorpusId, 'liushijiazi');
+  assert.equal(binding.boundCorpusId, corpus);
   assert.equal(binding.repeated, true);
   const nodes = {};
-  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, appendChild(){}, classList:{add(){}, remove(){}, toggle(){}, contains(){return false;}}}; // classList：入廟 ink 分支的 showSlip 會切殿內 reading 狀態（僅樣式）
+  const $ = id => nodes[id] ??= {style:{}, scrollIntoView(){}, scrollTo(){}, appendChild(){}, classList:{add(){}, remove(){}, toggle(){}, contains(){return false;}}}; // classList：入廟 ink 分支的 showSlip 會切殿內 reading 狀態（僅樣式）
   $('question').value = question;
   let mounted;
   window.SLIP_RENDER = {mountSlip:(_, entry) => {mounted = entry.historical_text.poem_text;}};
   const writes = [];
-  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback, set:(key) => { writes.push(key); }}, BOOK_KEY:'drawone.book.v1', LASTHALL_KEY:'__lasthall__', currentHall:{id:'mazu'}, cnNum:String, Date, reduceMotion:true, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
+  const context = {window, $, store:{get:(key, fallback) => JSON.parse(storage.get(key) ?? 'null') ?? fallback, set:(key) => { writes.push(key); }}, BOOK_KEY:'drawone.book.v1', LASTHALL_KEY:'__lasthall__', currentHall:{id:'mazu'}, cnNum:String, Date, reduceMotion:true, nameBar(){}, renderJieyue(){}, currentTakeawayTs:null, currentResolved:null};
   vm.createContext(context);
   vm.runInContext(ensureBookEntry + '\n' + showSlip + '\nthis.showSlip = showSlip;', context);
   context.showSlip(after.entries.find(e => e.id === id), {repeated:true});
@@ -66,4 +82,4 @@ for (const number of [10, 28]) {
   assert.equal(JSON.stringify([...storage]), frozen);
   assert.ok(writes.every(k => k === '__lasthall__'), 'only the last-hall marker may be written: ' + writes.join());
 }
-console.log('PASS: all 260 ids stable; only two poem payloads changed; old fictional books/notes/bindings restore, cross-hall repeat never redraws, zero storage writes (offline VM scope)');
+console.log(`PASS: all 260 ids stable; only 乙未／戊午 + ${guandiAfter.size} adjudicated Guandi poem payloads changed (${guandiPending.size} pending slips untouched);`,' old fictional books/notes/bindings restore, cross-hall repeat never redraws, zero storage writes (offline VM scope)');

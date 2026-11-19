@@ -3,7 +3,7 @@
   "corpus_id": "guandi",
   "edition_id": "ed-guandi-daozang-fuye-1225",
   "field": "解曰",
-  "note": "解曰 rows that must NOT ship to the public 解曰 fold yet. Source rows stay verbatim and untouched — nothing here is a correction; this list only keeps a row off the page until its reading is checked against the 道藏 image (or 識典古籍 DZ1305). `flagged_by: upstream_note` = 蝦蝦's second-witness sweep (variants_or_notes). `flagged_by: fable_reading_pass_*` = a reader's suspicion from a plain reading pass, NOT a second witness. Remove a row only after that check.",
+  "note": "解曰 rows that must NOT ship to the public 解曰 fold yet. Source rows stay verbatim and untouched — nothing here is a correction; this list only keeps a row off the page until its reading is checked against the 道藏 image (or 識典古籍 DZ1305). `flagged_by: upstream_note` = 蝦蝦's second-witness sweep (variants_or_notes). `flagged_by: fable_reading_pass_*` = a reader's suspicion from a plain reading pass, NOT a second witness. `flagged_by: poem_image_adjudication_*` = the same slip's poem had this very character corrected by a human image adjudication (data/corpora/guandi/poem_corrections.json); the 解曰 row itself has NOT been checked. Remove a row only after that check.",
   "holds": [
     {
       "slip_no": 5,
@@ -95,6 +95,13 @@
       "flagged_by": "fable_reading_pass_2026-11-14",
       "suspect": "叉",
       "note": "「几事叉得」之「几」「叉」疑為「凡」「必」——Fable 讀校所見，非 second witness；待核道藏影像／識典古籍。"
+    },
+    {
+      "slip_no": 53,
+      "reason_code": "suspect_reading",
+      "flagged_by": "poem_image_adjudication_2026-09-08",
+      "suspect": "烏",
+      "note": "「南烏北巢」之「烏」：同一首的籤詩「南烏孤飛依北巢」經 Crystal 2026-09-08 人眼核圖裁定為「南鳥」（見 poem_corrections.json）。解曰與籤詩出自同一份維基文庫轉錄，同字極可能同誤；但解曰這一句本身尚未核圖，所以不改字、只暫緩。"
     },
     {
       "slip_no": 56,
