@@ -2376,19 +2376,25 @@ window.ARRIVAL_SOUND = (function () {
     window.ARRIVAL_SOUND?.tree(treeSoundX + pad0 - scroll - vw / 2, vw);
   }
 
+  // 轉身收斂以「時間」計，不以幀數計：手機忙時掉幀也不會轉得更慢（τ≈80ms，約 0.4 秒到位）
+  let lastAnimT = 0;
+  const SETTLE_TAU = 80;
   function animate() {
     raf = 0;
+    const nowT = performance.now();
+    const dt = lastAnimT ? Math.min(64, nowT - lastAnimT) : 16;
+    lastAnimT = nowT;
     if (!dragging) {
       const diff = targetScroll - scroll;
       if (Math.abs(diff) > 0.4) {
-        scroll += reduceMotion ? diff : diff * 0.11;
+        scroll += reduceMotion ? diff : diff * (1 - Math.exp(-dt / SETTLE_TAU));
       } else {
         scroll = targetScroll;
       }
     }
     applyFrame();
     if (!dragging && scroll !== targetScroll) raf = requestAnimationFrame(animate);
-    else updateFacingUI();
+    else { lastAnimT = 0; updateFacingUI(); }
   }
   function kick() { if (!raf) raf = requestAnimationFrame(animate); }
 
@@ -2398,10 +2404,12 @@ window.ARRIVAL_SOUND = (function () {
 
   function settleToNearest() {
     let i = nearestStation();
-    // 慣性：依釋放速度多轉半站
-    if (!reduceMotion && Math.abs(velocity) > 0.55) {
-      i = Math.max(0, Math.min(STATIONS.length - 1, i + (velocity < 0 ? 1 : -1)));
-    }
+    // 輕轉即轉：從起點那站往同方向拖過 18% 站寬、或輕甩（> 0.3px/ms），就轉到下一站
+    const from = Math.max(0, Math.min(STATIONS.length - 1, Math.round(dragStartScroll / stationW)));
+    const delta = scroll - dragStartScroll;
+    if (Math.abs(delta) > stationW * 0.18 && i === from) i = from + Math.sign(delta);
+    if (!reduceMotion && Math.abs(velocity) > 0.3 && i === from) i = from + (velocity < 0 ? 1 : -1);
+    i = Math.max(0, Math.min(STATIONS.length - 1, i));
     targetScroll = stationCenter(i);
     kick();
   }
@@ -2682,31 +2690,39 @@ window.ARRIVAL_SOUND = (function () {
   window.addEventListener("resize", nameBar);
 
   /* ---------- 拖抽 ---------- */
-  const PULL_DIST = 130;
-  let pulling = false, startY = 0, ticked = false;
+  // 拔籤：輕拉即出——距離 130→88px、拿掉尾段阻尼；拉過四成後往上一甩就出籤；放手時保留一點進度不歸零
+  const PULL_DIST = 88;
+  let pulling = false, startY = 0, ticked = false, pullP = 0, lastPY = 0, lastPT = 0, pullV = 0, carry = 0;
   const stickEl = $("tubeStick");
   const REST = 140, TOP = -34;
   function setStick(p) { stickEl.style.transform = `translateX(-50%) translateY(${REST + (TOP - REST) * p}px)`; }
-  function resetStick() { stickEl.style.transition = "none"; setStick(0); }
+  function resetStick() { carry = pullP = 0; stickEl.style.transition = "none"; setStick(0); }
   $("tubeWrap").addEventListener("pointerdown", (ev) => {
     if (!POOL || pulling) return;
     ev.preventDefault();
-    pulling = true; ticked = false; startY = ev.clientY;
+    pulling = true; ticked = false; startY = ev.clientY + carry * PULL_DIST;
+    lastPY = ev.clientY; lastPT = performance.now(); pullV = 0;
     stickEl.style.transition = "none";
   });
   window.addEventListener("pointermove", (ev) => {
     if (!pulling) return;
-    const raw = Math.max(0, startY - ev.clientY) / PULL_DIST;
-    const p = Math.min(1, raw < 0.8 ? raw : 0.8 + (raw - 0.8) * 0.75);
+    const now = performance.now();
+    pullV = (lastPY - ev.clientY) / Math.max(1, now - lastPT); lastPY = ev.clientY; lastPT = now;
+    const p = Math.min(1, Math.max(0, startY - ev.clientY) / PULL_DIST);
+    pullP = p;
     setStick(p);
     window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
-    if (p >= 1) { pulling = false; completeDraw(); }
+    if (p >= 1) { pulling = false; pullP = carry = 0; completeDraw(); }
   });
   const endPull = () => {
     if (!pulling) return;
     pulling = false;
-    stickEl.style.transition = "transform 240ms ease"; setStick(0);
+    // 往上甩著放手：拉過四成、放手前仍在往上（> 0.35px/ms）＝出籤
+    if (pullP >= 0.4 && pullV > 0.35 && performance.now() - lastPT < 120) { pullP = carry = 0; completeDraw(); return; }
+    // 沒出籤：籤枝滑回一半位置，下一次從那裡接著拉（不必每次從頭用力）
+    carry = Math.min(0.5, pullP * 0.8); pullP = 0;
+    stickEl.style.transition = "transform 240ms ease"; setStick(carry);
   };
   window.addEventListener("pointerup", endPull);
   window.addEventListener("pointercancel", endPull);

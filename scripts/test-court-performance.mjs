@@ -22,7 +22,7 @@ function setup() {
     renderCourt:()=>{rebuilds++; vm.runInContext('courtWidth = view.clientWidth',context);},
     stationCenter:i=>i*300,
   });
-  vm.runInContext('let raf=0, resizeRaf=0, courtWidth=390, innerWidth=390, dragging=true, scroll=0, targetScroll=0, reduceMotion=false, velocity=0,lastX=0,lastT=0,dragStartX=0,dragStartScroll=300,hasTurned=false,stationW=300,STATIONS=[1,2,3],downTarget={};'+handlers,context);
+  vm.runInContext('let raf=0, resizeRaf=0, courtWidth=390, innerWidth=390, dragging=true, scroll=0, targetScroll=0, reduceMotion=false, velocity=0,lastX=0,lastT=0,dragStartX=0,dragStartScroll=300,hasTurned=false,stationW=300,STATIONS=[1,2,3],downTarget={},lastAnimT=0,SETTLE_TAU=80;'+handlers,context);
   return {run:s=>vm.runInContext(s,context),flush:()=>{const pending=[...queue.keys()];for(const id of pending){const f=queue.get(id);if(f){queue.delete(id);f();}}}};
 }
 let t=setup();
