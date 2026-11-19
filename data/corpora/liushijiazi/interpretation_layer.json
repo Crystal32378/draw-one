@@ -4953,15 +4953,15 @@
    "ganzhi": "庚辰",
    "edition": "北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主、第59籤 2025-06-21 批次）",
    "field_type": "聖意",
-   "verbatim_text": "若想求神仙之路。\n我勸你還是不必\n勉強追求之要安\n知足常樂。\n過了修行而來近\n道的最好不能到\n目的。最應心且\n守時。待機會至\n貴人來扶助。\n定得諧。\n使你了卻心願。",
+   "verbatim_text": "討海：先不利後小利\n作塭：先失利後有利\n魚苗：失在前利在後\n求財：先無後有\n耕作：照舊好可收成\n經商：先平平後有利\n月令：不遂\n六甲：男女貴氣\n婚姻：二次者成好\n家運：門內漸漸平安\n失物：晚來尋在\n尋人：難在\n遠信：緩緩就到\n六畜：不好\n築室：後好\n移居：平平\n墳墓：地勢允好\n出外：與眾人同行可\n行舟：小利平平\n凡事：漸應\n治病：少貴人老拖運\n作事：有貴人好到尾\n功名：望後科\n官事：後有貴人\n家事：永獲吉慶\n求兒：不可有事\n求雨：未有",
    "source_locator": "北港朝天宮官網圖檔（slip #39 庚辰）<https://www.matsu.org.tw/upload_files/web/uploadfile/2024080515/original/240805152124800970.jpg>",
    "transcription_status": "CANDIDATE",
    "transcription_confidence": "CANDIDATE",
-   "source_observation_status": "ocr_single_pass",
+   "source_observation_status": "image_reread",
    "manual_image_confirmation": false,
    "unresolved_reason_code": null,
    "layer_class": "living_tradition",
-   "variants_or_notes": "legacy OCR（Study 03）聖意層：|討海先不利|作塭後有利|魚苗失在後前|求財先無後有|耕作可照看好|經商先平後有利|月令不送|",
+   "variants_or_notes": "legacy OCR（Study 03）聖意層：|討海先不利|作塭後有利|魚苗失在後前|求財先無後有|耕作可照看好|經商先平後有利|月令不送|｜2026-11-19 依北港朝天宮原圖（240805152124800970.jpg）逐格重抄聖意格 27 項（AI 讀圖，未經人工核圖）；前次單次 OCR 誤取右下旁欄白話籤意，原文見 docs/audits/2026-11-19-liushijiazi-39-shengyi.md。",
    "evidence_sources": [
     "ocr_a"
    ],

@@ -1933,10 +1933,25 @@ window.ARRIVAL_SOUND = (function () {
     const idle = (fn) => (window.requestIdleCallback ? requestIdleCallback(fn, { timeout: 600 }) : setTimeout(fn, 40));
     // 使用者正在操作（按住、拖、點）時不烘：最後一次輸入後靜 700ms、且瀏覽器空閒才烘下一張
     let lastInput = 0;
+    const activePointers = new Set();
+    const inputOptions = { capture: true, passive: true };
     for (const t of ["pointerdown", "pointermove", "pointerup", "touchstart", "wheel", "keydown"])
-      addEventListener(t, () => { lastInput = performance.now(); }, { capture: true, passive: true });
-    const quiet = () => new Promise((r) => { const tick = () => { const gap = performance.now() - lastInput;
-      if (gap < 700) setTimeout(tick, 720 - gap); else idle(r); }; tick(); });
+      addEventListener(t, () => { lastInput = performance.now(); }, inputOptions);
+    addEventListener("pointerdown", (ev) => activePointers.add(ev.pointerId), inputOptions);
+    for (const t of ["pointerup", "pointercancel", "lostpointercapture"])
+      addEventListener(t, (ev) => { activePointers.delete(ev.pointerId); lastInput = performance.now(); }, inputOptions);
+    addEventListener("blur", () => { activePointers.clear(); lastInput = performance.now(); });
+    const canBake = () => document.getElementById("s-court")?.classList.contains("on") &&
+      !document.hidden && activePointers.size === 0 && !dragging && !courtAnimating() &&
+      !document.getElementById("s-court").style.transform && performance.now() - lastInput >= 700;
+    const quiet = () => new Promise((r) => {
+      const tick = () => {
+        if (stats.disabled) { r(); return; }
+        if (!canBake()) { setTimeout(tick, 200); return; }
+        idle(() => { if (canBake()) r(); else tick(); });
+      };
+      tick();
+    });
     let queue = Promise.resolve();
     const queued = (...args) => (queue = queue.then(quiet).then(() => render(...args)));
     // 清理：已完成、這一輪沒被要用、畫面上也沒有 <image> 引用的圖 → revoke 並移出快取（轉螢幕、改尺寸後不會越積越多）
@@ -2690,42 +2705,60 @@ window.ARRIVAL_SOUND = (function () {
   window.addEventListener("resize", nameBar);
 
   /* ---------- 拖抽 ---------- */
-  // 拔籤：輕拉即出——距離 130→88px、拿掉尾段阻尼；拉過四成後往上一甩就出籤；放手時保留一點進度不歸零
+  // 拔籤：輕拉即出——距離 130→88px、拿掉尾段阻尼；拉過四成後往上一甩就出籤；放手時保留大部分進度不歸零
+  // （Murphy 6dcbc65：只認按下的那隻手指、指標捕捉、放開那一刻的最終位置也算、取消／失焦不出籤）
   const PULL_DIST = 88;
-  let pulling = false, startY = 0, ticked = false, pullP = 0, lastPY = 0, lastPT = 0, pullV = 0, carry = 0;
+  let pulling = false, pullPointerId = null, startY = 0, ticked = false;
+  let pullP = 0, lastPY = 0, lastPT = 0, pullV = 0, carry = 0;
   const stickEl = $("tubeStick");
   const REST = 140, TOP = -34;
   function setStick(p) { stickEl.style.transform = `translateX(-50%) translateY(${REST + (TOP - REST) * p}px)`; }
   function resetStick() { carry = pullP = 0; stickEl.style.transition = "none"; setStick(0); }
-  $("tubeWrap").addEventListener("pointerdown", (ev) => {
-    if (!POOL || pulling) return;
-    ev.preventDefault();
-    pulling = true; ticked = false; startY = ev.clientY + carry * PULL_DIST;
-    lastPY = ev.clientY; lastPT = performance.now(); pullV = 0;
-    stickEl.style.transition = "none";
-  });
-  window.addEventListener("pointermove", (ev) => {
-    if (!pulling) return;
+  const tubeWrap = $("tubeWrap");
+  function releasePullCapture() {
+    const id = pullPointerId; pullPointerId = null;
+    if (id !== null && tubeWrap.hasPointerCapture?.(id)) tubeWrap.releasePointerCapture(id);
+  }
+  function updatePull(ev) {
     const now = performance.now();
-    pullV = (lastPY - ev.clientY) / Math.max(1, now - lastPT); lastPY = ev.clientY; lastPT = now;
+    if (ev.clientY !== lastPY) { pullV = (lastPY - ev.clientY) / Math.max(1, now - lastPT); lastPY = ev.clientY; lastPT = now; }
     const p = Math.min(1, Math.max(0, startY - ev.clientY) / PULL_DIST);
     pullP = p;
     setStick(p);
     window.ARRIVAL_SOUND?.pull(p); // 手感層：筒內竹籤跟著手（只推 gesture 進度）
     if (!ticked && p > 0.5) { ticked = true; if (navigator.vibrate) navigator.vibrate(6); }
-    if (p >= 1) { pulling = false; pullP = carry = 0; completeDraw(); }
+    if (p >= 1) { pulling = false; pullP = carry = 0; releasePullCapture(); completeDraw(); }
+  }
+  tubeWrap.addEventListener("pointerdown", (ev) => {
+    if (!POOL || pulling || ev.isPrimary === false || (ev.button != null && ev.button !== 0)) return;
+    ev.preventDefault();
+    pulling = true; pullPointerId = ev.pointerId; ticked = false; startY = ev.clientY + carry * PULL_DIST;
+    lastPY = ev.clientY; lastPT = performance.now(); pullV = 0;
+    stickEl.style.transition = "none";
+    tubeWrap.setPointerCapture?.(ev.pointerId);
   });
-  const endPull = () => {
+  window.addEventListener("pointermove", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    updatePull(ev);
+  });
+  const endPull = (released = false) => {
     if (!pulling) return;
-    pulling = false;
-    // 往上甩著放手：拉過四成、放手前仍在往上（> 0.35px/ms）＝出籤
-    if (pullP >= 0.4 && pullV > 0.35 && performance.now() - lastPT < 120) { pullP = carry = 0; completeDraw(); return; }
-    // 沒出籤：籤枝滑回一半位置，下一次從那裡接著拉（不必每次從頭用力）
+    pulling = false; releasePullCapture();
+    // 往上甩著放手：拉過四成、放手前仍在往上（> 0.35px/ms）＝出籤。取消／失焦（released=false）永遠不出籤
+    if (released && pullP >= 0.4 && pullV > 0.35 && performance.now() - lastPT < 120) { pullP = carry = 0; completeDraw(); return; }
+    // 沒出籤：籤枝滑回較低處，下一次從那裡接著拉（不必每次從頭用力）
     carry = Math.min(0.5, pullP * 0.8); pullP = 0;
     stickEl.style.transition = "transform 240ms ease"; setStick(carry);
   };
-  window.addEventListener("pointerup", endPull);
-  window.addEventListener("pointercancel", endPull);
+  window.addEventListener("pointerup", (ev) => {
+    if (!pulling || ev.pointerId !== pullPointerId) return;
+    // The final pointer position may not have arrived in a pointermove (e.g. a busy mobile frame).
+    updatePull(ev);
+    endPull(true);
+  });
+  window.addEventListener("pointercancel", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  tubeWrap.addEventListener("lostpointercapture", (ev) => { if (ev.pointerId === pullPointerId) endPull(); });
+  window.addEventListener("blur", () => endPull());
   if (DEVDRAW) $("tubeWrap").addEventListener("click", () => { if (!pulling) completeDraw(); });
 
   function uniformDraw(corpusId) {

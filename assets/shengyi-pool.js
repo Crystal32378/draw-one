@@ -3590,17 +3590,14 @@ window.SHENGYI_POOL = {
       "slip_number": 39,
       "expected_slip_edition": "北港朝天宮官方六十甲子籤（modern reference edition）",
       "field": "聖意",
-      "text": "",
-      "display_selection": {
-        "unresolved": true,
-        "note": "現有轉錄誤取旁欄長文；原圖有聖意格，待重新轉錄，不是缺欄。"
-      },
+      "text": "討海：先不利後小利\n作塭：先失利後有利\n魚苗：失在前利在後\n求財：先無後有\n耕作：照舊好可收成\n經商：先平平後有利\n月令：不遂\n六甲：男女貴氣\n婚姻：二次者成好\n家運：門內漸漸平安\n失物：晚來尋在\n尋人：難在\n遠信：緩緩就到\n六畜：不好\n築室：後好\n移居：平平\n墳墓：地勢允好\n出外：與眾人同行可\n行舟：小利平平\n凡事：漸應\n治病：少貴人老拖運\n作事：有貴人好到尾\n功名：望後科\n官事：後有貴人\n家事：永獲吉慶\n求兒：不可有事\n求雨：未有",
+      "display_selection": null,
       "status": "CANDIDATE",
       "confirmed": false,
       "source": "北港朝天宮官方籤詩圖檔（六十甲子籤；2024-08-05 批次為主、第59籤 2025-06-21 批次）",
       "locator": "北港朝天宮官網圖檔（slip #39 庚辰）\u003chttps://www.matsu.org.tw/upload_files/web/uploadfile/2024080515/original/240805152124800970.jpg>",
-      "notes": "legacy OCR（Study 03）聖意層：|討海先不利|作塭後有利|魚苗失在後前|求財先無後有|耕作可照看好|經商先平後有利|月令不送|",
-      "source_hash": "779a61f94c5d63fbc4e2efecee9cfab52047e373aa4f83b3df1cc2ab8b631319"
+      "notes": "legacy OCR（Study 03）聖意層：|討海先不利|作塭後有利|魚苗失在後前|求財先無後有|耕作可照看好|經商先平後有利|月令不送|｜2026-11-19 依北港朝天宮原圖（240805152124800970.jpg）逐格重抄聖意格 27 項（AI 讀圖，未經人工核圖）；前次單次 OCR 誤取右下旁欄白話籤意，原文見 docs/audits/2026-11-19-liushijiazi-39-shengyi.md。",
+      "source_hash": "bf80e27c5bef6f17a10e8e0062287618434c21814621ea3e9fa51d688b7602c0"
     },
     "liushijiazi-040": {
       "id": "liushijiazi-040",

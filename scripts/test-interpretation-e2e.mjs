@@ -177,9 +177,9 @@ let sy = await shengyi();
 check("聖母殿 #1：聖意候選在摺頁裡、預設收合、標狀態", !sy.hidden && sy.has && !sy.open && sy.summary.startsWith("聖意・") && sy.text.length > 0
   && sy.links.some((h) => /^https:\/\/www\.matsu\.org\.tw\//.test(h)) && sy.links.some((h) => /corpus-review-liushijiazi\.html\?q=1$/.test(h)));
 await view("liushijiazi-039"); await openFold(); sy = await shengyi();
-check("聖母殿 #39：不硬補——說明待重新轉錄，給原圖與校對館", sy.has && sy.text.includes("待重新轉錄") && sy.links.some((h) => /matsu\.org\.tw/.test(h)) && sy.links.some((h) => /corpus-review-liushijiazi\.html\?q=39$/.test(h)));
+check("聖母殿 #39：依原圖重抄的聖意格上紙（27 項、不含舊誤取長文），給原圖與校對館", sy.has && sy.text.startsWith("討海：先不利後小利") && sy.text.includes("求雨：未有") && !sy.text.includes("若想求神仙") && !sy.text.includes("待重新轉錄") && sy.links.some((h) => /matsu\.org\.tw/.test(h)) && sy.links.some((h) => /corpus-review-liushijiazi\.html\?q=39$/.test(h)));
 await view("liushijiazi-040"); await openFold(); sy = await shengyi();
-check("換籤後不殘留上一籤的聖意（#39 的待補字樣不跟到 #40）", sy.has && !sy.text.includes("待重新轉錄"));
+check("換籤後不殘留上一籤的聖意（#39 的內容不跟到 #40）", sy.has && !sy.text.includes("待重新轉錄") && !sy.text.startsWith("討海：先不利後小利"));
 await view("guanyin-001"); await openFold(); sy = await shengyi();
 check("觀音 #1：聖意與解曰是兩層（解曰在上，聖意另收一格）", sy.has && !sy.open && sy.summary.startsWith("聖意・") && sy.text !== (await fold()).text);
 await view("guandi-058"); await openFold(); sy = await shengyi();

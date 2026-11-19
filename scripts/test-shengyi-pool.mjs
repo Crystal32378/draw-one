@@ -25,7 +25,7 @@ assert.equal(sandbox.window.SHENGYI_VIEW.render(pool,{...entry,corpus_id:'unknow
 console.log('PASS: native collapsed details renders exact text via textContent, source link is root-safe; unknown next slip clears previous candidate.');
 const short=sourceRows('liushijiazi');
 for(const row of short){const r=pool.entries['liushijiazi-'+String(row.slip_no).padStart(3,'0')];
- if(row.slip_no===39){assert.equal(r.text,'');assert.equal(r.display_selection.unresolved,true);continue;}
+ if(row.slip_no===39){assert.equal(r.display_selection,null);assert.ok(r.text.startsWith('討海：先不利後小利')&&r.text.endsWith('求雨：未有')&&r.text.split('\n').length===27,'第 39 籤：依原圖重抄的 27 項聖意格');}
  if([31,33,41].includes(row.slip_no)){assert.equal(r.text,row.verbatim_text.split(r.display_selection.before)[0]);assert.ok(r.display_selection.note);}else assert.equal(r.text,row.verbatim_text);
  assert.equal(r.status,row.transcription_status);assert.equal(r.confirmed,false);
  const e={id:r.id,corpus_id:r.corpus_id,slip_number:r.slip_number,provenance:{edition_title:r.expected_slip_edition}};assert.ok(sandbox.window.SHENGYI_VIEW.resolve(pool,e));
@@ -33,6 +33,6 @@ for(const row of short){const r=pool.entries['liushijiazi-'+String(row.slip_no).
 for(const n of [22,25,32,42])assert.ok(pool.entries['liushijiazi-'+String(n).padStart(3,'0')].text.includes('□'));
 assert.ok(!JSON.stringify(pool.entries['liushijiazi-039']).includes('若想求神仙之路'));
 assert.ok(html.includes('const aboutText = "";'));
-console.log('PASS:Jiazi56whole+3explicit exact prefixes+1misfiled-source fallback; no OCR completion, status upgrade or long-field leakage; compact reading.');
+console.log('PASS:Jiazi57whole+3explicit exact prefixes (#39 re-transcribed from the original scan, old misfiled text never shown); no OCR completion, status upgrade or long-field leakage; compact reading.');
 
 assert.ok(html.includes('#s-hall.reading { scroll-padding-bottom: calc(100px + env(safe-area-inset-bottom)); }'));

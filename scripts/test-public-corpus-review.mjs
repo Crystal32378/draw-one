@@ -28,6 +28,7 @@ assert.equal((html.match(/原圖欄位轉錄候選 · /g)||[]).length,180); // �
     const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     assert.ok(page.includes(esc(sy['liushijiazi-'+String(n).padStart(3,'0')].text)),'校對館短聖意 = 求籤頁短聖意 #'+n); }
   for(const n of [31,33,41]) assert.ok(buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===n&&r.field_type==='聖意')).includes('求籤頁只顯示前段事項判詞'));
+  const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   const p39=buildPublicReview(rows.filter(r=>r.corpus==='liushijiazi'&&r.slip_no===39&&r.field_type==='聖意'));
   if(!sy['liushijiazi-039'].text) assert.ok(p39.includes('待依原圖重新轉錄')&&!p39.includes('若想求神仙之路'));
   else assert.ok(p39.includes(esc(sy['liushijiazi-039'].text)));

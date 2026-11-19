@@ -25,4 +25,4 @@ export function buildShengyi(sources={guanyin:sourceRows('guanyin'),guandi:sourc
  }
  return {schema:'shengyi-candidates/1',status_word:{VERIFIED:'已對勘',PROBABLE:'待複核',CANDIDATE:'候選讀法',UNRESOLVED:'有疑字・待核對'},entries};
 }
-if(import.meta.url===pathToFileURL(process.argv[1]||'').href){const pool=buildShengyi();writeFileSync('assets/shengyi-pool.js','// Generated exact historical candidate text; no status promotion.\nwindow.SHENGYI_POOL = '+JSON.stringify(pool,null,2).replace(/</g,'\\u003c')+';\n');console.log('Built260 聖意 records:259 source candidates +1 wrong-field transcription awaiting replacement.');}
+if(import.meta.url===pathToFileURL(process.argv[1]||'').href){const pool=buildShengyi();writeFileSync('assets/shengyi-pool.js','// Generated exact historical candidate text; no status promotion.\nwindow.SHENGYI_POOL = '+JSON.stringify(pool,null,2).replace(/</g,'\\u003c')+';\n');{const n=Object.values(pool.entries).filter(e=>e.text).length;console.log(`Built ${Object.keys(pool.entries).length} 聖意 records: ${n} shown`+(n<260?`, ${260-n} awaiting re-transcription.`:'.'));}}
